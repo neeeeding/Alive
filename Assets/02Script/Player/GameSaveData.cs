@@ -7,6 +7,11 @@ namespace _02Script.Player
     {
         public Sound sound = new Sound();
         public PlayerStatSC stat = new PlayerStatSC();
+
+        public void DataReset()
+        {
+            sound.DataReset();
+        }
     }
 
     [Serializable]
@@ -15,5 +20,12 @@ namespace _02Script.Player
         public float mainSound;
         public float bgmSound;
         public float effectSound;
+        
+        public void DataReset()
+        {
+            mainSound = 1;
+            bgmSound = 1;
+            effectSound = 1;
+        }
     }
 }

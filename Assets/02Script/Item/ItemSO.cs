@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _02Script.Item
 {
-    [CreateAssetMenu(fileName = "ItemSO", menuName = "SO/ItmeSO")]
+    [CreateAssetMenu(fileName = "ItemSO", menuName = "SO/ItemSO")]
     public class ItemSO : ScriptableObject
     {
         [SerializeField] private string itemName; //아이템 이름

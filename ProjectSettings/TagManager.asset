@@ -2,8 +2,9 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -11,9 +12,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Npc
+  - Ground
   - 
   - 
   - 
@@ -41,3 +42,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Object
+    uniqueID: 2690897173
+    locked: 0
+  - name: BackPlayer
+    uniqueID: 2402574287
+    locked: 0
+  - name: Player
+    uniqueID: 3633788905
+    locked: 0
+  - name: FrontPlayer
+    uniqueID: 3022947475
+    locked: 0
+  - name: wall
+    uniqueID: 672341127
+    locked: 0
+  m_RenderingLayers:
+  - Default
