@@ -43,6 +43,7 @@ namespace _02Script.UI.Chat
             int[] nums = character.CurrentDialog();
             currentChapter = nums[0];
             currentNum = nums[1];
+            chatPlayer = so;
             OffSelectText(); //선택지 텍스트 일단 다 끄기
             GetDialog();
             DoChat();

@@ -59,9 +59,9 @@ namespace _02Script.Manager
         private void Update()
         {
             if ((isProfile || isSetting || isLikeabilityGuide || isLikeItem || isMap || isSetting || isSave || isCoin ||
-                 isObj || isChat) && PlayerMobileInput.Instance.CheckCanInput())
+                 isObj || isChat) && PlayerInput.Instance.CheckCanInput())
             {
-                PlayerMobileInput.Instance.NoInput();
+                PlayerInput.Instance.NoInput();
             }
         }
 
@@ -71,7 +71,7 @@ namespace _02Script.Manager
             AllHide();
             SettingAll();
             Time.timeScale = 1f;
-            PlayerMobileInput.Instance.CanInput();
+            PlayerInput.Instance.CanInput();
         }
 
         public void CloseChat() //채팅 닫기

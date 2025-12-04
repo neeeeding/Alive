@@ -23,14 +23,16 @@ namespace _02Script.Player.State
         private void OnEnable()
         {
             _isMoving = false;
-            PlayerMobileInput.mousePos += Move;
+            PlayerInput.OnMousePos += MouseMove;
+            PlayerInput.OnMovePos += KeyboardMove;
             LoadCard.OnLoad += Load;
         }
 
         private void OnDisable()
         {
             GameManager.OnStart -= StartLoad;
-            PlayerMobileInput.mousePos -= Move;
+            PlayerInput.OnMousePos -= MouseMove;
+            PlayerInput.OnMovePos -= KeyboardMove;
             LoadCard.OnLoad -= Load;
         }
         #endregion
@@ -51,10 +53,15 @@ namespace _02Script.Player.State
             }
         }
 
-        private void Move(Vector2 mousePos)
+        private void MouseMove(Vector2 mousePos)
         {
             _isMoving = true;
             TargetPos = mousePos;
+        }
+        private void KeyboardMove(Vector2 mousePos)
+        {
+            _isMoving = true;
+            TargetPos = (Vector2)transform.position + mousePos.normalized;
         }
 
         private void StartLoad()

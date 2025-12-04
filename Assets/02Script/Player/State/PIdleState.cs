@@ -11,7 +11,7 @@ namespace _02Script.Player.State
         public override void Enter(PlayerRotate rotate)
         {
             base.Enter(rotate);
-            PlayerMobileInput.mousePos += Move;
+            PlayerInput.OnMousePos += Move;
         }
 
         private void Move(Vector2 mousePos)
@@ -28,7 +28,7 @@ namespace _02Script.Player.State
         public override void Exit()
         {
             base.Exit();
-            PlayerMobileInput.mousePos -= Move;
+            PlayerInput.OnMousePos -= Move;
         }
     }
 }
