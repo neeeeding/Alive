@@ -5,14 +5,14 @@ namespace _02Script.Player.State
     public class PState
     {
         protected Player _player; //플레이어
-        protected PStateMachin _stateMachin; //머신
+        protected PStateMachine StateMachine; //머신
         protected int _animationHash; //해시
 
         protected PlayerRotate _rotate; //어딜 봐야는지
 
-        public PState(string animation,PStateMachin machin,Player player)
+        public PState(string animation,PStateMachine machine,Player player)
         {
-            _stateMachin = machin;
+            StateMachine = machine;
             _player = player;
             _animationHash = Animator.StringToHash(animation);
         }

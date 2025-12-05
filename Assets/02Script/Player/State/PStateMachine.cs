@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace _02Script.Player.State
 {
-    public class PStateMachin
+    public class PStateMachine
     {
         public Dictionary<PlayerState, PState> PStateD = new Dictionary<PlayerState, PState>();
 

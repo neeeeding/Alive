@@ -24,12 +24,12 @@ namespace _02Script.UI.Chat
                 characterLoveGauge.gameObject.SetActive(true);
                 characterLoveText.gameObject.SetActive(true);
 
-                int.TryParse(GameManager.Instance.PlayerStat.characterlastText[current.characterName][DialogType.Love],
+                int.TryParse(GameManager.Instance.PlayerStat.characterLastText[current.characterName][DialogType.Love],
                     out int love);
                 characterLoveGauge.value = love;
 
                 characterLoveText.text =
-                    GameManager.Instance.PlayerStat.characterlastText[current.characterName][DialogType.Love];
+                    GameManager.Instance.PlayerStat.characterLastText[current.characterName][DialogType.Love];
             }
             else
             {

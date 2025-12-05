@@ -104,8 +104,8 @@ namespace _02Script.UI.Chat
             if (path != null)
             {
                 //¿˙¿Â
-                path.characterlastText[chatPlayer.characterName][DialogType.Chapter] = currentNum.ToString();
-                path.characterlastText[chatPlayer.characterName][DialogType.Num] = currentChapter.ToString();
+                path.characterLastText[chatPlayer.characterName][DialogType.Chapter] = currentNum.ToString();
+                path.characterLastText[chatPlayer.characterName][DialogType.Num] = currentChapter.ToString();
                 //path.characterlastText[chatPlayer.characterName][DialogType.Text] = final;
             }
         }

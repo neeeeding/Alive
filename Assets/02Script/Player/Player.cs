@@ -1,3 +1,4 @@
+using System;
 using _02Script.Player.State;
 using UnityEngine;
 
@@ -5,45 +6,54 @@ namespace _02Script.Player
 {
     public class Player : MonoBehaviour
     {
+        public static Action<Player> OnSelectPlayer;
+        
         [SerializeField] private string currentState;
 
         private Animator animator;
         public Animator Animator => animator;
 
-        private PStateMachin stateMachin;
+        private PStateMachine stateMachine;
 
+        public bool isCurPlayer;
+
+        public void Select()
+        {
+            OnSelectPlayer?.Invoke(this);
+        }
+        
         private void Awake()
         {
             animator = GetComponentInChildren<Animator>();
 
-            stateMachin = new PStateMachin();
-            stateMachin.AddState(PlayerState.Move, new PMoveState("Move", stateMachin, this));
-            stateMachin.AddState(PlayerState.Idle, new PIdleState("Idle", stateMachin, this));
-            stateMachin.AddState(PlayerState.hold, new PHoldState("Hold", stateMachin, this));
+            stateMachine = new PStateMachine();
+            stateMachine.AddState(PlayerState.Move, new PMoveState("Move", stateMachine, this));
+            stateMachine.AddState(PlayerState.Idle, new PIdleState("Idle", stateMachine, this));
+            stateMachine.AddState(PlayerState.hold, new PHoldState("Hold", stateMachine, this));
 
             transform.position += Vector3.zero;
-            stateMachin.ChangeState(PlayerState.Idle, PlayerRotate.Front);
+            stateMachine.ChangeState(PlayerState.Idle, PlayerRotate.Front);
         }
 
         private void OnDisable()
         {
-            stateMachin.currentState.Exit();
+            stateMachine.currentState.Exit();
         }
 
         public void ChangeState(PlayerState state)
         {
-            stateMachin.ChangeState(state, PlayerRotate.Front);
+            stateMachine.ChangeState(state, PlayerRotate.Front);
         }
 
         private void Update()
         {
-            stateMachin.currentState.StateUpdate();
-            currentState = stateMachin.currentState.ToString();
+            stateMachine.currentState.StateUpdate();
+            currentState = stateMachine.currentState.ToString();
         }
 
         private void FixedUpdate()
         {
-            stateMachin.currentState.StateFixedUpdate();
+            stateMachine.currentState.StateFixedUpdate();
         }
     }
 }

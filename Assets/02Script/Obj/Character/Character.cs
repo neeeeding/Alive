@@ -31,8 +31,8 @@ namespace _02Script.Obj.Character
 
             if (path != null)
             {
-                int.TryParse(path.characterlastText[characterSO.characterName][DialogType.Chapter], out chapter);
-                int.TryParse(path.characterlastText[characterSO.characterName][DialogType.Num], out finalNum);
+                int.TryParse(path.characterLastText[characterSO.characterName][DialogType.Chapter], out chapter);
+                int.TryParse(path.characterLastText[characterSO.characterName][DialogType.Num], out finalNum);
             }
 
             //아이템이나 특수 대화에서는 문제가 없는지 확인 할 것
@@ -52,7 +52,7 @@ namespace _02Script.Obj.Character
         {
             finalNum = i;
 
-            path.characterlastText[characterSO.characterName][DialogType.Num] = finalNum.ToString();
+            path.characterLastText[characterSO.characterName][DialogType.Num] = finalNum.ToString();
         }
 
         public int[] CurrentDialog() //현재 진행 사항 (챕터, 넘버 값 넘겨주기)
@@ -81,16 +81,16 @@ namespace _02Script.Obj.Character
             finalNum = 1;
             chapter++;
 
-            path.characterlastText[characterSO.characterName][DialogType.Chapter] = chapter.ToString();
-            path.characterlastText[characterSO.characterName][DialogType.Num] = finalNum.ToString();
+            path.characterLastText[characterSO.characterName][DialogType.Chapter] = chapter.ToString();
+            path.characterLastText[characterSO.characterName][DialogType.Num] = finalNum.ToString();
         }
 
         public void ClickCharacter() //대화 하기 (클릭)
         {
             if (isChat)
             {
-                int.TryParse(path.characterlastText[characterSO.characterName][DialogType.Chapter],out chapter);
-                int.TryParse(path.characterlastText[characterSO.characterName][DialogType.Num],out finalNum);
+                int.TryParse(path.characterLastText[characterSO.characterName][DialogType.Chapter],out chapter);
+                int.TryParse(path.characterLastText[characterSO.characterName][DialogType.Num],out finalNum);
                 //finallNum = 1;
                 OnChat?.Invoke(characterSO,this);
             }

@@ -14,33 +14,16 @@ namespace _02Script.Player
 
         public bool isChat; //ture : 채팅 중, false : 인 게임
 
-        [Range(0,100)] //능력치
-        public float blackMagic;
-        [Range(0, 100)]
-        public float healMagic;
-        [Range(0, 100)]
-        public float fireMagic;
-        [Range(0, 100)]
-        public float waterMagic;
-        [Range(0, 100)]
-        public float copyMagic;
-        [Range(0, 100)]
-        public float potionMagic;
-        [Range(0, 20)] //벌점
-        public float demerit;
-
         public int playerCoin; //소지금
 
         public Vector2 playerPosition; //플레이어 위치
-
-        public PlayerJob job; //전공
 
         [Space(50f)]
         public Character lastCharacter; //마지막 캐릭터
         public CharacterSO lastSO;
         public string lastText; //마지막 대화
 
-        public SaveDictionary<CharacterName, SaveDictionary<DialogType, string>> characterlastText; //캐릭터 마지막 대화 이름<다이얼로그(종류), 번째(혹은 텍스트)>
+        public SaveDictionary<CharacterName, SaveDictionary<DialogType, string>> characterLastText; //캐릭터 마지막 대화 이름<다이얼로그(종류), 번째(혹은 텍스트)>
 
         [Space(50f)] //날짜
         public int year;
@@ -55,28 +38,71 @@ namespace _02Script.Player
         public void ResetStat()
         {
             sceneName = "TestOutSide";
-            
-            //능력치
-            blackMagic = 0;
-            healMagic = 0;
-            fireMagic = 0;
-            waterMagic = 0;
-            copyMagic = 0;
-            potionMagic = 0;
-            demerit = 0;
+            isChat = false;
 
             playerCoin = 5;
             playerPosition = new Vector2(0, 0);
 
-            job = PlayerJob.none;
-
             lastText = "마지막 대화가 없습니다.";
+            
+            ResetCharacter();
 
             year = 2000;
             month = 1;
             day = 1;
             hour = 1;
             minute = 0;
+             
+            ResetItem();
+        }
+        
+        public void ResetCharacter() //캐릭터들  전부 초기화
+        {
+            characterLastText = new SaveDictionary<CharacterName, SaveDictionary<DialogType, string>>();
+            characterLastText.Clear();
+
+            int num;
+
+            foreach (CharacterName name in Enum.GetValues(typeof(CharacterName))) //이름들 저장
+            {
+                num = (int)name / 1000;
+                SaveDictionary<DialogType, string> di = new SaveDictionary<DialogType, string>();
+
+                foreach (DialogType dialog in
+                         Enum.GetValues(typeof(DialogType))) //모든 걸 저장 / 다이얼로그 종류 (챕터, 넘버, 텍스트, 메모, 러브 만 사용하긴 함.)
+                {
+                    di.Add(dialog, ""); // " " 초기화
+                }
+
+                characterLastText.Add(name, di); //저장
+            }
+        }
+        
+        public void ResetItem() //스탯의 아이템 전부 초기화
+        {
+            items = new SaveDictionary<ItemCategory, SaveDictionary<ItemType, int>>();
+            items.Clear();
+
+            int num;
+
+            foreach (ItemCategory category in Enum.GetValues(typeof(ItemCategory))) //카테고리 저장
+            {
+                if (category == ItemCategory.coin || category == ItemCategory.none) //코인 제외
+                    continue;
+
+                num = (int)category / 1000;
+                SaveDictionary<ItemType, int> item = new SaveDictionary<ItemType, int>(); //아이템
+
+                foreach (ItemType type in Enum.GetValues(typeof(ItemType))) //해당 카테고리와 앞 자리 같은 종료를 저장
+                {
+                    if (num != (int)type / 1000) //앞자리 비교
+                        continue;
+
+                    item.Add(type, 0); //0으로 초기화
+                }
+
+                items.Add(category, item); //저장
+            }
         }
     }
 }

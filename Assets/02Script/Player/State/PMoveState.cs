@@ -4,7 +4,7 @@ namespace _02Script.Player.State
 {
     public class PMoveState : PState
     {
-        public PMoveState(string animation, PStateMachin machin, Player player) : base(animation, machin, player)
+        public PMoveState(string animation, PStateMachine machine, Player player) : base(animation, machine, player)
         {
         }
 
@@ -14,7 +14,7 @@ namespace _02Script.Player.State
 
             if (_player.transform.position.x == PlayerMovement.Instance.TargetPos.x && _player.transform.position.y == PlayerMovement.Instance.TargetPos.y)
             {
-                _stateMachin.ChangeState(PlayerState.Idle, _rotate);
+                StateMachine.ChangeState(PlayerState.Idle, _rotate);
             }
             ChangeAnimation(PlayerMovement.Instance.TargetPos);
         }
@@ -39,7 +39,7 @@ namespace _02Script.Player.State
 
             if(Vector2.Distance(_player.transform.position, PlayerMovement.Instance.TargetPos) < 0.5f)
             {
-                _stateMachin.ChangeState(PlayerState.Idle,_rotate);
+                StateMachine.ChangeState(PlayerState.Idle,_rotate);
             }
         }
         public override void Exit()

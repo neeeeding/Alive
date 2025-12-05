@@ -187,6 +187,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &156933823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 156933825}
+  - component: {fileID: 156933824}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &156933824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156933823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc5b93c721f44caa9eacd5f3e58eeb27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Player.PlayerManager
+  characters:
+  - {fileID: 465956464}
+--- !u!4 &156933825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156933823}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &301869804
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,20 +1017,12 @@ MonoBehaviour:
     stat:
       sceneName: 
       isChat: 0
-      blackMagic: 0
-      healMagic: 0
-      fireMagic: 0
-      waterMagic: 0
-      copyMagic: 0
-      potionMagic: 0
-      demerit: 0
       playerCoin: 0
       playerPosition: {x: 0, y: 0}
-      job: 0
       lastCharacter: {fileID: 0}
       lastSO: {fileID: 0}
       lastText: 
-      characterlastText:
+      characterLastText:
         ks: 
         vs: []
       year: 0
@@ -998,20 +1036,12 @@ MonoBehaviour:
   PlayerStat:
     sceneName: 
     isChat: 0
-    blackMagic: 0
-    healMagic: 0
-    fireMagic: 0
-    waterMagic: 0
-    copyMagic: 0
-    potionMagic: 0
-    demerit: 0
     playerCoin: 0
     playerPosition: {x: 0, y: 0}
-    job: 0
     lastCharacter: {fileID: 0}
     lastSO: {fileID: 0}
     lastText: 
-    characterlastText:
+    characterLastText:
       ks: 
       vs: []
     year: 0
@@ -1053,6 +1083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 
+  isCurPlayer: 0
 --- !u!50 &465956465
 Rigidbody2D:
   serializedVersion: 5
@@ -1403,11 +1434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165e2dd00b652884291cdba6e286822f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1125842446 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3612926940281332226, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-  m_PrefabInstance: {fileID: 8736283038233231832}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1161543168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,7 +1900,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1009165363471237344}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: PlayerMobileInput, Assembly-CSharp
           m_MethodName: NoInput
           m_Mode: 1
@@ -1890,7 +1916,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1009165363471237344}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: PlayerMobileInput, Assembly-CSharp
           m_MethodName: CanInput
           m_Mode: 1
@@ -8071,7 +8097,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1009165363471237344}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: PlayerMobileInput, Assembly-CSharp
           m_MethodName: NoInput
           m_Mode: 1
@@ -8087,7 +8113,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1009165363471237344}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: PlayerMobileInput, Assembly-CSharp
           m_MethodName: CanInput
           m_Mode: 1
@@ -8184,11 +8210,11 @@ PrefabInstance:
     - target: {fileID: 3030377637168938847, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1009165363471237344}
+      objectReference: {fileID: 0}
     - target: {fileID: 3030377637168938847, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1009165363471237344}
+      objectReference: {fileID: 0}
     - target: {fileID: 3030377637168938847, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: NoInput
@@ -8655,7 +8681,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1009165363471237344}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: PlayerMobileInput, Assembly-CSharp
           m_MethodName: NoInput
           m_Mode: 1
@@ -8671,7 +8697,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1009165363471237344}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: PlayerMobileInput, Assembly-CSharp
           m_MethodName: CanInput
           m_Mode: 1
@@ -8745,29 +8771,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1009165363471237344 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8591959547990327608, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-  m_PrefabInstance: {fileID: 8736283038233231832}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125842446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1e5317e26fb0cb4d82bcd5744a2417e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1009165363471237346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125842446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da43e790a60b44d3aa998dfc62b6ecc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Player.PlayerInput
 --- !u!1001 &8736283038233231832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8778,31 +8781,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1242106551416184358, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -274.2
+      value: -287
       objectReference: {fileID: 0}
-    - target: {fileID: 1678703207110380758, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536705447250551570, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1204750701}
-    - target: {fileID: 2830256249990076440, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      propertyPath: worldArea
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2830256249990076440, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1204750701}
     - target: {fileID: 3902989525438507503, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3902989525438507503, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000016362555
+      value: -0.0009776034
+      objectReference: {fileID: 0}
+    - target: {fileID: 3937389652018576916, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6150285340417347548, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: m_Pivot.x
@@ -8896,6 +8887,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: -17
       objectReference: {fileID: 0}
+    - target: {fileID: 7607558198253247054, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7654814824559134559, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -8906,7 +8901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7654814824559134559, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.0000033974648
       objectReference: {fileID: 0}
     - target: {fileID: 7994812924407102957, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: m_IsActive
@@ -8916,13 +8911,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8947694037603434143, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 8947694037603434143, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968631656380235458, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3612926940281332226, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1009165363471237346}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -8939,3 +8943,4 @@ SceneRoots:
   - {fileID: 8736283038233231832}
   - {fileID: 27577089}
   - {fileID: 1204750702}
+  - {fileID: 156933825}

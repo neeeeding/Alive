@@ -1,7 +1,4 @@
-using _02Script.Manager;
 using _02Script.Obj.Character;
-using _02Script.UI.Chat;
-using _02Script.UI.School;
 using UnityEngine;
 
 namespace _02Script.Obj.Room
@@ -9,7 +6,6 @@ namespace _02Script.Obj.Room
     public class ClassRoom : OneRoom
     {
         [Header("ClassRoom")]
-        [SerializeField] private CountClassTime classManager;
         [SerializeField] private PlayerJob classType;
 
         protected override void OnTriggerEnter2D(Collider2D collision)
@@ -28,7 +24,6 @@ namespace _02Script.Obj.Room
         {
             base.WantEnterRoom();
             room.gameObject.SetActive(true);
-            classManager.CheckClass(classType);
         }
 
         public override void WantExitRoom()

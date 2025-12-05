@@ -97,10 +97,10 @@ namespace _02Script.Manager
 
         public void SetLove(CharacterSO character, int love) //정보 넣고 해당 호감도 스탯에서의 이름 찾아서 전해주기
         {
-            int.TryParse(PlayerStat.characterlastText[character.characterName][DialogType.Love],
+            int.TryParse(PlayerStat.characterLastText[character.characterName][DialogType.Love],
                 out int basic); //원래 값 가져오기
 
-            PlayerStat.characterlastText[character.characterName][DialogType.Love] =
+            PlayerStat.characterLastText[character.characterName][DialogType.Love] =
                 (basic + love > 100 ? 100 : basic + love).ToString(); //저장해주기 (100초과시 걍 100)
         }
 
@@ -118,59 +118,10 @@ namespace _02Script.Manager
         private void ResetValue() //값 세팅
         {
             //호감도
-            ResetCharacter();
+            PlayerStat.ResetCharacter();
 
             //아이템
-            ResetItem();
-        }
-
-        private void ResetCharacter() //캐릭터들  전부 초기화
-        {
-            PlayerStat.characterlastText = new SaveDictionary<CharacterName, SaveDictionary<DialogType, string>>();
-            PlayerStat.characterlastText.Clear();
-
-            int num;
-
-            foreach (CharacterName name in Enum.GetValues(typeof(CharacterName))) //이름들 저장
-            {
-                num = (int)name / 1000;
-                SaveDictionary<DialogType, string> di = new SaveDictionary<DialogType, string>();
-
-                foreach (DialogType dialog in
-                         Enum.GetValues(typeof(DialogType))) //모든 걸 저장 / 다이얼로그 종류 (챕터, 넘버, 텍스트, 메모, 러브 만 사용하긴 함.)
-                {
-                    di.Add(dialog, ""); // " " 초기화
-                }
-
-                PlayerStat.characterlastText.Add(name, di); //저장
-            }
-        }
-
-        private void ResetItem() //스탯의 아이템 전부 초기화
-        {
-            PlayerStat.items = new SaveDictionary<ItemCategory, SaveDictionary<ItemType, int>>();
-            PlayerStat.items.Clear();
-
-            int num;
-
-            foreach (ItemCategory category in Enum.GetValues(typeof(ItemCategory))) //카테고리 저장
-            {
-                if (category == ItemCategory.coin || category == ItemCategory.none) //코인 제외
-                    continue;
-
-                num = (int)category / 1000;
-                SaveDictionary<ItemType, int> item = new SaveDictionary<ItemType, int>(); //아이템
-
-                foreach (ItemType type in Enum.GetValues(typeof(ItemType))) //해당 카테고리와 앞 자리 같은 종료를 저장
-                {
-                    if (num != (int)type / 1000) //앞자리 비교
-                        continue;
-
-                    item.Add(type, 0); //0으로 초기화
-                }
-
-                PlayerStat.items.Add(category, item); //저장
-            }
+            PlayerStat.ResetItem();
         }
 
         private IEnumerator nowDate() //시간세는거

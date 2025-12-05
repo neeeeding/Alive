@@ -36,7 +36,7 @@ namespace _02Script.UI.Likeability
             if (GameManager.Instance.isStart)
             {
                 path = GameManager.Instance.PlayerStat;
-                memo.text = path.characterlastText[character.characterName][DialogType.Memo];
+                memo.text = path.characterLastText[character.characterName][DialogType.Memo];
                 LoadData(); // 로드를 위해
             }
         }
@@ -49,7 +49,7 @@ namespace _02Script.UI.Likeability
         public void InputText()
         {
             string value = memo.text;
-            path.characterlastText[character.characterName][DialogType.Memo] = value; //메모 저장
+            path.characterLastText[character.characterName][DialogType.Memo] = value; //메모 저장
         }
 
         private void LoveUp(int value)
@@ -58,7 +58,7 @@ namespace _02Script.UI.Likeability
             valueText.text = $"{loveValue} / 100 ";
             valueSlider.value = loveValue;
 
-            path.characterlastText[character.characterName][DialogType.Love] = loveValue.ToString(); //호감도 저장
+            path.characterLastText[character.characterName][DialogType.Love] = loveValue.ToString(); //호감도 저장
 
             SaveMyLoveValue(true);
         }
@@ -74,11 +74,11 @@ namespace _02Script.UI.Likeability
             {
                 if (set)
                 {
-                    path.characterlastText[character.characterName][DialogType.Love] = loveValue.ToString(); //호감도 저장
+                    path.characterLastText[character.characterName][DialogType.Love] = loveValue.ToString(); //호감도 저장
                 }
                 else
                 {
-                    int.TryParse(path.characterlastText[character.characterName][DialogType.Love],
+                    int.TryParse(path.characterLastText[character.characterName][DialogType.Love],
                         out loveValue); //호감도 저장
                     LoveUp(0);
                 }
