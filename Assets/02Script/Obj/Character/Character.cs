@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using _02Script.Etc;
 using _02Script.Manager;
 using _02Script.Player;
 using _02Script.UI.Chat;
@@ -9,6 +11,7 @@ namespace _02Script.Obj.Character
 {
     public class Character : MonoBehaviour
     {
+        public static Action<Character, bool, bool> OnCanDialog; // 말풍선 출력
         //저장을 num : (챕터의) 넘버/ chapter : 챕터/ text : 마지막 대화
         //LikeabilityCard = 
         public static Action<CharacterSO,Character> OnChat;
@@ -23,6 +26,26 @@ namespace _02Script.Obj.Character
         {
             isChat = false;
             path = GameManager.Instance.PlayerStat;
+        }
+        
+        
+        public string BubbleWord()
+        {
+            TextAsset currentDialog = characterSO.characterDialog[0];
+            List<Dictionary<string,string>> dialog = CSVReader.Read(currentDialog);
+            
+            for (int i = 0; i < dialog.Count; i++)
+            {
+                if (dialog[i][DialogType.Bubble.ToString()] != "") // 다음 번호가 안 비어 있다면.
+                {
+                    string num = dialog[i][DialogType.Bubble.ToString()];
+                    if (num == chapter.ToString())
+                    {
+                        return dialog[i][DialogType.Text.ToString()];
+                    }
+                }
+            }
+            return ".......";
         }
 
         public void Load() //로드 될 때
@@ -104,6 +127,10 @@ namespace _02Script.Obj.Character
         private void OnDisable()
         {
             LoadCard.OnLoad -= Load;
+        }
+        protected virtual void OnDestroy()
+        {
+            OnCanDialog?.Invoke(this,false, false);
         }
     }
 }

@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-
+using UnityEngine;
 
 namespace _02Script.Etc
 {
@@ -11,9 +10,9 @@ namespace _02Script.Etc
         static string LINE_SPLIT_RE = @"\r\n|\n\r|\n|\r";
         static char[] TRIM_CHARS = { '\"' };
 
-        public static List<Dictionary<string, object>> Read(TextAsset data)
+        public static List<Dictionary<string, string>> Read(TextAsset data)
         {
-            var list = new List<Dictionary<string, object>>();
+            var list = new List<Dictionary<string, string>>();
             //TextAsset data = Resources.Load(file) as TextAsset;
 
             var lines = Regex.Split(data.text, LINE_SPLIT_RE);
@@ -27,29 +26,15 @@ namespace _02Script.Etc
                 var values = Regex.Split(lines[i], SPLIT_RE);
                 //if (values.Length == 0 || values[0] == "") continue;
 
-                var entry = new Dictionary<string, object>();
+                var entry = new Dictionary<string, string>();
                 for (var j = 0; j < header.Length && j < values.Length; j++)
                 {
                     string value = values[j];
                     value = value.TrimStart(TRIM_CHARS).TrimEnd(TRIM_CHARS).Replace("\\", "");
-                    object finalvalue = value;
-                    int n;
-                    float f;
-                    if (int.TryParse(value, out n))
-                    {
-                        finalvalue = n;
-                    }
-                    else if (float.TryParse(value, out f))
-                    {
-                        finalvalue = f;
-                    }
-
-                    entry[header[j]] = finalvalue;
+                    entry[header[j]] = value;
                 }
-
                 list.Add(entry);
             }
-
             return list;
         }
     }

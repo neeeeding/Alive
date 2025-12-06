@@ -5,8 +5,6 @@ namespace _02Script.Obj.Room
 {
     public class ClassRoom : OneRoom
     {
-        [Header("ClassRoom")]
-        [SerializeField] private PlayerJob classType;
 
         protected override void OnTriggerEnter2D(Collider2D collision)
         {

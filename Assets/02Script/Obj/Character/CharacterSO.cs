@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace _02Script.Obj.Character
 {
@@ -7,9 +8,12 @@ namespace _02Script.Obj.Character
     public class CharacterSO : ScriptableObject
     {
         public CharacterName characterName;
-        [Space(10f)] public PlayerJob characterJob;
-        [Space(15f)] public Sprite characterImage;
-        [Space(20f)] [Header("Dialog")] public TextAsset[] characterDialog;
+        [Space(15f)]
+        public Sprite characterImage;
+        [Space(20f)]
+        [Header("Dialog")]
+        public TextAsset[] characterDialog;
+        //public SerializedDictionary<string, ItemDataSO> items; //가지고 있을 아이템들
     }
 
     public enum CharacterName
@@ -24,16 +28,5 @@ namespace _02Script.Obj.Character
         [Description("빌런")] villain,
         [Description("해리")] harry,
         [Description("다니엘")] daniel
-    }
-
-    public enum PlayerJob
-    {
-        [Description("없음")] none = 0,
-        [Description("흑")] brack,
-        [Description("치료")] heal,
-        [Description("불")] fire,
-        [Description("물")] water,
-        [Description("복제")] copy,
-        [Description("포션")] potion
     }
 }

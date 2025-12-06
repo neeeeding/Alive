@@ -22,7 +22,7 @@ namespace _02Script.UI.Chat
         [Space(20f)] [SerializeField] private CharacterSO[] allCharacter; //모든 캐릭터의 정보. (호감도 못 올림)
         [Space(50f)] [SerializeField] private Dictionary<DialogPosition, Vector2> characterPosition; //위치 지정
 
-        [Header("CurrentChapter")] private List<Dictionary<string, object>> dialog; //csv 대화
+        [Header("CurrentChapter")] private List<Dictionary<string, string>> dialog; //csv 대화
         [SerializeField] private int currentChapter; //현재 챕터
         [SerializeField] private int currentNum; //현재 번호
         [SerializeField] private int currentChat; //현재 CSV의 배열
@@ -84,7 +84,7 @@ namespace _02Script.UI.Chat
 
         private void ClickSkip() //스킵 버튼 눌렀을 때
         {
-            int nextNum = (int)dialog[currentChat][DialogType.SkipNum.ToString()] - 1;
+            int nextNum = int.Parse(dialog[currentChat][DialogType.SkipNum.ToString()]) - 1;
             currentChat +=
                 nextNum - currentNum == 0
                     ? +1
@@ -116,7 +116,7 @@ namespace _02Script.UI.Chat
             currentNum = selectNum;
 
             //다음 번호로 바꿔 주기 (선택된 문항을 말할 순 없으니까. (사실 호불호긴 해.))
-            int nextNum = (int)dialog[currentChat][DialogType.NextNum.ToString()];
+            int nextNum = int.Parse(dialog[currentChat][DialogType.NextNum.ToString()]);
             currentChat +=
                 nextNum - currentNum == 0 ? +1 : nextNum - currentNum; //다음 번호 정해주기. (마지막이 본인이면 1추가로 나가게 해버리기.)
             currentNum = nextNum;
@@ -136,7 +136,7 @@ namespace _02Script.UI.Chat
                     if (dialog[i][DialogType.Item.ToString()].ToString() ==
                         so.itemType.ToString()) //대화의 아이템 창과 들고 있는 아이템 찾기
                     {
-                        currentChapter = (int)dialog[i][DialogType.Chapter.ToString()];
+                        currentChapter = int.Parse(dialog[i][DialogType.Chapter.ToString()]);
                         GameManager.Instance.AddItemCount(so.category, so.itemType, -1); //아이템 빼기
                         break;
                     }
@@ -167,7 +167,7 @@ namespace _02Script.UI.Chat
 
             if (dialog[currentChat][DialogType.NextNum.ToString()].ToString() != "") // 다음 번호가 안 비어 있다면.
             {
-                int nextNum = (int)dialog[currentChat][DialogType.NextNum.ToString()] - 1;
+                int nextNum = int.Parse(dialog[currentChat][DialogType.NextNum.ToString()]) - 1;
                 currentChat +=
                     nextNum - currentNum == 0
                         ? +1
@@ -218,7 +218,7 @@ namespace _02Script.UI.Chat
         {
             if (dialog[i][DialogType.GetLove.ToString()].ToString() != "") //호감도 얻는게 있다면. (혹은 뺏는거)
             {
-                int value = (int)dialog[i][DialogType.GetLove.ToString()];
+                int value = int.Parse(dialog[i][DialogType.GetLove.ToString()]);
                 GameManager.Instance.SetLove(currentSO, value); //여러명 일 때 만약 주체가 아닌 다른 이 라면.
             }
         }
@@ -240,13 +240,13 @@ namespace _02Script.UI.Chat
             if (dialog[i][DialogType.Select.ToString()].ToString() != "") //선택지가 있다면
             {
                 haveSelec = true;
-                int count = (int)dialog[i][DialogType.Select.ToString()];
+                int count = int.Parse(dialog[i][DialogType.Select.ToString()]);
                 for (int j = 0; j < count && j < selectTexts.Length; j++) //반복문
                 {
                     selectTexts[j].gameObject.SetActive(true);
 
                     int selectNumText =
-                        (int)dialog[i][DialogType.SelectText.ToString() + (j + 1)] -
+                        int.Parse(dialog[i][DialogType.SelectText.ToString() + (j + 1)]) -
                         1 /*0부터 시작하니*/; //선택지에 사용될 텍스트 (번호) 찾기
                     string text = dialog[selectNumText][DialogType.Text.ToString()].ToString();
 
@@ -283,6 +283,7 @@ namespace _02Script.UI.Chat
 
     public enum DialogType
     {
+        Bubble, //말풍선
         Select, //선택지 인지 (개수)
         ItemCategory, //아이템 카테고리
         Item, //아이템 종류
@@ -299,7 +300,12 @@ namespace _02Script.UI.Chat
 
         //저장을 위한 (캐릭터 카드)
         Memo, //메모
-        Love //호감도
+        Love, //호감도
+        
+        GetItem, //상호작용 하는 아이템
+        ItemCount, // 개수
+        UseMoney, //돈
+        Do, //스크립트 실행
     }
 
     public enum DialogPosition
