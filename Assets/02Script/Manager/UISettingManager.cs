@@ -1,8 +1,8 @@
-using _02Script.Obj.Character;
 using _02Script.Player;
-using _02Script.UI.Chat;
 using _02Script.UI.Likeability;
 using _02Script.Etc;
+using _02Script.UI.Dialog.Dialog;
+using _02Script.UI.Dialog.Entity;
 using UnityEngine;
 
 
@@ -48,12 +48,12 @@ namespace _02Script.Manager
 
         private void OnEnable()
         {
-            Character.OnChat += Chat;
+            DialogEntity.OnChat += Chat;
         }
 
         private void OnDisable()
         {
-            Character.OnChat -= Chat;
+            DialogEntity.OnChat -= Chat;
         }
 
         private void Update()
@@ -98,12 +98,12 @@ namespace _02Script.Manager
             SettingAll();
         }
 
-        public void Chat(CharacterSO so, Character character) //채팅
+        public void Chat(DialogEntitySO so, DialogEntity dialogEntity) //채팅
         {
             AllHide();
             isChat = true;
             SettingAll();
-            chat.DialogSetting(so, character);
+            chat.DialogSetting(so, dialogEntity);
             GameManager.Instance.PlayerStat.isChat = true;
         }
 
@@ -114,7 +114,7 @@ namespace _02Script.Manager
             SettingAll();
         }
 
-        public void LiKeItme(CharacterSO so) //선호 아이템
+        public void LiKeItme(DialogEntitySO so) //선호 아이템
         {
             AllHide();
             isLikeItem = true;

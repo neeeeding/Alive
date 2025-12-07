@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-namespace _02Script.Etc
+namespace _02Script.UI.Dialog.Etc
 {
     public class CSVReader
     {

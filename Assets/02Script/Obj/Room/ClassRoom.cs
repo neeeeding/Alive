@@ -1,4 +1,3 @@
-using _02Script.Obj.Character;
 using UnityEngine;
 
 namespace _02Script.Obj.Room

@@ -1,5 +1,5 @@
 using _02Script.Item;
-using _02Script.Obj.Character;
+using _02Script.UI.Dialog.Entity;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,24 +7,24 @@ namespace _02Script.UI.Likeability
 {
     public class LikeItemItem : MonoBehaviour
     {
-        [SerializeField] private CharacterSO loveCharacter; //아이템 종류
+        [SerializeField] private DialogEntitySO loveDialogEntity; //아이템 종류
         [SerializeField] private ItemSO loveItem; //아이템 종류
 
         private string savePath; //저장 경로
         private Image itemImage; //아이템 이미지
         private int colorCount; //(클릭) 단계
 
-        public void SettingItem(CharacterSO characterSO, ItemSO itemSO) //아이템 세팅 (누구인지, 어떤 아이템인지)
+        public void SettingItem(DialogEntitySO dialogEntitySo, ItemSO itemSO) //아이템 세팅 (누구인지, 어떤 아이템인지)
         {
             if (itemImage == null)
             {
                 itemImage = GetComponent<Image>();
             }
 
-            loveCharacter = characterSO;
+            loveDialogEntity = dialogEntitySo;
             loveItem = itemSO;
             //itemImage.sprite = loveItem.itemImage;
-            savePath = $"{loveCharacter}_{loveItem.itemType}likeItem";
+            savePath = $"{loveDialogEntity}_{loveItem.itemType}likeItem";
             colorCount = PlayerPrefs.GetInt(savePath) - 1; //더해주니까.
             ChangeColorLove();
         }

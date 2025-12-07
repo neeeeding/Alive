@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using _02Script.Etc;
 using _02Script.Item;
-using _02Script.Obj.Character;
+using _02Script.UI.Dialog.Entity;
 using _02Script.Player;
-using _02Script.UI.Chat;
+using _02Script.UI.Dialog;
+using _02Script.UI.Dialog.Dialog;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -95,12 +96,12 @@ namespace _02Script.Manager
             PlayerPrefs.Save();
         }
 
-        public void SetLove(CharacterSO character, int love) //정보 넣고 해당 호감도 스탯에서의 이름 찾아서 전해주기
+        public void SetLove(DialogEntitySO dialogEntity, int love) //정보 넣고 해당 호감도 스탯에서의 이름 찾아서 전해주기
         {
-            int.TryParse(PlayerStat.characterLastText[character.characterName][DialogType.Love],
+            int.TryParse(PlayerStat.characterLastText[dialogEntity.EntityName][DialogType.Love],
                 out int basic); //원래 값 가져오기
 
-            PlayerStat.characterLastText[character.characterName][DialogType.Love] =
+            PlayerStat.characterLastText[dialogEntity.EntityName][DialogType.Love] =
                 (basic + love > 100 ? 100 : basic + love).ToString(); //저장해주기 (100초과시 걍 100)
         }
 

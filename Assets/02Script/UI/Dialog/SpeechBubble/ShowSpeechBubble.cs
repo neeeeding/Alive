@@ -1,8 +1,9 @@
-using _02Script.Obj.Character;
+using _02Script.UI.Dialog.Dialog;
+using _02Script.UI.Dialog.Entity;
 using TMPro;
 using UnityEngine;
 
-namespace _02Script.UI.Chat.SpeechBubble
+namespace _02Script.UI.Dialog.SpeechBubble
 {
     public class ShowSpeechBubble : MonoBehaviour
     {
@@ -21,12 +22,12 @@ namespace _02Script.UI.Chat.SpeechBubble
         {
             word =  "......";
             speechBubble.SetActive(false);
-            Character.OnCanDialog += Show;
+            DialogEntity.OnCanDialog += Show;
         }
 
         private void OnDisable()
         {
-            Character.OnCanDialog -= Show;
+            DialogEntity.OnCanDialog -= Show;
         }
 
         private void Update()
@@ -48,10 +49,10 @@ namespace _02Script.UI.Chat.SpeechBubble
             }
         }
 
-        private void Show(Character obj, bool show, bool chat)
+        private void Show(DialogEntity obj, bool show)
         {
             isChat = true;
-            word = chat ? obj.BubbleWord() : "......";
+            word = obj.BubbleWord();
             word = dialogTextController.IsExchangeText(word, "`", ",");
             if (speechBubble.activeSelf == show) return;
             

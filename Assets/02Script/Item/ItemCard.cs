@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
-using _02Script.Item;
 using _02Script.Manager;
-using _02Script.UI.Chat;
+using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Save;
 
 namespace _02Script.Item

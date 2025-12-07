@@ -1,7 +1,7 @@
 using _02Script.Manager;
-using _02Script.Obj.Character;
 using _02Script.Player;
-using _02Script.UI.Chat;
+using _02Script.UI.Dialog.Dialog;
+using _02Script.UI.Dialog.Entity;
 using _02Script.UI.Save;
 using UnityEngine;
 using TMPro;
@@ -12,7 +12,7 @@ namespace _02Script.UI.Likeability
 {
     public class LikeabilityCard : MonoBehaviour
     {
-        [SerializeField] private CharacterSO character; //대상 정보
+        [SerializeField] private DialogEntitySO dialogEntity; //대상 정보
 
         [SerializeField] private TextMeshProUGUI characterName; //대상 이름
         [SerializeField] private Image characterImage;
@@ -25,7 +25,7 @@ namespace _02Script.UI.Likeability
 
         private void Awake()
         {
-            characterName.text = ChatSetting.Name(character.characterName);
+            characterName.text = ChatSetting.Name(dialogEntity.EntityName);
             //characterImage.sprite = character.characterImage;
             GameManager.OnStart += LoadData;
         }
@@ -36,20 +36,20 @@ namespace _02Script.UI.Likeability
             if (GameManager.Instance.isStart)
             {
                 path = GameManager.Instance.PlayerStat;
-                memo.text = path.characterLastText[character.characterName][DialogType.Memo];
+                memo.text = path.characterLastText[dialogEntity.EntityName][DialogType.Memo];
                 LoadData(); // 로드를 위해
             }
         }
 
         public void Click()
         {
-            UISettingManager.Instance.LiKeItme(character);
+            UISettingManager.Instance.LiKeItme(dialogEntity);
         }
 
         public void InputText()
         {
             string value = memo.text;
-            path.characterLastText[character.characterName][DialogType.Memo] = value; //메모 저장
+            path.characterLastText[dialogEntity.EntityName][DialogType.Memo] = value; //메모 저장
         }
 
         private void LoveUp(int value)
@@ -58,7 +58,7 @@ namespace _02Script.UI.Likeability
             valueText.text = $"{loveValue} / 100 ";
             valueSlider.value = loveValue;
 
-            path.characterLastText[character.characterName][DialogType.Love] = loveValue.ToString(); //호감도 저장
+            path.characterLastText[dialogEntity.EntityName][DialogType.Love] = loveValue.ToString(); //호감도 저장
 
             SaveMyLoveValue(true);
         }
@@ -74,11 +74,11 @@ namespace _02Script.UI.Likeability
             {
                 if (set)
                 {
-                    path.characterLastText[character.characterName][DialogType.Love] = loveValue.ToString(); //호감도 저장
+                    path.characterLastText[dialogEntity.EntityName][DialogType.Love] = loveValue.ToString(); //호감도 저장
                 }
                 else
                 {
-                    int.TryParse(path.characterLastText[character.characterName][DialogType.Love],
+                    int.TryParse(path.characterLastText[dialogEntity.EntityName][DialogType.Love],
                         out loveValue); //호감도 저장
                     LoveUp(0);
                 }

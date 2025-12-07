@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace _02Script.UI.Chat
+namespace _02Script.UI.Dialog.Dialog
 {
     public class DialogTextController :  MonoBehaviour
     {

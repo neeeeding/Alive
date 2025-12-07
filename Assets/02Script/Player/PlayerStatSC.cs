@@ -1,8 +1,8 @@
 using System;
 using _02Script.Item;
-using _02Script.Obj.Character;
-using _02Script.UI.Chat;
 using _02Script.Etc;
+using _02Script.UI.Dialog.Dialog;
+using _02Script.UI.Dialog.Entity;
 using UnityEngine;
 
 namespace _02Script.Player
@@ -19,11 +19,11 @@ namespace _02Script.Player
         public Vector2 playerPosition; //플레이어 위치
 
         [Space(50f)]
-        public Character lastCharacter; //마지막 캐릭터
-        public CharacterSO lastSO;
+        public DialogEntity lastDialogEntity; //마지막 캐릭터
+        public DialogEntitySO lastSO;
         public string lastText; //마지막 대화
 
-        public SaveDictionary<CharacterName, SaveDictionary<DialogType, string>> characterLastText; //캐릭터 마지막 대화 이름<다이얼로그(종류), 번째(혹은 텍스트)>
+        public SaveDictionary<EntityName, SaveDictionary<DialogType, string>> characterLastText; //캐릭터 마지막 대화 이름<다이얼로그(종류), 번째(혹은 텍스트)>
 
         [Space(50f)] //날짜
         public int year;
@@ -58,12 +58,12 @@ namespace _02Script.Player
         
         public void ResetCharacter() //캐릭터들  전부 초기화
         {
-            characterLastText = new SaveDictionary<CharacterName, SaveDictionary<DialogType, string>>();
+            characterLastText = new SaveDictionary<EntityName, SaveDictionary<DialogType, string>>();
             characterLastText.Clear();
 
             int num;
 
-            foreach (CharacterName name in Enum.GetValues(typeof(CharacterName))) //이름들 저장
+            foreach (EntityName name in Enum.GetValues(typeof(EntityName))) //이름들 저장
             {
                 num = (int)name / 1000;
                 SaveDictionary<DialogType, string> di = new SaveDictionary<DialogType, string>();

@@ -2,7 +2,7 @@ using System;
 using _02Script.Manager;
 using UnityEngine;
 
-namespace _02Script.UI.Chat
+namespace _02Script.UI.Dialog
 {
     public class ChatBtn : MonoBehaviour
     {

@@ -1,4 +1,3 @@
-using _02Script.Obj.Character;
 using _02Script.Etc;
 
 

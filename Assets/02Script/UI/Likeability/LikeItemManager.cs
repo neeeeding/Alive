@@ -1,5 +1,5 @@
 using _02Script.Item;
-using _02Script.Obj.Character;
+using _02Script.UI.Dialog.Entity;
 using UnityEngine;
 
 
@@ -12,11 +12,11 @@ namespace _02Script.UI.Likeability
         [Space(30f)] [Header("Prefabs Need")] [SerializeField]
         private GameObject Item; //오브젝트
 
-        private CharacterSO character; //현재 캐릭터 정보
+        private DialogEntitySO dialogEntity; //현재 캐릭터 정보
 
-        public void Setting(CharacterSO so) //세팅
+        public void Setting(DialogEntitySO so) //세팅
         {
-            character = so;
+            dialogEntity = so;
             SettingItem();
         }
 
@@ -40,7 +40,7 @@ namespace _02Script.UI.Likeability
             {
                 GameObject loveItem = transform.GetChild(i).gameObject;
                 LikeItemItem itemSc = loveItem.GetComponent<LikeItemItem>();
-                itemSc.SettingItem(character, loveItems[i]);
+                itemSc.SettingItem(dialogEntity, loveItems[i]);
             }
         }
     }
