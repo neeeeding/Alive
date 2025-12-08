@@ -37,7 +37,7 @@ namespace _02Script.Player
         [ContextMenu("ResetStat")]
         public void ResetStat()
         {
-            sceneName = "TestOutSide";
+            sceneName = "JustTest";
             isChat = false;
 
             playerCoin = 5;

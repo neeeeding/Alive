@@ -1398,6 +1398,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (InGame)
       objectReference: {fileID: 0}
+    - target: {fileID: 7494631993711152242, guid: d5e61c458d4af8c43a7ab7595b52fd63, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

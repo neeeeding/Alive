@@ -138,7 +138,11 @@ namespace _02Script.UI.Dialog.Entity
         {
             doChat = false;
             OnCanDialog?.Invoke(this,false);
-            cts.Cancel();
+            if (cts != null)
+            {
+                cts.Cancel();
+                cts.Dispose();
+            }
         }
     }
 }

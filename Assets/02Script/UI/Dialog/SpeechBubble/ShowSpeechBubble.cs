@@ -51,14 +51,17 @@ namespace _02Script.UI.Dialog.SpeechBubble
 
         private void Show(DialogEntity obj, bool show)
         {
+            bubbleText.text = "";
             isChat = true;
             word = obj.BubbleWord();
             word = dialogTextController.IsExchangeText(word, "`", ",");
+
             if (speechBubble.activeSelf == show) return;
             
             speechBubble.SetActive(show);
             if(!show) return;
             speechBubble.transform.position = obj.transform.position;
+            speechBubble.transform.SetParent(obj.transform);
         }
     }
 }

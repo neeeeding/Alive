@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityName: 2200
   DialogEntityImage: {fileID: 0}
-  DialogTextFile: []
+  DialogTextFile:
+  - {fileID: 4900000, guid: e15827d6caf69e34ab782911fe4197bc, type: 3}

@@ -1631,11 +1631,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Dialog.Entity.Character
   playerLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   DialogRadius: 2.75
   SpeechBubbleRadius: 5
   dialogEntitySo: {fileID: 11400000, guid: 2c4fc0a4353a3b24c8bf3daf57deaf69, type: 2}
-  chapter: 1001
+  chapter: 0
   finalNum: 0
 --- !u!1 &1204750699
 GameObject:
@@ -2332,6 +2332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1516397800}
+  - component: {fileID: 1516397802}
   - component: {fileID: 1516397801}
   m_Layer: 0
   m_Name: Dialog
@@ -2369,7 +2370,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Chat.SpeechBubble.ShowSpeechBubble
   speechBubble: {fileID: 424706450}
   bubbleText: {fileID: 1267837249}
-  dialogTextController: {fileID: 2045153617}
+  dialogTextController: {fileID: 1516397802}
+--- !u!114 &1516397802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516397799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6efa8479a814482b7abd6252b62f567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Chat.DialogTextController
 --- !u!1 &1598983735
 GameObject:
   m_ObjectHideFlags: 0
@@ -8678,6 +8691,87 @@ Transform:
   - {fileID: 1516397800}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1726246062
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3030377637168938847, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030377637168938847, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030377637168938847, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NoInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030377637168938847, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CanInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030377637168938847, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: _02Script.Player.PlayerMobileInput, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030377637168938847, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: _02Script.Player.PlayerMobileInput, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879512523584481623, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.973975
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879512523584481623, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879512523584481623, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879512523584481623, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879512523584481623, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879512523584481623, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879512523584481623, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879512523584481623, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879512523584481623, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879512523584481623, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745775989249007649, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
+      propertyPath: m_Name
+      value: NPCChatracter
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1240a5f348c526048b057a95c32569ca, type: 3}
 --- !u!1 &1735014020
 GameObject:
   m_ObjectHideFlags: 0
@@ -8970,17 +9064,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2045153617 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9176323666068461756, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-  m_PrefabInstance: {fileID: 8736283038233231832}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6efa8479a814482b7abd6252b62f567, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Dialog.Dialog.DialogTextController
 --- !u!1 &2115475449
 GameObject:
   m_ObjectHideFlags: 0
@@ -9347,6 +9430,7 @@ SceneRoots:
   - {fileID: 1391084263}
   - {fileID: 2018820987}
   - {fileID: 465956467}
+  - {fileID: 1726246062}
   - {fileID: 1396785751}
   - {fileID: 8736283038233231832}
   - {fileID: 27577089}

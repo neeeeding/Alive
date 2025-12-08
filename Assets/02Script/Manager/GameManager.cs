@@ -46,15 +46,16 @@ namespace _02Script.Manager
 
             //로드
             GameSaveData data;
-            if (PlayerPrefs.GetString(GamePath) != "")
-            {
-                string jsson = PlayerPrefs.GetString(GamePath);
-                data = JsonUtility.FromJson<GameSaveData>(jsson);
-                saveData = data;
-            }
-            else //저장 된게 없으면 새 거
+            // if (PlayerPrefs.GetString(GamePath) != "")
+            // {
+            //     string jsson = PlayerPrefs.GetString(GamePath);
+            //     data = JsonUtility.FromJson<GameSaveData>(jsson);
+            //     saveData = data;
+            // }
+            // else //저장 된게 없으면 새 거
             {
                 data = new GameSaveData();
+                data.DataReset();
             }
 
             GameSaveFilePath = Application.persistentDataPath + "/Save";
@@ -72,7 +73,7 @@ namespace _02Script.Manager
             DontDestroyOnLoad(gameObject); //삭제 되지 말라고
 
 
-            SceneManager.LoadScene(PlayerStat.sceneName);
+            //SceneManager.LoadScene(PlayerStat.sceneName);
 
             curScene = SceneManager.GetActiveScene().name; //현재 씬 알려주기
 

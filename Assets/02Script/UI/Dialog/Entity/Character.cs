@@ -9,11 +9,9 @@ namespace _02Script.UI.Dialog.Entity
 {
     public class Character : DialogEntity
     {
-        private bool isChat;
-
-        private async void Start()
+        private void Start()
         {
-            await SpeechBubble();
+            _ = SpeechBubble();
         }
 
         private void Load() //로드 될 때
@@ -48,18 +46,21 @@ namespace _02Script.UI.Dialog.Entity
 
         private async Task  SpeechBubble()
         {
-            try
+            while (!cts.IsCancellationRequested)
             {
-                await AsyncTime.WaitSeconds(30f, cts.Token);
-                OnCanDialog?.Invoke(this, true);
+                try
+                {
+                    await AsyncTime.WaitSeconds(3f, cts.Token);
+                    OnCanDialog?.Invoke(this, true);
+                }
+                catch (TaskCanceledException){break;}
+                try
+                {
+                    await AsyncTime.WaitSeconds(5f, cts.Token);
+                    OnCanDialog?.Invoke(this, false);
+                }
+                catch (TaskCanceledException){break;}
             }
-            catch (TaskCanceledException){}
-            try
-            {
-                await AsyncTime.WaitSeconds(5f, cts.Token);
-                OnCanDialog?.Invoke(this, false);
-            }
-            catch (TaskCanceledException){}
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
