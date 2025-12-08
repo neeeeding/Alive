@@ -272,6 +272,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31afc4eb92100db4a942e38a7cbb8324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterSO: {fileID: 11400000, guid: 4aba3809a35a8cf4ebb752ad2847268a, type: 2}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  DialogRadius: 2.75
+  SpeechBubbleRadius: 5
+  dialogEntitySo: {fileID: 11400000, guid: 4aba3809a35a8cf4ebb752ad2847268a, type: 2}
   chapter: 1
   finalNum: 0

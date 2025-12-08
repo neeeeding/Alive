@@ -10,10 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8aebb4da6425cae49aa1ecafda4429de, type: 3}
-  m_Name: Nia
+  m_Name: Magenta
   m_EditorClassIdentifier: 
-  characterName: 6
-  characterJob: 1
-  characterImage: {fileID: 0}
-  characterDialog:
-  - {fileID: 4900000, guid: 83ef557f6879fbb47a446cc826aa0e5a, type: 3}
+  EntityName: 2200
+  DialogEntityImage: {fileID: 0}
+  DialogTextFile: []

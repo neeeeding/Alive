@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace _02Script.UI.Dialog.Etc
 {
-    // [CreateAssetMenu(fileName = "DialogInputSO", menuName = "SO/Input/DialogInputSO", order = 0)]
+    [CreateAssetMenu(fileName = "DialogInputSO", menuName = "SO/Input/DialogInputSO", order = 0)]
     public class DialogInputSO : ScriptableObject
      //   , Controls.IDialogActions
     {

@@ -71,7 +71,7 @@ namespace _02Script.Item
 
         private void ActionItemActive(ItemSO so, bool b)
         {
-            if(so.category != ItemCategory.mouse && so.category != ItemCategory.coin) //코인이나 마우스 아닌 것들 만
+            if(so.category != ItemCategory.mouse) //마우스 아닌 것들 만
             {
                 foreach (Transform card in gameObject.transform)
                 {

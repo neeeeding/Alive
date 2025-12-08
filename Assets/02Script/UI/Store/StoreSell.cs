@@ -6,6 +6,7 @@ using TMPro;
 
 namespace _02Script.UI.Store
 {
+    //삭제 고려 중 
     public class StoreSell : MonoBehaviour
     {
         [SerializeField] private ItemSO so; //아이템
@@ -26,14 +27,14 @@ namespace _02Script.UI.Store
 
         public void ClickSell()
         {
-            if (so.category == ItemCategory.coin)
+            //if (so.category == ItemCategory.coin)
             {
                 GameManager.Instance.AddCoin(+so.sellCoin);
 
                 Store.OnSellItem?.Invoke(so);
                 GameManager.CoinText?.Invoke();
             }
-            else
+            //else
             {
                 if (GameManager.Instance.PlayerStat.playerCoin >= so.sellCoin)
                 {

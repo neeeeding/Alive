@@ -87,7 +87,7 @@ namespace _02Script.Player
 
             foreach (ItemCategory category in Enum.GetValues(typeof(ItemCategory))) //카테고리 저장
             {
-                if (category == ItemCategory.coin || category == ItemCategory.none) //코인 제외
+                if (category == ItemCategory.none)
                     continue;
 
                 num = (int)category / 1000;

@@ -16,11 +16,7 @@ namespace _02Script.UI.Dialog.Dialog
     {
         public static Action OnGame; //채팅 끝나면
 
-
         #region 변수
-
-        [Header("Need")] [SerializeField] private GameObject dialogUI;
-        [SerializeField] private ChatSetting setting; //세팅 해주는 거
         [SerializeField] private TextMeshProUGUI dialogText; //대화
 
         [Space(20f)] [SerializeField] private DialogEntitySO[] allCharacter; //모든 캐릭터의 정보. (여럿이서 말 할 때)
@@ -29,6 +25,7 @@ namespace _02Script.UI.Dialog.Dialog
         [SerializeField] private DoScript doScript;
         [SerializeField] private DialogTextController dialogTextController; //텍스트 출력 관련
         [SerializeField] private DialogSelect dialogSelect; //선택지 관련
+        [SerializeField] private ChatSetting setting; //세팅 해주는 거
 
         [SerializeField] private DialogItem dialogItem; //아이템 관련
         // [SerializeField] private InventoryManager manager; //아이템 관련
@@ -39,7 +36,7 @@ namespace _02Script.UI.Dialog.Dialog
         [SerializeField] private int currentNum; //현재 번호
         [SerializeField] private int currentChat; //현재 CSV의 배열
 
-        private DialogEntity _currentDialogEntity;
+        private DialogEntity currentDialogEntity;
         private DialogEntitySO _currentSO; //정보
         [SerializeField] private DialogEntitySO chatPlayer; //말하고 있는애
 
@@ -50,7 +47,6 @@ namespace _02Script.UI.Dialog.Dialog
         private int nCount; //현 출력한 글자 번째
 
         private EntityName isError;
-
         #endregion
 
         [SerializeField] private SelectBtn[] selectTexts; //선택지 대화
@@ -60,16 +56,25 @@ namespace _02Script.UI.Dialog.Dialog
 
         public void DialogSetting(DialogEntitySO so, DialogEntity dialogEntity) //세팅 해주기
         {
+            dialogText.text = "";
+            //items = so.items;
+            
             GameManager.Instance.PlayerStat.lastDialogEntity = dialogEntity;
             GameManager.Instance.PlayerStat.lastSO = so;
             holdItem = false;
-            _currentDialogEntity = dialogEntity;
+            currentDialogEntity = dialogEntity;
             _currentSO = so;
-            int[] nums = dialogEntity.CurrentDialog();
-            currentChapter = nums[0];
-            currentNum = nums[1];
             chatPlayer = so;
+            
+            (int chapter, int finalNum) nums = dialogEntity.CurrentDialog();
+            currentChapter = nums.chapter;
+            currentNum = nums.finalNum;
+            
+            dialogEntity.DoChat(true);
+            dialogSelect.OffSelectText(); //선택지 텍스트 일단 다 끄기
             GetDialog();
+            
+            //if (currentDialogEntity as Island) //다른 애들은 F처리로 알아서 실행 되니. (필요한 경우)
             DoChat();
         }
 
@@ -82,8 +87,8 @@ namespace _02Script.UI.Dialog.Dialog
             //CSV 배열 찾기
             for (int i = 0; i < dialog.Count - 1; i++)
             {
-                if (dialog[i][DialogType.Chapter.ToString()].ToString() == currentChapter.ToString()
-                    && dialog[i][DialogType.Num.ToString()].ToString() == currentNum.ToString()) //해당 배열의 수가 챕터랑 번호가 같으면
+                if (DialogCheck(DialogType.Chapter, currentChapter.ToString(), i)
+                    && DialogCheck(DialogType.Num, currentNum.ToString(), i)) //해당 배열의 수가 챕터랑 번호가 같으면
                 {
                     currentChat = i; //해당 배열의 수
                     break;
@@ -97,12 +102,12 @@ namespace _02Script.UI.Dialog.Dialog
             {
                 if (DoChat())
                 {
-                    _currentDialogEntity.NextChapter();
+                    currentDialogEntity.NextChapter();
                     UISettingManager.Instance.CloseChat();
                     OnGame?.Invoke();
                 }
                 else
-                    _currentDialogEntity.NextDialog(currentNum);
+                    currentDialogEntity.NextDialog(currentNum);
             }
         }
 
@@ -163,7 +168,7 @@ namespace _02Script.UI.Dialog.Dialog
                 currentNum.ToString()) //해당 배열의 수가 챕터랑 번호가 같으면
             {
                 getOut = false;
-                PlayerSelect(currentChat);
+                setting.PlayerSelect(currentChat, allCharacter, dialog);
                 LoveUP(currentChat);
             }
             else
@@ -171,7 +176,7 @@ namespace _02Script.UI.Dialog.Dialog
 
             setting.CurrentCharacter(chatPlayer); //세팅 해주는 거
             string chatText =
-                IsExchangeText(dialog[currentChat][DialogType.Text.ToString()].ToString(), "`", ","); //변환 해주고 원했던 대화
+                dialogTextController.IsExchangeText(dialog[currentChat][DialogType.Text.ToString()].ToString(), "`", ","); //변환 해주고 원했던 대화
             dialogText.text = chatText;
 
             if (dialog[currentChat][DialogType.NextNum.ToString()].ToString() != "") // 다음 번호가 안 비어 있다면.
@@ -187,61 +192,6 @@ namespace _02Script.UI.Dialog.Dialog
             RenewalText(chatText); //마지막 텍스트 갱신
             return getOut;
         }
-        
-
-
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        private void DialogSetting(DialogEntitySO so, DialogEntity dialogEntity) //세팅 해주기
-        {
-            dialogText.text = "";
-            dialogUI.SetActive(true);
-            _currentSO = so;
-            //items = so.items;
-
-            _currentDialogEntity = dialogEntity;
-            dialogEntity.DoChat(true);
-            (int c, int n) nums = dialogEntity.CurrentDialog();
-            currentChapter = nums.c;
-            currentNum = nums.n;
-
-            dialogSelect.OffSelectText(); //선택지 텍스트 일단 다 끄기
-            GetDialog();
-
-            if (_currentDialogEntity as Island) //다른 애들은 F처리로 알아서 실행 되니.
-                DoChat(false);
-        }
-
-        private void GetDialog() //대화 (챕터 번호) 얻기. (List)
-        {
-            TextAsset currentDialog = _currentSo.DialogTextFile[0];
-            dialog = CSVReader.Read(currentDialog);
-
-            //CSV 배열 찾기
-            for (int i = 0; i < dialog.Count - 1; i++)
-            {
-                if (DialogCheck(DialogType.Chapter, currentChapter.ToString(), i)
-                    && DialogCheck(DialogType.Num, currentNum.ToString(), i)) //해당 배열의 수가 챕터랑 번호가 같으면
-                {
-                    currentChat = i; //해당 배열의 수
-                    break;
-                }
-            }
-        }
 
         private void Update()
         {
@@ -253,7 +203,6 @@ namespace _02Script.UI.Dialog.Dialog
                     curTime = 0;
                     dialogTextController.OneOne(chatText, nCount, dialogText, ref isTime);
                 }
-
                 curTime += Time.unscaledDeltaTime;
             }
             else
@@ -265,18 +214,18 @@ namespace _02Script.UI.Dialog.Dialog
 
         private void ClickNext(bool b) //다음으로
         {
-            if (!_currentDialogEntity && (int)isError / 1000 != 4)
+            if (!currentDialogEntity && (int)isError / 1000 != 4)
             {
-                dialogUI.SetActive(false);
+                UISettingManager.Instance.InGame();
                 return;
             }
 
             if (DoChat(false))
             {
-                dialogUI.SetActive(false);
-                _currentDialogEntity.EndDialog();
-                _currentDialogEntity = null;
-                items = null;
+                UISettingManager.Instance.InGame();
+                currentDialogEntity.EndDialog();
+                currentDialogEntity = null;
+                //items = null;
             }
         }
 
@@ -292,7 +241,7 @@ namespace _02Script.UI.Dialog.Dialog
             if (currentChat > dialog.Count - 1) return true;
 
             if (!DialogCheck(DialogType.Do, ""))
-                doScript.DoCheck(dialog[currentChat][DialogType.Do.ToString()], _currentDialogEntity); //스크립트 실행
+                doScript.DoCheck(dialog[currentChat][DialogType.Do.ToString()], currentDialogEntity); //스크립트 실행
 
             if ((int)isError / 1000 == 4) //오류들 해결 -------------------------------------------------------------
             {
@@ -323,7 +272,7 @@ namespace _02Script.UI.Dialog.Dialog
 
             chatPlayer = setting.PlayerSelect(currentChat, allCharacter, dialog); //새팅하기 (자신 so 찾기)
 
-            if (chatPlayer.EntityName != EntityName.Me) //플레이어가 아니면 (+ 오류X)
+            if (chatPlayer.EntityName != EntityName.lie) //플레이어가 아니면 (+ 오류X)
             {
                 if ((int)chatPlayer.EntityName / 1000 != 4)
                     setting.CurrentCharacter(chatPlayer); //재 세팅
@@ -332,18 +281,16 @@ namespace _02Script.UI.Dialog.Dialog
                     dialog[currentChat][DialogType.Text.ToString()], "`", ","); //변환 해주고 원했던 대화
                 isTime = true;
             }
-            else if (chatPlayer.EntityName == EntityName.Me)
+            else if (chatPlayer.EntityName == EntityName.lie)
             {
                 setting.CurrentCharacter(chatPlayer); //재 세팅
                 chatText = "";
                 dialogText.text = chatText;
             }
 
-            if (_currentDialogEntity != null)
-                _currentDialogEntity.NextDialog(currentNum);
+            if (currentDialogEntity != null)
+                currentDialogEntity.NextDialog(currentNum);
             dialogSelect.HaveSelect(currentChat, currentChapter, dialog, chatPlayer);
-
-            CheckMoney(); //돈
 
             if (isSelect || (int)isError / 1000 == 4) return false;
             if (!DialogCheck(DialogType.NextNum, "")) // 다음 번호가 안 비어 있다면.
@@ -355,15 +302,7 @@ namespace _02Script.UI.Dialog.Dialog
                         : nextNum - currentNum; //다음 번호 정해주기. (마지막이 본인이면 1추가로 나가게 해버리기.(대화 자체는 줄어버림.(???)))
                 currentNum = nextNum;
             }
-
             return false;
-        }
-
-        private void CheckMoney() //돈과 아이템
-        {
-            if (!dialogMoney.UseMoney(currentChat, dialog, moneyManager)) isError = EntityName.NoMoney; //돈
-
-            if (!dialogItem.HaveItem(currentChat, dialog, items, manager)) isError = EntityName.NoItem;
         }
 
         private bool DialogCheck(DialogType key, string check, int? i = null) // 찾기
@@ -382,8 +321,6 @@ namespace _02Script.UI.Dialog.Dialog
             DoChat(true);
         }
         
-        
-        
         private void LoveUP(int i) //호감도 오르거나 내리는 거 있으면 해주기.
         {
             if (dialog[i][DialogType.GetLove.ToString()].ToString() != "") //호감도 얻는게 있다면. (혹은 뺏는거)
@@ -395,14 +332,13 @@ namespace _02Script.UI.Dialog.Dialog
         
         public void Load() //로드 될 때
         {
-            DialogSetting(_currentSO, _currentDialogEntity);
+            DialogSetting(_currentSO, currentDialogEntity);
         }
 
         #region EnDi
-
         private void OnEnable()
         {
-            dialogUI.SetActive(false);
+            UISettingManager.Instance.InGame();
             SelectBtn.OnSelect += SelectChat;
             DialogEntity.OnChat += DialogSetting;
             PlayerDialogInput.OnChat += ClickNext;
@@ -418,12 +354,10 @@ namespace _02Script.UI.Dialog.Dialog
             ChatBtn.OnSkipChat -= ClickSkip;
             LoadCard.OnLoad -= Load;
         }
-
         #endregion
     }
-}
 
-public enum DialogType
+    public enum DialogType
     {
         Bubble, //말풍선
         Select, //선택지 인지 (개수)

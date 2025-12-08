@@ -1,13 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
-using _02Script.Etc;
 using _02Script.Manager;
 using _02Script.Player;
 using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Dialog.Etc;
-using _02Script.UI.Save;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,29 +13,58 @@ namespace _02Script.UI.Dialog.Entity
     public class DialogEntity : MonoBehaviour
     {
         public static Action<DialogEntity, bool> OnCanDialog; // 말풍선 출력
+        
         //저장을 num : (챕터의) 넘버/ chapter : 챕터/ text : 마지막 대화
-        //LikeabilityCard = 
         public static Action<DialogEntitySO,DialogEntity> OnChat;
 
-        [SerializeField] private DialogEntitySO dialogEntitySo;
-        [SerializeField] private int chapter; //챕터
-        [SerializeField] private int finalNum; //번호
-        private PlayerStatSC path; //스탯 (저장 공간)
-        private bool isChat;
+        #region 변수들
+        [Header("Setting")]
+        //감지를 위한
+        [SerializeField] protected LayerMask playerLayer;// 플레이어 (레이어)
+        [SerializeField]protected float DialogRadius = 2.75f;   // 대화 반경
+        [SerializeField]protected float SpeechBubbleRadius = 5f;   // 말풍선 반경
         
-        CancellationTokenSource cts = new(); //시간을 위해
-
-        private void Awake()
+        [Header("Need")]
+        //기본 설정
+        [SerializeField] protected DialogEntitySO dialogEntitySo; //나는 누구인가
+        [SerializeField] protected int chapter; //챕터
+        [SerializeField] protected int finalNum; //번호
+        
+        //상태 유무
+        protected bool isChat; //대화 가능 상태 유무
+        protected static bool doChat; //대화중인지
+        
+        //아껴살려고
+        protected Collider[] DailogHits = new Collider[1], SpeechBubbleHits = new Collider[1];
+        protected bool doActionB; //말풍선 관련 액션 여러번 호출 안 시키려고
+        protected bool doActionC; //말풍선 관련 액션 여러번 호출 안 시키려고
+        
+        protected CancellationTokenSource cts = new(); //시간을 위해
+        
+        //저장
+        protected PlayerStatSC path; //스탯 (저장 공간)
+        
+        #endregion
+        
+        protected virtual void Awake()
         {
+            SetChapter();
             isChat = false;
+            doChat = false;
             path = GameManager.Instance.PlayerStat;
         }
-        private async void Start()
-        {
-            await SpeechBubble();
+        protected virtual void OnDrawGizmos() //탐지 범위 그리기
+        { 
+            Gizmos.color = isChat? Color.red: Color.green;
+            Gizmos.DrawWireSphere(transform.position, DialogRadius);
         }
-        
-        public string BubbleWord()
+
+        protected virtual void Update()
+        {
+            
+        }
+   
+        public virtual string BubbleWord()
         {
             TextAsset currentDialog = dialogEntitySo.DialogTextFile[0];
             List<Dictionary<string,string>> dialog = CSVReader.Read(currentDialog);
@@ -65,117 +91,52 @@ namespace _02Script.UI.Dialog.Entity
             return ".......";
         }
         
-        public void DoChat(bool isChat) //대화 중인지 판별
+        public virtual void NextChapter(int c = 1, int num = 0)
+        {
+            chapter += c;
+            finalNum = num;
+            OnCanDialog?.Invoke(this,true);
+        }
+        
+        public virtual void EndDialog() //대화 끝
+        {
+            finalNum = 1;
+            //chapter++;
+            DoChat(false);
+            isChat = false;
+        }
+        
+        public virtual (int c, int n) CurrentDialog() //현재 진행 사항 (챕터, 넘버 값 넘겨주기)
+        {
+            return (chapter, finalNum);
+        }
+        
+        public virtual void NextDialog(int i) //대화가 진행 될 때마다
+        {
+            finalNum = i;
+        }
+
+        public virtual void DoChat(bool isChat) //대화 중인지 판별
         {
             doChat = isChat;
         }
 
-        public void Load() //로드 될 때
+        protected virtual void DoDialog() //대화 하기 (상호작용)
         {
-            path = GameManager.Instance.PlayerStat; // 
-
-            if (path != null)
-            {
-                int.TryParse(path.characterLastText[dialogEntitySo.EntityName][DialogType.Chapter], out chapter);
-                int.TryParse(path.characterLastText[dialogEntitySo.EntityName][DialogType.Num], out finalNum);
-            }
-
-            //아이템이나 특수 대화에서는 문제가 없는지 확인 할 것
-            if (GameManager.Instance.PlayerStat.isChat)
-            {
-                UISettingManager.Instance.CloseChat();
-                finalNum--; //대화를 시작 할 때 1를 추가하고 시작함으로.
-                UISettingManager.Instance.Chat(GameManager.Instance.PlayerStat.lastSO, GameManager.Instance.PlayerStat.lastDialogEntity);
-            }
-            else
-            {
-                UISettingManager.Instance.CloseChat();
-            }
+            OnChat?.Invoke(dialogEntitySo,this);
         }
 
-        public void NextDialog(int i) //대화가 진행 될 때마다
+        protected void SetChapter() //혹시 모를 챕터 다시 정하기
         {
-            finalNum = i;
-
-            path.characterLastText[dialogEntitySo.EntityName][DialogType.Num] = finalNum.ToString();
-        }
-
-        public int[] CurrentDialog() //현재 진행 사항 (챕터, 넘버 값 넘겨주기)
-        {
-            return new int[]{chapter, finalNum};
-        }
-
-        private async Task  SpeechBubble()
-        {
-            try
-            {
-                await AsyncTime.WaitSeconds(30f, cts.Token);
-                OnCanDialog?.Invoke(this, true);
-            }
-            catch (TaskCanceledException)
-            {
-            }
-            try
-            {
-                await AsyncTime.WaitSeconds(5f, cts.Token);
-                OnCanDialog?.Invoke(this, false);
-            }
-            catch (TaskCanceledException)
-            {
-            }
-        }
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if(collision.CompareTag("Player"))
-            {
-                isChat = true;
-            }
-        }
-
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Player"))
-            {
-                isChat = false;
-            }
-        }
-
-        public void NextChapter() //다음 챕터로 설정 해주기
-        {
-            finalNum = 1;
-            chapter++;
-            
+            if(chapter/1000 != 0) return;
             
             int baseChapter = ((int)dialogEntitySo.EntityName/1000)*1000;
             chapter += baseChapter;
-
-            path.characterLastText[dialogEntitySo.EntityName][DialogType.Chapter] = chapter.ToString();
-            path.characterLastText[dialogEntitySo.EntityName][DialogType.Num] = finalNum.ToString();
         }
 
-        public void ClickCharacter() //대화 하기 (클릭)
-        {
-            if (isChat)
-            {
-                int.TryParse(path.characterLastText[dialogEntitySo.EntityName][DialogType.Chapter],out chapter);
-                int.TryParse(path.characterLastText[dialogEntitySo.EntityName][DialogType.Num],out finalNum);
-                //finallNum = 1;
-                OnChat?.Invoke(dialogEntitySo,this);
-            }
-        }
-
-        private void OnEnable()
-        {
-            LoadCard.OnLoad += Load;
-        }
-
-        private void OnDisable()
-        {
-            LoadCard.OnLoad -= Load;
-        }
         protected virtual void OnDestroy()
         {
+            doChat = false;
             OnCanDialog?.Invoke(this,false);
             cts.Cancel();
         }

@@ -27,7 +27,6 @@ namespace _02Script.Item
         chat = 5000,
         hate = 6000,
         notbad = 7000,
-        coin = 9000,
         mouse = 10000,
         none = 0
     }
@@ -66,8 +65,6 @@ namespace _02Script.Item
         trashGlass = 6002, //실패한 유리병
 
         perfectGlass = 7001, //생태계 유리병
-
-        coin = 9001, //코인
 
         restyMouse = 10001, //커서
         chrisMouse = 10002,
