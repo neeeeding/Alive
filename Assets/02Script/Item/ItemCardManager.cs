@@ -71,14 +71,12 @@ namespace _02Script.Item
 
         private void ActionItemActive(ItemSO so, bool b)
         {
-            if(so.category != ItemCategory.mouse) //마우스 아닌 것들 만
+
+            foreach (Transform card in gameObject.transform)
             {
-                foreach (Transform card in gameObject.transform)
+                if (card.TryGetComponent(out ItemCard cardSc))
                 {
-                    if (card.TryGetComponent(out ItemCard cardSc))
-                    {
-                        card.gameObject.SetActive(cardSc.HaveItem(so,b)); //얻은 아이템에 따라 카드 활성화
-                    }
+                    card.gameObject.SetActive(cardSc.HaveItem(so,b)); //얻은 아이템에 따라 카드 활성화
                 }
             }
         }

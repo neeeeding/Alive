@@ -1,7 +1,11 @@
-﻿using _02Script.Manager;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using _02Script.Manager;
 using _02Script.UI.Save;
 using _02Script.Etc;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _02Script.Player.State
 {
@@ -11,6 +15,12 @@ namespace _02Script.Player.State
         [HideInInspector] public Vector2 TargetPos; //마우스 위치
         private Rigidbody2D _rigidbody;
         private bool _isMoving;
+        
+        private Player _player;
+        private int[] autoX = { 1, 0, -1, 0 };
+        private int[] autoY = { 0, 1, 0, -1 };
+        
+        protected CancellationTokenSource cts = new(); //시간을 위해
 
         #region endiaw
 
@@ -18,6 +28,12 @@ namespace _02Script.Player.State
         {
             GameManager.OnStart += StartLoad;
             _rigidbody = GetComponent<Rigidbody2D>();
+            _player = GetComponent<Player>();
+        }
+
+        private void Start()
+        {
+            _ = AutoMove();
         }
 
         private void OnEnable()
@@ -53,13 +69,37 @@ namespace _02Script.Player.State
             }
         }
 
+        private async Task AutoMove()
+        {
+            while (!cts.IsCancellationRequested)
+            {
+                if (_player.isCurPlayer)
+                {
+                    await Task.Yield();
+                    continue;
+                }
+                try
+                {
+                    await AsyncTime.WaitSeconds(Random.Range(0,3), cts.Token);
+                    
+                    int auto = Random.Range(0, autoX.Length);
+            
+                    _isMoving = true;
+                    TargetPos = new Vector2(autoX[auto], autoY[auto]);
+                }
+                catch (TaskCanceledException){break;}
+            }
+        }
+
         private void MouseMove(Vector2 mousePos)
         {
+            if(!_player.isCurPlayer) return;
             _isMoving = true;
             TargetPos = mousePos;
         }
         private void KeyboardMove(Vector2 mousePos)
         {
+            if(!_player.isCurPlayer) return;
             _isMoving = true;
             TargetPos = (Vector2)transform.position + mousePos.normalized;
         }
@@ -74,6 +114,15 @@ namespace _02Script.Player.State
         private void Load()
         {
             transform.position = GameManager.Instance.PlayerStat.playerPosition;
+        }
+        
+        protected virtual void OnDestroy()
+        {
+            if (cts != null)
+            {
+                cts.Cancel();
+                cts.Dispose();
+            }
         }
     }
 }
