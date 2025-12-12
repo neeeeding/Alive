@@ -274,6 +274,20 @@ MonoBehaviour:
   likeItemManager: {fileID: 784137969514661390}
   map: {fileID: 2906150968331547896}
   save: {fileID: 8501272204338573623}
+  uiObj:
+    _serializedList:
+    - Key: 7
+      Value: {fileID: 2719544719857091602}
+    - Key: 3
+      Value: {fileID: 3039908988630160791}
+    - Key: 4
+      Value: {fileID: 6256311072461978313}
+    - Key: 5
+      Value: {fileID: 3962870792514890282}
+    - Key: 6
+      Value: {fileID: 2906150968331547896}
+    - Key: 8
+      Value: {fileID: 8501272204338573623}
   obj: {fileID: 6601320299155051562}
 --- !u!1001 &4262895149400987038
 PrefabInstance:
