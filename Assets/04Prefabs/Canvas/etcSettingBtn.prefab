@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3730588653664546666}
   - component: {fileID: 2972751664970996215}
   - component: {fileID: 748482326162765548}
-  - component: {fileID: 4950756875071284775}
   m_Layer: 5
   m_Name: LikeabilityGuideBtn
   m_TagString: Untagged
@@ -133,18 +132,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4950756875071284775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 517280401588442705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eec730f837274809b351bf28e996d51c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Etc.NotInputUI
 --- !u!1 &556752942475795540
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +144,6 @@ GameObject:
   - component: {fileID: 8379311837054150553}
   - component: {fileID: 662236858525971946}
   - component: {fileID: 4266855439763536122}
-  - component: {fileID: 4612023805304429357}
   m_Layer: 5
   m_Name: MapBtn
   m_TagString: Untagged
@@ -278,18 +264,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4612023805304429357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556752942475795540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eec730f837274809b351bf28e996d51c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Etc.NotInputUI
 --- !u!1 &5621750080631226773
 GameObject:
   m_ObjectHideFlags: 0

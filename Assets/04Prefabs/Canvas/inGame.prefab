@@ -127,7 +127,6 @@ GameObject:
   - component: {fileID: 6850846253841060558}
   - component: {fileID: 5171350133488457825}
   - component: {fileID: 7253510782141288089}
-  - component: {fileID: 583538851256551490}
   m_Layer: 5
   m_Name: Items
   m_TagString: Untagged
@@ -224,18 +223,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &583538851256551490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 612459056564252135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eec730f837274809b351bf28e996d51c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Etc.NotInputUI
 --- !u!1 &1497904164308539335
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +350,6 @@ GameObject:
   - component: {fileID: 5849531872345240904}
   - component: {fileID: 6539064773108104896}
   - component: {fileID: 5023927636488745752}
-  - component: {fileID: 2356557824134349681}
   m_Layer: 5
   m_Name: MapMarkBtn
   m_TagString: Untagged
@@ -501,18 +487,6 @@ MonoBehaviour:
   mapMark: {fileID: 2533254064719738357, guid: 9f74bfa288d916144931f5e8b7189f49, type: 3}
   canvas: {fileID: 0}
   imageRect: {fileID: 0}
---- !u!114 &2356557824134349681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943964331093454536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eec730f837274809b351bf28e996d51c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Etc.NotInputUI
 --- !u!1 &2626562351726370419
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,7 +901,6 @@ GameObject:
   - component: {fileID: 5514622619918903053}
   - component: {fileID: 1168981209156549285}
   - component: {fileID: 3104640577554320775}
-  - component: {fileID: 5558002677938564560}
   m_Layer: 5
   m_Name: RunBtn
   m_TagString: Untagged
@@ -1049,15 +1022,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c6725125d93fe478197ce142e1545d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5558002677938564560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9220309266064541440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eec730f837274809b351bf28e996d51c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Etc.NotInputUI

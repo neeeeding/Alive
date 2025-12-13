@@ -56,6 +56,7 @@ namespace _02Script.Manager
             {
                 data = new GameSaveData();
                 data.DataReset();
+                data.stat.ResetStat();
             }
 
             GameSaveFilePath = Application.persistentDataPath + "/Save";
@@ -65,9 +66,7 @@ namespace _02Script.Manager
             PlayerStat = data.stat; //로드
 
             //Player = gameObject.GetComponent<Player>();
-
-            //PlayerStat.ResetStat();
-            //ResetValue();
+            
             ItemCard.OnHoldItem += hold => Item = hold;
 
             DontDestroyOnLoad(gameObject); //삭제 되지 말라고
@@ -119,11 +118,7 @@ namespace _02Script.Manager
 
         private void ResetValue() //값 세팅
         {
-            //호감도
-            PlayerStat.ResetCharacter();
-
-            //아이템
-            PlayerStat.ResetItem();
+            PlayerStat.ResetStat();
         }
 
         private IEnumerator nowDate() //시간세는거

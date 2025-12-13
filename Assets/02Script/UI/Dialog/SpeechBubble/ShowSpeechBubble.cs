@@ -56,7 +56,8 @@ namespace _02Script.UI.Dialog.SpeechBubble
             word = obj.BubbleWord();
             word = dialogTextController.IsExchangeText(word, "`", ",");
 
-            if (speechBubble.activeSelf == show) return;
+            if (speechBubble != null &&
+                speechBubble.activeSelf == show) return;
             
             speechBubble.SetActive(show);
             if(!show) return;

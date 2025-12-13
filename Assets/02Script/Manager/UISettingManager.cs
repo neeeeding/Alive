@@ -32,7 +32,6 @@ namespace _02Script.Manager
         [Header("Select")]
         [SerializeField] private GameObject obj; //상점(혹은 교시 고르기)
 
-        private bool anyUi;
         private Dictionary<UIActiveType, bool> uiActiveBool = new Dictionary<UIActiveType, bool>();
 
         #region EnDiAw
@@ -49,14 +48,6 @@ namespace _02Script.Manager
             DialogEntity.OnChat -= Chat;
         }
         #endregion
-
-        private void Update()
-        {
-            if (anyUi && PlayerInput.Instance.CheckCanInput())
-            {
-                PlayerInput.Instance.NoInput();
-            }
-        }
 
         public void InGame() //게임으로
         {
@@ -169,7 +160,6 @@ namespace _02Script.Manager
             uiActiveBool[type] = value;
             if (value)
             {
-                anyUi = true; 
                 SettingAll();
                 return;
             }
@@ -179,8 +169,6 @@ namespace _02Script.Manager
             {
                 if(one.Value) return;
             }
-            
-            anyUi = false;
             InGame();
         }
 

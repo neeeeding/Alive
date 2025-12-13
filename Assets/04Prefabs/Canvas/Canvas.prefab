@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 9006930456240397163}
   - component: {fileID: 4905347077001713272}
   - component: {fileID: 5483009241783977328}
+  - component: {fileID: 6220684396581637474}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -176,8 +177,8 @@ RectTransform:
   - {fileID: 8153561287581424080}
   - {fileID: 8140616764887294898}
   - {fileID: 80336192559191168}
-  - {fileID: 2636055383449175047}
   - {fileID: 304024436651891528}
+  - {fileID: 2636055383449175047}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -283,6 +284,18 @@ MonoBehaviour:
       Value: {fileID: 8501272204338573623}
   likeItemManager: {fileID: 784137969514661390}
   obj: {fileID: 6601320299155051562}
+--- !u!114 &6220684396581637474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8939044157115833426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec730f837274809b351bf28e996d51c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Etc.NotInputUI
 --- !u!1001 &4262895149400987038
 PrefabInstance:
   m_ObjectHideFlags: 0
