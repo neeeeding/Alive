@@ -267,13 +267,6 @@ MonoBehaviour:
   coin: {fileID: 8874478887462823547}
   backBtn: {fileID: 2836947274230299240}
   allSetting: {fileID: 2763569822178645891}
-  setting: {fileID: 2719544719857091602}
-  profile: {fileID: 3039908988630160791}
-  likeabilityGuide: {fileID: 3962870792514890282}
-  likeItem: {fileID: 6256311072461978313}
-  likeItemManager: {fileID: 784137969514661390}
-  map: {fileID: 2906150968331547896}
-  save: {fileID: 8501272204338573623}
   uiObj:
     _serializedList:
     - Key: 7
@@ -288,6 +281,7 @@ MonoBehaviour:
       Value: {fileID: 2906150968331547896}
     - Key: 8
       Value: {fileID: 8501272204338573623}
+  likeItemManager: {fileID: 784137969514661390}
   obj: {fileID: 6601320299155051562}
 --- !u!1001 &4262895149400987038
 PrefabInstance:
@@ -1573,30 +1567,6 @@ PrefabInstance:
     - target: {fileID: 1089829760629590596, guid: 556a70e1af1be4b48a863cb7b189600a, type: 3}
       propertyPath: m_Value
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1168981209156549285, guid: 556a70e1af1be4b48a863cb7b189600a, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8591959547990327608}
-    - target: {fileID: 1168981209156549285, guid: 556a70e1af1be4b48a863cb7b189600a, type: 3}
-      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8591959547990327608}
-    - target: {fileID: 1168981209156549285, guid: 556a70e1af1be4b48a863cb7b189600a, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NoInput
-      objectReference: {fileID: 0}
-    - target: {fileID: 1168981209156549285, guid: 556a70e1af1be4b48a863cb7b189600a, type: 3}
-      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CanInput
-      objectReference: {fileID: 0}
-    - target: {fileID: 1168981209156549285, guid: 556a70e1af1be4b48a863cb7b189600a, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: _02Script.Player.PlayerMobileInput, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1168981209156549285, guid: 556a70e1af1be4b48a863cb7b189600a, type: 3}
-      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: _02Script.Player.PlayerMobileInput, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1734526234844206385, guid: 556a70e1af1be4b48a863cb7b189600a, type: 3}
       propertyPath: m_Name

@@ -1577,6 +1577,7 @@ GameObject:
   - component: {fileID: 1161543172}
   - component: {fileID: 1161543173}
   - component: {fileID: 1161543174}
+  - component: {fileID: 1161543175}
   m_Layer: 6
   m_Name: Theo
   m_TagString: Untagged
@@ -1708,38 +1709,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1456364704}
-          m_TargetAssemblyTypeName: _02Script.Player.PlayerInput, Assembly-CSharp
-          m_MethodName: CanInput
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1456364704}
-          m_TargetAssemblyTypeName: _02Script.Player.PlayerInput, Assembly-CSharp
-          m_MethodName: NoInput
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &1161543173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1797,6 +1766,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 1.375}
   m_Size: {x: 1, y: 2.75}
   m_Direction: 0
+--- !u!114 &1161543175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161543168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec730f837274809b351bf28e996d51c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Etc.NotInputUI
 --- !u!1 &1204750699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,6 +2278,7 @@ GameObject:
   - component: {fileID: 1440187662}
   - component: {fileID: 1440187661}
   - component: {fileID: 1440187660}
+  - component: {fileID: 1440187663}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -2378,38 +2360,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: PlayerMobileInput, Assembly-CSharp
-          m_MethodName: NoInput
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: PlayerMobileInput, Assembly-CSharp
-          m_MethodName: CanInput
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
   - eventID: 4
     callback:
       m_PersistentCalls:
@@ -2484,17 +2434,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1456364704 stripped
+--- !u!114 &1440187663
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8591959547990327608, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-  m_PrefabInstance: {fileID: 8736283038233231832}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1440187658}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da43e790a60b44d3aa998dfc62b6ecc0, type: 3}
+  m_Script: {fileID: 11500000, guid: eec730f837274809b351bf28e996d51c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Etc.NotInputUI
 --- !u!1 &1516397799
 GameObject:
   m_ObjectHideFlags: 0
@@ -3282,6 +3233,7 @@ GameObject:
   - component: {fileID: 1572384869}
   - component: {fileID: 1572384868}
   - component: {fileID: 1572384872}
+  - component: {fileID: 1572384873}
   m_Layer: 6
   m_Name: Theo
   m_TagString: Untagged
@@ -3344,38 +3296,6 @@ MonoBehaviour:
         - m_Target: {fileID: 545027441}
           m_TargetAssemblyTypeName: _02Script.Player.Player, Assembly-CSharp
           m_MethodName: Select
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1456364704}
-          m_TargetAssemblyTypeName: _02Script.Player.PlayerInput, Assembly-CSharp
-          m_MethodName: CanInput
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1456364704}
-          m_TargetAssemblyTypeName: _02Script.Player.PlayerInput, Assembly-CSharp
-          m_MethodName: NoInput
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3502,6 +3422,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 1.375}
   m_Size: {x: 1, y: 2.75}
   m_Direction: 0
+--- !u!114 &1572384873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572384866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec730f837274809b351bf28e996d51c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Etc.NotInputUI
 --- !u!1 &1598983735
 GameObject:
   m_ObjectHideFlags: 0
@@ -9656,6 +9588,7 @@ GameObject:
   - component: {fileID: 1623938685}
   - component: {fileID: 1623938684}
   - component: {fileID: 1623938683}
+  - component: {fileID: 1623938686}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -9737,38 +9670,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: PlayerMobileInput, Assembly-CSharp
-          m_MethodName: NoInput
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: PlayerMobileInput, Assembly-CSharp
-          m_MethodName: CanInput
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
   - eventID: 4
     callback:
       m_PersistentCalls:
@@ -9843,6 +9744,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1623938686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623938681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec730f837274809b351bf28e996d51c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Etc.NotInputUI
 --- !u!1 &1699286020
 GameObject:
   m_ObjectHideFlags: 0
@@ -10269,6 +10182,7 @@ GameObject:
   - component: {fileID: 2115475453}
   - component: {fileID: 2115475454}
   - component: {fileID: 2115475455}
+  - component: {fileID: 2115475456}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -10362,38 +10276,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: PlayerMobileInput, Assembly-CSharp
-          m_MethodName: NoInput
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: PlayerMobileInput, Assembly-CSharp
-          m_MethodName: CanInput
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
   - eventID: 4
     callback:
       m_PersistentCalls:
@@ -10456,6 +10338,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2115475456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115475449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec730f837274809b351bf28e996d51c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Etc.NotInputUI
 --- !u!1001 &8736283038233231832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10811,61 +10705,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8930024171863549250, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8736283038233231835}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
 --- !u!1 &8736283038233231833 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8930024171863549250, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
   m_PrefabInstance: {fileID: 8736283038233231832}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8736283038233231835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8736283038233231833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1456364704}
-          m_TargetAssemblyTypeName: _02Script.Player.PlayerInput, Assembly-CSharp
-          m_MethodName: NoInput
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1456364704}
-          m_TargetAssemblyTypeName: _02Script.Player.PlayerInput, Assembly-CSharp
-          m_MethodName: CanInput
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
