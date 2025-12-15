@@ -80,12 +80,13 @@ namespace _02Script.Player.State
                 }
                 try
                 {
-                    await AsyncTime.WaitSeconds(Random.Range(0,3), cts.Token);
+                    await AsyncTime.WaitSeconds(Random.Range(0,1.1f), cts.Token);
                     
                     int auto = Random.Range(0, autoX.Length);
             
                     _isMoving = true;
-                    TargetPos = new Vector2(autoX[auto], autoY[auto]);
+                    TargetPos = (Vector2)transform.position + new Vector2(autoX[auto], autoY[auto]);
+                    print(TargetPos);
                 }
                 catch (TaskCanceledException){break;}
             }

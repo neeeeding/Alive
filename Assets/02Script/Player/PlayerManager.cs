@@ -6,6 +6,7 @@ namespace _02Script.Player
     public class PlayerManager : MonoBehaviour
     {
         [SerializeField] private Player[] characters;
+        [SerializeField] private GameObject followCamera;
         private static Player curPlayer;
 
         private void SelectPlayer(Player curP)
@@ -16,6 +17,13 @@ namespace _02Script.Player
             }
             curPlayer = curP;
             curPlayer.isCurPlayer = true;
+            SetFollowCamera();
+        }
+
+        private void SetFollowCamera()
+        {
+            followCamera.transform.SetParent(curPlayer.transform);
+            followCamera.transform.position = curPlayer.transform.position;
         }
 
         private void Awake()
