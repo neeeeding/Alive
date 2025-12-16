@@ -9,14 +9,14 @@ namespace _02Script.Farming
     {
         [SerializeField] private GameObject SeedWindow;
         
-        [SerializeField] private Seeds seedsPrefab;
+        [SerializeField] private OneFarming seedsPrefab;
         
-        private List<Seeds>  seeds = new List<Seeds>();
+        private List<OneFarming>  seeds = new List<OneFarming>();
 
         private bool isField;
         private Vector2 clickPos;
 
-        public void ListSeeds(Seeds seeds)
+        public void ListSeeds(OneFarming seeds)
         {
             this.seeds.Add(seeds);
             seeds.gameObject.SetActive(false);
@@ -29,7 +29,7 @@ namespace _02Script.Farming
                 NewSeeds(1);
             }
 
-            Seeds newSeeds = seeds[0];
+            OneFarming newSeeds = seeds[0];
             
             newSeeds.transform.position = clickPos;
             newSeeds.SetSO(so,this);
@@ -42,7 +42,7 @@ namespace _02Script.Farming
         {
             for (int i = 0; i < n; i++)
             {
-                Seeds newSeeds = Instantiate(seedsPrefab);
+                OneFarming newSeeds = Instantiate(seedsPrefab);
                 newSeeds.gameObject.SetActive(false);
                 newSeeds.transform.SetParent(gameObject.transform);
             

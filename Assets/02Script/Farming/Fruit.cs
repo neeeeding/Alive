@@ -8,15 +8,19 @@ namespace _02Script.Farming
     {
         [SerializeField] private SeedsSO mySO;
         private SpriteRenderer mySpriteRenderer;
+        private OneFarming myP;
 
         public void ClickFruit()
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            myP.ListSeeds();
+            //얻기
         }
         
-        public void SetSO(SeedsSO seedsSO)
+        public void SetSO(SeedsSO seedsSO, OneFarming f)
         {
             mySO = seedsSO;
+            myP = f;
         }
         
         private void OnEnable()
