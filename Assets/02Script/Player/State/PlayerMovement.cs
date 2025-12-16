@@ -86,7 +86,6 @@ namespace _02Script.Player.State
             
                     _isMoving = true;
                     TargetPos = (Vector2)transform.position + new Vector2(autoX[auto], autoY[auto]);
-                    print(TargetPos);
                 }
                 catch (TaskCanceledException){break;}
             }

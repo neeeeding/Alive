@@ -11,16 +11,18 @@ namespace _02Script.Farming
     {
         [SerializeField] private GameObject uiObj;
         [SerializeField] private Image gauge;
-        [SerializeField] private SeedsSO mySO;
         [SerializeField] private Image fruitImage;
         
-        private CancellationTokenSource cts = new(); //시간을 위해
         private float curTime;
+        private float growTime;
         
         public void SetSO(SeedsSO seedsSO)
         {
-            mySO = seedsSO;
+            growTime = seedsSO.growDelay;
+            
+            fruitImage.sprite = seedsSO.fruit.itemImage;
             curTime = 0;
+            _ = WaitGrow();
         }
 
         public void ShowUI()
@@ -31,32 +33,15 @@ namespace _02Script.Farming
         private async void OnEnable()
         {
             uiObj.SetActive(false);
-
-            if (mySO == null)
-            {
-                await Task.Yield();
-            }
-            
-            fruitImage.sprite = mySO.fruit.itemImage;
-            
-            _ = WaitGrow();
         }
 
         private async Task WaitGrow()
         {
-            while (curTime < mySO.growDelay)
+            while (curTime < growTime)
             {
-                await AsyncTime.WaitSeconds(0.01f, cts.Token);
-                curTime += 0.01f;
-                gauge.fillAmount = curTime / mySO.growDelay;
-            }
-        }
-        protected virtual void OnDestroy()
-        {
-            if (cts != null)
-            {
-                cts.Cancel();
-                cts.Dispose();
+                await Task.Yield();
+                curTime += Time.deltaTime;
+                gauge.fillAmount = curTime / growTime;
             }
         }
     }

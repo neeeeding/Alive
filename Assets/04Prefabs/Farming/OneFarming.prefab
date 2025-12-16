@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2216226880488688349}
-  - component: {fileID: 4393721336357758830}
   - component: {fileID: 6229479216136050612}
   - component: {fileID: 6736353001850624361}
   - component: {fileID: 779485377720942164}
@@ -34,26 +33,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9089528572768088400}
-  - {fileID: 5648936513862128079}
+  - {fileID: 1878786399584952165}
   - {fileID: 8381507094516171792}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4393721336357758830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7847301610962297559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08b8058bebfb4f42953c72a8d76ffc3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsGaugeUI
-  uiObj: {fileID: 877188567548848371}
-  gauge: {fileID: 5642387161462889452}
-  mySO: {fileID: 0}
-  fruitImage: {fileID: 3822755918149826994}
 --- !u!114 &6229479216136050612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.OneFarming
   seeds: {fileID: 3156021278902380520}
   fruit: {fileID: 2655372208047744360}
-  seedsUI: {fileID: 4393721336357758830}
+  seedsUI: {fileID: 5189759098846070862}
   mySO: {fileID: 0}
   myP: {fileID: 0}
 --- !u!61 &6736353001850624361
@@ -129,14 +112,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec730f837274809b351bf28e996d51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Etc.NotInputUI
+--- !u!1 &8351147678968708166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1878786399584952165}
+  - component: {fileID: 5189759098846070862}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1878786399584952165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351147678968708166}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5648936513862128079}
+  m_Father: {fileID: 2216226880488688349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5189759098846070862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351147678968708166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08b8058bebfb4f42953c72a8d76ffc3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsGaugeUI
+  uiObj: {fileID: 877188567548848371}
+  gauge: {fileID: 5642387161462889452}
+  mySO: {fileID: 0}
+  fruitImage: {fileID: 3822755918149826994}
 --- !u!1001 &3581025353169643554
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2216226880488688349}
+    m_TransformParent: {fileID: 1878786399584952165}
     m_Modifications:
+    - target: {fileID: 1703399846574174563, guid: d5897c768e67f7f4f9eb83d92abc3696, type: 3}
+      propertyPath: gauge
+      value: 
+      objectReference: {fileID: 5642387161462889452}
+    - target: {fileID: 1703399846574174563, guid: d5897c768e67f7f4f9eb83d92abc3696, type: 3}
+      propertyPath: uiObj
+      value: 
+      objectReference: {fileID: 877188567548848371}
+    - target: {fileID: 1703399846574174563, guid: d5897c768e67f7f4f9eb83d92abc3696, type: 3}
+      propertyPath: fruitImage
+      value: 
+      objectReference: {fileID: 3822755918149826994}
+    - target: {fileID: 4147304409284919982, guid: d5897c768e67f7f4f9eb83d92abc3696, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4440054242481291473, guid: d5897c768e67f7f4f9eb83d92abc3696, type: 3}
       propertyPath: m_Name
       value: FarmingCanvas
@@ -195,15 +243,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9211926402400811501, guid: d5897c768e67f7f4f9eb83d92abc3696, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 9211926402400811501, guid: d5897c768e67f7f4f9eb83d92abc3696, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 9211926402400811501, guid: d5897c768e67f7f4f9eb83d92abc3696, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 9211926402400811501, guid: d5897c768e67f7f4f9eb83d92abc3696, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -272,11 +320,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2216226880488688349, guid: b233341c209f3b2468ee14103033d027, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.07414
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2216226880488688349, guid: b233341c209f3b2468ee14103033d027, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1706
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2216226880488688349, guid: b233341c209f3b2468ee14103033d027, type: 3}
       propertyPath: m_LocalPosition.z
@@ -313,6 +361,10 @@ PrefabInstance:
     - target: {fileID: 7847301610962297559, guid: b233341c209f3b2468ee14103033d027, type: 3}
       propertyPath: m_Name
       value: Fruit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7847301610962297559, guid: b233341c209f3b2468ee14103033d027, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -386,7 +438,7 @@ PrefabInstance:
     - target: {fileID: 7047884290703742058, guid: cf757cde5fbafac43ae46385d8876ace, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4393721336357758830}
+      objectReference: {fileID: 5189759098846070862}
     - target: {fileID: 7047884290703742058, guid: cf757cde5fbafac43ae46385d8876ace, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowUI
@@ -394,6 +446,10 @@ PrefabInstance:
     - target: {fileID: 7847301610962297559, guid: cf757cde5fbafac43ae46385d8876ace, type: 3}
       propertyPath: m_Name
       value: Seed
+      objectReference: {fileID: 0}
+    - target: {fileID: 7847301610962297559, guid: cf757cde5fbafac43ae46385d8876ace, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

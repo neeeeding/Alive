@@ -31,8 +31,9 @@ namespace _02Script.Farming
 
         private async void OnEnable()
         {
-            seeds.gameObject.SetActive(true);
             fruit.gameObject.SetActive(false);
+            seeds.gameObject.SetActive(true);
+            seedsUI.gameObject.SetActive(true);
 
             if (mySO == null)
             {
