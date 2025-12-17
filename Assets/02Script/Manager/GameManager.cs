@@ -105,12 +105,6 @@ namespace _02Script.Manager
                 (basic + love > 100 ? 100 : basic + love).ToString(); //저장해주기 (100초과시 걍 100)
         }
 
-        public void AddCoin(int num) //코인 수
-        {
-            PlayerStat.playerCoin += num;
-            CoinText?.Invoke();
-        }
-
         public void AddItemCount(ItemCategory category, ItemType type, int num) //얻은, 잃은 아이템 수들
         {
             PlayerStat.items[category][type] += num;

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using _02Script.Manager;
 using _02Script.UI.Save;
-using _02Script.UI.Store;
 using UnityEngine;
 
 namespace _02Script.Item
@@ -13,7 +12,7 @@ namespace _02Script.Item
         [SerializeField] private ItemHold item; //아이템
 
         private static List<ItemSO> items = new List<ItemSO>(); //비활성화 하는 애 때문에
-        private bool isSetting; //true : 세팅 완료 된, false : 세팅이 안된 (해야 하는)
+        private bool isSetting; //세팅 여부
 
         private void Awake()
         {
@@ -24,7 +23,7 @@ namespace _02Script.Item
         private void OnEnable()
         {
             LoadCard.OnLoad += LoadItem;
-            Store.OnSellItem += GetItem;
+            
             if(GameManager.Instance.isStart)
             {
                 if (!isSetting)
@@ -84,7 +83,6 @@ namespace _02Script.Item
         private void OnDisable()
         {
             GameManager.OnStart -= GameStart;
-            Store.OnSellItem -= GetItem;
             LoadCard.OnLoad -= LoadItem;
         }
     }
