@@ -11,5 +11,10 @@ namespace _02Script.Etc
             int ms = Mathf.RoundToInt(seconds * 1000);
             await Task.Delay(ms, token);
         }
+        public static async Task WaitSeconds(float seconds)
+        {
+            int ms = Mathf.RoundToInt(seconds * 1000);
+            await Task.Delay(ms);
+        }
     }
 }

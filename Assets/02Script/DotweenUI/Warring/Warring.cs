@@ -1,9 +1,8 @@
-using System;
-using JYE._01Script.Etc;
+using _02Script.Etc;
 using TMPro;
 using UnityEngine;
 
-namespace JYE._01Script.UI.Warring
+namespace _02Script.DotweenUI.Warring
 {
     public class Warring :  MonoBehaviour
     {

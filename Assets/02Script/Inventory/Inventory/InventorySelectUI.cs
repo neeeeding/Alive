@@ -1,9 +1,7 @@
-using System;
-using JYE._01Script.Etc;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace JYE._01Script.Inventory.Inventory
+namespace _02Script.Inventory.Inventory
 {
     public class InventorySelectUI : MonoBehaviour
     {
@@ -18,12 +16,12 @@ namespace JYE._01Script.Inventory.Inventory
         private void OnEnable()
         {
             Select(isItem);
-            TimeManager.SetTime(0);
+            Time.timeScale = 0;
         }
 
         private void OnDisable()
         {
-            TimeManager.SetTime();
+            Time.timeScale = 1;
         }
 
         public void ItemSelect()

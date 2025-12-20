@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace JYE._01Script.Inventory.Item.Characteristic
+namespace _02Script.Inventory.Item.Characteristic
 {
     [CreateAssetMenu(fileName = "Characteristic", menuName = "SO/JYE/Item/CharacteristicSO")]
     public class CharacteristicSO : ItemDataSO

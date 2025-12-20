@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace JYE._01Script.Inventory.Inventory
+namespace _02Script.Inventory.Inventory
 {
     public class InventoryUI :MonoBehaviour
     {

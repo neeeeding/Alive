@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using DG.Tweening;
 
-namespace JYE._01Script.UI.Popup
+namespace _02Script.DotweenUI.Popup
 {
     public class Popup : MonoBehaviour
     {

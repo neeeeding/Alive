@@ -1,6 +1,8 @@
-using JYE._01Script.UI.Warring;
 
-namespace JYE._01Script.Inventory.Item
+
+using _02Script.DotweenUI.Warring;
+
+namespace _02Script.Inventory.Item
 {
     public class ItemData
     {

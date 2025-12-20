@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using DG.Tweening;
 
-namespace JYE._01Script.Inventory.Item
+namespace _02Script.Inventory.Item
 {
     public class InventoryItemCard : ItemCard
     {

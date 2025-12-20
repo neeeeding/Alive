@@ -1,7 +1,7 @@
-using JYE._01Script.Inventory.Item;
+using _02Script.Inventory.Item;
 using UnityEngine;
 
-namespace JYE._01Script.Inventory.Inventory.Use
+namespace _02Script.Inventory.Inventory.Use
 {
     public class UseWindow  : MonoBehaviour
     {

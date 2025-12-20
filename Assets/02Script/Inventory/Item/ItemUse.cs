@@ -1,9 +1,6 @@
-
-using Core.Events;
-using JYE._01Script.Event;
 using UnityEngine;
 
-namespace JYE._01Script.Inventory.Item
+namespace _02Script.Inventory.Item
 {
     public class ItemUse : MonoBehaviour
     {
@@ -25,7 +22,7 @@ namespace JYE._01Script.Inventory.Item
             {
                 if ((int)itemType % 1000 == 3) //부산물인 무기나 갑옷
                 {
-                    Bus<ProduceEvent>.RaiseEvent(new  ProduceEvent(cardData.ReturnData().ReturnData()));
+                    //Bus<ProduceEvent>.RaiseEvent(new  ProduceEvent(cardData.ReturnData().ReturnData()));
                 }
             }
         }

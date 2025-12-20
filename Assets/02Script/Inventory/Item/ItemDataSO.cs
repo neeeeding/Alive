@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace JYE._01Script.Inventory.Item
+namespace _02Script.Inventory.Item
 {
     [CreateAssetMenu(fileName = "ItemData", menuName = "SO/JYE/Item/ItemDataSO")]
     public class ItemDataSO : ScriptableObject

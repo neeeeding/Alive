@@ -2,7 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace JYE._01Script.UI.Inventory
+namespace _02Script.DotweenUI.Inventory
 {
     public class InventoryBtn : MonoBehaviour
     {

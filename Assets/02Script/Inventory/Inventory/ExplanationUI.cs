@@ -1,10 +1,10 @@
+using _02Script.Inventory.Item;
 using JetBrains.Annotations;
-using JYE._01Script.Inventory.Item;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace JYE._01Script.Inventory.Inventory
+namespace _02Script.Inventory.Inventory
 {
     public class ExplanationUI : MonoBehaviour
     {

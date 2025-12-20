@@ -1,8 +1,8 @@
+using _02Script.Inventory.Item;
 using AYellowpaper.SerializedCollections;
-using JYE._01Script.Inventory.Item;
 using UnityEngine;
 
-namespace JYE._01Script.Inventory.Etc
+namespace _02Script.Inventory.Etc
 {
     public class StartGiveItem : GetItem
     {

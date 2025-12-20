@@ -1,9 +1,9 @@
-using JYE._01Script.Inventory.Item;
+using _02Script.Inventory.Item;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace JYE._01Script.Inventory.Inventory.Use
+namespace _02Script.Inventory.Inventory.Use
 {
     public class UseInventoryWindow : MonoBehaviour
     {

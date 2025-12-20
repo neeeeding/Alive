@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace JYE._01Script.Inventory.Item
+namespace _02Script.Inventory.Item
 {
     public class ItemCard :  MonoBehaviour
     {

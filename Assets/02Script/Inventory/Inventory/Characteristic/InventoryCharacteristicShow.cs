@@ -1,10 +1,9 @@
-using System;
-using JYE._01Script.Inventory.Item;
+using _02Script.Inventory.Item;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace JYE._01Script.Inventory.Inventory.Characteristic
+namespace _02Script.Inventory.Inventory.Characteristic
 {
     public class InventoryCharacteristicShow : MonoBehaviour
     {

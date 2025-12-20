@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace JYE._01Script.UI.Warring
+namespace _02Script.DotweenUI.Warring
 {
     public class WarringManager :  MonoBehaviour
     {
