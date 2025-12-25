@@ -34,7 +34,7 @@ public class LoadCard : MonoBehaviour
         Setting(saveStat);
     }
 
-    public void ClcikSave(string name) //파일 이름까지 작성한 상태에서 완료 누를 때
+    public void ClickSave(string name) //파일 이름까지 작성한 상태에서 완료 누를 때
     {
         fileName = name;
 

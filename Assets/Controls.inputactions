@@ -726,6 +726,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Inventory",
+            "id": "ea2d3a23-ffe5-4970-bb8a-38a83716eb4f",
+            "actions": [
+                {
+                    "name": "Enter",
+                    "type": "Button",
+                    "id": "58506f76-be27-40ec-986e-ce47c405316f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c209dfbe-5e55-43f6-bc82-cc15a7b3ce58",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Enter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

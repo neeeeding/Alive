@@ -71,7 +71,7 @@ namespace _02Script.UI.Save
             if (inputName.text != "")
             {
                 GameObject loadCard = Instantiate(oneLoadCard, content.transform);
-                loadCard.GetComponent<LoadCard>().ClcikSave(inputName.text);
+                loadCard.GetComponent<LoadCard>().ClickSave(inputName.text);
                 SettingPath(); //혹시 모르니 재 세팅
                 File.AppendAllText($"{path}/SaveName", $"{inputName.text}\n");
 
