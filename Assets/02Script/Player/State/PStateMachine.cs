@@ -8,14 +8,14 @@ namespace _02Script.Player.State
 
         public PState currentState;
 
-        public void ChangeState(PlayerState state, PlayerRotate rotate)
+        public void ChangeState(PlayerState state, int x, int y)
         {
             if(currentState != null)
             {
                 currentState.Exit();
             }
             currentState = PStateD[state];
-            currentState.Enter(rotate);
+            currentState.Enter(x,y);
         }
 
         public void AddState(PlayerState state, PState sc)

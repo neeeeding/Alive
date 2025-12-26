@@ -32,7 +32,7 @@ namespace _02Script.Player
             stateMachine.AddState(PlayerState.hold, new PHoldState("Hold", stateMachine, this));
 
             transform.position += Vector3.zero;
-            stateMachine.ChangeState(PlayerState.Idle, PlayerRotate.Front);
+            stateMachine.ChangeState(PlayerState.Idle, 0,0);
         }
 
         private void OnDisable()
@@ -42,7 +42,7 @@ namespace _02Script.Player
 
         public void ChangeState(PlayerState state)
         {
-            stateMachine.ChangeState(state, PlayerRotate.Front);
+            stateMachine.ChangeState(state, 0,0);
         }
 
         private void Update()

@@ -8,9 +8,9 @@ namespace _02Script.Player.State
         {
         }
 
-        public override void Enter(PlayerRotate rotate)
+        public override void Enter(int x, int y)
         {
-            base.Enter(rotate);
+            base.Enter(x,y);
             PlayerInput.OnMousePos += Move;
         }
 
@@ -18,10 +18,7 @@ namespace _02Script.Player.State
         {
             if (mousePos != Vector2.zero)
             {
-                StateMachine.ChangeState(PlayerState.Move,
-                    Mathf.Abs(mousePos.x) <= Mathf.Abs(mousePos.y) ?
-                        mousePos.y <= 0 ? PlayerRotate.Back : PlayerRotate.Front :
-                        mousePos.x <= 0 ? PlayerRotate.Left : PlayerRotate.Right);
+                StateMachine.ChangeState(PlayerState.Move,(int)_player.Animator.GetFloat(X),(int)_player.Animator.GetFloat(Y));
             }
         }
 

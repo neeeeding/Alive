@@ -4,33 +4,21 @@ namespace _02Script.Player.State
 {
     public class PMoveState : PState
     {
+        private readonly string MoveAnimBool = "Move";
+        
         public PMoveState(string animation, PStateMachine machine, Player player) : base(animation, machine, player)
         {
         }
 
-        public override void Enter(PlayerRotate rotate)
+        public override void Enter(int x, int y)
         {
-            base.Enter(rotate);
+            _player.Animator.SetBool(MoveAnimBool,true);
+            base.Enter(x,y);
 
             if (_player.transform.position.x == PlayerMovement.Instance.TargetPos.x && _player.transform.position.y == PlayerMovement.Instance.TargetPos.y)
             {
-                StateMachine.ChangeState(PlayerState.Idle, _rotate);
+                StateMachine.ChangeState(PlayerState.Idle, x,y);
             }
-            ChangeAnimation(PlayerMovement.Instance.TargetPos);
-        }
-
-        private void ChangeAnimation(Vector2 mousePos) //애니 바꾸기
-        {
-            _player.Animator.SetBool(Animator.StringToHash(_rotate.ToString()), false); //일단 끄고
-
-            Vector2 minusPos = new Vector2(mousePos.x - _player.transform.position.x, mousePos.y - _player.transform.position.y);
-
-
-            _rotate = Mathf.Abs(minusPos.x) > Mathf.Abs(minusPos.y) ? //켜기
-                minusPos.x <= 0 ? PlayerRotate.Left : PlayerRotate.Right :
-                minusPos.y <= 0 ? PlayerRotate.Back : PlayerRotate.Front;
-
-            _player.Animator.SetBool(Animator.StringToHash(_rotate.ToString()), true); //켜기
         }
 
         public override void StateFixedUpdate() //움직임
@@ -39,12 +27,13 @@ namespace _02Script.Player.State
 
             if(Vector2.Distance(_player.transform.position, PlayerMovement.Instance.TargetPos) < 0.5f)
             {
-                StateMachine.ChangeState(PlayerState.Idle,_rotate);
+                StateMachine.ChangeState(PlayerState.Idle,(int)_player.Animator.GetFloat(X),(int)_player.Animator.GetFloat(Y));
             }
         }
         public override void Exit()
         {
             base.Exit();
+            _player.Animator.SetBool(MoveAnimBool,false);
         }
     }
 }

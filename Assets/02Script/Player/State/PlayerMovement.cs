@@ -12,13 +12,16 @@ namespace _02Script.Player.State
     public class PlayerMovement: Singleton<PlayerMovement>
     {
         public float speed; //속도
-        [HideInInspector] public Vector2 TargetPos; //마우스 위치
+        [HideInInspector] public Vector2 TargetPos; //갈 위치
         private Rigidbody2D _rigidbody;
         private bool _isMoving;
         
         private Player _player;
         private int[] autoX = { 1, 0, -1, 0 };
         private int[] autoY = { 0, 1, 0, -1 };
+
+        protected readonly string X = "X";
+        protected readonly string Y = "Y";
         
         protected CancellationTokenSource cts = new(); //시간을 위해
 
@@ -56,6 +59,8 @@ namespace _02Script.Player.State
         private void FixedUpdate()
         {
             Vector2 direction = (TargetPos - (Vector2)transform.position);
+            _player.Animator.SetFloat(X, direction.normalized.x);
+            _player.Animator.SetFloat(Y, direction.normalized.y);
 
             if (direction.magnitude < 0.1f || !_isMoving) // 너무 가까우면 멈추기
             {

@@ -6,30 +6,24 @@ namespace _02Script.Player.State
     {
         protected Player _player; //플레이어
         protected PStateMachine StateMachine; //머신
-        protected int _animationHash; //해시
 
-        protected PlayerRotate _rotate; //어딜 봐야는지
+        protected readonly string X = "X";
+        protected readonly string Y = "Y";
 
         public PState(string animation,PStateMachine machine,Player player)
         {
             StateMachine = machine;
             _player = player;
-            _animationHash = Animator.StringToHash(animation);
         }
 
-        public virtual void Enter(PlayerRotate rotate)
+        public virtual void Enter(int x, int y)
         {
-            _rotate = rotate;
-            int rotateHash = Animator.StringToHash(rotate.ToString());
-            _player.Animator.SetBool(_animationHash, true);
-            _player.Animator.SetBool(rotateHash, true);
+            _player.Animator.SetFloat(X, x);
+            _player.Animator.SetFloat(Y, y);
         }
 
         public virtual void Exit()
         {
-            int rotateHash = Animator.StringToHash(_rotate.ToString());
-            _player.Animator.SetBool(_animationHash, false);
-            _player.Animator.SetBool(rotateHash, false);
         }
 
         public virtual void StateUpdate()
@@ -46,10 +40,5 @@ namespace _02Script.Player.State
     public enum PlayerState
     {
         Idle, Move, Chat, hold
-    }
-
-    public enum PlayerRotate
-    {
-        Front,Back,Left,Right
     }
 }
