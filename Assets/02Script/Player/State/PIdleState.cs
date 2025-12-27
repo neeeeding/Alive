@@ -16,10 +16,7 @@ namespace _02Script.Player.State
 
         private void Move(Vector2 mousePos)
         {
-            if (mousePos != Vector2.zero)
-            {
-                StateMachine.ChangeState(PlayerState.Move,(int)_player.Animator.GetFloat(X),(int)_player.Animator.GetFloat(Y));
-            }
+            StateMachine.ChangeState(PlayerState.Move,(int)_player.Animator.GetFloat(X),(int)_player.Animator.GetFloat(Y));
         }
 
         public override void Exit()

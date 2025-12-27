@@ -9,6 +9,8 @@ namespace _02Script.Player.State
 
         protected readonly string X = "X";
         protected readonly string Y = "Y";
+        
+        protected readonly string MoveAnimBool = "Move";
 
         public PState(string animation,PStateMachine machine,Player player)
         {
@@ -18,12 +20,15 @@ namespace _02Script.Player.State
 
         public virtual void Enter(int x, int y)
         {
+            _player.Animator.SetBool(MoveAnimBool,false);
+            
             _player.Animator.SetFloat(X, x);
             _player.Animator.SetFloat(Y, y);
         }
 
         public virtual void Exit()
         {
+            _player.Animator.SetBool(MoveAnimBool,false);
         }
 
         public virtual void StateUpdate()

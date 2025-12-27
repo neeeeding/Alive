@@ -30,7 +30,7 @@ namespace _02Script.Farming
             uiObj.SetActive(!uiObj.activeSelf);
         }
 
-        private async void OnEnable()
+        private void OnEnable()
         {
             uiObj.SetActive(false);
         }

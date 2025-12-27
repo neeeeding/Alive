@@ -20,6 +20,7 @@ namespace _02Script.Player
         public void Select()
         {
             OnSelectPlayer?.Invoke(this);
+            print(gameObject.name);
         }
         
         private void Awake()

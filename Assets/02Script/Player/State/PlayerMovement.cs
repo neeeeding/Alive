@@ -59,8 +59,14 @@ namespace _02Script.Player.State
         private void FixedUpdate()
         {
             Vector2 direction = (TargetPos - (Vector2)transform.position);
-            _player.Animator.SetFloat(X, direction.normalized.x);
-            _player.Animator.SetFloat(Y, direction.normalized.y);
+            
+            Vector2 animatorVector = direction;
+            animatorVector = Math.Abs(animatorVector.x) > Math.Abs(animatorVector.y)?
+                new Vector2(animatorVector.x, 0):
+                new Vector2(0, animatorVector.y);
+            
+            _player.Animator.SetFloat(X, animatorVector.normalized.x);
+            _player.Animator.SetFloat(Y, animatorVector.normalized.y);
 
             if (direction.magnitude < 0.1f || !_isMoving) // 너무 가까우면 멈추기
             {

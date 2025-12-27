@@ -4,16 +4,14 @@ namespace _02Script.Player.State
 {
     public class PMoveState : PState
     {
-        private readonly string MoveAnimBool = "Move";
-        
         public PMoveState(string animation, PStateMachine machine, Player player) : base(animation, machine, player)
         {
         }
 
         public override void Enter(int x, int y)
         {
-            _player.Animator.SetBool(MoveAnimBool,true);
             base.Enter(x,y);
+            _player.Animator.SetBool(MoveAnimBool,true);
 
             if (_player.transform.position.x == PlayerMovement.Instance.TargetPos.x && _player.transform.position.y == PlayerMovement.Instance.TargetPos.y)
             {

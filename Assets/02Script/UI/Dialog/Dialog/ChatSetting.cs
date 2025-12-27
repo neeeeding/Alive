@@ -6,7 +6,6 @@ using _02Script.UI.Dialog.Entity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using _02Script.UI.Dialog.Entity;
 
 namespace _02Script.UI.Dialog.Dialog
 {
