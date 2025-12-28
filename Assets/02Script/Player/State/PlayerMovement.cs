@@ -4,12 +4,13 @@ using System.Threading.Tasks;
 using _02Script.Manager;
 using _02Script.UI.Save;
 using _02Script.Etc;
+using _02Script.UI.InGame;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace _02Script.Player.State
 {
-    public class PlayerMovement: Singleton<PlayerMovement>
+    public class PlayerMovement: MonoBehaviour
     {
         public float speed; //속도
         [HideInInspector] public Vector2 TargetPos; //갈 위치
@@ -41,6 +42,7 @@ namespace _02Script.Player.State
 
         private void OnEnable()
         {
+            RunBtn.OnMoveSpeed += SetSpeed;
             _isMoving = false;
             PlayerInput.OnMousePos += MouseMove;
             PlayerInput.OnMovePos += KeyboardMove;
@@ -49,6 +51,7 @@ namespace _02Script.Player.State
 
         private void OnDisable()
         {
+            RunBtn.OnMoveSpeed -= SetSpeed;
             GameManager.OnStart -= StartLoad;
             PlayerInput.OnMousePos -= MouseMove;
             PlayerInput.OnMovePos -= KeyboardMove;
@@ -134,6 +137,11 @@ namespace _02Script.Player.State
                 cts.Cancel();
                 cts.Dispose();
             }
+        }
+
+        private void SetSpeed(float set)
+        {
+            speed = set;
         }
     }
 }

@@ -10,18 +10,19 @@ namespace _02Script.Player.State
 
         public override void Enter(int x, int y)
         {
-            base.Enter(x,y);
             PlayerInput.OnMousePos += Move;
         }
 
         private void Move(Vector2 mousePos)
         {
-            StateMachine.ChangeState(PlayerState.Move,(int)_player.Animator.GetFloat(X),(int)_player.Animator.GetFloat(Y));
+            if (mousePos != Vector2.zero)
+            {
+                StateMachine.ChangeState(PlayerState.Move,(int)_player.Animator.GetFloat(X),(int)_player.Animator.GetFloat(Y));
+            }
         }
 
         public override void Exit()
         {
-            base.Exit();
             PlayerInput.OnMousePos -= Move;
         }
     }

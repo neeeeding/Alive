@@ -59,7 +59,9 @@ namespace _02Script.Player
 
         public void OnMouseMove(InputAction.CallbackContext context)
         {
-            if(context.performed && canInput)
+            if(context.performed && canInput &&
+               Input.mousePosition.x < 1920 && Input.mousePosition.x > 0 &&
+               Input.mousePosition.y < 1080 && Input.mousePosition.y > 0)
                 OnMousePos?.Invoke(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
         

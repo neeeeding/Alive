@@ -12,6 +12,9 @@ namespace _02Script.Player
 
         private Animator animator;
         public Animator Animator => animator;
+        
+        private PlayerMovement playerMovement;
+        public PlayerMovement PlayerMovement => playerMovement;
 
         private PStateMachine stateMachine;
 
@@ -25,6 +28,7 @@ namespace _02Script.Player
         
         private void Awake()
         {
+            playerMovement =  GetComponent<PlayerMovement>();
             animator = GetComponentInChildren<Animator>();
 
             stateMachine = new PStateMachine();
