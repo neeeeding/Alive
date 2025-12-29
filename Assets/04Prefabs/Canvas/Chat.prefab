@@ -991,7 +991,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6717328554091227965}
         m_TargetAssemblyTypeName: ChatBtn, Assembly-CSharp
-        m_MethodName: Likeability
+        m_MethodName: Inventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

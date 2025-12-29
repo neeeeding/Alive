@@ -60,9 +60,9 @@ namespace _02Script.UI.Dialog
             }
         }
 
-        public void Likeability() //호감도 도감
+        public void Inventory() //호감도 도감
         {
-            UISettingManager.Instance.LikeabilityGuide();
+            UISettingManager.Instance.Inventory();
         }
 
         public void LoveBtn() //선호 보기

@@ -43,7 +43,6 @@ namespace _02Script.UI.Likeability
 
         public void Click()
         {
-            UISettingManager.Instance.LiKeItem(dialogEntity);
         }
 
         public void InputText()

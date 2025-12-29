@@ -64,11 +64,6 @@ namespace _02Script.Manager
             GameManager.Instance.PlayerStat.isChat = false;
         }
 
-        public void Coin() //코인 상점
-        {
-            SetBool(UIActiveType.coin,true);
-        }
-
         public void Obj() //상점 혹은 학교 수업 선택
         {
             SetBool(UIActiveType.obj, true);
@@ -81,21 +76,19 @@ namespace _02Script.Manager
             GameManager.Instance.PlayerStat.isChat = true;
         }
 
-        public void Profile() //프로필
+        public void UIDictionary()
         {
-            SetBool(UIActiveType.profile,true);
+            SetBool(UIActiveType.uIDictionary,true);
+        }
+        
+        public void Person()
+        {
+            SetBool(UIActiveType.person,true);
         }
 
-        public void LiKeItem(DialogEntitySO so) //선호 아이템
+        public void Inventory()
         {
-            SetBool(UIActiveType.likeItem, true);
-            SetBool(UIActiveType.likeabilityGuide, true);
-            likeItemManager.Setting(so);
-        }
-
-        public void LikeabilityGuide() //호감도
-        {
-            SetBool(UIActiveType.likeabilityGuide, true);
+            SetBool(UIActiveType.inventory, true);
         }
 
         public void Map() //지도
@@ -129,8 +122,7 @@ namespace _02Script.Manager
             
             foreach (UIActiveType key in uiActiveBool.Keys)
             {
-                if(key == UIActiveType.chat || key == UIActiveType.obj
-                   || key == UIActiveType.coin) continue;
+                if(key == UIActiveType.chat || key == UIActiveType.obj) continue;
 
                 if (uiActiveBool[key])
                 {
@@ -140,7 +132,7 @@ namespace _02Script.Manager
             }
             
             allSetting.SetActive(all);
-            backBtn.SetActive(all || uiActiveBool[UIActiveType.coin] || uiActiveBool[UIActiveType.obj] );
+            backBtn.SetActive(all || uiActiveBool[UIActiveType.obj] );
 
             Time.timeScale = 0f;
         }
@@ -186,10 +178,9 @@ namespace _02Script.Manager
     {
         chat = 0, // !isInGame
         obj,
-        coin,
-        profile,
-        likeItem,
-        likeabilityGuide,
+        uIDictionary,
+        inventory,
+        person,
         map,
         setting,
         save,
