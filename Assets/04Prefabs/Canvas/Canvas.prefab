@@ -2310,6 +2310,18 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8045512976913487747, guid: 00bf453237459ff4592cf2f0b2d2408b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045512976913487747, guid: 00bf453237459ff4592cf2f0b2d2408b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045512976913487747, guid: 00bf453237459ff4592cf2f0b2d2408b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8137710317560337521, guid: 00bf453237459ff4592cf2f0b2d2408b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -4006,7 +4018,7 @@ PrefabInstance:
       objectReference: {fileID: 5483009241783977328}
     - target: {fileID: 748482326162765548, guid: d0ec171125ff9a84b86f8632d8e7d3bf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LikeabilityGuide
+      value: Person
       objectReference: {fileID: 0}
     - target: {fileID: 748482326162765548, guid: d0ec171125ff9a84b86f8632d8e7d3bf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

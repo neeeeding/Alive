@@ -21,11 +21,11 @@ namespace _02Script.UI.Dormitory
 
             if (hour > roleHour)
             {
-                print($"지금 {hour}시가 넘었는데 이제야 오는거야?!");
+                //print($"지금 {hour}시가 넘었는데 이제야 오는거야?!");
             }
             else
             {
-                print("좋아, 제 시간에 맞춰 왔네.");
+                //print("좋아, 제 시간에 맞춰 왔네.");
             }
         }
     }

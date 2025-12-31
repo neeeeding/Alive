@@ -34,7 +34,7 @@ namespace _02Script.Player
         
         void Update()
         {
-            if (!canInput) return;
+            //if (!canInput) return;
 
             if (moveValue != Vector2.zero)
             {
@@ -44,7 +44,6 @@ namespace _02Script.Player
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            if (canInput)
                 moveValue = context.ReadValue<Vector2>();
         }
 

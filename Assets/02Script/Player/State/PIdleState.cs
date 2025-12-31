@@ -11,6 +11,7 @@ namespace _02Script.Player.State
         public override void Enter(int x, int y)
         {
             PlayerInput.OnMousePos += Move;
+            PlayerInput.OnMovePos += Move;
         }
 
         private void Move(Vector2 mousePos)
@@ -24,6 +25,7 @@ namespace _02Script.Player.State
         public override void Exit()
         {
             PlayerInput.OnMousePos -= Move;
+            PlayerInput.OnMovePos -= Move;
         }
     }
 }
