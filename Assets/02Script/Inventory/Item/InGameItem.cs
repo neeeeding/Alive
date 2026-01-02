@@ -5,7 +5,6 @@ namespace _02Script.Inventory.Item
     //max 넘으면 아이템 더 못 얻기, f로 아이템 얻기(UI 뜨기?)
     public class InGameItem : GetItem
     {
-        
         [Header("Setting")]
         [SerializeField] private ItemDataSO itemData;
         [SerializeField] private float radius;

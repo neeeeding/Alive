@@ -32,7 +32,7 @@ namespace _02Script.Player
         public int hour;
         public int minute;
 
-        public SaveDictionary<ItemCategory, SaveDictionary<ItemType, int>> items; //아이템들 카테고리<종류,수>
+        public SaveDictionary<ItemType, int> items; //아이템들 카테고리<종류,수>
         
         [ContextMenu("ResetStat")]
         public void ResetStat()
@@ -80,28 +80,15 @@ namespace _02Script.Player
         
         public void ResetItem() //스탯의 아이템 전부 초기화
         {
-            items = new SaveDictionary<ItemCategory, SaveDictionary<ItemType, int>>();
+            items = new SaveDictionary<ItemType, int>();
             items.Clear();
 
-            int num;
-
-            foreach (ItemCategory category in Enum.GetValues(typeof(ItemCategory))) //카테고리 저장
+            foreach (ItemType type in Enum.GetValues(typeof(ItemType)))
             {
-                if (category == ItemCategory.none)
+                if (type != ItemType.none)
                     continue;
 
-                num = (int)category / 1000;
-                SaveDictionary<ItemType, int> item = new SaveDictionary<ItemType, int>(); //아이템
-
-                foreach (ItemType type in Enum.GetValues(typeof(ItemType))) //해당 카테고리와 앞 자리 같은 종료를 저장
-                {
-                    if (num != (int)type / 1000) //앞자리 비교
-                        continue;
-
-                    item.Add(type, 0); //0으로 초기화
-                }
-
-                items.Add(category, item); //저장
+                items.Add(type, 0); //0으로 초기화
             }
         }
     }

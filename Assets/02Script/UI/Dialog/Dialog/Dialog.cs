@@ -151,7 +151,7 @@ namespace _02Script.UI.Dialog.Dialog
                         so.itemType.ToString()) //대화의 아이템 창과 들고 있는 아이템 찾기
                     {
                         currentChapter = int.Parse(dialog[i][DialogType.Chapter.ToString()]);
-                        GameManager.Instance.AddItemCount(so.category, so.itemType, -1); //아이템 빼기
+                        GameManager.Instance.AddItemCount(so.itemType, -1); //아이템 빼기
                         break;
                     }
                 }

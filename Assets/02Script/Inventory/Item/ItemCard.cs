@@ -38,7 +38,7 @@ namespace _02Script.Inventory.Item
             
             countUI.text = count.ToString();
 
-            if (itemData.ReturnData().itemType == ItemType.Book)
+            if (itemData.ReturnData().itemType == )
             {
                 countUI.gameObject.SetActive(false);
             }

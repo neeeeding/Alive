@@ -46,8 +46,8 @@ namespace _02Script.Item
             realItem = item;
             HideItem();
 
-            countItme = GameManager.Instance.PlayerStat.items[mySO.category][mySO.itemType]; //개수 넣기
-            getItem = countItme <= 0 ? false : true; // 0 미만인지
+            countItme = GameManager.Instance.PlayerStat.items[mySO.itemType]; //개수 넣기
+            getItem = countItme > 0; // 0 미만인지
             ShowCount();
             if (!getItem)
             {
@@ -121,8 +121,8 @@ namespace _02Script.Item
         {
             if (currentSO == so)
             {
-                GameManager.Instance.AddItemCount(so.category, so.itemType, -1);
-                countItme = GameManager.Instance.PlayerStat.items[currentSO.category][currentSO.itemType];
+                GameManager.Instance.AddItemCount(so.itemType, -1);
+                countItme = GameManager.Instance.PlayerStat.items[currentSO.itemType];
 
                 if (countItme < 1)
                 {
@@ -139,8 +139,8 @@ namespace _02Script.Item
         {
             if (currentSO == so)
             {
-                GameManager.Instance.AddItemCount(so.category, so.itemType, 1);
-                countItme = GameManager.Instance.PlayerStat.items[currentSO.category][currentSO.itemType];
+                GameManager.Instance.AddItemCount(so.itemType, 1);
+                countItme = GameManager.Instance.PlayerStat.items[currentSO.itemType];
                 getItem = true;
 
                 ShowCount();
