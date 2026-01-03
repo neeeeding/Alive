@@ -10,9 +10,9 @@ namespace _02Script.Item
 {
     public class ItemCard : MonoBehaviour
     {
-        public static Action<ItemSO> OnHoldItem; //들고 있는 아이템 전해주기
+        public static Action<ItemDataSO> OnHoldItem; //들고 있는 아이템 전해주기
 
-        [SerializeField] private ItemSO so; //아이템 정보
+        [SerializeField] private ItemDataSO dataSo; //아이템 정보
 
         [SerializeField] private int countItme; //아이템 소지 개수
 
@@ -40,13 +40,13 @@ namespace _02Script.Item
             Dialog.OnGame += HideItem;
         }
 
-        public void SetCard(ItemSO mySO, ItemHold item) //카드 정보 정해주기 (세팅 로드)
+        public void SetCard(ItemDataSO myDataSo, ItemHold item) //카드 정보 정해주기 (세팅 로드)
         {
-            so = mySO;
+            dataSo = myDataSo;
             realItem = item;
             HideItem();
 
-            countItme = GameManager.Instance.PlayerStat.items[mySO.itemType]; //개수 넣기
+            countItme = GameManager.Instance.PlayerStat.items[myDataSo.itemType]; //개수 넣기
             getItem = countItme > 0; // 0 미만인지
             ShowCount();
             if (!getItem)
@@ -75,8 +75,8 @@ namespace _02Script.Item
             currentUseItem = this;
 
             realItem.gameObject.SetActive(true);
-            realItem.Setting(so, this);
-            OnHoldItem?.Invoke(so);
+            realItem.Setting(dataSo, this);
+            OnHoldItem?.Invoke(dataSo);
         }
 
         public void HideItem() //아이템 비활성화
@@ -91,11 +91,11 @@ namespace _02Script.Item
             OnHoldItem?.Invoke(null);
         }
 
-        public bool HaveItem(ItemSO currentSO, bool b) //이미 얻은 아이템 인지
+        public bool HaveItem(ItemDataSO currentDataSo, bool b) //이미 얻은 아이템 인지
         {
-            GetItem(currentSO);
+            GetItem(currentDataSo);
             if (b)
-                UseItme(currentSO);
+                UseItme(currentDataSo);
             return getItem;
         }
 
@@ -117,12 +117,12 @@ namespace _02Script.Item
             }
         }
 
-        private void UseItme(ItemSO currentSO) //아이템을 사용함 (잃음)
+        private void UseItme(ItemDataSO currentDataSo) //아이템을 사용함 (잃음)
         {
-            if (currentSO == so)
+            if (currentDataSo == dataSo)
             {
-                GameManager.Instance.AddItemCount(so.itemType, -1);
-                countItme = GameManager.Instance.PlayerStat.items[currentSO.itemType];
+                GameManager.Instance.AddItemCount(dataSo.itemType, -1);
+                countItme = GameManager.Instance.PlayerStat.items[currentDataSo.itemType];
 
                 if (countItme < 1)
                 {
@@ -135,12 +135,12 @@ namespace _02Script.Item
             }
         }
 
-        private void GetItem(ItemSO currentSO) //아이템을 얻음
+        private void GetItem(ItemDataSO currentDataSo) //아이템을 얻음
         {
-            if (currentSO == so)
+            if (currentDataSo == dataSo)
             {
-                GameManager.Instance.AddItemCount(so.itemType, 1);
-                countItme = GameManager.Instance.PlayerStat.items[currentSO.itemType];
+                GameManager.Instance.AddItemCount(dataSo.itemType, 1);
+                countItme = GameManager.Instance.PlayerStat.items[currentDataSo.itemType];
                 getItem = true;
 
                 ShowCount();

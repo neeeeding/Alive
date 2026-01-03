@@ -5,12 +5,12 @@ namespace _02Script.Item
 {
     public class ItemHold : MonoBehaviour
     {
-        private ItemSO so;
+        private ItemDataSO dataSo;
         private ItemCard card;
     
-        public void Setting(ItemSO currentSO, ItemCard currentCard)
+        public void Setting(ItemDataSO currentDataSo, ItemCard currentCard)
         {
-            so = currentSO;
+            dataSo = currentDataSo;
             card = currentCard;
         }
 

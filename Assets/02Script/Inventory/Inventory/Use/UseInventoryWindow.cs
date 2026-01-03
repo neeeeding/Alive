@@ -1,7 +1,9 @@
 using _02Script.Inventory.Item;
+using _02Script.Item;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using ItemCard = _02Script.Inventory.Item.ItemCard;
 
 namespace _02Script.Inventory.Inventory.Use
 {
@@ -9,8 +11,8 @@ namespace _02Script.Inventory.Inventory.Use
     {
         //사용 창
         [SerializeField] private UseWindow useWindow;
-        [SerializeField] private Image itemImage;
         [SerializeField] private TextMeshProUGUI itemName;
+        [SerializeField] private TextMeshProUGUI maxCount;
 
         public void Hide()
         {
@@ -31,15 +33,14 @@ namespace _02Script.Inventory.Inventory.Use
 
         private void Show(ItemCard card,RectTransform cardPos)
         {
-            useWindow.gameObject.SetActive(false);
             useWindow.gameObject.SetActive(true);
             
             useWindow.SetData(card);
 
-            ItemData data = card.ReturnData();
+            ItemDataSO data = card.ReturnData().ReturnDataSO();
+            itemName.text = data.itemName;
             
-            itemImage.sprite = data.ReturnData().itemImage;
-            itemName.text = data.ReturnData().itemName;
+            maxCount.text =  data.maxCount.ToString();
             
             WindowPos(cardPos);
         }
@@ -50,7 +51,6 @@ namespace _02Script.Inventory.Inventory.Use
             //음 양
             useWindow.gameObject.GetComponent<RectTransform>().position = cardPos.position +
                                                                           (Vector3.up * cardPos.sizeDelta.y * (addY >= 1000 ? -1 : 1));
-            
         }
     }
 }

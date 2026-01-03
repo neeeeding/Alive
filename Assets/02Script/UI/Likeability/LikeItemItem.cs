@@ -8,13 +8,13 @@ namespace _02Script.UI.Likeability
     public class LikeItemItem : MonoBehaviour
     {
         [SerializeField] private DialogEntitySO loveDialogEntity; //아이템 종류
-        [SerializeField] private ItemSO loveItem; //아이템 종류
+        [SerializeField] private ItemDataSO loveItemData; //아이템 종류
 
         private string savePath; //저장 경로
         private Image itemImage; //아이템 이미지
         private int colorCount; //(클릭) 단계
 
-        public void SettingItem(DialogEntitySO dialogEntitySo, ItemSO itemSO) //아이템 세팅 (누구인지, 어떤 아이템인지)
+        public void SettingItem(DialogEntitySO dialogEntitySo, ItemDataSO itemDataSo) //아이템 세팅 (누구인지, 어떤 아이템인지)
         {
             if (itemImage == null)
             {
@@ -22,9 +22,9 @@ namespace _02Script.UI.Likeability
             }
 
             loveDialogEntity = dialogEntitySo;
-            loveItem = itemSO;
+            loveItemData = itemDataSo;
             //itemImage.sprite = loveItem.itemImage;
-            savePath = $"{loveDialogEntity}_{loveItem.itemType}likeItem";
+            savePath = $"{loveDialogEntity}_{loveItemData.itemType}likeItem";
             colorCount = PlayerPrefs.GetInt(savePath) - 1; //더해주니까.
             ChangeColorLove();
         }

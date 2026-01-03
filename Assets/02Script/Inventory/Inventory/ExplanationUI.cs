@@ -1,4 +1,5 @@
 using _02Script.Inventory.Item;
+using _02Script.Item;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace _02Script.Inventory.Inventory
         [SerializeField] private GameObject side;
         [SerializeField] private Image itemImage;
         [SerializeField] private TextMeshProUGUI itemName;
+        [SerializeField] private TextMeshProUGUI itemCount;
         [SerializeField] private TextMeshProUGUI itemExplanation;
 
         #region EnDi
@@ -32,6 +34,7 @@ namespace _02Script.Inventory.Inventory
             if (item == null) {HideSide(); return; }
             
             SetExplanation(item);
+            itemCount.text = $"{count} / {item.maxCount}";
         }
 
         private void SetExplanation(ItemDataSO item)
@@ -47,6 +50,7 @@ namespace _02Script.Inventory.Inventory
             side.SetActive(false);
             itemImage.sprite = null;
             itemName.text = "";
+            itemCount.text = "";
             itemExplanation.text = "";
         }
     }

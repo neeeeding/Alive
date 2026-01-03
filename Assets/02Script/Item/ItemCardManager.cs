@@ -7,11 +7,11 @@ namespace _02Script.Item
 {
     public class ItemCardManager : MonoBehaviour
     {
-        [SerializeField] private ItemSO[] itemSOs; //들기가 가능한 아이템
+        [SerializeField] private ItemDataSO[] itemSOs; //들기가 가능한 아이템
         [SerializeField] private GameObject itemCard; //아이템 카드
         [SerializeField] private ItemHold item; //아이템
 
-        private static List<ItemSO> items = new List<ItemSO>(); //비활성화 하는 애 때문에
+        private static List<ItemDataSO> items = new List<ItemDataSO>(); //비활성화 하는 애 때문에
         private bool isSetting; //세팅 여부
 
         private void Awake()
@@ -57,25 +57,25 @@ namespace _02Script.Item
         {
             for(int i = 0; i< itemSOs.Length; i++)
             {
-                ItemSO so = items[i];
-                ActionItemActive(so,true);
+                ItemDataSO dataSo = items[i];
+                ActionItemActive(dataSo,true);
 
             }
         }
 
-        private void GetItem(ItemSO so) //얻은 아이템
+        private void GetItem(ItemDataSO dataSo) //얻은 아이템
         {
-            ActionItemActive(so, false);
+            ActionItemActive(dataSo, false);
         }
 
-        private void ActionItemActive(ItemSO so, bool b)
+        private void ActionItemActive(ItemDataSO dataSo, bool b)
         {
 
             foreach (Transform card in gameObject.transform)
             {
                 if (card.TryGetComponent(out ItemCard cardSc))
                 {
-                    card.gameObject.SetActive(cardSc.HaveItem(so,b)); //얻은 아이템에 따라 카드 활성화
+                    card.gameObject.SetActive(cardSc.HaveItem(dataSo,b)); //얻은 아이템에 따라 카드 활성화
                 }
             }
         }

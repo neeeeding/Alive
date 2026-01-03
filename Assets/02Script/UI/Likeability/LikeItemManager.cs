@@ -7,7 +7,7 @@ namespace _02Script.UI.Likeability
 {
     public class LikeItemManager : MonoBehaviour
     {
-        [Header("Items")] [SerializeField] private ItemSO[] loveItems; //만들어줘야 할 아이템들
+        [Header("Items")] [SerializeField] private ItemDataSO[] loveItems; //만들어줘야 할 아이템들
 
         [Space(30f)] [Header("Prefabs Need")] [SerializeField]
         private GameObject Item; //오브젝트

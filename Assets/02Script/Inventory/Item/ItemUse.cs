@@ -29,8 +29,8 @@ namespace _02Script.Inventory.Item
 
         private void FindType()
         {
-            itemType = cardData.ReturnData().ReturnData().itemType;
-            isItem = cardData.ReturnData().ReturnData().isItem;
+            itemType = cardData.ReturnData().ReturnDataSO().itemType;
+            isItem = cardData.ReturnData().ReturnDataSO().isItem;
         }
     }
 }

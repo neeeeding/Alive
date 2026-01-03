@@ -26,7 +26,7 @@ namespace _02Script.Manager
         public GameSaveData saveData; //기기에서만 저장 되는 것들 (ex: 저장 안한 진행사항)
         public PlayerStatSC PlayerStat; //플레이어 정보
         public Player.Player Player; //플레이어 (state 조정 해줌(?))
-        [Space(20f)] public ItemSO Item; //들고 있는 아이템?
+        [Space(20f)] public ItemDataSO itemData; //들고 있는 아이템?
         public ItemHold itemPos; //플레이어가 들고 있을 아이템 위치
         [Space(10f)] public bool isStart;
 
@@ -67,7 +67,7 @@ namespace _02Script.Manager
 
             //Player = gameObject.GetComponent<Player>();
             
-            ItemCard.OnHoldItem += hold => Item = hold;
+            ItemCard.OnHoldItem += hold => itemData = hold;
 
             DontDestroyOnLoad(gameObject); //삭제 되지 말라고
 

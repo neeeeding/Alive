@@ -141,17 +141,17 @@ namespace _02Script.UI.Dialog.Dialog
 
         private void IsHoldItem() //들고 있는 아이템 있다면 (챕터 번호)
         {
-            ItemSO so = GameManager.Instance.Item;
-            if (so != null)
+            ItemDataSO dataSo = GameManager.Instance.itemData;
+            if (dataSo != null)
             {
                 holdItem = true;
                 for (int i = 0; i < dialog.Count - 1; i++)
                 {
                     if (dialog[i][DialogType.Item.ToString()].ToString() ==
-                        so.itemType.ToString()) //대화의 아이템 창과 들고 있는 아이템 찾기
+                        dataSo.itemType.ToString()) //대화의 아이템 창과 들고 있는 아이템 찾기
                     {
                         currentChapter = int.Parse(dialog[i][DialogType.Chapter.ToString()]);
-                        GameManager.Instance.AddItemCount(so.itemType, -1); //아이템 빼기
+                        GameManager.Instance.AddItemCount(dataSo.itemType, -1); //아이템 빼기
                         break;
                     }
                 }

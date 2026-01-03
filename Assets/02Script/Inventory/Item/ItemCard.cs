@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +20,7 @@ namespace _02Script.Inventory.Item
         public virtual void NewCard(ItemData itemData)
         {
             this.itemData = itemData;
-            cardImage.sprite = this.itemData.ReturnData().itemImage;
+            cardImage.sprite = this.itemData.ReturnDataSO().itemImage;
         }
 
         protected virtual void OnEnable()
@@ -38,7 +37,7 @@ namespace _02Script.Inventory.Item
             
             countUI.text = count.ToString();
 
-            if (itemData.ReturnData().itemType == )
+            if (itemData.ReturnDataSO().itemType == )
             {
                 countUI.gameObject.SetActive(false);
             }

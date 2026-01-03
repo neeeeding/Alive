@@ -1,4 +1,5 @@
 using System;
+using _02Script.Item;
 using UnityEngine;
 using DG.Tweening;
 
@@ -27,7 +28,7 @@ namespace _02Script.Inventory.Item
         public void MouseEnter()
         {
             gameObject.transform.DOScale(Vector3.one * 1.15f, delay).SetEase(Ease.InOutBack).SetUpdate(true);
-            OnMouseCursor?.Invoke(itemData.ReturnData(), itemData.ItemCount());
+            OnMouseCursor?.Invoke(itemData.ReturnDataSO(), itemData.ItemCount());
         }        
         public void MouseExit()
         {
