@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using _02Script.Inventory.Item;
+using AYellowpaper.SerializedCollections;
 using UnityEngine;
 
 namespace _02Script.Inventory.Inventory
@@ -7,25 +8,24 @@ namespace _02Script.Inventory.Inventory
     public class InventoryManager : MonoBehaviour
     {
         [Header("Need")]
-        [SerializeField] protected ItemCard cardPrefab;
-        [SerializeField] protected Transform itemCardParent;
-        [SerializeField] protected Transform etcCardParent;
+        [SerializeField] private ItemCard cardPrefab;
+        [SerializeField] SerializedDictionary<ItemCategory, Transform> itemInventory;
         
-        protected Dictionary<ItemDataSO, ItemData> _itemDatas = new Dictionary<ItemDataSO, ItemData>();
-        protected Dictionary<ItemData, ItemCard> _itemCards = new Dictionary<ItemData, ItemCard>();
+        private Dictionary<ItemDataSO, ItemData> _itemDatas = new Dictionary<ItemDataSO, ItemData>();
+        private Dictionary<ItemData, ItemCard> _itemCards = new Dictionary<ItemData, ItemCard>();
 
         #region EnDi
-        protected virtual void OnEnable()
+        private void OnEnable()
         {
             InGameItem.OnGetItem += GetItem;
         }
 
-        protected virtual void OnDisable()
+        private void OnDisable()
         {
             InGameItem.OnGetItem -= GetItem;
         }
         #endregion
-        public virtual void AddItem(ItemDataSO item, int count = 1)
+        public void AddItem(ItemDataSO item, int count = 1)
         {
             if (!_itemDatas.ContainsKey(item))
             {
@@ -37,24 +37,34 @@ namespace _02Script.Inventory.Inventory
             _itemCards[data].UpdateCountUI();
         }
 
-        public virtual void UseItem(ItemDataSO item, int count = 1)
+        public void UseItem(ItemDataSO item, int count = 1)
+        {
+            Use(item, false, count);
+        }
+
+        public void ThrowItem(ItemDataSO item, int count = 1)
+        {
+            Use(item, true, count);
+        }
+
+        private void Use(ItemDataSO item, bool isThrow,int count = 1)
         {
             if (_itemDatas.ContainsKey(item))
             {
                 ItemData data = _itemDatas[item];
-                data.UseItem(count);
+                data.UseItem(count, isThrow);
                 _itemCards[data].UpdateCountUI();
             }
         }
 
-        protected virtual void NewCard(ItemDataSO item)
+        private void NewCard(ItemDataSO item)
         {
             //data 새 생성
             ItemData itemData = new ItemData();
             itemData.NewItem(item);
             _itemDatas.Add(item, itemData);
             
-            Transform parent = item.isItem? itemCardParent : etcCardParent;
+            Transform parent = itemInventory[item.category];
             
             //카드 새 생성
             ItemCard newCard = Instantiate(cardPrefab, parent);
@@ -64,7 +74,7 @@ namespace _02Script.Inventory.Inventory
             _itemCards.Add(itemData, newCard);
         }
 
-        protected virtual void GetItem(ItemDataSO item)
+        private void GetItem(ItemDataSO item)
         {
             AddItem(item);
         }

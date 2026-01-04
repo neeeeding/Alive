@@ -1,3 +1,5 @@
+using _02Script.Inventory.Item;
+using AYellowpaper.SerializedCollections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,18 +7,15 @@ namespace _02Script.Inventory.Inventory
 {
     public class InventorySelectUI : MonoBehaviour
     {
-        /**처음 설정 용*/
-        [Header("Setting")]
-        [SerializeField]private bool isItem = true;
-        [Header("Need")]
         [SerializeField] private ScrollRect scroll;
-        [SerializeField] private GameObject itemInventory;
-        [SerializeField] private GameObject etcInventory;
+        [SerializeField] SerializedDictionary<ItemCategory, Transform> itemInventory;
 
+        private ItemCategory category;
+        
         private void OnEnable()
         {
-            Select(isItem);
             Time.timeScale = 0;
+            category = (ItemCategory)1;
         }
 
         private void OnDisable()
@@ -24,24 +23,21 @@ namespace _02Script.Inventory.Inventory
             Time.timeScale = 1;
         }
 
-        public void ItemSelect()
+        public void CategoryBtn(int i)
         {
-            Select(true);
+            category = (ItemCategory)i;
+            Select();
         }
 
-        public void EtcSelect()
+        private void Select()
         {
-            Select(false);
-        }
-
-        /**true : 아이템 / false : 부산물*/
-        private void Select(bool select)
-        {
-            itemInventory.SetActive(select);
-            etcInventory.SetActive(!select);
+            foreach (var item in itemInventory.Values)
+            {
+                item.gameObject.SetActive(false);
+            }
+            itemInventory[category].gameObject.SetActive(true);
             
-            RectTransform rectT = select? itemInventory.GetComponent<RectTransform>() : 
-                etcInventory.GetComponent<RectTransform>();
+            RectTransform rectT = itemInventory[category].GetComponent<RectTransform>();
             
             scroll.content = rectT;
             rectT.anchoredPosition = new  Vector2(rectT.anchoredPosition.x, 0); //맨 위

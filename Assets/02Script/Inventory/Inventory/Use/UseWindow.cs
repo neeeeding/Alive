@@ -8,6 +8,7 @@ namespace _02Script.Inventory.Inventory.Use
 {
     public class UseWindow  : MonoBehaviour
     {
+        [SerializeField] private InventoryManager inventoryManager;
         [SerializeField] private ItemCard card;
         [SerializeField] private InputField countInputField;
         
@@ -38,15 +39,15 @@ namespace _02Script.Inventory.Inventory.Use
 
         public void UseData()
         {
-            card.ReturnData().UseItem(int.Parse(countInputField.text));
-            card.UpdateCountUI();
+            inventoryManager.UseItem(card.ReturnData().ReturnDataSO(),int.Parse(countInputField.text));
+            
             gameObject.SetActive(false);
         }
         
         public void ThrowData()
         {
-            card.ReturnData().ThrowItem(int.Parse(countInputField.text));
-            card.UpdateCountUI();
+            inventoryManager.ThrowItem(card.ReturnData().ReturnDataSO(),int.Parse(countInputField.text));
+            
             gameObject.SetActive(false);
         }
     }

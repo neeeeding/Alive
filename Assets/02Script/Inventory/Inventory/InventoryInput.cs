@@ -6,7 +6,7 @@ namespace _02Script.Inventory.Inventory
 {
     public class InventoryInput : MonoBehaviour, Controls.IInventoryActions
     {
-        public event Action OnTab;
+        public event Action OnIBtn;
         
         private Controls _controls;
         
@@ -29,7 +29,7 @@ namespace _02Script.Inventory.Inventory
         {
             if (context.performed)
             {
-                OnTab?.Invoke();
+                OnIBtn?.Invoke();
             }
         }
     }

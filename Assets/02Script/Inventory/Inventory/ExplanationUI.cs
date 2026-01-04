@@ -11,6 +11,7 @@ namespace _02Script.Inventory.Inventory
     {
         [Header("Need")]
         [SerializeField] private GameObject side;
+        
         [SerializeField] private Image itemImage;
         [SerializeField] private TextMeshProUGUI itemName;
         [SerializeField] private TextMeshProUGUI itemCount;

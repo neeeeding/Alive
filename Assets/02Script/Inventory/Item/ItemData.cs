@@ -25,22 +25,14 @@ namespace _02Script.Inventory.Item
             _itemCount = 0;
         }
 
-        public void UseItem(int use = 1, bool isMixture = false)
+        public void UseItem(int use = 1, bool isThrow = false)
         {
-            if (!isMixture) //나중에 오류 처리 해줄 것.
+            if (!isThrow && !_itemBaseData.DoSomething())
             {
                 WarringManager.Warring.ShowWarring("인벤토리에서 사용할 수 있는 아이템이 아닙니다.");
                 return;
             }
             
-            _itemCount-=use;
-            if (_itemCount <= 0)
-            {
-                _itemCount = 0;
-            }
-        }
-        public void ThrowItem(int use = 1)
-        {
             _itemCount-=use;
             if (_itemCount <= 0)
             {

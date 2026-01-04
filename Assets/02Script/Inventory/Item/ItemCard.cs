@@ -35,13 +35,9 @@ namespace _02Script.Inventory.Item
             
             int count = itemData.ItemCount();
             
-            countUI.text = count.ToString();
-
-            if (itemData.ReturnDataSO().itemType == )
-            {
-                countUI.gameObject.SetActive(false);
-            }
-            else if (count <= 0)
+            countUI.text = count.ToString(); 
+            
+            if (count <= 0)
             {
                 gameObject.SetActive(false);
             }

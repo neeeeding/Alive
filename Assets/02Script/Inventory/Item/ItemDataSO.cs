@@ -14,6 +14,11 @@ namespace _02Script.Inventory.Item
 
         public string itemName;
         public string itemExplanation;
+        
+        public virtual bool DoSomething() //보통은 그냥 사용 못하게
+        {
+            return false;
+        }
     }
 
     public enum ItemCategory //카테고리

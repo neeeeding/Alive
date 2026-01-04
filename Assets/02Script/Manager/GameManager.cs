@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using _02Script.Etc;
+using _02Script.Inventory.Item;
 using _02Script.Item;
 using _02Script.UI.Dialog.Entity;
 using _02Script.Player;
@@ -8,6 +9,7 @@ using _02Script.UI.Dialog;
 using _02Script.UI.Dialog.Dialog;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using ItemCard = _02Script.Item.ItemCard;
 
 namespace _02Script.Manager
 {

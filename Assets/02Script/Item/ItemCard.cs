@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using _02Script.Inventory.Item;
 using _02Script.Manager;
 using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Save;

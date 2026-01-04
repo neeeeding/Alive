@@ -1,6 +1,6 @@
 using System;
-using _02Script.Item;
 using _02Script.Etc;
+using _02Script.Inventory.Item;
 using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Dialog.Entity;
 using UnityEngine;

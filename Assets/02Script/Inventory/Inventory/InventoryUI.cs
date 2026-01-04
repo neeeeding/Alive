@@ -11,16 +11,16 @@ namespace _02Script.Inventory.Inventory
         #region EnDi
         private void OnEnable()
         {
-            input.OnTab += Inventory;
+            input.OnIBtn += Inventory;
             inventory.SetActive(false);
         }
         private void OnDisable()
         {
-            input.OnTab -= Inventory;
+            input.OnIBtn -= Inventory;
         }
         #endregion
 
-        private void Inventory()
+        public void Inventory()
         {
             inventory.SetActive(!inventory.activeSelf);
         }
