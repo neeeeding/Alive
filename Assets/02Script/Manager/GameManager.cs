@@ -2,14 +2,11 @@ using System;
 using System.Collections;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
-using _02Script.Item;
 using _02Script.UI.Dialog.Entity;
 using _02Script.Player;
-using _02Script.UI.Dialog;
 using _02Script.UI.Dialog.Dialog;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using ItemCard = _02Script.Item.ItemCard;
 
 namespace _02Script.Manager
 {
@@ -28,9 +25,10 @@ namespace _02Script.Manager
         public GameSaveData saveData; //기기에서만 저장 되는 것들 (ex: 저장 안한 진행사항)
         public PlayerStatSC PlayerStat; //플레이어 정보
         public Player.Player Player; //플레이어 (state 조정 해줌(?))
-        [Space(20f)] public ItemDataSO itemData; //들고 있는 아이템?
+        
         public ItemHold itemPos; //플레이어가 들고 있을 아이템 위치
         [Space(10f)] public bool isStart;
+        public ItemDataSO holdItemData;
 
         [ContextMenu("ResetAll")]
         public void ResetDate() //초기화 하기
@@ -68,8 +66,6 @@ namespace _02Script.Manager
             PlayerStat = data.stat; //로드
 
             //Player = gameObject.GetComponent<Player>();
-            
-            ItemCard.OnHoldItem += hold => itemData = hold;
 
             DontDestroyOnLoad(gameObject); //삭제 되지 말라고
 

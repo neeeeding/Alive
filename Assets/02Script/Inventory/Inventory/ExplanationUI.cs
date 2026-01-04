@@ -1,5 +1,4 @@
 using _02Script.Inventory.Item;
-using _02Script.Item;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;

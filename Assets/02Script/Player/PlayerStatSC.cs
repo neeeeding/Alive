@@ -14,8 +14,6 @@ namespace _02Script.Player
 
         public bool isChat; //ture : 채팅 중, false : 인 게임
 
-        public int playerCoin; //소지금
-
         public Vector2 playerPosition; //플레이어 위치
 
         [Space(50f)]
@@ -39,8 +37,7 @@ namespace _02Script.Player
         {
             sceneName = "JustTest";
             isChat = false;
-
-            playerCoin = 5;
+            
             playerPosition = new Vector2(0, 0);
 
             lastText = "마지막 대화가 없습니다.";

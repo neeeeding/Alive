@@ -1,5 +1,4 @@
 using System;
-using _02Script.Item;
 using UnityEngine;
 using DG.Tweening;
 
@@ -40,6 +39,7 @@ namespace _02Script.Inventory.Item
         public void SelectCard()
         {
             OnMouseClick?.Invoke(this,rT);
+            //클릭 그 표시나게
         }
         #endregion
     }

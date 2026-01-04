@@ -15,8 +15,14 @@ namespace _02Script.Inventory.Item
         public string itemName;
         public string itemExplanation;
         
-        public virtual bool DoSomething() //보통은 그냥 사용 못하게
+        public bool DoSomething() //보통은 그냥 사용 못하게
         {
+            switch (category)
+            {
+                case ItemCategory.food :
+                    // 먹을 상대 정하기
+                    return true;
+            }
             return false;
         }
     }

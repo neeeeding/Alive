@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using _02Script.Inventory.Item;
+using _02Script.Manager;
+using _02Script.UI.Save;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
+using ItemCard = _02Script.Inventory.Item.ItemCard;
 
 namespace _02Script.Inventory.Inventory
 {
@@ -10,44 +13,59 @@ namespace _02Script.Inventory.Inventory
         [Header("Need")]
         [SerializeField] private ItemCard cardPrefab;
         [SerializeField] SerializedDictionary<ItemCategory, Transform> itemInventory;
+        [SerializeField] SerializedDictionary<ItemType, ItemDataSO> allDataSO;
         
         private Dictionary<ItemDataSO, ItemData> _itemDatas = new Dictionary<ItemDataSO, ItemData>();
         private Dictionary<ItemData, ItemCard> _itemCards = new Dictionary<ItemData, ItemCard>();
+        
+        //hold에 대해
+        private ItemHold realItem; //들리게 될 아이템(위치)
 
         #region EnDi
         private void OnEnable()
         {
             InGameItem.OnGetItem += GetItem;
+            LoadCard.OnLoad += LoadItem;
+            
+            if(GameManager.Instance.isStart)
+            {
+                LoadItem();
+            }
         }
 
         private void OnDisable()
         {
             InGameItem.OnGetItem -= GetItem;
+            LoadCard.OnLoad -= LoadItem;
         }
         #endregion
-        public void AddItem(ItemDataSO item, int count = 1)
+
+        private void LoadItem() //불러오기
         {
-            if (!_itemDatas.ContainsKey(item))
+            Dictionary<ItemType, int> save = GameManager.Instance.PlayerStat.items.ToDictionary();
+
+            foreach (KeyValuePair<ItemType, int> item in save)
             {
-                NewCard(item);
+                AddItem(allDataSO[item.Key], item.Value);
             }
-
-            ItemData data = _itemDatas[item];
-            data.GetItem(count);
-            _itemCards[data].UpdateCountUI();
         }
-
-        public void UseItem(ItemDataSO item, int count = 1)
+        
+        public void HoldItem(ItemData item, int count = 1) //들기
         {
-            Use(item, false, count);
+            realItem.Setting(item, count);
         }
 
-        public void ThrowItem(ItemDataSO item, int count = 1)
+        public void UseItem(ItemDataSO item, int count = 1) //사용
         {
-            Use(item, true, count);
+            LessItem(item, false, count);
         }
 
-        private void Use(ItemDataSO item, bool isThrow,int count = 1)
+        public void ThrowItem(ItemDataSO item, int count = 1) //버리기
+        {
+            LessItem(item, true, count);
+        }
+
+        private void LessItem(ItemDataSO item, bool isThrow,int count = 1) //어쨌든 아이템 감소
         {
             if (_itemDatas.ContainsKey(item))
             {
@@ -77,6 +95,17 @@ namespace _02Script.Inventory.Inventory
         private void GetItem(ItemDataSO item)
         {
             AddItem(item);
+        }
+        public void AddItem(ItemDataSO item, int count = 1)
+        {
+            if (!_itemDatas.ContainsKey(item))
+            {
+                NewCard(item);
+            }
+
+            ItemData data = _itemDatas[item];
+            data.GetItem(count);
+            _itemCards[data].UpdateCountUI();
         }
     }
 }

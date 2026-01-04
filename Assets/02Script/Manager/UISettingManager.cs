@@ -25,8 +25,6 @@ namespace _02Script.Manager
         [SerializeField] private GameObject allSetting; //설정들 다 모아둔 어미
 
         [SerializeField]private SerializedDictionary<UIActiveType, GameObject> uiObj = new SerializedDictionary<UIActiveType, GameObject>();
-        
-        [SerializeField] private LikeItemManager likeItemManager; //선호 아이템 매니저
 
         [Space(10)]
         [Header("Select")]

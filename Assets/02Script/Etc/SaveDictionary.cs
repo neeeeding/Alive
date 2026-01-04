@@ -45,9 +45,6 @@ namespace _02Script.Etc
                 vs.Add(kv.Value);
             }
         }
-
-
-
         public void OnBeforeSerialize() //직렬화
         {
             ks.Clear(); //값 초기화
@@ -74,56 +71,4 @@ namespace _02Script.Etc
             set => dictionary[key] = value;
         }
     }
-
-//public class SaveDictionary<K, V> : Dictionary<K, V>, ISerializationCallbackReceiver
-//{
-//    [SerializeField] private List<SaveList<K, V>> _dictionaryList; //저장 되는 본체
-
-//    public SaveDictionary()
-//    {
-//        _dictionaryList = new List<SaveList<K, V>>();
-//    }
-
-
-//    public void OnAfterDeserialize() //직렬화 될 때
-//    {
-//        _dictionaryList.Clear();
-
-//        foreach(var item in this) // 딕셔너리의 값들을 리스트에 저장
-//        {
-//            _dictionaryList.Add(new SaveList<K, V>
-//            {
-//                key = item.Key,
-//                value= item.Value
-//            });
-
-//            Debug.Log($"save : {item.Key}/{item.Value}");
-//        }
-//    }
-
-//    public void OnBeforeSerialize() //역직렬화 될 때
-//    {
-//        this.Clear();
-
-//        foreach(var item in _dictionaryList)
-//        {
-//            if(!this.TryAdd(item.key, item.value))
-//            {
-//                Debug.LogError($"key : {item.key}/ this key already have it.");
-//            }
-//            else
-//            {
-//                Debug.Log($"save key : {item.key} / value : {item.value}");
-//            }
-//        }
-//    }
-//}
-
-////저장 가능 딕셔너리를 가능하게 해주는 리스트 (클래스)
-//[Serializable]
-//public class SaveList<K,V>
-//{
-//    public K key;
-//    public V value;
-//}
 }

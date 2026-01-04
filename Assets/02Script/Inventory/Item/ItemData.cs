@@ -1,5 +1,4 @@
 using _02Script.DotweenUI.Warring;
-using _02Script.Item;
 
 namespace _02Script.Inventory.Item
 {

@@ -1,9 +1,6 @@
 using _02Script.Inventory.Item;
-using _02Script.Item;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using ItemCard = _02Script.Inventory.Item.ItemCard;
 
 namespace _02Script.Inventory.Inventory.Use
 {

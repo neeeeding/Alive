@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _02Script.Inventory.Item;
 using _02Script.Item;
 using _02Script.Manager;
 using _02Script.UI.Dialog.Entity;
@@ -141,7 +142,7 @@ namespace _02Script.UI.Dialog.Dialog
 
         private void IsHoldItem() //들고 있는 아이템 있다면 (챕터 번호)
         {
-            ItemDataSO dataSo = GameManager.Instance.itemData;
+            ItemDataSO dataSo = GameManager.Instance.holdItemData;
             if (dataSo != null)
             {
                 holdItem = true;

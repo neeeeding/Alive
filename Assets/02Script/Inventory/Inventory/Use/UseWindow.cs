@@ -1,8 +1,6 @@
 using _02Script.Inventory.Item;
-using _02Script.Item;
 using UnityEngine;
 using UnityEngine.UI;
-using ItemCard = _02Script.Inventory.Item.ItemCard;
 
 namespace _02Script.Inventory.Inventory.Use
 {
@@ -35,6 +33,13 @@ namespace _02Script.Inventory.Inventory.Use
         {
             int x = int.Parse(countInputField.text);
             countSlider.value = (float)x/maxNum;
+        }
+
+        public void HoldData()
+        {
+            inventoryManager.HoldItem(card.ReturnData(),int.Parse(countInputField.text));
+            
+            gameObject.SetActive(false);
         }
 
         public void UseData()
