@@ -1,4 +1,5 @@
-using _02Script.DotweenUI.Warring;
+using _02Script.DoTweenUI.Warring;
+using _02Script.Manager;
 
 namespace _02Script.Inventory.Item
 {
@@ -37,6 +38,7 @@ namespace _02Script.Inventory.Item
             {
                 _itemCount = 0;
             }
+            GameManager.Instance.PlayerStat.items[_itemBaseData.itemType] =  _itemCount;
         }
 
         public void GetItem(int add = 1)
@@ -46,6 +48,7 @@ namespace _02Script.Inventory.Item
             {
                 _itemCount = _itemBaseData.maxCount;
             }
+            GameManager.Instance.PlayerStat.items[_itemBaseData.itemType] =  _itemCount;
         }
     }
 }

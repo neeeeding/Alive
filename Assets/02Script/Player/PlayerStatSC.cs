@@ -82,7 +82,7 @@ namespace _02Script.Player
 
             foreach (ItemType type in Enum.GetValues(typeof(ItemType)))
             {
-                if (type != ItemType.none)
+                if (type == ItemType.none)
                     continue;
 
                 items.Add(type, 0); //0으로 초기화

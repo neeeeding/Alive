@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2baa6ddc86c1dd14eb1f98b5eb56f22e, type: 2}
-  m_sharedMaterial: {fileID: 5034966237914011262, guid: 2baa6ddc86c1dd14eb1f98b5eb56f22e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d57835b8373e3644fa6d709471792233, type: 2}
+  m_sharedMaterial: {fileID: 5034966237914011262, guid: d57835b8373e3644fa6d709471792233, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.InventoryItemCard
   countUI: {fileID: 4726997583136394264}
   cardImage: {fileID: 7535060141561422421}
-  delay: 1
+  delay: 0.2
 --- !u!114 &4653498373426380696
 MonoBehaviour:
   m_ObjectHideFlags: 0

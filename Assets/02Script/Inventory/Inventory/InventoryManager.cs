@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
 using _02Script.UI.Save;
@@ -44,7 +46,12 @@ namespace _02Script.Inventory.Inventory
         {
             Dictionary<ItemType, int> save = GameManager.Instance.PlayerStat.items.ToDictionary();
 
-            foreach (KeyValuePair<ItemType, int> item in save)
+            foreach (KeyValuePair<ItemType, ItemDataSO> item in allDataSO.ToList())
+            {
+                ThrowItem(item.Value,9999999);
+            }
+
+            foreach (KeyValuePair<ItemType, int> item in save.ToList())
             {
                 AddItem(allDataSO[item.Key], item.Value);
             }
@@ -72,6 +79,8 @@ namespace _02Script.Inventory.Inventory
                 ItemData data = _itemDatas[item];
                 data.UseItem(count, isThrow);
                 _itemCards[data].UpdateCountUI();
+                
+                realItem.CheckLessItem();
             }
         }
 
@@ -105,6 +114,7 @@ namespace _02Script.Inventory.Inventory
 
             ItemData data = _itemDatas[item];
             data.GetItem(count);
+            _itemCards[data].gameObject.SetActive(true);
             _itemCards[data].UpdateCountUI();
         }
     }

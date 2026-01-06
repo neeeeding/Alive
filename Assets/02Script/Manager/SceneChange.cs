@@ -40,7 +40,7 @@ namespace _02Script.Manager
         private void LoadScene() //씬 로드
         {
             string scene = GameManager.Instance.PlayerStat.sceneName;
-            print($"cur : {scene} / save {GameManager.Instance.PlayerStat.sceneName}");
+            //print($"cur : {scene} / save {GameManager.Instance.PlayerStat.sceneName}");
 
             if (scene != GameManager.Instance.curScene) //현재 씬과 이동해야하는 씬이 안 맞다면
             {

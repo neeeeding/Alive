@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using UnityEditor;
 using UnityEngine;
 
 namespace _02Script.Inventory.Item
@@ -13,6 +14,7 @@ namespace _02Script.Inventory.Item
         public ItemType itemType; //아이템 종류
 
         public string itemName;
+        [TextArea(3, 10)]
         public string itemExplanation;
         
         public bool DoSomething() //보통은 그냥 사용 못하게
@@ -25,6 +27,22 @@ namespace _02Script.Inventory.Item
             }
             return false;
         }
+        
+        
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            string enumName = itemType.ToString();
+
+            if (name == enumName) return;
+
+            string path = AssetDatabase.GetAssetPath(this);
+            if (string.IsNullOrEmpty(path)) return;
+
+            AssetDatabase.RenameAsset(path, enumName);
+            AssetDatabase.SaveAssets();
+        }
+#endif
     }
 
     public enum ItemCategory //카테고리
@@ -53,5 +71,9 @@ namespace _02Script.Inventory.Item
         
         [Description("칼")]justKnife = 4001,
         [Description("방패")]justShield = 5001,
+        
+        [Description("나사")]screw = 6001,
+        [Description("블리베루")] bliveru = 7001,
+        [Description("별 모양 보석")]starJewelry = 8001,
     }
 }

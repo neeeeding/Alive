@@ -31,7 +31,7 @@ namespace _02Script.Etc
 
         public Dictionary<K, V> ToDictionary() //딕셔너리 얻기
         {
-            return dictionary;
+            return new Dictionary<K, V>(dictionary);
         }
 
         public void FromDictionary(Dictionary<K, V> source) //로드할 때 사용
