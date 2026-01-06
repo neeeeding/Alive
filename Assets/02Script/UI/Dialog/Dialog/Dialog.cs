@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using _02Script.Inventory.Item;
-using _02Script.Item;
 using _02Script.Manager;
 using _02Script.UI.Dialog.Entity;
 using _02Script.Player;

@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 4
-  m_fontSizeBase: 4
+  m_fontSize: 34.78
+  m_fontSizeBase: 34.78
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -148,7 +148,8 @@ GameObject:
   - component: {fileID: 6931216059363602385}
   - component: {fileID: 7535060141561422421}
   - component: {fileID: 6858673969615301809}
-  - component: {fileID: 1341914955762828038}
+  - component: {fileID: 2735056686893687089}
+  - component: {fileID: 4653498373426380696}
   m_Layer: 5
   m_Name: itemCard(inGame)
   m_TagString: Untagged
@@ -258,9 +259,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1341914955762828038}
-        m_TargetAssemblyTypeName: ItemCard, Assembly-CSharp
-        m_MethodName: ClickCard
+      - m_Target: {fileID: 2735056686893687089}
+        m_TargetAssemblyTypeName: _02Script.Inventory.Item.InventoryItemCard, Assembly-CSharp
+        m_MethodName: SelectCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -270,7 +271,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1341914955762828038
+--- !u!114 &2735056686893687089
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -279,8 +280,54 @@ MonoBehaviour:
   m_GameObject: {fileID: 7599526017728085362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e93d13022ef061645a0999d0ec951bf0, type: 3}
+  m_Script: {fileID: 11500000, guid: 674dce05979049dea01558a15f2d6001, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  so: {fileID: 11400000, guid: b4bcf4f98e7c7864d9b4e97734d469dc, type: 2}
-  countItme: 0
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.InventoryItemCard
+  countUI: {fileID: 4726997583136394264}
+  cardImage: {fileID: 7535060141561422421}
+  delay: 1
+--- !u!114 &4653498373426380696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7599526017728085362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2735056686893687089}
+          m_TargetAssemblyTypeName: _02Script.Inventory.Item.InventoryItemCard, Assembly-CSharp
+          m_MethodName: MouseEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2735056686893687089}
+          m_TargetAssemblyTypeName: _02Script.Inventory.Item.InventoryItemCard, Assembly-CSharp
+          m_MethodName: MouseExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

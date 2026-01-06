@@ -1,7 +1,4 @@
-﻿using System;
-using _02Script.Etc;
-using _02Script.Item;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace _02Script.Farming
 {

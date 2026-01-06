@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace _02Script.DotweenUI.Warring

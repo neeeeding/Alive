@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using _02Script.Player;
-using _02Script.UI.Likeability;
 using _02Script.Etc;
+using _02Script.Inventory.Inventory;
 using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Dialog.Entity;
 using AYellowpaper.SerializedCollections;
@@ -14,9 +14,9 @@ namespace _02Script.Manager
     public class UISettingManager : Singleton<UISettingManager>
     {
         [Header("Need")]
+        [SerializeField] private InventoryInput input;
         [SerializeField] private GameObject[] inGame; //인 게임 필요 요소 (ex : 돈, 설정...)
         [SerializeField] private Dialog chat; //채팅
-        [SerializeField] private GameObject coin; //코인 상점
 
         [SerializeField] private GameObject backBtn; //인 게임으로
 
@@ -40,10 +40,12 @@ namespace _02Script.Manager
         private void OnEnable()
         {
             DialogEntity.OnChat += Chat;
+            input.OnIBtn += Inventory;
         }
         private void OnDisable()
         {
             DialogEntity.OnChat -= Chat;
+            input.OnIBtn += Inventory;
         }
         #endregion
 

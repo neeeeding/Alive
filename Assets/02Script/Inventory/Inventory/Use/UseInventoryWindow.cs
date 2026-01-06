@@ -20,7 +20,7 @@ namespace _02Script.Inventory.Inventory.Use
         private void OnEnable()
         {
             InventoryItemCard.OnMouseClick += Show;
-            useWindow.gameObject.SetActive(false);
+            Hide();
         }
         private void OnDisable()
         {
@@ -37,7 +37,7 @@ namespace _02Script.Inventory.Inventory.Use
             ItemDataSO data = card.ReturnData().ReturnDataSO();
             itemName.text = data.itemName;
             
-            maxCount.text =  data.maxCount.ToString();
+            maxCount.text =  card.ReturnData().ItemCount().ToString();
             
             WindowPos(cardPos);
         }

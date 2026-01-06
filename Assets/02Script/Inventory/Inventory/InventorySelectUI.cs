@@ -15,7 +15,7 @@ namespace _02Script.Inventory.Inventory
         private void OnEnable()
         {
             Time.timeScale = 0;
-            category = (ItemCategory)1;
+            CategoryBtn(1);
         }
 
         private void OnDisable()

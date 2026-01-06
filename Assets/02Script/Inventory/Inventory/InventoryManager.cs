@@ -19,7 +19,7 @@ namespace _02Script.Inventory.Inventory
         private Dictionary<ItemData, ItemCard> _itemCards = new Dictionary<ItemData, ItemCard>();
         
         //hold에 대해
-        private ItemHold realItem; //들리게 될 아이템(위치)
+        [SerializeField]private ItemHold realItem; //들리게 될 아이템(위치)
 
         #region EnDi
         private void OnEnable()

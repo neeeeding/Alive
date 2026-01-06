@@ -1,4 +1,5 @@
 using _02Script.Inventory.Item;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,11 +8,10 @@ namespace _02Script.Inventory.Inventory.Use
     public class UseWindow  : MonoBehaviour
     {
         [SerializeField] private InventoryManager inventoryManager;
-        [SerializeField] private ItemCard card;
-        [SerializeField] private InputField countInputField;
-        
+        [SerializeField] private TMP_InputField countInputField;
         [SerializeField] private Slider countSlider;
 
+        private ItemCard card;
         private int maxNum;
 
         public void SetData(ItemCard data)
@@ -23,10 +23,11 @@ namespace _02Script.Inventory.Inventory.Use
             countInputField.text = 1.ToString();
         }
         
-        public void SliderMove(int x)
+        public void SliderMove()
         {
+            float x = countSlider.value;
             x *= maxNum;
-            countInputField.text = x.ToString();
+            countInputField.text = ((int)x).ToString();
         }
 
         public void InputFieldInput()

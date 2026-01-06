@@ -1,4 +1,4 @@
-﻿using _02Script.Item;
+﻿using _02Script.Inventory.Item;
 using UnityEngine;
 
 namespace _02Script.Farming
