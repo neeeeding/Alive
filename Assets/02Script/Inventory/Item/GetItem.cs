@@ -5,6 +5,6 @@ namespace _02Script.Inventory.Item
 {
     public class GetItem : MonoBehaviour
     {
-        public static Action<ItemDataSO> OnGetItem;
+        public static Action<ItemDataSO, int> OnGetItem;
     }
 }

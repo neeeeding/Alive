@@ -13,29 +13,24 @@ namespace _02Script.Inventory.Item
         protected ItemData itemData;
         
         protected int star; //성 (1 ~ 5)
-        protected float itemHp; //내구도 (0 ~ 100)
+        protected int itemHp; //내구도 (0 ~ 100)
 
         public ItemData ReturnData()
         {
             return itemData;
         }
 
-        public int ReturnStar()
+        public int ReturnNum(bool isStar)
         {
-            return star;
-        }
-
-        public float ReturnItemHp()
-        {
-            return itemHp;
+            return isStar? star:itemHp;
         }
         
-        public void ItemDamage(float damage)
+        public void ItemDamage(int damage)
         {
             itemHp -= damage;
         }
 
-        public virtual void NewCard(ItemData itemData, int setStar = 0, float setItemHp = 100)
+        public virtual void NewCard(ItemData itemData, int setStar = 0, int setItemHp = 100)
         {
             this.itemData = itemData;
             cardImage.sprite = this.itemData.ReturnDataSO().itemImage;

@@ -103,9 +103,34 @@ namespace _02Script.Manager
                 (basic + love > 100 ? 100 : basic + love).ToString(); //저장해주기 (100초과시 걍 100)
         }
 
-        public void AddItemCount(ItemType type, int num) //얻은, 잃은 아이템 수들
+        /**얻은, 잃은 아이템 수들/
+         * 일반 : 개수/
+         * 음식 : 등급/
+         * 소모품 : 내구도/
+         * 잃 : 음수, 얻 : 양수/
+         */
+        public void AddItemCount(ItemType type, int num)
         {
-            PlayerStat.items[type] += num;
+            ItemCategory category = (ItemCategory)((int)type / 1000);
+            switch(category)
+            {
+                case ItemCategory.seed:
+                case ItemCategory.fruit:
+                case ItemCategory.stuff:
+                case ItemCategory.special:
+                    PlayerStat.items[type][0] += num;
+                    break;
+                
+                case ItemCategory.food:
+                case ItemCategory.armor:
+                case ItemCategory.weapon:
+                case ItemCategory.machine:
+                    if (num < 0)
+                        PlayerStat.items[type].Remove(num);
+                    else
+                        PlayerStat.items[type].Add(num);
+                    break;
+            }
         }
 
         private void ResetValue() //값 세팅

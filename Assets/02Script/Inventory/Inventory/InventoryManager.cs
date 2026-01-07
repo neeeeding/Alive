@@ -17,7 +17,7 @@ namespace _02Script.Inventory.Inventory
         [SerializeField] protected SerializedDictionary<ItemType, ItemDataSO> allDataSO;
         
         protected Dictionary<ItemDataSO, ItemData> _itemDatas = new Dictionary<ItemDataSO, ItemData>();
-        protected Dictionary<ItemData, ItemCard> _itemCards = new Dictionary<ItemData, ItemCard>();
+        protected Dictionary<ItemData, List<ItemCard>> _itemCards = new Dictionary<ItemData, List<ItemCard>>();
         
         //hold에 대해
         [SerializeField]private ItemHold realItem; //들리게 될 아이템(위치)
@@ -25,7 +25,7 @@ namespace _02Script.Inventory.Inventory
         #region EnDi
         private void OnEnable()
         {
-            InGameItem.OnGetItem += GetItem;
+            InGameItem.OnGetItem += AddItem;
             LoadCard.OnLoad += LoadItem;
             
             if(GameManager.Instance.isStart)
@@ -36,23 +36,26 @@ namespace _02Script.Inventory.Inventory
 
         private void OnDisable()
         {
-            InGameItem.OnGetItem -= GetItem;
+            InGameItem.OnGetItem -= AddItem;
             LoadCard.OnLoad -= LoadItem;
         }
         #endregion
 
         private void LoadItem() //불러오기
         {
-            Dictionary<ItemType, int> save = GameManager.Instance.PlayerStat.items.ToDictionary();
+            Dictionary<ItemType, List<int>> save = GameManager.Instance.PlayerStat.items.ToDictionary();
 
             foreach (KeyValuePair<ItemType, ItemDataSO> item in allDataSO.ToList())
             {
                 ThrowItem(item.Value,9999999);
             }
 
-            foreach (KeyValuePair<ItemType, int> item in save.ToList())
+            foreach (KeyValuePair<ItemType, List<int>> item in save.ToList())
             {
-                AddItem(allDataSO[item.Key], item.Value);
+                foreach (int num in item.Value.ToList())
+                {
+                    AddItem(allDataSO[item.Key], num);
+                }
             }
         }
         
@@ -76,45 +79,95 @@ namespace _02Script.Inventory.Inventory
             if (_itemDatas.ContainsKey(item))
             {
                 ItemData data = _itemDatas[item];
+                
                 data.UseItem(count, isThrow);
-                _itemCards[data].UpdateCountUI();
+                _itemCards[data][_itemCards[data].Count -1].UpdateCountUI();
                 
                 realItem.CheckLessItem();
+                
+                switch(item.category) //개별 저장 애들은 걍 지워버리기
+                {
+                    case ItemCategory.food:
+                        foreach (ItemCard card in _itemCards[data].ToList())
+                        {
+                            if(count != card.ReturnNum(true)) continue;
+                            
+                            _itemCards[data].Remove(card);
+                            Destroy(card.gameObject);
+                            break;
+                        }
+                        break;
+                    case ItemCategory.armor:
+                    case ItemCategory.weapon:
+                    case ItemCategory.machine:
+                        foreach (ItemCard card in _itemCards[data].ToList())
+                        {
+                            if(count != card.ReturnNum(false)) continue;
+                            
+                            _itemCards[data].Remove(card);
+                            Destroy(card.gameObject);
+                            break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
-        private void NewCard(ItemDataSO item)
+        private void NewCard(ItemDataSO item, bool isEtc, int star = 3, int hp = 100)
         {
             //data 새 생성
             ItemData itemData = new ItemData();
-            itemData.NewItem(item);
-            _itemDatas.Add(item, itemData);
+            if (!isEtc)
+            {
+                itemData.NewItem(item);
+                _itemDatas.Add(item, itemData);
+            }
+            else //기존거
+            {
+                itemData = _itemDatas[item];
+            }
             
             Transform parent = itemInventory[item.category];
             
             //카드 새 생성
             ItemCard newCard = Instantiate(cardPrefab, parent);
             newCard.gameObject.SetActive(true);
-            newCard.NewCard(itemData);
+            newCard.NewCard(itemData, star, hp);
             
-            _itemCards.Add(itemData, newCard);
+            if(!isEtc)
+                _itemCards.Add(itemData, new List<ItemCard>());
+
+            _itemCards[itemData].Add(newCard);
         }
 
-        protected void GetItem(ItemDataSO item)
-        {
-            AddItem(item);
-        }
         public void AddItem(ItemDataSO item, int count = 1)
         {
-            if (!_itemDatas.ContainsKey(item))
+            switch(item.category)
             {
-                NewCard(item);
+                case ItemCategory.seed:
+                case ItemCategory.fruit:
+                case ItemCategory.stuff:
+                case ItemCategory.special:
+                    if (!_itemDatas.ContainsKey(item))
+                        NewCard(item, false, 0,0);
+                    break;
+
+                case ItemCategory.food:
+                case ItemCategory.armor:
+                case ItemCategory.weapon:
+                case ItemCategory.machine:
+                    NewCard(item, _itemDatas.ContainsKey(item), count, count);
+                    break;
             }
 
             ItemData data = _itemDatas[item];
             data.GetItem(count);
-            _itemCards[data].gameObject.SetActive(true);
-            _itemCards[data].UpdateCountUI();
+            
+            ItemCard card = _itemCards[data][_itemCards[data].Count -1]; //갓 생성
+            card.gameObject.SetActive(true);
+            card.UpdateCountUI();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace _02Script.Inventory.Item
         [SerializeField] private TextMeshProUGUI nameT;
         [SerializeField] private TextMeshProUGUI countT;
         private ItemData holdData;
-        private int holdCount;
+        private int holdCount; //개별 아이템일 경우 등급 혹은 내구도
 
         [Header("In Game")]
         [SerializeField] private GameObject holdItem;
@@ -46,6 +46,7 @@ namespace _02Script.Inventory.Item
             if (holdData.ItemCount() < holdCount)
             {
                 holdCount =  holdData.ItemCount();
+                countT.text = holdCount.ToString();
             }
 
             if (holdCount <= 0)

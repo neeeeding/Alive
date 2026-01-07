@@ -33,22 +33,59 @@ namespace _02Script.Inventory.Item
                 return;
             }
             
-            _itemCount-=use;
-            if (_itemCount <= 0)
+            switch(_itemBaseData.category)
             {
-                _itemCount = 0;
+                case ItemCategory.seed:
+                case ItemCategory.fruit:
+                case ItemCategory.stuff:
+                case ItemCategory.special:
+                    
+                    _itemCount-=use;
+                    if (_itemCount <= 0)
+                    {
+                        _itemCount = 0;
+                    }
+                    GameManager.Instance.PlayerStat.items[_itemBaseData.itemType][0] =  _itemCount;
+                    
+                    break;
+                
+                case ItemCategory.food:
+                case ItemCategory.armor:
+                case ItemCategory.weapon:
+                case ItemCategory.machine:
+                    _itemCount--;
+                    GameManager.Instance.PlayerStat.items[_itemBaseData.itemType].Remove(use);
+                    break;
             }
-            GameManager.Instance.PlayerStat.items[_itemBaseData.itemType] =  _itemCount;
+            
         }
 
         public void GetItem(int add = 1)
         {
-            _itemCount+= add;
-            if (_itemCount >= _itemBaseData.maxCount)//아이템만(부산물X)
+            switch(_itemBaseData.category)
             {
-                _itemCount = _itemBaseData.maxCount;
+                case ItemCategory.seed:
+                case ItemCategory.fruit:
+                case ItemCategory.stuff:
+                case ItemCategory.special:
+                    
+                    _itemCount+= add;
+                    if (_itemCount >= _itemBaseData.maxCount)//아이템만(부산물X)
+                    {
+                        _itemCount = _itemBaseData.maxCount;
+                    }
+                    GameManager.Instance.PlayerStat.items[_itemBaseData.itemType][0] =  _itemCount;
+                    
+                    break;
+                
+                case ItemCategory.food:
+                case ItemCategory.armor:
+                case ItemCategory.weapon:
+                case ItemCategory.machine:
+                    _itemCount++;
+                    GameManager.Instance.PlayerStat.items[_itemBaseData.itemType].Add(add);
+                    break;
             }
-            GameManager.Instance.PlayerStat.items[_itemBaseData.itemType] =  _itemCount;
         }
     }
 }

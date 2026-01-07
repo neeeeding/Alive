@@ -54,7 +54,6 @@ namespace _02Script.Inventory.Inventory
                     itemCount.text = $"내구도\n{hp} / 100";
                     break;
             }
-            
         }
 
         private void SetExplanation(ItemDataSO item)

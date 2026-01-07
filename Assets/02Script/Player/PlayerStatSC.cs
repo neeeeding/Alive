@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.UI.Dialog.Dialog;
@@ -30,7 +31,7 @@ namespace _02Script.Player
         public int hour;
         public int minute;
 
-        public SaveDictionary<ItemType, int> items; //아이템들 카테고리<종류,수>
+        public SaveDictionary<ItemType, List<int>> items; //아이템들 카테고리<종류,수>
         
         [ContextMenu("ResetStat")]
         public void ResetStat()
@@ -77,7 +78,7 @@ namespace _02Script.Player
         
         public void ResetItem() //스탯의 아이템 전부 초기화
         {
-            items = new SaveDictionary<ItemType, int>();
+            items = new SaveDictionary<ItemType, List<int>>();
             items.Clear();
 
             foreach (ItemType type in Enum.GetValues(typeof(ItemType)))
@@ -85,7 +86,7 @@ namespace _02Script.Player
                 if (type == ItemType.none)
                     continue;
 
-                items.Add(type, 0); //0으로 초기화
+                items.Add(type, new List<int>(){0}); //0으로 초기화
             }
         }
     }
