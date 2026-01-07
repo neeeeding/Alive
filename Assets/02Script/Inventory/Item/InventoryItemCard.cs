@@ -6,7 +6,7 @@ namespace _02Script.Inventory.Item
 {
     public class InventoryItemCard : ItemCard
     {
-        public static event Action<ItemDataSO,int> OnMouseCursor;
+        public static event Action<ItemDataSO,int,int,float> OnMouseCursor;
         public static event Action<ItemCard,RectTransform> OnMouseClick;
 
         [SerializeField] private float delay = 1f;
@@ -27,12 +27,12 @@ namespace _02Script.Inventory.Item
         public void MouseEnter()
         {
             gameObject.transform.DOScale(Vector3.one * 1.15f, delay).SetEase(Ease.InOutBack).SetUpdate(true);
-            OnMouseCursor?.Invoke(itemData.ReturnDataSO(), itemData.ItemCount());
+            OnMouseCursor?.Invoke(itemData.ReturnDataSO(), itemData.ItemCount(),star,itemHp);
         }        
         public void MouseExit()
         {
             gameObject.transform.DOScale(Vector3.one , delay).SetEase(Ease.InOutBack).SetUpdate(true);
-            OnMouseCursor?.Invoke(null,0);
+            OnMouseCursor?.Invoke(null,0,0,0);
         }
 
         //카드 클릭 (사용할지 묻기)

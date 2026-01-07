@@ -29,12 +29,32 @@ namespace _02Script.Inventory.Inventory
         }
         #endregion
 
-        private void Check([CanBeNull] ItemDataSO item, int count)
+        private void Check([CanBeNull] ItemDataSO item, int count,int star, float hp)
         {
             if (item == null) {HideSide(); return; }
             
             SetExplanation(item);
-            itemCount.text = $"{count} / {item.maxCount}";
+            
+            switch(item.category)
+            {
+                case ItemCategory.seed:
+                case ItemCategory.fruit:
+                case ItemCategory.stuff:
+                case ItemCategory.special:
+                    itemCount.text = $"개수\n{count} / {item.maxCount}";
+                    break;
+                
+                case ItemCategory.food:
+                    itemCount.text = $"등급\n{star} 성";
+                    break;
+                
+                case ItemCategory.armor:
+                case ItemCategory.weapon:
+                case ItemCategory.machine:
+                    itemCount.text = $"내구도\n{hp} / 100";
+                    break;
+            }
+            
         }
 
         private void SetExplanation(ItemDataSO item)

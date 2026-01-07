@@ -27,7 +27,7 @@ namespace _02Script.Produce
         }
         #endregion
 
-        public override void NewCard(ItemData itemData)
+        public override void NewCard(ItemData itemData, int setStar = 0, float setItemHp = 100)
         {
             _bookData = null;
             //if (itemData.ReturnDataSO().itemType == ItemType.Book) //책

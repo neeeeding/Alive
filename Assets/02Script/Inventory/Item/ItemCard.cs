@@ -11,16 +11,36 @@ namespace _02Script.Inventory.Item
         [SerializeField] protected Image cardImage;
         
         protected ItemData itemData;
+        
+        protected int star; //성 (1 ~ 5)
+        protected float itemHp; //내구도 (0 ~ 100)
 
         public ItemData ReturnData()
         {
             return itemData;
         }
 
-        public virtual void NewCard(ItemData itemData)
+        public int ReturnStar()
+        {
+            return star;
+        }
+
+        public float ReturnItemHp()
+        {
+            return itemHp;
+        }
+        
+        public void ItemDamage(float damage)
+        {
+            itemHp -= damage;
+        }
+
+        public virtual void NewCard(ItemData itemData, int setStar = 0, float setItemHp = 100)
         {
             this.itemData = itemData;
             cardImage.sprite = this.itemData.ReturnDataSO().itemImage;
+            star = setStar;
+            itemHp = setItemHp;
         }
 
         protected virtual void OnEnable()
@@ -35,7 +55,15 @@ namespace _02Script.Inventory.Item
             
             int count = itemData.ItemCount();
             
-            countUI.text = count.ToString(); 
+            countUI.text = count.ToString();
+
+            ItemCategory category = itemData.ReturnDataSO().category;
+
+            if (category != ItemCategory.seed && category != ItemCategory.special &&
+                category != ItemCategory.fruit && category != ItemCategory.stuff)
+            {
+                countUI.text = "";
+            }
             
             if (count <= 0)
             {
