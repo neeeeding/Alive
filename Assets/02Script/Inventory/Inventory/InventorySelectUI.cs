@@ -1,3 +1,4 @@
+using System;
 using _02Script.Inventory.Item;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
@@ -8,14 +9,14 @@ namespace _02Script.Inventory.Inventory
     public class InventorySelectUI : MonoBehaviour
     {
         [SerializeField] private ScrollRect scroll;
-        [SerializeField] SerializedDictionary<ItemCategory, Transform> itemInventory;
+        [SerializeField] private SerializedDictionary<ItemCategory, Transform> itemInventory;
+        [SerializeField] private Button firstBtn;
 
         private ItemCategory category;
         
         private void OnEnable()
         {
             Time.timeScale = 0;
-            CategoryBtn(1);
         }
 
         private void OnDisable()

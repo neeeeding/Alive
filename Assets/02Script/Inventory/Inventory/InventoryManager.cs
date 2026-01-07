@@ -13,12 +13,12 @@ namespace _02Script.Inventory.Inventory
     public class InventoryManager : MonoBehaviour
     {
         [Header("Need")]
-        [SerializeField] private ItemCard cardPrefab;
-        [SerializeField] SerializedDictionary<ItemCategory, Transform> itemInventory;
-        [SerializeField] SerializedDictionary<ItemType, ItemDataSO> allDataSO;
+        [SerializeField] protected ItemCard cardPrefab;
+        [SerializeField] protected SerializedDictionary<ItemCategory, Transform> itemInventory;
+        [SerializeField] protected SerializedDictionary<ItemType, ItemDataSO> allDataSO;
         
-        private Dictionary<ItemDataSO, ItemData> _itemDatas = new Dictionary<ItemDataSO, ItemData>();
-        private Dictionary<ItemData, ItemCard> _itemCards = new Dictionary<ItemData, ItemCard>();
+        protected Dictionary<ItemDataSO, ItemData> _itemDatas = new Dictionary<ItemDataSO, ItemData>();
+        protected Dictionary<ItemData, ItemCard> _itemCards = new Dictionary<ItemData, ItemCard>();
         
         //hold에 대해
         [SerializeField]private ItemHold realItem; //들리게 될 아이템(위치)
@@ -101,7 +101,7 @@ namespace _02Script.Inventory.Inventory
             _itemCards.Add(itemData, newCard);
         }
 
-        private void GetItem(ItemDataSO item)
+        protected void GetItem(ItemDataSO item)
         {
             AddItem(item);
         }
