@@ -17,12 +17,16 @@ namespace _02Script.Produce
         [SerializeField] private ProduceInventory produceInventory;
         [SerializeField] private InventoryManager inventory;
         [SerializeField] private List<MixtureImageRow> imageRows;
+        
+        [SerializeField] private Image means; //도구창
+        [SerializeField] private Image backGround;
+        
         [SerializeField] private Image result;
         [SerializeField] private TextMeshProUGUI resultName;
         [SerializeField] private TextMeshProUGUI resultExplanation;
         
         private List<ItemCard> _cards = new List<ItemCard>();
-        private (int maxCount,ItemDataSO data) _itemMax;
+        private (int maxCount,ItemDataSO data) _itemMax; //비교 & 저장용
         private ItemDataSO resultData;
 
         private float _Timer;
@@ -31,7 +35,6 @@ namespace _02Script.Produce
         #region EnDi
         private void OnEnable()
         {
-            errorMassage.SetActive(false);
             isTimer = false;
             ProduceBookCard.OnMouseClick += Setting;
             Setting(null);
@@ -39,7 +42,6 @@ namespace _02Script.Produce
         private void OnDisable()
         {
             ProduceBookCard.OnMouseClick -= Setting;
-            //ReturnItem();
         }
         #endregion
 
@@ -54,11 +56,13 @@ namespace _02Script.Produce
             GetResult(_Timer <= 0? _itemMax.maxCount : 1);
             errorMassage.SetActive(_Timer <= 0);
         }
-        private void GetResult(int count) //제작 아이템 얻기
+        private void GetResult(int count) //제작 아이템 얻기 & 재료 버리기
         {
-            produceInventory.CopyCardDecrease(_cards, count);
             foreach (var card in _cards)
             {
+                card.ReturnData().UseItem(count,true);
+                card.UpdateCountUI();
+                
                 inventory.UseItem(card.ReturnData().ReturnDataSO(),count);
             }
             inventory.AddItem(resultData,count);
@@ -66,11 +70,6 @@ namespace _02Script.Produce
             _itemMax.maxCount -= count;
         }
         #endregion
-        
-        private void ReturnItem()//다시 돌려주기
-        {
-            produceInventory.CountDistribution(_cards, _itemMax.maxCount,false);
-        }
 
         private void Update()
         {
@@ -79,26 +78,34 @@ namespace _02Script.Produce
                 _Timer -= Time.deltaTime;
             }
         }
+        
+        private void ReturnItem()//다시 돌려주기
+        {
+            produceInventory.CountDistribution(_cards, _itemMax.maxCount,false);
+        }
 
         private void Setting(ProduceBookSO  bookData) //제작대? 조합대? 세팅 하기
         {
-            
+            errorMassage.SetActive(false);
             ReturnItem();
+            _itemMax = (Int32.MaxValue, null);
+            //null이면 정리 아니면 세팅
+            means.sprite = bookData != null? bookData.means.itemImage : null;
+            backGround.sprite = bookData != null? bookData.means.background : null;
+            
             resultData = bookData != null? bookData.result : null;
             result.sprite = bookData != null? resultData.itemImage : null;
             resultName.text = bookData != null? resultData.itemName : "";
             resultExplanation.text = bookData != null? resultData.itemExplanation : "";
-
-            _itemMax = (Int32.MaxValue, null);
-            
+            //비워 (조합대 복제본들)
             for (int i = 0; i < _cards.Count; i++)
             {
                 GameObject obj =  _cards[i].gameObject;
                 Destroy(obj);
             }
-            
             _cards.Clear();
             
+            //제작대에서 중복으로 사용하는 아이템 있는지 체크
             Dictionary<ItemDataSO, int> duplication =  new Dictionary<ItemDataSO, int>();
             
             for (int i = 0; i < imageRows.Count; i++)
@@ -108,19 +115,18 @@ namespace _02Script.Produce
                     imageRows[i].items[j].sprite = null;
                     imageRows[i].items[j].color = new  Color(1, 1, 1, 0);
                     
-                    if(bookData == null || bookData.itemRows[i].items[j] == null) continue;
+                    if(bookData == null || bookData.itemRows[i].items[j] == null) continue; //제작대에 아이템 채워야 하는 일 발생
                     
                     ItemDataSO curItem = bookData.itemRows[i].items[j];
-                    
-                    imageRows[i].items[j].sprite = curItem.itemImage; //이미지
+                    imageRows[i].items[j].sprite = curItem.itemImage;
                     imageRows[i].items[j].color = new  Color(1, 1, 1, 100/255f);
                     
-                    //중복 확인
+                    //중복으로 존재 해야 하는지 확인
                     if (duplication.ContainsKey(curItem))
                     {
                         duplication[curItem]++;
 
-                        if (_itemMax.data == curItem) //갱신
+                        if (_itemMax.data == curItem) //중복 만큼 나눠서 max 갱신
                         {
                             _itemMax.maxCount *= duplication[curItem] - 1;
                             _itemMax.maxCount /= duplication[curItem];

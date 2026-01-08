@@ -6,7 +6,7 @@ namespace _02Script.Produce
     public class ProduceBookCard : ItemCard
     {
         /**이름 뜨기 더 나아가 관련 책 띄어주기??*/
-        public static event Action<ItemDataSO> OnMouseCursor;
+        public static event Action<ItemDataSO> OnMouseCursor; //설명
         public static event Action<ProduceBookSO> OnMouseClick;
         
         private ProduceBookSO _bookData;
@@ -27,15 +27,10 @@ namespace _02Script.Produce
         }
         #endregion
 
-        public override void NewCard(ItemData itemData, int setStar = 0, float setItemHp = 100)
+        public override void NewCard(ItemData itemData, int setStar = 5, int setItemHp = 100)
         {
-            _bookData = null;
-            //if (itemData.ReturnDataSO().itemType == ItemType.Book) //책
-            {
-                _bookData = itemData.ReturnDataSO() as ProduceBookSO;
-                //return;
-            }
-            base.NewCard(itemData); //부산물
+            _bookData = itemData.ReturnDataSO() as ProduceBookSO;
+            base.NewCard(itemData, setStar, setItemHp); //부산물
         }
     }
 }

@@ -7,6 +7,7 @@ namespace _02Script.Inventory.Item
     {
         [Header("Setting")]
         [SerializeField] private ItemDataSO itemData;
+        [SerializeField] private int num = 0; //개수 혹은 등급 || 내구도
         [SerializeField] private float radius;
         [SerializeField] private LayerMask player;
         
@@ -18,7 +19,7 @@ namespace _02Script.Inventory.Item
             
             if(check <= 0) return;
             
-            OnGetItem?.Invoke(itemData);
+            OnGetItem?.Invoke(itemData, num);
             gameObject.SetActive(false);
         }
 

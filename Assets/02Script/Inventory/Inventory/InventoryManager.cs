@@ -142,7 +142,7 @@ namespace _02Script.Inventory.Inventory
             _itemCards[itemData].Add(newCard);
         }
 
-        public void AddItem(ItemDataSO item, int count = 1)
+        public virtual void AddItem(ItemDataSO item, int count = 1)
         {
             switch(item.category)
             {
