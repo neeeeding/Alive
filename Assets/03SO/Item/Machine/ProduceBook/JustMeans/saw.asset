@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8bf712bf48848b290d364741a83a74c, type: 3}
+  m_Name: saw
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.ProduceBookSO
+  itemImage: {fileID: 0}
+  maxCount: 10
+  category: 7
+  itemType: 7110
+  itemName: "\uD1B1"
+  itemExplanation: "\uB098\uBB34\uB098 \uD50C\uB77C\uC2A4\uD2F1 \uB4F1\uC744 \uC790\uB97C
+    \uB54C \uC0AC\uC6A9\uD558\uB294 \uB3C4\uAD6C\uB2E4."
+  itemRows:
+  - items:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - items:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - items:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  means: {fileID: 11400000, guid: b22c1a9de9bc5534999f8f6cb72de471, type: 2}
+  result: {fileID: 11400000, guid: fb86c49d12115b14385da6cc29d0dfb1, type: 2}

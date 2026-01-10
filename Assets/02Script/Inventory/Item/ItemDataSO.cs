@@ -74,6 +74,26 @@ namespace _02Script.Inventory.Item
         
         [Description("나사")]screw = 6001,
         [Description("블리베루")] bliveru = 7001,
+        
+        [Description("빈")] notting = 7100,
+        [Description("프라이팬")] fryingPan = 7101,
+        [Description("냄비")] pot = 7102,
+        [Description("오븐")] oven = 7103,
+        [Description("밥솥")] riceCooker = 7104,
+        [Description("전자레인지")] microwaveOven = 7105,
+        
+        [Description("톱")] saw = 7110,
+        [Description("드라이버")] screwdriver = 7111,
+        [Description("용접기")] welder = 7112,
+        [Description("용해로")] furnace = 7113,
+        [Description("유리 블로우 파이프")] blowPipe = 7114,
+        [Description("보석 절단기")] jewelCutter = 7115,
+        [Description("패싯 머신")] facetMachine = 7116,
+        [Description("발전기")] generator = 7117,
+        [Description("납땜인두")] solderingIron = 7118,
+        [Description("와이어 커터")] wireCutter = 7119,
+        [Description("발물레")]  spinningWheel = 7120,
+        
         [Description("별 모양 보석")]starJewelry = 8001,
     }
 }

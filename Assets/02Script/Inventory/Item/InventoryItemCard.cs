@@ -9,7 +9,7 @@ namespace _02Script.Inventory.Item
         public static event Action<ItemDataSO,int,int,float> OnMouseCursor;
         public static event Action<ItemCard,RectTransform> OnMouseClick;
 
-        [SerializeField] private float delay = 1f;
+        [SerializeField] protected float delay = 1f;
         
         private RectTransform rT;
 

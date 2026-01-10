@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ea6aa019bd4ef0a924acf8f15f9788, type: 3}
+  m_Name: furnace
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.MeansDataSO
+  itemImage: {fileID: 0}
+  maxCount: 10
+  category: 7
+  itemType: 7113
+  itemName: "\uC6A9\uD574\uB85C"
+  itemExplanation: "\uAE08\uC18D\uC774\uB098 \uC720\uB9AC \uC6D0\uC7AC\uB8CC\uB97C
+    \uB179\uC778\uB2E4."
+  background: {fileID: 0}
