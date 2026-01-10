@@ -115,7 +115,7 @@ namespace _02Script.Manager
             switch(category)
             {
                 case ItemCategory.seed:
-                case ItemCategory.fruit:
+                case ItemCategory.viand:
                 case ItemCategory.stuff:
                 case ItemCategory.special:
                     PlayerStat.items[type][0] += num;

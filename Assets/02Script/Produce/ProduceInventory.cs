@@ -15,7 +15,7 @@ namespace _02Script.Produce
         [SerializeField] private ProduceBookCard bookPrefab;
         [SerializeField] private ProduceBookSO[] allBookSOs;
         [SerializeField] private ItemCategory[] stuffFilters; //재료 종류
-        [FormerlySerializedAs("ProduceFilter")] [SerializeField] private ItemCategory produceFilter; //제작 종류
+        [SerializeField] private ItemCategory produceFilter; //제작 종류
 
         private void Start()
         {

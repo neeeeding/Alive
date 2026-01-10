@@ -115,7 +115,7 @@ namespace _02Script.Inventory.Inventory
             }
         }
 
-        private void NewCard(ItemDataSO item, bool isEtc, int star = 3, int hp = 100)
+        private void NewCard(ItemDataSO item, bool isEtc, int star = 3, int hp = 100 )
         {
             //data 새 생성
             ItemData itemData = new ItemData();
@@ -147,7 +147,7 @@ namespace _02Script.Inventory.Inventory
             switch(item.category)
             {
                 case ItemCategory.seed:
-                case ItemCategory.fruit:
+                case ItemCategory.viand:
                 case ItemCategory.stuff:
                 case ItemCategory.special:
                     if (!_itemDatas.ContainsKey(item))

@@ -5167,7 +5167,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uACE1\uBB3C"
+  m_text: "\uC2DD\uD488"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2baa6ddc86c1dd14eb1f98b5eb56f22e, type: 2}
   m_sharedMaterial: {fileID: 5034966237914011262, guid: 2baa6ddc86c1dd14eb1f98b5eb56f22e, type: 2}
@@ -12297,7 +12297,7 @@ GameObject:
   - component: {fileID: 5665175715538609706}
   - component: {fileID: 5078689520869711327}
   m_Layer: 5
-  m_Name: Fruit
+  m_Name: Viand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19775,6 +19775,42 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6137456035100631584, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
+      propertyPath: produceFilter
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6137456035100631584, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
+      propertyPath: stuffFilters.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6137456035100631584, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
+      propertyPath: 'stuffFilters.Array.data[1]'
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6137456035100631584, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
+      propertyPath: itemInventory._serializedList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6137456035100631584, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
+      propertyPath: itemInventory._serializedList.Array.data[0].Key
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6137456035100631584, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
+      propertyPath: itemInventory._serializedList.Array.data[1].Key
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6137456035100631584, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
+      propertyPath: itemInventory._serializedList.Array.data[2].Key
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6137456035100631584, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
+      propertyPath: itemInventory._serializedList.Array.data[1].Value
+      value: 
+      objectReference: {fileID: 1771486786732156785}
+    - target: {fileID: 6137456035100631584, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
+      propertyPath: itemInventory._serializedList.Array.data[2].Value
+      value: 
+      objectReference: {fileID: 1929355747419237401}
     - target: {fileID: 6217554462775972407, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -19864,6 +19900,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
+--- !u!224 &1771486786732156785 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3074882792301519819, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
+  m_PrefabInstance: {fileID: 3619126375457227962}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1929355747419237401 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2954302634563479715, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
+  m_PrefabInstance: {fileID: 3619126375457227962}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8511222571282972564 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4910145799724972846, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}

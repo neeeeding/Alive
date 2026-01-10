@@ -38,7 +38,7 @@ namespace _02Script.Inventory.Inventory
             switch(item.category)
             {
                 case ItemCategory.seed:
-                case ItemCategory.fruit:
+                case ItemCategory.viand:
                 case ItemCategory.stuff:
                 case ItemCategory.special:
                     itemCount.text = $"개수\n{count} / {item.maxCount}";

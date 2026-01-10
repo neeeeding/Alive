@@ -55,7 +55,7 @@ namespace _02Script.Inventory.Item
             ItemCategory category = itemData.ReturnDataSO().category;
 
             if (category != ItemCategory.seed && category != ItemCategory.special &&
-                category != ItemCategory.fruit && category != ItemCategory.stuff)
+                category != ItemCategory.viand && category != ItemCategory.stuff)
             {
                 countUI.text = "";
             }

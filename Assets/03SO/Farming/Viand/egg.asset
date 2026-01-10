@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
+  m_Name: egg
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
+  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
+  maxCount: 60
+  category: 2
+  itemType: 2506
+  itemName: "\uACC4\uB780"
+  itemExplanation: "\uB178\uB978\uC790 \uC0C9\uACFC \uC601\uC591\uC740 \uAD00\uB828\uC774
+    \uC5C6\uACE0 \uB2ED\uC774 \uBB54 \uC0AC\uB8CC\uB97C \uBA39\uC5C8\uB290\uB0D0
+    \uCC28\uC774\uB2E4.\n\uB178\uB978\uC790\uB294 \uBC30\uC544\uC758 \uC601\uC591\uBD84,
+    \uD770\uC790\uB294 \uC678\uBD80 \uCDA9\uACA9 & \uC138\uADE0\uC73C\uB85C \uBD80\uD130
+    \uBCF4\uD638\uD558\uB294 \uC5ED\uD560\uC774\uB2E4."

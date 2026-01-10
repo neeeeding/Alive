@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
+  m_Name: coconutSeeds
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
+  itemImage: {fileID: 21300000, guid: a299ee8a929ccdd44b7866c7887649c6, type: 3}
+  maxCount: 30
+  category: 1
+  itemType: 1032
+  itemName: "\uCF54\uCF54\uB11B\uC758 \uC528\uC557"
+  itemExplanation: "\uC2EC\uC73C\uBA74 \uCF54\uCF54\uB11B\uC774 \uC790\uB77C\uB09C\uB2E4.\n\uC6B0\uB9AC\uAC00
+    \uBA39\uB294 \uBD80\uBD84\uC740 \uBC30\uC816\uC73C\uB85C \uC528\uC557\uC758 \uC601\uC591\uBD84\uC774\uB2E4.\n\uC601\uC591\uBD84\uC740
+    \uC528\uC557 \uC548\uC5D0 \uB2F4\uACA8 \uC788\uB2E4."

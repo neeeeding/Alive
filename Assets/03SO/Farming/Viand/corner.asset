@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
-  m_Name: rice
+  m_Name: corner
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
   itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
   maxCount: 60
   category: 2
-  itemType: 2001
-  itemName: "\uBCBC"
-  itemExplanation: "\uB9DB\uC788\uB294 \uC300\uC744 \uC9C0\uC744 \uC218 \uC788\uB2E4."
+  itemType: 2026
+  itemName: "\uC625\uC218\uC218"
+  itemExplanation: "\uC0C9\uC774 \uC54C\uB85D\uB2EC\uB85D\uD55C \uC625\uC218\uC218\uB97C
+    \uD754\uD788 '\uC720\uB9AC \uBCF4\uC11D \uC625\uC218\uC218'\uB77C\uACE0 \uBD80\uB978\uB2E4.\n\uC778\uAC04\uC774
+    \uC625\uC218\uC218\uC758 \uAECD\uC9C8\uC740 \uC18C\uD654\uD558\uAE30 \uC5B4\uB835\uB2E4."

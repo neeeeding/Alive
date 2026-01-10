@@ -15,6 +15,6 @@ MonoBehaviour:
   itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
   maxCount: 30
   category: 3
-  itemType: 3001
+  itemType: 3101
   itemName: "\uB530\uB73B\uD55C \uC300 \uBC25"
   itemExplanation: "\uAC13 \uC9C0\uC740 \uC300 \uBC25\uC774\uB2E4."

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
+  m_Name: mango
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
+  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
+  maxCount: 60
+  category: 2
+  itemType: 2031
+  itemName: "\uB9DD\uACE0"
+  itemExplanation: "\uB9DD\uACE0\uB85C \uAE40\uCE58\uB97C \uB2F4\uAD6C\uAE30\uB3C4
+    \uD558\uB294\uB370,  \uC124\uD0D5 \uB300\uC6A9\uC73C\uB85C \uC0AC\uC6A9\uD558\uAC70\uB098
+    \uD639\uC740 \uB35C\uC775\uC740 \uB9DD\uACE0 \uC989 \uADF8\uB9B0 \uB9DD\uACE0
+    \uAE40\uCE58\uB85C \uB2F4\uAD6C\uB294 \uBC29\uBC95\uC774 \uC788\uB2E4.\n\uC63B
+    \uC54C\uB974\uB808\uAE30\uAC00 \uC788\uB2E4\uBA74 \uAECD\uC9C8\uACFC \uC528\uC557\uC5D0
+    \uC8FC\uC758 \uD574\uC57C\uD55C\uB2E4."

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
+  m_Name: grape
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
+  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
+  maxCount: 60
+  category: 2
+  itemType: 2028
+  itemName: "\uD3EC\uB3C4"
+  itemExplanation: "\uC54C\uB85C\uC5D0 \uC8FC\uC2A4\uB294 \uC0AC\uC2E4 \uCCAD\uD3EC\uB3C4
+    \uD5A5\uC5D0 \uC54C\uB85C\uC5D0 \uC54C\uAC31\uC774\uB97C \uB123\uC740 \uAC83\uC774\uB2E4.\n\uAECD\uC9C8\uACFC
+    \uC528\uC5D0 \uC601\uC591\uC774 \uB9CE\uC73C\uB2C8 \uAECD\uC9C8\uC9F8 \uBA39\uB294
+    \uAC8C \uC88B\uC73C\uB098 \uC528\uB294 \uC798 \uBABB \uC0BC\uD0A4\uBA74 \uB9F9\uC7A5\uC5FC\uC744
+    \uC720\uBC1C\uD558\uB2C8 \uBA39\uC9C0 \uC54A\uAC70\uB098 \uAF2D\uAF2D \uC539\uC5B4\uBA39\uC5B4\uC57C
+    \uD55C\uB2E4."

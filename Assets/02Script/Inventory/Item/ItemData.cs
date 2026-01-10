@@ -36,7 +36,7 @@ namespace _02Script.Inventory.Item
             switch(_itemBaseData.category)
             {
                 case ItemCategory.seed:
-                case ItemCategory.fruit:
+                case ItemCategory.viand:
                 case ItemCategory.stuff:
                 case ItemCategory.special:
                     
@@ -65,7 +65,7 @@ namespace _02Script.Inventory.Item
             switch(_itemBaseData.category)
             {
                 case ItemCategory.seed:
-                case ItemCategory.fruit:
+                case ItemCategory.viand:
                 case ItemCategory.stuff:
                 case ItemCategory.special:
                     
