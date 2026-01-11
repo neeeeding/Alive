@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217903c6547f4c36ae6767f65f145bf7, type: 3}
+  m_Name: coconut
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
+  seeds: {fileID: 11400000, guid: 93985afcafd3513419cf5163aa77d7c0, type: 2}
+  fruit: {fileID: 11400000, guid: 09e86090a9179a44a9e7b4048d353d74, type: 2}
+  temperatureType: 8
+  growDelay: 5

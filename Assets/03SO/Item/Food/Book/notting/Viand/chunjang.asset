@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8bf712bf48848b290d364741a83a74c, type: 3}
+  m_Name: chunjang
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.ProduceBookSO
+  itemImage: {fileID: 0}
+  maxCount: 10
+  category: 2
+  itemType: 2211
+  itemName: "\uCD98\uC7A5"
+  itemExplanation: "\uCF69\uC5D0 \uBC00, \uC18C\uAE08\uC744 \uC11E\uC5B4 \uBC1C\uD6A8\uC2DC\uD0A8
+    \uC7A5\uC774\uB2E4.\n\uC5EC\uAE30\uC5D0 \uCE90\uB7EC\uBA5C \uC0C9\uC18C\uC640
+    \uC870\uBBF8\uB8CC\uB97C \uC11E\uC73C\uBA74 \uC9DC\uC7A5\uBA74\uC744 \uB9CC\uB4DC\uB294
+    \uAC80\uC815 \uCD98\uC7A5\uC774 \uB41C\uB2E4."
+  itemRows:
+  - items:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - items:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - items:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  means: {fileID: 11400000, guid: 0e73b02dc2ea2694788564c55bc78bb1, type: 2}
+  result: {fileID: 11400000, guid: 60eb7a11649019c479a5b37a8b80d798, type: 2}

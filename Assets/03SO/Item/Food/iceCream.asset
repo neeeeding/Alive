@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
+  m_Name: iceCream
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.ItemDataSO
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 30
+  category: 3
+  itemType: 3141
+  itemName: "\uC544\uC774\uC2A4\uD06C\uB9BC"
+  itemExplanation: "\uBD80\uB4DC\uB7EC\uC6B4 \uC2DD\uAC10\uC744 \uC704\uD574 \uC544\uC774\uC2A4\uD06C\uB9BC\uC758
+    \uC808\uBC18\uC740 \uACF5\uAE30\uB85C \uC774\uB8E8\uC5B4\uC838\uC788\uB2E4.\n\uC544\uC774\uC2A4\uD06C\uB9BC\uC758
+    \uC811\uC2DC\uAC00 \uBD80\uC871\uD574 \uC606 \uAC00\uAC8C\uC758 \uC640\uD50C\uC744
+    \uADF8\uB987 \uB300\uC2E0 \uC0AC\uC6A9\uD55C \uAC83\uC774 \uCF58\uC758\uAE30\uC6D0\uC774\uB2E4."

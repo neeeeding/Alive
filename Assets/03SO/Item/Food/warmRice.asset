@@ -15,6 +15,7 @@ MonoBehaviour:
   itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
   maxCount: 30
   category: 3
-  itemType: 3101
-  itemName: "\uB530\uB73B\uD55C \uC300 \uBC25"
-  itemExplanation: "\uAC13 \uC9C0\uC740 \uC300 \uBC25\uC774\uB2E4."
+  itemType: 3601
+  itemName: "\uD770 \uBC25"
+  itemExplanation: "\uBC25\uC774 \uBE75\uBCF4\uB2E4 \uCE7C\uB85C\uB9AC\uAC00 \uB0AE\uB2E4.\n\uBC31\uBBF8\uB294
+    \uD604\uBBF8\uBCF4\uB2E4 \uAE38\uAC8C \uBCF4\uAD00\uC774 \uAC00\uB2A5\uD558\uB2E4."

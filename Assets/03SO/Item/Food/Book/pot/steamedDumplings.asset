@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8bf712bf48848b290d364741a83a74c, type: 3}
+  m_Name: steamedDumplings
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.ProduceBookSO
+  itemImage: {fileID: 0}
+  maxCount: 10
+  category: 3
+  itemType: 3321
+  itemName: "\uCC10\uB9CC\uB450"
+  itemExplanation: "\uC0AC\uB78C \uBA38\uB9AC\uB97C \uB2EE\uC558\uB2E4 \uD574\uC11C
+    '\uB9CC\uB450 \uB9CC', '\uBA38\uB9AC \uB450'\uB97C \uC0AC\uC6A9\uD55C\uB2E4.\n\uCC1C\uAE30\uAC00
+    \uC5C6\uC5B4\uB3C4 \uCDA9\uBD84\uD788 \uB9CC\uB4E4 \uC218 \uC788\uB2E4."
+  itemRows:
+  - items:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - items:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - items:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  means: {fileID: 11400000, guid: bc26e209dec03d644806688ba61ea828, type: 2}
+  result: {fileID: 11400000, guid: 6a685144ddc165f47a637abc30daa52e, type: 2}

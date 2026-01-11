@@ -147,7 +147,7 @@ namespace _02Script.Inventory.Item
         [Description("¹Ð°¡·ç")]flour = 2202,
         [Description("¸é")]noodle = 2203,
         
-        [Description("ÃáÀå")]Chunjang = 2211,
+        [Description("ÃáÀå")]chunjang = 2211,
         [Description("µÈÀå")]soybeanPaste = 2212,
         [Description("µÎºÎ")]tofu = 2213,
         
@@ -169,11 +169,9 @@ namespace _02Script.Inventory.Item
         [Description("°è¶õ")]egg = 2506,
         [Description("¿ìÀ¯")]milk = 2507,
         
-        //¿ä¸® (ºó, ÇÁ¶óÀÌÆÒ, ³¿ºñ, ¿Àºì, ÀüÀÚ·¹ÀÎÁö)
-        [Description("Èò ¹ä")]warmRice = 3101,
-        [Description("Äá ¹ä")]beanRice = 3102,
-        [Description("ÃÊ ¹ä")]fishRice = 3103,
-        [Description("ºñºö¹ä")]bibimRice = 3104,
+        //¿ä¸® (ºó, ÇÁ¶óÀÌÆÒ, ³¿ºñ, ¿Àºì,¹ä¼Ü ÀüÀÚ·¹ÀÎÁö)
+        [Description("ÃÊ ¹ä")]fishRice = 3101,
+        [Description("ºñºö¹ä")]bibimRice = 3102,
         
         [Description("¶±")]riceCake = 3111,
         [Description("ÇÇÅ¬")]pickle = 3151,
@@ -187,14 +185,14 @@ namespace _02Script.Inventory.Item
         
         [Description("°è¶õ ¸»ÀÌ")]eggRoll = 3221,
         
-        [Description("µ·±î½º")]PorkCutlet = 3241,
+        [Description("µ·±î½º")]porkCutlet = 3241,
         //
         [Description("°íµî¾î Á¶¸²")]stewedMackerel = 3301,
         [Description("¸¶ÆÄ µÎºÎ")]mapoTofu = 3302,
         
-        [Description("Âò ¸¸µÎ")]steamedDumplings = 3321,
+        [Description("Âð¸¸µÎ")]steamedDumplings = 3321,
         [Description("°¥ºñÂò")]steamedRib = 3322,
-        [Description("°è¶õ Âò")]steamedEgg = 3323,
+        [Description("°è¶õÂò")]steamedEgg = 3323,
         
         [Description("µÈÀå±¹")]misoSoup = 3341,
         [Description("´ßµµ¸®ÅÁ")]chickenDoritang = 3342,
@@ -208,6 +206,9 @@ namespace _02Script.Inventory.Item
         [Description("ÇÇÀÚ")]pizza = 3402,
         [Description("¸¶µé·»")]madeleine = 3403,
         [Description("ÄÉÀÌÅ©")]cake = 3451 ,
+        //
+        [Description("Èò ¹ä")]warmRice = 3601,
+        [Description("Äá ¹ä")]beanRice = 3602,
         
         //¹«±â (100¾¿ ºÐ·ù)
         [Description("Ä®")]justKnife = 4001,
