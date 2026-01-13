@@ -24,16 +24,16 @@ MonoBehaviour:
     \uB36E\uBC25\uC740 \uBE44\uBE44\uC9C0 \uC54A\uACE0 \uB5A0\uBA39\uB294\uAC8C \uC815\uC11D\uC774\uB2E4."
   itemRows:
   - items:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 3faabc3f42c1dad48851bf1b7423fde3, type: 2}
+    - {fileID: 11400000, guid: 74f12682451990f468151b10a7471cbe, type: 2}
+    - {fileID: 11400000, guid: 484d48714c352084cad2a8e4b4be2d9f, type: 2}
   - items:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 2e1b82b44bae5d24b988a2205dc9c544, type: 2}
+    - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
+    - {fileID: 11400000, guid: 6704c41866c2b694da57ada187689004, type: 2}
   - items:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 16f42d6002e1e3a458352abacd450144, type: 2}
+    - {fileID: 11400000, guid: dca1140b3c0a48b4a922e606547f22b0, type: 2}
+    - {fileID: 11400000, guid: 4140b63b9b767b64987c15c82ee9e87b, type: 2}
   means: {fileID: 11400000, guid: 0e73b02dc2ea2694788564c55bc78bb1, type: 2}
   result: {fileID: 11400000, guid: 7035665ac2ef7eb40b10947ec819e800, type: 2}

@@ -25,15 +25,15 @@ MonoBehaviour:
   itemRows:
   - items:
     - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-  - items:
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: e0ece30ccbf3dd542a44e561a2f226c5, type: 2}
     - {fileID: 0}
   - items:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 56855c27dd08f5e4bbb91c13c584d400, type: 2}
+    - {fileID: 11400000, guid: 56855c27dd08f5e4bbb91c13c584d400, type: 2}
+    - {fileID: 11400000, guid: 56855c27dd08f5e4bbb91c13c584d400, type: 2}
+  - items:
+    - {fileID: 11400000, guid: c71090bb77805724abe67fc3093354e4, type: 2}
+    - {fileID: 11400000, guid: c71090bb77805724abe67fc3093354e4, type: 2}
+    - {fileID: 11400000, guid: c71090bb77805724abe67fc3093354e4, type: 2}
   means: {fileID: 11400000, guid: 0bc6f1e3212891e4983de9cb3dbfe8f5, type: 2}
   result: {fileID: 11400000, guid: 0f90c848eb3892c458e7f7e9e4740b2c, type: 2}

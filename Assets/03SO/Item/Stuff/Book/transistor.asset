@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8bf712bf48848b290d364741a83a74c, type: 3}
+  m_Name: transistor
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.ProduceBookSO
+  itemImage: {fileID: 0}
+  maxCount: 999
+  category: 6
+  itemType: 6126
+  itemName: "\uD2B8\uB79C\uC9C0\uC2A4\uD130"
+  itemExplanation: "\uC804\uB958\uAC00 \uD750\uB974\uAC8C \uD558\uBA74 1, \uCC28\uB2E8\uD558\uBA74
+    0\uC774\uB2E4.\n'\uC138 \uBC1C \uB2EC\uB9B0 \uB9C8\uC220\uC0AC'\uB77C\uACE0\uB3C4
+    \uBD88\uB9B0\uB2E4."
+  itemRows:
+  - items:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - items:
+    - {fileID: 11400000, guid: c152bb6040cb628418ae4f8e325b4ec7, type: 2}
+    - {fileID: 11400000, guid: c152bb6040cb628418ae4f8e325b4ec7, type: 2}
+    - {fileID: 11400000, guid: c152bb6040cb628418ae4f8e325b4ec7, type: 2}
+  - items:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  means: {fileID: 11400000, guid: 09bec2b0390d1f943be0179158f4a711, type: 2}
+  result: {fileID: 11400000, guid: 8b705bb48de47264fba8b2f65be52cf5, type: 2}

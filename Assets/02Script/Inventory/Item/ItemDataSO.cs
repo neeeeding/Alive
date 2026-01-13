@@ -217,12 +217,11 @@ namespace _02Script.Inventory.Item
         //자연 (20씩 분류)
         [Description("자갈")]gravel = 6001,
         [Description("점토")]clay = 6002,
-        [Description("모레")]sand = 6003,
+        [Description("모래")]sand = 6003,
         [Description("석영")]quartz = 6004,
         [Description("석유")]petroleum = 6005,
         [Description("흑연")]blackSmoke = 6006,
-        [Description("기름")]oil = 6007,
-        [Description("산")]poison = 6008,
+        [Description("산")]poison = 6007,
         
         [Description("철 광석")]ironStone = 6021,
         [Description("구리 광석")]copperStone = 6022,
@@ -273,11 +272,11 @@ namespace _02Script.Inventory.Item
         [Description("천")]cloth = 6161,
         [Description("가죽")]leather = 6162,
         [Description("실")]thread = 6163,
-        [Description("천연섬유")]naturalFiber = 6164,
+        [Description("섬유")]naturalFiber = 6164,
         
         [Description("유리")]glass = 6181,
         [Description("판자")]board = 6182,
-        [Description("수지")]profit = 6183,
+        [Description("플라스틱")]profit = 6183,
         [Description("나사")]screw = 6184,
         
         //기계

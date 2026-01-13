@@ -24,12 +24,12 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
   - items:
+    - {fileID: 11400000, guid: 303dbc41df00daf4baef6c538ad9b57d, type: 2}
     - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 303dbc41df00daf4baef6c538ad9b57d, type: 2}
   - items:
+    - {fileID: 11400000, guid: 3a1e59a91d66d3c4fb2a27b3f9780cd4, type: 2}
     - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 3a1e59a91d66d3c4fb2a27b3f9780cd4, type: 2}
   means: {fileID: 11400000, guid: fe8e6748c63fabe4684972195379b427, type: 2}
   result: {fileID: 11400000, guid: 09bec2b0390d1f943be0179158f4a711, type: 2}

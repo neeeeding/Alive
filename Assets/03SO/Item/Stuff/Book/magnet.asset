@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8bf712bf48848b290d364741a83a74c, type: 3}
+  m_Name: magnet
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.ProduceBookSO
+  itemImage: {fileID: 0}
+  maxCount: 999
+  category: 6
+  itemType: 6129
+  itemName: "\uC790\uC11D"
+  itemExplanation: "\uC5F4\uC5D0 \uC57D\uD574, \uAC00\uC5F4\uD558\uBA74 \uC790\uB825\uC744
+    \uC783\uB294\uB2E4.\n\uD55C \uC790\uC11D\uC758 N\uADF9\uACFC S\uADF9\uC744 \uBD84\uB9AC
+    \uD560 \uC218 \uC5C6\uB2E4."
+  itemRows:
+  - items:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - items:
+    - {fileID: 0}
+    - {fileID: 11400000, guid: 303dbc41df00daf4baef6c538ad9b57d, type: 2}
+    - {fileID: 0}
+  - items:
+    - {fileID: 0}
+    - {fileID: 11400000, guid: 303dbc41df00daf4baef6c538ad9b57d, type: 2}
+    - {fileID: 0}
+  means: {fileID: 11400000, guid: 414830587d45152469bb0c061560ac52, type: 2}
+  result: {fileID: 11400000, guid: 89a85e035f11ff34fb8b53cebc0867ee, type: 2}

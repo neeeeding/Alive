@@ -22,16 +22,16 @@ MonoBehaviour:
     \uBA74'\uC774\uB77C\uB294 \uB73B\uC744 \uAC00\uC9C0\uACE0 \uC788\uB2E4."
   itemRows:
   - items:
+    - {fileID: 11400000, guid: 3e2eea068cccf30469ac27f24e9561f2, type: 2}
+    - {fileID: 11400000, guid: c977dbaf91cb62140bcb1f967ae83c36, type: 2}
+    - {fileID: 11400000, guid: 3faabc3f42c1dad48851bf1b7423fde3, type: 2}
+  - items:
     - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 60eb7a11649019c479a5b37a8b80d798, type: 2}
     - {fileID: 0}
   - items:
     - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-  - items:
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 2787574a2d27fe146b48d39f5e888e78, type: 2}
     - {fileID: 0}
   means: {fileID: 11400000, guid: a0e20cbe11964954ba8cfc46b7f300e1, type: 2}
   result: {fileID: 11400000, guid: 20bfa90f980e7cc40abeb435e04348c2, type: 2}

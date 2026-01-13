@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8bf712bf48848b290d364741a83a74c, type: 3}
+  m_Name: cloth
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.ProduceBookSO
+  itemImage: {fileID: 0}
+  maxCount: 999
+  category: 6
+  itemType: 6161
+  itemName: "\uCC9C"
+  itemExplanation: "\uC815\uB9D0 \uB2E4\uC591\uD55C \uC7AC\uB8CC\uC640 \uBC29\uBC95\uC73C\uB85C
+    \uCC9C\uC744 \uB9CC\uB4E0\uB2E4.\n\uC61B\uB0A0\uC5D0 \uBCF4\uB77C\uC0C9 \uC5FC\uB8CC\uB97C
+    \uBF51\uAE30\uAC00 \uC5B4\uB824\uC6CC, \uADC0\uD558\uAC8C \uC5EC\uACA8\uC84C\uB2E4."
+  itemRows:
+  - items:
+    - {fileID: 11400000, guid: a4df7bba180464a4c91c7807c04eaff9, type: 2}
+    - {fileID: 11400000, guid: a4df7bba180464a4c91c7807c04eaff9, type: 2}
+    - {fileID: 11400000, guid: a4df7bba180464a4c91c7807c04eaff9, type: 2}
+  - items:
+    - {fileID: 11400000, guid: a4df7bba180464a4c91c7807c04eaff9, type: 2}
+    - {fileID: 11400000, guid: a4df7bba180464a4c91c7807c04eaff9, type: 2}
+    - {fileID: 11400000, guid: a4df7bba180464a4c91c7807c04eaff9, type: 2}
+  - items:
+    - {fileID: 11400000, guid: a4df7bba180464a4c91c7807c04eaff9, type: 2}
+    - {fileID: 11400000, guid: a4df7bba180464a4c91c7807c04eaff9, type: 2}
+    - {fileID: 11400000, guid: a4df7bba180464a4c91c7807c04eaff9, type: 2}
+  means: {fileID: 11400000, guid: 0e73b02dc2ea2694788564c55bc78bb1, type: 2}
+  result: {fileID: 11400000, guid: 8f0db03ce9bb28745982cb0b3a520040, type: 2}

@@ -26,9 +26,9 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
   - items:
+    - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
     - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 82885c352ef20cf49b3199b2909b0072, type: 2}
   - items:
     - {fileID: 0}
     - {fileID: 0}

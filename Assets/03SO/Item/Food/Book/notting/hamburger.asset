@@ -23,16 +23,16 @@ MonoBehaviour:
     \uC54A\uC73C\uBA74 \uBB34\uC870\uAC74 \uC0CC\uB4DC\uC704\uCE58\uB77C\uACE0 \uBD80\uB978\uB2E4."
   itemRows:
   - items:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 627a3ab8d14b8514d97553b7f6ac925f, type: 2}
+    - {fileID: 11400000, guid: c71090bb77805724abe67fc3093354e4, type: 2}
+    - {fileID: 11400000, guid: dbccb207a71c34145add19032ca1cdcb, type: 2}
   - items:
     - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 74f12682451990f468151b10a7471cbe, type: 2}
     - {fileID: 0}
   - items:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 402bd18a1efe5d64d9d1fc339f2c9262, type: 2}
+    - {fileID: 11400000, guid: c71090bb77805724abe67fc3093354e4, type: 2}
+    - {fileID: 11400000, guid: 6800df62c0c3f3f468fb48c61ebff522, type: 2}
   means: {fileID: 11400000, guid: 0e73b02dc2ea2694788564c55bc78bb1, type: 2}
   result: {fileID: 11400000, guid: 2abf72faa923ad947b5365c08f1230dd, type: 2}

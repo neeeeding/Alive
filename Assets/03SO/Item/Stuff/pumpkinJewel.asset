@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
+  m_Name: pumpkinJewel
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.ItemDataSO
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 999
+  category: 6
+  itemType: 6069
+  itemName: "\uD638\uBC15"
+  itemExplanation: "\uB300\uBD80\uBD84 \uAD11\uBB3C \uBCF4\uC11D\uC740 \uCC28\uAC11\uC9C0\uB9CC
+    \uD638\uBC15\uC740 \uC720\uAE30\uBB3C\uC774\uAE30\uC5D0 (\uD53C\uBD80\uC5D0 \uB2FF\uC73C\uBA74)
+    \uB530\uB4EF\uD558\uB2E4.\n\uC5B4\uB9B0 \uC218\uC9C0 \uD654\uC11D\uC740 '\uCF54\uD314'\uC774\uB77C
+    \uBD80\uB974\uBA70 \uD638\uBC15\uC740 \uCD5C\uC18C 3\uCC9C\uB9CC \uB144\uC5D0\uC11C
+    9\uCC9C \uB9CC\uB144 \uC774\uC0C1 \uB41C \uAC83\uB4E4\uC774\uB2E4."

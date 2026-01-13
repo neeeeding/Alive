@@ -28,7 +28,7 @@ MonoBehaviour:
     - {fileID: 0}
   - items:
     - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 809aec8b9c7488243a2184052a3708df, type: 2}
     - {fileID: 0}
   - items:
     - {fileID: 0}

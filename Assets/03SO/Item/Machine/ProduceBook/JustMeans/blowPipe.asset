@@ -22,15 +22,15 @@ MonoBehaviour:
   itemRows:
   - items:
     - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-  - items:
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 303dbc41df00daf4baef6c538ad9b57d, type: 2}
     - {fileID: 0}
   - items:
     - {fileID: 0}
+    - {fileID: 11400000, guid: 303dbc41df00daf4baef6c538ad9b57d, type: 2}
     - {fileID: 0}
+  - items:
+    - {fileID: 0}
+    - {fileID: 11400000, guid: 303dbc41df00daf4baef6c538ad9b57d, type: 2}
     - {fileID: 0}
   means: {fileID: 11400000, guid: b22c1a9de9bc5534999f8f6cb72de471, type: 2}
   result: {fileID: 11400000, guid: d7a9b07cfc26bbd4eb1defb4d8f31588, type: 2}

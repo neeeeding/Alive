@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8bf712bf48848b290d364741a83a74c, type: 3}
+  m_Name: capacitor
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.ProduceBookSO
+  itemImage: {fileID: 0}
+  maxCount: 999
+  category: 6
+  itemType: 6125
+  itemName: "\uCF58\uB374\uC11C"
+  itemExplanation: "\uC804\uAE30\uB97C \uC800\uC7A5\uD558\uACE0, \uBC29\uCD9C \uD560
+    \uC218 \uC788\uB2E4.\n\uACFC\uD559\uC801\uC73C\uB85C \uAD6C\uB984\uC740 \uD558\uB298\uC5D0
+    \uB5A0 \uC788\uB294 \uAC70\uB300\uD55C \uCF58\uB374\uC11C\uB2E4."
+  itemRows:
+  - items:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - items:
+    - {fileID: 11400000, guid: c152bb6040cb628418ae4f8e325b4ec7, type: 2}
+    - {fileID: 0}
+    - {fileID: 11400000, guid: a9a49576494942041ae8d45e623db533, type: 2}
+  - items:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  means: {fileID: 11400000, guid: 09bec2b0390d1f943be0179158f4a711, type: 2}
+  result: {fileID: 11400000, guid: 9650ef3ffdd7133428fd0215567f2f17, type: 2}

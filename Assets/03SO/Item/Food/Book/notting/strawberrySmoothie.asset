@@ -28,11 +28,11 @@ MonoBehaviour:
     - {fileID: 0}
   - items:
     - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: e0ece30ccbf3dd542a44e561a2f226c5, type: 2}
+    - {fileID: 11400000, guid: 03934145bc5da3f448350df77ec90e23, type: 2}
   - items:
     - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 809aec8b9c7488243a2184052a3708df, type: 2}
     - {fileID: 0}
   means: {fileID: 11400000, guid: 0e73b02dc2ea2694788564c55bc78bb1, type: 2}
   result: {fileID: 11400000, guid: 86b2ab707264ce142bfef044109c0967, type: 2}

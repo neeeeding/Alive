@@ -21,16 +21,16 @@ MonoBehaviour:
     \uC694\uB9AC \uB3C4\uAD6C\uB2E4."
   itemRows:
   - items:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: cec52d1e21ce1e2429837c63d12cc5d8, type: 2}
+    - {fileID: 11400000, guid: cec52d1e21ce1e2429837c63d12cc5d8, type: 2}
+    - {fileID: 11400000, guid: cec52d1e21ce1e2429837c63d12cc5d8, type: 2}
   - items:
+    - {fileID: 11400000, guid: cec52d1e21ce1e2429837c63d12cc5d8, type: 2}
     - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: cec52d1e21ce1e2429837c63d12cc5d8, type: 2}
   - items:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: cec52d1e21ce1e2429837c63d12cc5d8, type: 2}
+    - {fileID: 11400000, guid: cec52d1e21ce1e2429837c63d12cc5d8, type: 2}
+    - {fileID: 11400000, guid: cec52d1e21ce1e2429837c63d12cc5d8, type: 2}
   means: {fileID: 11400000, guid: b22c1a9de9bc5534999f8f6cb72de471, type: 2}
   result: {fileID: 11400000, guid: bc26e209dec03d644806688ba61ea828, type: 2}
