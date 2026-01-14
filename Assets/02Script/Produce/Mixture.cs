@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using TMPro;
@@ -22,6 +23,7 @@ namespace _02Script.Produce
         [SerializeField] private Image backGround;
         
         [SerializeField] private Image result;
+        [SerializeField] private TextMeshProUGUI resultCount;
         [SerializeField] private TextMeshProUGUI resultName;
         [SerializeField] private TextMeshProUGUI resultExplanation;
         
@@ -54,20 +56,38 @@ namespace _02Script.Produce
         public void MouseExit()
         {
             GetResult(_Timer <= 0? _itemMax.maxCount : 1);
-            errorMassage.SetActive(_Timer <= 0);
         }
         private void GetResult(int count) //제작 아이템 얻기 & 재료 버리기
         {
+            count = resultData.category switch
+            {
+                ItemCategory.food => 5,
+                ItemCategory.weapon => 100,
+                ItemCategory.armor => 100,
+                ItemCategory.machine => 100,
+                _=> count,
+            };
+            int use = resultData.category switch
+            {
+                ItemCategory.food => 1,
+                ItemCategory.weapon => 1,
+                ItemCategory.armor => 1,
+                ItemCategory.machine => 1,
+                _=> count,
+            };
             foreach (var card in _cards)
             {
-                card.ReturnData().UseItem(count,true);
+                card.ReturnData().UseItem(use,true);
                 card.UpdateCountUI();
                 
-                inventory.UseItem(card.ReturnData().ReturnDataSO(),count);
+                inventory.ThrowItem(card.ReturnData().ReturnDataSO(),use);
             }
             inventory.AddItem(resultData,count);
             produceInventory.AddItem(resultData,count);
-            _itemMax.maxCount -= count;
+            _itemMax.maxCount -= use;
+            
+            resultCount.text = _itemMax.maxCount > 0? _itemMax.maxCount.ToString() : "";
+            errorMassage.SetActive(_itemMax.maxCount <= 0);
         }
         #endregion
 
@@ -97,6 +117,7 @@ namespace _02Script.Produce
             result.sprite = bookData != null? resultData.itemImage : null;
             resultName.text = bookData != null? resultData.itemName : "";
             resultExplanation.text = bookData != null? resultData.itemExplanation : "";
+            resultCount.text = "";
             //비워 (조합대 복제본들)
             for (int i = 0; i < _cards.Count; i++)
             {
@@ -147,9 +168,15 @@ namespace _02Script.Produce
                 }
             }
 
+            resultCount.text = _itemMax.maxCount.ToString();
             if (_itemMax.maxCount <= 0)
             {
+                resultCount.text = "";
                 errorMassage.SetActive(true);
+                foreach (var card in _cards)
+                {
+                    card.UpdateCountUI();
+                }
             }
             
             if(bookData == null) return;

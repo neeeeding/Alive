@@ -1,3 +1,4 @@
+using _02Script.Produce;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -60,7 +61,7 @@ namespace _02Script.Inventory.Item
                 countUI.text = "";
             }
             
-            if (count <= 0)
+            if (count <= 0 && !(itemData.ReturnDataSO() is ProduceBookSO))
             {
                 gameObject.SetActive(false);
             }

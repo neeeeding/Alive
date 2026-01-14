@@ -22,6 +22,7 @@ namespace _02Script.Player
         public DialogEntitySO lastSO;
         public string lastText; //마지막 대화
 
+        public SaveDictionary<EntityName, SaveDictionary<StatsType, int>> characterStats; //캐릭터들 스탯 캐릭터<스탯 종류, 수>
         public SaveDictionary<EntityName, SaveDictionary<DialogType, string>> characterLastText; //캐릭터 마지막 대화 이름<다이얼로그(종류), 번째(혹은 텍스트)>
 
         [Space(50f)] //날짜
@@ -56,6 +57,7 @@ namespace _02Script.Player
         
         public void ResetCharacter() //캐릭터들  전부 초기화
         {
+            characterStats = new SaveDictionary<EntityName, SaveDictionary<StatsType, int>>();
             characterLastText = new SaveDictionary<EntityName, SaveDictionary<DialogType, string>>();
             characterLastText.Clear();
 
@@ -65,6 +67,7 @@ namespace _02Script.Player
             {
                 num = (int)name / 1000;
                 SaveDictionary<DialogType, string> di = new SaveDictionary<DialogType, string>();
+                SaveDictionary<StatsType, int> st = new SaveDictionary<StatsType, int>();
 
                 foreach (DialogType dialog in
                          Enum.GetValues(typeof(DialogType))) //모든 걸 저장 / 다이얼로그 종류 (챕터, 넘버, 텍스트, 메모, 러브 만 사용하긴 함.)
@@ -73,6 +76,13 @@ namespace _02Script.Player
                 }
 
                 characterLastText.Add(name, di); //저장
+
+                foreach (StatsType stats in
+                         Enum.GetValues(typeof(StatsType))) //모든 걸 저장 / 다이얼로그 종류 (챕터, 넘버, 텍스트, 메모, 러브 만 사용하긴 함.)
+                {
+                    st.Add(stats,stats == StatsType.hp? 100 : 1);
+                }
+                characterStats.Add(name, st);
             }
         }
         
@@ -89,5 +99,22 @@ namespace _02Script.Player
                 items.Add(type, new List<int>(){0}); //0으로 초기화
             }
         }
+    }
+    
+    [Flags]
+    public enum StatsType
+    {
+        //450, 1 == 10
+        none = 0,
+        hp = 1 << 0, //체력
+        attack = 1 << 1, //타격
+        agility = 1 << 2, //민첩
+        defense = 1 << 3, //방어
+        skill = 1 << 4, //숙련
+        recovery = 1 << 5, //회복
+        tolerance = 1 << 6, //내성
+        duration = 1 << 7, //지속
+        acceptance = 1 << 8, //수납
+        mining = 1 << 9, //채굴
     }
 }

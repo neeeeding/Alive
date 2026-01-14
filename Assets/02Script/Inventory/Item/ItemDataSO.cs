@@ -1,4 +1,6 @@
+using System;
 using System.ComponentModel;
+using _02Script.Player;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,11 +9,16 @@ namespace _02Script.Inventory.Item
     [CreateAssetMenu(fileName = "ItemSO", menuName = "SO/Item/ItemDataSO")]
     public class ItemDataSO : ScriptableObject
     {
+        public static Action<StatsType, int> OnStats;
+        
         public Sprite itemImage;
         public int maxCount;
 
         public ItemCategory category; //카테고리
         public ItemType itemType; //아이템 종류
+        
+        public StatsType stats = StatsType.hp;
+        public int addStats = 0;
 
         public string itemName;
         [TextArea(3, 10)]
@@ -22,7 +29,7 @@ namespace _02Script.Inventory.Item
             switch (category)
             {
                 case ItemCategory.food :
-                    // 먹을 상대 정하기
+                    OnStats?.Invoke(StatsType.hp, addStats);
                     return true;
             }
             return false;

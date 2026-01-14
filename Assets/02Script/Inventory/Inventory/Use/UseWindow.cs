@@ -45,7 +45,23 @@ namespace _02Script.Inventory.Inventory.Use
 
         public void UseData()
         {
-            inventoryManager.UseItem(card.ReturnData().ReturnDataSO(),int.Parse(countInputField.text));
+            int rand = 1;
+            if (card.ReturnData().ReturnDataSO().category == ItemCategory.food ||
+                card.ReturnData().ReturnDataSO().category == ItemCategory.seed)
+            {
+                rand = Random.Range(0,6 -card.ReturnNum(true));
+            }
+
+            if (rand == 1)
+            {
+                print("성공");
+                inventoryManager.UseItem(card.ReturnData().ReturnDataSO(),int.Parse(countInputField.text));
+            }
+            else
+            {
+                print("실패");
+                inventoryManager.ThrowItem(card.ReturnData().ReturnDataSO(),int.Parse(countInputField.text));
+            }
             
             gameObject.SetActive(false);
         }

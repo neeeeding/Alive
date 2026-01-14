@@ -1,5 +1,8 @@
 using System;
+using _02Script.Inventory.Item;
+using _02Script.Manager;
 using _02Script.Player.State;
+using _02Script.UI.Dialog.Entity;
 using UnityEngine;
 
 namespace _02Script.Player
@@ -8,6 +11,7 @@ namespace _02Script.Player
     {
         public static Action<Player> OnSelectPlayer;
         
+        [SerializeField] private EntityName playerName;
         [SerializeField] private string currentState;
 
         private Animator animator;
@@ -27,6 +31,8 @@ namespace _02Script.Player
         
         private void Awake()
         {
+            ItemDataSO.OnStats += AddStats;
+            
             playerMovement =  GetComponent<PlayerMovement>();
             animator = GetComponentInChildren<Animator>();
 
@@ -39,8 +45,16 @@ namespace _02Script.Player
             stateMachine.ChangeState(PlayerState.Idle, 0,0);
         }
 
+        private void AddStats(StatsType type, int add) //스탯
+        {
+            if(!isCurPlayer) return;
+            
+            GameManager.Instance.PlayerStat.characterStats[playerName][type] += add;
+        }
+
         private void OnDisable()
         {
+            ItemDataSO.OnStats -= AddStats;
             stateMachine.currentState.Exit();
         }
 

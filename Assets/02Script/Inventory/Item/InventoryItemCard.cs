@@ -41,6 +41,11 @@ namespace _02Script.Inventory.Item
             OnMouseClick?.Invoke(this,rT);
             //클릭 그 표시나게
         }
+        public void CancelCard()
+        {
+            OnMouseClick?.Invoke(null,null);
+            //클릭 그 표시나게
+        }
         #endregion
     }
 }

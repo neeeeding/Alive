@@ -14,8 +14,9 @@ namespace _02Script.Inventory.Inventory
         [Header("Need")]
         [SerializeField] protected ItemCard cardPrefab;
         [SerializeField] protected SerializedDictionary<ItemCategory, Transform> itemInventory;
-        [SerializeField] protected SerializedDictionary<ItemType, ItemDataSO> allDataSO;
+        [SerializeField] protected ItemDataSO[] allSO;
         
+        protected SerializedDictionary<ItemType, ItemDataSO> allDataSO;
         protected Dictionary<ItemDataSO, ItemData> _itemDatas = new Dictionary<ItemDataSO, ItemData>();
         protected Dictionary<ItemData, List<ItemCard>> _itemCards = new Dictionary<ItemData, List<ItemCard>>();
         
@@ -43,6 +44,7 @@ namespace _02Script.Inventory.Inventory
 
         private void LoadItem() //불러오기
         {
+            SettingAllDataSO();
             Dictionary<ItemType, List<int>> save = GameManager.Instance.PlayerStat.items.ToDictionary();
 
             foreach (KeyValuePair<ItemType, ItemDataSO> item in allDataSO.ToList())
@@ -168,6 +170,16 @@ namespace _02Script.Inventory.Inventory
             ItemCard card = _itemCards[data][_itemCards[data].Count -1]; //갓 생성
             card.gameObject.SetActive(true);
             card.UpdateCountUI();
+        }
+
+        private void SettingAllDataSO()
+        {
+            allDataSO = new SerializedDictionary<ItemType, ItemDataSO>();
+
+            foreach (ItemDataSO data in allSO)
+            {
+                allDataSO.Add(data.itemType, data);
+            }
         }
     }
 }

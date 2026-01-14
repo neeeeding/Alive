@@ -11,14 +11,11 @@ namespace _02Script.Inventory.Etc
 
         private void Start()
         {
-            foreach (var item in itemData)
+            foreach (KeyValuePair<ItemDataSO, List<int>> item in itemData)
             {
                 for (int i = 0; i < item.Value.Count; i++)
                 {
-                    for (int j = 0; j < item.Value[i]; j++)
-                    {
-                        OnGetItem?.Invoke(item.Key,j);
-                    }
+                    OnGetItem?.Invoke(item.Key,item.Value[i]);
                 }
             }
         }
