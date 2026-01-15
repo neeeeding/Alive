@@ -74,6 +74,6 @@ namespace _02Script.UI.Dialog.Dialog
         DeleteGameObject, //삭제
         DialogDeleteObj, //대화의 삭제
         MuseumItemShow, //박물관
-        ShopUI, //상점
+        SoreUI, //상점
     }
 }

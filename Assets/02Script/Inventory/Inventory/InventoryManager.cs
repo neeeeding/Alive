@@ -3,6 +3,7 @@ using System.Linq;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
 using _02Script.UI.Save;
+using _02Script.UI.Store;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
 using ItemCard = _02Script.Inventory.Item.ItemCard;
@@ -16,9 +17,9 @@ namespace _02Script.Inventory.Inventory
         [SerializeField] protected SerializedDictionary<ItemCategory, Transform> itemInventory;
         [SerializeField] protected ItemDataSO[] allSO;
         
-        protected SerializedDictionary<ItemType, ItemDataSO> allDataSO;
-        protected Dictionary<ItemDataSO, ItemData> _itemDatas = new Dictionary<ItemDataSO, ItemData>();
-        protected Dictionary<ItemData, List<ItemCard>> _itemCards = new Dictionary<ItemData, List<ItemCard>>();
+        protected SerializedDictionary<ItemType, ItemDataSO> AllDataSO;
+        protected Dictionary<ItemDataSO, ItemData> ItemDatas = new Dictionary<ItemDataSO, ItemData>();
+        protected Dictionary<ItemData, List<ItemCard>> ItemCards = new Dictionary<ItemData, List<ItemCard>>();
         
         //hold에 대해
         [SerializeField]private ItemHold realItem; //들리게 될 아이템(위치)
@@ -28,6 +29,8 @@ namespace _02Script.Inventory.Inventory
         {
             InGameItem.OnGetItem += AddItem;
             LoadCard.OnLoad += LoadItem;
+            StoreCard.OnSellItem += AddItem;
+            StoreCard.OnPayItem += ThrowItem;
             
             if(GameManager.Instance.isStart)
             {
@@ -39,6 +42,8 @@ namespace _02Script.Inventory.Inventory
         {
             InGameItem.OnGetItem -= AddItem;
             LoadCard.OnLoad -= LoadItem;
+            StoreCard.OnSellItem -= AddItem;
+            StoreCard.OnPayItem -= ThrowItem;
         }
         #endregion
 
@@ -47,7 +52,7 @@ namespace _02Script.Inventory.Inventory
             SettingAllDataSO();
             Dictionary<ItemType, List<int>> save = GameManager.Instance.PlayerStat.items.ToDictionary();
 
-            foreach (KeyValuePair<ItemType, ItemDataSO> item in allDataSO.ToList())
+            foreach (KeyValuePair<ItemType, ItemDataSO> item in AllDataSO.ToList())
             {
                 ThrowItem(item.Value,9999999);
             }
@@ -56,7 +61,7 @@ namespace _02Script.Inventory.Inventory
             {
                 foreach (int num in item.Value.ToList())
                 {
-                    AddItem(allDataSO[item.Key], num);
+                    AddItem(AllDataSO[item.Key], num);
                 }
             }
         }
@@ -78,23 +83,23 @@ namespace _02Script.Inventory.Inventory
 
         private void LessItem(ItemDataSO item, bool isThrow,int count = 1) //어쨌든 아이템 감소
         {
-            if (_itemDatas.ContainsKey(item))
+            if (ItemDatas.ContainsKey(item))
             {
-                ItemData data = _itemDatas[item];
+                ItemData data = ItemDatas[item];
                 
                 data.UseItem(count, isThrow);
-                _itemCards[data][_itemCards[data].Count -1].UpdateCountUI();
+                ItemCards[data][ItemCards[data].Count -1].UpdateCountUI();
                 
                 realItem.CheckLessItem();
                 
                 switch(item.category) //개별 저장 애들은 걍 지워버리기
                 {
                     case ItemCategory.food:
-                        foreach (ItemCard card in _itemCards[data].ToList())
+                        foreach (ItemCard card in ItemCards[data].ToList())
                         {
                             if(count != card.ReturnNum(true)) continue;
                             
-                            _itemCards[data].Remove(card);
+                            ItemCards[data].Remove(card);
                             Destroy(card.gameObject);
                             break;
                         }
@@ -102,11 +107,11 @@ namespace _02Script.Inventory.Inventory
                     case ItemCategory.armor:
                     case ItemCategory.weapon:
                     case ItemCategory.machine:
-                        foreach (ItemCard card in _itemCards[data].ToList())
+                        foreach (ItemCard card in ItemCards[data].ToList())
                         {
                             if(count != card.ReturnNum(false)) continue;
                             
-                            _itemCards[data].Remove(card);
+                            ItemCards[data].Remove(card);
                             Destroy(card.gameObject);
                             break;
                         }
@@ -124,11 +129,11 @@ namespace _02Script.Inventory.Inventory
             if (!isEtc)
             {
                 itemData.NewItem(item);
-                _itemDatas.Add(item, itemData);
+                ItemDatas.Add(item, itemData);
             }
             else //기존거
             {
-                itemData = _itemDatas[item];
+                itemData = ItemDatas[item];
             }
             
             Transform parent = itemInventory[item.category];
@@ -139,9 +144,9 @@ namespace _02Script.Inventory.Inventory
             newCard.NewCard(itemData, star, hp);
             
             if(!isEtc)
-                _itemCards.Add(itemData, new List<ItemCard>());
+                ItemCards.Add(itemData, new List<ItemCard>());
 
-            _itemCards[itemData].Add(newCard);
+            ItemCards[itemData].Add(newCard);
         }
 
         public virtual void AddItem(ItemDataSO item, int count = 1)
@@ -152,7 +157,7 @@ namespace _02Script.Inventory.Inventory
                 case ItemCategory.viand:
                 case ItemCategory.stuff:
                 case ItemCategory.special:
-                    if (!_itemDatas.ContainsKey(item))
+                    if (!ItemDatas.ContainsKey(item))
                         NewCard(item, false, 0,0);
                     break;
 
@@ -160,25 +165,25 @@ namespace _02Script.Inventory.Inventory
                 case ItemCategory.armor:
                 case ItemCategory.weapon:
                 case ItemCategory.machine:
-                    NewCard(item, _itemDatas.ContainsKey(item), count, count);
+                    NewCard(item, ItemDatas.ContainsKey(item), count, count);
                     break;
             }
 
-            ItemData data = _itemDatas[item];
+            ItemData data = ItemDatas[item];
             data.GetItem(count);
             
-            ItemCard card = _itemCards[data][_itemCards[data].Count -1]; //갓 생성
+            ItemCard card = ItemCards[data][ItemCards[data].Count -1]; //갓 생성
             card.gameObject.SetActive(true);
             card.UpdateCountUI();
         }
 
         private void SettingAllDataSO()
         {
-            allDataSO = new SerializedDictionary<ItemType, ItemDataSO>();
+            AllDataSO = new SerializedDictionary<ItemType, ItemDataSO>();
 
             foreach (ItemDataSO data in allSO)
             {
-                allDataSO.Add(data.itemType, data);
+                AllDataSO.Add(data.itemType, data);
             }
         }
     }

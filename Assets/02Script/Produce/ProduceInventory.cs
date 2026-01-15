@@ -27,9 +27,9 @@ namespace _02Script.Produce
 
         public int ItemCount(ItemDataSO item)
         {
-            if (!_itemDatas.ContainsKey(item))
+            if (!ItemDatas.ContainsKey(item))
                 return 0;
-            return _itemDatas[item].ItemCount();
+            return ItemDatas[item].ItemCount();
         }
 
         public ItemCard ItemCardCopy(ItemDataSO soData, Transform parent) //제작대에 카드 복사해 생성
@@ -48,9 +48,9 @@ namespace _02Script.Produce
         {
             foreach (ItemCard mixtureCard in items)
             {
-                if (!_itemDatas.ContainsKey(mixtureCard.ReturnData().ReturnDataSO()))
+                if (!ItemDatas.ContainsKey(mixtureCard.ReturnData().ReturnDataSO()))
                     continue;
-                ItemCard inventoryItem = _itemCards[_itemDatas[mixtureCard.ReturnData().ReturnDataSO()]][0]; //데이터가 같다는 보장이 없어서
+                ItemCard inventoryItem = ItemCards[ItemDatas[mixtureCard.ReturnData().ReturnDataSO()]][0]; //데이터가 같다는 보장이 없어서
 
                 if (isItem)
                 {
