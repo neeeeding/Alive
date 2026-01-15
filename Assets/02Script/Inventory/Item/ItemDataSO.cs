@@ -1,6 +1,6 @@
 using System;
 using System.ComponentModel;
-using _02Script.Player;
+using _02Script.UI.person;
 using UnityEditor;
 using UnityEngine;
 
@@ -29,7 +29,7 @@ namespace _02Script.Inventory.Item
             switch (category)
             {
                 case ItemCategory.food :
-                    OnStats?.Invoke(StatsType.hp, addStats);
+                    OnStats?.Invoke(stats, addStats);
                     return true;
             }
             return false;

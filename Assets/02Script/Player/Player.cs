@@ -3,6 +3,7 @@ using _02Script.Inventory.Item;
 using _02Script.Manager;
 using _02Script.Player.State;
 using _02Script.UI.Dialog.Entity;
+using _02Script.UI.person;
 using UnityEngine;
 
 namespace _02Script.Player

@@ -36,7 +36,8 @@ namespace _02Script.UI.Likeability
             if (GameManager.Instance.isStart)
             {
                 path = GameManager.Instance.PlayerStat;
-                memo.text = path.characterLastText[dialogEntity.EntityName][DialogType.Memo];
+                if(memo != null)
+                    memo.text = path.characterLastText[dialogEntity.EntityName][DialogType.Memo];
                 LoadData(); // 로드를 위해
             }
         }
