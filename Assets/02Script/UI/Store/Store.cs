@@ -1,5 +1,4 @@
-﻿using System;
-using _02Script.Inventory.Item;
+﻿using _02Script.Inventory.Item;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -17,7 +16,7 @@ namespace _02Script.UI.Store
 
         protected int CardIndex;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             SettingStore();
         }

@@ -34,6 +34,9 @@ namespace _02Script.Player
         public int minute;
 
         public SaveDictionary<ItemType, List<int>> items; //아이템들 카테고리<종류,수>
+
+        public List<int> getDictionaryPage;
+        public List<string> getDictionaryPageMemo;
         
         [ContextMenu("ResetStat")]
         public void ResetStat()
@@ -54,6 +57,9 @@ namespace _02Script.Player
             minute = 0;
              
             ResetItem();
+
+            getDictionaryPage = new List<int>();
+            getDictionaryPageMemo = new List<string>();
         }
         
         public void ResetCharacter() //캐릭터들  전부 초기화
