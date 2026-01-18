@@ -15,12 +15,12 @@ namespace _02Script.Obj.Obj
 
         private void OnEnable()
         {
-            GameEvent.GameEvent.OnLockUI += DontUi;
+            GameEventManger.OnLockUI += DontUi;
         }
 
         private void OnDisable()
         {
-            GameEvent.GameEvent.OnLockUI -= DontUi;
+            GameEventManger.OnLockUI -= DontUi;
         }
         private void Awake()
         {

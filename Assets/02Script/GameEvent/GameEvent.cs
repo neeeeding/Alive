@@ -9,22 +9,29 @@ namespace _02Script.GameEvent
 {
     public class GameEvent : MonoBehaviour
     {
-        public static Action<DoUIType> OnLockUI;
+        public static Action<ItemDataSO, int> OnGetItem;
 
-        [SerializeField] protected DoUIType[] lockType;
         [SerializeField] protected ItemDataSO[] itemDataSos;
 
-        protected void Update()
+        protected int CurrItem;
+        protected bool isLock;
+
+        private void Awake()
         {
-            if (GameManager.Instance.PlayerStat.hour >= 20)
-            {
-                DoEvent();
-            }
+            CurrItem = -1;
         }
 
-        protected void DoEvent()
+        private void OnEnable()
         {
-            OnLockUI?.Invoke(lockType[Random.Range(0, lockType.Length)]);
+            isLock = false;
+        }
+
+        public virtual void GetItem()
+        {
+            if(isLock) return;
+            isLock = true;
+            CurrItem++;
+            OnGetItem?.Invoke(itemDataSos[CurrItem], 1);
         }
     }
 }

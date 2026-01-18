@@ -6,7 +6,6 @@ using _02Script.UI.Save;
 using _02Script.UI.Store;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
-using ItemCard = _02Script.Inventory.Item.ItemCard;
 
 namespace _02Script.Inventory.Inventory
 {
@@ -28,6 +27,7 @@ namespace _02Script.Inventory.Inventory
         private void OnEnable()
         {
             InGameItem.OnGetItem += AddItem;
+            GameEvent.GameEvent.OnGetItem += AddItem;
             LoadCard.OnLoad += LoadItem;
             StoreCard.OnSellItem += AddItem;
             StoreCard.OnPayItem += ThrowItem;
@@ -41,6 +41,7 @@ namespace _02Script.Inventory.Inventory
         private void OnDisable()
         {
             InGameItem.OnGetItem -= AddItem;
+            GameEvent.GameEvent.OnGetItem -= AddItem;
             LoadCard.OnLoad -= LoadItem;
             StoreCard.OnSellItem -= AddItem;
             StoreCard.OnPayItem -= ThrowItem;
