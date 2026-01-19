@@ -1,4 +1,5 @@
 ﻿using System;
+using _02Script.DoTweenUI.Warring;
 using _02Script.GameEvent;
 using UnityEngine;
 
@@ -11,10 +12,13 @@ namespace _02Script.Obj.Obj
         private bool _isPlayer;
         private bool _isEvent;
 
+        private string _addWarring;
+
         #region EnDiAw
 
         private void OnEnable()
         {
+            _addWarring = "지금은 ";
             GameEventManger.OnLockUI += DontUi;
         }
 
@@ -49,9 +53,11 @@ namespace _02Script.Obj.Obj
 
         private void DontUi(DoUIType eventType)
         {
+            _addWarring = "지금은 ";
             if (eventType == DoUIType.all &&
                 doUiType != DoUIType.none)
             {
+                _addWarring = "밤에는 ";
                 _isEvent = true;
                 return;
             }
@@ -67,6 +73,16 @@ namespace _02Script.Obj.Obj
         public void ClickObj()
         {
             doUi.SetActive(_isPlayer && !_isEvent);
+            
+            if(!_isEvent) return;
+            WarringManager.Warring.ShowWarring(_addWarring +
+                doUiType switch
+                {
+                    DoUIType.farm => "밭을 사용하실 수 없습니다.",
+                    DoUIType.cook => "요리하실 수 없습니다.",
+                    DoUIType.produce => "제작하실 수 없습니다.",
+                    _=> "사용하실 수 없습니다.",
+                });
         }
     }
 

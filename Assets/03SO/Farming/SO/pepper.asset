@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: pepper
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
   seeds: {fileID: 11400000, guid: c3ff449e557ffe64fa00900aeae91af5, type: 2}
-  fruit: {fileID: 11400000, guid: dcdb978804125614aa87d203d457e211, type: 2}
+  viand: {fileID: 11400000, guid: dcdb978804125614aa87d203d457e211, type: 2}
   temperatureType: 12
   growDelay: 5

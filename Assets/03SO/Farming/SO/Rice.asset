@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 217903c6547f4c36ae6767f65f145bf7, type: 3}
-  m_Name: rice
+  m_Name: Rice
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
   seeds: {fileID: 11400000, guid: f8bae618ad2283648a13e816db0d6fc6, type: 2}
-  fruit: {fileID: 11400000, guid: 6ebcc3a549646ac4c9b8d5bc4e59bd74, type: 2}
+  viand: {fileID: 11400000, guid: 6ebcc3a549646ac4c9b8d5bc4e59bd74, type: 2}
   temperatureType: 12
   growDelay: 5

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _02Script.Farming;
 using _02Script.Manager;
 using _02Script.Obj.Obj;
 using _02Script.UI.Dialog.Entity;
@@ -13,11 +14,14 @@ namespace _02Script.GameEvent
     public class GameEventManger : MonoBehaviour
     {
         public static Action<DoUIType> OnLockUI;
+        public static Action<TemperatureType> OnFarmTemperature;
         
         [SerializeField] private SerializedDictionary<GameObject, CharacterEventData> characterEvent;
 
         private int _curDay;
         private List<EntityName> _nextDayDoEvent;
+
+        private TemperatureType _temperature;
 
         private void OnEnable()
         {
@@ -33,6 +37,7 @@ namespace _02Script.GameEvent
         private void Awake()
         {
             _nextDayDoEvent = new List<EntityName>();
+            _curDay = 0;
         }
 
         private void Update()
@@ -43,14 +48,17 @@ namespace _02Script.GameEvent
             }
             if (_curDay != GameManager.Instance.PlayerStat.day)
             {
+                _temperature = TemperatureType.warmth;
                 DoEvent();
                 _curDay = GameManager.Instance.PlayerStat.day;
                 EventCheck();
+                OnFarmTemperature?.Invoke(_temperature);
             }
         }
 
         private void EventCheck()
         {
+            if(_curDay <= 0) return;
             foreach (KeyValuePair<GameObject, CharacterEventData> character in characterEvent)
             {
                 bool isShow = false;
@@ -63,6 +71,7 @@ namespace _02Script.GameEvent
                     }
                 }
                 if(isShow) DoCharacterEvent(character.Key);
+                else character.Key.SetActive(false);
             }
             
             if (_nextDayDoEvent.Contains(EntityName.isis))
@@ -85,6 +94,11 @@ namespace _02Script.GameEvent
             if (_nextDayDoEvent.Contains(EntityName.magenta))
             {
                 //농사
+                _temperature = Random.Range(0, 2) switch
+                {
+                    0 => TemperatureType.cold | TemperatureType.frigid,
+                    _ => TemperatureType.highTemperature | TemperatureType.dry,
+                };
             }
             if (_nextDayDoEvent.Contains(EntityName.raelia))
             {

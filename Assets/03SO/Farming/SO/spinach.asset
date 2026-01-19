@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: spinach
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
   seeds: {fileID: 11400000, guid: 9d60e48ee6611bb47a9a6028389f0d51, type: 2}
-  fruit: {fileID: 11400000, guid: 484d48714c352084cad2a8e4b4be2d9f, type: 2}
+  viand: {fileID: 11400000, guid: 484d48714c352084cad2a8e4b4be2d9f, type: 2}
   temperatureType: 2
   growDelay: 5

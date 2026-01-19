@@ -198,7 +198,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -4306524832380952859}
         m_TargetAssemblyTypeName: _02Script.Farming.Fruit, Assembly-CSharp
-        m_MethodName: ClickFruit
+        m_MethodName: ClickViand
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

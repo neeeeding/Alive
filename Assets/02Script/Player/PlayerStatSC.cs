@@ -35,8 +35,12 @@ namespace _02Script.Player
 
         public SaveDictionary<ItemType, List<int>> items; //아이템들 카테고리<종류,수>
 
+        //사전
         public List<int> getDictionaryPage;
         public List<string> getDictionaryPageMemo;
+        
+        //농사
+        //public SaveDictionary<>
         
         [ContextMenu("ResetStat")]
         public void ResetStat()

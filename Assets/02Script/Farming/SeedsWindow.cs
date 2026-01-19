@@ -1,35 +1,89 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using _02Script.Inventory.Inventory;
+using _02Script.Inventory.Item;
+using _02Script.Manager;
+using UnityEngine;
 
 namespace _02Script.Farming
 {
-    public class SeedsWindow : MonoBehaviour
+    public class SeedsWindow : InventoryManager
     {
+        [Space(50)]
+        [Header("Seeds")]
+        [SerializeField] protected SeedsSO[] _allSO;
         [SerializeField] private GameObject window;
-        [SerializeField] private SeedsCard sellCard; //판매 카드
-        [SerializeField] private SeedsSO[] allSeedsSOs;
 
+        protected Dictionary<ItemType, SeedsSO> _allDataSO;
+        
         public void CloseBtn()
         {
             window.SetActive(false);
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
             SeedsCard.OnClickCard += (so => CloseBtn());
-            if (gameObject.transform.childCount <= 0)
+            base.OnEnable();
+        }
+        
+        protected override void LoadItem() //불러오기
+        {
+            SettingAllDataSO();
+            Dictionary<ItemType, List<int>> save = GameManager.Instance.PlayerStat.items.ToDictionary();
+
+            foreach (KeyValuePair<ItemType, SeedsSO> item in _allDataSO.ToList())
             {
-                SetCards();
+                ThrowItem(item.Value.seeds,9999999);
+            }
+
+            foreach (KeyValuePair<ItemType, List<int>> item in save.ToList())
+            {
+                foreach (int num in item.Value.ToList())
+                {
+                    if (!_allDataSO.ContainsKey(item.Key))
+                    {
+                        return;
+                    }
+                    AddItem(_allDataSO[item.Key].seeds, num);
+                }
             }
         }
 
-        private void SetCards()
+        protected override void NewCard(ItemDataSO item, bool isEtc, int star = 3, int hp = 100 )
         {
-            foreach (SeedsSO so in allSeedsSOs)
+            //data 새 생성
+            ItemData itemData = new ItemData();
+            if (!isEtc)
             {
-                SeedsCard newCard = Instantiate(sellCard);
-                newCard.SetSO(so);
-                newCard.gameObject.SetActive(true);
-                newCard.transform.SetParent(transform);
+                itemData.NewItem(item);
+                ItemDatas.Add(item, itemData);
+            }
+            else //기존거
+            {
+                itemData = ItemDatas[item];
+            }
+            
+            Transform parent = itemInventory[item.category];
+            
+            //카드 새 생성
+            SeedsCard newCard = Instantiate(cardPrefab as SeedsCard, parent);
+            newCard.gameObject.SetActive(true);
+            newCard.NewCard(_allDataSO[item.itemType],itemData);
+            
+            if(!isEtc)
+                ItemCards.Add(itemData, new List<ItemCard>());
+
+            ItemCards[itemData].Add(newCard);
+        }
+
+        protected override void SettingAllDataSO()
+        {
+            _allDataSO = new Dictionary<ItemType, SeedsSO>();
+
+            foreach (SeedsSO data in _allSO)
+            {
+                _allDataSO.Add(data.seeds.itemType, data);
             }
         }
     }

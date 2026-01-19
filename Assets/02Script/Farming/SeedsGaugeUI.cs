@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using _02Script.Etc;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _02Script.Farming
@@ -11,7 +12,7 @@ namespace _02Script.Farming
     {
         [SerializeField] private GameObject uiObj;
         [SerializeField] private Image gauge;
-        [SerializeField] private Image fruitImage;
+        [SerializeField] private Image viandImage;
         
         private float curTime;
         private float growTime;
@@ -20,7 +21,7 @@ namespace _02Script.Farming
         {
             growTime = seedsSO.growDelay;
             
-            fruitImage.sprite = seedsSO.fruit.itemImage;
+            viandImage.sprite = seedsSO.viand.itemImage;
             curTime = 0;
             _ = WaitGrow();
         }

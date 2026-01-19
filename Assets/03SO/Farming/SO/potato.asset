@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: potato
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
   seeds: {fileID: 11400000, guid: 5503f07372d0a7a4287d5ef8f9a60ee2, type: 2}
-  fruit: {fileID: 11400000, guid: 4996888a08f0ffe45871d380f5b51fd7, type: 2}
+  viand: {fileID: 11400000, guid: 4996888a08f0ffe45871d380f5b51fd7, type: 2}
   temperatureType: 3
   growDelay: 5

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 217903c6547f4c36ae6767f65f145bf7, type: 3}
   m_Name: bean
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
-  seeds: {fileID: 11400000, guid: d059d3cde3aa1ac4e94edb0da5f08ba8, type: 2}
-  fruit: {fileID: 11400000, guid: 5493898e7b676eb409e05f31cf60a793, type: 2}
+  seeds: {fileID: 11400000, guid: ae2ecf606da4f9a45a219c77fc5f5453, type: 2}
+  viand: {fileID: 11400000, guid: 5493898e7b676eb409e05f31cf60a793, type: 2}
   temperatureType: 6
   growDelay: 5

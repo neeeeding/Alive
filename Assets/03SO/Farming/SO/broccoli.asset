@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: broccoli
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
   seeds: {fileID: 11400000, guid: fbdc11b5b3c6c334094ba720ef22b4da, type: 2}
-  fruit: {fileID: 11400000, guid: 21c6629798162b14bb717b745706747c, type: 2}
+  viand: {fileID: 11400000, guid: 21c6629798162b14bb717b745706747c, type: 2}
   temperatureType: 2
   growDelay: 5

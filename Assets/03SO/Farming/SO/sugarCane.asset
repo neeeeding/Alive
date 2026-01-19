@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: sugarCane
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
   seeds: {fileID: 11400000, guid: c1959475eeffdfc41b8c7c14f4a0fae0, type: 2}
-  fruit: {fileID: 11400000, guid: 23b27120d12e3e749bd20e0592004a07, type: 2}
+  viand: {fileID: 11400000, guid: 49b3586e7fd2036439fee0491db8e348, type: 2}
   temperatureType: 8
   growDelay: 5

@@ -1,5 +1,6 @@
 using _02Script.DoTweenUI.Warring;
 using _02Script.Manager;
+using UnityEngine;
 
 namespace _02Script.Inventory.Item
 {

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: beanSprout
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
   seeds: {fileID: 11400000, guid: 70109f01db869824bbdb9b242f35634a, type: 2}
-  fruit: {fileID: 11400000, guid: 2e1b82b44bae5d24b988a2205dc9c544, type: 2}
+  viand: {fileID: 11400000, guid: 2e1b82b44bae5d24b988a2205dc9c544, type: 2}
   temperatureType: 3
   growDelay: 5

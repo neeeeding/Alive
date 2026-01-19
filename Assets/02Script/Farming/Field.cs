@@ -1,5 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using _02Script.DoTweenUI.Warring;
+using _02Script.GameEvent;
+using _02Script.Inventory.Item;
 using _02Script.Player;
+using _02Script.UI.Dialog.Dialog;
+using TMPro;
 using UnityEngine;
 
 namespace _02Script.Farming
@@ -7,37 +13,100 @@ namespace _02Script.Farming
     //나중에 타일맵에서 그리는 걸로
     public class Field : MonoBehaviour
     {
-        [SerializeField] private GameObject SeedWindow;
+        public static Action<ItemDataSO, int> OnUseSeed;
+        public static Action<ItemDataSO, int> OnGetViand;
+
+        [Header("Setting")]
+        [SerializeField] private int canFarmCount;
+        [Header("Need")]
+        [SerializeField] private GameObject seedWindow;
+        [SerializeField] private TextMeshProUGUI curTemperatureText;
         
         [SerializeField] private OneFarming seedsPrefab;
         
-        private List<OneFarming>  seeds = new List<OneFarming>();
+        private List<OneFarming>  _seeds = new List<OneFarming>();
 
-        private bool isField;
-        private Vector2 clickPos;
+        private bool _isField;
+        private Vector2 _clickPos;
+        private int _curFarmCount;
 
+        private TemperatureType _curTemperatureType;
+
+        #region EnDiAw
+        private void Awake()
+        {
+            seedWindow.SetActive(false);
+            NewSeeds(canFarmCount);
+        }
+
+        private void OnEnable()
+        {
+            GameEventManger.OnFarmTemperature += SetTemperature;
+            PlayerInput.OnMousePos += SavePos;
+            SeedsCard.OnClickCard += Plant;
+        }
+
+        private void OnDisable()
+        {
+            GameEventManger.OnFarmTemperature -= SetTemperature;
+            PlayerInput.OnMousePos -= SavePos;
+            SeedsCard.OnClickCard -= Plant;
+        }
+        #endregion
+
+        public void SetTemperature(TemperatureType t)
+        {
+            _curTemperatureType = t;
+            
+            string temperatureType = "";
+            foreach (TemperatureType type in Enum.GetValues(typeof(TemperatureType)))
+            {
+                if(type == TemperatureType.none) continue;
+                if ((_curTemperatureType & type) != 0)
+                {
+                    if (temperatureType != "") temperatureType += ", ";
+                    temperatureType += ChatSetting.Name(type);
+                }
+            }
+            curTemperatureText.text = temperatureType;
+        }
+
+        //리스트 안에 넣기 (재활용)
         public void ListSeeds(OneFarming seeds)
         {
-            this.seeds.Add(seeds);
+            _seeds.Add(seeds);
+            _curFarmCount--;
+            OnGetViand?.Invoke(seeds.GetSO().viand, 1);
             seeds.gameObject.SetActive(false);
         }
         
+        //심기
         private void Plant(SeedsSO so)
         {
-            if (seeds.Count <= 0)
+            if ((so.temperatureType & _curTemperatureType) == 0)
+            {
+                WarringManager.Warring.ShowWarring("해당 씨앗을 심기에는 적당한 온도가 아닙니다.");
+                return;
+            }
+            
+            if (_seeds.Count <= 0)
             {
                 NewSeeds(1);
             }
 
-            OneFarming newSeeds = seeds[0];
+            OneFarming newSeeds = _seeds[0];
             
-            newSeeds.transform.position = clickPos;
+            newSeeds.transform.position = _clickPos;
             newSeeds.SetSO(so,this);
             newSeeds.gameObject.SetActive(true);
             
-            seeds.Remove(seeds[0]);
+            _curFarmCount++;
+            OnUseSeed?.Invoke(so.seeds, 1);
+            
+            _seeds.Remove(_seeds[0]);
         }
 
+        //새 씨앗
         private void NewSeeds(int n)
         {
             for (int i = 0; i < n; i++)
@@ -46,37 +115,34 @@ namespace _02Script.Farming
                 newSeeds.gameObject.SetActive(false);
                 newSeeds.transform.SetParent(gameObject.transform);
             
-                seeds.Add(newSeeds);
+                _seeds.Add(newSeeds);
+                
             }
         }
 
+        //심을 위치 저장
         private void SavePos(Vector2 pos)
         {
-            clickPos = pos;
+            _clickPos = pos;
         }
         
+        //씨앗들 보여주기 (윈도우)
         public void ClickField()
         {
-            SeedWindow.SetActive(true);
-        }
+            if (_curFarmCount >= canFarmCount)
+            {
+                WarringManager.Warring.ShowWarring("밭에 너무 많은 농작물을 심었습니다.\n수확 후 다시 시도해주세요.");
+                return;
+            }
 
-        #region EnDiAw
-        private void Awake()
-        {
-            SeedWindow.SetActive(false);
+            seedWindow.SetActive(true);
         }
+    }
 
-        private void OnEnable()
-        {
-            PlayerInput.OnMousePos += SavePos;
-            SeedsCard.OnClickCard += Plant;
-        }
-
-        private void OnDisable()
-        {
-            PlayerInput.OnMousePos -= SavePos;
-            SeedsCard.OnClickCard -= Plant;
-        }
-        #endregion
+    [System.Serializable]
+    public class OneFarmingData
+    {
+        public Vector2 pos;
+        public float gage;
     }
 }

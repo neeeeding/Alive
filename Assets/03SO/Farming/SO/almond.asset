@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: almond
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
   seeds: {fileID: 11400000, guid: 06ecf3d3500dbd64d83ccb1063e886d4, type: 2}
-  fruit: {fileID: 11400000, guid: b329e1c775139f44ebc0517039cc864e, type: 2}
+  viand: {fileID: 11400000, guid: b329e1c775139f44ebc0517039cc864e, type: 2}
   temperatureType: 16
   growDelay: 5

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: mushroom
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
   seeds: {fileID: 11400000, guid: a3d5c42468cdb4843aab4e648e44c6c8, type: 2}
-  fruit: {fileID: 11400000, guid: c4cfd500e3a161d488b294e1fbe36054, type: 2}
+  viand: {fileID: 11400000, guid: c4cfd500e3a161d488b294e1fbe36054, type: 2}
   temperatureType: 2
   growDelay: 5

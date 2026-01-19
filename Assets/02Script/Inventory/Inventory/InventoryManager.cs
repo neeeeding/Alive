@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using _02Script.Farming;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
 using _02Script.UI.Save;
@@ -24,23 +25,27 @@ namespace _02Script.Inventory.Inventory
         [SerializeField]private ItemHold realItem; //들리게 될 아이템(위치)
 
         #region EnDi
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             InGameItem.OnGetItem += AddItem;
+            Field.OnGetViand += AddItem;
+            Field.OnUseSeed += ThrowItem;
             GameEvent.GameEvent.OnGetItem += AddItem;
             LoadCard.OnLoad += LoadItem;
             StoreCard.OnSellItem += AddItem;
             StoreCard.OnPayItem += ThrowItem;
             
-            if(GameManager.Instance.isStart)
+            if(GameManager.Instance.isStart && ItemDatas.Count <= 0)
             {
                 LoadItem();
             }
         }
 
-        private void OnDisable()
+        protected virtual  void OnDisable()
         {
             InGameItem.OnGetItem -= AddItem;
+            Field.OnGetViand -= AddItem;
+            Field.OnUseSeed -= ThrowItem;
             GameEvent.GameEvent.OnGetItem -= AddItem;
             LoadCard.OnLoad -= LoadItem;
             StoreCard.OnSellItem -= AddItem;
@@ -48,7 +53,7 @@ namespace _02Script.Inventory.Inventory
         }
         #endregion
 
-        private void LoadItem() //불러오기
+        protected virtual void LoadItem() //불러오기
         {
             SettingAllDataSO();
             Dictionary<ItemType, List<int>> save = GameManager.Instance.PlayerStat.items.ToDictionary();
@@ -91,7 +96,8 @@ namespace _02Script.Inventory.Inventory
                 data.UseItem(count, isThrow);
                 ItemCards[data][ItemCards[data].Count -1].UpdateCountUI();
                 
-                realItem.CheckLessItem();
+                if(realItem != null)
+                    realItem.CheckLessItem();
                 
                 switch(item.category) //개별 저장 애들은 걍 지워버리기
                 {
@@ -123,7 +129,7 @@ namespace _02Script.Inventory.Inventory
             }
         }
 
-        private void NewCard(ItemDataSO item, bool isEtc, int star = 3, int hp = 100 )
+        protected virtual void NewCard(ItemDataSO item, bool isEtc, int star = 3, int hp = 100 )
         {
             //data 새 생성
             ItemData itemData = new ItemData();
@@ -178,7 +184,7 @@ namespace _02Script.Inventory.Inventory
             card.UpdateCountUI();
         }
 
-        private void SettingAllDataSO()
+        protected virtual void SettingAllDataSO()
         {
             AllDataSO = new SerializedDictionary<ItemType, ItemDataSO>();
 

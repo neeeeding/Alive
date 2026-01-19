@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: sesame
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
   seeds: {fileID: 11400000, guid: 77209ada80d7f89408d0209752e10f55, type: 2}
-  fruit: {fileID: 11400000, guid: 3e2eea068cccf30469ac27f24e9561f2, type: 2}
+  viand: {fileID: 11400000, guid: 3e2eea068cccf30469ac27f24e9561f2, type: 2}
   temperatureType: 12
   growDelay: 5

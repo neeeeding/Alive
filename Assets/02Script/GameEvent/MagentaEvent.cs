@@ -4,7 +4,6 @@ namespace _02Script.GameEvent
 {
     public class MagentaEvent : GameEvent
     {
-        
         public override void GetItem()
         {
             if(isLock) return;

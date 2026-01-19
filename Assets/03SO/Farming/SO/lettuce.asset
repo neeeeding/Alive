@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: lettuce
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
   seeds: {fileID: 11400000, guid: 36fd5dfc483d2c943af89c033c5d54ad, type: 2}
-  fruit: {fileID: 11400000, guid: 627a3ab8d14b8514d97553b7f6ac925f, type: 2}
+  viand: {fileID: 11400000, guid: 627a3ab8d14b8514d97553b7f6ac925f, type: 2}
   temperatureType: 2
   growDelay: 5

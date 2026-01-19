@@ -35,7 +35,7 @@ namespace _02Script.UI.InGame
             }
             else
             {
-                bool pm = stat.hour >= 12 && stat.hour != 24;
+                bool pm = stat.hour > 12 && stat.hour != 24;
                 timeText.text =
                     $"{stat.month} / {stat.day}\n{(pm ? "오후" : "오전")} {(pm ? stat.hour - 12 : stat.hour)} : {stat.minute} ";
             }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: corner
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
   seeds: {fileID: 11400000, guid: b0e45a2857462524db16c08aab41426f, type: 2}
-  fruit: {fileID: 11400000, guid: ffa18245583c5c84eaceae5eb28db9dc, type: 2}
+  viand: {fileID: 11400000, guid: ffa18245583c5c84eaceae5eb28db9dc, type: 2}
   temperatureType: 14
   growDelay: 5

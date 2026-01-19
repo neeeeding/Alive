@@ -1,30 +1,45 @@
 ﻿using System;
+using _02Script.Inventory.Item;
+using _02Script.UI.Dialog.Dialog;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace _02Script.Farming
 {
-    public class SeedsCard : MonoBehaviour
+    public class SeedsCard : ItemCard
     {
         public static Action<SeedsSO> OnClickCard;
+
+        [SerializeField] private TextMeshProUGUI nameText;
+        [SerializeField] private TextMeshProUGUI temperatureTypeText;
         
         [SerializeField] private SeedsSO mySO;
-
-        [SerializeField] private Image image;
-        [SerializeField] private TextMeshProUGUI text;
 
         public void ClickCard()
         {
             OnClickCard?.Invoke(mySO);
         }
-        
-        public void SetSO(SeedsSO seedsSO)
+
+        public void NewCard(SeedsSO seedsSO, ItemData seedsData)
         {
             mySO = seedsSO;
+            itemData = seedsData;
 
-            image.sprite = mySO.seeds.itemImage;
-            text.text = mySO.seeds.itemName;
+            cardImage.sprite = mySO.seeds.itemImage;
+            nameText.text = mySO.seeds.itemName;
+            
+            //온도 속성
+            string temperatureType = "";
+            foreach (TemperatureType type in Enum.GetValues(typeof(TemperatureType)))
+            {
+                if(type == TemperatureType.none) continue;
+                if ((seedsSO.temperatureType & type) != 0)
+                {
+                    if (temperatureType != "") temperatureType += ", ";
+                    temperatureType += ChatSetting.Name(type);
+                }
+            }
+            temperatureTypeText.text = temperatureType;
         }
     }
 }

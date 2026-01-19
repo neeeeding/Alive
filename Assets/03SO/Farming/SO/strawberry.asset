@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: strawberry
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
   seeds: {fileID: 11400000, guid: 2d829d6732aa92e47bb4aac02f5e3ca8, type: 2}
-  fruit: {fileID: 11400000, guid: e0ece30ccbf3dd542a44e561a2f226c5, type: 2}
+  viand: {fileID: 11400000, guid: e0ece30ccbf3dd542a44e561a2f226c5, type: 2}
   temperatureType: 7
   growDelay: 5

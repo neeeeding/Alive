@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.OneFarming
   seeds: {fileID: 3156021278902380520}
-  fruit: {fileID: 2655372208047744360}
+  viand: {fileID: 2655372208047744360}
   seedsUI: {fileID: 5189759098846070862}
   mySO: {fileID: 0}
   myP: {fileID: 0}
@@ -159,8 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsGaugeUI
   uiObj: {fileID: 877188567548848371}
   gauge: {fileID: 5642387161462889452}
-  mySO: {fileID: 0}
-  fruitImage: {fileID: 3822755918149826994}
+  viandImage: {fileID: 3822755918149826994}
 --- !u!1001 &3581025353169643554
 PrefabInstance:
   m_ObjectHideFlags: 0

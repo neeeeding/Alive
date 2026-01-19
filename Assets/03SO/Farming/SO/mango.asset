@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: mango
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
   seeds: {fileID: 11400000, guid: 6fceb4ccf8e91b748a5df286671f1a7f, type: 2}
-  fruit: {fileID: 11400000, guid: 6b0718a83b94cd342b8a75f0b4246792, type: 2}
+  viand: {fileID: 11400000, guid: 6b0718a83b94cd342b8a75f0b4246792, type: 2}
   temperatureType: 8
   growDelay: 5

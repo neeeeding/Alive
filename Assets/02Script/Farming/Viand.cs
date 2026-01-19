@@ -4,12 +4,12 @@ using UnityEngine;
 namespace _02Script.Farming
 {
     //나중에 아껴 쓰기 & 저장하기
-    public class Fruit : MonoBehaviour
+    public class Viand : MonoBehaviour
     {
         private SpriteRenderer mySpriteRenderer;
         private OneFarming myP;
 
-        public void ClickFruit()
+        public void ClickViand()
         {
             myP.ListSeeds();
             //얻기
@@ -22,7 +22,7 @@ namespace _02Script.Farming
             if(mySpriteRenderer == null)
                 mySpriteRenderer = GetComponent<SpriteRenderer>();
 
-            mySpriteRenderer.sprite = seedsSO.fruit.itemImage;
+            mySpriteRenderer.sprite = seedsSO.viand.itemImage;
         }
     }
 }

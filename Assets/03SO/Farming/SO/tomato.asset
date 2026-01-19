@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: tomato
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.SeedsSO
   seeds: {fileID: 11400000, guid: 9c47d13e319bc404c860001ae54f35e0, type: 2}
-  fruit: {fileID: 11400000, guid: 6800df62c0c3f3f468fb48c61ebff522, type: 2}
+  viand: {fileID: 11400000, guid: 6800df62c0c3f3f468fb48c61ebff522, type: 2}
   temperatureType: 12
   growDelay: 5

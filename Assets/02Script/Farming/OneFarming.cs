@@ -3,13 +3,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using _02Script.Etc;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _02Script.Farming
 {
     public class OneFarming : MonoBehaviour
     {
         [SerializeField] private Seeds seeds;
-        [SerializeField] private Fruit fruit;
+        [SerializeField] private Viand viand;
         [SerializeField] private SeedsGaugeUI seedsUI;
         
         [SerializeField] private SeedsSO mySO;
@@ -19,10 +20,15 @@ namespace _02Script.Farming
 
         private bool isSpawned;
 
+        public SeedsSO GetSO()
+        {
+            return mySO;
+        }
+
         public void SetSO(SeedsSO so, Field field)
         {
             seeds.SetSO(so);
-            fruit.SetSO(so, this);
+            viand.SetSO(so, this);
             seedsUI.SetSO(so);
             isSpawned = true;
             mySO = so;
@@ -31,7 +37,7 @@ namespace _02Script.Farming
 
         private async void OnEnable()
         {
-            fruit.gameObject.SetActive(false);
+            viand.gameObject.SetActive(false);
             seeds.gameObject.SetActive(true);
             seedsUI.gameObject.SetActive(true);
 
@@ -47,7 +53,7 @@ namespace _02Script.Farming
         private async Task WaitGrow()
         {
             await AsyncTime.WaitSeconds(mySO.growDelay, cts.Token);
-            fruit.gameObject.SetActive(true);
+            viand.gameObject.SetActive(true);
             seeds.gameObject.SetActive(false);
             seedsUI.gameObject.SetActive(false);
 
