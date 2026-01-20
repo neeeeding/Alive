@@ -6,19 +6,19 @@ namespace _02Script.DoTweenUI.Warring
 {
     public class Warring :  MonoBehaviour
     {
-        [SerializeField] private GameObject warringObj;
+        [SerializeField] protected GameObject warringObj;
         [SerializeField] private TextMeshProUGUI text;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             warringObj.SetActive(false);
         }
 
-        public async void ShowWarring(string massage = "오류가 발생했습니다.")
+        public virtual async void ShowWarring(string massage = "오류가 발생했습니다.", float i =1)
         {
             text.text = massage;
             warringObj.SetActive(true);
-            await AsyncTime.WaitSeconds(1f);
+            await AsyncTime.WaitSeconds(i);
             warringObj.SetActive(false);
         }
     }

@@ -131,7 +131,7 @@ namespace _02Script.Farming
         {
             if (_curFarmCount >= canFarmCount)
             {
-                WarringManager.Warring.ShowWarring("밭에 너무 많은 농작물을 심었습니다.\n수확 후 다시 시도해주세요.");
+                WarringManager.Warring.ShowWarring("밭에 너무 많은 농작물을 심었습니다.\n수확 후 다시 시도해주세요.",2);
                 return;
             }
 
