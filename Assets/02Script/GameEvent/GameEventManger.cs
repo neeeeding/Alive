@@ -13,8 +13,8 @@ namespace _02Script.GameEvent
 {
     public class GameEventManger : MonoBehaviour
     {
-        public static Action<DoUIType> OnLockUI;
-        public static Action<TemperatureType> OnFarmTemperature;
+        public static Action<DoUIType> OnLockUI; //봉인
+        public static Action<TemperatureType> OnFarmTemperature; //온도
         
         [SerializeField] private SerializedDictionary<ObjTeleportationPos, CharacterEventData> characterEvent;
         [SerializeField] private EventAlarm eventAlarm;

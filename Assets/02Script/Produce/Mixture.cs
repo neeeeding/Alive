@@ -169,7 +169,7 @@ namespace _02Script.Produce
             }
 
             resultCount.text = _itemMax.maxCount.ToString();
-            if (_itemMax.maxCount <= 0)
+            if (_itemMax.maxCount <= 0 || _itemMax.maxCount > 9000)
             {
                 resultCount.text = "";
                 errorMassage.SetActive(true);

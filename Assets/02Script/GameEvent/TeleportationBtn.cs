@@ -13,17 +13,12 @@ namespace _02Script.GameEvent
         private ObjTeleportationPos _teleportationPos;
         private EventAlarm _parent;
 
-        private void OnEnable()
-        {
-            GameEventManger.OnFarmTemperature += Hide;
-        }
-
         private void OnDisable()
         {
-            GameEventManger.OnFarmTemperature -= Hide;
+            Hide();
         }
 
-        private void Hide(TemperatureType obj)
+        private void Hide()
         {
             _parent.AddBtnList(this);
         }

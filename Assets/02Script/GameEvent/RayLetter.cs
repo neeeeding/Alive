@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 namespace _02Script.GameEvent
@@ -10,6 +11,11 @@ namespace _02Script.GameEvent
         [SerializeField] private TextMeshProUGUI textUI;
 
         private void Awake()
+        {
+            HideLetter();
+        }
+
+        private void OnDisable()
         {
             HideLetter();
         }

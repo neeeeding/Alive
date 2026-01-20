@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _02Script.Produce
 {

@@ -7,7 +7,7 @@ namespace _02Script.DoTweenUI.Warring
     public class Warring :  MonoBehaviour
     {
         [SerializeField] protected GameObject warringObj;
-        [SerializeField] private TextMeshProUGUI text;
+        [SerializeField] protected TextMeshProUGUI text;
 
         protected virtual void Awake()
         {

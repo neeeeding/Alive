@@ -43,7 +43,12 @@ namespace _02Script.Produce
         public override void NewCard(ItemData itemData, int setStar = 5, int setItemHp = 100)
         {
             _bookData = itemData.ReturnDataSO() as ProduceBookSO;
+            countUI.text = _bookData.result.itemName;
             base.NewCard(itemData, setStar, setItemHp); //부산물
+        }
+
+        public override void UpdateCountUI()
+        {
         }
     }
 }
