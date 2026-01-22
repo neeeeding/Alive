@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _02Script.UI.Dialog.Entity;
 using _02Script.UI.Dialog.Etc;
 using UnityEngine;
@@ -8,7 +7,7 @@ using UnityEngine.Rendering;
 namespace _02Script.UI.Dialog.Dialog
 {
     
-    //쓰려면 수정이 필요
+    //쓰려면 수정이 필요 (주석)
     public class DoScript : MonoBehaviour
     {
         //[SerializeField]private ScriptListAllFinderSO allScript;
@@ -35,7 +34,7 @@ namespace _02Script.UI.Dialog.Dialog
                 }
                 if (scripts[doScript].Count <= 0) continue;
                 
-                IDialogCanScript script = scripts[doScript][0];
+                IDialogCanScript script = scripts[doScript][0]; // <- 수정이 필요한 곳. 늘 0을 쓰고 있음;; (주석)
                 if (doScript == DoScriptType.DialogDeleteObj.ToString().ToLower()) //삭제
                 {
                     for (int i = 0; i < scripts[doScript].Count; i++)

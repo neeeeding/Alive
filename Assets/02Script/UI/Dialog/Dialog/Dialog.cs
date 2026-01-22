@@ -75,7 +75,7 @@ namespace _02Script.UI.Dialog.Dialog
             GetDialog();
             
             //if (currentDialogEntity as Island) //다른 애들은 F처리로 알아서 실행 되니. (필요한 경우)
-            DoChat();
+            DoChat(false);
         }
 
         private void GetDialog() //대화 (챕터 번호) 얻기. (List)
@@ -98,31 +98,43 @@ namespace _02Script.UI.Dialog.Dialog
 
         public void ClickNext() //다음으로
         {
-            if (dialog[currentChat][DialogType.Select.ToString()].ToString() != "")
+            ClickNext(false);
+        }
+        private void ClickNext(bool b) //다음으로
+        {
+            if (!currentDialogEntity && (int)isError / 1000 != 4)
             {
-                if (DoChat())
-                {
-                    currentDialogEntity.NextChapter();
-                    UISettingManager.Instance.CloseChat();
-                    OnGame?.Invoke();
-                }
-                else
-                    currentDialogEntity.NextDialog(currentNum);
+                UISettingManager.Instance.InGame();
+                return;
+            }
+
+            if (DoChat(false))
+            {
+                UISettingManager.Instance.CloseChat();
+                UISettingManager.Instance.InGame();
+                
+                currentDialogEntity.NextChapter();
+                currentDialogEntity.EndDialog();
+                currentDialogEntity = null;
+                OnGame?.Invoke();
+                //items = null;
             }
         }
 
         private void ClickSkip() //스킵 버튼 눌렀을 때
         {
+            if(!DialogCheck(DialogType.SelectText, "")) return;
             int nextNum = int.Parse(dialog[currentChat][DialogType.SkipNum.ToString()]) - 1;
             currentChat +=
                 nextNum - currentNum == 0
                     ? +1
                     : nextNum - currentNum; //다음 번호 정해주기. (마지막이 본인이면 1추가로 나가게 해버리기.(대화 자체는 줄어버림.(???)))
             currentNum = nextNum + 1;
-            DoChat();
+            DoChat(false);
+            print(currentChat);
         }
 
-        private void RenewalText(string final) // 마지막 텍스트 갱신
+        private void RenewalText(string final) // 마지막 텍스트 갱신 (주석)
         {
             GameManager.Instance.PlayerStat.lastText =
                 $"{ChatSetting.Name(_currentSO.EntityName)} : {final}"; //마지막 텍스트
@@ -135,7 +147,6 @@ namespace _02Script.UI.Dialog.Dialog
                 //저장
                 path.characterLastText[chatPlayer.EntityName][DialogType.Chapter] = currentNum.ToString();
                 path.characterLastText[chatPlayer.EntityName][DialogType.Num] = currentChapter.ToString();
-                //path.characterlastText[chatPlayer.characterName][DialogType.Text] = final;
             }
         }
 
@@ -147,50 +158,16 @@ namespace _02Script.UI.Dialog.Dialog
                 holdItem = true;
                 for (int i = 0; i < dialog.Count - 1; i++)
                 {
-                    if (dialog[i][DialogType.Item.ToString()].ToString() ==
-                        dataSo.itemType.ToString()) //대화의 아이템 창과 들고 있는 아이템 찾기
+                    if (dialog[i][DialogType.Item.ToString()].ToLower() ==
+                        dataSo.itemType.ToString().ToLower()) //대화의 아이템 창과 들고 있는 아이템 찾기
                     {
                         currentChapter = int.Parse(dialog[i][DialogType.Chapter.ToString()]);
-                        GameManager.Instance.AddItemCount(dataSo.itemType, -1); //아이템 빼기
+                        currentNum = 1;
+                        GameManager.Instance.AddItemCount(dataSo.itemType, -1); //아이템 빼기 (늘 1만큼 사용하기? (주석)
                         break;
                     }
-                }
+                } //여기서 못 찾으면 경고 보내야 하나? (주석)
             }
-        }
-
-        private bool DoChat() //대화(실질적인 랜더러)
-        {
-            bool getOut = true;
-
-            //대화가 존재하는지 (배열 확인)
-            if (dialog[currentChat][DialogType.Chapter.ToString()].ToString() == currentChapter.ToString()
-                && dialog[currentChat][DialogType.Num.ToString()].ToString() ==
-                currentNum.ToString()) //해당 배열의 수가 챕터랑 번호가 같으면
-            {
-                getOut = false;
-                setting.PlayerSelect(currentChat, allCharacter, dialog);
-                LoveUP(currentChat);
-            }
-            else
-                getOut = true;
-
-            setting.CurrentCharacter(chatPlayer); //세팅 해주는 거
-            string chatText =
-                dialogTextController.IsExchangeText(dialog[currentChat][DialogType.Text.ToString()].ToString(), "`", ","); //변환 해주고 원했던 대화
-            dialogText.text = chatText;
-
-            if (dialog[currentChat][DialogType.NextNum.ToString()].ToString() != "") // 다음 번호가 안 비어 있다면.
-            {
-                int nextNum = int.Parse(dialog[currentChat][DialogType.NextNum.ToString()]) - 1;
-                currentChat +=
-                    nextNum - currentNum == 0
-                        ? +1
-                        : nextNum - currentNum; //다음 번호 정해주기. (마지막이 본인이면 1추가로 나가게 해버리기.(대화 자체는 줄어버림.(???)))
-                currentNum = nextNum + 1;
-            }
-
-            RenewalText(chatText); //마지막 텍스트 갱신
-            return getOut;
         }
 
         private void Update()
@@ -212,23 +189,7 @@ namespace _02Script.UI.Dialog.Dialog
             }
         }
 
-        private void ClickNext(bool b) //다음으로
-        {
-            if (!currentDialogEntity && (int)isError / 1000 != 4)
-            {
-                UISettingManager.Instance.InGame();
-                return;
-            }
-
-            if (DoChat(false))
-            {
-                UISettingManager.Instance.InGame();
-                currentDialogEntity.EndDialog();
-                currentDialogEntity = null;
-                //items = null;
-            }
-        }
-
+        //true : 선택지를 클릭한 상태로 넘어옴, false : 일반적인 대화
         private bool DoChat(bool isSelect) //대화(실질적인 랜더러)
         {
             if (nCount != 0)
@@ -266,27 +227,29 @@ namespace _02Script.UI.Dialog.Dialog
                       && DialogCheck(DialogType.Chapter, currentChapter.ToString())
                       && DialogCheck(DialogType.Num, currentNum.ToString()))) //해당 배열의 수가 챕터랑 번호가 같으면
                 {
+                    //혹시 모르니 현재 대사 출력
+                    dialogText.text = dialogTextController.IsExchangeText(dialog[currentChat][DialogType.Text.ToString()], "`", ",");
                     return true;
                 }
             }
 
-            chatPlayer = setting.PlayerSelect(currentChat, allCharacter, dialog); //새팅하기 (자신 so 찾기)
+            chatPlayer = setting.PlayerSelect(allCharacter, dialog[currentChat]); //세팅하기 (자신 so 찾기)
 
-            if (chatPlayer.EntityName != EntityName.lie) //플레이어가 아니면 (+ 오류X)
-            {
-                if ((int)chatPlayer.EntityName / 1000 != 4)
-                    setting.CurrentCharacter(chatPlayer); //재 세팅
-
-                chatText = dialogTextController.IsExchangeText(
-                    dialog[currentChat][DialogType.Text.ToString()], "`", ","); //변환 해주고 원했던 대화
-                isTime = true;
-            }
-            else if (chatPlayer.EntityName == EntityName.lie)
+            if (chatPlayer.EntityName == EntityName.lie)
             {
                 setting.CurrentCharacter(chatPlayer); //재 세팅
                 chatText = "";
                 dialogText.text = chatText;
             }
+            
+            //텍스트 출력(+ 오류X)
+            if ((int)chatPlayer.EntityName / 1000 != 4)
+                setting.CurrentCharacter(chatPlayer); //재 세팅
+
+            chatText = dialogTextController.IsExchangeText(
+                dialog[currentChat][DialogType.Text.ToString()], "`", ","); //변환 해주고 원했던 대화
+            isTime = true;
+            //------------------------
 
             if (currentDialogEntity != null)
                 currentDialogEntity.NextDialog(currentNum);
@@ -321,12 +284,12 @@ namespace _02Script.UI.Dialog.Dialog
             DoChat(true);
         }
         
-        private void LoveUP(int i) //호감도 오르거나 내리는 거 있으면 해주기.
+        private void LoveUp(int i) //호감도 오르거나 내리는 거 있으면 해주기.
         {
-            if (dialog[i][DialogType.GetLove.ToString()].ToString() != "") //호감도 얻는게 있다면. (혹은 뺏는거)
+            if (dialog[i][DialogType.GetLove.ToString()] != "") //호감도 얻는게 있다면. (혹은 뺏는거)
             {
                 int value = int.Parse(dialog[i][DialogType.GetLove.ToString()]);
-                GameManager.Instance.SetLove(_currentSO, value); //여러명 일 때 만약 주체가 아닌 다른 이 라면.
+                GameManager.Instance.SetLove(_currentSO, value); //여러명 일 때 만약 주체가 아닌 다른 이라면. (주석)
             }
         }
         
@@ -360,8 +323,6 @@ namespace _02Script.UI.Dialog.Dialog
     public enum DialogType
     {
         Bubble, //말풍선
-        Select, //선택지 인지 (개수)
-        ItemCategory, //아이템 카테고리
         Item, //아이템 종류
         GetLove, //얻는 호감도
         Chapter, //해당 챕터 (한 대화)
@@ -376,7 +337,6 @@ namespace _02Script.UI.Dialog.Dialog
         
         GetItem, //상호작용 하는 아이템
         ItemCount, // 개수
-        UseMoney, //돈
         Do, //스크립트 실행
 
         //저장을 위한 (캐릭터 카드)

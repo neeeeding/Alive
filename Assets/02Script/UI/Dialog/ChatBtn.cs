@@ -64,10 +64,5 @@ namespace _02Script.UI.Dialog
         {
             UISettingManager.Instance.Inventory();
         }
-
-        public void LoveBtn() //선호 보기
-        {
-
-        }
     }
 }

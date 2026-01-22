@@ -15,4 +15,4 @@ MonoBehaviour:
   EntityName: 2300
   DialogEntityImage: {fileID: 0}
   DialogTextFile:
-  - {fileID: 4900000, guid: e15827d6caf69e34ab782911fe4197bc, type: 3}
+  - {fileID: 4900000, guid: db8537c6757f672488ed5e4c14fcf157, type: 3}

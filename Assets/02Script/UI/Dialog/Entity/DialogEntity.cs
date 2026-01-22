@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using _02Script.Manager;
-using _02Script.Player;
 using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Dialog.Etc;
 using UnityEngine;
@@ -41,9 +39,6 @@ namespace _02Script.UI.Dialog.Entity
         
         protected CancellationTokenSource cts = new(); //시간을 위해
         
-        //저장
-        protected PlayerStatSC path; //스탯 (저장 공간)
-        
         #endregion
         
         protected virtual void Awake()
@@ -51,7 +46,6 @@ namespace _02Script.UI.Dialog.Entity
             SetChapter();
             isChat = false;
             doChat = false;
-            path = GameManager.Instance.PlayerStat;
         }
         protected virtual void OnDrawGizmos() //탐지 범위 그리기
         { 
@@ -91,7 +85,7 @@ namespace _02Script.UI.Dialog.Entity
             return ".......";
         }
         
-        public virtual void NextChapter(int c = 1, int num = 0)
+        public virtual void NextChapter(int c = 1, int num = 1)
         {
             chapter += c;
             finalNum = num;
@@ -128,10 +122,9 @@ namespace _02Script.UI.Dialog.Entity
 
         protected void SetChapter() //혹시 모를 챕터 다시 정하기
         {
-            if(chapter/1000 != 0) return;
+            if(chapter/100 != 0) return;
             
-            int baseChapter = ((int)dialogEntitySo.EntityName/1000)*1000;
-            chapter += baseChapter;
+            chapter += (int)dialogEntitySo.EntityName;
         }
 
         protected virtual void OnDestroy()

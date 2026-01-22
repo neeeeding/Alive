@@ -18,16 +18,16 @@ namespace _02Script.UI.Dialog.Dialog
         {
             OffSelectText(); //일단 다 끄기
 
-            if (dialog[i][DialogType.Select.ToString()] == "" && chatPlayer.EntityName != EntityName.lie) //선택지가 없다면
+            if (string.IsNullOrEmpty(dialog[i][DialogType.SelectText.ToString()]) /*|| chatPlayer.EntityName != EntityName.lie*/) //선택지가 없다면 (주석)
                 return;
             
-            if (chatPlayer.EntityName == EntityName.lie)
+            // if (chatPlayer.EntityName == EntityName.lie) (주석)
+            // {
+            //     PlayerNeed(dialog[i]);
+            // }
+            // else
             {
-                PlayerNeed(i, dialog);
-            }
-            else
-            {
-                string[] all = dialog[i][DialogType.Select.ToString()].Split('~');
+                string[] all = dialog[i][DialogType.SelectText.ToString()].Split('~');
                 
                 int[] nums = new int[all.Length];
                 for (int j = 0; j < all.Length; j++)
@@ -35,12 +35,12 @@ namespace _02Script.UI.Dialog.Dialog
                     nums[j] = int.Parse(all[j]);
                 }
                 
-                OnlySelect(i,nums, dialog, currentChapter);
+                OnlySelect(nums, dialog, currentChapter);
             }
            
         }
 
-        private void OnlySelect(int i,int[] count, List<Dictionary<string,string>> dialog, int currentChapter) //실재 선택용
+        private void OnlySelect(int[] count, List<Dictionary<string,string>> dialog, int currentChapter) //실재 선택용
         {
             for(int j = 0; j < count.Length && j < selectTexts.Length; j++) //반복문
             {
@@ -66,31 +66,30 @@ namespace _02Script.UI.Dialog.Dialog
             }
         }
 
-        private void PlayerNeed(int selectNumText,List<Dictionary<string,string>> dialog) //플레이어 용
-        {
-            selectTexts[0].gameObject.SetActive(true);
-
-            string text = dialogTextController.IsExchangeText(
-                dialog[selectNumText][DialogType.Text.ToString()], "`", ",");
-
-            selectTexts[0].SetSelect(text, -1); //선택 그거 세팅 해주기.
-            
-        }
+        // private void PlayerNeed(Dictionary<string,string> dialog) //플레이어 용 (주석)
+        // {
+        //     selectTexts[0].gameObject.SetActive(true);
+        //
+        //     string text = dialogTextController.IsExchangeText(
+        //         dialog[DialogType.Text.ToString()], "`", ",");
+        //
+        //     selectTexts[0].SetSelect(text, -1); //선택 그거 세팅 해주기.
+        //     
+        // }
         
         public void SelectChat(int selectNum, ref int currentNum, ref int currentChat,
             List<Dictionary<string,string>> dialog) //선택된 선택지가 있을 시 (대화 계속 진행)
         {
+            currentChat += selectNum; //선택된 번호로 바꿔주기
             selectNum += currentNum;
-            
-            currentChat += selectNum - currentNum; //선택된 번호로 바꿔주기
             currentNum = selectNum;
+            
             int nextNum = int.Parse(dialog[currentChat][DialogType.NextNum.ToString()]);
             
-            //다음 번호로 바꿔 주기 (선택된 문항을 말할 순 없으니까. (사실 호불호긴 해.))
+            //다음 번호로 바꿔 주기 (선택된 문항을 말할 순 없으니까. (사실 호불호긴 해.)) (주석)
             currentChat += nextNum - currentNum == 0 ?
                 +0 : nextNum - currentNum;
             
-            currentNum = nextNum;
             currentNum = nextNum;
 
             OffSelectText(); //다 꺼주기

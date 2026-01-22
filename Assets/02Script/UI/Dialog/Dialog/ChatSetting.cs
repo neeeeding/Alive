@@ -48,12 +48,12 @@ namespace _02Script.UI.Dialog.Dialog
             return attr?.Description??wantName.ToString();
         }
         
-        public DialogEntitySO PlayerSelect(int i, DialogEntitySO[] allCharacter,
-            List<Dictionary<string,string>> dialog) //말하는 이에 따른 so(이름) 바꾸기
+        public DialogEntitySO PlayerSelect(DialogEntitySO[] allCharacter,
+            Dictionary<string,string> dialog) //말하는 이에 따른 so(이름) 바꾸기
         {
             foreach(DialogEntitySO so in allCharacter)
             {
-                if(so.EntityName.ToString().ToLower() == dialog[i][DialogType.Player.ToString()].ToLower())
+                if(so.EntityName.ToString().ToLower() == dialog[DialogType.Player.ToString()].ToLower())
                 {
                     return so;
                 }

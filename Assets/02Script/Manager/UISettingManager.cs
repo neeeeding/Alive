@@ -32,11 +32,7 @@ namespace _02Script.Manager
 
         private Dictionary<UIActiveType, bool> uiActiveBool = new Dictionary<UIActiveType, bool>();
 
-        #region EnDiAw
-        private void Awake()
-        {
-            DicSetting();
-        }
+        #region EnDi
         private void OnEnable()
         {
             DialogEntity.OnChat += Chat;
@@ -105,6 +101,10 @@ namespace _02Script.Manager
         {
             foreach (UIActiveType obj in uiObj.Keys)
             {
+                if (!uiActiveBool.ContainsKey(obj))
+                {
+                    DicSetting();
+                }
                 uiObj[obj].SetActive(uiActiveBool[obj]);
             }
             
@@ -161,8 +161,10 @@ namespace _02Script.Manager
 
         private void DicSetting()
         {
+            uiActiveBool.Clear();
             foreach(UIActiveType name in Enum.GetValues(typeof(UIActiveType)))
             {
+                if(uiActiveBool.ContainsKey(name)) continue;
                 uiActiveBool.Add(name, false);
             }
             InGame();
