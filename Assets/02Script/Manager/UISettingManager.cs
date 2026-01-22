@@ -58,6 +58,7 @@ namespace _02Script.Manager
             PlayerInput.Instance.CanInput();
         }
 
+        #region Buttons
         public void CloseChat() //채팅 닫기
         {
             SetBool(UIActiveType.chat, false);
@@ -68,43 +69,37 @@ namespace _02Script.Manager
         {
             SetBool(UIActiveType.obj, true);
         }
-
         public void Chat(DialogEntitySO so, DialogEntity dialogEntity) //채팅
         {
             SetBool(UIActiveType.chat,true);
             chat.DialogSetting(so, dialogEntity);
             GameManager.Instance.PlayerStat.isChat = true;
         }
-
         public void UIDictionary()
         {
             SetBool(UIActiveType.uIDictionary,true);
         }
-        
         public void Person()
         {
             SetBool(UIActiveType.person,true);
         }
-
         public void Inventory()
         {
             SetBool(UIActiveType.inventory, true);
         }
-
         public void Map() //지도
         {
             SetBool(UIActiveType.map, true);
         }
-
         public void Setting() // 세팅
         {
             SetBool(UIActiveType.setting, true);
         }
-
         public void Save() //저장
         {
             SetBool(UIActiveType.save, true);
         }
+        #endregion
 
         private void SettingAll() //세팅들
         {

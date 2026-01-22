@@ -1,5 +1,5 @@
-﻿using System;
-using _02Script.DoTweenUI.Warring;
+﻿using _02Script.DoTweenUI.Warring;
+using _02Script.Farming;
 using _02Script.GameEvent;
 using UnityEngine;
 
@@ -10,23 +10,25 @@ namespace _02Script.Obj.Obj
         [SerializeField] private DoUIType doUiType;
         [SerializeField] private GameObject doUi;
         private bool _isPlayer;
-        private bool _isEvent;
+        private bool _isEvent; //밤이나 이벤트로 인지
 
         private string _addWarring;
 
         #region EnDiAw
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             _addWarring = "지금은 ";
             GameEventManger.OnLockUI += DontUi;
+            GameEventManger.OnFarmTemperature += EndEvent;
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             GameEventManger.OnLockUI -= DontUi;
+            GameEventManger.OnFarmTemperature -= EndEvent;
         }
-        private void Awake()
+        protected virtual void Awake()
         {
             _isPlayer = false;
             _isEvent = false;
@@ -35,7 +37,7 @@ namespace _02Script.Obj.Obj
 
         #endregion
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        protected void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("Player"))
             {
@@ -43,7 +45,7 @@ namespace _02Script.Obj.Obj
             }
         }
 
-        private void OnTriggerExit2D(Collider2D collision)
+        protected void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.CompareTag("Player"))
             {
@@ -51,7 +53,7 @@ namespace _02Script.Obj.Obj
             }
         }
 
-        private void DontUi(DoUIType eventType)
+        protected void DontUi(DoUIType eventType)
         {
             _addWarring = "지금은 ";
             if (eventType == DoUIType.all &&
@@ -65,24 +67,36 @@ namespace _02Script.Obj.Obj
             _isEvent = doUiType == eventType;
         }
 
-        private void EndEvent()
+        protected void EndEvent(TemperatureType _)
         {
             _isEvent = false;
         }
 
-        public void ClickObj()
+        public virtual  void ClickObj()
         {
-            doUi.SetActive(_isPlayer && !_isEvent);
+            if (doUi.activeSelf)
+            {
+                doUi.SetActive(false);
+            }
+            else
+            {
+                Show();
+            }
+        }
+
+        private void Show()
+        {
+            doUi.SetActive(!_isEvent && _isPlayer);
             
-            if(!_isEvent) return;
+            if(!_isPlayer || !_isEvent) return;
             WarringManager.Warring.ShowWarring(_addWarring +
-                doUiType switch
-                {
-                    DoUIType.farm => "밭을 사용하실 수 없습니다.",
-                    DoUIType.cook => "요리하실 수 없습니다.",
-                    DoUIType.produce => "제작하실 수 없습니다.",
-                    _=> "사용하실 수 없습니다.",
-                });
+                                               doUiType switch
+                                               {
+                                                   DoUIType.farm => "밭을 사용하실 수 없습니다.",
+                                                   DoUIType.cook => "요리하실 수 없습니다.",
+                                                   DoUIType.produce => "제작하실 수 없습니다.",
+                                                   _=> "사용하실 수 없습니다.",
+                                               });
         }
     }
 

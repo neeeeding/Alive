@@ -132,7 +132,7 @@ namespace _02Script.GameEvent
             EventCheck();
         }
     }
-    [System.Serializable]
+    [Serializable]
     public struct CharacterEventData
     {
         public Transform pos;

@@ -12,23 +12,33 @@ namespace _02Script.Manager
 {
     public class GameManager : Singleton<GameManager>
     {
-        public static string GameSaveFilePath; //파일 위치
-        public string GamePath = "gameSaveData"; // 저장 경로
-
+        //Action --------------------------------------------------------------------------
         public static Action OnNextDay; //다음날이 됨.
         public static Action CoinText; //코인 수 갱신 (텍스트)
         public static Action OnStart; //모든 초기화 완료 후
-
+        
+        //readonly ------------------------------------------------------------------------
+        public readonly int WalkSpeed = 5;
+        public readonly int RunSpeed = 5 * 2;
+        
+        //변수들 --------------------------------------------------------------------------
+        public static string GameSaveFilePath; //파일 위치
+        public string GamePath = "gameSaveData"; // 저장 경로
+        
         public string curScene; // 현재 씬 이름
 
-        [Header("Setting")] [SerializeField] private float dayTimeDelay = 10f;
+
+        [Header("Setting")]
+        [SerializeField] private float dayTimeDelay = 10f;
+        
+        [Header("Public")]
         public GameSaveData saveData; //기기에서만 저장 되는 것들 (ex: 저장 안한 진행사항)
         public PlayerStatSC PlayerStat; //플레이어 정보
         public Player.Player Player; //플레이어 (state 조정 해줌(?))
-        
         public ItemHold itemPos; //플레이어가 들고 있을 아이템 위치
-        [Space(10f)] public bool isStart;
         public ItemDataSO holdItemData;
+        
+        public bool isStart; //시작에 관해서
 
         [ContextMenu("ResetAll")]
         public void ResetDate() //초기화 하기

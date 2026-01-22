@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _02Script.DoTweenUI.Warring;
 using _02Script.GameEvent;
 using _02Script.Inventory.Item;
+using _02Script.Obj.Obj;
 using _02Script.Player;
 using _02Script.UI.Dialog.Dialog;
 using TMPro;
@@ -11,7 +12,7 @@ using UnityEngine;
 namespace _02Script.Farming
 {
     //나중에 타일맵에서 그리는 걸로
-    public class Field : MonoBehaviour
+    public class Field : OpenDoUI
     {
         public static Action<ItemDataSO, int> OnUseSeed;
         public static Action<ItemDataSO, int> OnGetViand;
@@ -19,7 +20,6 @@ namespace _02Script.Farming
         [Header("Setting")]
         [SerializeField] private int canFarmCount;
         [Header("Need")]
-        [SerializeField] private GameObject seedWindow;
         [SerializeField] private TextMeshProUGUI curTemperatureText;
         
         [SerializeField] private OneFarming seedsPrefab;
@@ -33,21 +33,23 @@ namespace _02Script.Farming
         private TemperatureType _curTemperatureType;
 
         #region EnDiAw
-        private void Awake()
+        protected override void Awake()
         {
-            seedWindow.SetActive(false);
+            base.Awake();
             NewSeeds(canFarmCount);
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             GameEventManger.OnFarmTemperature += SetTemperature;
             PlayerInput.OnMousePos += SavePos;
             SeedsCard.OnClickCard += Plant;
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
             GameEventManger.OnFarmTemperature -= SetTemperature;
             PlayerInput.OnMousePos -= SavePos;
             SeedsCard.OnClickCard -= Plant;
@@ -135,7 +137,7 @@ namespace _02Script.Farming
                 return;
             }
 
-            seedWindow.SetActive(true);
+            ClickObj();
         }
     }
 

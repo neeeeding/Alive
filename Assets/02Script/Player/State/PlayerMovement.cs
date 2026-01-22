@@ -42,6 +42,7 @@ namespace _02Script.Player.State
 
         private void OnEnable()
         {
+            PlayerInput.OnMoveSpeed += SetSpeed;
             RunBtn.OnMoveSpeed += SetSpeed;
             _isMoving = false;
             PlayerInput.OnMousePos += MouseMove;
@@ -51,6 +52,7 @@ namespace _02Script.Player.State
 
         private void OnDisable()
         {
+            PlayerInput.OnMoveSpeed -= SetSpeed;
             RunBtn.OnMoveSpeed -= SetSpeed;
             GameManager.OnStart -= StartLoad;
             PlayerInput.OnMousePos -= MouseMove;

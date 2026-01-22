@@ -15,4 +15,4 @@ MonoBehaviour:
   seeds: {fileID: 11400000, guid: 321cb8aa4378b9447abd76bb4ca77549, type: 2}
   viand: {fileID: 11400000, guid: 4140b63b9b767b64987c15c82ee9e87b, type: 2}
   temperatureType: 3
-  growDelay: 5
+  growDelay: 45

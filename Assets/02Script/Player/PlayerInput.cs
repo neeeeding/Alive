@@ -1,5 +1,6 @@
 ﻿using System;
 using _02Script.Etc;
+using _02Script.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,7 @@ namespace _02Script.Player
 {
     public class PlayerInput : Singleton<PlayerInput>, Controls.IPCActions
     {
+        public static Action<float> OnMoveSpeed;
         public static event Action<Vector2> OnMousePos;
         public static event Action<Vector2> OnMovePos;
         
@@ -54,6 +56,14 @@ namespace _02Script.Player
 
         public void OnRun(InputAction.CallbackContext context)
         {
+            if (context.performed)
+            {
+                OnMoveSpeed?.Invoke(GameManager.Instance.RunSpeed);
+            }
+            else if (context.canceled)
+            {
+                OnMoveSpeed?.Invoke(GameManager.Instance.WalkSpeed);
+            }
         }
 
         public void OnMouseMove(InputAction.CallbackContext context)
