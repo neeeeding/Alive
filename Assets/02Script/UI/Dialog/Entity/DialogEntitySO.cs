@@ -12,7 +12,6 @@ namespace _02Script.UI.Dialog.Entity
         [Space(20f)]
         [Header("Dialog")]
         public TextAsset[] DialogTextFile;
-        //public SerializedDictionary<string, ItemDataSO> Items; //가지고 있을 아이템들
     }
 
     public enum EntityName

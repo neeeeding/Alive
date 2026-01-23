@@ -13,19 +13,13 @@ namespace _02Script.UI.Dialog.Dialog
         [SerializeField] private DialogTextController dialogTextController; //텍스트 출력 관련
         
         public void HaveSelect(int i, int currentChapter,
-        List<Dictionary<string,string>> dialog,
-        DialogEntitySO chatPlayer) //선택지가 있는지 (있으면 개수만 큼 세팅.)
+        List<Dictionary<string,string>> dialog) //선택지가 있는지 (있으면 개수만 큼 세팅.)
         {
             OffSelectText(); //일단 다 끄기
 
-            if (string.IsNullOrEmpty(dialog[i][DialogType.SelectText.ToString()]) /*|| chatPlayer.EntityName != EntityName.lie*/) //선택지가 없다면 (주석)
+            if (string.IsNullOrEmpty(dialog[i][DialogType.SelectText.ToString()]) ) //선택지가 없다면 (주석)
                 return;
             
-            // if (chatPlayer.EntityName == EntityName.lie) (주석)
-            // {
-            //     PlayerNeed(dialog[i]);
-            // }
-            // else
             {
                 string[] all = dialog[i][DialogType.SelectText.ToString()].Split('~');
                 
@@ -65,22 +59,11 @@ namespace _02Script.UI.Dialog.Dialog
                 selectTexts[j].SetSelect(text, j); //선택 그거 세팅 해주기.
             }
         }
-
-        // private void PlayerNeed(Dictionary<string,string> dialog) //플레이어 용 (주석)
-        // {
-        //     selectTexts[0].gameObject.SetActive(true);
-        //
-        //     string text = dialogTextController.IsExchangeText(
-        //         dialog[DialogType.Text.ToString()], "`", ",");
-        //
-        //     selectTexts[0].SetSelect(text, -1); //선택 그거 세팅 해주기.
-        //     
-        // }
         
         public void SelectChat(int selectNum, ref int currentNum, ref int currentChat,
             List<Dictionary<string,string>> dialog) //선택된 선택지가 있을 시 (대화 계속 진행)
         {
-            currentChat += selectNum; //선택된 번호로 바꿔주기
+            //currentChat += selectNum; //선택된 번호로 바꿔주기
             selectNum += currentNum;
             currentNum = selectNum;
             

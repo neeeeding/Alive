@@ -6,6 +6,7 @@ using _02Script.UI.Dialog.Entity;
 using _02Script.Player;
 using _02Script.UI.Save;
 using _02Script.UI.Dialog.Etc;
+using AYellowpaper.SerializedCollections;
 using TMPro;
 using UnityEngine;
 using TextAsset = UnityEngine.TextAsset;
@@ -28,8 +29,8 @@ namespace _02Script.UI.Dialog.Dialog
         [SerializeField] private ChatSetting setting; //세팅 해주는 거
 
         [SerializeField] private DialogItem dialogItem; //아이템 관련
-        // [SerializeField] private InventoryManager manager; //아이템 관련
-        // [SerializeField] private SerializedDictionary<string, ItemDataSO> items; //가지고 있을 아이템들
+        [SerializeField] private ItemDataSO[] allItems; //가지고 있을 아이템들
+        private SerializedDictionary<ItemType, ItemDataSO> itemDictionary = new SerializedDictionary<ItemType, ItemDataSO>();
 
         private List<Dictionary<string, string>> dialog; //csv 대화
         [Header("Show")] [SerializeField] private int currentChapter; //현재 챕터
@@ -50,9 +51,7 @@ namespace _02Script.UI.Dialog.Dialog
         #endregion
 
         [SerializeField] private SelectBtn[] selectTexts; //선택지 대화
-        [Space(50f)] [SerializeField] private Dictionary<DialogPosition, Vector2> characterPosition; //위치 지정
-
-        private bool holdItem; //true : 아이템 들고 있음, false : 아이템 없음
+        [Space(50f)] [SerializeField] private SerializedDictionary<DialogPosition, Vector2> characterPosition; //위치 지정
 
         public void DialogSetting(DialogEntitySO so, DialogEntity dialogEntity) //세팅 해주기
         {
@@ -61,7 +60,6 @@ namespace _02Script.UI.Dialog.Dialog
             
             GameManager.Instance.PlayerStat.lastDialogEntity = dialogEntity;
             GameManager.Instance.PlayerStat.lastSO = so;
-            holdItem = false;
             currentDialogEntity = dialogEntity;
             _currentSO = so;
             chatPlayer = so;
@@ -82,7 +80,13 @@ namespace _02Script.UI.Dialog.Dialog
         {
             TextAsset currentDialog = _currentSO.DialogTextFile[0];
             dialog = CSVReader.Read(currentDialog);
-            IsHoldItem();
+            //아이템 --
+            int? isItem = dialogItem.IsHoldItem(dialog);
+            if (isItem != null)
+            {
+                currentChapter = isItem.Value;
+                currentNum = 1;
+            }
 
             //CSV 배열 찾기
             for (int i = 0; i < dialog.Count - 1; i++)
@@ -131,7 +135,6 @@ namespace _02Script.UI.Dialog.Dialog
                     : nextNum - currentNum; //다음 번호 정해주기. (마지막이 본인이면 1추가로 나가게 해버리기.(대화 자체는 줄어버림.(???)))
             currentNum = nextNum + 1;
             DoChat(false);
-            print(currentChat);
         }
 
         private void RenewalText(string final) // 마지막 텍스트 갱신 (주석)
@@ -147,26 +150,6 @@ namespace _02Script.UI.Dialog.Dialog
                 //저장
                 path.characterLastText[chatPlayer.EntityName][DialogType.Chapter] = currentNum.ToString();
                 path.characterLastText[chatPlayer.EntityName][DialogType.Num] = currentChapter.ToString();
-            }
-        }
-
-        private void IsHoldItem() //들고 있는 아이템 있다면 (챕터 번호)
-        {
-            ItemDataSO dataSo = GameManager.Instance.holdItemData;
-            if (dataSo != null)
-            {
-                holdItem = true;
-                for (int i = 0; i < dialog.Count - 1; i++)
-                {
-                    if (dialog[i][DialogType.Item.ToString()].ToLower() ==
-                        dataSo.itemType.ToString().ToLower()) //대화의 아이템 창과 들고 있는 아이템 찾기
-                    {
-                        currentChapter = int.Parse(dialog[i][DialogType.Chapter.ToString()]);
-                        currentNum = 1;
-                        GameManager.Instance.AddItemCount(dataSo.itemType, -1); //아이템 빼기 (늘 1만큼 사용하기? (주석)
-                        break;
-                    }
-                } //여기서 못 찾으면 경고 보내야 하나? (주석)
             }
         }
 
@@ -250,10 +233,14 @@ namespace _02Script.UI.Dialog.Dialog
                 dialog[currentChat][DialogType.Text.ToString()], "`", ","); //변환 해주고 원했던 대화
             isTime = true;
             //------------------------
+            
+            //얻기 & 스탯 증가
+            dialogItem.GetOrThrowItem(dialog[currentChat], itemDictionary);
+            //------------------------
 
             if (currentDialogEntity != null)
                 currentDialogEntity.NextDialog(currentNum);
-            dialogSelect.HaveSelect(currentChat, currentChapter, dialog, chatPlayer);
+            dialogSelect.HaveSelect(currentChat, currentChapter, dialog);
 
             if (isSelect || (int)isError / 1000 == 4) return false;
             if (!DialogCheck(DialogType.NextNum, "")) // 다음 번호가 안 비어 있다면.
@@ -280,6 +267,10 @@ namespace _02Script.UI.Dialog.Dialog
         private void SelectChat(int selectNum) //선택
         {
             dialogText.text = "";
+            currentChat += selectNum;
+            //얻기 & 스탯 증가
+            dialogItem.GetOrThrowItem(dialog[currentChat], itemDictionary);
+            //------------------------
             dialogSelect.SelectChat(selectNum, ref currentNum, ref currentChat, dialog);
             DoChat(true);
         }
@@ -298,9 +289,18 @@ namespace _02Script.UI.Dialog.Dialog
             DialogSetting(_currentSO, currentDialogEntity);
         }
 
+        private void SetItemDictionary()
+        {
+            foreach (ItemDataSO item in allItems)
+            {
+                itemDictionary.Add(item.itemType, item);
+            }
+        }
+
         #region EnDi
         private void OnEnable()
         {
+            SetItemDictionary();
             UISettingManager.Instance.InGame();
             SelectBtn.OnSelect += SelectChat;
             DialogEntity.OnChat += DialogSetting;

@@ -3,6 +3,7 @@ using System.Linq;
 using _02Script.Farming;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
+using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Save;
 using _02Script.UI.Store;
 using AYellowpaper.SerializedCollections;
@@ -27,6 +28,7 @@ namespace _02Script.Inventory.Inventory
         #region EnDi
         protected virtual void OnEnable()
         {
+            DialogItem.OnGetItem += GetOrThrowItem;
             InGameItem.OnGetItem += AddItem;
             Field.OnGetViand += AddItem;
             Field.OnUseSeed += ThrowItem;
@@ -43,6 +45,7 @@ namespace _02Script.Inventory.Inventory
 
         protected virtual  void OnDisable()
         {
+            DialogItem.OnGetItem -= GetOrThrowItem;
             InGameItem.OnGetItem -= AddItem;
             Field.OnGetViand -= AddItem;
             Field.OnUseSeed -= ThrowItem;
@@ -69,6 +72,19 @@ namespace _02Script.Inventory.Inventory
                 {
                     AddItem(AllDataSO[item.Key], num);
                 }
+            }
+        }
+
+        public void GetOrThrowItem(ItemDataSO item,int count)
+        {
+            if (count > 0)
+            {
+                AddItem(item, count);
+            }
+            else
+            {
+                count*= -1;
+                ThrowItem(item, count);
             }
         }
         
