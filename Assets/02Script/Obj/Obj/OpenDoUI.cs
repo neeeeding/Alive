@@ -1,24 +1,26 @@
 ﻿using _02Script.DoTweenUI.Warring;
 using _02Script.Farming;
 using _02Script.GameEvent;
+using _02Script.Player;
 using UnityEngine;
 
 namespace _02Script.Obj.Obj
 {
     public class OpenDoUI : MonoBehaviour
     {
-        [SerializeField] private DoUIType doUiType;
-        [SerializeField] private GameObject doUi;
-        private bool _isPlayer;
-        private bool _isEvent; //밤이나 이벤트로 인지
+        [SerializeField] protected DoUIType doUiType;
+        [SerializeField] protected GameObject doUi;
+        protected bool isPlayer;
+        protected bool isEvent; //밤이나 이벤트로 인지
+        protected bool isShow;
 
-        private string _addWarring;
+        protected string addWarring;
 
         #region EnDiAw
 
         protected virtual void OnEnable()
         {
-            _addWarring = "지금은 ";
+            addWarring = "지금은 ";
             GameEventManger.OnLockUI += DontUi;
             GameEventManger.OnFarmTemperature += EndEvent;
         }
@@ -30,8 +32,9 @@ namespace _02Script.Obj.Obj
         }
         protected virtual void Awake()
         {
-            _isPlayer = false;
-            _isEvent = false;
+            isPlayer = false;
+            isEvent = false;
+            isShow = false;
             ClickObj();
         }
 
@@ -39,37 +42,44 @@ namespace _02Script.Obj.Obj
 
         protected void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("Player"))
+            if (collision.gameObject == PlayerManager.curPlayer.gameObject)
             {
-                _isPlayer = true;
+                isPlayer = true;
             }
         }
 
         protected void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.CompareTag("Player"))
+            if (collision.gameObject == PlayerManager.curPlayer.gameObject)
             {
-                _isPlayer = false;
+                isPlayer = false;
             }
         }
 
         protected void DontUi(DoUIType eventType)
         {
-            _addWarring = "지금은 ";
+            isEvent = doUiType != eventType;
+            
+            addWarring = "지금은 ";
             if (eventType == DoUIType.all &&
                 doUiType != DoUIType.none)
             {
-                _addWarring = "밤에는 ";
-                _isEvent = true;
-                return;
+                addWarring = "밤에는 ";
+                isEvent = false;
             }
             
-            _isEvent = doUiType == eventType;
+            addWarring += doUiType switch
+            {
+                DoUIType.farm => "밭을 사용하실 수 없습니다.",
+                DoUIType.cook => "요리하실 수 없습니다.",
+                DoUIType.produce => "제작하실 수 없습니다.",
+                _=> "사용하실 수 없습니다.",
+            };
         }
 
         protected void EndEvent(TemperatureType _)
         {
-            _isEvent = false;
+            isEvent = false;
         }
 
         public virtual  void ClickObj()
@@ -86,17 +96,18 @@ namespace _02Script.Obj.Obj
 
         private void Show()
         {
-            doUi.SetActive(!_isEvent && _isPlayer);
-            
-            if(!_isPlayer || !_isEvent) return;
-            WarringManager.Warring.ShowWarring(_addWarring +
-                                               doUiType switch
-                                               {
-                                                   DoUIType.farm => "밭을 사용하실 수 없습니다.",
-                                                   DoUIType.cook => "요리하실 수 없습니다.",
-                                                   DoUIType.produce => "제작하실 수 없습니다.",
-                                                   _=> "사용하실 수 없습니다.",
-                                               });
+            doUi.SetActive(!isEvent && isPlayer);
+
+            if (!isPlayer)
+            {
+                WarringManager.Warring.ShowWarring("너무 멀리 있습니다.");
+                return;
+            }
+
+            if (isEvent)
+            {
+                WarringManager.Warring.ShowWarring(addWarring);
+            }
         }
     }
 

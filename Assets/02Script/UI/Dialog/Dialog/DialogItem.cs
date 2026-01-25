@@ -31,10 +31,8 @@ namespace _02Script.UI.Dialog.Dialog
                 if (!items.ContainsKey(type)) return;
                 ItemDataSO myItem = items[type];
                 
-                
                 OnGetItem?.Invoke(myItem, count[j]);
             }
-            return;
         }
         
         public int? IsHoldItem(List<Dictionary<string, string>> dialog) //들고 있는 아이템 있다면 (챕터 번호)

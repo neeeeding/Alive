@@ -10763,7 +10763,6 @@ MonoBehaviour:
   dialogSelect: {fileID: 2918031161718614982}
   setting: {fileID: 165097012493783222}
   dialogItem: {fileID: 3237382720385123319}
-  manager: {fileID: 0}
   allItems:
   - {fileID: 11400000, guid: 06ecf3d3500dbd64d83ccb1063e886d4, type: 2}
   - {fileID: 11400000, guid: cae6f9e87512fc34cbcb5d7680835982, type: 2}
@@ -31074,6 +31073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673a542c56e34d76b25cb1b037a435d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myProduceType: 2
   setTimer: 0.7
   errorMassage: {fileID: 854995790272935404}
   produceInventory: {fileID: 7427887125760059034}
@@ -32571,6 +32571,10 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 6904985021096605004}
+    - target: {fileID: 2228765773838163031, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
+      propertyPath: myProduceType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4910145799724972846, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

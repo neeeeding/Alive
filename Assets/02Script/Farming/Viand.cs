@@ -1,18 +1,28 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using _02Script.Etc;
 using UnityEngine;
 
 namespace _02Script.Farming
 {
-    //나중에 아껴 쓰기 & 저장하기
     public class Viand : MonoBehaviour
     {
+        [SerializeField] private EffectShow farmEffect;
         private SpriteRenderer mySpriteRenderer;
         private OneFarming myP;
 
-        public void ClickViand()
+        private void OnEnable()
+        {
+            farmEffect.ShowEffect();
+        }
+
+        private void OnDisable()
+        {
+            farmEffect.HideEffect();
+        }
+
+        public void ClickViand() //농작물 얻기
         {
             myP.ListSeeds();
-            //얻기
             gameObject.SetActive(false);
         }
         

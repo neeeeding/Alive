@@ -6,7 +6,7 @@ namespace _02Script.Player
     {
         [SerializeField] private Player[] characters;
         [SerializeField] private GameObject followCamera;
-        private static Player curPlayer;
+        public static Player curPlayer;
 
         private void SelectPlayer(Player curP)
         {

@@ -20,13 +20,13 @@ namespace _02Script.GameEvent
         [SerializeField] private EventAlarm eventAlarm;
 
         private int _curDay;
-        private Dictionary<EntityName,ObjTeleportationPos> _nextDayDoEvent;
+        private Dictionary<EntityName,ObjTeleportationPos> _nextDayDoEvent = new Dictionary<EntityName, ObjTeleportationPos>();
 
         private TemperatureType _temperature;
+        private bool isEnter;
 
         private void OnEnable()
         {
-            LoadEvent();
             LoadCard.OnLoad += LoadEvent;
         }
 
@@ -35,10 +35,9 @@ namespace _02Script.GameEvent
             LoadCard.OnLoad -= LoadEvent;
         }
 
-        private void Awake()
+        private void Start()
         {
-            _nextDayDoEvent = new Dictionary<EntityName, ObjTeleportationPos>();
-            _curDay = 0;
+            LoadEvent();
         }
 
         private void Update()
@@ -49,12 +48,29 @@ namespace _02Script.GameEvent
             }
             if (_curDay != GameManager.Instance.PlayerStat.day)
             {
-                _temperature = TemperatureType.warmth;
-                DoEvent();
                 _curDay = GameManager.Instance.PlayerStat.day;
-                EventCheck();
                 OnFarmTemperature?.Invoke(_temperature);
+                GetOutEveryone();
+                isEnter = false;
+            }
+            if (GameManager.Instance.PlayerStat.hour >= 17 && !isEnter)
+            {
+                _temperature = TemperatureType.warmth;
+                OnFarmTemperature?.Invoke(_temperature);
+                isEnter = true;
+                EventCheck();
                 eventAlarm.Alarm(_nextDayDoEvent);
+                DoEvent(false);
+            }
+        }
+        
+        private void GetOutEveryone()
+        {
+            eventAlarm.Alarm(_nextDayDoEvent);
+            
+            foreach (KeyValuePair<ObjTeleportationPos, CharacterEventData> character in characterEvent)
+            {
+                character.Key.gameObject.SetActive(false);
             }
         }
 
@@ -80,16 +96,20 @@ namespace _02Script.GameEvent
             {
                 //전투는 당일날 이라서 (주석)
             }
+
+            DoEvent(true);
         }
 
         private void DoCharacterEvent(ObjTeleportationPos character)
         {
             character.gameObject.SetActive(true);
             character.transform.position = characterEvent[character].pos.position;
-            _nextDayDoEvent.Add(characterEvent[character].doEvent, character);
+            if(!_nextDayDoEvent.ContainsKey(characterEvent[character].doEvent))
+                _nextDayDoEvent.Add(characterEvent[character].doEvent, character);
         }
 
-        private void DoEvent()
+        //당일과, 다음날 지속?
+        private void DoEvent(bool isToday)
         {
             if(_nextDayDoEvent.Count <= 0) return;
             
@@ -101,35 +121,45 @@ namespace _02Script.GameEvent
                     0 => TemperatureType.cold | TemperatureType.frigid,
                     _ => TemperatureType.highTemperature | TemperatureType.dry,
                 };
+                OnFarmTemperature?.Invoke(_temperature);
             }
             if (_nextDayDoEvent.ContainsKey(EntityName.raelia))
             {
                 //요리 & 농사 랜덤 봉인
-                OnLockUI?.Invoke((DoUIType)(Random.Range((int)DoUIType.farm,(int)DoUIType.cook)));
+                OnLockUI?.Invoke((DoUIType)(Random.Range((int)DoUIType.farm,(int)DoUIType.cook + 1)));
             }
             
-            _nextDayDoEvent = new Dictionary<EntityName, ObjTeleportationPos>();
+            if(!isToday)
+                _nextDayDoEvent = new Dictionary<EntityName, ObjTeleportationPos>();
         }
 
         private void LoadEvent()
         {
+            _curDay = GameManager.Instance.PlayerStat.day;
             _nextDayDoEvent = new Dictionary<EntityName, ObjTeleportationPos>();
             foreach (KeyValuePair<ObjTeleportationPos, CharacterEventData> character in characterEvent)
             {
                 bool isEvent = false;
                 foreach (int day in character.Value.day)
                 {
-                    if (_curDay-1 % Math.Abs(day) == 0)
+                    if (_curDay-1 % Math.Abs(day) == 0 && _curDay > 1)
                     {
-                        isEvent = day >= 0;
-                        if(day < 0) break;
+                        isEvent = true;
+                        if (day < 0)
+                        {
+                            isEvent = false;
+                            break;
+                        }
                     }
                 }
-                _nextDayDoEvent.Add(characterEvent[character.Key].doEvent, character.Key);
+                if(isEvent) _nextDayDoEvent.Add(characterEvent[character.Key].doEvent, character.Key);
             }
             
-            DoEvent();
+            _temperature = TemperatureType.warmth;
+            OnFarmTemperature?.Invoke(_temperature);
             EventCheck();
+            eventAlarm.Alarm(_nextDayDoEvent);
+            DoEvent(false);
         }
     }
     [Serializable]

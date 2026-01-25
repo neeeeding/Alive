@@ -1,9 +1,6 @@
 ﻿using System;
 using _02Script.Inventory.Item;
-using _02Script.Manager;
-using _02Script.Obj.Obj;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace _02Script.GameEvent
 {

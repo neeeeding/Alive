@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using _02Script.DoTweenUI.Warring;
+using _02Script.Farming;
+using _02Script.GameEvent;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
+using _02Script.Obj.Obj;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +15,7 @@ namespace _02Script.Produce
     public class Mixture : MonoBehaviour
     {
         [Header("Setting")]
+        [SerializeField] private DoUIType myProduceType;
         [SerializeField] private float setTimer = 0.7f;
         [Header("Need")]
         [SerializeField] private GameObject errorMassage;
@@ -31,31 +35,44 @@ namespace _02Script.Produce
         private (int maxCount,ItemDataSO data) _itemMax; //비교 & 저장용
         private ItemDataSO resultData;
 
-        private float _Timer;
-        private bool isTimer;
+        private float _timer;
+        private bool _isTimer;
+        
+        //밤 & 이벤트 제한
+        private string _warringText;
+        private bool _isCanUse;
         
         #region EnDi
         private void OnEnable()
         {
-            isTimer = false;
+            _isTimer = false;
             ProduceBookCard.OnMouseClick += Setting;
+            GameEventManger.OnLockUI += CantUse;
+            GameEventManger.OnFarmTemperature += EndEvent;
             Setting(null);
         }
         private void OnDisable()
         {
             ProduceBookCard.OnMouseClick -= Setting;
+            GameEventManger.OnLockUI -= CantUse;
+            GameEventManger.OnFarmTemperature -= EndEvent;
         }
         #endregion
 
         #region Btn
         public void MouseEnter()
         {
-            _Timer = setTimer;
-            isTimer = true;
+            _timer = setTimer;
+            _isTimer = true;
         }
         public void MouseExit()
         {
-            GetResult(_Timer <= 0? _itemMax.maxCount : 1);
+            if (!_isCanUse)
+            {
+                WarringManager.Warring.ShowWarring(_warringText);
+                return;
+            }
+            GetResult(_timer <= 0? _itemMax.maxCount : 1);
         }
         private void GetResult(int count) //제작 아이템 얻기 & 재료 버리기
         {
@@ -91,11 +108,39 @@ namespace _02Script.Produce
         }
         #endregion
 
+        #region Event or Night
+        private void CantUse(DoUIType type)
+        {
+            _isCanUse = myProduceType != type;
+            
+            _warringText = "지금은 ";
+            if (type == DoUIType.all &&
+                myProduceType != DoUIType.none)
+            {
+                _warringText = "밤에는 ";
+                _isCanUse = false;
+            }
+            
+            _warringText += myProduceType switch
+            {
+                DoUIType.farm => "밭을 사용하실 수 없습니다.",
+                DoUIType.cook => "요리하실 수 없습니다.",
+                DoUIType.produce => "제작하실 수 없습니다.",
+                _=> "사용하실 수 없습니다.",
+            };
+        }
+
+        private void EndEvent(TemperatureType _)
+        {
+            _isCanUse = true;
+        }
+        #endregion
+
         private void Update()
         {
-            if (isTimer)
+            if (_isTimer)
             {
-                _Timer -= Time.deltaTime;
+                _timer -= Time.deltaTime;
             }
         }
         

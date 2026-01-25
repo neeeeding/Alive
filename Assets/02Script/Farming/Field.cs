@@ -8,6 +8,7 @@ using _02Script.Player;
 using _02Script.UI.Dialog.Dialog;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace _02Script.Farming
 {
@@ -21,6 +22,8 @@ namespace _02Script.Farming
         [SerializeField] private int canFarmCount;
         [Header("Need")]
         [SerializeField] private TextMeshProUGUI curTemperatureText;
+        [SerializeField] private Transform parent;
+        [SerializeField] private Tilemap farmTilemap;
         
         [SerializeField] private OneFarming seedsPrefab;
         
@@ -85,9 +88,14 @@ namespace _02Script.Farming
         //심기
         private void Plant(SeedsSO so)
         {
+            if (!isEvent)
+            {
+                WarringManager.Warring.ShowWarring(addWarring);
+                return;
+            }
             if ((so.temperatureType & _curTemperatureType) == 0)
             {
-                WarringManager.Warring.ShowWarring("해당 씨앗을 심기에는 적당한 온도가 아닙니다.");
+                WarringManager.Warring.ShowWarring("해당 씨앗을 심기에는 적당한 온도가 아닙니다.",2);
                 return;
             }
             
@@ -97,6 +105,13 @@ namespace _02Script.Farming
             }
 
             OneFarming newSeeds = _seeds[0];
+            
+            //위치
+            Vector3Int farmPos = farmTilemap.WorldToCell(_clickPos);
+            TileBase farmTile = farmTilemap.GetTile(farmPos);
+            _clickPos = farmTilemap.GetCellCenterWorld(farmPos);
+
+            if (farmTile == null) return;
             
             newSeeds.transform.position = _clickPos;
             newSeeds.SetSO(so,this);
@@ -113,9 +128,9 @@ namespace _02Script.Farming
         {
             for (int i = 0; i < n; i++)
             {
-                OneFarming newSeeds = Instantiate(seedsPrefab);
+                OneFarming newSeeds = Instantiate(seedsPrefab,parent);
                 newSeeds.gameObject.SetActive(false);
-                newSeeds.transform.SetParent(gameObject.transform);
+                newSeeds.transform.SetParent(parent);
             
                 _seeds.Add(newSeeds);
                 
@@ -141,7 +156,7 @@ namespace _02Script.Farming
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class OneFarmingData
     {
         public Vector2 pos;
