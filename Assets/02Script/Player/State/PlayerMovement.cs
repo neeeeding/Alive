@@ -96,7 +96,7 @@ namespace _02Script.Player.State
                 }
                 try
                 {
-                    await AsyncTime.WaitSeconds(Random.Range(0,1.1f), cts.Token);
+                    await AsyncTime.WaitSeconds(Random.Range(0,1.1f), cts.Token, false);
                     
                     int auto = Random.Range(0, autoX.Length);
             

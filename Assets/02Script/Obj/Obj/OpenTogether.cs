@@ -1,11 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace _02Script.Obj.Obj
 {
     public class OpenTogether : MonoBehaviour
     {
-        [SerializeField] private GameObject obj;
+        [SerializeField] protected GameObject obj;
 
         private void Awake()
         {

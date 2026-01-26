@@ -53,7 +53,7 @@ namespace _02Script.GameEvent
                 GetOutEveryone();
                 isEnter = false;
             }
-            if (GameManager.Instance.PlayerStat.hour >= 17 && !isEnter)
+            if (GameManager.Instance.PlayerStat.hour >= 8 && !isEnter)
             {
                 _temperature = TemperatureType.warmth;
                 OnFarmTemperature?.Invoke(_temperature);

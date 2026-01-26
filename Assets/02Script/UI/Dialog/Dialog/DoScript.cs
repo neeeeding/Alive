@@ -1,55 +1,66 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _02Script.UI.Dialog.Entity;
 using _02Script.UI.Dialog.Etc;
+using AYellowpaper.SerializedCollections;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace _02Script.UI.Dialog.Dialog
 {
-    
-    //쓰려면 수정이 필요 (주석)
     public class DoScript : MonoBehaviour
     {
-        //[SerializeField]private ScriptListAllFinderSO allScript;
-        
-        [SerializeField]private SerializedDictionary<string, List<IDialogCanScript>> scripts;
+        [SerializeField]private SerializedDictionary<EntityName, MonoBehaviour[]> want = new SerializedDictionary<EntityName, MonoBehaviour[]>();
+        private SerializedDictionary<EntityName, IDialogCanScript[]> scripts = new SerializedDictionary<EntityName, IDialogCanScript[]>();
     
         private void Awake()
         {
             Organize();
         }
     
-        public void DoCheck(string st, DialogEntity entity)
+        public void DoCheck(string st, DialogEntitySO entity)
         {
             string[] all = st.Split('~');
-            foreach (var doScriptName in all)
+            foreach (string doScriptName in all)
             {
-                string doScript = doScriptName.ToLower();
-                if (!scripts.ContainsKey(doScript)) continue;
+                DoScriptType doScript = (DoScriptType)Enum.Parse(typeof(DoScriptType), doScriptName);
+                //if (!scripts[entity.EntityName].doScripts.ContainsKey(doScript)) continue;
 
-                if (doScript == DoScriptType.EndDialog.ToString().ToLower()) //삭제
+                if (doScript == DoScriptType.EndDialog) //삭제
                 {
                     Destroy(entity);
                     continue;
                 }
-                if (scripts[doScript].Count <= 0) continue;
+                //if (scripts[entity.EntityName].doScripts.Count <= 0) continue;
+                if(scripts.Count <= 0) Organize();
                 
-                IDialogCanScript script = scripts[doScript][0]; // <- 수정이 필요한 곳. 늘 0을 쓰고 있음;; (주석)
-                if (doScript == DoScriptType.DialogDeleteObj.ToString().ToLower()) //삭제
+                if (scripts[entity.EntityName].Length <= 0) continue;
+                
+                //IDialogCanScript script = scripts[entity.EntityName].doScripts[doScript];
+
+                foreach (IDialogCanScript script in scripts[entity.EntityName])
                 {
-                    for (int i = 0; i < scripts[doScript].Count; i++)
-                    {
-                        script = scripts[doScript][i];
-                        script.Do(entity);
-                        if(script == null) continue;
-                    }
+                    print(script);
+                    script.Do(doScript);
                 }
-                script.Do();
             }
         }
         
+        //나중에 찾기 자동화 만들면. (주석)
         private void Organize()
         {
+            scripts = new SerializedDictionary<EntityName, IDialogCanScript[]>();
+            foreach (KeyValuePair<EntityName, MonoBehaviour[]> w in want)
+            {
+                List<IDialogCanScript> list = new();
+                foreach (MonoBehaviour mb in w.Value)
+                {
+                    if (mb is IDialogCanScript script)
+                        list.Add(script);
+                }
+                scripts.Add(w.Key, list.ToArray());
+                //scripts.Add(w.Key, w.Value as IDialogCanScript[]);
+            }
+            
             // scripts = new SerializedDictionary<string, List<IDialogCanScript>>();
             //
             // List<DialogCanScript> targets = allScript.GetTarget<DialogCanScript>();
@@ -66,13 +77,23 @@ namespace _02Script.UI.Dialog.Dialog
             // }
         }
     }
+
+    [Serializable]
+    public class HaveDoScript
+    {
+        public SerializedDictionary<DoScriptType,IDialogCanScript> doScripts;
+    }
     
     public enum DoScriptType
     {
-        EndDialog, //대화 종료
+        EndDialog = 1, //대화 종료
         DeleteGameObject, //삭제
         DialogDeleteObj, //대화의 삭제
-        MuseumItemShow, //박물관
-        SoreUI, //상점
+        DoOpenTogether,
+        DoUIActive,
+        
+        IsisEvent = 1000,
+        MagentaEvent,
+        RaeliaEvent,
     }
 }

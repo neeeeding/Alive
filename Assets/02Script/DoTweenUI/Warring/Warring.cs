@@ -18,7 +18,7 @@ namespace _02Script.DoTweenUI.Warring
         {
             text.text = massage;
             warringObj.SetActive(true);
-            await AsyncTime.WaitSeconds(i);
+            await AsyncTime.WaitSeconds(i, true);
             warringObj.SetActive(false);
         }
     }

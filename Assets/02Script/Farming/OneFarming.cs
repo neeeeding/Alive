@@ -52,7 +52,7 @@ namespace _02Script.Farming
 
         private async Task WaitGrow()
         {
-            await AsyncTime.WaitSeconds(mySO.growDelay, cts.Token);
+            await AsyncTime.WaitSeconds(mySO.growDelay, cts.Token, false);
             viand.gameObject.SetActive(true);
             seeds.gameObject.SetActive(false);
             seedsUI.gameObject.SetActive(false);

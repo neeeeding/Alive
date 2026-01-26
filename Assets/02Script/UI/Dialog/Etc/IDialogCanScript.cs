@@ -1,12 +1,11 @@
-﻿using System;
-using UnityEngine;
+﻿using _02Script.UI.Dialog.Dialog;
 
 namespace _02Script.UI.Dialog.Etc
 {
     public interface IDialogCanScript
     {
-        public void Do<T>(T t)
+        public void Do<T>(T t, DoScriptType type)
         {}
-        public void Do();
+        public void Do(DoScriptType type);
     }
 }

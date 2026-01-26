@@ -185,7 +185,7 @@ namespace _02Script.UI.Dialog.Dialog
             if (currentChat > dialog.Count - 1) return true;
 
             if (!DialogCheck(DialogType.Do, ""))
-                doScript.DoCheck(dialog[currentChat][DialogType.Do.ToString()], currentDialogEntity); //스크립트 실행
+                doScript.DoCheck(dialog[currentChat][DialogType.Do.ToString()], _currentSO); //스크립트 실행
 
             if ((int)isError / 1000 == 4) //오류들 해결 -------------------------------------------------------------
             {

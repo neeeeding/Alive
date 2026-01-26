@@ -13,14 +13,14 @@ namespace _02Script.UI.Dialog.SpeechBubble
         //스크립트
         [SerializeField] private DialogTextController  dialogTextController; //텍스트 출력 관련
         
-        private string word; //내용
-        private int index; //단어 수
-        private bool isChat; //출력 하는 중인지
-        private float curTime;
+        private string _word; //내용
+        private int _index; //단어 수
+        private bool _isChat; //출력 하는 중인지
+        private float _curTime;
         
         private void OnEnable()
         {
-            word =  "......";
+            _word =  "......";
             speechBubble.SetActive(false);
             DialogEntity.OnCanDialog += Show;
         }
@@ -32,29 +32,29 @@ namespace _02Script.UI.Dialog.SpeechBubble
 
         private void Update()
         {
-            if (isChat)
+            if (_isChat)
             {
-                if (curTime > 0.2f)
+                if (_curTime > 0.2f)
                 {
-                    index++;
-                    curTime = 0;
-                    dialogTextController.OneOne(word,index, bubbleText,ref isChat);
+                    _index++;
+                    _curTime = 0;
+                    dialogTextController.OneOne(_word,_index, bubbleText,ref _isChat);
                 }
-                curTime += Time.unscaledDeltaTime;
+                _curTime += Time.unscaledDeltaTime;
             }
             else
             {
-                index = 0;
-                curTime = 0;
+                _index = 0;
+                _curTime = 0;
             }
         }
 
         private void Show(DialogEntity obj, bool show)
         {
             bubbleText.text = "";
-            isChat = true;
-            word = obj.BubbleWord();
-            word = dialogTextController.IsExchangeText(word, "`", ",");
+            _isChat = true;
+            _word = obj.BubbleWord();
+            _word = dialogTextController.IsExchangeText(_word, "`", ",");
 
             if (speechBubble != null &&
                 speechBubble.activeSelf == show) return;

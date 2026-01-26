@@ -48,13 +48,13 @@ namespace _02Script.UI.Dialog.Entity
             {
                 try
                 {
-                    await AsyncTime.WaitSeconds(Random.Range(1,5), cts.Token);
+                    await AsyncTime.WaitSeconds(Random.Range(1,5), cts.Token, false);
                     OnCanDialog?.Invoke(this, true);
                 }
                 catch (TaskCanceledException){break;}
                 try
                 {
-                    await AsyncTime.WaitSeconds(3f, cts.Token);
+                    await AsyncTime.WaitSeconds(3f, cts.Token, false);
                     OnCanDialog?.Invoke(this, false);
                 }
                 catch (TaskCanceledException){break;}

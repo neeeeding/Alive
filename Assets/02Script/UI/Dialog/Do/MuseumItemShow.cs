@@ -1,10 +1,11 @@
-﻿using _02Script.UI.Dialog.Etc;
+﻿using _02Script.UI.Dialog.Dialog;
+using _02Script.UI.Dialog.Etc;
 using UnityEngine;
 
 namespace _02Script.UI.Dialog.Do
 {
     //샘플
-    public class MuseumItemShow : DialogCanScript, IDialogCanScript
+    public class MuseumItemShow : MonoBehaviour,IDialogCanScript
     {
         [SerializeField] private GameObject[] items;
 
@@ -19,7 +20,7 @@ namespace _02Script.UI.Dialog.Do
             }
         }
 
-        public void Do()
+        public void Do(DoScriptType type)
         {
             isItemShow = true;
             foreach (GameObject item in items)
