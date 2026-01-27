@@ -3003,9 +3003,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 175059717}
-          m_TargetAssemblyTypeName: _02Script.UI.Dialog.Do.DoUIActive, Assembly-CSharp
-          m_MethodName: Show
+        - m_Target: {fileID: 175059716}
+          m_TargetAssemblyTypeName: _02Script.UI.Dialog.Entity.Character, Assembly-CSharp
+          m_MethodName: ClickCharacter
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3157,7 +3157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GamePath: gameSaveData
   curScene: 
-  dayTimeDelay: 0.0034722222
+  dayTimeDelay: 0.5
   saveData:
     sound:
       mainSound: 0
@@ -4933,9 +4933,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1460584834}
-          m_TargetAssemblyTypeName: _02Script.GameEvent.RaeliaEvent, Assembly-CSharp
-          m_MethodName: GetItem
+        - m_Target: {fileID: 1460584836}
+          m_TargetAssemblyTypeName: _02Script.UI.Dialog.Entity.Character, Assembly-CSharp
+          m_MethodName: ClickCharacter
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -13525,7 +13525,7 @@ PrefabInstance:
     - target: {fileID: 1298948909457113722, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: 'want._serializedList.Array.data[1].Value.Array.data[0]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 175059717}
     - target: {fileID: 1298948909457113722, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: 'want._serializedList.Array.data[1].Value.Array.data[1]'
       value: 

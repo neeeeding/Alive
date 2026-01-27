@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _02Script.Player;
+using UnityEngine;
 
 namespace _02Script.Obj.Obj
 {
@@ -6,9 +7,9 @@ namespace _02Script.Obj.Obj
     {
         [SerializeField] private Transform pos;
 
-        public Vector2 getPos()
+        public void getPos()
         {
-            return pos.position;
+            PlayerManager.curPlayer.gameObject.transform.position = pos.position;
         }
     }
 }

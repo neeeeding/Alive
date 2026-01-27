@@ -1,6 +1,4 @@
-﻿using System;
-using _02Script.Farming;
-using _02Script.Obj.Obj;
+﻿using _02Script.Obj.Obj;
 using TMPro;
 using UnityEngine;
 
@@ -32,7 +30,8 @@ namespace _02Script.GameEvent
         public void Setting(ObjTeleportationPos pos, string name, EventAlarm parent)
         {
             _parent = parent;
-            nameText.text = name += "에게";
+            nameText.text = name + "에게";
+            _teleportationPos = pos;
         }
     }
 }

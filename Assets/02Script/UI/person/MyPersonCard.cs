@@ -20,9 +20,8 @@ namespace _02Script.UI.person
         private void Setting()
         {
             int hp = GameManager.Instance.PlayerStat.characterStats[EntityName.lie][StatsType.hp];
-            print(hp);
-            hpSlider.value = (float)hp/450;
-            hptext.text = $"{((int)(hp/10))} / 100";
+            hpSlider.value = (float)hp;
+            hptext.text = $"{((int)(hp))} / 100";
         }
     }
     

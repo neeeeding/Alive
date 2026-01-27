@@ -8,7 +8,7 @@ namespace _02Script.Player
 {
     public class PlayerInput : Singleton<PlayerInput>, Controls.IPCActions
     {
-        public static Action<float> OnMoveSpeed;
+        public static Action<bool> OnRunClick;
         public static event Action<Vector2> OnMousePos;
         public static event Action<Vector2> OnMovePos;
         
@@ -58,11 +58,11 @@ namespace _02Script.Player
         {
             if (context.performed)
             {
-                OnMoveSpeed?.Invoke(GameManager.Instance.RunSpeed);
+                OnRunClick?.Invoke(true);
             }
             else if (context.canceled)
             {
-                OnMoveSpeed?.Invoke(GameManager.Instance.WalkSpeed);
+                OnRunClick?.Invoke(false);
             }
         }
 

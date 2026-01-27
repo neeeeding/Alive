@@ -91,7 +91,7 @@ namespace _02Script.Player
                 foreach (StatsType stats in
                          Enum.GetValues(typeof(StatsType))) //모든 걸 저장 / 다이얼로그 종류 (챕터, 넘버, 텍스트, 메모, 러브 만 사용하긴 함.)
                 {
-                    st.Add(stats,stats == StatsType.hp? 100 : 1);
+                    st.Add(stats,stats == StatsType.hp? 80 : 1);
                 }
                 characterStats.Add(name, st);
             }

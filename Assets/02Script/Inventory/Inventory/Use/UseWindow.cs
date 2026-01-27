@@ -1,3 +1,4 @@
+using _02Script.DoTweenUI.Warring;
 using _02Script.Inventory.Item;
 using TMPro;
 using UnityEngine;
@@ -54,12 +55,12 @@ namespace _02Script.Inventory.Inventory.Use
 
             if (rand == 1)
             {
-                print("성공");
+                WarringManager.Warring.ShowWarring("섭취에 성공하셨습니다!");
                 inventoryManager.UseItem(card.ReturnData().ReturnDataSO(),int.Parse(countInputField.text));
             }
             else
             {
-                print("실패");
+                WarringManager.Warring.ShowWarring("섭취에 실패하셨습니다...");
                 inventoryManager.ThrowItem(card.ReturnData().ReturnDataSO(),int.Parse(countInputField.text));
             }
             

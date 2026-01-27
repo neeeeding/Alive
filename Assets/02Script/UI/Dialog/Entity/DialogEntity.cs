@@ -87,7 +87,8 @@ namespace _02Script.UI.Dialog.Entity
         
         public virtual void NextChapter(int c = 1, int num = 1)
         {
-            chapter += c;
+            //대사 가 없는 관계로 같은 것만 (주석)
+           // chapter += c;
             finalNum = num;
             OnCanDialog?.Invoke(this,true);
         }

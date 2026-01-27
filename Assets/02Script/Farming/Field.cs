@@ -88,7 +88,7 @@ namespace _02Script.Farming
         //심기
         private void Plant(SeedsSO so)
         {
-            if (!isEvent)
+            if (isEvent)
             {
                 WarringManager.Warring.ShowWarring(addWarring);
                 return;

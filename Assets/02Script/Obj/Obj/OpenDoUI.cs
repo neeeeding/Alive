@@ -58,14 +58,14 @@ namespace _02Script.Obj.Obj
 
         protected void DontUi(DoUIType eventType)
         {
-            isEvent = doUiType != eventType;
+            isEvent = doUiType == eventType;
             
             addWarring = "지금은 ";
             if (eventType == DoUIType.all &&
                 doUiType != DoUIType.none)
             {
                 addWarring = "밤에는 ";
-                isEvent = false;
+                isEvent = true;
             }
             
             addWarring += doUiType switch
@@ -103,7 +103,7 @@ namespace _02Script.Obj.Obj
                 WarringManager.Warring.ShowWarring("너무 멀리 있습니다.");
                 return;
             }
-
+            
             if (isEvent)
             {
                 WarringManager.Warring.ShowWarring(addWarring);

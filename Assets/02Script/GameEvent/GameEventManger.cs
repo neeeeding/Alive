@@ -49,7 +49,7 @@ namespace _02Script.GameEvent
             if (_curDay != GameManager.Instance.PlayerStat.day)
             {
                 _curDay = GameManager.Instance.PlayerStat.day;
-                OnFarmTemperature?.Invoke(_temperature);
+                OnFarmTemperature?.Invoke(_temperature); //잠금 해제 시키려면 해야 함
                 GetOutEveryone();
                 isEnter = false;
             }

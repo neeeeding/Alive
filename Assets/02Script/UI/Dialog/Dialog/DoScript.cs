@@ -39,7 +39,6 @@ namespace _02Script.UI.Dialog.Dialog
 
                 foreach (IDialogCanScript script in scripts[entity.EntityName])
                 {
-                    print(script);
                     script.Do(doScript);
                 }
             }
