@@ -6,7 +6,7 @@ namespace _02Script.UI.Dialog.Etc
 {
     [CreateAssetMenu(fileName = "DialogInputSO", menuName = "SO/Input/DialogInputSO", order = 0)]
     public class DialogInputSO : ScriptableObject
-     //   , Controls.IDialogActions
+     //   , Controls.IDialogActions (주석)
     {
         public event Action<int> OnClickSelect;
         public event Action<bool> OnNext;

@@ -3157,7 +3157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GamePath: gameSaveData
   curScene: 
-  dayTimeDelay: 0.5
+  dayTimeDelay: 0.0034722222
   saveData:
     sound:
       mainSound: 0

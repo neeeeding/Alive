@@ -41,6 +41,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "MouseWheel",
+                    "type": "Button",
+                    "id": "8b0e4016-9e60-4648-b126-cee128efa287",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -206,6 +215,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "MouseMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e7af85b5-d9a3-42a3-ae41-7cb6b711e18f",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseWheel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

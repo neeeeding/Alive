@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace _02Script.Etc
+namespace _02Script.GameCamera
 {
     public class CameraCanvas : MonoBehaviour
     {

@@ -1,6 +1,5 @@
 ﻿using System;
 using _02Script.Etc;
-using _02Script.Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,9 +13,9 @@ namespace _02Script.Player
         
         private Controls _controls;
         
-        private bool canInput;
+        private bool _canInput;
         
-        private Vector2 moveValue;
+        private Vector2 _moveValue;
 
         private void OnEnable()
         {
@@ -38,15 +37,15 @@ namespace _02Script.Player
         {
             //if (!canInput) return;
 
-            if (moveValue != Vector2.zero)
+            if (_moveValue != Vector2.zero)
             {
-                OnMovePos?.Invoke(moveValue);
+                OnMovePos?.Invoke(_moveValue);
             }
         }
 
         public void OnMove(InputAction.CallbackContext context)
         {
-                moveValue = context.ReadValue<Vector2>();
+            _moveValue = context.ReadValue<Vector2>();
         }
 
         public void OnInteraction(InputAction.CallbackContext context)
@@ -68,27 +67,29 @@ namespace _02Script.Player
 
         public void OnMouseMove(InputAction.CallbackContext context)
         {
-            if(context.performed && canInput &&
+            if(context.performed && _canInput &&
                Input.mousePosition.x < 1920 && Input.mousePosition.x > 0 &&
                Input.mousePosition.y < 1080 && Input.mousePosition.y > 0)
                 OnMousePos?.Invoke(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
-        
-        //---------------------------------------------------------------------------------------------------------
+
+        public void OnMouseWheel(InputAction.CallbackContext context)
+        {
+        }
 
         public void NoInput()
         {
-            canInput = false;
+            _canInput = false;
         }
 
         public void CanInput()
         {
-            canInput = true;
+            _canInput = true;
         }
 
         public bool CheckCanInput()
         {
-            return canInput;
+            return _canInput;
         }
     }
 }

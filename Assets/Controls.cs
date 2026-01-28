@@ -127,6 +127,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MouseWheel"",
+                    ""type"": ""Button"",
+                    ""id"": ""8b0e4016-9e60-4648-b126-cee128efa287"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -292,6 +301,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""MouseMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7af85b5-d9a3-42a3-ae41-7cb6b711e18f"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseWheel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -911,6 +931,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_PC_Interaction = m_PC.FindAction("Interaction", throwIfNotFound: true);
         m_PC_Run = m_PC.FindAction("Run", throwIfNotFound: true);
         m_PC_MouseMove = m_PC.FindAction("MouseMove", throwIfNotFound: true);
+        m_PC_MouseWheel = m_PC.FindAction("MouseWheel", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1012,6 +1033,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PC_Interaction;
     private readonly InputAction m_PC_Run;
     private readonly InputAction m_PC_MouseMove;
+    private readonly InputAction m_PC_MouseWheel;
     /// <summary>
     /// Provides access to input actions defined in input action map "PC".
     /// </summary>
@@ -1039,6 +1061,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PC/MouseMove".
         /// </summary>
         public InputAction @MouseMove => m_Wrapper.m_PC_MouseMove;
+        /// <summary>
+        /// Provides access to the underlying input action "PC/MouseWheel".
+        /// </summary>
+        public InputAction @MouseWheel => m_Wrapper.m_PC_MouseWheel;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1077,6 +1103,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @MouseMove.started += instance.OnMouseMove;
             @MouseMove.performed += instance.OnMouseMove;
             @MouseMove.canceled += instance.OnMouseMove;
+            @MouseWheel.started += instance.OnMouseWheel;
+            @MouseWheel.performed += instance.OnMouseWheel;
+            @MouseWheel.canceled += instance.OnMouseWheel;
         }
 
         /// <summary>
@@ -1100,6 +1129,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @MouseMove.started -= instance.OnMouseMove;
             @MouseMove.performed -= instance.OnMouseMove;
             @MouseMove.canceled -= instance.OnMouseMove;
+            @MouseWheel.started -= instance.OnMouseWheel;
+            @MouseWheel.performed -= instance.OnMouseWheel;
+            @MouseWheel.canceled -= instance.OnMouseWheel;
         }
 
         /// <summary>
@@ -1524,6 +1556,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMouseMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MouseWheel" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMouseWheel(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
