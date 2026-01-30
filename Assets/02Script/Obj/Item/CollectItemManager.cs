@@ -8,7 +8,7 @@ namespace _02Script.Obj.Item
     {
         [SerializeField] private CollectItem itemPrefab;
         [SerializeField] private Transform parent;
-        private List<CollectItem> _items = new List<CollectItem>();
+        private static List<CollectItem> _items = new List<CollectItem>();
 
         public void SettingItem(ItemDataSO data, int count, Vector3 position)
         {
@@ -21,12 +21,12 @@ namespace _02Script.Obj.Item
             
             CollectItem item = _items[0];
             item.transform.position = position;
-            item.SetItem(data,count,this);
+            item.SetItem(data,count);
             item.gameObject.SetActive(true);
             _items.RemoveAt(0);
         }
 
-        public void ItemBackList(CollectItem item)
+        public static void ItemBackList(CollectItem item)
         {
             _items.Add(item);
             item.gameObject.SetActive(false);

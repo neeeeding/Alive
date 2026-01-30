@@ -1,11 +1,12 @@
-﻿using System;
-using _02Script.Obj.Item;
+﻿using _02Script.Obj.Item;
 using UnityEngine;
 
 namespace _02Script.Player.State
 {
     public class CollectPlayerMovement : PlayerMovement
     {
+        [Header("Collect--")]
+        [SerializeField] private Vector2 targetOffset= new Vector2(1,0.6f);
         private CollectItem _wantItem;
 
         protected override void OnEnable()
@@ -22,14 +23,19 @@ namespace _02Script.Player.State
 
         private void Move(CollectItem item)
         {
-            TargetPos = item.transform.position;
+            if(!player.isCurPlayer) return;
+            IsMoving = true;
             _wantItem = item;
+            TargetPos = item.transform.position;
+            TargetPos.y -= targetOffset.y;
+            TargetPos.x += TargetPos.x <transform.position.x? targetOffset.x : -targetOffset.x;
+            MoveStart();
         }
 
         protected override void Arrive()
         {
             base.Arrive();
-            _wantItem.Gauge();
+            _wantItem.Gauge(player.playerName);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace _02Script.SaveData
 
         public bool isChat; //ture : 채팅 중, false : 인 게임
 
-        public Vector2 playerPosition; //플레이어 위치
+        public SaveDictionary<EntityName,Vector2> characterPositions; //플레이어 위치
 
         [Space(50f)]
         public DialogEntity lastDialogEntity; //마지막 캐릭터
@@ -47,8 +47,6 @@ namespace _02Script.SaveData
         {
             sceneName = "JustTest";
             isChat = false;
-            
-            playerPosition = new Vector2(0, 0);
 
             lastText = "마지막 대화가 없습니다.";
             
@@ -68,20 +66,20 @@ namespace _02Script.SaveData
         
         public void ResetCharacter() //캐릭터들  전부 초기화
         {
+            characterPositions = new SaveDictionary<EntityName, Vector2>();
             characterStats = new SaveDictionary<EntityName, SaveDictionary<StatsType, int>>();
             characterLastText = new SaveDictionary<EntityName, SaveDictionary<DialogType, string>>();
             characterLastText.Clear();
 
-            int num;
-
             foreach (EntityName name in Enum.GetValues(typeof(EntityName))) //이름들 저장
             {
-                num = (int)name / 1000;
+                characterPositions.Add(name,Vector2.zero); //다 같은 자리라니... (주석)
+                
                 SaveDictionary<DialogType, string> di = new SaveDictionary<DialogType, string>();
                 SaveDictionary<StatsType, int> st = new SaveDictionary<StatsType, int>();
 
                 foreach (DialogType dialog in
-                         Enum.GetValues(typeof(DialogType))) //모든 걸 저장 / 다이얼로그 종류 (챕터, 넘버, 텍스트, 메모, 러브 만 사용하긴 함.)
+                         Enum.GetValues(typeof(DialogType))) //모든 걸 저장 / 다이얼로그 종류 (챕터, 넘버, 텍스트, 메모, 신뢰도만 사용하긴 함.)
                 {
                     di.Add(dialog, ""); // " " 초기화
                 }

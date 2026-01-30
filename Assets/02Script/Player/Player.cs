@@ -12,7 +12,7 @@ namespace _02Script.Player
     {
         public static Action<Player> OnSelectPlayer;
         
-        [SerializeField] protected EntityName playerName;
+        [SerializeField] public EntityName playerName;
         [SerializeField] protected string currentState;
         
         public Animator Animator;
@@ -30,16 +30,16 @@ namespace _02Script.Player
         
         protected virtual void Awake()
         {
-            ItemDataSO.OnStats += AddStats;
-            
             PlayerMovement =  GetComponent<PlayerMovement>();
             Animator = GetComponentInChildren<Animator>();
+            
+            ItemDataSO.OnStats += AddStats;
 
+            transform.position += Vector3.zero;
+            
             stateMachine = new PStateMachine();
             stateMachine.AddState(PlayerState.Move, new PMoveState("Move", stateMachine, this));
             stateMachine.AddState(PlayerState.Idle, new PIdleState("Idle", stateMachine, this));
-
-            transform.position += Vector3.zero;
             stateMachine.ChangeState(PlayerState.Idle, 0,0);
         }
 
@@ -56,9 +56,9 @@ namespace _02Script.Player
             stateMachine.currentState.Exit();
         }
 
-        protected virtual  void ChangeState(PlayerState state)
+        public virtual  void ChangeState(PlayerState state, int x, int y)
         {
-            stateMachine.ChangeState(state, 0,0);
+            stateMachine.ChangeState(state, x,y);
         }
 
         protected virtual  void Update()

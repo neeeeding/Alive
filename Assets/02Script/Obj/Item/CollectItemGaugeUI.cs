@@ -12,12 +12,14 @@ namespace _02Script.Obj.Item
         
         private float _curTime;
         private float _collectTime;
+        private CollectItem _item;
         
-        public void SetSO(ItemDataSO so)
+        public void SetSO(ItemDataSO so, CollectItem item, float collectTime)
         {
-            _collectTime = so.collectTime;
+            _collectTime = collectTime;
             
             itemImage.sprite = so.itemImage;
+            _item = item;
             _curTime = 0;
             _ = WaitGrow();
         }
@@ -26,6 +28,12 @@ namespace _02Script.Obj.Item
         {
             while (_curTime < _collectTime)
             {
+                if (CollectItem.curSelectItem != _item)
+                {
+                    await Task.Yield();
+                    continue;
+                }
+                
                 await Task.Yield();
                 _curTime += Time.deltaTime;
                 gauge.fillAmount = _curTime / _collectTime;

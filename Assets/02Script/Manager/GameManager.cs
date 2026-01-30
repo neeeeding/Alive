@@ -75,6 +75,8 @@ namespace _02Script.Manager
             isStart = false;
 
             PlayerStat = data.stat; //로드
+            //정보 저장
+            saveData.stat = PlayerStat; //저장을 다 주석 했기에 어쩔수 없음...(주석)
 
             //Player = gameObject.GetComponent<Player>();
 

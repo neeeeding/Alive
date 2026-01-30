@@ -522,6 +522,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: 2100
   currentState: 
+  Animator: {fileID: 0}
+  PlayerMovement: {fileID: 0}
   isCurPlayer: 0
 --- !u!50 &175059712
 Rigidbody2D:
@@ -672,11 +674,11 @@ Transform:
   m_GameObject: {fileID: 194002483}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.44116, y: -2.48122, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 546324010}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &194002485
 MonoBehaviour:
@@ -1116,6 +1118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: 1200
   currentState: 
+  Animator: {fileID: 0}
+  PlayerMovement: {fileID: 0}
   isCurPlayer: 0
 --- !u!50 &545027442
 Rigidbody2D:
@@ -1230,7 +1234,6 @@ Transform:
   - {fileID: 1391084263}
   - {fileID: 1013312846}
   - {fileID: 619753507}
-  - {fileID: 194002484}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619753505
@@ -2265,7 +2268,7 @@ Animator:
   m_GameObject: {fileID: 1074160884}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85307a37d5f9cc149a7e1c209b85a4b4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2831,7 +2834,7 @@ Animator:
   m_GameObject: {fileID: 1233070228}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85307a37d5f9cc149a7e1c209b85a4b4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3025,7 +3028,7 @@ Animator:
   m_GameObject: {fileID: 1252755375}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85307a37d5f9cc149a7e1c209b85a4b4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3166,7 +3169,9 @@ MonoBehaviour:
     stat:
       sceneName: 
       isChat: 0
-      playerPosition: {x: 0, y: 0}
+      characterPositions:
+        ks: 
+        vs: []
       lastDialogEntity: {fileID: 0}
       lastSO: {fileID: 0}
       lastText: 
@@ -3188,7 +3193,9 @@ MonoBehaviour:
   PlayerStat:
     sceneName: 
     isChat: 0
-    playerPosition: {x: 0, y: 0}
+    characterPositions:
+      ks: 
+      vs: []
     lastDialogEntity: {fileID: 0}
     lastSO: {fileID: 0}
     lastText: 
@@ -3207,7 +3214,7 @@ MonoBehaviour:
       ks: 
     getDictionaryPage: 
     getDictionaryPageMemo: []
-  Player: {fileID: 465956464}
+  housePlayer: {fileID: 465956464}
   itemPos: {fileID: 0}
   holdItemData: {fileID: 0}
   isStart: 0
@@ -3588,6 +3595,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: 2300
   currentState: 
+  Animator: {fileID: 0}
+  PlayerMovement: {fileID: 0}
   isCurPlayer: 0
 --- !u!50 &1460584832
 Rigidbody2D:
@@ -3832,6 +3841,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: 2000
   currentState: 
+  Animator: {fileID: 0}
+  PlayerMovement: {fileID: 0}
   isCurPlayer: 0
 --- !u!50 &1482287308
 Rigidbody2D:
@@ -4955,7 +4966,7 @@ Animator:
   m_GameObject: {fileID: 1569037068}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85307a37d5f9cc149a7e1c209b85a4b4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5121,7 +5132,7 @@ Animator:
   m_GameObject: {fileID: 1572384866}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85307a37d5f9cc149a7e1c209b85a4b4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -11884,6 +11895,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: 2200
   currentState: 
+  Animator: {fileID: 0}
+  PlayerMovement: {fileID: 0}
   isCurPlayer: 0
 --- !u!50 &1888341996
 Rigidbody2D:
@@ -17172,4 +17185,5 @@ SceneRoots:
   - {fileID: 8736283038233231832}
   - {fileID: 27577089}
   - {fileID: 1703099612}
+  - {fileID: 194002484}
   - {fileID: 546324010}

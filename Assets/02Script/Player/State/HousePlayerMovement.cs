@@ -57,35 +57,37 @@ namespace _02Script.Player.State
         #region Load
         private void StartLoad()
         {
-            Vector2 position = GameManager.Instance.saveData.stat.playerPosition;
-            GameManager.Instance.PlayerStat.playerPosition = position;
+            Vector2 position = GameManager.Instance.saveData.stat.characterPositions[player.playerName];
+            GameManager.Instance.PlayerStat.characterPositions[player.playerName] = position;
             Load();
         }
 
         private void Load()
         {
-            transform.position = GameManager.Instance.PlayerStat.playerPosition;
+            transform.position = GameManager.Instance.PlayerStat.characterPositions[player.playerName];
         }
         #endregion
 
         #region Move
         private void MouseMove(Vector2 mousePos)
         {
-            if(!_player.isCurPlayer) return;
-            _isMoving = true;
+            if(!player.isCurPlayer) return;
+            IsMoving = true;
             TargetPos = mousePos;
+            MoveStart();
         }
         private void KeyboardMove(Vector2 mousePos)
         {
-            if(!_player.isCurPlayer) return;
-            _isMoving = true;
+            if(!player.isCurPlayer) return;
+            IsMoving = true;
             TargetPos = (Vector2)transform.position + mousePos.normalized;
+            MoveStart();
         }
         private async Task AutoMove()
         {
             while (!cts.IsCancellationRequested)
             {
-                if (_player.isCurPlayer)
+                if (player.isCurPlayer)
                 {
                     await Task.Yield();
                     continue;
@@ -96,8 +98,9 @@ namespace _02Script.Player.State
                     
                     int auto = Random.Range(0, autoX.Length);
             
-                    _isMoving = true;
+                    IsMoving = true;
                     TargetPos = (Vector2)transform.position + new Vector2(autoX[auto], autoY[auto]);
+                    MoveStart();
                 }
                 catch (TaskCanceledException){break;}
             }
@@ -105,7 +108,7 @@ namespace _02Script.Player.State
 
         protected override void Arrive()
         {
-            GameManager.Instance.PlayerStat.playerPosition = transform.position; //위치 저장
+            GameManager.Instance.PlayerStat.characterPositions[player.playerName] = transform.position; //위치 저장
             base.Arrive();
         }
         #endregion

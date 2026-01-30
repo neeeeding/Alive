@@ -8,10 +8,10 @@ namespace _02Script.Player.State
     {
         public float speed; //속도
         [HideInInspector] public Vector2 TargetPos; //갈 위치
-        protected Rigidbody2D _rigidbody;
-        protected bool _isMoving;
+        protected Rigidbody2D Rd;
+        protected bool IsMoving;
         
-        protected Player _player;
+        protected Player player;
 
         protected readonly string X = "X";
         protected readonly string Y = "Y";
@@ -20,13 +20,13 @@ namespace _02Script.Player.State
 
         protected virtual void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _player = GetComponent<Player>();
+            Rd = GetComponent<Rigidbody2D>();
+            player = GetComponent<Player>();
         }
 
         protected virtual void OnEnable()
         {
-            _isMoving = false;
+            IsMoving = false;
             RunBtn.OnMoveSpeed += SetSpeed;
         }
 
@@ -38,7 +38,7 @@ namespace _02Script.Player.State
 
         protected virtual void FixedUpdate()
         {
-            if(!_isMoving) return;
+            if(!IsMoving) return;
             
             Vector2 direction = (TargetPos - (Vector2)transform.position);
             
@@ -47,8 +47,8 @@ namespace _02Script.Player.State
                 new Vector2(animatorVector.x, 0):
                 new Vector2(0, animatorVector.y);
             
-            _player.Animator.SetFloat(X, animatorVector.normalized.x);
-            _player.Animator.SetFloat(Y, animatorVector.normalized.y);
+            player.Animator.SetFloat(X, animatorVector.normalized.x);
+            player.Animator.SetFloat(Y, animatorVector.normalized.y);
 
             if (direction.magnitude < 0.1f) // 너무 가까우면 멈추기
             {
@@ -56,14 +56,20 @@ namespace _02Script.Player.State
             }
             else
             {
-                _rigidbody.linearVelocity = direction.normalized * speed;
+                Rd.linearVelocity = direction.normalized * speed;
             }
+        }
+
+        protected virtual void MoveStart()
+        {
+            player.ChangeState(PlayerState.Move,(int)player.Animator.GetFloat(X),(int)player.Animator.GetFloat(Y));
         }
 
         protected virtual void Arrive()
         {
-            _rigidbody.linearVelocity = Vector2.zero;
-            _isMoving = false;
+            Rd.linearVelocity = Vector2.zero;
+            IsMoving = false;
+            player.ChangeState(PlayerState.Idle,(int)player.Animator.GetFloat(X),(int)player.Animator.GetFloat(Y));
         }
 
         protected void SetSpeed(float set)

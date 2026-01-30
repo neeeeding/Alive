@@ -8,11 +8,16 @@ namespace _02Script.Player
         [SerializeField] protected Player[] characters;
         [CanBeNull] public static Player curPlayer;
 
-        protected virtual void SelectPlayer(Player curP)
+        protected virtual void SelectPlayer([CanBeNull] Player curP)
         {
             foreach (Player p in characters)
             {
                 p.isCurPlayer = false;
+            }
+            if (curP == null)
+            {
+                curPlayer = null;
+                return; 
             }
             curPlayer = curP;
             curPlayer.isCurPlayer = true;
