@@ -18,7 +18,7 @@ namespace _02Script.Player.State
         {
             if (mousePos != Vector2.zero)
             {
-                StateMachine.ChangeState(PlayerState.Move,(int)_player.Animator.GetFloat(X),(int)_player.Animator.GetFloat(Y));
+                StateMachine.ChangeState(PlayerState.Move,(int)Player.Animator.GetFloat(X),(int)Player.Animator.GetFloat(Y));
             }
         }
 

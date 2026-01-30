@@ -7,7 +7,7 @@ using _02Script.UI.Dialog.Entity;
 using _02Script.UI.person;
 using UnityEngine;
 
-namespace _02Script.Player
+namespace _02Script.SaveData
 {
     [Serializable]
     public class PlayerStatSC

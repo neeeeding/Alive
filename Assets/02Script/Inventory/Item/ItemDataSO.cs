@@ -10,19 +10,28 @@ namespace _02Script.Inventory.Item
     public class ItemDataSO : ScriptableObject
     {
         public static Action<StatsType, int> OnStats;
-        
-        public Sprite itemImage;
-        public int maxCount;
 
+        [Space(25f)]
+        [Header("ItemType------------------------")]
         public ItemCategory category; //카테고리
         public ItemType itemType; //아이템 종류
-        
-        public StatsType stats = StatsType.hp;
-        public int addStats = 0;
 
+        [Space(25f)]
+        [Header("Item text------------------------")]
         public string itemName;
         [TextArea(3, 10)]
         public string itemExplanation;
+        
+        [Space(25f)]
+        [Header("Item Need------------------------")]
+        public Sprite itemImage;
+        public int maxCount;
+        public float collectTime = 2; //얻는데 걸리는 시간
+        
+        [Space(25f)]
+        [Header("Food Need------------------------")]
+        public StatsType stats = StatsType.hp;
+        public int addStats;
         
         public bool DoSomething() //보통은 그냥 사용 못하게
         {

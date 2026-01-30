@@ -735,7 +735,7 @@ GameObject:
   - component: {fileID: 1961500631}
   - component: {fileID: 1961500635}
   m_Layer: 0
-  m_Name: GatheringCamera
+  m_Name: CollectCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -873,6 +873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.GameCamera.WheelMoveCameraInput
   myCamera: {fileID: 1961500633}
   cameraMoveSpeed: 4
+  maxZoomSize: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

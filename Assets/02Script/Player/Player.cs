@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
 using _02Script.Player.State;
@@ -8,20 +8,18 @@ using UnityEngine;
 
 namespace _02Script.Player
 {
-    public class Player : MonoBehaviour
+    public class Player: MonoBehaviour
     {
         public static Action<Player> OnSelectPlayer;
         
-        [SerializeField] private EntityName playerName;
-        [SerializeField] private string currentState;
-
-        private Animator animator;
-        public Animator Animator => animator;
+        [SerializeField] protected EntityName playerName;
+        [SerializeField] protected string currentState;
         
-        private PlayerMovement playerMovement;
-        public PlayerMovement PlayerMovement => playerMovement;
+        public Animator Animator;
+        
+        public PlayerMovement PlayerMovement;
 
-        private PStateMachine stateMachine;
+        protected PStateMachine stateMachine;
 
         public bool isCurPlayer;
 
@@ -30,47 +28,46 @@ namespace _02Script.Player
             OnSelectPlayer?.Invoke(this);
         }
         
-        private void Awake()
+        protected virtual void Awake()
         {
             ItemDataSO.OnStats += AddStats;
             
-            playerMovement =  GetComponent<PlayerMovement>();
-            animator = GetComponentInChildren<Animator>();
+            PlayerMovement =  GetComponent<PlayerMovement>();
+            Animator = GetComponentInChildren<Animator>();
 
             stateMachine = new PStateMachine();
             stateMachine.AddState(PlayerState.Move, new PMoveState("Move", stateMachine, this));
             stateMachine.AddState(PlayerState.Idle, new PIdleState("Idle", stateMachine, this));
-            stateMachine.AddState(PlayerState.hold, new PHoldState("Hold", stateMachine, this));
 
             transform.position += Vector3.zero;
             stateMachine.ChangeState(PlayerState.Idle, 0,0);
         }
 
-        private void AddStats(StatsType type, int add) //스탯
+        protected virtual  void AddStats(StatsType type, int add) //스탯
         {
             if(!isCurPlayer) return;
             
             GameManager.Instance.PlayerStat.characterStats[playerName][type] += add;
         }
 
-        private void OnDisable()
+        protected virtual  void OnDisable()
         {
             ItemDataSO.OnStats -= AddStats;
             stateMachine.currentState.Exit();
         }
 
-        public void ChangeState(PlayerState state)
+        protected virtual  void ChangeState(PlayerState state)
         {
             stateMachine.ChangeState(state, 0,0);
         }
 
-        private void Update()
+        protected virtual  void Update()
         {
             stateMachine.currentState.StateUpdate();
             currentState = stateMachine.currentState.ToString();
         }
 
-        private void FixedUpdate()
+        protected virtual  void FixedUpdate()
         {
             stateMachine.currentState.StateFixedUpdate();
         }

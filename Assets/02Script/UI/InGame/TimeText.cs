@@ -1,5 +1,5 @@
 using _02Script.Manager;
-using _02Script.Player;
+using _02Script.SaveData;
 using _02Script.UI.Save;
 using UnityEngine;
 using TMPro;

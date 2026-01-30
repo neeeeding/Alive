@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.IO;
 using _02Script.Manager;
-using _02Script.Player;
+using _02Script.SaveData;
 
 namespace _02Script.UI.Save
 {

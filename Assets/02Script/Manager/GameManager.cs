@@ -3,10 +3,11 @@ using System.Collections;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.UI.Dialog.Entity;
-using _02Script.Player;
+using _02Script.SaveData;
 using _02Script.UI.Dialog.Dialog;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace _02Script.Manager
 {
@@ -34,7 +35,7 @@ namespace _02Script.Manager
         [Header("Public")]
         public GameSaveData saveData; //기기에서만 저장 되는 것들 (ex: 저장 안한 진행사항)
         public PlayerStatSC PlayerStat; //플레이어 정보
-        public Player.Player Player; //플레이어 (state 조정 해줌(?))
+        [FormerlySerializedAs("Player")] public Player.HousePlayer housePlayer; //플레이어 (state 조정 해줌(?))
         public ItemHold itemPos; //플레이어가 들고 있을 아이템 위치
         public ItemDataSO holdItemData;
         

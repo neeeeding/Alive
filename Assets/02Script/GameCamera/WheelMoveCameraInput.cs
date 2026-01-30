@@ -96,7 +96,7 @@ namespace _02Script.GameCamera
             }
             else
             {
-                myCamera.gameObject.transform.position += _moveValue;
+                myCamera.gameObject.transform.position -= _moveValue;
             }
         }
 

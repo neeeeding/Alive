@@ -9,7 +9,7 @@ namespace _02Script.Obj.Obj
 
         public void getPos()
         {
-            PlayerManager.curPlayer.gameObject.transform.position = pos.position;
+            HousePlayerManager.curPlayer.gameObject.transform.position = pos.position;
         }
     }
 }

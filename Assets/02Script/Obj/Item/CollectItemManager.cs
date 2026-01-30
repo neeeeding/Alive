@@ -1,0 +1,35 @@
+﻿using System.Collections.Generic;
+using _02Script.Inventory.Item;
+using UnityEngine;
+
+namespace _02Script.Obj.Item
+{
+    public class CollectItemManager : MonoBehaviour
+    {
+        [SerializeField] private CollectItem itemPrefab;
+        [SerializeField] private Transform parent;
+        private List<CollectItem> _items = new List<CollectItem>();
+
+        public void SettingItem(ItemDataSO data, int count, Vector3 position)
+        {
+            if (_items.Count <= 0)
+            {
+                CollectItem i = Instantiate(itemPrefab, parent);
+                i.gameObject.SetActive(false);
+                _items.Add(i);
+            }
+            
+            CollectItem item = _items[0];
+            item.transform.position = position;
+            item.SetItem(data,count,this);
+            item.gameObject.SetActive(true);
+            _items.RemoveAt(0);
+        }
+
+        public void ItemBackList(CollectItem item)
+        {
+            _items.Add(item);
+            item.gameObject.SetActive(false);
+        }
+    }
+}

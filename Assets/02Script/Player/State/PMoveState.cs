@@ -11,9 +11,9 @@ namespace _02Script.Player.State
         public override void Enter(int x, int y)
         {
             base.Enter(x,y);
-            _player.Animator.SetBool(MoveAnimBool,true);
+            Player.Animator.SetBool(MoveAnimBool,true);
 
-            if (_player.transform.position.x == _player.PlayerMovement.TargetPos.x && _player.transform.position.y == _player.PlayerMovement.TargetPos.y)
+            if (Player.transform.position.x == Player.PlayerMovement.TargetPos.x && Player.transform.position.y == Player.PlayerMovement.TargetPos.y)
             {
                 StateMachine.ChangeState(PlayerState.Idle, x,y);
             }
@@ -23,16 +23,16 @@ namespace _02Script.Player.State
         {
             base.StateFixedUpdate();
 
-            if(Vector2.Distance(_player.transform.position, _player.PlayerMovement.TargetPos) < 0.5f)
+            if(Vector2.Distance(Player.transform.position, Player.PlayerMovement.TargetPos) < 0.5f)
             {
-                _player.Animator.SetBool(MoveAnimBool,false);
-                StateMachine.ChangeState(PlayerState.Idle,(int)_player.Animator.GetFloat(X),(int)_player.Animator.GetFloat(Y));
+                Player.Animator.SetBool(MoveAnimBool,false);
+                StateMachine.ChangeState(PlayerState.Idle,(int)Player.Animator.GetFloat(X),(int)Player.Animator.GetFloat(Y));
             }
         }
         public override void Exit()
         {
             base.Exit();
-            _player.Animator.SetBool(MoveAnimBool,false);
+            Player.Animator.SetBool(MoveAnimBool,false);
         }
     }
 }

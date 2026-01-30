@@ -42,7 +42,7 @@ namespace _02Script.Obj.Obj
 
         protected void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject == PlayerManager.curPlayer.gameObject)
+            if (collision.gameObject == HousePlayerManager.curPlayer.gameObject)
             {
                 isPlayer = true;
             }
@@ -50,7 +50,7 @@ namespace _02Script.Obj.Obj
 
         protected void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.gameObject == PlayerManager.curPlayer.gameObject)
+            if (collision.gameObject == HousePlayerManager.curPlayer.gameObject)
             {
                 isPlayer = false;
             }

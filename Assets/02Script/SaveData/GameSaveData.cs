@@ -1,6 +1,6 @@
 using System;
 
-namespace _02Script.Player
+namespace _02Script.SaveData
 {
     [Serializable]
     public class GameSaveData 

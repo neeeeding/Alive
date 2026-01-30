@@ -1,14 +1,14 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 
 namespace _02Script.Player
 {
     public class PlayerManager : MonoBehaviour
     {
-        [SerializeField] private Player[] characters;
-        [SerializeField] private GameObject followCamera;
-        public static Player curPlayer;
+        [SerializeField] protected Player[] characters;
+        [CanBeNull] public static Player curPlayer;
 
-        private void SelectPlayer(Player curP)
+        protected virtual void SelectPlayer(Player curP)
         {
             foreach (Player p in characters)
             {
@@ -16,26 +16,19 @@ namespace _02Script.Player
             }
             curPlayer = curP;
             curPlayer.isCurPlayer = true;
-            SetFollowCamera();
-        }
-
-        private void SetFollowCamera()
-        {
-            followCamera.transform.SetParent(curPlayer.transform);
-            followCamera.transform.position = curPlayer.transform.position;
         }
 
         private void Awake()
         {
-            SelectPlayer(characters[0]);
+            SelectPlayer(null);
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             Player.OnSelectPlayer += SelectPlayer;
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             Player.OnSelectPlayer -= SelectPlayer;
         }

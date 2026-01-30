@@ -1,10 +1,8 @@
-using UnityEngine;
-
 namespace _02Script.Player.State
 {
     public class PState
     {
-        protected Player _player; //플레이어
+        protected Player Player; //플레이어
         protected PStateMachine StateMachine; //머신
 
         protected readonly string X = "X";
@@ -15,20 +13,20 @@ namespace _02Script.Player.State
         public PState(string animation,PStateMachine machine,Player player)
         {
             StateMachine = machine;
-            _player = player;
+            Player = player;
         }
 
         public virtual void Enter(int x, int y)
         {
-            _player.Animator.SetBool(MoveAnimBool,false);
+            Player.Animator.SetBool(MoveAnimBool,false);
             
-            _player.Animator.SetFloat(X, x);
-            _player.Animator.SetFloat(Y, y);
+            Player.Animator.SetFloat(X, x);
+            Player.Animator.SetFloat(Y, y);
         }
 
         public virtual void Exit()
         {
-            _player.Animator.SetBool(MoveAnimBool,false);
+            Player.Animator.SetBool(MoveAnimBool,false);
         }
 
         public virtual void StateUpdate()
@@ -44,6 +42,6 @@ namespace _02Script.Player.State
 
     public enum PlayerState
     {
-        Idle, Move, Chat, hold
+        Idle, Move, Attack, Collect
     }
 }

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using _02Script.Etc;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _02Script.Farming
 {
@@ -18,7 +16,7 @@ namespace _02Script.Farming
         
         private CancellationTokenSource cts = new(); //시간을 위해
 
-        private bool isSpawned;
+        private bool _isSpawned;
 
         public SeedsSO GetSO()
         {
@@ -30,7 +28,7 @@ namespace _02Script.Farming
             seeds.SetSO(so);
             viand.SetSO(so, this);
             seedsUI.SetSO(so);
-            isSpawned = true;
+            _isSpawned = true;
             mySO = so;
             myP = field;
         }
@@ -46,7 +44,7 @@ namespace _02Script.Farming
                 await Task.Yield();
             }
 
-            if (isSpawned)
+            if (_isSpawned)
                 _ = WaitGrow();
         }
 
@@ -57,7 +55,7 @@ namespace _02Script.Farming
             seeds.gameObject.SetActive(false);
             seedsUI.gameObject.SetActive(false);
 
-            isSpawned = false;
+            _isSpawned = false;
         }
 
         private void OnDisable()
