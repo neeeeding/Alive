@@ -1,10 +1,8 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using _02Script.Farming;
 using _02Script.Inventory.Item;
-using _02Script.Manager;
 using _02Script.UI.Dialog.Dialog;
-using _02Script.UI.Save;
 using _02Script.UI.Store;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
@@ -16,9 +14,7 @@ namespace _02Script.Inventory.Inventory
         [Header("Need")]
         [SerializeField] protected ItemCard cardPrefab;
         [SerializeField] protected SerializedDictionary<ItemCategory, Transform> itemInventory;
-        [SerializeField] protected ItemDataSO[] allSO;
         
-        protected SerializedDictionary<ItemType, ItemDataSO> AllDataSO;
         protected Dictionary<ItemDataSO, ItemData> ItemDatas = new Dictionary<ItemDataSO, ItemData>();
         protected Dictionary<ItemData, List<ItemCard>> ItemCards = new Dictionary<ItemData, List<ItemCard>>();
         
@@ -31,16 +27,10 @@ namespace _02Script.Inventory.Inventory
             DialogItem.OnGetItem += GetOrThrowItem;
             InGameItem.OnGetItem += AddItem;
             Field.OnGetViand += AddItem;
-            Field.OnUseSeed += ThrowItem;
             GameEvent.GameEvent.OnGetItem += AddItem;
-            LoadCard.OnLoad += LoadItem;
             StoreCard.OnSellItem += AddItem;
             StoreCard.OnPayItem += ThrowItem;
-            
-            if(GameManager.Instance.isStart && ItemDatas.Count <= 0)
-            {
-                LoadItem();
-            }
+            Field.OnUseSeed += ThrowItem;
         }
 
         protected virtual  void OnDisable()
@@ -48,32 +38,13 @@ namespace _02Script.Inventory.Inventory
             DialogItem.OnGetItem -= GetOrThrowItem;
             InGameItem.OnGetItem -= AddItem;
             Field.OnGetViand -= AddItem;
-            Field.OnUseSeed -= ThrowItem;
             GameEvent.GameEvent.OnGetItem -= AddItem;
-            LoadCard.OnLoad -= LoadItem;
             StoreCard.OnSellItem -= AddItem;
             StoreCard.OnPayItem -= ThrowItem;
+            Field.OnUseSeed -= ThrowItem;
         }
         #endregion
 
-        protected virtual void LoadItem() //불러오기
-        {
-            SettingAllDataSO();
-            Dictionary<ItemType, List<int>> save = GameManager.Instance.PlayerStat.items.ToDictionary();
-
-            foreach (KeyValuePair<ItemType, ItemDataSO> item in AllDataSO.ToList())
-            {
-                ThrowItem(item.Value,9999999);
-            }
-
-            foreach (KeyValuePair<ItemType, List<int>> item in save.ToList())
-            {
-                foreach (int num in item.Value.ToList())
-                {
-                    AddItem(AllDataSO[item.Key], num);
-                }
-            }
-        }
 
         public void GetOrThrowItem(ItemDataSO item,int count)
         {
@@ -198,16 +169,6 @@ namespace _02Script.Inventory.Inventory
             ItemCard card = ItemCards[data][ItemCards[data].Count -1]; //갓 생성
             card.gameObject.SetActive(true);
             card.UpdateCountUI();
-        }
-
-        protected virtual void SettingAllDataSO()
-        {
-            AllDataSO = new SerializedDictionary<ItemType, ItemDataSO>();
-
-            foreach (ItemDataSO data in allSO)
-            {
-                AllDataSO.Add(data.itemType, data);
-            }
         }
     }
 }

@@ -23,7 +23,7 @@ namespace _02Script.Player
             curPlayer.isCurPlayer = true;
         }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             SelectPlayer(null);
         }

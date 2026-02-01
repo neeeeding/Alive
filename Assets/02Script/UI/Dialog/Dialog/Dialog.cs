@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
 using _02Script.UI.Dialog.Entity;
@@ -140,7 +141,7 @@ namespace _02Script.UI.Dialog.Dialog
         private void RenewalText(string final) // 마지막 텍스트 갱신 (주석)
         {
             GameManager.Instance.PlayerStat.lastText =
-                $"{ChatSetting.Name(_currentSO.EntityName)} : {final}"; //마지막 텍스트
+                $"{EnumToString.Name(_currentSO.EntityName)} : {final}"; //마지막 텍스트
 
             //해당 캐릭터 갱신 (저장 stat)
             PlayerStatSC path = GameManager.Instance.PlayerStat;

@@ -2,13 +2,14 @@ using _02Script.DoTweenUI.Warring;
 using _02Script.Inventory.Item;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _02Script.Inventory.Inventory.Use
 {
     public class UseWindow  : MonoBehaviour
     {
-        [SerializeField] private InventoryManager inventoryManager;
+        [SerializeField] private LoadInventoryManager inventoryManager;
         [SerializeField] private TMP_InputField countInputField;
         [SerializeField] private Slider countSlider;
 

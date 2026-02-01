@@ -1,4 +1,5 @@
 ﻿using System;
+using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.UI.Dialog.Dialog;
 using TMPro;
@@ -36,7 +37,7 @@ namespace _02Script.Farming
                 if ((seedsSO.temperatureType & type) != 0)
                 {
                     if (temperatureType != "") temperatureType += ", ";
-                    temperatureType += ChatSetting.Name(type);
+                    temperatureType += EnumToString.Name(type);
                 }
             }
             temperatureTypeText.text = temperatureType;

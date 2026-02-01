@@ -19,8 +19,8 @@ namespace _02Script.Produce
         [SerializeField] private float setTimer = 0.7f;
         [Header("Need")]
         [SerializeField] private GameObject errorMassage;
-        [SerializeField] private ProduceInventory produceInventory;
-        [SerializeField] private InventoryManager inventory;
+        [SerializeField] private ProduceLoadInventory produceInventory;
+        [SerializeField] private LoadInventoryManager inventory;
         [SerializeField] private List<MixtureImageRow> imageRows;
         
         [SerializeField] private Image means; //도구창

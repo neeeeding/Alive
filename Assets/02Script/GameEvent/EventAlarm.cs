@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _02Script.DoTweenUI.Warring;
+using _02Script.Etc;
 using _02Script.Obj.Obj;
 using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Dialog.Entity;
@@ -66,7 +67,7 @@ namespace _02Script.GameEvent
             foreach (KeyValuePair<EntityName, ObjTeleportationPos> type in characters)
             {
                 if (massage != "") massage += ", ";
-                massage += ChatSetting.Name(type.Key);
+                massage += EnumToString.Name(type.Key);
                 
                 AddBtn(type.Key);
             }
@@ -94,7 +95,7 @@ namespace _02Script.GameEvent
             btn = _btns[0];
             
             btn.gameObject.SetActive(true);
-            btn.Setting(_visit[name], ChatSetting.Name(name), this);
+            btn.Setting(_visit[name], EnumToString.Name(name), this);
             _btns.RemoveAt(0);
         }
         #endregion

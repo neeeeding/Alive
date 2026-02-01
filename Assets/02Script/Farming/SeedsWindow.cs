@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace _02Script.Farming
 {
-    public class SeedsWindow : InventoryManager
+    public class SeedsWindow : LoadInventoryManager
     {
         [Space(50)]
         [Header("Seeds")]

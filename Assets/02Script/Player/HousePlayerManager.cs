@@ -17,7 +17,7 @@ namespace _02Script.Player
             followCamera.transform.position = curPlayer.transform.position;
         }
 
-        private void Awake()
+        protected override void Awake()
         {
             SelectPlayer(characters[0]);
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using _02Script.DoTweenUI.Warring;
+using _02Script.Etc;
 using _02Script.GameEvent;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Obj;
@@ -70,7 +71,7 @@ namespace _02Script.Farming
                 if ((_curTemperatureType & type) != 0)
                 {
                     if (temperatureType != "") temperatureType += ", ";
-                    temperatureType += ChatSetting.Name(type);
+                    temperatureType += EnumToString.Name(type);
                 }
             }
             curTemperatureText.text = temperatureType;

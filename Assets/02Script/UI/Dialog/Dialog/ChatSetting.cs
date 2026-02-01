@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using _02Script.Etc;
 using _02Script.Manager;
 using _02Script.UI.Dialog.Entity;
 using TMPro;
@@ -20,7 +21,7 @@ namespace _02Script.UI.Dialog.Dialog
 
         public void CurrentCharacter(DialogEntitySO current) //첫 세팅
         {
-            characterName.text = Name(current.EntityName);
+            characterName.text = EnumToString.Name(current.EntityName);
             //characterImage.sprite = character.characterImage;
             if (current.EntityName != EntityName.lie)
             {
@@ -39,13 +40,6 @@ namespace _02Script.UI.Dialog.Dialog
                 characterLoveGauge.gameObject.SetActive(false);
                 characterLoveText.gameObject.SetActive(false);
             }
-        }
-
-        public static string Name<T>(T wantName)
-        {
-            var field = wantName.GetType().GetField(wantName.ToString());
-            var attr = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
-            return attr?.Description??wantName.ToString();
         }
         
         public DialogEntitySO PlayerSelect(DialogEntitySO[] allCharacter,

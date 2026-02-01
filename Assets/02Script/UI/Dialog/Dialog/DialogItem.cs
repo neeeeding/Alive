@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
 using AYellowpaper.SerializedCollections;

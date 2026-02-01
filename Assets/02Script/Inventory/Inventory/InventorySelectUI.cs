@@ -1,4 +1,3 @@
-using System;
 using _02Script.Inventory.Item;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;

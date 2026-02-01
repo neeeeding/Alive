@@ -1,3 +1,4 @@
+using _02Script.Etc;
 using _02Script.Manager;
 using _02Script.SaveData;
 using _02Script.UI.Dialog.Dialog;
@@ -25,7 +26,7 @@ namespace _02Script.UI.person
 
         private void Awake()
         {
-            characterName.text = ChatSetting.Name(dialogEntity.EntityName);
+            characterName.text = EnumToString.Name(dialogEntity.EntityName);
             //characterImage.sprite = character.characterImage;
             GameManager.OnStart += LoadData;
         }
