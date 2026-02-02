@@ -30,7 +30,7 @@ namespace _02Script.Inventory.Item
         
         [Space(25f)]
         [Header("Food Need------------------------")]
-        public StatsType stats = StatsType.hp;
+        public StatsType stats = StatsType.curHp;
         public int addStats;
         
         public bool DoSomething() //보통은 그냥 사용 못하게

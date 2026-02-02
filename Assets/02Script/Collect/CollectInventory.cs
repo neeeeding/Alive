@@ -111,8 +111,7 @@ namespace _02Script.Collect
 
         private void SetInventoryMaxCount()
         {
-            int stat = GameManager.Instance.PlayerStat.characterStats[inventoryCharacter][StatsType.acceptance];
-            _inventoryMaxCount = 5 + stat;
+            _inventoryMaxCount = (int)StatCalculate.Calculate(inventoryCharacter,StatsType.acceptance);
             
             _characterName = EnumToString.Name(inventoryCharacter);
             inventoryText.text = _characterName+"의 인벤토리";

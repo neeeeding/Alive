@@ -19,7 +19,7 @@ namespace _02Script.UI.person
 
         private void Setting()
         {
-            int hp = GameManager.Instance.PlayerStat.characterStats[EntityName.lie][StatsType.hp];
+            int hp = GameManager.Instance.PlayerStat.characterStats[EntityName.lie][StatsType.curHp];
             hpSlider.value = (float)hp;
             hptext.text = $"{((int)(hp))} / 100";
         }
@@ -30,7 +30,7 @@ namespace _02Script.UI.person
     {
         //450, 1 == 10
         none = 0,
-        hp = 1 << 0, //체력
+        curHp = 1 << 0, //캐릭터의 현재 체력
         attack = 1 << 1, //타격
         agility = 1 << 2, //민첩
         defense = 1 << 3, //방어
@@ -40,5 +40,6 @@ namespace _02Script.UI.person
         duration = 1 << 7, //지속
         acceptance = 1 << 8, //수납
         mining = 1 << 9, //채굴
+        HpStat = 1 << 10, //체력 (등급)
     }
 }

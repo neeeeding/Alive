@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
 using _02Script.Player;
@@ -14,8 +15,6 @@ namespace _02Script.Collect.Item
         public static Action<ItemDataSO, int,EntityName> OnGetItem;
         public static Action<CollectItem> OnClickItem;
         public static CollectItem curSelectItem;
-        
-        private readonly float[] value = {0.01f,0.05f,0.1f,0.25f,0.5f};
 
         [SerializeField] private ItemDataSO itemData;
         [SerializeField] private int num; //개수 혹은 등급 || 내구도
@@ -88,15 +87,7 @@ namespace _02Script.Collect.Item
             curSelectItem = this;
             if(_curS > 0) return;
             
-            float stat = GameManager.Instance.PlayerStat.characterStats[characterName][StatsType.mining];
-            float minus = 0;
-            
-            foreach (float v in value)
-            {
-                if(stat <= 1) break;
-                minus += (Mathf.Min(stat, 10)-1) * v;
-                stat -= (Mathf.Min(stat, 10)-1);
-            }
+            float minus = StatCalculate.Calculate(characterName, StatsType.mining);
             
             _collectTime = itemData.collectTime - minus;
             gaugeUI.gameObject.SetActive(true);
