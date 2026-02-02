@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
+using _02Script.Obj.Entity;
 using _02Script.UI.Dialog.Entity;
 using _02Script.SaveData;
 using _02Script.UI.Save;
@@ -107,7 +108,7 @@ namespace _02Script.UI.Dialog.Dialog
         }
         private void ClickNext(bool b) //다음으로
         {
-            if (!currentDialogEntity && (int)isError / 1000 != 4)
+            if (!currentDialogEntity && (int)isError / 10000 != 4)
             {
                 UISettingManager.Instance.InGame();
                 return;
@@ -188,7 +189,7 @@ namespace _02Script.UI.Dialog.Dialog
             if (!DialogCheck(DialogType.Do, ""))
                 doScript.DoCheck(dialog[currentChat][DialogType.Do.ToString()], _currentSO); //스크립트 실행
 
-            if ((int)isError / 1000 == 4) //오류들 해결 -------------------------------------------------------------
+            if ((int)isError / 10000 == 4) //오류들 해결 -------------------------------------------------------------
             {
                 currentChapter = (int)isError;
                 currentNum = 1;
@@ -227,7 +228,7 @@ namespace _02Script.UI.Dialog.Dialog
             }
             
             //텍스트 출력(+ 오류X)
-            if ((int)chatPlayer.EntityName / 1000 != 4)
+            if ((int)chatPlayer.EntityName / 10000 != 4)
                 setting.CurrentCharacter(chatPlayer); //재 세팅
 
             chatText = dialogTextController.IsExchangeText(
@@ -243,7 +244,7 @@ namespace _02Script.UI.Dialog.Dialog
                 currentDialogEntity.NextDialog(currentNum);
             dialogSelect.HaveSelect(currentChat, currentChapter, dialog);
 
-            if (isSelect || (int)isError / 1000 == 4) return false;
+            if (isSelect || (int)isError / 10000 == 4) return false;
             if (!DialogCheck(DialogType.NextNum, "")) // 다음 번호가 안 비어 있다면.
             {
                 int nextNum = int.Parse(dialog[currentChat][DialogType.NextNum.ToString()]);

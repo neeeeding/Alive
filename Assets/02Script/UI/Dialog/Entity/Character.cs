@@ -82,7 +82,7 @@ namespace _02Script.UI.Dialog.Entity
             finalNum = 1;
             chapter++;
             
-            int baseChapter = ((int)dialogEntitySo.EntityName/1000)*1000;
+            int baseChapter = ((int)dialogEntitySo.EntityName/10000)*10000;
             chapter += baseChapter;
 
             GameManager.Instance.PlayerStat.characterLastText[dialogEntitySo.EntityName][DialogType.Chapter] = chapter.ToString();

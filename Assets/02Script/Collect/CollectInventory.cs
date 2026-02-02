@@ -5,7 +5,7 @@ using _02Script.Etc;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
-using _02Script.UI.Dialog.Entity;
+using _02Script.Obj.Entity;
 using _02Script.UI.person;
 using AYellowpaper.SerializedCollections;
 using TMPro;

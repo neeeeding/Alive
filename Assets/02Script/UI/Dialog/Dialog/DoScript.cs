@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _02Script.Obj.Entity;
 using _02Script.UI.Dialog.Entity;
 using _02Script.UI.Dialog.Etc;
 using AYellowpaper.SerializedCollections;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using _02Script.Etc;
 using _02Script.Manager;
+using _02Script.Obj.Entity;
 using _02Script.UI.Dialog.Entity;
 using TMPro;
 using UnityEngine;

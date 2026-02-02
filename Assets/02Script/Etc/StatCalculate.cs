@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using _02Script.Manager;
-using _02Script.UI.Dialog.Entity;
+using _02Script.Obj.Entity;
 using _02Script.UI.person;
 using UnityEngine;
 

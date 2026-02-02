@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using _02Script.Farming;
 using _02Script.Manager;
+using _02Script.Obj.Entity;
 using _02Script.Obj.Obj;
-using _02Script.UI.Dialog.Entity;
 using _02Script.UI.Save;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
