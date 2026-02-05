@@ -46,7 +46,7 @@ namespace _02Script.Inventory.Item
         
         
 #if UNITY_EDITOR
-        private void OnValidate()
+        protected virtual void OnValidate()
         {
             string enumName = itemType.ToString();
 

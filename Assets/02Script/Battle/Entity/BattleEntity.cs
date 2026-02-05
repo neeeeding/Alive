@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _02Script.Obj.Entity;
+using _02Script.GamePlayer.State;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,6 +9,9 @@ namespace _02Script.Battle.Entity
 {
     public class BattleEntity : MonoBehaviour
     {
+        public static Action<List<BattleEntity>> OnTarget;
+        public static Action<PlayerStateType> OnAction;
+        
         [SerializeField] protected EntitySO entity;
         [SerializeField] public SpriteRenderer outline;
         
@@ -25,9 +30,21 @@ namespace _02Script.Battle.Entity
 
         protected readonly int maxGlobal = 10;
 
+        protected float curAttackDelay;
+        protected float curSkillDelay;
+
         protected virtual void OnEnable()
         {
-            RandomTarget();
+            curAttackDelay = 0;
+            curSkillDelay = 0;
+        }
+
+        protected virtual void Update()
+        {
+            curAttackDelay += Time.deltaTime;
+            curSkillDelay += Time.deltaTime;
+            
+            Attack();
         }
 
         #region Target
@@ -36,11 +53,8 @@ namespace _02Script.Battle.Entity
             int count = !isGlobal? 1 : Random.Range(0, maxGlobal + 1);
             for (int i = 0; i < count; i++)
             {
-                int index =0;
-                do
-                {
-                    index= Random.Range(0, canTargets.Count);
-                } while (targets.Contains(canTargets[index]));
+                int index =Random.Range(0, canTargets.Count);
+                if(canTargets.Count <= 0) return;
                 Target(index);
             }
         }
@@ -50,47 +64,58 @@ namespace _02Script.Battle.Entity
             //제한이면 가장 오래된 타겟을 변경
             if ((!isGlobal && targets.Count > 0) || targets.Count >= maxGlobal)
             {
+                canTargets.Add(targets[0]);
                 targets.RemoveAt(0);
             }
-            
-            if(!targets.Contains(canTargets[index]))
+
+            if (!targets.Contains(canTargets[index]))
+            {
                 targets.Add(canTargets[index]);
+                canTargets.RemoveAt(index);
+            }
         }
         #endregion
 
         #region Attack, Hit
         public virtual void Attack()
         {
-            //공격하는 애니메이션 & 이펙트
-            //딜레이 & 자동화
+            if(curAttackDelay < baseAttackDelay) return;
+            curAttackDelay = 0;
+            
+            OnTarget?.Invoke(targets);
+            OnAction?.Invoke(PlayerStateType.Attack);
 
             int divide = targets.Count;
-            foreach (BattleEntity target in targets)
+            
+            foreach (BattleEntity target in targets.ToArray())
             {
                 target.Hit(baseAttack/divide);
+                print($"{gameObject.name} Attack -> {target.gameObject.name} Hit, damage : {baseAttack/divide}");
             }
         }
         public virtual void UseSkill()
         {
-            //스킬 사용 애니메이션 & 이펙트
-            //딜레이 & 자동화
+            if(curSkillDelay < skillAttackDelay || skillAttackDelay < 0) return;
+            
+            curSkillDelay = 0;
+            OnAction?.Invoke(PlayerStateType.Skill);
             
             int divide = targets.Count;
-            if (!skillBuff.isDeBuff)
+            if (skillBuff&&!skillBuff.isDeBuff)
             {
                 GetBuffs(skillBuff);
             }
-            foreach (BattleEntity target in targets)
+            foreach (BattleEntity target in targets.ToArray())
             {
                 target.Hit(skillDamage/divide);
-                if(skillBuff.isDeBuff)
+                if(skillBuff&&skillBuff.isDeBuff)
                     target.GetBuffs(skillBuff);
             }
         }
         public virtual void Hit(float damage)
         {
             curHp -= damage;
-            //맞는 애니메이션 & 이펙트
+            OnAction?.Invoke(PlayerStateType.Hit);
             if (DieCheck())
             {
                 curHp = 0;
@@ -118,7 +143,8 @@ namespace _02Script.Battle.Entity
 
         protected virtual void Die()
         {
-            //죽는 애니메이션 & 이펙트
+            OnAction?.Invoke(PlayerStateType.Die);
+            print($"{gameObject.name}die");
         }
     }
 }

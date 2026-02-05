@@ -1,23 +1,32 @@
-﻿using UnityEngine;
-
-namespace _02Script.Battle.Monster
+﻿namespace _02Script.Battle.Monster
 {
     public class BossMonster : Monster
     {
-        [Header("BossMonster")]
-        [SerializeField] private BossMonsterHpUI hpUI;
+        private  BossMonsterHpUI _bossHpUI;
         protected override void OnEnable()
         {
-            hpUI.SetCharacter(entity.EntityName);
+            base.OnEnable();
+            if(_bossHpUI != null)
+                _bossHpUI.SetCharacter(entity.EntityName);
         }
 
-        public void SetMonster(BossMonsterSO monster)
+        protected override void Update()
+        {
+            base.Update();
+            UseSkill();
+        }
+
+        public void SetMonster(BossMonsterSO monster, BossMonsterHpUI hp)
         {
             base.SetMonster(monster);
+            _bossHpUI = hp;
+            hpUI = hp;
             
             skillBuff = monster.useSkillBuff;
             skillDamage = monster.skillAttack;
             skillAttackDelay = monster.skillAttackDelay;
+            _bossHpUI.UpdateHp(curHp, maxHp);
+            _bossHpUI.SetCharacter(entity.EntityName);
         }
     }
 }

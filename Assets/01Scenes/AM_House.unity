@@ -356,22 +356,22 @@ MonoBehaviour:
     - Key: {fileID: 1482287312}
       Value:
         pos: {fileID: 897296289}
-        doEvent: 2000
+        doEvent: 20000
         day: 04000000
     - Key: {fileID: 175059715}
       Value:
         pos: {fileID: 1731030456}
-        doEvent: 2100
+        doEvent: 21000
         day: 02000000f8ffffff
     - Key: {fileID: 1888341999}
       Value:
         pos: {fileID: 22843778}
-        doEvent: 2200
+        doEvent: 22000
         day: 03000000
     - Key: {fileID: 1460584835}
       Value:
         pos: {fileID: 1074822187}
-        doEvent: 2300
+        doEvent: 23000
         day: 05000000
   eventAlarm: {fileID: 818629305}
 --- !u!1 &156933823
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7971e14b59ce9947b537116d1b3b0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 2100
+  playerName: 21000
   currentState: 
   Animator: {fileID: 0}
   PlayerMovement: {fileID: 0}
@@ -1116,7 +1116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7971e14b59ce9947b537116d1b3b0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 1200
+  playerName: 12000
   currentState: 
   Animator: {fileID: 0}
   PlayerMovement: {fileID: 0}
@@ -3593,7 +3593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7971e14b59ce9947b537116d1b3b0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 2300
+  playerName: 23000
   currentState: 
   Animator: {fileID: 0}
   PlayerMovement: {fileID: 0}
@@ -3839,7 +3839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7971e14b59ce9947b537116d1b3b0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 2000
+  playerName: 20000
   currentState: 
   Animator: {fileID: 0}
   PlayerMovement: {fileID: 0}
@@ -11893,7 +11893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7971e14b59ce9947b537116d1b3b0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 2200
+  playerName: 22000
   currentState: 
   Animator: {fileID: 0}
   PlayerMovement: {fileID: 0}

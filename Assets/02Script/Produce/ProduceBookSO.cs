@@ -15,8 +15,9 @@ namespace _02Script.Produce
         public ItemDataSO result;
         
 #if UNITY_EDITOR
-        private void OnValidate()
+        protected override void OnValidate()
         {
+            base.OnValidate();
             if(itemName == result.itemName) return;
             itemImage = result.itemImage;
             maxCount = result.maxCount;

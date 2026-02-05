@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd9b47323aec446dae7cc1d0d212c2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Player.CollectPlayer
-  playerName: 1000
+  playerName: 10000
   currentState: 
   Animator: {fileID: 0}
   PlayerMovement: {fileID: 0}

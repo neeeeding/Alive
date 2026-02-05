@@ -1,5 +1,5 @@
 ﻿using System;
-using _02Script.Manager;
+using _02Script.Etc;
 using _02Script.Obj.Entity;
 using TMPro;
 using UnityEngine;
@@ -19,9 +19,10 @@ namespace _02Script.UI.person
 
         private void Setting()
         {
-            int hp = GameManager.Instance.PlayerStat.characterStats[EntityName.lie][StatsType.curHp];
-            hpSlider.value = (float)hp;
-            hptext.text = $"{((int)(hp))} / 100";
+            float hp = StatCalculate.Calculate(EntityName.lie, StatsType.HpStat);
+            float maxHp = StatCalculate.Calculate(EntityName.lie, StatsType.HpStat);
+            hpSlider.value = (int)hp/maxHp;
+            hptext.text = $"{(int)hp} / {maxHp}";
         }
     }
     

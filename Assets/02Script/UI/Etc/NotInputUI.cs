@@ -1,4 +1,4 @@
-﻿using _02Script.Player;
+﻿using _02Script.GamePlayer;
 using UnityEngine;
 using UnityEngine.EventSystems;
 

@@ -10,12 +10,17 @@ namespace _02Script.Battle.Monster
         public static Action<Monster> OnSelect;
         public static Action<Monster> OnDie;
         [Header("Monster")]
-        [SerializeField] private MonsterHpUI hpUI;
+        [SerializeField] protected MonsterHpUI hpUI;
 
         #region Set (+ Select)
+        public MonsterSO GetMonsterType()
+        {
+            return entity as MonsterSO;
+        }
         public void GetCanTargets(List<BattleEntity> target)
         {
             canTargets = target;
+            RandomTarget();
         }
         public void SelectMonster()
         {
@@ -24,6 +29,7 @@ namespace _02Script.Battle.Monster
         public virtual void SetMonster(MonsterSO monster)
         {
             entity = monster;
+            skillAttackDelay = 0;
             
             isGlobal = monster.isGlobal;
             maxHp = monster.maxHp;
@@ -31,8 +37,16 @@ namespace _02Script.Battle.Monster
             baseAttack = monster.baseAttack;
             baseAttackDelay = monster.baseAttackDelay;
             startBuff = monster.useBuff;
+            hpUI.UpdateHp(curHp, maxHp);
         }
         #endregion
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            hpUI.UpdateHp(curHp, maxHp);
+            outline.color = new Color(0,0,0,0);
+        }
 
         #region Entity
         public override void Hit(float damage)

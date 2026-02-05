@@ -112,8 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7971e14b59ce9947b537116d1b3b0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 1000
+  playerName: 10000
   currentState: 
+  Animator: {fileID: 0}
+  PlayerMovement: {fileID: 0}
   isCurPlayer: 0
 --- !u!114 &5761815959352456039
 MonoBehaviour:

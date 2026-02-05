@@ -1,7 +1,7 @@
 ﻿using _02Script.DoTweenUI.Warring;
 using _02Script.Farming;
 using _02Script.GameEvent;
-using _02Script.Player;
+using _02Script.GamePlayer.Manager;
 using UnityEngine;
 
 namespace _02Script.Obj.Obj
