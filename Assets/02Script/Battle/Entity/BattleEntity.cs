@@ -90,7 +90,6 @@ namespace _02Script.Battle.Entity
             foreach (BattleEntity target in targets.ToArray())
             {
                 target.Hit(baseAttack/divide);
-                print($"{gameObject.name} Attack -> {target.gameObject.name} Hit, damage : {baseAttack/divide}");
             }
         }
         public virtual void UseSkill()
@@ -110,7 +109,6 @@ namespace _02Script.Battle.Entity
                 target.Hit(skillDamage/divide);
                 if(skillBuff&&skillBuff.isDeBuff)
                     target.GetBuffs(skillBuff);
-                print($"{gameObject.name} Skill -> {target.gameObject.name} Hit, damage : {baseAttack/divide}----------");
             }
         }
         public virtual void Hit(float damage)
@@ -145,7 +143,6 @@ namespace _02Script.Battle.Entity
         protected virtual void Die()
         {
             OnAction?.Invoke(PlayerStateType.Die);
-            print($"{gameObject.name} Die");
         }
     }
 }

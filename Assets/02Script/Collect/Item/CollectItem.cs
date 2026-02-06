@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using _02Script.DoTweenUI.Warring;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
@@ -13,7 +16,7 @@ namespace _02Script.Collect.Item
     {
         public static Action<ItemDataSO, int,EntityName> OnGetItem;
         public static Action<CollectItem> OnClickItem;
-        public static CollectItem curSelectItem;
+        public static Dictionary<CollectItem,EntityName> curSelectItem = new Dictionary<CollectItem,EntityName>();
 
         [SerializeField] private ItemDataSO itemData;
         [SerializeField] private int num; //개수 혹은 등급 || 내구도
@@ -26,15 +29,14 @@ namespace _02Script.Collect.Item
         private SpriteRenderer _renderer;
         private float _curS;
         private float _collectTime;
-        private EntityName _getCharacter;
 
+        //private static List<EntityName>
 
 
         #region EnDiAw
         private void Awake()
         {
             _renderer = GetComponent<SpriteRenderer>();
-            curSelectItem = null;
         }
 
         private void OnEnable()
@@ -54,20 +56,35 @@ namespace _02Script.Collect.Item
         #region Select
         public void ClickItem()
         {
-            if(CollectPlayerManager.curPlayer != null)
-                OnClickItem?.Invoke(this);
+            if (CollectPlayerManager.curPlayer != null)
+            {
+                if (curSelectItem.ContainsKey(this))
+                {
+                    WarringManager.Warring.ShowWarring($"이미 {EnumToString.Name(curSelectItem[this])}이/가 수집 중입니다.");
+                }
+                else
+                    OnClickItem?.Invoke(this);
+            }
         }
 
         private void SelfCheck(CollectItem item)
         {
-            if (item != this && curSelectItem == this)
+            if (item != this && curSelectItem.ContainsKey(this))
             {
                 _renderer.material = baseMaterial;
+                foreach (KeyValuePair<CollectItem, EntityName> kvp in curSelectItem.ToArray())
+                {
+                    if (kvp.Value == CollectPlayerManager.curPlayer.playerName)
+                    {
+                        curSelectItem.Remove(kvp.Key);
+                        break;
+                    }
+                }
             }
             else if(item == this)
             {
                 _renderer.material = outlineMaterial;
-                curSelectItem = null; //도착하면 캐도록
+                curSelectItem.Remove(this); //도착하면 캐도록
             }
         }
         #endregion
@@ -82,8 +99,20 @@ namespace _02Script.Collect.Item
         #region gauge
         public void Gauge(EntityName characterName) //자원 얻기 시작 (게이지)
         {
-            _getCharacter = characterName;
-            curSelectItem = this;
+            if (curSelectItem.ContainsValue(characterName))
+            {
+                foreach (KeyValuePair<CollectItem, EntityName> kvp in curSelectItem.ToArray())
+                {
+                    if (kvp.Value == characterName)
+                    {
+                        curSelectItem.Remove(kvp.Key);
+                        break;
+                    }
+                }
+            }
+            
+            if(!curSelectItem.ContainsKey(this))
+                curSelectItem.Add(this,characterName);
             if(_curS > 0) return;
             
             float minus = StatCalculate.Calculate(characterName, StatsType.mining);
@@ -98,7 +127,7 @@ namespace _02Script.Collect.Item
         {
             while (_curS < _collectTime)
             {
-                if (curSelectItem != this)
+                if (!curSelectItem.ContainsKey(this))
                 {
                     await Task.Yield();
                     continue;
@@ -108,7 +137,8 @@ namespace _02Script.Collect.Item
                 await Task.Yield();
             }
             
-            OnGetItem?.Invoke(itemData, num,_getCharacter);
+            OnGetItem?.Invoke(itemData, num,curSelectItem[this]);
+            curSelectItem.Remove(this);
             CollectItemManager.ItemBackList(this);
         }
         #endregion

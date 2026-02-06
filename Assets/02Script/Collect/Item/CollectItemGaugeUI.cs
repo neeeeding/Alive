@@ -28,7 +28,7 @@ namespace _02Script.Collect.Item
         {
             while (_curTime < _collectTime)
             {
-                if (CollectItem.curSelectItem != _item)
+                if (!CollectItem.curSelectItem.ContainsKey(_item))
                 {
                     await Task.Yield();
                     continue;

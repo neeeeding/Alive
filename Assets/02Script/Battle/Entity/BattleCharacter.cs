@@ -151,7 +151,11 @@ namespace _02Script.Battle.Entity
             {
                 if (isGlobal) //다중이면 선택 취소 가능
                 {
-                    target.outline.color = new Color(0,0,0,0);
+                    if(target.outline.color != outlineColor && target.outline.color != new Color(0,0,0,0))
+                        target.outline.color = (target.outline.color * 2) - outlineColor;
+                    else
+                        target.outline.color = new Color(0,0,0,0);
+                    
                     canTargets.Add(target);
                     targets.Remove(target);
                 }
@@ -160,14 +164,22 @@ namespace _02Script.Battle.Entity
             
             if ((!isGlobal && targets.Count > 0) || targets.Count >= maxGlobal) //가능한 타겟수 찼다면 맨 처음을 변경
             {
-                targets[0].outline.color = new Color(0,0,0,0);
+                if(targets[0].outline.color != outlineColor && targets[0].outline.color != new Color(0,0,0,0))
+                    targets[0].outline.color = (targets[0].outline.color * 2) - outlineColor;
+                else
+                    targets[0].outline.color = new Color(0,0,0,0);
                 canTargets.Add(targets[0]);
                 targets.RemoveAt(0);
             }
 
             targets.Add(target);
             canTargets.Remove(target);
-            target.outline.color += outlineColor;
+            if(target.outline.color != new Color(0,0,0,0))
+                target.outline.color = Color.Lerp(target.outline.color, outlineColor, 0.5f);
+            else
+            {
+                target.outline.color += outlineColor;
+            }
         }
         #endregion
 
