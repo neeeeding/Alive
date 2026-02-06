@@ -15,7 +15,7 @@ MonoBehaviour:
   EntityName: 30000
   DialogEntityImage: {fileID: 21300000, guid: 332a440a2445dc14883b454c78008490, type: 3}
   maxHp: 50
-  baseAttack: 10
+  baseAttack: 3
   baseAttackDelay: 1
   useBuff: {fileID: 0}
   isGlobal: 0

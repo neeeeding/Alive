@@ -19,7 +19,8 @@
         public void SetMonster(BossMonsterSO monster, BossMonsterHpUI hp)
         {
             base.SetMonster(monster);
-            _bossHpUI = hp;
+            //_bossHpUI = hp;
+            _bossHpUI = hpUI as BossMonsterHpUI;
             hpUI = hp;
             
             skillBuff = monster.useSkillBuff;

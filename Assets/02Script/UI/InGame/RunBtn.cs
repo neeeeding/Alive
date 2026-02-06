@@ -4,7 +4,6 @@ using _02Script.GamePlayer;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 namespace _02Script.UI.InGame
 {
     public class RunBtn : MonoBehaviour

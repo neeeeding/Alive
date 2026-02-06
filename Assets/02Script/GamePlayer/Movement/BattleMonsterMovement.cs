@@ -8,7 +8,7 @@ namespace _02Script.GamePlayer.Movement
     public class BattleMonsterMovement : PlayerMovement
     {
         [Header("Battle--")]
-        [SerializeField] private Vector2 targetOffset= new Vector2(1,0.6f);
+        [SerializeField] private Vector2 targetOffset= new Vector2(1,0);
         
         private void OnEnable()
         {
@@ -23,17 +23,16 @@ namespace _02Script.GamePlayer.Movement
             base.OnDisable();
         }
 
-        private void Target(List<BattleEntity> target)
+        private void Target(List<BattleEntity> target, BattleEntity moveEntity)
         {
-            if(!player.isCurPlayer) return;
-            IsMoving = true;
+            if(moveEntity.gameObject != gameObject) return;
 
             if(target.Count <= 0) return;
             
             if (target.Count == 1)
             {
                 TargetPos = target[0].transform.position;
-                TargetPos.y -= targetOffset.y;
+                TargetPos.y += targetOffset.y;
                 TargetPos.x += TargetPos.x <transform.position.x? targetOffset.x : -targetOffset.x;
             }
             else
@@ -45,6 +44,7 @@ namespace _02Script.GamePlayer.Movement
 
                 TargetPos = sum / target.Count;
             }
+            IsMoving = true;
             MoveStart();
         }
 

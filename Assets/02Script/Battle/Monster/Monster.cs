@@ -19,6 +19,7 @@ namespace _02Script.Battle.Monster
         }
         public void GetCanTargets(List<BattleEntity> target)
         {
+            outline.color = new Color(0,0,0,0);
             canTargets = target;
             RandomTarget();
         }
@@ -45,7 +46,6 @@ namespace _02Script.Battle.Monster
         {
             base.OnEnable();
             hpUI.UpdateHp(curHp, maxHp);
-            outline.color = new Color(0,0,0,0);
         }
 
         #region Entity

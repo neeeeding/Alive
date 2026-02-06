@@ -43,6 +43,7 @@ namespace _02Script.Obj.Entity
         
         //몬스터를 종족에 따라 분류?? (주석)
         [Description("토끼")] rabbit = 30000,
+        [Description("게")] crab = 30100,
         
         //40000 대는 오류
     }

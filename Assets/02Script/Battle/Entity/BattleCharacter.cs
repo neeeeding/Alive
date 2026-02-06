@@ -17,6 +17,8 @@ namespace _02Script.Battle.Entity
         
         [Header("Player")]
         [SerializeField] private CharacterHpUI hpUI;
+        [SerializeField] private CharacterHpUI inGameHpUI;
+        [SerializeField] private SkillBtn skillDelayUI;
         [SerializeField] private Color outlineColor;
         
         private static BattleCharacter _selectPlayer; //선택 중인 플레이어
@@ -36,7 +38,9 @@ namespace _02Script.Battle.Entity
             GameManager.OnStart += SetStats;
             Monster.Monster.OnDie += TargetDie;
             hpUI.SetCharacter(entity.EntityName);
+            inGameHpUI.SetCharacter(entity.EntityName);
             hpUI.UpdateHp(curHp, maxHp);
+            inGameHpUI.UpdateHp(curHp, maxHp);
             
             RandomTarget();
         }
@@ -59,6 +63,10 @@ namespace _02Script.Battle.Entity
         public void GetCanTargets(BattleEntity target)
         {
             canTargets.Add(target);
+            if (targets.Count <= 0)
+            {
+                RandomTarget();
+            }
         }
         private void ChangeWeapon(WeaponItemDataSO weapon)
         {
@@ -93,7 +101,9 @@ namespace _02Script.Battle.Entity
             
             ChangeWeapon(weapon);
             hpUI.SetCharacter(entity.EntityName);
+            inGameHpUI.SetCharacter(entity.EntityName);
             hpUI.UpdateHp(curHp, maxHp);
+            inGameHpUI.UpdateHp(curHp, maxHp);
         }
 
         private void SetStats()
@@ -129,8 +139,9 @@ namespace _02Script.Battle.Entity
 
         protected override void Target(int index)
         {
-            base.Target(index);
-            canTargets[index].outline.color = outlineColor;
+            _selectPlayer = this;
+            Target(canTargets[index]);
+            _selectPlayer = null;
         }
 
         private void Target(BattleEntity target)
@@ -156,20 +167,28 @@ namespace _02Script.Battle.Entity
 
             targets.Add(target);
             canTargets.Remove(target);
-            target.outline.color = outlineColor;
+            target.outline.color += outlineColor;
         }
         #endregion
 
         #region Entity
+        protected override void Update()
+        {
+            base.Update();
+            skillDelayUI.SkillDelay(curSkillDelay,skillAttackDelay);
+        }
+
         public override void Hit(float damage)
         {
             base.Hit(damage);
             hpUI.UpdateHp(curHp, maxHp);
+            inGameHpUI.UpdateHp(curHp, maxHp);
         }
         protected override void Die()
         {
             base.Die();
             OnDie?.Invoke();
+            Time.timeScale = 0;
         }
         #endregion
     }

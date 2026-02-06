@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using _02Script.Battle.Entity;
+using _02Script.Manager;
 using UnityEngine;
 
 namespace _02Script.Battle.Monster
@@ -14,7 +16,7 @@ namespace _02Script.Battle.Monster
         private List<(MonsterSO monsterType, Transform spawnPos, float spawnDelay)> _monsterSpawnList; //종류, 위치, 스폰될 타이밍
         private List<Monster> _monsters = new List<Monster>();
         private List<BossMonster> _bossMonsters = new List<BossMonster>();
-        private List<BattleEntity> canTargets = new List<BattleEntity>(); //타겟 후보
+        private List<BattleEntity> _canTargets = new List<BattleEntity>(); //타겟 후보
 
         private int _curAlive; //살아있는 수
         private bool _isSpawnStop; // 생성 종료인지
@@ -23,14 +25,16 @@ namespace _02Script.Battle.Monster
         private void OnEnable()
         {
             _curAlive = 0;
-            _isSpawnStop = true;
+            _isSpawnStop = false;
             _curTime = 0;
             Monster.OnDie += AddMonsterList;
+            GameManager.OnStart += SetStart;
         }
 
         private void OnDisable()
         {
             Monster.OnDie -= AddMonsterList;
+            GameManager.OnStart += SetStart;
         }
 
         private void AddMonsterList(Monster monster) //풀링
@@ -51,7 +55,7 @@ namespace _02Script.Battle.Monster
                 Victory();
         }
 
-        #region Spawn
+        #region Spanw
         private void SpawnMonster()
         {
             if (!_isSpawnStop || _monsterSpawnList.Count <= 0)
@@ -83,6 +87,7 @@ namespace _02Script.Battle.Monster
                         NewMonster(spawn.monsterType);
                     
                     monster = _bossMonsters[0];
+                    _bossMonsters.RemoveAt(0);
                 }
                 else
                 {
@@ -90,6 +95,7 @@ namespace _02Script.Battle.Monster
                         NewMonster(spawn.monsterType);
                     
                     monster = _monsters[0];
+                    _monsters.RemoveAt(0);
                 }
                 
                 monster.transform.position = spawn.spawnPos.position;
@@ -104,9 +110,9 @@ namespace _02Script.Battle.Monster
                 
                 monster.SetMonster(bossSo, bossHpUI);
                 _bossMonsters.Add(monster);
-                monster.GetCanTargets(canTargets);
+                monster.GetCanTargets(_canTargets.ToList());
                 monster.gameObject.SetActive(false);
-                foreach (BattleEntity target in canTargets)
+                foreach (BattleEntity target in _canTargets)
                 {
                     (target as BattleCharacter).GetCanTargets(monster);
                 }
@@ -115,10 +121,10 @@ namespace _02Script.Battle.Monster
             {
                 Monster monster = Instantiate(monsterPrefab, parent);
                 monster.SetMonster(monsterType);
-                monster.GetCanTargets(canTargets);
+                monster.GetCanTargets(_canTargets.ToList());
                 _monsters.Add(monster);
                 monster.gameObject.SetActive(false);
-                foreach (BattleEntity target in canTargets)
+                foreach (BattleEntity target in _canTargets)
                 {
                     (target as BattleCharacter).GetCanTargets(monster);
                 }
@@ -126,19 +132,26 @@ namespace _02Script.Battle.Monster
         }
         private void Update()
         {
+            if(!_isSpawnStop) return;
             _curTime += Time.deltaTime;
             SpawnMonster();
         }
         #endregion
 
+        #region Set
         public void SetTargetList(List<BattleEntity> targetList)
         {
-            canTargets = targetList;
+            _canTargets = targetList;
         }
         public void SetSpawnList(List<(MonsterSO, Transform, float)> monsterSpawnList)
         {
             _monsterSpawnList = monsterSpawnList;
         }
+        private void SetStart()
+        {
+            _isSpawnStop = true;
+        }
+        #endregion
 
         private void Victory()
         {

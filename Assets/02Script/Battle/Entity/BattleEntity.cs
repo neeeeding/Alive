@@ -9,7 +9,7 @@ namespace _02Script.Battle.Entity
 {
     public class BattleEntity : MonoBehaviour
     {
-        public static Action<List<BattleEntity>> OnTarget;
+        public static Action<List<BattleEntity>,BattleEntity> OnTarget;
         public static Action<PlayerStateType> OnAction;
         
         [SerializeField] protected EntitySO entity;
@@ -45,6 +45,7 @@ namespace _02Script.Battle.Entity
             curSkillDelay += Time.deltaTime;
             
             Attack();
+            OnTarget?.Invoke(targets,this);
         }
 
         #region Target
@@ -82,7 +83,6 @@ namespace _02Script.Battle.Entity
             if(curAttackDelay < baseAttackDelay) return;
             curAttackDelay = 0;
             
-            OnTarget?.Invoke(targets);
             OnAction?.Invoke(PlayerStateType.Attack);
 
             int divide = targets.Count;
@@ -110,6 +110,7 @@ namespace _02Script.Battle.Entity
                 target.Hit(skillDamage/divide);
                 if(skillBuff&&skillBuff.isDeBuff)
                     target.GetBuffs(skillBuff);
+                print($"{gameObject.name} Skill -> {target.gameObject.name} Hit, damage : {baseAttack/divide}----------");
             }
         }
         public virtual void Hit(float damage)
@@ -144,7 +145,7 @@ namespace _02Script.Battle.Entity
         protected virtual void Die()
         {
             OnAction?.Invoke(PlayerStateType.Die);
-            print($"{gameObject.name}die");
+            print($"{gameObject.name} Die");
         }
     }
 }

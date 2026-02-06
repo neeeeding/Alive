@@ -6,7 +6,7 @@ namespace _02Script.GamePlayer.Movement
     public class CollectPlayerMovement : PlayerMovement
     {
         [Header("Collect--")]
-        [SerializeField] private Vector2 targetOffset= new Vector2(1,0.6f);
+        [SerializeField] private Vector2 targetOffset= new Vector2(1,-0.6f);
         private CollectItem _wantItem;
 
         protected override void OnEnable()
@@ -27,7 +27,7 @@ namespace _02Script.GamePlayer.Movement
             IsMoving = true;
             _wantItem = item;
             TargetPos = item.transform.position;
-            TargetPos.y -= targetOffset.y;
+            TargetPos.y += targetOffset.y;
             TargetPos.x += TargetPos.x <transform.position.x? targetOffset.x : -targetOffset.x;
             MoveStart();
         }
