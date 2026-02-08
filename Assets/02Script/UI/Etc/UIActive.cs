@@ -14,5 +14,17 @@ namespace _02Script.UI.Etc
         {
             ui.SetActive(false);
         }
+
+        public void ShowAndHide()
+        {
+            if (ui.activeSelf)
+            {
+                Hide();
+            }
+            else
+            {
+                Show();
+            }
+        }
     }
 }

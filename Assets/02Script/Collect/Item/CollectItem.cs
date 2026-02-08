@@ -30,9 +30,6 @@ namespace _02Script.Collect.Item
         private float _curS;
         private float _collectTime;
 
-        //private static List<EntityName>
-
-
         #region EnDiAw
         private void Awake()
         {
