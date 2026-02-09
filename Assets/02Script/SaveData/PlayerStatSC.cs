@@ -34,7 +34,7 @@ namespace _02Script.SaveData
         public int hour;
         public int minute;
 
-        public SaveDictionary<ItemType, List<int>> items; //아이템들 카테고리<종류,수>
+        public SaveDictionary<ItemType, List<float>> items; //아이템들 카테고리<종류,수>
 
         //사전
         public List<int> getDictionaryPage;
@@ -98,7 +98,7 @@ namespace _02Script.SaveData
         
         public void ResetItem() //스탯의 아이템 전부 초기화
         {
-            items = new SaveDictionary<ItemType, List<int>>();
+            items = new SaveDictionary<ItemType, List<float>>();
             items.Clear();
 
             foreach (ItemType type in Enum.GetValues(typeof(ItemType)))
@@ -106,7 +106,7 @@ namespace _02Script.SaveData
                 if (type == ItemType.none)
                     continue;
 
-                items.Add(type, new List<int>(){0}); //0으로 초기화
+                items.Add(type, new List<float>(){0}); //0으로 초기화
             }
         }
     }

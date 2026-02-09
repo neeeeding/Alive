@@ -14,12 +14,26 @@ namespace _02Script.Inventory.Inventory.Use
 
         private ItemCard card;
         private int maxNum;
+        private int useNum;
 
-        public void SetData(ItemCard data)
+        public void SetData(ItemCard data, int selfCheck)
         {
             card = data;
             ItemData so = data.ReturnData();
-            maxNum = so.ItemCount();
+            
+            ItemCategory category = data.ReturnData().ReturnDataSO().category;
+
+            if (category != ItemCategory.food && category != ItemCategory.weapon &&
+                category != ItemCategory.armor && category != ItemCategory.machine)
+            {
+                maxNum = so.ItemCount();
+                useNum = -1;
+            }
+            else
+            {
+                maxNum = 1;
+                useNum = selfCheck;
+            }
             countSlider.value = (float)1/maxNum;
             countInputField.text = 1.ToString();
         }
@@ -39,7 +53,8 @@ namespace _02Script.Inventory.Inventory.Use
 
         public void HoldData()
         {
-            inventoryManager.HoldItem(card.ReturnData(),int.Parse(countInputField.text));
+            inventoryManager.HoldItem(card.ReturnData(), useNum >= 0 ? useNum : 
+                int.Parse(countInputField.text));
             
             gameObject.SetActive(false);
         }
@@ -56,12 +71,14 @@ namespace _02Script.Inventory.Inventory.Use
             if (rand == 1)
             {
                 WarringManager.Warring.ShowWarring("섭취에 성공하셨습니다!");
-                inventoryManager.UseItem(card.ReturnData().ReturnDataSO(),int.Parse(countInputField.text));
+                inventoryManager.UseItem(card.ReturnData().ReturnDataSO(), useNum >= 0 ? useNum : 
+                    int.Parse(countInputField.text));
             }
             else
             {
                 WarringManager.Warring.ShowWarring("섭취에 실패하셨습니다...");
-                inventoryManager.ThrowItem(card.ReturnData().ReturnDataSO(),int.Parse(countInputField.text));
+                inventoryManager.ThrowItem(card.ReturnData().ReturnDataSO(), useNum >= 0 ? useNum : 
+                    int.Parse(countInputField.text));
             }
             
             gameObject.SetActive(false);
@@ -69,7 +86,8 @@ namespace _02Script.Inventory.Inventory.Use
         
         public void ThrowData()
         {
-            inventoryManager.ThrowItem(card.ReturnData().ReturnDataSO(),int.Parse(countInputField.text));
+            inventoryManager.ThrowItem(card.ReturnData().ReturnDataSO(), useNum >= 0 ? useNum : 
+                int.Parse(countInputField.text));
             
             gameObject.SetActive(false);
         }

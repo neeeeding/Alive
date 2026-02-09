@@ -1,7 +1,5 @@
-﻿using System;
-using _02Script.Inventory.Item;
+﻿using _02Script.Inventory.Item;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 
 namespace _02Script.Produce
@@ -26,7 +24,7 @@ namespace _02Script.Produce
             InventoryItemCard.OnMouseClick -= Show;
         }
 
-        private void Show(ItemCard card, RectTransform parent)
+        private void Show(ItemCard card, RectTransform parent, int selfCheck)
         {
             if(card == null){nameObject.SetActive(false); return;}
             ShowName(card.ReturnData().ReturnDataSO(), parent);

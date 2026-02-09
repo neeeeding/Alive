@@ -1,4 +1,5 @@
-﻿using _02Script.Battle.Entity;
+﻿using System.Linq;
+using _02Script.Battle.Entity;
 using _02Script.Collect.Item;
 using _02Script.Etc;
 using _02Script.Inventory.Inventory;
@@ -13,7 +14,7 @@ namespace _02Script.Battle.UI
     public class WeaponInventory : LoadInventoryManager
     {
         [Header("WeaponInventory")]
-        [SerializeField] private BattleEntitySO inventoryCharacter;
+        [SerializeField] private BattleCharacter inventoryCharacter;
 
         [Header("Need")]
         [SerializeField] private GameObject inventoryWindow;
@@ -27,6 +28,7 @@ namespace _02Script.Battle.UI
             base.OnEnable();
             WeaponInventoryCard.OnMouseClick += CloseWeaponInventory;
             CollectItem.OnGetItem += GetItem;
+            BattleCharacter.OnSkillWeapon += WeaponDamage;
         }
 
         protected override void OnDisable()
@@ -34,12 +36,35 @@ namespace _02Script.Battle.UI
             base.OnDisable();
             WeaponInventoryCard.OnMouseClick -= CloseWeaponInventory;
             CollectItem.OnGetItem -= GetItem;
+            BattleCharacter.OnSkillWeapon -= WeaponDamage;
         }
         #endregion
 
-        public void CloseWeaponInventory(WeaponInventoryCard _)
+        private void CloseWeaponInventory(WeaponInventoryCard _)
         {
             inventoryWindow.gameObject.SetActive(false);
+        }
+
+        //데미지 감소
+        private void WeaponDamage(WeaponInventoryCard weapon, float minus)
+        {
+            if (!ItemDatas.ContainsKey(weapon.ReturnData().ReturnDataSO())) return;
+            ItemData data = ItemDatas[weapon.ReturnData().ReturnDataSO()];
+                
+            data.UseItem(weapon.ReturnNum(false),minus, true); //데미지 삭제
+            
+            foreach (ItemCard card in ItemCards[data].ToList()) //체력바 업데이트 하는 겸, 0 미만 삭제
+            {
+                card.UpdateCountUI();
+                
+                if(0 >= card.ReturnNum(false)) continue;
+                            
+                ItemCards[data].Remove(card);
+                if(ItemCards[data].Count <= 0) //무기 다 사라지면 없애버리기
+                    ItemDatas.Remove(card.ReturnData().ReturnDataSO());
+                Destroy(card.gameObject);
+                break;
+            }
         }
 
         #region GetAddItem (inventory)
@@ -52,10 +77,9 @@ namespace _02Script.Battle.UI
             if(_allWeaponDataSO.Count <= 0)
                 SettingAllDataSO();
             
-            if (data.category == ItemCategory.weapon &&
-                inventoryCharacter.useWeapons.Contains(_allWeaponDataSO[data.itemType]))
+            if (_allWeaponDataSO.ContainsKey(data.itemType))
             {
-                base.AddItem(data,count);
+                base.AddItem(_allWeaponDataSO[data.itemType], count);
             }
         }
         #endregion
@@ -63,19 +87,33 @@ namespace _02Script.Battle.UI
         #region Set
         protected override void SettingAllDataSO()
         {
-            inventoryText.text = EnumToString.Name(inventoryCharacter.EntityName)+"의 무기 변경";
+            if(inventoryCharacter == null) return;
+            
+            inventoryText.text = EnumToString.Name(inventoryCharacter.ReturnSO().EntityName)+"의 무기 변경";
             
             _allWeaponDataSO.Clear();
 
             foreach (ItemDataSO data in allSO)
             {
-                _allWeaponDataSO.Add(data.itemType, data as WeaponItemDataSO);
+                if(inventoryCharacter.ReturnSO().useWeapons.Contains(data as WeaponItemDataSO))
+                    _allWeaponDataSO.Add(data.itemType, data as WeaponItemDataSO);
             }
         }
-        public void SetInventoryCharacter(BattleEntitySO so) //누구의 인벤토리인지 지정해주기
+        public void SetInventoryCharacter(BattleCharacter character) //누구의 인벤토리인지 지정해주기
         {
-            inventoryCharacter = so;
+            inventoryCharacter = character;
             SettingAllDataSO();
+            AutoWeaponSelect();
+        }
+
+        private void AutoWeaponSelect()
+        {
+            if (ItemCards.Count <= 0)
+            {
+                inventoryCharacter.ChangeWeapon(null);
+                return;
+            }
+            inventoryCharacter.ChangeWeapon(ItemCards.First().Value[0] as WeaponInventoryCard);
         }
         #endregion
     }

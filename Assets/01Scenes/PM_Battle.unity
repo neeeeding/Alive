@@ -1464,6 +1464,7 @@ MonoBehaviour:
   hpUI: {fileID: 729300117}
   inGameHpUI: {fileID: 1456992545}
   skillDelayUI: {fileID: 1238831866}
+  weaponImage: {fileID: 1238831864}
   outlineColor: {r: 0, g: 0.37247252, b: 1, a: 1}
 --- !u!114 &238674892
 MonoBehaviour:
@@ -2659,7 +2660,7 @@ GameObject:
   - component: {fileID: 401928812}
   - component: {fileID: 401928813}
   m_Layer: 5
-  m_Name: Weapon
+  m_Name: R_Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2717,8 +2718,10 @@ MonoBehaviour:
       Value: {fileID: 1309559695}
   realItem: {fileID: 0}
   allSO:
+  - {fileID: 11400000, guid: f1fb6e640a98b4f47b7e0a287c6d015b, type: 2}
+  - {fileID: 11400000, guid: fcc4659dc5851594bbfc480bb18b2928, type: 2}
   - {fileID: 11400000, guid: 96b25d23632c2184c831702bf1393683, type: 2}
-  inventoryCharacter: {fileID: 11400000, guid: 2f0f3772912cc5d48bb195cd0f89787c, type: 2}
+  inventoryCharacter: {fileID: 238674891}
   inventoryWindow: {fileID: 1415157981}
   inventoryText: {fileID: 255219611}
 --- !u!1 &446161204
@@ -2765,11 +2768,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efad6bf3abc845cfa165a8e5db4b9e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Entity.BattleCharacterManager
-  allWeaponSO:
-  - {fileID: 11400000, guid: 96b25d23632c2184c831702bf1393683, type: 2}
   characters:
   - {fileID: 1816444919}
   - {fileID: 238674891}
+  weaponInventory:
+  - {fileID: 1682690093}
+  - {fileID: 401928813}
   monsterManager: {fileID: 1810232832}
 --- !u!1 &449696969
 GameObject:
@@ -4969,6 +4973,10 @@ MonoBehaviour:
   itemData:
     _serializedList:
     - Key: {fileID: 11400000, guid: 504d613266350d04a8a2881f2e006c9e, type: 2}
+      Value: 320000001e00000064000000
+    - Key: {fileID: 11400000, guid: fcc4659dc5851594bbfc480bb18b2928, type: 2}
+      Value: 32000000
+    - Key: {fileID: 11400000, guid: f1fb6e640a98b4f47b7e0a287c6d015b, type: 2}
       Value: 32000000
 --- !u!4 &828992203
 Transform:
@@ -10703,7 +10711,7 @@ GameObject:
   - component: {fileID: 1682690092}
   - component: {fileID: 1682690093}
   m_Layer: 5
-  m_Name: Weapon
+  m_Name: L_Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10761,8 +10769,10 @@ MonoBehaviour:
       Value: {fileID: 599107493}
   realItem: {fileID: 0}
   allSO:
+  - {fileID: 11400000, guid: f1fb6e640a98b4f47b7e0a287c6d015b, type: 2}
+  - {fileID: 11400000, guid: fcc4659dc5851594bbfc480bb18b2928, type: 2}
   - {fileID: 11400000, guid: 96b25d23632c2184c831702bf1393683, type: 2}
-  inventoryCharacter: {fileID: 11400000, guid: 6bf29363f72bd7441bf2ebd9e41c6f09, type: 2}
+  inventoryCharacter: {fileID: 1816444919}
   inventoryWindow: {fileID: 1494251011}
   inventoryText: {fileID: 1142772378}
 --- !u!1 &1696004805
@@ -12185,6 +12195,7 @@ MonoBehaviour:
   hpUI: {fileID: 1372745880}
   inGameHpUI: {fileID: 324768591}
   skillDelayUI: {fileID: 629803708}
+  weaponImage: {fileID: 629803705}
   outlineColor: {r: 0.044460535, g: 1, b: 0, a: 1}
 --- !u!114 &1816444920
 MonoBehaviour:

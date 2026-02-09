@@ -28,11 +28,11 @@ namespace _02Script.Inventory.Inventory.Use
         }
         #endregion
 
-        private void Show(ItemCard card,RectTransform cardPos)
+        private void Show(ItemCard card,RectTransform cardPos, int selfCheck/*본인인지 검사*/)
         {
             useWindow.gameObject.SetActive(true);
             
-            useWindow.SetData(card);
+            useWindow.SetData(card,selfCheck);
 
             ItemDataSO data = card.ReturnData().ReturnDataSO();
             itemName.text = data.itemName;

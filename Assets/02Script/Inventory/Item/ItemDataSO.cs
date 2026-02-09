@@ -226,8 +226,12 @@ namespace _02Script.Inventory.Item
         [Description("흰 밥")]warmRice = 3601,
         [Description("콩 밥")]beanRice = 3602,
         
-        //무기 (100씩 분류)
-        [Description("칼")]justKnife = 4001,
+        //무기 (100씩 분류) (칼류,발사체(총류), 
+        [Description("무딘 칼")]justKnife = 4001,
+        [Description("비림이니")] biriminini = 4002,
+        
+        [Description("바주카")] bazooka = 4101, //M9A1
+        
         [Description("방패")]justShield = 5001,
         
         //자연 (20씩 분류)

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
+  m_Name: bazooka
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.ItemDataSO
+  category: 4
+  itemType: 4101
+  itemName: "\uBC14\uC8FC\uCE74\uD3EC"
+  itemExplanation: "M1A1\uACFC M9A1\uC744 \uBE44\uAD50\uD558\uC790\uBA74 \uD6C4\uC790\uC640
+    \uB354 \uB2EE\uC558\uACE0, \uC628\uD1B5 \uAC80\uC815\uC0C9\uC774\uB2E4."
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 4
+  collectTime: 2
+  stats: 1
+  addStats: 0

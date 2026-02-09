@@ -11,12 +11,12 @@ namespace _02Script.GamePlayer.GamePlayer
         
         private void OnEnable()
         {
-            BattleCharacter.OnWeapon += SetWeapon;
+            BattleCharacter.OnChangeWeapon += SetWeapon;
         }
 
         protected override void OnDisable()
         {
-            BattleCharacter.OnWeapon += SetWeapon;
+            BattleCharacter.OnChangeWeapon += SetWeapon;
             base.OnDisable();
         }
 

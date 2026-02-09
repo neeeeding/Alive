@@ -1,6 +1,5 @@
 using _02Script.DoTweenUI.Warring;
 using _02Script.Manager;
-using UnityEngine;
 
 namespace _02Script.Inventory.Item
 {
@@ -26,6 +25,7 @@ namespace _02Script.Inventory.Item
             _itemCount = 0;
         }
 
+        //내구도가 아닌 하나의 아이템으로 봤을 경우
         public void UseItem(int use = 1, bool isThrow = false)
         {
             if (!isThrow && !_itemBaseData.DoSomething())
@@ -56,6 +56,39 @@ namespace _02Script.Inventory.Item
                 case ItemCategory.machine:
                     _itemCount--;
                     GameManager.Instance.PlayerStat.items[_itemBaseData.itemType].Remove(use);
+                    break;
+            }
+            
+        }
+
+        //내구도 닳는용
+        public void UseItem(int use,float minus = 1, bool isThrow = false)
+        {
+            switch(_itemBaseData.category)
+            {
+                case ItemCategory.seed:
+                case ItemCategory.viand:
+                case ItemCategory.stuff:
+                case ItemCategory.special:
+                    break;
+                
+                case ItemCategory.food:
+                case ItemCategory.armor:
+                case ItemCategory.weapon:
+                case ItemCategory.machine:
+                    foreach (int item in GameManager.Instance.PlayerStat.items[_itemBaseData.itemType])
+                    {
+                        if (item == use)
+                        {
+                            GameManager.Instance.PlayerStat.items[_itemBaseData.itemType][item] -= minus;
+                            if (GameManager.Instance.PlayerStat.items[_itemBaseData.itemType][item] <= 0)
+                            {
+                                _itemCount--;
+                                GameManager.Instance.PlayerStat.items[_itemBaseData.itemType].Remove(item);
+                            }
+                            break;
+                        }
+                    }
                     break;
             }
             

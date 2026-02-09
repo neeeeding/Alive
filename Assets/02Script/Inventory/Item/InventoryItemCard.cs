@@ -7,7 +7,7 @@ namespace _02Script.Inventory.Item
     public class InventoryItemCard : ItemCard
     {
         public static event Action<ItemDataSO,int,int,float> OnMouseCursor;
-        public static event Action<ItemCard,RectTransform> OnMouseClick;
+        public static event Action<ItemCard,RectTransform,int> OnMouseClick;
 
         [SerializeField] protected float delay = 1f;
         
@@ -38,12 +38,12 @@ namespace _02Script.Inventory.Item
         //카드 클릭 (사용할지 묻기)
         public void SelectCard()
         {
-            OnMouseClick?.Invoke(this,rT);
-            //클릭 그 표시나게
+            //아이템이 아니면 다 hp 반환
+            OnMouseClick?.Invoke(this,rT,itemData.ReturnDataSO().category != ItemCategory.food? itemHp : star);
         }
         public void CancelCard()
         {
-            OnMouseClick?.Invoke(null,null);
+            OnMouseClick?.Invoke(null,null,0);
             //클릭 그 표시나게
         }
         #endregion
