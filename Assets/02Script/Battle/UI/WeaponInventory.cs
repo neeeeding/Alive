@@ -21,6 +21,7 @@ namespace _02Script.Battle.UI
         [SerializeField] private TextMeshProUGUI inventoryText;
         
         private SerializedDictionary<ItemType, WeaponItemDataSO> _allWeaponDataSO = new SerializedDictionary<ItemType, WeaponItemDataSO>();
+        private EntityName _weaponEntity;
 
         #region EnDiAw
         protected override void OnEnable()
@@ -40,7 +41,7 @@ namespace _02Script.Battle.UI
         }
         #endregion
 
-        private void CloseWeaponInventory(WeaponInventoryCard _)
+        private void CloseWeaponInventory(WeaponInventoryCard _w, EntityName _e)
         {
             inventoryWindow.gameObject.SetActive(false);
         }
@@ -60,8 +61,11 @@ namespace _02Script.Battle.UI
                 if(0 >= card.ReturnNum(false)) continue;
                             
                 ItemCards[data].Remove(card);
-                if(ItemCards[data].Count <= 0) //무기 다 사라지면 없애버리기
+                if (ItemCards[data].Count <= 0) //무기 다 사라지면 없애버리기
+                {
                     ItemDatas.Remove(card.ReturnData().ReturnDataSO());
+                }
+                AutoWeaponSelect();
                 Destroy(card.gameObject);
                 break;
             }
@@ -72,14 +76,16 @@ namespace _02Script.Battle.UI
         {
             AddItem(data,count);
         }
-        public override void AddItem(ItemDataSO data, int count = 1)
+        public override void AddItem(ItemDataSO item, int count = 1)
         {
             if(_allWeaponDataSO.Count <= 0)
                 SettingAllDataSO();
             
-            if (_allWeaponDataSO.ContainsKey(data.itemType))
+            if (_allWeaponDataSO.ContainsKey(item.itemType))
             {
-                base.AddItem(_allWeaponDataSO[data.itemType], count);
+                base.AddItem(_allWeaponDataSO[item.itemType], count);
+                ItemData d = ItemDatas[_allWeaponDataSO[item.itemType]]; //그냥 item하면 인스턴스 값이 달라서 못함.
+                (ItemCards[d][ItemCards[d].Count -1] as WeaponInventoryCard).Set(_weaponEntity);
             }
         }
         #endregion
@@ -102,6 +108,7 @@ namespace _02Script.Battle.UI
         public void SetInventoryCharacter(BattleCharacter character) //누구의 인벤토리인지 지정해주기
         {
             inventoryCharacter = character;
+            _weaponEntity = character.ReturnName();
             SettingAllDataSO();
             AutoWeaponSelect();
         }
@@ -110,10 +117,10 @@ namespace _02Script.Battle.UI
         {
             if (ItemCards.Count <= 0)
             {
-                inventoryCharacter.ChangeWeapon(null);
+                inventoryCharacter.ChangeWeapon(null,_weaponEntity);
                 return;
             }
-            inventoryCharacter.ChangeWeapon(ItemCards.First().Value[0] as WeaponInventoryCard);
+            inventoryCharacter.ChangeWeapon(ItemCards.First().Value[0] as WeaponInventoryCard,_weaponEntity);
         }
         #endregion
     }

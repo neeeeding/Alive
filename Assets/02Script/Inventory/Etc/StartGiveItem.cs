@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using _02Script.Inventory.Item;
+using _02Script.Manager;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
 
@@ -9,7 +10,17 @@ namespace _02Script.Inventory.Etc
     {
         [SerializeField] private SerializedDictionary<ItemDataSO, List<int>>  itemData;
 
-        private void Start()
+        private void OnEnable()
+        {
+            GameManager.OnStart += Set;
+        }
+
+        private void OnDisable()
+        {
+            GameManager.OnStart -= Set;
+        }
+
+        private void Set()
         {
             foreach (KeyValuePair<ItemDataSO, List<int>> item in itemData)
             {
@@ -18,6 +29,7 @@ namespace _02Script.Inventory.Etc
                     OnGetItem?.Invoke(item.Key,item.Value[i]);
                 }
             }
+            gameObject.SetActive(false);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using _02Script.Inventory.Item;
+using _02Script.Obj.Entity;
 using DG.Tweening;
 using UnityEngine;
 
@@ -7,9 +8,11 @@ namespace _02Script.Battle.UI
 {
     public class WeaponInventoryCard : ItemCard
     {
-        public static event Action<WeaponInventoryCard> OnMouseClick;
+        public static event Action<WeaponInventoryCard,EntityName> OnMouseClick;
         
         [SerializeField] protected float delay = 0.2f;
+
+        private EntityName _weaponEntity;
 
         #region Btn
         public void MouseEnter()
@@ -23,7 +26,7 @@ namespace _02Script.Battle.UI
 
         public void MouseClick()
         {
-            OnMouseClick?.Invoke(this);
+            OnMouseClick?.Invoke(this,_weaponEntity);
         }
         #endregion
 
@@ -31,6 +34,11 @@ namespace _02Script.Battle.UI
         {
             countUI.text = itemData.ReturnDataSO().itemName;
             base.NewCard(itemData, setStar, setItemHp); //부산물
+        }
+
+        public void Set(EntityName entityName)
+        {
+            _weaponEntity = entityName;
         }
 
         public override void UpdateCountUI()

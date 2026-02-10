@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using _02Script.DoTweenUI.Warring;
 using _02Script.Manager;
+using UnityEngine;
 
 namespace _02Script.Inventory.Item
 {
@@ -76,18 +78,20 @@ namespace _02Script.Inventory.Item
                 case ItemCategory.armor:
                 case ItemCategory.weapon:
                 case ItemCategory.machine:
-                    foreach (int item in GameManager.Instance.PlayerStat.items[_itemBaseData.itemType])
+                    List<float> list = GameManager.Instance.PlayerStat.items[_itemBaseData.itemType];
+
+                    for (int i = 0; i < list.Count; i++)
                     {
-                        if (item == use)
+                        if (list[i] != use) continue;
+
+                        list[i] -= minus;
+
+                        if (list[i] <= 0)
                         {
-                            GameManager.Instance.PlayerStat.items[_itemBaseData.itemType][item] -= minus;
-                            if (GameManager.Instance.PlayerStat.items[_itemBaseData.itemType][item] <= 0)
-                            {
-                                _itemCount--;
-                                GameManager.Instance.PlayerStat.items[_itemBaseData.itemType].Remove(item);
-                            }
-                            break;
+                            _itemCount--;
+                            list.RemoveAt(i);
                         }
+                        break;
                     }
                     break;
             }

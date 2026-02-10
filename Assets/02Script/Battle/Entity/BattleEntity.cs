@@ -134,6 +134,10 @@ namespace _02Script.Battle.Entity
         }
         #endregion
 
+        public virtual EntityName ReturnName()
+        {
+            return entity.EntityName;
+        }
 
         protected virtual bool DieCheck()
         {

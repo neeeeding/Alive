@@ -7,7 +7,6 @@ using _02Script.Manager;
 using _02Script.Obj.Entity;
 using _02Script.UI.person;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace _02Script.Battle.Entity
 {
@@ -19,15 +18,13 @@ namespace _02Script.Battle.Entity
         
         [Header("Player")]
         [SerializeField] private CharacterHpUI hpUI;
-        [SerializeField] private CharacterHpUI inGameHpUI;
-        [SerializeField] private SkillBtn skillDelayUI;
-        [SerializeField] private Image weaponImage;
         [SerializeField] private Color outlineColor;
         
         private static BattleCharacter _selectPlayer; //선택 중인 플레이어
         private readonly float _baseAttackCoolTime = 2f; //평타 딜레이
         private readonly float _baseWeaponDemage = 5f; //무기 내구도 닳는 정도
-        
+
+        private ForCharacterUI _forCharacter; //기타 ui
         private WeaponInventoryCard _useWeapon; //사용 중인 무기
         private Dictionary<StatsType, float> _stats = new Dictionary<StatsType, float>(); //스탯들
 
@@ -43,9 +40,9 @@ namespace _02Script.Battle.Entity
             Monster.Monster.OnDie += TargetDie;
             WeaponInventoryCard.OnMouseClick += ChangeWeapon;
             hpUI.SetCharacter(entity.EntityName);
-            inGameHpUI.SetCharacter(entity.EntityName);
             hpUI.UpdateHp(curHp, maxHp);
-            inGameHpUI.UpdateHp(curHp, maxHp);
+            if(_forCharacter != null)
+                _forCharacter.SetHpUI(curHp, maxHp,entity.EntityName);
             
             RandomTarget();
         }
@@ -79,19 +76,22 @@ namespace _02Script.Battle.Entity
                 RandomTarget();
             }
         }
-        public void ChangeWeapon(WeaponInventoryCard weapon)
+        public void ChangeWeapon(WeaponInventoryCard weapon,EntityName entityName)
         {
-            if (weapon == null)
+            if (!weapon|| entityName != entity.EntityName)
             {
                 return;
             }
+
+            curSkillDelay = 0;
             
             if (_stats.Count <= 0) SetStats();
             
             _useWeapon = weapon;
             WeaponItemDataSO so = weapon.ReturnData().ReturnDataSO() as WeaponItemDataSO;
             
-            weaponImage.sprite = so.itemImage;
+            if(_forCharacter)
+                _forCharacter.ChangeWeapon(so);
             isGlobal = so.isGlobal;
             skillBuff = so.skillBuff;
 
@@ -100,12 +100,13 @@ namespace _02Script.Battle.Entity
             skillDamage = so.skillDamage
                           + (skillDamage / 100) * skillDamageAdd;
             skillAttackDelay = so.skillCoolTime 
-                               - (skillAttackDelay / 100) * (100 - _stats[StatsType.skill]);
+                               - (so.skillCoolTime / 100) * (_stats[StatsType.skill]);
+            
             skillAttackDelay = Mathf.Max(0, skillAttackDelay);
             
             OnChangeWeapon?.Invoke(so);
         }
-        public void SetCharacter(CharacterHpUI hp = null,EntitySO character = null)
+        public void SetCharacter(ForCharacterUI forUI,CharacterHpUI hp = null,EntitySO character = null)
         {
             if (_stats.Count <= 0) SetStats();
             
@@ -122,9 +123,10 @@ namespace _02Script.Battle.Entity
             
             //ChangeWeapon(weapon);
             hpUI.SetCharacter(entity.EntityName);
-            inGameHpUI.SetCharacter(entity.EntityName);
             hpUI.UpdateHp(curHp, maxHp);
-            inGameHpUI.UpdateHp(curHp, maxHp);
+            
+            _forCharacter = forUI;
+            _forCharacter.SetHpUI(curHp, maxHp,entity.EntityName);
         }
 
         private void SetStats()
@@ -208,23 +210,29 @@ namespace _02Script.Battle.Entity
         protected override void Update()
         {
             base.Update();
-            skillDelayUI.SkillDelay(curSkillDelay,skillAttackDelay);
+            if (curSkillDelay > skillAttackDelay)
+            {
+                curSkillDelay = skillAttackDelay;
+            }
+            
+            if(_forCharacter)
+                _forCharacter.CurSkill(curSkillDelay,skillAttackDelay);
         }
         public override void UseSkill()
         {
-            base.UseSkill();
             if(curSkillDelay < skillAttackDelay || skillAttackDelay < 0) return;
-
             //무기 내구도 감소
             float weaponDamage = _baseWeaponDemage - ((_baseWeaponDemage / 100) *
                                                       (_stats[StatsType.defense]/2 + _stats[StatsType.skill]/2));
+            base.UseSkill();
+
             OnSkillWeapon?.Invoke(_useWeapon, weaponDamage);
         }
         public override void Hit(float damage)
         {
             base.Hit(damage);
             hpUI.UpdateHp(curHp, maxHp);
-            inGameHpUI.UpdateHp(curHp, maxHp);
+            _forCharacter.SetHpUI(curHp, maxHp);
         }
         protected override void Die()
         {

@@ -1462,9 +1462,6 @@ MonoBehaviour:
   entity: {fileID: 11400000, guid: 2f0f3772912cc5d48bb195cd0f89787c, type: 2}
   outline: {fileID: 1051260848}
   hpUI: {fileID: 729300117}
-  inGameHpUI: {fileID: 1456992545}
-  skillDelayUI: {fileID: 1238831866}
-  weaponImage: {fileID: 1238831864}
   outlineColor: {r: 0, g: 0.37247252, b: 1, a: 1}
 --- !u!114 &238674892
 MonoBehaviour:
@@ -2774,6 +2771,9 @@ MonoBehaviour:
   weaponInventory:
   - {fileID: 1682690093}
   - {fileID: 401928813}
+  forCharacterUI:
+  - {fileID: 2067941504}
+  - {fileID: 1767285542}
   monsterManager: {fileID: 1810232832}
 --- !u!1 &449696969
 GameObject:
@@ -4973,7 +4973,7 @@ MonoBehaviour:
   itemData:
     _serializedList:
     - Key: {fileID: 11400000, guid: 504d613266350d04a8a2881f2e006c9e, type: 2}
-      Value: 320000001e00000064000000
+      Value: 02000000320000001e00000064000000
     - Key: {fileID: 11400000, guid: fcc4659dc5851594bbfc480bb18b2928, type: 2}
       Value: 32000000
     - Key: {fileID: 11400000, guid: f1fb6e640a98b4f47b7e0a287c6d015b, type: 2}
@@ -11729,6 +11729,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1767285541}
+  - component: {fileID: 1767285542}
   m_Layer: 5
   m_Name: Right
   m_TagString: Untagged
@@ -11761,6 +11762,22 @@ RectTransform:
   m_AnchoredPosition: {x: -480, y: 0}
   m_SizeDelta: {x: 960, y: 540}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1767285542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767285540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662dc55037664e149f57e0a07dd9626f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.UI.ForCharacterUI
+  inGameHpUI: {fileID: 729300117}
+  skillDelayUI: {fileID: 1238831866}
+  weaponImage: {fileID: 608560672}
+  skillAttackText: {fileID: 1646850395}
 --- !u!1 &1769211546
 GameObject:
   m_ObjectHideFlags: 0
@@ -12193,9 +12210,6 @@ MonoBehaviour:
   entity: {fileID: 11400000, guid: 6bf29363f72bd7441bf2ebd9e41c6f09, type: 2}
   outline: {fileID: 1618087869}
   hpUI: {fileID: 1372745880}
-  inGameHpUI: {fileID: 324768591}
-  skillDelayUI: {fileID: 629803708}
-  weaponImage: {fileID: 629803705}
   outlineColor: {r: 0.044460535, g: 1, b: 0, a: 1}
 --- !u!114 &1816444920
 MonoBehaviour:
@@ -13945,6 +13959,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2067941503}
+  - component: {fileID: 2067941504}
   m_Layer: 5
   m_Name: Left
   m_TagString: Untagged
@@ -13977,6 +13992,22 @@ RectTransform:
   m_AnchoredPosition: {x: 480, y: 0}
   m_SizeDelta: {x: 960, y: 540}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2067941504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067941502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662dc55037664e149f57e0a07dd9626f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.UI.ForCharacterUI
+  inGameHpUI: {fileID: 1372745880}
+  skillDelayUI: {fileID: 629803708}
+  weaponImage: {fileID: 1841389814}
+  skillAttackText: {fileID: 1769211548}
 --- !u!1 &2086654140
 GameObject:
   m_ObjectHideFlags: 0

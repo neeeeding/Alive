@@ -10,6 +10,7 @@ namespace _02Script.Battle.Entity
     {
         [SerializeField] private List<BattleEntity> characters = new List<BattleEntity>();
         [SerializeField] private List<WeaponInventory> weaponInventory = new List<WeaponInventory>();
+        [SerializeField] private List<ForCharacterUI> forCharacterUI = new List<ForCharacterUI>();
         [SerializeField] private MonsterManager monsterManager;
 
         private void OnEnable()
@@ -28,7 +29,7 @@ namespace _02Script.Battle.Entity
             for (int i = 0; i < characters.Count; i++)
             {
                 weaponInventory[i].SetInventoryCharacter(characters[i] as BattleCharacter);
-                (characters[i] as BattleCharacter).SetCharacter();
+                (characters[i] as BattleCharacter).SetCharacter(forCharacterUI[i]);
             }
         }
     }
