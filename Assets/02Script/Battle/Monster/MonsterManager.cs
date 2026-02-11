@@ -8,7 +8,6 @@ namespace _02Script.Battle.Monster
 {
     public class MonsterManager : MonoBehaviour
     {
-        [SerializeField] private BossMonsterHpUI bossHpUI;
         [SerializeField] private Transform parent;
         [SerializeField] private Monster monsterPrefab;
         [SerializeField] private BossMonster bossMonsterPrefab;
@@ -99,6 +98,7 @@ namespace _02Script.Battle.Monster
                 }
                 
                 monster.transform.position = spawn.spawnPos.position;
+                
                 monster.gameObject.SetActive(true);
             }
         }
@@ -108,7 +108,7 @@ namespace _02Script.Battle.Monster
             {
                 BossMonster monster = Instantiate(bossMonsterPrefab, parent);
                 
-                monster.SetMonster(bossSo, bossHpUI);
+                monster.SetMonster(bossSo);
                 _bossMonsters.Add(monster);
                 monster.GetCanTargets(_canTargets.ToList());
                 monster.gameObject.SetActive(false);

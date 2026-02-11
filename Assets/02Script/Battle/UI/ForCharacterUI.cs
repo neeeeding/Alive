@@ -1,4 +1,5 @@
-﻿using _02Script.Inventory.Item;
+﻿using _02Script.Etc;
+using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
 using TMPro;
 using UnityEngine;
@@ -13,9 +14,10 @@ namespace _02Script.Battle.UI
         [SerializeField] private Image weaponImage;
         [SerializeField] private TextMeshProUGUI skillAttackText;
         
-        public void ChangeWeapon(WeaponItemDataSO so)
+        public void ChangeWeapon(WeaponItemDataSO so,float damage)
         {
             weaponImage.sprite = so.itemImage;
+            skillAttackText.text = $"{damage}\n{EnumToString.Name(so.skillBuff)}";
         }
 
         public void CurSkill(float curSkillDelay, float skillAttackDelay)

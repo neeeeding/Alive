@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using _02Script.Battle.Entity;
 using _02Script.Collect.Item;
+using _02Script.DoTweenUI.Warring;
 using _02Script.Etc;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
@@ -13,6 +15,8 @@ namespace _02Script.Battle.UI
 {
     public class WeaponInventory : LoadInventoryManager
     {
+        public static Action<WeaponInventoryCard> OnDeleteWeapon;
+        
         [Header("WeaponInventory")]
         [SerializeField] private BattleCharacter inventoryCharacter;
 
@@ -30,6 +34,7 @@ namespace _02Script.Battle.UI
             WeaponInventoryCard.OnMouseClick += CloseWeaponInventory;
             CollectItem.OnGetItem += GetItem;
             BattleCharacter.OnSkillWeapon += WeaponDamage;
+            WeaponInventory.OnDeleteWeapon += DeleteWeapon;
         }
 
         protected override void OnDisable()
@@ -38,6 +43,7 @@ namespace _02Script.Battle.UI
             WeaponInventoryCard.OnMouseClick -= CloseWeaponInventory;
             CollectItem.OnGetItem -= GetItem;
             BattleCharacter.OnSkillWeapon -= WeaponDamage;
+            WeaponInventory.OnDeleteWeapon -= DeleteWeapon;
         }
         #endregion
 
@@ -46,30 +52,51 @@ namespace _02Script.Battle.UI
             inventoryWindow.gameObject.SetActive(false);
         }
 
+        #region WeaponDamage
         //데미지 감소
         private void WeaponDamage(WeaponInventoryCard weapon, float minus)
         {
             if (!ItemDatas.ContainsKey(weapon.ReturnData().ReturnDataSO())) return;
             ItemData data = ItemDatas[weapon.ReturnData().ReturnDataSO()];
-                
-            data.UseItem(weapon.ReturnNum(false),minus, true); //데미지 삭제
             
-            foreach (ItemCard card in ItemCards[data].ToList()) //체력바 업데이트 하는 겸, 0 미만 삭제
+            WeaponInventoryCard useCard = weapon;
+            foreach (ItemCard d in ItemCards[data]) //다른 인벤토리에서는 '카드'자체의 인스턴스 값이 달라 적용이 안되므로
             {
-                card.UpdateCountUI();
-                
-                if(0 >= card.ReturnNum(false)) continue;
-                            
-                ItemCards[data].Remove(card);
-                if (ItemCards[data].Count <= 0) //무기 다 사라지면 없애버리기
-                {
-                    ItemDatas.Remove(card.ReturnData().ReturnDataSO());
-                }
-                AutoWeaponSelect();
-                Destroy(card.gameObject);
+                if(d.ReturnNum(false) != weapon.ReturnNum(false)) continue;
+                useCard = d as WeaponInventoryCard;
                 break;
             }
+
+            //data.UseItem(weapon.ReturnNum(false),minus, true); //데미지 삭제 (해봤자 아래 때문에 데미지 두 번 삭제됨)
+            useCard.ItemDamage(minus);
+            useCard.UpdateCountUI();
+                
+            if(useCard.ReturnNum(false) > 0) return; //내구도 0 이하시 삭제 시작
+            WarringManager.Warring.ShowWarring(
+                $"{EnumToString.Name(useCard.ReturnData().ReturnDataSO().itemType)}의 내구력이 다하여 부셔졌습니다.");
+            
+            OnDeleteWeapon?.Invoke(useCard);
+            AutoWeaponSelect();
         }
+
+        private void DeleteWeapon(WeaponInventoryCard weapon) //무기 정보 소멸 및 삭제
+        {
+            ItemData data = weapon.ReturnData();
+            GameObject soonDelete = null;
+            foreach (ItemCard w in ItemCards[ItemDatas[data.ReturnDataSO()]])
+            {
+                if(w != weapon) continue;
+                soonDelete = w.gameObject;
+                break;
+            }
+            
+            ItemCards[ItemDatas[data.ReturnDataSO()]].Remove(weapon);
+            if (ItemCards[ItemDatas[data.ReturnDataSO()]].Count <= 0) //무기 다 사라지면 없애버리기
+                ItemDatas.Remove(data.ReturnDataSO());
+            
+            Destroy(soonDelete);
+        }
+        #endregion
 
         #region GetAddItem (inventory)
         private void GetItem(ItemDataSO data, int count, EntityName type) //아이템 얻은거, 카드도 생성

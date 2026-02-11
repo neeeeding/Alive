@@ -13,20 +13,20 @@ namespace _02Script.Inventory.Item
         
         protected ItemData itemData;
         
-        protected int star; //성 (1 ~ 5)
-        protected int itemHp; //내구도 (0 ~ 100)
+        protected float star; //성 (1 ~ 5)
+        protected float itemHp; //내구도 (0 ~ 100)
 
         public ItemData ReturnData()
         {
             return itemData;
         }
 
-        public int ReturnNum(bool isStar)
+        public float ReturnNum(bool isStar)
         {
             return isStar? star:itemHp;
         }
         
-        public void ItemDamage(int damage)
+        public void ItemDamage(float damage)
         {
             itemHp -= damage;
         }

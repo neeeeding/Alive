@@ -5,6 +5,7 @@
         private  BossMonsterHpUI _bossHpUI;
         protected override void OnEnable()
         {
+            _bossHpUI = hpUI as BossMonsterHpUI;
             base.OnEnable();
             if(_bossHpUI != null)
                 _bossHpUI.SetCharacter(entity.EntityName);
@@ -16,12 +17,9 @@
             UseSkill();
         }
 
-        public void SetMonster(BossMonsterSO monster, BossMonsterHpUI hp)
+        public void SetMonster(BossMonsterSO monster)
         {
             base.SetMonster(monster);
-            //_bossHpUI = hp;
-            _bossHpUI = hpUI as BossMonsterHpUI;
-            hpUI = hp;
             
             skillBuff = monster.useSkillBuff;
             skillDamage = monster.skillAttack;

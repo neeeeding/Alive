@@ -2,14 +2,18 @@
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _02Script.Battle.UI
 {
     public class WeaponInventoryCard : ItemCard
     {
         public static event Action<WeaponInventoryCard,EntityName> OnMouseClick;
-        
+
+        [SerializeField] protected TextMeshProUGUI nameText;
+        [SerializeField] protected Slider damageSlider;
         [SerializeField] protected float delay = 0.2f;
 
         private EntityName _weaponEntity;
@@ -30,9 +34,14 @@ namespace _02Script.Battle.UI
         }
         #endregion
 
+        private void OnDisable()
+        {
+            MouseExit();
+        }
+
         public override void NewCard(ItemData itemData, int setStar = 5, int setItemHp = 100)
         {
-            countUI.text = itemData.ReturnDataSO().itemName;
+            nameText.text = itemData.ReturnDataSO().itemName;
             base.NewCard(itemData, setStar, setItemHp); //부산물
         }
 
@@ -43,6 +52,8 @@ namespace _02Script.Battle.UI
 
         public override void UpdateCountUI()
         {
+            damageSlider.value = itemHp / 100;
+            countUI.text = $"{itemHp} / 100";
         }
     }
 }

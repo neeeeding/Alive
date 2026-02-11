@@ -89,9 +89,6 @@ namespace _02Script.Battle.Entity
             
             _useWeapon = weapon;
             WeaponItemDataSO so = weapon.ReturnData().ReturnDataSO() as WeaponItemDataSO;
-            
-            if(_forCharacter)
-                _forCharacter.ChangeWeapon(so);
             isGlobal = so.isGlobal;
             skillBuff = so.skillBuff;
 
@@ -103,6 +100,9 @@ namespace _02Script.Battle.Entity
                                - (so.skillCoolTime / 100) * (_stats[StatsType.skill]);
             
             skillAttackDelay = Mathf.Max(0, skillAttackDelay);
+            
+            if(_forCharacter)
+                _forCharacter.ChangeWeapon(so,skillDamage);
             
             OnChangeWeapon?.Invoke(so);
         }

@@ -64,7 +64,7 @@ namespace _02Script.Inventory.Item
         }
 
         //내구도 닳는용
-        public void UseItem(int use,float minus = 1, bool isThrow = false)
+        public void UseItem(float use,float minus = 1, bool isThrow = false)
         {
             switch(_itemBaseData.category)
             {

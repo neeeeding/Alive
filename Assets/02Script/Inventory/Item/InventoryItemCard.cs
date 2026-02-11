@@ -7,7 +7,7 @@ namespace _02Script.Inventory.Item
     public class InventoryItemCard : ItemCard
     {
         public static event Action<ItemDataSO,int,int,float> OnMouseCursor;
-        public static event Action<ItemCard,RectTransform,int> OnMouseClick;
+        public static event Action<ItemCard,RectTransform,float> OnMouseClick;
 
         [SerializeField] protected float delay = 1f;
         
@@ -27,7 +27,7 @@ namespace _02Script.Inventory.Item
         public void MouseEnter()
         {
             gameObject.transform.DOScale(Vector3.one * 1.15f, delay).SetEase(Ease.InOutBack).SetUpdate(true);
-            OnMouseCursor?.Invoke(itemData.ReturnDataSO(), itemData.ItemCount(),star,itemHp);
+            OnMouseCursor?.Invoke(itemData.ReturnDataSO(), itemData.ItemCount(),(int)star,itemHp);
         }        
         public void MouseExit()
         {

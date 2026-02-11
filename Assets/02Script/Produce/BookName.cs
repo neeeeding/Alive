@@ -24,7 +24,7 @@ namespace _02Script.Produce
             InventoryItemCard.OnMouseClick -= Show;
         }
 
-        private void Show(ItemCard card, RectTransform parent, int selfCheck)
+        private void Show(ItemCard card, RectTransform parent, float selfCheck)
         {
             if(card == null){nameObject.SetActive(false); return;}
             ShowName(card.ReturnData().ReturnDataSO(), parent);

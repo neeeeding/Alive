@@ -28,7 +28,7 @@ namespace _02Script.Inventory.Inventory.Use
         }
         #endregion
 
-        private void Show(ItemCard card,RectTransform cardPos, int selfCheck/*본인인지 검사*/)
+        private void Show(ItemCard card,RectTransform cardPos, float selfCheck/*본인인지 검사*/)
         {
             useWindow.gameObject.SetActive(true);
             
