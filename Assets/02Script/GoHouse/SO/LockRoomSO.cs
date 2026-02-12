@@ -1,0 +1,13 @@
+﻿using UnityEngine;
+
+namespace _02Script.GoHouse.SO
+{
+    [CreateAssetMenu(fileName = "LockRoomSO", menuName = "SO/GoHouse/LockRoomSO")]
+    public class LockRoomSO : BlockActionSO
+    {
+        public int roomNum;
+        public override void DoBlockAction()
+        {
+        }
+    }
+}
