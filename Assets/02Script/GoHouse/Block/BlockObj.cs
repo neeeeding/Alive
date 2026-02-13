@@ -6,8 +6,11 @@ namespace _02Script.GoHouse.Block
 {
     public class BlockObj : MonoBehaviour
     {
+        [Header("Show")]
         [SerializeField] private BlockSO blockSo;
+        [Header("Need")]
         [SerializeField] private Image blockImage;
+        [SerializeField] private GameObject breakImage;
         [SerializeField] private GameObject fogImage;
 
         private RectTransform _myRect;
@@ -16,18 +19,21 @@ namespace _02Script.GoHouse.Block
         private Vector2 _blockPos;
         private bool _isFog; //안개인지
         private bool _isBreakdown; //붕괴될 수 있는지
-        private bool _isBreak; //붕괴 됬는지
+        private bool _isBreak; //붕괴 됐는지
 
         public bool isWall; //못 가는지
+        private bool isUseBlock; //블럭 기능 이미 사용 했는지
 
         public void EnterBlock()
         {
+            if(isUseBlock) return;
             blockSo.BlockAction();
+            isUseBlock = true;
         }
 
         public Vector2 Pos()
         {
-            return _blockPos;
+            return _myPos;
         }
 
         private void Awake()
@@ -49,12 +55,14 @@ namespace _02Script.GoHouse.Block
             _blockPos = pos;
             _isFog = fog;
             _isBreakdown = breakdown;
+            isUseBlock = false;
             _isBreak = false;
 
             isWall = (so.blockType == BlockType.Wall 
                       || so.blockType == BlockType.LockRoom);
 
             fogImage.SetActive(_isFog);
+            breakImage.SetActive(false);
         }
         #endregion
     }

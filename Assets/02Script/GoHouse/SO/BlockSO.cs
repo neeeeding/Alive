@@ -9,6 +9,7 @@ namespace _02Script.GoHouse.SO
     {
         public BlockType blockType;
         public Sprite blockImage;
+        public Sprite baseImage;
 
         public List<BlockActionSO> actions;
 
