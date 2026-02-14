@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _02Script.GoHouse.SO
 {
-    [CreateAssetMenu(fileName = "StatSO", menuName = "SO/GoHouse/StatSO")]
+    [CreateAssetMenu(fileName = "StatSO", menuName = "SO/GoHouse/Block/StatSO")]
     public class StatSO : BlockActionSO
     {
         public static Action<StatsType,float, BlockActionSO> OnStat;

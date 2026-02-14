@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _02Script.GoHouse.SO
 {
-    [CreateAssetMenu(fileName = "CharacterSO", menuName = "SO/GoHouse/CharacterSO")]
+    [CreateAssetMenu(fileName = "CharacterSO", menuName = "SO/GoHouse/Block/CharacterSO")]
     public class CharacterSO : BlockActionSO
     {
         public static Action<DialogEntitySO, int, int, BlockActionSO> OnChat;

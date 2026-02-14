@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using UnityEngine;
 
 namespace _02Script.GoHouse
@@ -10,10 +11,22 @@ namespace _02Script.GoHouse
         private Vector2 _playerPos;
         private float moveSpeed = 1f;
 
+        #region EnDiAw
+        private void OnEnable()
+        {
+            InputBtn.OnMoveBtn += MovePlayer;
+        }
+        private void OnDisable()
+        {
+            InputBtn.OnMoveBtn -= MovePlayer;
+        }
         private void Awake()
         {
             _myRect = gameObject.GetComponent<RectTransform>();
         }
+
+        #endregion
+
 
         public void SetPlayerPos(Vector2 pos)
         {

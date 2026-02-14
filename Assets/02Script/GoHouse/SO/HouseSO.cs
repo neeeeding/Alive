@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _02Script.GoHouse.SO
 {
-    [CreateAssetMenu(fileName = "HouseSO", menuName = "SO/GoHouse/HouseSO")]
+    [CreateAssetMenu(fileName = "HouseSO", menuName = "SO/GoHouse/Block/HouseSO")]
     public class HouseSO : BlockActionSO
     {
         public static Action<string, BlockActionSO> OnPortalEnter;

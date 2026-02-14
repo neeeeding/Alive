@@ -2,7 +2,7 @@
 
 namespace _02Script.GoHouse.SO
 {
-    [CreateAssetMenu(fileName = "LockRoomSO", menuName = "SO/GoHouse/LockRoomSO")]
+    [CreateAssetMenu(fileName = "LockRoomSO", menuName = "SO/GoHouse/Block/LockRoomSO")]
     public class LockRoomSO : BlockActionSO
     {
         public int roomNum;

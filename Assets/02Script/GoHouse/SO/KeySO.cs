@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _02Script.GoHouse.SO
 {
-    [CreateAssetMenu(fileName = "KeySO", menuName = "SO/GoHouse/KeySO")]
+    [CreateAssetMenu(fileName = "KeySO", menuName = "SO/GoHouse/Block/KeySO")]
     public class KeySO : BlockActionSO
     {
         public static Action<int, BlockActionSO> OnKey;

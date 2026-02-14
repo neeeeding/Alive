@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _02Script.GoHouse.SO
 {
-    [CreateAssetMenu(fileName = "MoveCountSO", menuName = "SO/GoHouse/MoveCountSO")]
+    [CreateAssetMenu(fileName = "MoveCountSO", menuName = "SO/GoHouse/Block/MoveCountSO")]
     public class MoveCountSO: BlockActionSO
     {
         public static Action<int> Move;

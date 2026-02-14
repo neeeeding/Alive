@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
 namespace _02Script.GoHouse.SO
 {
-    [CreateAssetMenu(fileName = "BlockSO", menuName = "SO/GoHouse/BlockSO")]
+    [CreateAssetMenu(fileName = "BlockSO", menuName = "SO/GoHouse/Block/BlockSO")]
+    [Serializable]
     public class BlockSO : ScriptableObject
     {
         public BlockType blockType;

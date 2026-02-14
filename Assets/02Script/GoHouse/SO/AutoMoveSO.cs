@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _02Script.GoHouse.SO
 {
-    [CreateAssetMenu(fileName = "AutoMoveSO", menuName = "SO/GoHouse/AutoMoveSO")]
+    [CreateAssetMenu(fileName = "AutoMoveSO", menuName = "SO/GoHouse/Block/AutoMoveSO")]
     public class AutoMoveSO : BlockActionSO
     {
         public static Action<Vector2, BlockActionSO> OnMove;

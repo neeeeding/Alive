@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _02Script.GoHouse.SO
 {
-    [CreateAssetMenu(fileName = "BossItemSO", menuName = "SO/GoHouse/BossItemSO")]
+    [CreateAssetMenu(fileName = "BossItemSO", menuName = "SO/GoHouse/Block/BossItemSO")]
     public class BossItemSO: BlockActionSO
     {
         public static Action<ItemDataSO, BlockActionSO> OnGetItem;
