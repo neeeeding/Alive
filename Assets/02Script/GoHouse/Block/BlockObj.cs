@@ -14,7 +14,6 @@ namespace _02Script.GoHouse.Block
         [SerializeField] private GameObject fogImage;
 
         private RectTransform _myRect;
-        private Vector2 _myPos;
         
         private Vector2 _blockPos;
         private bool _isFog; //안개인지
@@ -33,21 +32,15 @@ namespace _02Script.GoHouse.Block
 
         public Vector2 Pos()
         {
-            return _myPos;
+            return _myRect.position;
         }
 
         private void Awake()
         {
-            SetMy();
+            _myRect = gameObject.GetComponent<RectTransform>();
         }
 
         #region Set
-        private void SetMy()
-        {
-            _myRect = gameObject.GetComponent<RectTransform>();
-            _myPos = _myRect.anchoredPosition;
-        }
-
         public void SetBlockData(BlockSO so,Vector2 pos,bool fog = false,bool breakdown = false)
         {
             blockSo = so;

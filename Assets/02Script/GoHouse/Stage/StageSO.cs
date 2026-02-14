@@ -17,7 +17,7 @@ namespace _02Script.GoHouse.Stage
         public List<Row> stageBlocks = new List<Row>();
     }
 
-    [System.Serializable]
+    [Serializable]
     public class Row
     {
         public List<BlockSO> columns = new List<BlockSO>();

@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01Scenes/PM_Battle.unity
     guid: a066c15f55b23a543a2cd32fcef487fc
+  - enabled: 1
+    path: Assets/01Scenes/GoHouse.unity
+    guid: feae2da4c53b54241b6ddbe0a4e35c08
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

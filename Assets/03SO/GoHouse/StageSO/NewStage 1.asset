@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17893d3e3fd4572bdb49e3a5700954d, type: 3}
+  m_Name: NewStage 1
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.GoHouse.Stage.StageSO
+  stageName: 
+  stageNum: 0
+  moveCount: 0
+  playerPos: {x: 0, y: 0}
+  stageBlocks:
+  - columns:
+    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
+  - columns:
+    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
+  - columns:
+    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
+  - columns:
+    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
+  - columns:
+    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
+  - columns:
+    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
+  - columns:
+    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
+  - columns:
+    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
+  - columns:
+    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
+  - columns:
+    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}

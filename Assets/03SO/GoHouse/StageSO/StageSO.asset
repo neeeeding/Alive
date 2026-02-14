@@ -15,7 +15,7 @@ MonoBehaviour:
   stageName: s
   stageNum: 0
   moveCount: 2
-  playerPos: {x: 5, y: 5}
+  playerPos: {x: 1, y: 2}
   stageBlocks:
   - columns:
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
@@ -32,7 +32,7 @@ MonoBehaviour:
   - columns:
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
-    - {fileID: 11400000, guid: 82466eaf14439bd4888e414f59fc24a5, type: 2}
+    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
     - {fileID: 11400000, guid: 82466eaf14439bd4888e414f59fc24a5, type: 2}
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
   - columns:
