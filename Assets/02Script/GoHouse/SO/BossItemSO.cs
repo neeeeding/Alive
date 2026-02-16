@@ -7,12 +7,13 @@ namespace _02Script.GoHouse.SO
     [CreateAssetMenu(fileName = "BossItemSO", menuName = "SO/GoHouse/Block/BossItemSO")]
     public class BossItemSO: BlockActionSO
     {
-        public static Action<ItemDataSO, BlockActionSO> OnGetItem;
+        public static Action<ItemDataSO, int> OnGetItem;
         
         public ItemDataSO bossGetItem; //보스의 부산물
+        public int count; //or star, 내구도
         public override void DoBlockAction()
         {
-            OnGetItem?.Invoke(bossGetItem,this);
+            OnGetItem?.Invoke(bossGetItem,count);
         }
     }
 }

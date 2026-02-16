@@ -6,7 +6,7 @@ namespace _02Script.Etc
 {
     public class AsyncTime : MonoBehaviour
     {
-        public static async Task WaitSeconds(float seconds, CancellationToken token, bool isZeroTime/*시간 멈출때 안 멈출 건지*/)
+        public static async Task WaitSeconds(float seconds, CancellationToken token, bool isZeroTime = false/*시간 멈출때 안 멈출 건지*/)
         {
             while(!isZeroTime)
             {
@@ -17,7 +17,7 @@ namespace _02Script.Etc
             int ms = Mathf.RoundToInt(seconds * 1000);
             await Task.Delay(ms, token);
         }
-        public static async Task WaitSeconds(float seconds, bool isZeroTime)
+        public static async Task WaitSeconds(float seconds, bool isZeroTime = false)
         {
             while(!isZeroTime)
             {

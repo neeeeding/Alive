@@ -6,12 +6,12 @@ namespace _02Script.GoHouse.SO
     [CreateAssetMenu(fileName = "PortalSO", menuName = "SO/GoHouse/Block/PortalSO")]
     public class PortalSO : BlockActionSO
     {
-        public static Action<int,BlockActionSO> OnPortalEnter;
+        public static Action<BlockActionSO> OnPortalEnter;
 
-        public int portalID;
+        public int portalID; //나보라고...
         public override void DoBlockAction()
         {
-            OnPortalEnter?.Invoke(portalID,this);
+            OnPortalEnter?.Invoke(this);
         }
     }
 }

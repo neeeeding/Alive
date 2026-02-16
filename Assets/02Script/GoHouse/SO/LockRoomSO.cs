@@ -9,5 +9,10 @@ namespace _02Script.GoHouse.SO
         public override void DoBlockAction()
         {
         }
+
+        public bool KeyCheck(int key)
+        {
+            return key == roomNum;
+        }
     }
 }
