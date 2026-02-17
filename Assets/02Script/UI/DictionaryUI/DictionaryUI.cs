@@ -44,7 +44,7 @@ namespace _02Script.UI.DictionaryUI
         public void SaveMemo()
         {
             _memo[_curPage] = memoInputField.text;
-            GameManager.Instance.PlayerStat.getDictionaryPageMemo[_curPage] = memoInputField.text;
+            HouseManager.Instance.PlayerStat.getDictionaryPageMemo[_curPage] = memoInputField.text;
         }
 
         public void ShowUI()
@@ -98,7 +98,7 @@ namespace _02Script.UI.DictionaryUI
                 return;
             }
             _getPage[page] = 1;
-            GameManager.Instance.PlayerStat.getDictionaryPage[page] = 1;
+            HouseManager.Instance.PlayerStat.getDictionaryPage[page] = 1;
         }
         
         private void AddText(int page, string text, Sprite image = null)
@@ -111,8 +111,8 @@ namespace _02Script.UI.DictionaryUI
         
         private void Load()
         {
-            _getPage = GameManager.Instance.PlayerStat.getDictionaryPage;
-            _memo = GameManager.Instance.PlayerStat.getDictionaryPageMemo;
+            _getPage = HouseManager.Instance.PlayerStat.getDictionaryPage;
+            _memo = HouseManager.Instance.PlayerStat.getDictionaryPageMemo;
 
             if (_getPage.Count <= 0)
             {
@@ -122,8 +122,8 @@ namespace _02Script.UI.DictionaryUI
                     _getPage.Add(i);
                     _memo.Add("");
                 }
-                GameManager.Instance.PlayerStat.getDictionaryPage = _getPage;
-                GameManager.Instance.PlayerStat.getDictionaryPageMemo = _memo;
+                HouseManager.Instance.PlayerStat.getDictionaryPage = _getPage;
+                HouseManager.Instance.PlayerStat.getDictionaryPageMemo = _memo;
             }
         }
     }

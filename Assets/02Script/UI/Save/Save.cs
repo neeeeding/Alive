@@ -110,9 +110,9 @@ namespace _02Script.UI.Save
 
         private void SettingPath()
         {
-            if (GameManager.GameSaveFilePath != null && GameManager.GameSaveFilePath != "" && path != "")
+            if (HouseManager.GameSaveFilePath != null && HouseManager.GameSaveFilePath != "" && path != "")
             {
-                path = GameManager.GameSaveFilePath;
+                path = HouseManager.GameSaveFilePath;
             }
             else
             {

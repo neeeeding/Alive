@@ -49,7 +49,7 @@ namespace _02Script.UI.Store
         {
             if(_isLock) return;
 
-            if (GameManager.Instance.PlayerStat.items[_payItem.itemType][0] < _payCount)
+            if (HouseManager.Instance.PlayerStat.items[_payItem.itemType][0] < _payCount)
             {
                 WarringManager.Warring.ShowWarring("지불할 아이템이 부족합니다.");
                 return;

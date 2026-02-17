@@ -17,7 +17,7 @@ namespace _02Script.GoHouse.SO
 
         public void BlockAction()
         {
-            foreach (var action in actions)
+            foreach (BlockActionSO action in actions)
             {
                 action.DoBlockAction();
             }

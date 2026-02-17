@@ -38,20 +38,20 @@ public class LoadCard : MonoBehaviour
     {
         fileName = name;
 
-        Setting(GameManager.Instance.PlayerStat);
+        Setting(HouseManager.Instance.PlayerStat);
 
-        string data = JsonUtility.ToJson(GameManager.Instance.PlayerStat);
+        string data = JsonUtility.ToJson(HouseManager.Instance.PlayerStat);
 
-        File.WriteAllText($"{GameManager.GameSaveFilePath}/{fileName}", data);
+        File.WriteAllText($"{HouseManager.GameSaveFilePath}/{fileName}", data);
     }
 
     public void ClickLoad() //불러오기 누를 때
     {
-        string data = File.ReadAllText($"{GameManager.GameSaveFilePath}/{fileName}");
+        string data = File.ReadAllText($"{HouseManager.GameSaveFilePath}/{fileName}");
         PlayerStatSC stat = JsonUtility.FromJson<PlayerStatSC>(data);
-        GameManager.Instance.PlayerStat = stat;
+        HouseManager.Instance.PlayerStat = stat;
         OnLoad?.Invoke();
-        GameManager.CoinText?.Invoke();
+        HouseManager.CoinText?.Invoke();
     }
 
     private void CardSetting() //카드 세팅
@@ -81,19 +81,19 @@ public class LoadCard : MonoBehaviour
 
     public void DeleteMe() //파일 삭제
     {
-        string[] load = File.ReadAllLines($"{GameManager.GameSaveFilePath}/saveName");
-        File.Delete($"{GameManager  .GameSaveFilePath}/saveName");
+        string[] load = File.ReadAllLines($"{HouseManager.GameSaveFilePath}/saveName");
+        File.Delete($"{HouseManager  .GameSaveFilePath}/saveName");
         
         for(int i = 0; i < load.Length; i++)
         {
             if(load[i] != fileName)
             {
                 string name = load[i];
-                File.AppendAllText($"{GameManager.GameSaveFilePath}/SaveName", $"{name}\n");
+                File.AppendAllText($"{HouseManager.GameSaveFilePath}/SaveName", $"{name}\n");
             }
         }
 
-        File.Delete($"{GameManager.GameSaveFilePath}/{fileName}");
+        File.Delete($"{HouseManager.GameSaveFilePath}/{fileName}");
 
         Destroy(gameObject);
     }

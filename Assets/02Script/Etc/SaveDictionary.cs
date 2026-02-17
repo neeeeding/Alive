@@ -20,6 +20,12 @@ namespace _02Script.Etc
             ks.Add(key);
             vs.Add(value);
         }
+        public void Remove(K key)
+        {
+            vs.Remove(_dictionary[key]);
+            ks.Remove(key);
+            _dictionary.Remove(key);
+        }
 
         public void Clear() //지우기
         {

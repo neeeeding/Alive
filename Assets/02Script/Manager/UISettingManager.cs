@@ -47,7 +47,7 @@ namespace _02Script.Manager
 
         public void InGame() //게임으로
         {
-            GameManager.Instance.PlayerStat.isChat = false;
+            HouseManager.Instance.PlayerStat.isChat = false;
             AllHide();
             SettingAll();
             Time.timeScale = 1f;
@@ -58,7 +58,7 @@ namespace _02Script.Manager
         public void CloseChat() //채팅 닫기
         {
             SetBool(UIActiveType.chat, false);
-            GameManager.Instance.PlayerStat.isChat = false;
+            HouseManager.Instance.PlayerStat.isChat = false;
         }
 
         public void Obj() //상점 혹은 학교 수업 선택
@@ -69,7 +69,7 @@ namespace _02Script.Manager
         {
             SetBool(UIActiveType.chat,true);
             chat.DialogSetting(so, dialogEntity);
-            GameManager.Instance.PlayerStat.isChat = true;
+            HouseManager.Instance.PlayerStat.isChat = true;
         }
         public void UIDictionary()
         {

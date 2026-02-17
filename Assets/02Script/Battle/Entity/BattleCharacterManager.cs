@@ -16,12 +16,12 @@ namespace _02Script.Battle.Entity
         private void OnEnable()
         {
             monsterManager.SetTargetList(characters);
-            GameManager.OnStart += SetStartCharacter;
+            HouseManager.OnStart += SetStartCharacter;
         }
 
         private void OnDisable()
         {
-            GameManager.OnStart -= SetStartCharacter;
+            HouseManager.OnStart -= SetStartCharacter;
         }
 
         private void SetStartCharacter()

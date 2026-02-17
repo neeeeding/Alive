@@ -18,7 +18,7 @@ namespace _02Script.Inventory.Inventory
             base.OnEnable();
             LoadCard.OnLoad += LoadItem;
             
-            if(GameManager.Instance.isStart && ItemDatas.Count <= 0)
+            if(HouseManager.Instance.isStart && ItemDatas.Count <= 0)
             {
                 LoadItem();
             }
@@ -33,7 +33,7 @@ namespace _02Script.Inventory.Inventory
         protected virtual void LoadItem() //불러오기
         {
             SettingAllDataSO();
-            Dictionary<ItemType, List<float>> save = GameManager.Instance.PlayerStat.items.ToDictionary();
+            Dictionary<ItemType, List<float>> save = HouseManager.Instance.PlayerStat.items.ToDictionary();
 
             foreach (KeyValuePair<ItemType, ItemDataSO> item in AllDataSO.ToList())
             {

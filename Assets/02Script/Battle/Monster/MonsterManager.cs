@@ -27,13 +27,13 @@ namespace _02Script.Battle.Monster
             _isSpawnStop = false;
             _curTime = 0;
             Monster.OnDie += AddMonsterList;
-            GameManager.OnStart += SetStart;
+            HouseManager.OnStart += SetStart;
         }
 
         private void OnDisable()
         {
             Monster.OnDie -= AddMonsterList;
-            GameManager.OnStart += SetStart;
+            HouseManager.OnStart += SetStart;
         }
 
         private void AddMonsterList(Monster monster) //풀링

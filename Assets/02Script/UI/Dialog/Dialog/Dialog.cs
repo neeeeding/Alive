@@ -60,8 +60,8 @@ namespace _02Script.UI.Dialog.Dialog
             dialogText.text = "";
             //items = so.items;
             
-            GameManager.Instance.PlayerStat.lastDialogEntity = dialogEntity;
-            GameManager.Instance.PlayerStat.lastSO = so;
+            HouseManager.Instance.PlayerStat.lastDialogEntity = dialogEntity;
+            HouseManager.Instance.PlayerStat.lastSO = so;
             currentDialogEntity = dialogEntity;
             _currentSO = so;
             chatPlayer = so;
@@ -141,11 +141,11 @@ namespace _02Script.UI.Dialog.Dialog
 
         private void RenewalText(string final) // 마지막 텍스트 갱신 (주석)
         {
-            GameManager.Instance.PlayerStat.lastText =
+            HouseManager.Instance.PlayerStat.lastText =
                 $"{EnumToString.Name(_currentSO.EntityName)} : {final}"; //마지막 텍스트
 
             //해당 캐릭터 갱신 (저장 stat)
-            PlayerStatSC path = GameManager.Instance.PlayerStat;
+            PlayerStatSC path = HouseManager.Instance.PlayerStat;
 
             if (path != null)
             {
@@ -282,7 +282,7 @@ namespace _02Script.UI.Dialog.Dialog
             if (dialog[i][DialogType.GetLove.ToString()] != "") //호감도 얻는게 있다면. (혹은 뺏는거)
             {
                 int value = int.Parse(dialog[i][DialogType.GetLove.ToString()]);
-                GameManager.Instance.SetLove(_currentSO, value); //여러명 일 때 만약 주체가 아닌 다른 이라면. (주석)
+                HouseManager.Instance.SetLove(_currentSO, value); //여러명 일 때 만약 주체가 아닌 다른 이라면. (주석)
             }
         }
         

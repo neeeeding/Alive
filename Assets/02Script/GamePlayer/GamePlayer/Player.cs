@@ -48,7 +48,7 @@ namespace _02Script.GamePlayer.GamePlayer
         {
             if(!isCurPlayer) return;
             
-            GameManager.Instance.PlayerStat.characterStats[playerName][type] += add;
+            HouseManager.Instance.PlayerStat.characterStats[playerName][type] += add;
         }
 
         protected virtual  void OnDisable()

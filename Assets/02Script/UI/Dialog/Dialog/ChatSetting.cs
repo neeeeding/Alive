@@ -29,12 +29,12 @@ namespace _02Script.UI.Dialog.Dialog
                 characterLoveGauge.gameObject.SetActive(true);
                 characterLoveText.gameObject.SetActive(true);
 
-                int.TryParse(GameManager.Instance.PlayerStat.characterLastText[current.EntityName][DialogType.Love],
+                int.TryParse(HouseManager.Instance.PlayerStat.characterLastText[current.EntityName][DialogType.Love],
                     out int love);
                 characterLoveGauge.value = love;
 
                 characterLoveText.text =
-                    GameManager.Instance.PlayerStat.characterLastText[current.EntityName][DialogType.Love];
+                    HouseManager.Instance.PlayerStat.characterLastText[current.EntityName][DialogType.Love];
             }
             else
             {

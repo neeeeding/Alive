@@ -48,7 +48,7 @@ namespace _02Script.Inventory.Item
                     {
                         _itemCount = 0;
                     }
-                    GameManager.Instance.PlayerStat.items[_itemBaseData.itemType][0] =  _itemCount;
+                    HouseManager.Instance.PlayerStat.items[_itemBaseData.itemType][0] =  _itemCount;
                     
                     break;
                 
@@ -57,7 +57,7 @@ namespace _02Script.Inventory.Item
                 case ItemCategory.weapon:
                 case ItemCategory.machine:
                     _itemCount--;
-                    GameManager.Instance.PlayerStat.items[_itemBaseData.itemType].Remove(use);
+                    HouseManager.Instance.PlayerStat.items[_itemBaseData.itemType].Remove(use);
                     break;
             }
             
@@ -78,7 +78,7 @@ namespace _02Script.Inventory.Item
                 case ItemCategory.armor:
                 case ItemCategory.weapon:
                 case ItemCategory.machine:
-                    List<float> list = GameManager.Instance.PlayerStat.items[_itemBaseData.itemType];
+                    List<float> list = HouseManager.Instance.PlayerStat.items[_itemBaseData.itemType];
 
                     for (int i = 0; i < list.Count; i++)
                     {
@@ -112,7 +112,7 @@ namespace _02Script.Inventory.Item
                     {
                         _itemCount = _itemBaseData.maxCount;
                     }
-                    GameManager.Instance.PlayerStat.items[_itemBaseData.itemType][0] =  _itemCount;
+                    HouseManager.Instance.PlayerStat.items[_itemBaseData.itemType][0] =  _itemCount;
                     
                     break;
                 
@@ -121,7 +121,7 @@ namespace _02Script.Inventory.Item
                 case ItemCategory.weapon:
                 case ItemCategory.machine:
                     _itemCount++;
-                    GameManager.Instance.PlayerStat.items[_itemBaseData.itemType].Add(add);
+                    HouseManager.Instance.PlayerStat.items[_itemBaseData.itemType].Add(add);
                     break;
             }
         }

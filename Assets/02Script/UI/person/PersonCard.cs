@@ -28,15 +28,15 @@ namespace _02Script.UI.person
         {
             characterName.text = EnumToString.Name(dialogEntity.EntityName);
             //characterImage.sprite = character.characterImage;
-            GameManager.OnStart += LoadData;
+            HouseManager.OnStart += LoadData;
         }
 
         private void OnEnable()
         {
             LoadCard.OnLoad += LoadData;
-            if (GameManager.Instance.isStart)
+            if (HouseManager.Instance.isStart)
             {
-                path = GameManager.Instance.PlayerStat;
+                path = HouseManager.Instance.PlayerStat;
                 if(memo != null)
                     memo.text = path.characterLastText[dialogEntity.EntityName][DialogType.Memo];
                 LoadData(); // 로드를 위해
@@ -88,7 +88,7 @@ namespace _02Script.UI.person
 
         private void OnDisable()
         {
-            GameManager.OnStart -= LoadData;
+            HouseManager.OnStart -= LoadData;
             LoadCard.OnLoad += LoadData;
         }
     }

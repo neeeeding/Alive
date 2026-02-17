@@ -16,18 +16,18 @@ namespace _02Script.UI.Dialog.Entity
 
         private void Load() //로드 될 때
         {
-            if (GameManager.Instance.PlayerStat != null)
+            if (HouseManager.Instance.PlayerStat != null)
             {
-                int.TryParse(GameManager.Instance.PlayerStat.characterLastText[dialogEntitySo.EntityName][DialogType.Chapter], out chapter);
-                int.TryParse(GameManager.Instance.PlayerStat.characterLastText[dialogEntitySo.EntityName][DialogType.Num], out finalNum);
+                int.TryParse(HouseManager.Instance.PlayerStat.characterLastText[dialogEntitySo.EntityName][DialogType.Chapter], out chapter);
+                int.TryParse(HouseManager.Instance.PlayerStat.characterLastText[dialogEntitySo.EntityName][DialogType.Num], out finalNum);
             }
 
             //아이템이나 특수 대화에서는 문제가 없는지 확인 할 것
-            if (GameManager.Instance.PlayerStat.isChat)
+            if (HouseManager.Instance.PlayerStat.isChat)
             {
                 UISettingManager.Instance.CloseChat();
                 finalNum--; //대화를 시작 할 때 1를 추가하고 시작함으로.
-                UISettingManager.Instance.Chat(GameManager.Instance.PlayerStat.lastSO, GameManager.Instance.PlayerStat.lastDialogEntity);
+                UISettingManager.Instance.Chat(HouseManager.Instance.PlayerStat.lastSO, HouseManager.Instance.PlayerStat.lastDialogEntity);
             }
             else
             {
@@ -39,7 +39,7 @@ namespace _02Script.UI.Dialog.Entity
         {
             finalNum = i;
 
-            GameManager.Instance.PlayerStat.characterLastText[dialogEntitySo.EntityName][DialogType.Num] = finalNum.ToString();
+            HouseManager.Instance.PlayerStat.characterLastText[dialogEntitySo.EntityName][DialogType.Num] = finalNum.ToString();
         }
 
         private async Task  SpeechBubble()
@@ -85,8 +85,8 @@ namespace _02Script.UI.Dialog.Entity
             int baseChapter = ((int)dialogEntitySo.EntityName/10000)*10000;
             chapter += baseChapter;
 
-            GameManager.Instance.PlayerStat.characterLastText[dialogEntitySo.EntityName][DialogType.Chapter] = chapter.ToString();
-            GameManager.Instance.PlayerStat.characterLastText[dialogEntitySo.EntityName][DialogType.Num] = finalNum.ToString();
+            HouseManager.Instance.PlayerStat.characterLastText[dialogEntitySo.EntityName][DialogType.Chapter] = chapter.ToString();
+            HouseManager.Instance.PlayerStat.characterLastText[dialogEntitySo.EntityName][DialogType.Num] = finalNum.ToString();
         }
 
         public void ClickCharacter() //대화 하기 (클릭)
@@ -95,9 +95,9 @@ namespace _02Script.UI.Dialog.Entity
             if (isChat)
             {
                 int baseChapter = (chapter%100) + (int)dialogEntitySo.EntityName;
-                int.TryParse(GameManager.Instance.PlayerStat.characterLastText[dialogEntitySo.EntityName][DialogType.Chapter],out chapter);
+                int.TryParse(HouseManager.Instance.PlayerStat.characterLastText[dialogEntitySo.EntityName][DialogType.Chapter],out chapter);
                 if (chapter <= 0) chapter = baseChapter;
-                int.TryParse(GameManager.Instance.PlayerStat.characterLastText[dialogEntitySo.EntityName][DialogType.Num],out finalNum);
+                int.TryParse(HouseManager.Instance.PlayerStat.characterLastText[dialogEntitySo.EntityName][DialogType.Num],out finalNum);
                 if (finalNum <= 0) finalNum = 1;
                 
                 OnChat?.Invoke(dialogEntitySo,this);

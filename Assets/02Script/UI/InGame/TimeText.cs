@@ -13,7 +13,7 @@ namespace _02Script.UI.InGame
 
         private void Awake()
         {
-            GameManager.OnStart += ChangeStat;
+            HouseManager.OnStart += ChangeStat;
             timeText = GetComponent<TextMeshProUGUI>();
         }
 
@@ -24,7 +24,7 @@ namespace _02Script.UI.InGame
 
         private void ChangeStat()
         {
-            stat = GameManager.Instance.PlayerStat;
+            stat = HouseManager.Instance.PlayerStat;
         }
 
         private void Update()
@@ -43,7 +43,7 @@ namespace _02Script.UI.InGame
 
         private void OnDisable()
         {
-            GameManager.OnStart -= ChangeStat;
+            HouseManager.OnStart -= ChangeStat;
             LoadCard.OnLoad -= ChangeStat;
         }
     }

@@ -16,4 +16,5 @@ MonoBehaviour:
   blockImage: {fileID: 0}
   baseImage: {fileID: 0}
   actions:
+  - {fileID: 11400000, guid: 0ff9fe88819f34649926f99c9a454b67, type: 2}
   - {fileID: 11400000, guid: 310ad8238ff2abf429d983d640c7e117, type: 2}

@@ -30,7 +30,7 @@ namespace _02Script.Farming
         protected override void LoadItem() //불러오기
         {
             SettingAllDataSO();
-            Dictionary<ItemType, List<float>> save = GameManager.Instance.PlayerStat.items.ToDictionary();
+            Dictionary<ItemType, List<float>> save = HouseManager.Instance.PlayerStat.items.ToDictionary();
 
             foreach (KeyValuePair<ItemType, SeedsSO> item in _allDataSO.ToList())
             {

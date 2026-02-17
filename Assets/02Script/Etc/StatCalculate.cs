@@ -20,10 +20,10 @@ namespace _02Script.Etc
             if (character == EntityName.None || statType == StatsType.none) return 0;
             if (statType == StatsType.curHp) //체력은 계산할 필요가 없음.
             {
-                return GameManager.Instance.PlayerStat.characterStats[character][StatsType.curHp];
+                return HouseManager.Instance.PlayerStat.characterStats[character][StatsType.curHp];
             }
             
-            int stat = GameManager.Instance.PlayerStat.characterStats[character][statType];
+            int stat = HouseManager.Instance.PlayerStat.characterStats[character][statType];
             
             float statValue = _allValues[statType].baseValue;
 

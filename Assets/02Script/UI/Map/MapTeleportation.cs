@@ -31,7 +31,7 @@ namespace _02Script.UI.Map
             
             if(!ConvertRawImageToWorldPos(mapPos + mapSize, out Vector3 playerPos)) return; //범위 외. 실패
             
-            GameManager.Instance.housePlayer.transform.position = playerPos;
+            HouseManager.Instance.housePlayer.transform.position = playerPos;
         }
         
         private bool ConvertRawImageToWorldPos(Vector3 mapPos, out Vector3 playerPos)

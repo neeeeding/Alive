@@ -42,18 +42,18 @@ namespace _02Script.GameEvent
 
         private void Update()
         {
-            if (GameManager.Instance.PlayerStat.hour >= 20)
+            if (HouseManager.Instance.PlayerStat.hour >= 20)
             {
                 OnLockUI?.Invoke(DoUIType.all);
             }
-            if (_curDay != GameManager.Instance.PlayerStat.day)
+            if (_curDay != HouseManager.Instance.PlayerStat.day)
             {
-                _curDay = GameManager.Instance.PlayerStat.day;
+                _curDay = HouseManager.Instance.PlayerStat.day;
                 OnFarmTemperature?.Invoke(_temperature); //잠금 해제 시키려면 해야 함
                 GetOutEveryone();
                 isEnter = false;
             }
-            if (GameManager.Instance.PlayerStat.hour >= 8 && !isEnter)
+            if (HouseManager.Instance.PlayerStat.hour >= 8 && !isEnter)
             {
                 _temperature = TemperatureType.warmth;
                 OnFarmTemperature?.Invoke(_temperature);
@@ -135,7 +135,7 @@ namespace _02Script.GameEvent
 
         private void LoadEvent()
         {
-            _curDay = GameManager.Instance.PlayerStat.day;
+            _curDay = HouseManager.Instance.PlayerStat.day;
             _nextDayDoEvent = new Dictionary<EntityName, ObjTeleportationPos>();
             foreach (KeyValuePair<ObjTeleportationPos, CharacterEventData> character in characterEvent)
             {

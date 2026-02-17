@@ -7,13 +7,13 @@ namespace _02Script.GoHouse.SO
     [CreateAssetMenu(fileName = "StatSO", menuName = "SO/GoHouse/Block/StatSO")]
     public class StatSO : BlockActionSO
     {
-        public static Action<StatsType,float, BlockActionSO> OnStat;
+        public static Action<StatsType,int> OnStat;
         
         [SerializeField] private StatsType stat;
-        [SerializeField] private float addValue;
+        [SerializeField] private int addValue;
         public override void DoBlockAction()
         {
-            OnStat?.Invoke(stat,addValue,this);
+            OnStat?.Invoke(stat,addValue);
         }
     }
 }

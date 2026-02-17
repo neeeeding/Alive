@@ -34,7 +34,7 @@ namespace _02Script.UI.Map
 
         public void ClickMapMark() //맵 마크 버튼 누를 때
         {
-            if (ConvertWorldToRawImagePos(GameManager.Instance.housePlayer.transform.position, out Vector2 mapPos))
+            if (ConvertWorldToRawImagePos(HouseManager.Instance.housePlayer.transform.position, out Vector2 mapPos))
             {
                 MapMarkMemo mark = Instantiate(mapMark, mapImage.transform);
 

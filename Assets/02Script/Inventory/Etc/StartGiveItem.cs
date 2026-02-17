@@ -12,12 +12,12 @@ namespace _02Script.Inventory.Etc
 
         private void OnEnable()
         {
-            GameManager.OnStart += Set;
+            HouseManager.OnStart += Set;
         }
 
         private void OnDisable()
         {
-            GameManager.OnStart -= Set;
+            HouseManager.OnStart -= Set;
         }
 
         private void Set()

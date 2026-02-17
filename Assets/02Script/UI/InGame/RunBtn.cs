@@ -62,13 +62,13 @@ namespace _02Script.UI.InGame
                 return;
             }
             _isRun = true;
-            OnMoveSpeed?.Invoke(GameManager.Instance.RunSpeed);
+            OnMoveSpeed?.Invoke(HouseManager.Instance.RunSpeed);
         }
 
         public void Walk()
         {
             _isRun = false;
-            OnMoveSpeed?.Invoke(GameManager.Instance.WalkSpeed);
+            OnMoveSpeed?.Invoke(HouseManager.Instance.WalkSpeed);
         }
     }
 }

@@ -37,7 +37,7 @@ namespace _02Script.UI.Dialog.Dialog
         public int? IsHoldItem(List<Dictionary<string, string>> dialog) //들고 있는 아이템 있다면 (챕터 번호)
         {
             int value = 0;
-            ItemDataSO dataSo = GameManager.Instance.holdItemData;
+            ItemDataSO dataSo = HouseManager.Instance.holdItemData;
             if (dataSo != null)
             {
                 for (int i = 0; i < dialog.Count - 1; i++)

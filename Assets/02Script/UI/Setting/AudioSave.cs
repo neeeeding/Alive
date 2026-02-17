@@ -12,32 +12,32 @@ namespace _02Script.UI.Setting
 
         private void Awake()
         {
-            main.value = GameManager.Instance.saveData.sound.mainSound;
-            bgm.value = GameManager.Instance.saveData.sound.bgmSound;
-            effect.value = GameManager.Instance.saveData.sound.effectSound;
+            main.value = HouseManager.Instance.saveData.sound.mainSound;
+            bgm.value = HouseManager.Instance.saveData.sound.bgmSound;
+            effect.value = HouseManager.Instance.saveData.sound.effectSound;
         }
 
         public void ChangeMain()
         {
-            if (GameManager.Instance.isStart)
+            if (HouseManager.Instance.isStart)
             {
-                GameManager.Instance.saveData.sound.mainSound = main.value;
+                HouseManager.Instance.saveData.sound.mainSound = main.value;
             }
         }
 
         public void ChangeBGM()
         {
-            if (GameManager.Instance.isStart)
+            if (HouseManager.Instance.isStart)
             {
-                GameManager.Instance.saveData.sound.bgmSound = bgm.value;
+                HouseManager.Instance.saveData.sound.bgmSound = bgm.value;
             }
         }
 
         public void ChangeEffect()
         {
-            if (GameManager.Instance.isStart)
+            if (HouseManager.Instance.isStart)
             {
-                GameManager.Instance.saveData.sound.effectSound = effect.value;
+                HouseManager.Instance.saveData.sound.effectSound = effect.value;
             }
         }
     }

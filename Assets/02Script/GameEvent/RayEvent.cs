@@ -42,8 +42,8 @@ namespace _02Script.GameEvent
 
         private void Load()
         {
-            _currPage = GameManager.Instance.PlayerStat.day / 2;
-            _currPage -= GameManager.Instance.PlayerStat.day / 8;
+            _currPage = HouseManager.Instance.PlayerStat.day / 2;
+            _currPage -= HouseManager.Instance.PlayerStat.day / 8;
         }
         
         // 상점 관련  -----------------------------------------------------------------------------------------------

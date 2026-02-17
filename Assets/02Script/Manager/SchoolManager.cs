@@ -10,7 +10,7 @@ namespace _02Script.Manager
 
         private void Awake()
         {
-            GameManager.OnNextDay += ClearToday;
+            HouseManager.OnNextDay += ClearToday;
         }
 
         public void ClearToday() //학교 일정 싹 비우기

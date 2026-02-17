@@ -19,7 +19,7 @@ namespace _02Script.GamePlayer.Movement
         protected override void Awake()
         {
             base.Awake();
-            GameManager.OnStart += StartLoad;
+            HouseManager.OnStart += StartLoad;
         }
 
         private void Start()
@@ -40,7 +40,7 @@ namespace _02Script.GamePlayer.Movement
             base.OnDisable();
             PlayerInput.OnMousePos -= MouseMove;
             PlayerInput.OnMovePos -= KeyboardMove;
-            GameManager.OnStart -= StartLoad;
+            HouseManager.OnStart -= StartLoad;
             LoadCard.OnLoad -= Load;
         }
         
@@ -57,14 +57,14 @@ namespace _02Script.GamePlayer.Movement
         #region Load
         private void StartLoad()
         {
-            Vector2 position = GameManager.Instance.saveData.stat.characterPositions[player.playerName];
-            GameManager.Instance.PlayerStat.characterPositions[player.playerName] = position;
+            Vector2 position = HouseManager.Instance.saveData.stat.characterPositions[player.playerName];
+            HouseManager.Instance.PlayerStat.characterPositions[player.playerName] = position;
             Load();
         }
 
         private void Load()
         {
-            transform.position = GameManager.Instance.PlayerStat.characterPositions[player.playerName];
+            transform.position = HouseManager.Instance.PlayerStat.characterPositions[player.playerName];
         }
         #endregion
 
@@ -108,7 +108,7 @@ namespace _02Script.GamePlayer.Movement
 
         protected override void Arrive()
         {
-            GameManager.Instance.PlayerStat.characterPositions[player.playerName] = transform.position; //위치 저장
+            HouseManager.Instance.PlayerStat.characterPositions[player.playerName] = transform.position; //위치 저장
             base.Arrive();
         }
         #endregion

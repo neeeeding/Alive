@@ -30,13 +30,13 @@ namespace _02Script.Collect
         {
             CollectItem.OnGetItem += GetItem;
             _curCount = 0;
-            GameManager.OnStart += SetStart;
+            HouseManager.OnStart += SetStart;
         }
 
         protected override void OnDisable()
         {
             CollectItem.OnGetItem -= GetItem;
-            GameManager.OnStart -= SetStart;
+            HouseManager.OnStart -= SetStart;
         }
         #endregion
 

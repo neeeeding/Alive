@@ -39,10 +39,10 @@ namespace _02Script.Manager
 
         private void LoadScene() //씬 로드
         {
-            string scene = GameManager.Instance.PlayerStat.sceneName;
+            string scene = HouseManager.Instance.PlayerStat.sceneName;
             //print($"cur : {scene} / save {GameManager.Instance.PlayerStat.sceneName}");
 
-            if (scene != GameManager.Instance.curScene) //현재 씬과 이동해야하는 씬이 안 맞다면
+            if (scene != HouseManager.Instance.curScene) //현재 씬과 이동해야하는 씬이 안 맞다면
             {
                 isSceneChange = true;
                 SceneBtn(scene);
@@ -55,8 +55,8 @@ namespace _02Script.Manager
             {
                 string scenePath = SceneUtility.GetScenePathByBuildIndex(i);
                 string sceneName = Path.GetFileNameWithoutExtension(scenePath);
-                GameManager.Instance.curScene = sceneName;
-                GameManager.Instance.PlayerStat.sceneName = sceneName;
+                HouseManager.Instance.curScene = sceneName;
+                HouseManager.Instance.PlayerStat.sceneName = sceneName;
                 SceneManager.LoadScene(i);
             }
         }
@@ -65,8 +65,8 @@ namespace _02Script.Manager
         {
             if (isSceneChange)
             {
-                GameManager.Instance.curScene = name;
-                GameManager.Instance.PlayerStat.sceneName = name;
+                HouseManager.Instance.curScene = name;
+                HouseManager.Instance.PlayerStat.sceneName = name;
                 SceneManager.LoadScene(name);
             }
         }
