@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using _02Script.Etc;
+using _02Script.GoHouse.Block;
 using _02Script.GoHouse.SO;
 using _02Script.Inventory.Item;
 using _02Script.SaveData;
@@ -9,7 +10,7 @@ using Random = UnityEngine.Random;
 
 namespace _02Script.GoHouse.Etc
 {
-    public class GoHouseSaveManager : GameSaveManager
+    public class GoHouseSaveManager : GameSaveManager<GoHouseSaveManager>
     {
         public static Action<SaveDictionary<ItemType, List<float>>> OnSaveItem;
         
@@ -25,13 +26,15 @@ namespace _02Script.GoHouse.Etc
         {
             LessSO.OnLess += Less;
             DieSO.OnDie += FailGame;
-            HouseSO.OnPortalEnter += Success;
+            BlockPlayer.OnReSet += FailGame;
+            HouseSO.OnSuccess += Success;
         }
         private void OnDisable()
         {
             LessSO.OnLess -= Less;
             DieSO.OnDie -= FailGame;
-            HouseSO.OnPortalEnter -= Success;
+            BlockPlayer.OnReSet -= FailGame;
+            HouseSO.OnSuccess -= Success;
         }
         #endregion
         
@@ -44,12 +47,10 @@ namespace _02Script.GoHouse.Etc
         #endregion
 
         #region Success & Fail
-
         private void Success(string s,BlockActionSO SS)
         {
             SaveData();
         }
-        
         protected override async void SaveData() //성공 || 스킵
         {
             //성공도 안했는데 끔으로 사기 치려는 사람을 방지 하려고

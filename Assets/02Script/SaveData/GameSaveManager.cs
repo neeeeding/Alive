@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace _02Script.SaveData
 {
-    public class GameSaveManager: Singleton<HouseManager>
+    public class GameSaveManager<T> : Singleton<T> where T : MonoBehaviour
+
     {
         //Action --------------------------------------------------------------------------
         public static Action OnStart; //모든 초기화 완료 후
@@ -17,6 +18,8 @@ namespace _02Script.SaveData
         [Header("Public")]
         public GameSaveData saveData; //기기에서만 저장 되는 것들 (ex: 저장 안한 진행사항)
         public PlayerStatSC PlayerStat; //플레이어 정보
+        
+        public bool isStart; //시작에 관해서
 
         [ContextMenu("ResetAll")]
         public virtual void ResetDate() //초기화 하기
@@ -27,6 +30,7 @@ namespace _02Script.SaveData
 
         protected virtual void Awake()
         {
+            isStart = false;
             if (Instance != null && Instance != this) //더 있으면
             {
                 Destroy(gameObject);
@@ -73,6 +77,7 @@ namespace _02Script.SaveData
         protected virtual void Start()
         {
             OnStart?.Invoke();
+            isStart = true;
         }
 
         protected virtual void OnApplicationQuit()

@@ -12,22 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e17893d3e3fd4572bdb49e3a5700954d, type: 3}
   m_Name: StageSO
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.GoHouse.Stage.StageSO
-  stageName: s
+  stageName: test
   stageNum: 0
-  moveCount: 100
+  moveCount: 20
   playerPos: {x: 0, y: 0}
   stageBlocks:
   - columns:
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
-    - {fileID: 11400000, guid: 62059af8e7c005a4ea6c49c71ffe4dce, type: 2}
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
-    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
+    - {fileID: 11400000, guid: 799ca323f7e77c94599e93caa171599a, type: 2}
+    - {fileID: 11400000, guid: 83bd6c23e1538a64688c8b6d72f425f3, type: 2}
   - columns:
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
-    - {fileID: 11400000, guid: 900163fd68ea691448489d128a3eae19, type: 2}
+    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
+    - {fileID: 11400000, guid: 62059af8e7c005a4ea6c49c71ffe4dce, type: 2}
+  - columns:
+    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
+    - {fileID: 11400000, guid: 136c52a629ef834478903c9e79dad9d0, type: 2}
+    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
+    - {fileID: 11400000, guid: 851a8e72d2a71bb49ba10b1ad4211f80, type: 2}
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
   - columns:
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
@@ -39,11 +45,5 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
     - {fileID: 11400000, guid: 82466eaf14439bd4888e414f59fc24a5, type: 2}
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
-    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
-    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
-  - columns:
-    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
-    - {fileID: 11400000, guid: 799ca323f7e77c94599e93caa171599a, type: 2}
-    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
-    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
+    - {fileID: 11400000, guid: 900163fd68ea691448489d128a3eae19, type: 2}
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}

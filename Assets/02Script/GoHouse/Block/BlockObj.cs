@@ -49,11 +49,13 @@ namespace _02Script.GoHouse.Block
         {
             KeySO.OnKey += KeyLockRoom;
             DieSO.OnDie += Die;
+            BlockPlayer.OnReSet += Die;
         }
         private void OnDisable()
         {
             KeySO.OnKey -= KeyLockRoom;
             DieSO.OnDie -= Die;
+            BlockPlayer.OnReSet -= Die;
         }
         private void Awake()
         {

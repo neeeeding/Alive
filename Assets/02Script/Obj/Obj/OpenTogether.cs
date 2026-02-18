@@ -18,7 +18,8 @@ namespace _02Script.Obj.Obj
 
         private void OnDisable()
         {
-            obj.SetActive(false);
+            if(obj)
+                obj.SetActive(false);
         }
     }
 }

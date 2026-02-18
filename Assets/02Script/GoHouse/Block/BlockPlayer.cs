@@ -1,5 +1,7 @@
-﻿using _02Script.DoTweenUI.Warring;
+﻿using System;
+using _02Script.DoTweenUI.Warring;
 using _02Script.GoHouse.SO;
+using _02Script.GoHouse.UI;
 using DG.Tweening;
 using UnityEngine;
 
@@ -7,6 +9,8 @@ namespace _02Script.GoHouse.Block
 {
     public class BlockPlayer : MonoBehaviour
     {
+        public static Action OnReSet;
+        
         [SerializeField] private MoveCountUI countUI;
         
         private BlockManager _blockManager;
@@ -24,14 +28,14 @@ namespace _02Script.GoHouse.Block
         {
             InputBtn.OnMoveBtn += BaseMove;
             AutoMoveSO.OnMove += AutoMove;
-            HouseSO.OnPortalEnter += House;
+            HouseSO.OnSuccess += House;
             MoveCountSO.OnMove += MoveCount;
         }
         private void OnDisable()
         {
             InputBtn.OnMoveBtn -= BaseMove;
             AutoMoveSO.OnMove -= AutoMove;
-            HouseSO.OnPortalEnter -= House;
+            HouseSO.OnSuccess -= House;
             MoveCountSO.OnMove += MoveCount;
         }
         private void Awake()
@@ -77,7 +81,7 @@ namespace _02Script.GoHouse.Block
             if (_curMove >= _canMove)
             {
                 WarringManager.Warring.ShowWarring("이동 횟수를 초과했습니다.");
-                //게임 초기화 및 5% 뺏기 (주석)
+                OnReSet?.Invoke();
                 return null;
             }
             

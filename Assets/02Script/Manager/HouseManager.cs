@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 namespace _02Script.Manager
 {
-    public class HouseManager : GameSaveManager
+    public class HouseManager : GameSaveManager<HouseManager>
     {
         //Action --------------------------------------------------------------------------
         public static Action OnNextDay; //다음날이 됨.
@@ -30,8 +30,6 @@ namespace _02Script.Manager
         public Player housePlayer; //플레이어 (state 조정 해줌(?))
         public ItemHold itemPos; //플레이어가 들고 있을 아이템 위치
         public ItemDataSO holdItemData;
-        
-        public bool isStart; //시작에 관해서
 
         [ContextMenu("ResetAll")]
         public override void ResetDate() //초기화 하기
@@ -43,17 +41,10 @@ namespace _02Script.Manager
         protected override void Awake()
         {
             base.Awake();
-            isStart = false;
             //DontDestroyOnLoad(gameObject); //삭제 되지 말라고
             
             curScene = SceneManager.GetActiveScene().name; //현재 씬 알려주기
             StartCoroutine(NowDate());
-        }
-
-        protected override void Start()
-        {
-            base.Start();
-            isStart = true;
         }
 
         public void SetLove(DialogEntitySO dialogEntity, int love) //정보 넣고 해당 호감도 스탯에서의 이름 찾아서 전해주기

@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using _02Script.Etc;
 using _02Script.GoHouse.SO;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
+using _02Script.UI.Save;
 
 namespace _02Script.GoHouse.Etc
 {
@@ -12,21 +14,46 @@ namespace _02Script.GoHouse.Etc
         
         protected override void OnEnable()
         {
-            base.OnEnable();
+            LoadCard.OnLoad += LoadItem;
+            
+            if(GoHouseSaveManager.Instance.isStart && ItemDatas.Count <= 0)
+            {
+                LoadItem();
+            }
+            
             BossItemSO.OnGetItem += GetBossItem;
-            HouseSO.OnPortalEnter += AllWantGet;
-            GoHouseSaveManager.OnSaveItem += OnAllItemGet;
+            HouseSO.OnSuccess += AllWantGet;
+            GoHouseSaveManager.OnSaveItem += AllItemGet;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
             BossItemSO.OnGetItem -= GetBossItem;
-            HouseSO.OnPortalEnter -= AllWantGet;
-            GoHouseSaveManager.OnSaveItem -= OnAllItemGet;
+            HouseSO.OnSuccess -= AllWantGet;
+            GoHouseSaveManager.OnSaveItem -= AllItemGet;
         }
 
-        private void OnAllItemGet(SaveDictionary<ItemType, List<float>> allItems)
+        protected override void LoadItem() //불러오기
+        {
+            SettingAllDataSO();
+            Dictionary<ItemType, List<float>> save = GoHouseSaveManager.Instance.PlayerStat.items.ToDictionary();
+
+            foreach (KeyValuePair<ItemType, ItemDataSO> item in AllDataSO.ToList())
+            {
+                ThrowItem(item.Value,9999999);
+            }
+
+            foreach (KeyValuePair<ItemType, List<float>> item in save.ToList())
+            {
+                foreach (int num in item.Value.ToList())
+                {
+                    AddItem(AllDataSO[item.Key], num);
+                }
+            }
+        }
+
+        private void AllItemGet(SaveDictionary<ItemType, List<float>> allItems)
         {
             foreach (KeyValuePair<ItemType, List<float>> items in allItems.ToDictionary())
             {
@@ -40,7 +67,7 @@ namespace _02Script.GoHouse.Etc
         private void GetBossItem(ItemDataSO item, int count)
         {
             _wantGet.Add((item, count));
-            HouseSO.OnPortalEnter -= AllWantGet;
+            HouseSO.OnSuccess -= AllWantGet;
         }
 
         private void AllWantGet(string s,BlockActionSO b)

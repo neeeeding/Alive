@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _02Script.Battle
 {
-    public class BattleSaveManager : GameSaveManager
+    public class BattleSaveManager : GameSaveManager<BattleSaveManager>
     {
         private readonly string _battleItemSave = "battleGameSaveData"; // 저장 경로
 

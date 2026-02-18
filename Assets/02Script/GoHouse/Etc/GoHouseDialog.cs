@@ -28,15 +28,15 @@ namespace _02Script.GoHouse.Etc
             chapter = c;
             finalNum = f;
             int baseChapter = (chapter%100) + (int)entity.EntityName;
-            int.TryParse(HouseManager.Instance.PlayerStat.characterLastText[entity.EntityName][DialogType.Chapter],out chapter);
+            int.TryParse(GoHouseSaveManager.Instance.PlayerStat.characterLastText[entity.EntityName][DialogType.Chapter],out chapter);
             if (chapter <= 0) chapter = baseChapter;
-            int.TryParse(HouseManager.Instance.PlayerStat.characterLastText[entity.EntityName][DialogType.Num],out finalNum);
+            int.TryParse(GoHouseSaveManager.Instance.PlayerStat.characterLastText[entity.EntityName][DialogType.Num],out finalNum);
             if (finalNum <= 0) finalNum = 1;
                 
             OnChat?.Invoke(entity,this);
             
             chat.DialogSetting(entity, this);
-            HouseManager.Instance.PlayerStat.isChat = true;
+            GoHouseSaveManager.Instance.PlayerStat.isChat = true;
         }
     }
 }

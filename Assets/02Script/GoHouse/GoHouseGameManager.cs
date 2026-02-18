@@ -14,23 +14,24 @@ namespace _02Script.GoHouse
         {
             successWindow.SetActive(false);
             battleWindow.SetActive(false);
-            HouseSO.OnPortalEnter += Success;
+            HouseSO.OnSuccess += Success;
 
         }
         private void OnDisable()
         {
-            HouseSO.OnPortalEnter -= Success;   
+            HouseSO.OnSuccess -= Success;   
         }
         #endregion
 
         #region BlockAction
         private async void Success(string sceneName, BlockActionSO so)
         {
+            print("ok");
             if (so as BattleSO != null)
                 battleWindow.SetActive(true);
             else
                 successWindow.SetActive(true);
-            await AsyncTime.WaitSeconds(5, false);
+            await AsyncTime.WaitSeconds(2);
             SceneManager.LoadScene(sceneName);
         }
         #endregion

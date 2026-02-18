@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _02Script.Etc;
 using _02Script.GoHouse.SO;
 using _02Script.GoHouse.Stage;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _02Script.GoHouse.Block
 {
@@ -33,16 +35,23 @@ namespace _02Script.GoHouse.Block
             _blockPos[pos].EnterBlock();
         }
 
+        public void Skip()
+        {
+            _typeBlock[BlockType.House][0].EnterBlock();
+        }
+
         #region EnDiAw
         private void OnEnable()
         {
             PortalSO.OnPortalEnter += Portal;
             DieSO.OnDie += Die;
+            BlockPlayer.OnReSet += Die;
         }
         private void OnDisable()
         {
             PortalSO.OnPortalEnter -= Portal;
             DieSO.OnDie -= Die;
+            BlockPlayer.OnReSet -= Die;
         }
         private void Awake()
         {

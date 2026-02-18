@@ -12,12 +12,12 @@ namespace _02Script.Etc
             {
                 if (instance == null)
                 {
-                    instance = (T)FindAnyObjectByType(typeof(T));
+                    instance = FindAnyObjectByType<T>();
 
                     if (instance == null)
                     {
-                        GameObject obj = new GameObject(typeof(T).Name, typeof(T));
-                        instance = obj.GetComponent<T>();
+                        GameObject obj = new GameObject(typeof(T).Name);
+                        instance = obj.AddComponent<T>();
                     }
                 }
 

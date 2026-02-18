@@ -36,7 +36,7 @@ namespace _02Script.Battle.Entity
             _isSetStat = false;
             base.OnEnable();
             Monster.Monster.OnSelect += Target;
-            HouseManager.OnStart += SetStats;
+            BattleSaveManager.OnStart += SetStats;
             Monster.Monster.OnDie += TargetDie;
             WeaponInventoryCard.OnMouseClick += ChangeWeapon;
             hpUI.SetCharacter(entity.EntityName);
@@ -55,7 +55,7 @@ namespace _02Script.Battle.Entity
         private void OnDisable()
         {
             Monster.Monster.OnSelect -= Target;
-            HouseManager.OnStart -= SetStats;
+            BattleSaveManager.OnStart -= SetStats;
             Monster.Monster.OnDie -= TargetDie;
             WeaponInventoryCard.OnMouseClick -= ChangeWeapon;
         }
@@ -132,7 +132,7 @@ namespace _02Script.Battle.Entity
         private void SetStats()
         {
             if(_isSetStat) return;
-            Dictionary<StatsType, int> stats = HouseManager.Instance.PlayerStat.characterStats[entity.EntityName].ToDictionary();
+            Dictionary<StatsType, int> stats = BattleSaveManager.Instance.PlayerStat.characterStats[entity.EntityName].ToDictionary();
             _stats.Clear();
             foreach (StatsType sta in Enum.GetValues(typeof(StatsType)))
             {
