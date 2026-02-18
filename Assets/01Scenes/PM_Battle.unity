@@ -4406,7 +4406,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 828992203}
-  - component: {fileID: 828992202}
+  - component: {fileID: 828992204}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -4414,26 +4414,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &828992202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828992201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dad653f0ccef49718f9a45d88e7c2207, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Etc.StartGiveItem
-  itemData:
-    _serializedList:
-    - Key: {fileID: 11400000, guid: 504d613266350d04a8a2881f2e006c9e, type: 2}
-      Value: 02000000320000001e00000064000000
-    - Key: {fileID: 11400000, guid: fcc4659dc5851594bbfc480bb18b2928, type: 2}
-      Value: 32000000
-    - Key: {fileID: 11400000, guid: f1fb6e640a98b4f47b7e0a287c6d015b, type: 2}
-      Value: 32000000
 --- !u!4 &828992203
 Transform:
   m_ObjectHideFlags: 0
@@ -4449,6 +4429,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &828992204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828992201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd7294a90e9f47c7bf68c0cac7d4fc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.TestGiveItem
+  itemData:
+    _serializedList:
+    - Key: {fileID: 11400000, guid: 504d613266350d04a8a2881f2e006c9e, type: 2}
+      Value: 02000000320000001e00000064000000
+    - Key: {fileID: 11400000, guid: fcc4659dc5851594bbfc480bb18b2928, type: 2}
+      Value: 32000000
+    - Key: {fileID: 11400000, guid: f1fb6e640a98b4f47b7e0a287c6d015b, type: 2}
+      Value: 32000000
 --- !u!1 &843305988
 GameObject:
   m_ObjectHideFlags: 0
@@ -10455,7 +10455,7 @@ GameObject:
   - component: {fileID: 1788348164}
   - component: {fileID: 1788348165}
   m_Layer: 0
-  m_Name: Game Manager
+  m_Name: Save Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10485,12 +10485,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1788348163}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf130c4470f3a341acc953ba4f5370a, type: 3}
+  m_Script: {fileID: 11500000, guid: 45c12daa68444fdc87f075f3e9cfb318, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  GamePath: gameSaveData
-  curScene: 
-  dayTimeDelay: 0.0034722222
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.BattleSaveManager
   saveData:
     sound:
       mainSound: 0
@@ -10544,9 +10541,6 @@ MonoBehaviour:
       ks: 
     getDictionaryPage: 
     getDictionaryPageMemo: []
-  housePlayer: {fileID: 0}
-  itemPos: {fileID: 0}
-  holdItemData: {fileID: 0}
   isStart: 0
 --- !u!1 &1810232831
 GameObject:
@@ -13216,6 +13210,6 @@ SceneRoots:
   - {fileID: 1117661294}
   - {fileID: 1750006493}
   - {fileID: 496757179}
-  - {fileID: 1707107142}
   - {fileID: 603277510}
+  - {fileID: 1707107142}
   - {fileID: 828992203}

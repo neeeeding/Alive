@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RightAutoMove
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.GoHouse.SO.BlockSO
   blockType: 202
-  blockImage: {fileID: 0}
+  blockImage: {fileID: 21300000, guid: 506545fcc5681584db749203ef081ab2, type: 3}
   baseImage: {fileID: 0}
   actions:
   - {fileID: 11400000, guid: 93e205d7aa85a6b42817b954cd33096b, type: 2}

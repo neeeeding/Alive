@@ -3,12 +3,14 @@ using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.SaveData;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _02Script.Battle
 {
     public class BattleSaveManager : GameSaveManager<BattleSaveManager>
     {
         private readonly string _battleItemSave = "battleGameSaveData"; // 저장 경로
+        private readonly string _miniGameScene = "GoHouse";
 
         private SaveDictionary<ItemType, List<float>> _items
             = new SaveDictionary<ItemType, List<float>>(); //채집의 얻은 것들
@@ -38,6 +40,13 @@ namespace _02Script.Battle
             string json = JsonUtility.ToJson(_items);
             PlayerPrefs.SetString(_battleItemSave, json);
             PlayerPrefs.Save();
+            SceneChange();
+        }
+
+        private async void SceneChange()
+        {
+            await AsyncTime.WaitSeconds(1);
+            SceneManager.LoadScene(_miniGameScene);
         }
 
         private void FailGame() //실패시 비워버림

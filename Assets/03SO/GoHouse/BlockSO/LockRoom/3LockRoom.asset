@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 3LockRoom
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.GoHouse.SO.BlockSO
   blockType: 204
-  blockImage: {fileID: 0}
+  blockImage: {fileID: 21300000, guid: 645ef1480932c6445bfd3eec1695159b, type: 3}
   baseImage: {fileID: 0}
   actions:
   - {fileID: 11400000, guid: 4adacdf25f34f1741b65c0d36337cffc, type: 2}

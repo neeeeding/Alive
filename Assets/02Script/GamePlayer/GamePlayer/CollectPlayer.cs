@@ -1,4 +1,6 @@
-﻿using _02Script.GamePlayer.State;
+﻿using _02Script.Battle;
+using _02Script.GamePlayer.State;
+using _02Script.UI.person;
 
 namespace _02Script.GamePlayer.GamePlayer
 {
@@ -8,6 +10,13 @@ namespace _02Script.GamePlayer.GamePlayer
         {
             base.Awake();
             stateMachine.AddState(PlayerStateType.Collect, new PCollectState("Collect", stateMachine, this));
+        }
+
+        protected override  void AddStats(StatsType type, int add) //스탯
+        {
+            if(!isCurPlayer) return;
+            
+            BattleSaveManager.Instance.PlayerStat.characterStats[playerName][type] += add;
         }
     }
 }

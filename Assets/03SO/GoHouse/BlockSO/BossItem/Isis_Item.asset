@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Isis_Item
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.GoHouse.SO.BlockSO
   blockType: 201
-  blockImage: {fileID: 0}
+  blockImage: {fileID: 21300000, guid: 771f05b37ac8a874dab40147dea23698, type: 3}
   baseImage: {fileID: 0}
   actions:
   - {fileID: 11400000, guid: 23fd38e4491648f4f96668a86faab8a1, type: 2}

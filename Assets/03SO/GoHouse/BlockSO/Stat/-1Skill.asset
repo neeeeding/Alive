@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: -1Skill
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.GoHouse.SO.BlockSO
   blockType: 209
-  blockImage: {fileID: 0}
+  blockImage: {fileID: 21300000, guid: bcd0016e9cd57a54990608e48e278e02, type: 3}
   baseImage: {fileID: 0}
   actions:
   - {fileID: 11400000, guid: 27bc63858d6962448963f0ca683f53fc, type: 2}

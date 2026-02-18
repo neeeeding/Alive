@@ -1,7 +1,10 @@
 using System.Collections.Generic;
+using _02Script.Battle;
 using _02Script.DoTweenUI.Warring;
+using _02Script.GoHouse.Etc;
 using _02Script.Manager;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _02Script.Inventory.Item
 {
@@ -10,6 +13,9 @@ namespace _02Script.Inventory.Item
         private ItemDataSO _itemBaseData;
 
         private int _itemCount;
+        private readonly string am = "AM_House";
+        private readonly string pm = "PM_Battle";
+        private readonly string mini = "GoHouse";
 
         public int ItemCount()
         {
@@ -48,7 +54,12 @@ namespace _02Script.Inventory.Item
                     {
                         _itemCount = 0;
                     }
-                    HouseManager.Instance.PlayerStat.items[_itemBaseData.itemType][0] =  _itemCount;
+                    if(SceneManager.GetActiveScene().name == am)
+                        HouseManager.Instance.PlayerStat.items[_itemBaseData.itemType][0] =  _itemCount;
+                    if(SceneManager.GetActiveScene().name == mini)
+                        GoHouseSaveManager.Instance.PlayerStat.items[_itemBaseData.itemType][0] =  _itemCount;
+                    if(SceneManager.GetActiveScene().name == pm)
+                        BattleSaveManager.Instance.PlayerStat.items[_itemBaseData.itemType][0] =  _itemCount;
                     
                     break;
                 
@@ -57,7 +68,12 @@ namespace _02Script.Inventory.Item
                 case ItemCategory.weapon:
                 case ItemCategory.machine:
                     _itemCount--;
-                    HouseManager.Instance.PlayerStat.items[_itemBaseData.itemType].Remove(use);
+                    if(SceneManager.GetActiveScene().name == am)
+                        HouseManager.Instance.PlayerStat.items[_itemBaseData.itemType].Remove(use);
+                    if(SceneManager.GetActiveScene().name == mini)
+                        GoHouseSaveManager.Instance.PlayerStat.items[_itemBaseData.itemType].Remove(use);
+                    if(SceneManager.GetActiveScene().name == pm)
+                        BattleSaveManager.Instance.PlayerStat.items[_itemBaseData.itemType].Remove(use);
                     break;
             }
             
@@ -78,7 +94,13 @@ namespace _02Script.Inventory.Item
                 case ItemCategory.armor:
                 case ItemCategory.weapon:
                 case ItemCategory.machine:
-                    List<float> list = HouseManager.Instance.PlayerStat.items[_itemBaseData.itemType];
+                    List<float> list = new List<float>();
+                    if(SceneManager.GetActiveScene().name == am)
+                        list = HouseManager.Instance.PlayerStat.items[_itemBaseData.itemType];
+                    if(SceneManager.GetActiveScene().name == mini)
+                        list = GoHouseSaveManager.Instance.PlayerStat.items[_itemBaseData.itemType];
+                    if(SceneManager.GetActiveScene().name == pm)
+                        list = BattleSaveManager.Instance.PlayerStat.items[_itemBaseData.itemType];
 
                     for (int i = 0; i < list.Count; i++)
                     {
@@ -112,7 +134,12 @@ namespace _02Script.Inventory.Item
                     {
                         _itemCount = _itemBaseData.maxCount;
                     }
-                    HouseManager.Instance.PlayerStat.items[_itemBaseData.itemType][0] =  _itemCount;
+                    if(SceneManager.GetActiveScene().name == am)
+                        HouseManager.Instance.PlayerStat.items[_itemBaseData.itemType][0] =  _itemCount;
+                    if(SceneManager.GetActiveScene().name == mini)
+                        GoHouseSaveManager.Instance.PlayerStat.items[_itemBaseData.itemType][0] =  _itemCount;
+                    if(SceneManager.GetActiveScene().name == pm)
+                        BattleSaveManager.Instance.PlayerStat.items[_itemBaseData.itemType][0] =  _itemCount;
                     
                     break;
                 
@@ -121,7 +148,12 @@ namespace _02Script.Inventory.Item
                 case ItemCategory.weapon:
                 case ItemCategory.machine:
                     _itemCount++;
-                    HouseManager.Instance.PlayerStat.items[_itemBaseData.itemType].Add(add);
+                    if(SceneManager.GetActiveScene().name == am)
+                        HouseManager.Instance.PlayerStat.items[_itemBaseData.itemType].Add(add);
+                    if(SceneManager.GetActiveScene().name == mini)
+                        GoHouseSaveManager.Instance.PlayerStat.items[_itemBaseData.itemType].Add(add);
+                    if(SceneManager.GetActiveScene().name == pm)
+                        BattleSaveManager.Instance.PlayerStat.items[_itemBaseData.itemType].Add(add);
                     break;
             }
         }

@@ -34,7 +34,11 @@ namespace _02Script.Inventory.Inventory
         {
             SettingAllDataSO();
             Dictionary<ItemType, List<float>> save = HouseManager.Instance.PlayerStat.items.ToDictionary();
+            LoadItem(save);
+        }
 
+        protected virtual void LoadItem(Dictionary<ItemType, List<float>> save)
+        {
             foreach (KeyValuePair<ItemType, ItemDataSO> item in AllDataSO.ToList())
             {
                 ThrowItem(item.Value,9999999);

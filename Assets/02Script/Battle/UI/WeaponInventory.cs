@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using _02Script.Battle.Entity;
 using _02Script.Collect.Item;
@@ -7,6 +8,7 @@ using _02Script.Etc;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
+using _02Script.UI.Save;
 using AYellowpaper.SerializedCollections;
 using TMPro;
 using UnityEngine;
@@ -30,7 +32,12 @@ namespace _02Script.Battle.UI
         #region EnDiAw
         protected override void OnEnable()
         {
-            base.OnEnable();
+            LoadCard.OnLoad += LoadItem;
+            
+            if(BattleSaveManager.Instance.isStart && ItemDatas.Count <= 0)
+            {
+                LoadItem();
+            }
             WeaponInventoryCard.OnMouseClick += CloseWeaponInventory;
             CollectItem.OnGetItem += GetItem;
             BattleCharacter.OnSkillWeapon += WeaponDamage;
@@ -50,6 +57,12 @@ namespace _02Script.Battle.UI
         private void CloseWeaponInventory(WeaponInventoryCard _w, EntityName _e)
         {
             inventoryWindow.gameObject.SetActive(false);
+        }
+        protected override void LoadItem() //불러오기
+        {
+            SettingAllDataSO();
+            Dictionary<ItemType, List<float>> save = BattleSaveManager.Instance.PlayerStat.items.ToDictionary();
+            LoadItem(save);
         }
 
         #region WeaponDamage

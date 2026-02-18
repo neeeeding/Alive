@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using _02Script.Etc;
 using _02Script.GoHouse.SO;
 using _02Script.Inventory.Inventory;
@@ -38,19 +37,7 @@ namespace _02Script.GoHouse.Etc
         {
             SettingAllDataSO();
             Dictionary<ItemType, List<float>> save = GoHouseSaveManager.Instance.PlayerStat.items.ToDictionary();
-
-            foreach (KeyValuePair<ItemType, ItemDataSO> item in AllDataSO.ToList())
-            {
-                ThrowItem(item.Value,9999999);
-            }
-
-            foreach (KeyValuePair<ItemType, List<float>> item in save.ToList())
-            {
-                foreach (int num in item.Value.ToList())
-                {
-                    AddItem(AllDataSO[item.Key], num);
-                }
-            }
+            LoadItem(save);
         }
 
         private void AllItemGet(SaveDictionary<ItemType, List<float>> allItems)

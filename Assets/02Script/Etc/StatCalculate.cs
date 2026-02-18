@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using _02Script.Manager;
+using _02Script.Battle;
 using _02Script.Obj.Entity;
 using _02Script.UI.person;
 using UnityEngine;
@@ -20,10 +20,10 @@ namespace _02Script.Etc
             if (character == EntityName.None || statType == StatsType.none) return 0;
             if (statType == StatsType.curHp) //체력은 계산할 필요가 없음.
             {
-                return HouseManager.Instance.PlayerStat.characterStats[character][StatsType.curHp];
+                return BattleSaveManager.Instance.PlayerStat.characterStats[character][StatsType.curHp];
             }
             
-            int stat = HouseManager.Instance.PlayerStat.characterStats[character][statType];
+            int stat = BattleSaveManager.Instance.PlayerStat.characterStats[character][statType];
             
             float statValue = _allValues[statType].baseValue;
 

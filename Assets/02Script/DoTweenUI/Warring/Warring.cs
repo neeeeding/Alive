@@ -17,9 +17,11 @@ namespace _02Script.DoTweenUI.Warring
         public virtual async void ShowWarring(string massage = "오류가 발생했습니다.", float i =1)
         {
             text.text = massage;
-            warringObj.SetActive(true);
+            if(warringObj)
+                warringObj.SetActive(true);
             await AsyncTime.WaitSeconds(i, true);
-            warringObj.SetActive(false);
+            if(warringObj)
+                warringObj.SetActive(false);
         }
     }
 }

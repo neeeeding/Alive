@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+using _02Script.Battle;
 using _02Script.Collect.Item;
 using _02Script.DoTweenUI.Warring;
 using _02Script.Etc;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
-using _02Script.Manager;
 using _02Script.Obj.Entity;
 using _02Script.UI.person;
 using AYellowpaper.SerializedCollections;
@@ -30,13 +30,13 @@ namespace _02Script.Collect
         {
             CollectItem.OnGetItem += GetItem;
             _curCount = 0;
-            HouseManager.OnStart += SetStart;
+            BattleSaveManager.OnStart += SetStart;
         }
 
         protected override void OnDisable()
         {
             CollectItem.OnGetItem -= GetItem;
-            HouseManager.OnStart -= SetStart;
+            BattleSaveManager.OnStart -= SetStart;
         }
         #endregion
 
