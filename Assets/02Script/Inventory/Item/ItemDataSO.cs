@@ -226,11 +226,52 @@ namespace _02Script.Inventory.Item
         [Description("흰 밥")]warmRice = 3601,
         [Description("콩 밥")]beanRice = 3602,
         
-        //무기 (100씩 분류) (칼류,발사체(총류), 
+        //무기 (100씩 분류) ( 특수(비림이니, 블리베루...),근접, 원거리, 투척, 특수 무기, 중화기)
         [Description("무딘 칼")]justKnife = 4001,
         [Description("비림이니")] biriminini = 4002,
         
         [Description("바주카")] bazooka = 4101, //M9A1
+        
+        [Description("날카로운 검")]sharpSword = 4401,
+        [Description("무진장 무거운 대검")]heavyGreatsword,
+        [Description("은밀한 단검")]stealthDagger,
+        [Description("귀족의 레이피어")]nobleRapier,
+        [Description("녹슨 도끼")]rustyAxe,
+        [Description("둔한 망치")]bluntHammer,
+        [Description("심판의 철퇴")]judgementMace,
+        [Description("싸구려 야구 방망이")]cheapBat,
+        [Description("갈라진 나무 몽둥이")]splitClub,
+        [Description("봉 창")]spear,
+        [Description("오래된 할버드")]oldHalberd,
+        [Description("고통의 채찍")]painWhip,
+        [Description("격투가의 너클")]fighterKnuckle,
+        [Description("사슬 철퇴")]chainMace,
+        [Description("집행자의 낫")]executionerScythe,
+
+        [Description("가벼운 활")]lightBow = 4501,
+        [Description("장전된 석궁")]loadedCrossbow,
+        [Description("날으는 투창")]flyingJavelin,
+        [Description("회전하는 수리검")]spinningShuriken,
+        [Description("목동의 투석구")]shepherdSling,
+
+        [Description("낡은 단총")]oldPistol = 4601,
+        [Description("보안관의 리볼버")]sheriffRevolver,
+        [Description("전장의 기관총")]battleMachineGun,
+        [Description("군용 소총")]militaryRifle,
+        [Description("근접용 샷건")]combatShotgun,
+
+        [Description("표준 수류탄")]standardGrenade = 4701,
+        [Description("불붙은 화염병")]molotovCocktail,
+        [Description("검은 폭탄")]blackBomb,
+        [Description("날렵한 쿠나이")]swiftKunai,
+
+        [Description("군용 레이저 건")]militaryLaserGun = 4801,
+        [Description("자유로운 화염 방사기")]flamethrower,
+        [Description("고압 전기 건")]electricGun,
+
+        [Description("유탄 발사기")]grenadeLauncher = 4901,
+        [Description("성벽 대포")]cannon,
+        [Description("공성 발리스타")]ballista,
         
         [Description("방패")]justShield = 5001,
         

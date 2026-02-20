@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06853ab251574d53a83c2f47f34d2360, type: 3}
+  m_Name: overcharge
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.BuffSO
+  isDeBuff: 0
+  buffType: 11002
+  buffName: "\uACFC\uCDA9\uC804"
+  buffExplanation: "2\uCD08 \uB9C8\uB2E4 \uD0C0\uACA9\uC774 8 \uC99D\uAC00\uD55C\uB2E4.
+    (5\uCD08)"
+  useStatType:
+    _serializedList:
+    - Key: 2
+      Value: 8
+  repeatCount: 2
+  repeatDelay: 2
+  isOverlap: 0
+  buffDelay: 5

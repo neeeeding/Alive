@@ -20,7 +20,7 @@ namespace _02Script.Inventory.Etc
             HouseManager.OnStart -= Set;
         }
 
-        protected void Set()
+        protected virtual void Set()
         {
             foreach (KeyValuePair<ItemDataSO, List<int>> item in itemData)
             {

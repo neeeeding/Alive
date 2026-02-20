@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06853ab251574d53a83c2f47f34d2360, type: 3}
+  m_Name: fortitude
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.BuffSO
+  isDeBuff: 0
+  buffType: 20002
+  buffName: "\uAC15\uC778\uD568"
+  buffExplanation: "30\uCD08 \uB3D9\uC548 \uAE30\uBCF8 \uCCB4\uB825\uC774 30 \uC99D\uAC00\uD558\uACE0
+    \uD0C0\uACA9\uC774 10 \uC99D\uAC00\uD558\uACE0 \uBBFC\uCCA9\uC774 2 \uC99D\uAC00\uD558\uACE0
+    \uBC29\uC5B4\uAC00 5 \uC99D\uAC00\uD558\uACE0 \uD68C\uBCF5\uC774 0.2 \uC99D\uAC00\uD558\uACE0
+    \uB0B4\uC131\uC774 -5 \uAC10\uC18C\uD558\uACE0 \uC9C0\uC18D\uC774 -5 \uAC10\uC18C\uD569\uB2C8\uB2E4.
+    (30\uCD08)"
+  useStatType:
+    _serializedList:
+    - Key: 1024
+      Value: 30
+    - Key: 2
+      Value: 10
+    - Key: 4
+      Value: 2
+    - Key: 8
+      Value: 5
+    - Key: 32
+      Value: 0.2
+    - Key: 64
+      Value: -5
+    - Key: 128
+      Value: -5
+  repeatCount: 1
+  repeatDelay: 1
+  isOverlap: 0
+  buffDelay: 30

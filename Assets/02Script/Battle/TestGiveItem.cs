@@ -4,7 +4,6 @@ namespace _02Script.Battle
 {
     public class TestGiveItem : StartGiveItem
     {
-        
         private void OnEnable()
         {
             BattleSaveManager.OnStart += Set;

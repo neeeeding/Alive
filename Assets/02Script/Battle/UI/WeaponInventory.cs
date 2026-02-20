@@ -5,10 +5,13 @@ using _02Script.Battle.Entity;
 using _02Script.Collect.Item;
 using _02Script.DoTweenUI.Warring;
 using _02Script.Etc;
+using _02Script.Farming;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
+using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Save;
+using _02Script.UI.Store;
 using AYellowpaper.SerializedCollections;
 using TMPro;
 using UnityEngine;
@@ -32,6 +35,14 @@ namespace _02Script.Battle.UI
         #region EnDiAw
         protected override void OnEnable()
         {
+            DialogItem.OnGetItem += GetOrThrowItem;
+            InGameItem.OnGetItem += AddItem;
+            Field.OnGetViand += AddItem;
+            GameEvent.GameEvent.OnGetItem += AddItem;
+            StoreCard.OnSellItem += AddItem;
+            StoreCard.OnPayItem += ThrowItem;
+            Field.OnUseSeed += ThrowItem;
+            
             LoadCard.OnLoad += LoadItem;
             
             if(BattleSaveManager.Instance.isStart && ItemDatas.Count <= 0)
