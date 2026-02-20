@@ -15,13 +15,13 @@ MonoBehaviour:
   isDeBuff: 0
   buffType: 20003
   buffName: "\uAD81\uADF9 \uC0DD\uBA85"
-  buffExplanation: "20\uCD08 \uB9C8\uB2E4 \uAE30\uBCF8 \uCCB4\uB825\uC774 2 \uC99D\uAC00\uD569\uB2C8\uB2E4.
-    (120\uCD08)"
+  buffExplanation: "1\uBD84 \uB9C8\uB2E4 \uAE30\uBCF8 \uCCB4\uB825\uC774 5 \uC99D\uAC00\uD569\uB2C8\uB2E4.
+    (\uC804\uD22C \uB0B4\uB0B4)"
   useStatType:
     _serializedList:
     - Key: 1024
-      Value: 2
-  repeatCount: 6
-  repeatDelay: 20
-  isOverlap: 1
-  buffDelay: 120
+      Value: 5
+  repeatCount: 160
+  repeatDelay: 60
+  isOverlap: 0
+  buffDelay: 999

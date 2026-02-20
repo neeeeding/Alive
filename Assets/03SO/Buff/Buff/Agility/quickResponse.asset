@@ -15,7 +15,7 @@ MonoBehaviour:
   isDeBuff: 0
   buffType: 12000
   buffName: "\uAC00\uC18D \uBC18\uC751"
-  buffExplanation: "1\uCD08 \uB9C8\uB2E4 \uBBFC\uCCA9\uC774 5 \uC99D\uAC00\uD55C\uB2E4.
+  buffExplanation: "1\uCD08 \uB9C8\uB2E4 \uBBFC\uCCA9\uC774 5 \uC99D\uAC00\uD569\uB2C8\uB2E4.
     (3\uCD08)"
   useStatType:
     _serializedList:

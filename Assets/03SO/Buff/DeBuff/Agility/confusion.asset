@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06853ab251574d53a83c2f47f34d2360, type: 3}
+  m_Name: confusion
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.BuffSO
+  isDeBuff: 1
+  buffType: 52001
+  buffName: "\uD63C\uB780"
+  buffExplanation: "2\uCD08 \uB9C8\uB2E4 \uBBFC\uCCA9\uC774 8 \uAC10\uC18C\uD558\uACE0
+    \uBC29\uC5B4\uAC00 5 \uAC10\uC18C\uD569\uB2C8\uB2E4. (6\uCD08)"
+  useStatType:
+    _serializedList:
+    - Key: 4
+      Value: -8
+    - Key: 8
+      Value: -5
+  repeatCount: 3
+  repeatDelay: 2
+  isOverlap: 0
+  buffDelay: 6

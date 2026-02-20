@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06853ab251574d53a83c2f47f34d2360, type: 3}
+  m_Name: slow
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.BuffSO
+  isDeBuff: 1
+  buffType: 52002
+  buffName: "\uB454\uD654"
+  buffExplanation: "10\uCD08 \uB3D9\uC548 \uBBFC\uCCA9\uC774 20 \uAC10\uC18C\uD558\uACE0
+    \uBC29\uC5B4\uAC00 2 \uC99D\uAC00\uD569\uB2C8\uB2E4. (10\uCD08)"
+  useStatType:
+    _serializedList:
+    - Key: 4
+      Value: -20
+    - Key: 8
+      Value: 2
+  repeatCount: 1
+  repeatDelay: 1
+  isOverlap: 1
+  buffDelay: 10

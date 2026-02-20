@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06853ab251574d53a83c2f47f34d2360, type: 3}
+  m_Name: heavyLoad
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.BuffSO
+  isDeBuff: 1
+  buffType: 58000
+  buffName: "\uBB34\uAC70\uC6B4 \uC9D0"
+  buffExplanation: "\uC804\uD22C \uB0B4\uB0B4 \uC778\uBCA4\uD1A0\uB9AC \uACF5\uAC04\uC774
+    \uC601\uAD6C\uC801\uC73C\uB85C 10\uCE78 \uAC10\uC18C\uD569\uB2C8\uB2E4."
+  useStatType:
+    _serializedList:
+    - Key: 256
+      Value: -10
+  repeatCount: 1
+  repeatDelay: 1
+  isOverlap: 0
+  buffDelay: 999
