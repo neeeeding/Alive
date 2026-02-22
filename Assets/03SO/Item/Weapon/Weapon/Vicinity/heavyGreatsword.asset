@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4575500e906f4599802825a74dd9d8f3, type: 3}
+  m_Name: heavyGreatsword
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.WeaponItemDataSO
+  category: 4
+  itemType: 4403
+  itemName: "\uBB34\uC9C4\uC7A5 \uBB34\uAC70\uC6B4 \uB300\uAC80"
+  itemExplanation: "\uC2A4\uD0AC \uC0AC\uC6A9\uC2DC \uBCF8\uC778\uC5D0\uAC8C [\uCCA0\uBCBD
+    \uD0DC\uC138]\uB97C \uC2DC\uC804\uD558\uACE0, \uD0C0\uAC9F\uC5D0\uAC8C \uB370\uBBF8\uC9C0
+    7\uC744 \uC90D\uB2C8\uB2E4. (\uCFE8\uD0C0\uC784 5, \uB2E4\uC218 \uD0C0\uAC9F\uD305
+    \uAC00\uB2A5)"
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 4
+  collectTime: 2
+  stats: 1
+  addStats: 0
+  baseData: {fileID: 11400000, guid: c7a443a8036709f47a82128295a47541, type: 2}
+  isGlobal: 1
+  skillBuff: {fileID: 11400000, guid: 31144981b23b01747813eb7ecd8a00a4, type: 2}
+  buffGiveEntity: 1
+  skillDamage: 7
+  skillCoolTime: 5

@@ -12,6 +12,7 @@ namespace _02Script.Inventory.Item
         
         public bool isGlobal; //전역인지 단일인지
         public BuffSO skillBuff; //스킬때 사용하는 버프
+        public BuffGiveEntityType buffGiveEntity = BuffGiveEntityType.self; //버프 받는 이
         public float skillDamage; //스킬 시 데미지
         public float skillCoolTime; // 스킬 쿨타임
         
@@ -19,7 +20,6 @@ namespace _02Script.Inventory.Item
 #if UNITY_EDITOR
         protected override void OnValidate()
         {
-            base.OnValidate();
             if(itemName == baseData.itemName) return;
             itemImage = baseData.itemImage;
             maxCount = baseData.maxCount;
@@ -29,7 +29,16 @@ namespace _02Script.Inventory.Item
             addStats = baseData.addStats;
             itemName = baseData.itemName;
             itemExplanation = baseData.itemExplanation;
+            base.OnValidate();
         }
 #endif
+    }
+
+    public enum BuffGiveEntityType
+    {
+        none = 0,
+        self = 1,
+        enemy = 2,
+        otherPlayer = 3, //아군
     }
 }

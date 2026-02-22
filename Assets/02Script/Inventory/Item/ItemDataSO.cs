@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using _02Script.Etc;
 using _02Script.UI.person;
 using UnityEditor;
 using UnityEngine;
@@ -51,6 +52,8 @@ namespace _02Script.Inventory.Item
             string enumName = itemType.ToString();
 
             if (name == enumName) return;
+
+            itemName = EnumToString.Name(itemType);
 
             string path = AssetDatabase.GetAssetPath(this);
             if (string.IsNullOrEmpty(path)) return;
@@ -227,12 +230,12 @@ namespace _02Script.Inventory.Item
         [Description("콩 밥")]beanRice = 3602,
         
         //무기 (100씩 분류) ( 특수(비림이니, 블리베루...),근접, 원거리, 투척, 특수 무기, 중화기)
-        [Description("무딘 칼")]justKnife = 4001,
-        [Description("비림이니")] biriminini = 4002,
+        [Description("바주카")] bazooka = 4001, //M9A1
+        [Description("비림이니")] biriminini = 4101,
+        [Description("전투용 블리베루")] battleBliveru = 4201,
         
-        [Description("바주카")] bazooka = 4101, //M9A1
-        
-        [Description("날카로운 검")]sharpSword = 4401,
+        [Description("무딘 칼")]justKnife = 4401,
+        [Description("날카로운 검")]sharpSword,
         [Description("무진장 무거운 대검")]heavyGreatsword,
         [Description("은밀한 단검")]stealthDagger,
         [Description("귀족의 레이피어")]nobleRapier,
@@ -265,13 +268,8 @@ namespace _02Script.Inventory.Item
         [Description("검은 폭탄")]blackBomb,
         [Description("날렵한 쿠나이")]swiftKunai,
 
-        [Description("군용 레이저 건")]militaryLaserGun = 4801,
-        [Description("자유로운 화염 방사기")]flamethrower,
+        [Description("자유로운 화염 방사기")]flamethrower = 4801,
         [Description("고압 전기 건")]electricGun,
-
-        [Description("유탄 발사기")]grenadeLauncher = 4901,
-        [Description("성벽 대포")]cannon,
-        [Description("공성 발리스타")]ballista,
         
         [Description("방패")]justShield = 5001,
         
