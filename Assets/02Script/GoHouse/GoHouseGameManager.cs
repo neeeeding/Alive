@@ -26,12 +26,11 @@ namespace _02Script.GoHouse
         #region BlockAction
         private async void Success(string sceneName, BlockActionSO so)
         {
-            print("ok");
             if (so as BattleSO != null)
                 battleWindow.SetActive(true);
             else
                 successWindow.SetActive(true);
-            await AsyncTime.WaitSeconds(2);
+            await AsyncTime.WaitSeconds(1);
             SceneManager.LoadScene(sceneName);
         }
         #endregion

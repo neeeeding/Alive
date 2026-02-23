@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bazooka
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.WeaponItemDataSO
   category: 4
-  itemType: 4201
+  itemType: 4001
   itemName: "\uBC14\uC8FC\uCE74"
   itemExplanation: "M1A1\uACFC M9A1\uC744 \uBE44\uAD50\uD558\uC790\uBA74 \uD6C4\uC790\uC640
     \uB354 \uB2EE\uC558\uACE0, \uC628\uD1B5 \uAC80\uC815\uC0C9\uC774\uB2E4. \uC2A4\uD0AC

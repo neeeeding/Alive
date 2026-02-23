@@ -1,23 +1,22 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace _02Script.GameCamera
 {
     public class WheelMoveCameraInput: MonoBehaviour, Controls.IPCActions
     {
-        [SerializeField] private Camera myCamera;
-        [SerializeField] private float cameraMoveSpeed = 4;
-        [SerializeField] private float maxZoomSize = 10;
+        [SerializeField] protected Camera myCamera;
+        [SerializeField] protected float cameraMoveSpeed = 4;
+        [SerializeField] protected float maxZoomSize = 10;
         
         private Controls _controls;
         
-        private Vector2 _wheelValue;
-        private Vector3? _baseWheelValue;
-        private Vector3 _moveValue;
-        private bool _isWheel;
+        protected Vector2 wheelValue;
+        protected Vector3? baseWheelValue;
+        protected Vector3 moveValue;
+        protected bool isWheel;
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             if (_controls == null)
             {
@@ -25,15 +24,14 @@ namespace _02Script.GameCamera
                 _controls.PC.SetCallbacks(this);
             }
             _controls.PC.Enable();
-            _baseWheelValue = null;
-            _isWheel = false;
+            baseWheelValue = null;
+            isWheel = false;
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             _controls.PC.Disable();
         }
-        
         
         void Update()
         {
@@ -47,11 +45,11 @@ namespace _02Script.GameCamera
         public void OnMove(InputAction.CallbackContext context)
         {
             if (!MousePos()) return;
-            _moveValue = (Vector3)context.ReadValue<Vector2>().normalized / cameraMoveSpeed * 0.5f;
-            _baseWheelValue = Vector3.one;
+            moveValue = (Vector3)context.ReadValue<Vector2>().normalized / cameraMoveSpeed * 0.5f;
+            baseWheelValue = Vector3.one;
             
             if(context.canceled)
-                _baseWheelValue = null;
+                baseWheelValue = null;
         }
 
         public void OnInteraction(InputAction.CallbackContext context)
@@ -71,41 +69,41 @@ namespace _02Script.GameCamera
             if(context.started)
             {
                 if (!MousePos()) return;
-                _isWheel = true;
-                _baseWheelValue = Input.mousePosition;
+                isWheel = true;
+                baseWheelValue = Input.mousePosition;
             }
             else if(context.canceled)
             {
-                _isWheel = false;
-                _baseWheelValue = null;
+                isWheel = false;
+                baseWheelValue = null;
             }
         }
         #endregion
 
         #region wheel Do
 
-        private void WheelMove()
+        protected virtual void WheelMove()
         {
-            if (!_baseWheelValue.HasValue) return;
+            if (!baseWheelValue.HasValue) return;
             
-            if(_isWheel)
+            if(isWheel)
             {
-                _moveValue = (_baseWheelValue.Value -Input.mousePosition).normalized/ cameraMoveSpeed;
-                _baseWheelValue = Input.mousePosition;
-                myCamera.gameObject.transform.position += _moveValue;
+                moveValue = (baseWheelValue.Value -Input.mousePosition).normalized/ cameraMoveSpeed;
+                baseWheelValue = Input.mousePosition;
+                myCamera.gameObject.transform.position += moveValue;
             }
             else
             {
-                myCamera.gameObject.transform.position -= _moveValue;
+                myCamera.gameObject.transform.position -= moveValue;
             }
         }
 
-        private void WheelSize()
+        protected virtual void WheelSize()
         {
-            _wheelValue = Input.mouseScrollDelta;
-            if (_wheelValue == Vector2.zero) return;
+            wheelValue = Input.mouseScrollDelta;
+            if (wheelValue == Vector2.zero) return;
             
-            myCamera.orthographicSize += _wheelValue.y * -0.2f;
+            myCamera.orthographicSize += wheelValue.y * -0.2f;
             if (myCamera.orthographicSize > maxZoomSize)
             {
                 myCamera.orthographicSize = maxZoomSize;
@@ -119,7 +117,7 @@ namespace _02Script.GameCamera
 
         #region MouseEnter
 
-        private bool MousePos()
+        protected virtual bool MousePos()
         {
             Vector3 viewportPos = myCamera.ScreenToViewportPoint(Input.mousePosition);
 

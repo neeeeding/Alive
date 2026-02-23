@@ -15,5 +15,5 @@ MonoBehaviour:
   EntityName: 12000
   DialogEntityImage: {fileID: 0}
   useWeapons:
-  - {fileID: 11400000, guid: 96b25d23632c2184c831702bf1393683, type: 2}
-  - {fileID: 11400000, guid: fcc4659dc5851594bbfc480bb18b2928, type: 2}
+  - {fileID: 11400000, guid: d9aa153abb0fd4b4abd1d15c138a5d41, type: 2}
+  - {fileID: 11400000, guid: 337160e73fadbba4e834055927eecaf4, type: 2}

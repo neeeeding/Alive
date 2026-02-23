@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: biriminini
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.WeaponItemDataSO
   category: 4
-  itemType: 4201
+  itemType: 4101
   itemName: "\uBE44\uB9BC\uC774\uB2C8"
   itemExplanation: "\uB3C4\uD55C\uC774\uAC00 \uC560\uC6A9\uD558\uB294 \uB098\uC774\uD504\uB85C
     \uB179\uC0C9 \uBCF4\uC11D\uC73C\uB85C \uC774\uB8E8\uC5B4\uC838\uC788\uB2E4. \uC2A4\uD0AC

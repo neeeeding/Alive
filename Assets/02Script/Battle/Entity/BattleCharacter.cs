@@ -13,6 +13,7 @@ namespace _02Script.Battle.Entity
     public class BattleCharacter : BattleEntity
     {
         public static Action OnDie;
+        public static Action<bool> OnBlood;
         public static Action<WeaponItemDataSO> OnChangeWeapon;
         public static Action<WeaponInventoryCard,float> OnSkillWeapon;
         
@@ -231,6 +232,10 @@ namespace _02Script.Battle.Entity
         public override void Hit(float damage)
         {
             base.Hit(damage);
+            if (curHp <= 20)
+            {
+                OnBlood?.Invoke(true);
+            }
             hpUI.UpdateHp(curHp, maxHp);
             _forCharacter.SetHpUI(curHp, maxHp);
         }
@@ -238,7 +243,6 @@ namespace _02Script.Battle.Entity
         {
             base.Die();
             OnDie?.Invoke();
-            Time.timeScale = 0;
         }
         #endregion
     }

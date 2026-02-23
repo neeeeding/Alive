@@ -3207,9 +3207,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf130c4470f3a341acc953ba4f5370a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePath: gameSaveData
-  curScene: 
-  dayTimeDelay: 0.0034722222
   saveData:
     sound:
       mainSound: 0
@@ -3263,10 +3260,12 @@ MonoBehaviour:
       ks: 
     getDictionaryPage: 
     getDictionaryPageMemo: []
+  isStart: 0
+  curScene: 
+  dayTimeDelay: 0.0034722222
   housePlayer: {fileID: 465956464}
   itemPos: {fileID: 0}
   holdItemData: {fileID: 0}
-  isStart: 0
 --- !u!1 &1391084260
 GameObject:
   m_ObjectHideFlags: 0
@@ -13543,42 +13542,6 @@ PrefabInstance:
     - target: {fileID: 1186907264279603257, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1298948909457113722, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      propertyPath: want._serializedList.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1298948909457113722, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      propertyPath: want._serializedList.Array.data[0].Key
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1298948909457113722, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      propertyPath: want._serializedList.Array.data[1].Key
-      value: 2100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1298948909457113722, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      propertyPath: want._serializedList.Array.data[2].Key
-      value: 2200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1298948909457113722, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      propertyPath: want._serializedList.Array.data[3].Key
-      value: 2300
-      objectReference: {fileID: 0}
-    - target: {fileID: 1298948909457113722, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      propertyPath: want._serializedList.Array.data[0].Value.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1298948909457113722, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      propertyPath: want._serializedList.Array.data[1].Value.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1298948909457113722, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      propertyPath: want._serializedList.Array.data[2].Value.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1298948909457113722, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      propertyPath: want._serializedList.Array.data[3].Value.Array.size
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1298948909457113722, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: 'want._serializedList.Array.data[0].Value.Array.data[0]'

@@ -17,7 +17,12 @@ namespace _02Script.Battle.UI
         public void ChangeWeapon(WeaponItemDataSO so,float damage)
         {
             weaponImage.sprite = so.itemImage;
-            skillAttackText.text = $"{damage}\n{EnumToString.Name(so.skillBuff)}";
+            
+            skillAttackText.text = damage.ToString();
+            if (so.skillBuff)
+                skillAttackText.text += $"\n{so.skillBuff.buffName}";
+            else
+                skillAttackText.text += "\n버프 없음";
         }
 
         public void CurSkill(float curSkillDelay, float skillAttackDelay)

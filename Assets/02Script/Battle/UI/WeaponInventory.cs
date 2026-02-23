@@ -80,6 +80,7 @@ namespace _02Script.Battle.UI
         //데미지 감소
         private void WeaponDamage(WeaponInventoryCard weapon, float minus)
         {
+            if(!weapon) return;
             if (!ItemDatas.ContainsKey(weapon.ReturnData().ReturnDataSO())) return;
             ItemData data = ItemDatas[weapon.ReturnData().ReturnDataSO()];
             
@@ -152,7 +153,7 @@ namespace _02Script.Battle.UI
 
             foreach (ItemDataSO data in allSO)
             {
-                if(inventoryCharacter.ReturnSO().useWeapons.Contains(data as WeaponItemDataSO))
+                if (inventoryCharacter.ReturnSO().useWeapons.Contains(data as WeaponItemDataSO))
                     _allWeaponDataSO.Add(data.itemType, data as WeaponItemDataSO);
             }
         }

@@ -97,6 +97,7 @@ namespace _02Script.Battle.Entity
             if(curSkillDelay < skillAttackDelay || skillAttackDelay < 0) return;
             
             curSkillDelay = 0;
+            curAttackDelay = 0;
             OnAction?.Invoke(PlayerStateType.Skill);
             
             int divide = targets.Count;

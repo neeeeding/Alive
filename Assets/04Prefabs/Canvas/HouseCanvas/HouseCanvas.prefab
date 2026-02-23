@@ -10405,6 +10405,7 @@ MonoBehaviour:
       Value: {fileID: 4818145928256260764}
     - Key: 8
       Value: {fileID: 1455200566149433160}
+  realItem: {fileID: 4957330659842736574}
   allSO:
   - {fileID: 11400000, guid: 06ecf3d3500dbd64d83ccb1063e886d4, type: 2}
   - {fileID: 11400000, guid: cae6f9e87512fc34cbcb5d7680835982, type: 2}
@@ -10598,7 +10599,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ebc15dbb912ad5c44b38b20e11a36f32, type: 2}
   - {fileID: 11400000, guid: b22c1a9de9bc5534999f8f6cb72de471, type: 2}
   - {fileID: 11400000, guid: 09bec2b0390d1f943be0179158f4a711, type: 2}
-  realItem: {fileID: 4957330659842736574}
 --- !u!114 &6606456324677506458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10966,7 +10966,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8b705bb48de47264fba8b2f65be52cf5, type: 2}
   - {fileID: 11400000, guid: c116907f70529334c97280f12f637a47, type: 2}
   - {fileID: 11400000, guid: 0812ee0a9e9f3b646ab7dd935b637519, type: 2}
-  - {fileID: 11400000, guid: 504d613266350d04a8a2881f2e006c9e, type: 2}
   - {fileID: 11400000, guid: a0e20cbe11964954ba8cfc46b7f300e1, type: 2}
   - {fileID: 11400000, guid: 322614426172b5c4b9ba54c764e49e2e, type: 2}
   - {fileID: 11400000, guid: 0e73b02dc2ea2694788564c55bc78bb1, type: 2}
@@ -11007,7 +11006,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Dialog.Dialog.DoScript
   want:
-    _serializedList: []
+    _serializedList:
+    - Key: 20000
+      Value:
+      - {fileID: 0}
+    - Key: 21000
+      Value:
+      - {fileID: 0}
+    - Key: 22000
+      Value:
+      - {fileID: 0}
+    - Key: 23000
+      Value:
+      - {fileID: 0}
 --- !u!114 &9176323666068461756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23573,6 +23584,7 @@ MonoBehaviour:
       Value: {fileID: 1771486786732156785}
     - Key: 99
       Value: {fileID: 1929355747419237401}
+  realItem: {fileID: 0}
   allSO:
   - {fileID: 11400000, guid: 06ecf3d3500dbd64d83ccb1063e886d4, type: 2}
   - {fileID: 11400000, guid: cae6f9e87512fc34cbcb5d7680835982, type: 2}
@@ -23766,7 +23778,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ebc15dbb912ad5c44b38b20e11a36f32, type: 2}
   - {fileID: 11400000, guid: b22c1a9de9bc5534999f8f6cb72de471, type: 2}
   - {fileID: 11400000, guid: 09bec2b0390d1f943be0179158f4a711, type: 2}
-  realItem: {fileID: 0}
   bookPrefab: {fileID: 4650817311120553900, guid: 349f043b03f18ea4ba9dded8c8661bee, type: 3}
   allBookSOs:
   - {fileID: 11400000, guid: c2e3eb4ccad357c4f9db5d2901176661, type: 2}

@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using _02Script.Battle.Entity;
-using _02Script.Manager;
 using UnityEngine;
 
 namespace _02Script.Battle.Monster
 {
     public class MonsterManager : MonoBehaviour
     {
+        public static Action OnSuccess;
+        
         [SerializeField] private Transform parent;
         [SerializeField] private Monster monsterPrefab;
         [SerializeField] private BossMonster bossMonsterPrefab;
@@ -18,13 +20,13 @@ namespace _02Script.Battle.Monster
         private List<BattleEntity> _canTargets = new List<BattleEntity>(); //타겟 후보
 
         private int _curAlive; //살아있는 수
-        private bool _isSpawnStop; // 생성 종료인지
+        private bool _isSpawn; // 생성 종료인지
         private float _curTime;
 
         private void OnEnable()
         {
             _curAlive = 0;
-            _isSpawnStop = false;
+            _isSpawn = false;
             _curTime = 0;
             Monster.OnDie += AddMonsterList;
             BattleSaveManager.OnStart += SetStart;
@@ -50,16 +52,16 @@ namespace _02Script.Battle.Monster
             monster.gameObject.SetActive(false);
             _curAlive--;
             
-            if(_curAlive <= 0 && _isSpawnStop)
+            if(_curAlive <= 0 && !_isSpawn)
                 Victory();
         }
 
         #region Spanw
         private void SpawnMonster()
         {
-            if (!_isSpawnStop || _monsterSpawnList.Count <= 0)
+            if (!_isSpawn || _monsterSpawnList.Count <= 0)
             {
-                _isSpawnStop = false;
+                _isSpawn = false;
                 return;
             }
             
@@ -132,7 +134,7 @@ namespace _02Script.Battle.Monster
         }
         private void Update()
         {
-            if(!_isSpawnStop) return;
+            if(!_isSpawn) return;
             _curTime += Time.deltaTime;
             SpawnMonster();
         }
@@ -149,13 +151,13 @@ namespace _02Script.Battle.Monster
         }
         private void SetStart()
         {
-            _isSpawnStop = true;
+            _isSpawn = true;
         }
         #endregion
 
         private void Victory()
         {
-            // 성공
+            OnSuccess?.Invoke();
         }
     }
 }
