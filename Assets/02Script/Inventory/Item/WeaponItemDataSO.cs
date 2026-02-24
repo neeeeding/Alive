@@ -1,4 +1,4 @@
-﻿using _02Script.Battle;
+﻿using _02Script.Battle.Buff;
 using UnityEngine;
 
 namespace _02Script.Inventory.Item

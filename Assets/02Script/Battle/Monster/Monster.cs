@@ -49,6 +49,13 @@ namespace _02Script.Battle.Monster
         }
 
         #region Entity
+
+        protected override void Recovery()
+        {
+            base.Recovery();
+            hpUI.UpdateHp(curHp, maxHp);
+        }
+
         public override void Hit(float damage)
         {
             base.Hit(damage);

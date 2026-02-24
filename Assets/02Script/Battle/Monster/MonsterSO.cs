@@ -1,4 +1,5 @@
-﻿using _02Script.Obj.Entity;
+﻿using _02Script.Battle.Buff;
+using _02Script.Obj.Entity;
 using UnityEngine;
 
 namespace _02Script.Battle.Monster

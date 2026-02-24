@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using _02Script.Battle.Buff;
 using _02Script.Obj.Entity;
 using _02Script.GamePlayer.State;
+using _02Script.UI.person;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,10 +14,10 @@ namespace _02Script.Battle.Entity
         public static Action<List<BattleEntity>,BattleEntity> OnTarget;
         public static Action<PlayerStateType> OnAction;
         
+        [SerializeField] protected BuffManager buffManager;
         [SerializeField] protected EntitySO entity;
         [SerializeField] public SpriteRenderer outline;
         
-        protected List<BuffSO> buffs = new List<BuffSO>(); //받는 버프 (중복 가능)
         protected List<BattleEntity> canTargets = new List<BattleEntity>(); //타겟 후보
         protected List<BattleEntity> targets = new List<BattleEntity>(); //현재 타겟
         protected int maxHp;
@@ -29,9 +31,11 @@ namespace _02Script.Battle.Entity
         protected bool isGlobal;
 
         protected readonly int maxGlobal = 10;
+        protected readonly float recoveryDelay = 1;
 
         protected float curAttackDelay;
         protected float curSkillDelay;
+        protected float curRecoveryDelay;
 
         protected virtual void OnEnable()
         {
@@ -43,7 +47,9 @@ namespace _02Script.Battle.Entity
         {
             curAttackDelay += Time.deltaTime;
             curSkillDelay += Time.deltaTime;
+            curRecoveryDelay += Time.deltaTime;
             
+            Recovery();
             Attack();
             OnTarget?.Invoke(targets,this);
         }
@@ -85,35 +91,45 @@ namespace _02Script.Battle.Entity
             
             OnAction?.Invoke(PlayerStateType.Attack);
 
-            int divide = targets.Count;
+            int divide = targets.Count; //타겟 만큼 나누기
+            float attack = EtcStat(StatsType.attack);
+            float damage = (baseAttack + attack) / divide;
             
             foreach (BattleEntity target in targets.ToArray())
             {
-                target.Hit(baseAttack/divide);
+                target.Hit(damage);
             }
         }
         public virtual void UseSkill()
         {
-            if(curSkillDelay < skillAttackDelay || skillAttackDelay < 0) return;
+            float curDelay = skillAttackDelay - EtcStat(StatsType.skill); //쿨타임 감소
+            if(curSkillDelay < curDelay || skillAttackDelay < 0) return;
             
             curSkillDelay = 0;
             curAttackDelay = 0;
             OnAction?.Invoke(PlayerStateType.Skill);
             
-            int divide = targets.Count;
+            int divide = targets.Count; //타겟 만큼 나누기
+            float attack = ((EtcStat(StatsType.attack) -3)/2 
+                            +EtcStat(StatsType.skill)/2); //((타격-3)/2 + 숙련/2)
+            float damage = (skillDamage + attack) / divide;
+            
             if (skillBuff&&!skillBuff.isDeBuff)
             {
                 GetBuffs(skillBuff);
             }
             foreach (BattleEntity target in targets.ToArray())
             {
-                target.Hit(skillDamage/divide);
+                target.Hit(damage);
                 if(skillBuff&&skillBuff.isDeBuff)
                     target.GetBuffs(skillBuff);
             }
         }
         public virtual void Hit(float damage)
         {
+            if(!Agility()) return;
+
+            damage /= EtcStat(StatsType.defense);
             curHp -= damage;
             OnAction?.Invoke(PlayerStateType.Hit);
             if (DieCheck())
@@ -124,14 +140,36 @@ namespace _02Script.Battle.Entity
         }
         #endregion
 
-        #region Buff
-        protected virtual void BuffCalculate()
+        #region Stat
+        protected virtual bool Agility() //민첩
         {
-            //받고 있는 버프
+            float agilityBuff = BuffCalculate(StatsType.agility); //민첩 버프
+            float randAgility = Random.Range(0, 100.1f);
+            return(randAgility > agilityBuff);
         }
+        protected virtual float EtcStat(StatsType type) //외 스탯들
+        {
+            return BuffCalculate(type); //버프
+        }
+        protected virtual void Recovery() //회복
+        {
+            if(curRecoveryDelay < recoveryDelay) return;
+
+            curRecoveryDelay = 0;
+            float recoveryBuff = BuffCalculate(StatsType.recovery);
+            curHp += recoveryBuff;
+        }
+        #endregion
+        
+        #region Buff
+        protected virtual float BuffCalculate(StatsType stat) //버프 효과 계산
+        {
+            return buffManager.BuffCalculate(stat);
+        }
+        
         public virtual void GetBuffs(BuffSO buff) //버프를 얻음
         {
-            buffs.Add(buff);
+            buffManager.GetBuffs(buff);
         }
         #endregion
 

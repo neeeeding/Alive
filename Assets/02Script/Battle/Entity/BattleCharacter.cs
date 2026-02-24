@@ -7,6 +7,7 @@ using _02Script.Manager;
 using _02Script.Obj.Entity;
 using _02Script.UI.person;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _02Script.Battle.Entity
 {
@@ -229,6 +230,7 @@ namespace _02Script.Battle.Entity
 
             OnSkillWeapon?.Invoke(_useWeapon, weaponDamage);
         }
+
         public override void Hit(float damage)
         {
             base.Hit(damage);
@@ -243,6 +245,33 @@ namespace _02Script.Battle.Entity
         {
             base.Die();
             OnDie?.Invoke();
+        }
+        #endregion
+
+        #region Stat
+        protected override bool Agility() //민첩
+        {
+            float agilityBuff = BuffCalculate(StatsType.agility); //민첩 버프
+            float agility = _stats[StatsType.agility] + agilityBuff;
+            float randAgility = Random.Range(0, 100.1f);
+            return(randAgility > agility);
+        }
+        
+        protected virtual float EtcStat(StatsType type) //외 스탯들
+        {
+            float buff = BuffCalculate(type); //버프
+            float value = _stats[type] + buff;
+            return value;
+        }
+        protected override void Recovery() //회복
+        {
+            if(curRecoveryDelay < recoveryDelay) return;
+
+            float recovery = _stats[StatsType.recovery];
+            curHp += recovery;
+            base.Recovery(); //버프 계산
+            hpUI.UpdateHp(curHp, maxHp);
+            _forCharacter.SetHpUI(curHp, maxHp);
         }
         #endregion
     }

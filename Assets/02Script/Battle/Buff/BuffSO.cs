@@ -5,7 +5,7 @@ using AYellowpaper.SerializedCollections;
 using UnityEditor;
 using UnityEngine;
 
-namespace _02Script.Battle
+namespace _02Script.Battle.Buff
 {
     [CreateAssetMenu(fileName = "BuffSO", menuName = "SO/Buff/BuffSO")]
     public class BuffSO : ScriptableObject
