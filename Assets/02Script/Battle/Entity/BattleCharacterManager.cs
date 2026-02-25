@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _02Script.Battle.Buff;
 using _02Script.Battle.Monster;
 using _02Script.Battle.UI;
 using _02Script.Manager;
@@ -30,6 +31,7 @@ namespace _02Script.Battle.Entity
             {
                 weaponInventory[i].SetInventoryCharacter(characters[i] as BattleCharacter);
                 (characters[i] as BattleCharacter).SetCharacter(forCharacterUI[i]);
+                forCharacterUI[i].SetEntity(characters[i].ReturnName());
             }
         }
     }

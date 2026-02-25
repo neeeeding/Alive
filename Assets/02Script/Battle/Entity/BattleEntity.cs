@@ -41,6 +41,17 @@ namespace _02Script.Battle.Entity
         {
             curAttackDelay = 0;
             curSkillDelay = 0;
+            Buff.Buff.OnDamage += HpDeBuff;
+        }
+
+        protected virtual void Awake()
+        {
+            buffManager.SetEntity(entity.EntityName);
+        }
+
+        protected virtual void OnDisable()
+        {
+            Buff.Buff.OnDamage -= HpDeBuff;
         }
 
         protected virtual void Update()
@@ -129,7 +140,8 @@ namespace _02Script.Battle.Entity
         {
             if(!Agility()) return;
 
-            damage /= EtcStat(StatsType.defense);
+            if(EtcStat(StatsType.defense) != 0)
+                damage /= EtcStat(StatsType.defense);
             curHp -= damage;
             OnAction?.Invoke(PlayerStateType.Hit);
             if (DieCheck())
@@ -158,6 +170,13 @@ namespace _02Script.Battle.Entity
             curRecoveryDelay = 0;
             float recoveryBuff = BuffCalculate(StatsType.recovery);
             curHp += recoveryBuff;
+        }
+
+        protected virtual void HpDeBuff(EntityName name, float value)
+        {
+            if(entity.EntityName != name) return;
+            
+            curHp -= value;
         }
         #endregion
         

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using _02Script.Battle.Buff;
 using _02Script.Battle.UI;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
-using _02Script.Manager;
 using _02Script.Obj.Entity;
 using _02Script.UI.person;
 using UnityEngine;
@@ -54,8 +54,9 @@ namespace _02Script.Battle.Entity
             outline.color = outlineColor;
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
             Monster.Monster.OnSelect -= Target;
             BattleSaveManager.OnStart -= SetStats;
             Monster.Monster.OnDie -= TargetDie;
@@ -247,6 +248,14 @@ namespace _02Script.Battle.Entity
             OnDie?.Invoke();
         }
         #endregion
+        
+        #region Buff
+        public override void GetBuffs(BuffSO buff) //버프를 얻음
+        {
+            base.GetBuffs(buff);
+            _forCharacter.GetBuffs(buff);
+        }
+        #endregion
 
         #region Stat
         protected override bool Agility() //민첩
@@ -273,6 +282,13 @@ namespace _02Script.Battle.Entity
             hpUI.UpdateHp(curHp, maxHp);
             _forCharacter.SetHpUI(curHp, maxHp);
         }
+        protected override void HpDeBuff(EntityName name, float value)
+        {
+            base.HpDeBuff(name, value);
+            hpUI.UpdateHp(curHp, maxHp);
+            _forCharacter.SetHpUI(curHp, maxHp);
+        }
+
         #endregion
     }
 }

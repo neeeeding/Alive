@@ -14,6 +14,7 @@ namespace _02Script.Battle.Buff
         [Space(25f)]
         [Header("Buff text------------------------")]
         public BuffType buffType;
+        public Sprite buffImage;
         public string buffName;
         [TextArea(3, 10)]
         public string buffExplanation;

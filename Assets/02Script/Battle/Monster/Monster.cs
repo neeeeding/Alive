@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using _02Script.Battle.Entity;
+using _02Script.Obj.Entity;
 using UnityEngine;
 
 namespace _02Script.Battle.Monster
@@ -49,7 +50,6 @@ namespace _02Script.Battle.Monster
         }
 
         #region Entity
-
         protected override void Recovery()
         {
             base.Recovery();
@@ -59,6 +59,11 @@ namespace _02Script.Battle.Monster
         public override void Hit(float damage)
         {
             base.Hit(damage);
+            hpUI.UpdateHp(curHp, maxHp);
+        }
+        protected override void HpDeBuff(EntityName name, float value)
+        {
+            base.HpDeBuff(name, value);
             hpUI.UpdateHp(curHp, maxHp);
         }
         protected override void Die()

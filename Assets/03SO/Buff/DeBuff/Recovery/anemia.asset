@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.BuffSO
   isDeBuff: 1
   buffType: 55003
+  buffImage: {fileID: 0}
   buffName: "\uBE48\uD608"
   buffExplanation: "9\uCD08 \uB3D9\uC548 \uD68C\uBCF5\uC774 5 \uAC10\uC18C\uD569\uB2C8\uB2E4.
-    (9\uCD08)"
+    (9\uCD08, \uC911\uBCF5 \uBD88\uAC00)"
   useStatType:
     _serializedList:
     - Key: 32

@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 410825191281629015}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.6, y: 21.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fea507207524cbcb2c99fd6227b4ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Monster.Monster
+  buffManager: {fileID: 8087956031581689574}
   entity: {fileID: 11400000, guid: 6596087816825ed45bdc07f1ab81b9aa, type: 2}
   outline: {fileID: 8004497046127960582}
   hpUI: {fileID: 8463493294041202233}
@@ -547,10 +548,6 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6902048548121987394, guid: 795f7232ba8fbb1458f64f2fce9f43cf, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7069060833239984019, guid: 795f7232ba8fbb1458f64f2fce9f43cf, type: 3}
       propertyPath: m_Name
       value: HPCanvas
@@ -573,6 +570,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 113827154269180874, guid: 795f7232ba8fbb1458f64f2fce9f43cf, type: 3}
   m_PrefabInstance: {fileID: 5690997300191337568}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8087956031581689574 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4522822169091836550, guid: 795f7232ba8fbb1458f64f2fce9f43cf, type: 3}
+  m_PrefabInstance: {fileID: 5690997300191337568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3baa223cc41742ecb24d10da2d6a992b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Buff.BuffManager
 --- !u!114 &8463493294041202233 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4291408912804307545, guid: 795f7232ba8fbb1458f64f2fce9f43cf, type: 3}

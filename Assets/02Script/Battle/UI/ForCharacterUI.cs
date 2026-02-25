@@ -1,4 +1,5 @@
-﻿using _02Script.Etc;
+﻿using _02Script.Battle.Buff;
+using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
 using TMPro;
@@ -13,6 +14,7 @@ namespace _02Script.Battle.UI
         [SerializeField] private SkillBtn skillDelayUI;
         [SerializeField] private Image weaponImage;
         [SerializeField] private TextMeshProUGUI skillAttackText;
+        [SerializeField] private BuffManager buffManager;
         
         public void ChangeWeapon(WeaponItemDataSO so,float damage)
         {
@@ -35,6 +37,15 @@ namespace _02Script.Battle.UI
             if(entity != EntityName.None)
                 inGameHpUI.SetCharacter(entity);
             inGameHpUI.UpdateHp(curHp, maxHp);
+        }
+
+        public void GetBuffs(BuffSO buff)
+        {
+            buffManager.GetBuffs(buff);
+        }
+        public void SetEntity(EntityName entity)
+        {
+            buffManager.SetEntity(entity);
         }
     }
 }
