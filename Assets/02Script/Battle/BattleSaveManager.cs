@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _02Script.Battle.Entity;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.SaveData;
@@ -32,7 +33,17 @@ namespace _02Script.Battle
                 }
             }
         }
-        
+
+        private void OnEnable()
+        {
+            BattleCharacter.OnDie += FailGame;
+        }
+
+        private void OnDisable()
+        {
+            BattleCharacter.OnDie -= FailGame;
+        }
+
         protected override void SaveData() //성공 할 때만
         {
             base.SaveData();
