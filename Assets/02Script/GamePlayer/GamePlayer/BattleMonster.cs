@@ -1,5 +1,6 @@
 ﻿using _02Script.Battle;
 using _02Script.GamePlayer.State;
+using _02Script.Obj.Entity;
 using _02Script.UI.person;
 
 namespace _02Script.GamePlayer.GamePlayer
@@ -15,9 +16,9 @@ namespace _02Script.GamePlayer.GamePlayer
             stateMachine.AddState(PlayerStateType.Hit, new PHitState("Hit", stateMachine, this));
         }
 
-        protected override  void AddStats(StatsType type, int add) //스탯
+        protected override  void AddStats(EntityName name,StatsType type, int add) //스탯
         {
-            if(!isCurPlayer) return;
+            if(name != playerName) return;
             
             BattleSaveManager.Instance.PlayerStat.characterStats[playerName][type] += add;
         }

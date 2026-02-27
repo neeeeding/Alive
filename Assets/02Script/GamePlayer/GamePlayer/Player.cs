@@ -44,9 +44,9 @@ namespace _02Script.GamePlayer.GamePlayer
             stateMachine.ChangeState(PlayerStateType.Idle, 0,0);
         }
 
-        protected virtual  void AddStats(StatsType type, int add) //스탯
+        protected virtual  void AddStats(EntityName name,StatsType type, int add) //스탯
         {
-            if(!isCurPlayer) return;
+            if(name != playerName) return;
             
             HouseManager.Instance.PlayerStat.characterStats[playerName][type] += add;
         }

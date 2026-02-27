@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _02Script.Battle;
+using _02Script.Battle.Food;
 using _02Script.Collect.Item;
 using _02Script.DoTweenUI.Warring;
 using _02Script.Etc;
@@ -31,12 +32,14 @@ namespace _02Script.Collect
             CollectItem.OnGetItem += GetItem;
             _curCount = 0;
             BattleSaveManager.OnStart += SetStart;
+            FoodInventory.OnUseItem += UseItem;
         }
 
         protected override void OnDisable()
         {
             CollectItem.OnGetItem -= GetItem;
             BattleSaveManager.OnStart -= SetStart;
+            FoodInventory.OnUseItem -= UseItem;
         }
         #endregion
 
@@ -82,6 +85,13 @@ namespace _02Script.Collect
             card.gameObject.SetActive(true);
         }
         #endregion
+
+        private void UseItem(EntityName name, ItemDataSO data, int count)
+        {
+            if(inventoryCharacter != name) return;
+            
+            ThrowItem(data,count);
+        }
 
         private bool ItemCountAddCanCheck()
         {

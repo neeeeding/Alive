@@ -65,7 +65,7 @@ namespace _02Script.Inventory.Inventory.Use
             if (card.ReturnData().ReturnDataSO().category == ItemCategory.food ||
                 card.ReturnData().ReturnDataSO().category == ItemCategory.seed)
             {
-                rand = Random.Range(0,6 -(int)card.ReturnNum(true));
+                rand = Random.Range(1,6 -(int)card.ReturnNum(true));
             }
 
             if (rand == 1)

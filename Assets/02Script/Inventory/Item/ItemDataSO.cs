@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using _02Script.Etc;
+using _02Script.Obj.Entity;
 using _02Script.UI.person;
 using UnityEditor;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace _02Script.Inventory.Item
     [CreateAssetMenu(fileName = "ItemSO", menuName = "SO/Item/ItemDataSO")]
     public class ItemDataSO : ScriptableObject
     {
-        public static Action<StatsType, int> OnStats;
+        public static Action<EntityName,StatsType, int> OnStats;
 
         [Space(25f)]
         [Header("ItemType------------------------")]
@@ -34,12 +35,12 @@ namespace _02Script.Inventory.Item
         public StatsType stats = StatsType.curHp;
         public int addStats;
         
-        public bool DoSomething() //보통은 그냥 사용 못하게
+        public bool DoSomething(EntityName entity) //보통은 그냥 사용 못하게
         {
             switch (category)
             {
                 case ItemCategory.food :
-                    OnStats?.Invoke(stats, addStats);
+                    OnStats?.Invoke(entity,stats, addStats);
                     return true;
             }
             return false;

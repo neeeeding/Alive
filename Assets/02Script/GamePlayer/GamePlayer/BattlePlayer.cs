@@ -1,6 +1,7 @@
 ﻿using _02Script.Battle;
 using _02Script.Battle.Entity;
 using _02Script.Inventory.Item;
+using _02Script.Obj.Entity;
 using _02Script.UI.person;
 using UnityEngine;
 
@@ -28,9 +29,9 @@ namespace _02Script.GamePlayer.GamePlayer
             weaponRenderer.sprite = data.itemImage;
         }
 
-        protected override  void AddStats(StatsType type, int add) //스탯
+        protected override  void AddStats(EntityName name,StatsType type, int add) //스탯
         {
-            if(!isCurPlayer) return;
+            if(name != playerName) return;
             
             BattleSaveManager.Instance.PlayerStat.characterStats[playerName][type] += add;
         }
