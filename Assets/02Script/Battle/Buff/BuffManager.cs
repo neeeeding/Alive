@@ -12,6 +12,7 @@ namespace _02Script.Battle.Buff
         
         [SerializeField] private Buff buffPrefab;
         [SerializeField] private Transform buffPrent;
+        [SerializeField] private bool isUI = false; //UI 인지
         
         private EntityName _entity;
         private List<Buff> _buffs = new List<Buff>();
@@ -73,12 +74,12 @@ namespace _02Script.Battle.Buff
             if (so.isOverlap || _typeBuffs[so.buffType].Count <= 0) //중복가능
             {
                 _typeBuffs[so.buffType].Add(newBuff);
-                newBuff.BuffSet(so,this,_entity);
+                newBuff.BuffSet(so,this,_entity,isUI);
             }
             else if(!so.isOverlap)//중복 아닐 시 갱신
             {
                 newBuff = _typeBuffs[so.buffType][0];
-                newBuff.BuffSet(so,this,_entity);
+                newBuff.BuffSet(so,this,_entity,isUI);
             }
             newBuff.gameObject.SetActive(true);
             

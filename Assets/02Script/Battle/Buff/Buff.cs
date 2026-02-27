@@ -10,7 +10,7 @@ namespace _02Script.Battle.Buff
     public class Buff : MonoBehaviour
     {
         public static Action<EntityName, float> OnDamage; // hp 감소
-        public static Action<BuffSO,float> OnMouseEnter; //정보, 현재 남은 시간 
+        public static Action<BuffSO,float, Vector3, bool> OnMouseEnter; //정보, 현재 남은 시간 
         
         [SerializeField] private Image buffImage;
         
@@ -22,16 +22,20 @@ namespace _02Script.Battle.Buff
         private float _curTime;
         private float _curRepeatTime;
         private float _curRepeat; //반복한 수
-        private float _BuffDelay;
+        private float _buffDelay;
+        private bool _isExplanation;
+        private bool _isUI = false; //UI 인지
 
         #region Mouse
         public void MouseEnter()
         {
-            OnMouseEnter?.Invoke(so,_curTime);
+            OnMouseEnter?.Invoke(so,_curTime, gameObject.transform.position,_isUI);
+            _isExplanation = true;
         }
         public void MouseExit()
         {
-            OnMouseEnter?.Invoke(null,0);
+            OnMouseEnter?.Invoke(null,0,Vector3.zero,true);
+            _isExplanation = false;
         }
         #endregion
 
@@ -43,6 +47,7 @@ namespace _02Script.Battle.Buff
         private void OnDisable()
         {
             BuffManager.OnBuffDelay -= BuffDelay;
+            if(_isExplanation) MouseExit();
         }
         #endregion
 
@@ -50,11 +55,11 @@ namespace _02Script.Battle.Buff
         {
             if (type == StatsType.tolerance && so.isDeBuff) //내성
             {
-                _BuffDelay -= buffValue;
+                _buffDelay -= buffValue;
             }
             else if (type == StatsType.duration && !so.isDeBuff) //지속
             {
-                _BuffDelay += buffValue;
+                _buffDelay += buffValue;
             }
         }
         
@@ -78,7 +83,7 @@ namespace _02Script.Battle.Buff
                 _curRepeatTime = 0;
             }
             
-            if(_curTime < _BuffDelay) return; //버프 종료
+            if(_curTime < _buffDelay) return; //버프 종료
             _manager.EndBuff(this);
         }
 
@@ -88,7 +93,7 @@ namespace _02Script.Battle.Buff
         }
 
         #region Set
-        public void BuffSet(BuffSO buff, BuffManager battleEntity, EntityName entity)
+        public void BuffSet(BuffSO buff, BuffManager battleEntity, EntityName entity, bool isUI)
         {
             so = buff;
             _manager = battleEntity;
@@ -96,8 +101,9 @@ namespace _02Script.Battle.Buff
             _curTime = 0;
             _curRepeatTime = 0;
             _curRepeat = 1;
-            _BuffDelay = so.buffDelay;
+            _buffDelay = so.buffDelay;
             buffImage.sprite = so.buffImage;
+            _isUI = isUI;
             BuffValue.Clear();
 
             foreach (KeyValuePair<StatsType, float> value in so.useStatType)
