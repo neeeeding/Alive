@@ -670,7 +670,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdc1be6133ea4731a6985dca955a99d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Food.FoodPersonCard
+  baseColor: {r: 0, g: 1, b: 0, a: 1}
+  changeColor: {r: 1, g: 0.6470588, b: 0, a: 1}
   entityName: 11000
+  _myImage: {fileID: 98789896}
 --- !u!114 &98789896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2240,7 +2243,7 @@ SpriteRenderer:
   m_SortingLayerID: -661178391
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1370909194, guid: 825e62b335675af4691e873fe80be4f6, type: 3}
+  m_Sprite: {fileID: -8511681701477039757, guid: 1503fc7608318664ea7a07842579fa42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9253,6 +9256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1207431163}
+  - component: {fileID: 1207431164}
   m_Layer: 5
   m_Name: Food
   m_TagString: Untagged
@@ -9280,6 +9284,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 540}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1207431164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207431162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37c2020ec67a4d15984abaca5a2653fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Food.FoodCheck
 --- !u!1 &1214238677
 GameObject:
   m_ObjectHideFlags: 0
@@ -11885,7 +11901,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdc1be6133ea4731a6985dca955a99d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Food.FoodPersonCard
+  baseColor: {r: 0, g: 1, b: 0, a: 1}
+  changeColor: {r: 1, g: 0.6470588, b: 0, a: 1}
   entityName: 10000
+  _myImage: {fileID: 1450508402}
 --- !u!114 &1450508402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12749,7 +12768,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdc1be6133ea4731a6985dca955a99d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Food.FoodPersonCard
+  baseColor: {r: 0, g: 1, b: 0, a: 1}
+  changeColor: {r: 1, g: 0.6470588, b: 0, a: 1}
   entityName: 12000
+  _myImage: {fileID: 0}
 --- !u!114 &1579212510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14066,6 +14088,7 @@ MonoBehaviour:
     - Key: 7
       Value: {fileID: 839158445}
   realItem: {fileID: 0}
+  inventoryWindow: {fileID: 0}
 --- !u!1001 &1676493165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17751,7 +17774,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdc1be6133ea4731a6985dca955a99d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Food.FoodPersonCard
+  baseColor: {r: 0, g: 1, b: 0, a: 1}
+  changeColor: {r: 1, g: 0.6470588, b: 0, a: 1}
   entityName: 13000
+  _myImage: {fileID: 1989750221}
 --- !u!114 &1989750221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19007,7 +19033,7 @@ SpriteRenderer:
   m_SortingLayerID: -661178391
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -91578536, guid: 8fe4e6be384c92741960596b188a1264, type: 3}
+  m_Sprite: {fileID: 5677594010659361884, guid: 5616752ed36017741a48df31932bcdd3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5c887b2b01430dbfb51de23f5182e1, type: 3}
+  m_Name: stoneBoar
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Monster.MonsterSO
+  EntityName: 31001
+  DialogEntityImage: {fileID: 21300000, guid: 332a440a2445dc14883b454c78008490, type: 3}
+  maxHp: 23
+  baseAttack: 11
+  baseAttackDelay: 6
+  useBuff: {fileID: 11400000, guid: 974d9eaadf2b77544bb4b3a19678e8da, type: 2}
+  isGlobal: 0

@@ -19,9 +19,7 @@ namespace _02Script.Battle.Food
         [Header("Need")]
         [SerializeField] protected TextMeshProUGUI nameText;
         [SerializeField] protected TextMeshProUGUI addStatText;
-        
-        
-        private Image _myImage;
+        [SerializeField] private Image _myImage;
 
         #region Btn
         public void MouseEnter()

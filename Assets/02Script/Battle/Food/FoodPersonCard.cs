@@ -12,8 +12,7 @@ namespace _02Script.Battle.Food
         [SerializeField] private Color baseColor = Color.green;
         [SerializeField] private Color changeColor = Color.orange;
         [SerializeField]private EntityName entityName;
-
-        private Image _myImage;
+        [SerializeField]private Image _myImage;
 
         #region EnDiAw
         private void OnEnable()

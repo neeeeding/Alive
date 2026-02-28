@@ -306,9 +306,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Food.FoodInventoryCard
   countUI: {fileID: 0}
   cardImage: {fileID: 3152184004181119070}
+  baseColor: {r: 0, g: 1, b: 0, a: 1}
+  changeColor: {r: 1, g: 0.6470588, b: 0, a: 1}
+  delay: 0.2
   nameText: {fileID: 3374233088556589706}
   addStatText: {fileID: 3933948408155623991}
-  delay: 0.2
+  _myImage: {fileID: 6126181628708246307}
 --- !u!114 &3019470898695736967
 MonoBehaviour:
   m_ObjectHideFlags: 0
