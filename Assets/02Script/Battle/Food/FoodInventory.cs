@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using _02Script.Collect.Item;
 using _02Script.DoTweenUI.Warring;
+using _02Script.Etc;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
+using _02Script.UI.person;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,6 +16,7 @@ namespace _02Script.Battle.Food
     public class FoodInventory : InventoryManager
     {
         public static Action<EntityName,ItemDataSO,int> OnUseItem;
+        public static Action<EntityName, StatsType, int> OnGetStat;
         
         [SerializeField] private GameObject inventoryWindow;
         private SerializedDictionary<ItemDataSO, List<int>>  _itemData = new SerializedDictionary<ItemDataSO, List<int>>();
@@ -24,7 +27,7 @@ namespace _02Script.Battle.Food
         {
             CollectItem.OnGetItem += GetItem;
             FoodCheck.OnFood += Eat;
-            FoodInventory.OnUseItem -= UseItem;
+            FoodInventory.OnUseItem += UseItem;
         }
         protected override void OnDisable()
         {
@@ -41,14 +44,29 @@ namespace _02Script.Battle.Food
             int rand = Random.Range(1,6 -(int)card.ReturnNum(true));
             if(rand == 1)
             {
-                WarringManager.Warring.ShowWarring("섭취에 성공하셨습니다!");
-                BattleSaveManager.Instance.PlayerStat.characterStats[name][data.ReturnDataSO().stats] += data.ReturnDataSO().addStats;
+                StatsType stat = data.ReturnDataSO().stats;
+                int add = data.ReturnDataSO().addStats;
+                OnGetStat?.Invoke(name, stat ,add);
+
+                string warring = $"섭취에 성공하셨습니다!\n{EnumToString.Name(stat)}이/가 ";
+                if (stat == StatsType.curHp)
+                {
+                    warring += $"{add} ";
+                    warring += add >= 0 ? "만큼 회복합니다." : "만큼 감소합니다.";
+                }
+                else
+                {
+                    warring += $"{StatCalculate.StatAlphabet(name, stat)}";
+                    warring += add >= 0 ? " 로 향상됩니다." : " 로 퇴보합니다.";
+                }
+                
+                WarringManager.Warring.ShowWarring(warring,3);
+                
             }
             else
             {
                 WarringManager.Warring.ShowWarring("섭취에 실패하셨습니다...");
             }
-            
             OnUseItem?.Invoke(_inventory[data.ReturnDataSO()][0], data.ReturnDataSO(),(int)card.ReturnNum(true));
             //data.UseItem((int)card.ReturnNum(true),true); //버리기
         }

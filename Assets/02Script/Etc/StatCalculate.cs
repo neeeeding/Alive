@@ -15,6 +15,38 @@ namespace _02Script.Etc
             SetValue();
         }
 
+        public static string StatAlphabet(EntityName character,StatsType statType)
+        {
+            int stat = BattleSaveManager.Instance.PlayerStat.characterStats[character][statType];
+
+            string value = ((stat-1)/5) switch
+            {
+                8 => "SSS",
+                7 => "SS",
+                6 => "S",
+                5 => "A",
+                4 => "B",
+                3 => "C",
+                2 => "D",
+                1 => "E",
+                0 => "F",
+                _ => ""
+            };
+
+            value += (stat % 5) switch
+            {
+                1 => "--",
+                2 => "-",
+                3 => "",
+                4 => "+",
+                0 => "++",
+                _=> ""
+            };
+            
+            return value;
+        }
+            
+
         public static float Calculate(EntityName character,StatsType statType)
         {
             if (character == EntityName.None || statType == StatsType.none) return 0;

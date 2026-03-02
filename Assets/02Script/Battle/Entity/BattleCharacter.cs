@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using _02Script.Battle.Buff;
+using _02Script.Battle.Food;
 using _02Script.Battle.UI;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
@@ -41,6 +42,7 @@ namespace _02Script.Battle.Entity
             BattleSaveManager.OnStart += SetStats;
             Monster.Monster.OnDie += TargetDie;
             WeaponInventoryCard.OnMouseClick += ChangeWeapon;
+            FoodInventory.OnGetStat += GetStat;
             hpUI.SetCharacter(entity.EntityName);
             hpUI.UpdateHp(curHp, maxHp);
             if(_forCharacter != null)
@@ -61,6 +63,7 @@ namespace _02Script.Battle.Entity
             BattleSaveManager.OnStart -= SetStats;
             Monster.Monster.OnDie -= TargetDie;
             WeaponInventoryCard.OnMouseClick -= ChangeWeapon;
+            FoodInventory.OnGetStat -= GetStat;
         }
 
         #endregion
@@ -69,7 +72,22 @@ namespace _02Script.Battle.Entity
         {
             return entity as BattleEntitySO;
         }
-
+        
+        private void GetStat(EntityName name, StatsType stat, int value)
+        {
+            if(name != entity.EntityName) return;
+            
+            BattleSaveManager.Instance.PlayerStat.characterStats[name][stat] += value;
+            _stats[stat] = StatCalculate.Calculate(entity.EntityName, stat);
+            SetEntityStatValue();
+            
+            if (stat == StatsType.curHp)
+            {
+                curHp += value;
+                curHp = Mathf.Min(curHp, maxHp);
+            }
+        }
+        
         #region Set
         public void GetCanTargets(BattleEntity target)
         {
@@ -117,12 +135,8 @@ namespace _02Script.Battle.Entity
                 entity = character;
             //hpUI = hp;
             
-            maxHp = (int)_stats[StatsType.HpStat];
+            SetEntityStatValue();
             curHp = maxHp;
-            baseAttack = _stats[StatsType.attack];
-            baseAttackDelay = _baseAttackCoolTime
-                - (_baseAttackCoolTime / 100) * _stats[StatsType.skill];
-            baseAttackDelay = Mathf.Max(0, baseAttackDelay);
             
             //ChangeWeapon(weapon);
             hpUI.SetCharacter(entity.EntityName);
@@ -131,12 +145,23 @@ namespace _02Script.Battle.Entity
             _forCharacter = forUI;
             _forCharacter.SetHpUI(curHp, maxHp,entity.EntityName);
         }
+        
+        private void SetEntityStatValue()
+        {
+            maxHp = (int)_stats[StatsType.HpStat];
+            
+            baseAttack = _stats[StatsType.attack];
+            baseAttackDelay = _baseAttackCoolTime
+                              - (_baseAttackCoolTime / 100) * _stats[StatsType.skill];
+            baseAttackDelay = Mathf.Max(0, baseAttackDelay);
+        }
 
         private void SetStats()
         {
             if(_isSetStat) return;
-            Dictionary<StatsType, int> stats = BattleSaveManager.Instance.PlayerStat.characterStats[entity.EntityName].ToDictionary();
+            
             _stats.Clear();
+            
             foreach (StatsType sta in Enum.GetValues(typeof(StatsType)))
             {
                 _stats.Add(sta,StatCalculate.Calculate(entity.EntityName, sta));

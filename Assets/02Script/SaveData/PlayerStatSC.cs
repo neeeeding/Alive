@@ -74,6 +74,8 @@ namespace _02Script.SaveData
 
             foreach (EntityName name in Enum.GetValues(typeof(EntityName))) //이름들 저장
             {
+                if((int)name >= 30000 || name == EntityName.None) continue;
+                
                 characterPositions.Add(name,Vector2.zero); //다 같은 자리라니... (주석)
                 
                 SaveDictionary<DialogType, string> di = new SaveDictionary<DialogType, string>();
@@ -87,10 +89,10 @@ namespace _02Script.SaveData
 
                 characterLastText.Add(name, di); //저장
 
-                foreach (StatsType stats in
-                         Enum.GetValues(typeof(StatsType))) //모든 걸 저장 / 다이얼로그 종류 (챕터, 넘버, 텍스트, 메모, 러브 만 사용하긴 함.)
+                foreach (StatsType stats in Enum.GetValues(typeof(StatsType))) //모든 걸 저장 / 다이얼로그 종류 (챕터, 넘버, 텍스트, 메모, 러브 만 사용하긴 함.)
                 {
-                    st.Add(stats,stats == StatsType.curHp? 80 : 1);
+                    if(stats == StatsType.none) continue;
+                    st.Add(stats,1);
                 }
                 characterStats.Add(name, st);
             }

@@ -13,6 +13,7 @@ namespace _02Script.Battle.Food
         
         private void OnEnable()
         {
+            ResetSelect();
             FoodPersonCard.OnPerson += SetPerson;
             FoodInventoryCard.OnMouseClick += SetFood;
         }
@@ -20,7 +21,6 @@ namespace _02Script.Battle.Food
         {
             FoodPersonCard.OnPerson -= SetPerson;
             FoodInventoryCard.OnMouseClick -= SetFood;
-            ResetSelect();
         }
 
         private void SetFood(FoodInventoryCard card)

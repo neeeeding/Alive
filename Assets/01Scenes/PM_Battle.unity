@@ -5831,6 +5831,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.TestGiveItem
   itemData:
     _serializedList:
+    - Key: {fileID: 11400000, guid: c4e773e710257b149a3cb9d7a3754145, type: 2}
+      Value: 01000000020000000300000005000000
     - Key: {fileID: 11400000, guid: 5ffa7a9f3956484469c8d1403fed9794, type: 2}
       Value: 02000000320000001e00000064000000
     - Key: {fileID: 11400000, guid: e9bf82993338e3f4288d15a56605cd38, type: 2}
