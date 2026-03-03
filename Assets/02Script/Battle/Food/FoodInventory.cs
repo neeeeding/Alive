@@ -57,7 +57,7 @@ namespace _02Script.Battle.Food
                 else
                 {
                     warring += $"{StatCalculate.StatAlphabet(name, stat)}";
-                    warring += add >= 0 ? " 로 향상됩니다." : " 로 퇴보합니다.";
+                    warring += add >= 0 ? " 로 향상됩니다." : " 로 하락합니다.";
                 }
                 
                 WarringManager.Warring.ShowWarring(warring,3);

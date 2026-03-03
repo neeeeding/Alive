@@ -1,5 +1,4 @@
-﻿using System;
-using _02Script.Battle.Entity;
+﻿using _02Script.Battle.Entity;
 using _02Script.Battle.Monster;
 using _02Script.Etc;
 using DG.Tweening;

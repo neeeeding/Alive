@@ -20,5 +20,5 @@ MonoBehaviour:
   itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
   maxCount: 30
   collectTime: 2
-  stats: 1
-  addStats: 50
+  stats: 16
+  addStats: 2
