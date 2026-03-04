@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using _02Script.Battle.UI;
 using _02Script.DoTweenUI.Warring;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
@@ -39,6 +40,7 @@ namespace _02Script.Collect.Item
         private void OnEnable()
         {
             CollectItem.OnClickItem += SelfCheck;
+            GameMiddleUI.OnEndCollect += EndCollectGame;
             _renderer.material = baseMaterial;
             gaugeUI.gameObject.SetActive(false);
             _curS = 0f;
@@ -47,6 +49,7 @@ namespace _02Script.Collect.Item
         private void OnDisable()
         {
             CollectItem.OnClickItem -= SelfCheck;
+            GameMiddleUI.OnEndCollect -= EndCollectGame;
         }
         #endregion
 
@@ -91,6 +94,13 @@ namespace _02Script.Collect.Item
             itemData = data;
             num = count;
             gaugeUI.gameObject.SetActive(false);
+        }
+
+        private void EndCollectGame()
+        {
+            if (!curSelectItem.ContainsKey(this)) return;
+
+            curSelectItem.Remove(this);
         }
 
         #region gauge

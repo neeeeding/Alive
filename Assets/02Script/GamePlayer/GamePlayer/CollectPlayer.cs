@@ -2,11 +2,15 @@
 using _02Script.GamePlayer.State;
 using _02Script.Obj.Entity;
 using _02Script.UI.person;
+using UnityEngine;
 
 namespace _02Script.GamePlayer.GamePlayer
 {
     public class CollectPlayer : Player
     {
+        [SerializeField] private Color myColor;
+        
+        public Color MyColor { get => myColor;}
         protected override void Awake()
         {
             base.Awake();

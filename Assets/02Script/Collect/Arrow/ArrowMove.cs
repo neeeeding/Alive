@@ -8,16 +8,16 @@ namespace _02Script.Collect.Arrow
         [SerializeField] private Image arrow;
         [SerializeField] private Camera cam;
 
-        [SerializeField]private GameObject _character;
-        [SerializeField] private ArrowManager _arrowManager;
+        private GameObject _character;
+        private ArrowManager _arrowManager;
         private ArrowDirection _direction;
 
         private void Update()
         {
-            print(cam.WorldToScreenPoint(_character.transform.position));
             if(!ShowCheck()) return;
             
             Move();
+            Rotate();
         }
 
         private bool ShowCheck() //화살표가 보여야 하는지
@@ -43,31 +43,36 @@ namespace _02Script.Collect.Arrow
         private void Move()
         {
             Rect rect = _arrowManager.SetDirection(_direction, transform);
-            float maxMin = 0;
             
             Vector2 objPos = cam.WorldToScreenPoint(_character.transform.position);
             Vector2 target = Vector2.zero;
 
             if (_direction == ArrowDirection.Up || _direction == ArrowDirection.Down)
             {
-                maxMin = rect.x - (rect.width/2);
-                target.x = Mathf.Clamp(objPos.x, maxMin, 1920);
+                target.x = Mathf.Clamp(objPos.x, rect.x - (rect.width/2), rect.x + (rect.width/2));
                 target.y = rect.y;
             }
             else
             {
-                maxMin = rect.y - (rect.height/2);
-                target.y = Mathf.Clamp(objPos.y,maxMin,1920);
+                target.y = Mathf.Clamp(objPos.y,rect.y - (rect.height/2),rect.y + (rect.height/2));
                 target.x = rect.x;
             }
             
             transform.position = target;
         }
 
-        public void SetCharacter(GameObject obj, ArrowManager manager)
+        private void Rotate()
+        {
+            float angle = Mathf.Atan2(_character.transform.position.y - cam.transform.position.y, 
+                               _character.transform.position.x - cam.transform.position.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+        }
+
+        public void SetCharacter(GameObject obj,Color color ,ArrowManager manager)
         {
             _character = obj;
             _arrowManager = manager;
+            arrow.color = color;
         }
     }
 

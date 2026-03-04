@@ -14,8 +14,8 @@ namespace _02Script.Battle
         [SerializeField] private GameObject failWindow;
         [SerializeField] private Image bloodWindow;
         
-        private readonly string goHouse = "GoHouse";
-        private readonly string failScene = "AM_House";
+        private readonly string _goHouse = "GoHouse";
+        private readonly string _failScene = "AM_House";
 
         private void OnEnable()
         {
@@ -39,7 +39,7 @@ namespace _02Script.Battle
         {
             successWindow.SetActive(true);
             await AsyncTime.WaitSeconds(2);
-            SceneManager.LoadScene(goHouse);
+            SceneManager.LoadScene(_goHouse);
         }
 
         private async void Fail()
@@ -47,7 +47,7 @@ namespace _02Script.Battle
             failWindow.SetActive(true);
             Time.timeScale = 0;
             await AsyncTime.WaitSeconds(1, true);
-            SceneManager.LoadScene(failScene);
+            SceneManager.LoadScene(_failScene);
         }
 
         private void Blood(bool isBlood)

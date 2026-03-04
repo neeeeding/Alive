@@ -1,16 +1,19 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _02Script.Battle.UI
 {
     public class GameMiddleUI : MonoBehaviour
     {
-        [FormerlySerializedAs("battle")] [SerializeField] private Camera battleCam;
-        [FormerlySerializedAs("collect")] [SerializeField] private Camera collectCam;
+        public static Action OnEndCollect;
+        
+        [SerializeField] private Camera battleCam;
+        [SerializeField] private Camera collectCam;
         [SerializeField] private RectTransform battleRect;
         [SerializeField] private RectTransform collectRect;
         [SerializeField] private GameObject stopWindow;
+        [SerializeField] private GameObject collectEnd;
         [SerializeField] private TextMeshProUGUI timeText;
 
         private readonly float _camTopPosY = 0.5f;
@@ -26,6 +29,7 @@ namespace _02Script.Battle.UI
         {
             PlayGame();
             _isCollect = true;
+            collectEnd.SetActive(false);
         }
 
         public void ChangeCamera()
@@ -73,7 +77,15 @@ namespace _02Script.Battle.UI
         private void TimerUI()
         {
             _curSec -= Time.deltaTime;
-            if(_curSec <= 0 && _curMin <= 0) return;
+            if (_curSec <= 0 && _curMin <= 0)
+            {
+                if (!collectEnd.activeSelf)
+                {
+                    collectEnd.SetActive(true);
+                    OnEndCollect?.Invoke();
+                }
+                return;
+            }
             
             if (_curSec <= 0)
             {

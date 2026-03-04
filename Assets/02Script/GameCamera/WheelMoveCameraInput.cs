@@ -15,6 +15,7 @@ namespace _02Script.GameCamera
         protected Vector3? baseWheelValue;
         protected Vector3 moveValue;
         protected bool isWheel;
+        protected bool isActive;
 
         protected virtual void OnEnable()
         {
@@ -33,12 +34,18 @@ namespace _02Script.GameCamera
             _controls.PC.Disable();
         }
         
-        void Update()
+        private void Update()
         {
+            if(!isActive) return;
             WheelMove();
             
             if (!MousePos()) return;
             WheelSize();
+        }
+
+        public void WheelStop(bool wheel)
+        {
+            isActive = wheel;
         }
 
         #region keyInput
