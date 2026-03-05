@@ -57,6 +57,8 @@ namespace _02Script.Battle.Buff
         //내성 혹은 지속일시 액션 보내서 버프 딜레이 조정하기
         public void GetBuffs(BuffSO so) //버프를 얻음
         {
+            if(so == null) return;
+            
             if(_buffs.Count <= 0)
             {
                 Buff buff = Instantiate(buffPrefab, buffPrent);

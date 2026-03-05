@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95786b332f67403ab9394e48105b7b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Monster.BossMonster
-  buffManager: {fileID: 557818771720447059}
+  buffManager: {fileID: 4790244854395316401}
   entity: {fileID: 11400000, guid: 52bba1368e7bdfd4b97f4bc2da24b026, type: 2}
   outline: {fileID: 3970330956231188217}
   hpUI: {fileID: 9123860013749608756}
@@ -565,9 +565,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
---- !u!114 &557818771720447059 stripped
+--- !u!224 &3372784382894408746 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 234023668389289432, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
+  m_PrefabInstance: {fileID: 3310676582213392882}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4790244854395316401 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3047854994875858337, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8037725351669444931, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
   m_PrefabInstance: {fileID: 3310676582213392882}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -576,11 +581,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3baa223cc41742ecb24d10da2d6a992b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Buff.BuffManager
---- !u!224 &3372784382894408746 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 234023668389289432, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
-  m_PrefabInstance: {fileID: 3310676582213392882}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &9123860013749608756 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6012187408301766854, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}

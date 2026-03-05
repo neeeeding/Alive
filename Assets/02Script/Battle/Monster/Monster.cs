@@ -47,6 +47,7 @@ namespace _02Script.Battle.Monster
         {
             base.OnEnable();
             hpUI.UpdateHp(curHp, maxHp);
+            GetBuffs(startBuff);
         }
 
         #region Entity

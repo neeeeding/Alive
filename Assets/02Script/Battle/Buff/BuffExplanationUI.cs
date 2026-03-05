@@ -47,7 +47,7 @@ namespace _02Script.Battle.Buff
             
             buffImage.sprite = so.buffImage;
             buffNameText.text = so.buffName;
-            timeText.text = $"({curSec}초)";
+            timeText.text = $"({(int)(so.buffDelay-curSec)}초 남음)";
             explanationText.text = so.buffExplanation;
 
             Vector3 targetPos = isUI ? cardPos : battleCamera.WorldToScreenPoint(cardPos);

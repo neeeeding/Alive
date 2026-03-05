@@ -109,7 +109,6 @@ namespace _02Script.Battle.Monster
             if (monsterType is BossMonsterSO bossSo)
             {
                 BossMonster monster = Instantiate(bossMonsterPrefab, parent);
-                
                 monster.SetMonster(bossSo);
                 _bossMonsters.Add(monster);
                 monster.GetCanTargets(_canTargets.ToList());

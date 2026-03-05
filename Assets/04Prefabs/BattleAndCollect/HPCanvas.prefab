@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 2.5}
-  m_SizeDelta: {x: 3, y: 2.5}
+  m_AnchoredPosition: {x: 0, y: 0.5}
+  m_SizeDelta: {x: 2.3, y: 1.1}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &4522822169091836550
 MonoBehaviour:
@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Buff.BuffManager
   buffPrefab: {fileID: 7275811272595815805, guid: 2700ffa7f793fe34ab7ea395f58bb494, type: 3}
   buffPrent: {fileID: 1321800297439456680}
+  isUI: 0
 --- !u!1 &1196109003040047971
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,7 +827,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &3634920407561793103
 MonoBehaviour:
   m_ObjectHideFlags: 0
