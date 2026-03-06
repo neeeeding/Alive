@@ -40,6 +40,7 @@ namespace _02Script.Battle.Food
             if (_entityName == EntityName.None || _curFood == null) return;
             
             OnFood?.Invoke(_entityName, _curFood);
+            ResetSelect();
         }
 
         private void ResetSelect()

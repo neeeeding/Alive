@@ -18,11 +18,13 @@ namespace _02Script.Battle.Food
         private void OnEnable()
         {
             FoodPersonCard.OnPerson += ChangeColor;
+            FoodCheck.OnFood += Eat;
             ChangeColor(EntityName.None);
         }
         private void OnDisable()
         {
             FoodPersonCard.OnPerson -= ChangeColor;
+            FoodCheck.OnFood -= Eat;
             ChangeColor(EntityName.None);
         }
         private void Awake()
@@ -35,6 +37,11 @@ namespace _02Script.Battle.Food
         public void ClickCard()
         {
             OnPerson?.Invoke(entityName);
+        }
+
+        private void Eat(EntityName name, FoodInventoryCard card)
+        {
+            ChangeColor(EntityName.None);
         }
 
         private void ChangeColor(EntityName name)

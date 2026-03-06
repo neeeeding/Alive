@@ -10,6 +10,7 @@ namespace _02Script.Collect
     {
         [SerializeField] private List<CollectPlayer> characters = new List<CollectPlayer>();
         [SerializeField] private List<CollectInventory> collectInventory = new List<CollectInventory>();
+        [SerializeField] private List<DeleteBtn> delete = new List<DeleteBtn>();
         [SerializeField] private List<ArrowMove> arrow = new List<ArrowMove>();
         [SerializeField] private ArrowManager arrowManager;
 
@@ -29,6 +30,7 @@ namespace _02Script.Collect
             {
                 collectInventory[i].SetInventoryCharacter(characters[i].playerName);
                 arrow[i].SetCharacter(characters[i].gameObject, characters[i].MyColor,arrowManager);
+                delete[i].SetCharacter(characters[i].playerName);
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
+using _02Script.Obj.Entity;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -42,11 +43,14 @@ namespace _02Script.Battle.Food
         {
             base.OnEnable();
             FoodInventoryCard.OnMouseClick += ChangeColor;
+            FoodCheck.OnFood += Eat;
         }
+
         private void OnDisable()
         {
             MouseExit();
             FoodInventoryCard.OnMouseClick -= ChangeColor;
+            FoodCheck.OnFood -= Eat;
             ChangeColor(null);
         }
         #endregion
@@ -63,6 +67,11 @@ namespace _02Script.Battle.Food
 
         public override void UpdateCountUI()
         {
+        }
+
+        private void Eat(EntityName name, FoodInventoryCard card)
+        {
+            ChangeColor(null);
         }
 
         private void ChangeColor(FoodInventoryCard card)

@@ -33,6 +33,7 @@ namespace _02Script.Collect
             _curCount = 0;
             BattleSaveManager.OnStart += SetStart;
             FoodInventory.OnUseItem += UseItem;
+            DeleteBtn.OnDelete += Delete;
         }
 
         protected override void OnDisable()
@@ -40,6 +41,7 @@ namespace _02Script.Collect
             CollectItem.OnGetItem -= GetItem;
             BattleSaveManager.OnStart -= SetStart;
             FoodInventory.OnUseItem -= UseItem;
+            DeleteBtn.OnDelete += Delete;
         }
         #endregion
 
@@ -82,9 +84,16 @@ namespace _02Script.Collect
             data.GetItem(count);
             
             ItemCard card = ItemCards[data][ItemCards[data].Count -1]; //갓 생성
+            (card as CollectInventoryCard).SetCharacter(inventoryCharacter);
             card.gameObject.SetActive(true);
         }
         #endregion
+
+        private void Delete(EntityName name, ItemDataSO so, float count)
+        {
+            if(name != inventoryCharacter) return;
+            ThrowItem(so,(int)count);
+        }
 
         private void UseItem(EntityName name, ItemDataSO data, int count)
         {
