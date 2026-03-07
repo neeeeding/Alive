@@ -19,6 +19,7 @@ namespace _02Script.Battle.Entity
         public static Action<bool> OnBlood;
         public static Action<WeaponItemDataSO> OnChangeWeapon;
         public static Action<WeaponInventoryCard,float> OnSkillWeapon;
+        public static Action<BattleEntitySO, Vector3, bool> OnExplanation; //설명용
         
         [Header("Player")]
         [SerializeField] private CharacterHpUI hpUI;
@@ -67,6 +68,17 @@ namespace _02Script.Battle.Entity
             FoodInventory.OnGetStat -= GetStat;
         }
 
+        #endregion
+
+        #region Mouse
+        public virtual void MouseEnter()
+        {
+            OnExplanation?.Invoke(entity as BattleEntitySO, gameObject.transform.position,false);
+        }
+        public virtual void MouseExit()
+        {
+            OnExplanation?.Invoke(null,Vector3.zero,false);
+        }
         #endregion
 
         public BattleEntitySO ReturnSO()
@@ -137,7 +149,7 @@ namespace _02Script.Battle.Entity
             //hpUI = hp;
             
             SetEntityStatValue();
-            curHp = maxHp;
+            curHp = _stats[StatsType.curHp];
             
             //ChangeWeapon(weapon);
             hpUI.SetCharacter(entity.EntityName);
@@ -267,6 +279,7 @@ namespace _02Script.Battle.Entity
             }
             hpUI.UpdateHp(curHp, maxHp);
             _forCharacter.SetHpUI(curHp, maxHp);
+            BattleSaveManager.Instance.PlayerStat.characterStats[entity.EntityName][StatsType.curHp] = (int)curHp;
         }
         protected override void Die()
         {

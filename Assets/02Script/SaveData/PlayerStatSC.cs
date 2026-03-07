@@ -91,9 +91,10 @@ namespace _02Script.SaveData
 
                 foreach (StatsType stats in Enum.GetValues(typeof(StatsType))) //모든 걸 저장 / 다이얼로그 종류 (챕터, 넘버, 텍스트, 메모, 러브 만 사용하긴 함.)
                 {
-                    if(stats == StatsType.none) continue;
+                    if(stats == StatsType.none || stats == StatsType.curHp) continue;
                     st.Add(stats,1);
                 }
+                st.Add(StatsType.curHp, 50);
                 characterStats.Add(name, st);
             }
         }

@@ -87,7 +87,7 @@ namespace _02Script.Battle.UI.Etc
             
             minX = rect.width/2;
             maxX -= minX;
-            minY = rect.height;
+            minY = rect.height/3;
             maxY -= minY;
         }
     }
