@@ -102,6 +102,12 @@ namespace _02Script.Collect
             ThrowItem(data,count);
         }
 
+        protected override void LessItem(ItemDataSO item, bool isThrow, int count = 1)
+        {
+            base.LessItem(item, isThrow, count);
+            _curCount--;
+        }
+
         private bool ItemCountAddCanCheck()
         {
             if (_curCount >= _inventoryMaxCount)

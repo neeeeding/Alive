@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _02Script.Battle.Buff;
 using _02Script.Battle.Food;
 using _02Script.Battle.UI;
+using _02Script.Battle.UI.Weapon;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;

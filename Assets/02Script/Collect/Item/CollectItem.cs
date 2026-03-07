@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using _02Script.Battle.UI;
+using _02Script.Battle.UI.Etc;
 using _02Script.DoTweenUI.Warring;
 using _02Script.Etc;
 using _02Script.Inventory.Item;

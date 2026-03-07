@@ -74,7 +74,7 @@ namespace _02Script.Inventory.Inventory
             LessItem(item, true, count);
         }
 
-        private void LessItem(ItemDataSO item, bool isThrow,int count = 1) //어쨌든 아이템 감소
+        protected virtual void LessItem(ItemDataSO item, bool isThrow,int count = 1) //어쨌든 아이템 감소
         {
             if (ItemDatas.ContainsKey(item))
             {

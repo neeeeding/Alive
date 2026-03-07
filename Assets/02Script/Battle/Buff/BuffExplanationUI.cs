@@ -1,32 +1,16 @@
-﻿using DG.Tweening;
-using TMPro;
+﻿using _02Script.Battle.UI.Etc;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace _02Script.Battle.Buff
 {
-    public class BuffExplanationUI : MonoBehaviour
+    public class BuffExplanationUI : ExplanationUI
     {
-        [SerializeField] private GameObject explanationUI;
-        [Header("UI")]
-        [SerializeField] private Image buffImage;
-        [SerializeField] private TextMeshProUGUI buffNameText;
-        [SerializeField] private TextMeshProUGUI timeText;
-        [SerializeField] private TextMeshProUGUI explanationText;
-        [Header("Need")]
-        [SerializeField] private Camera battleCamera;
-        [SerializeField] private Transform battleCanvas;
+        [SerializeField] protected Camera cam;
+        [SerializeField] private float _baseY = 20;
 
-        private readonly float _addY = 100;
-        private readonly float _minX = 200;
-        private readonly float _maxX = 1720;
-        private readonly float _minY = 120;
-        private readonly float _maxY = 370;
-        
-
-        private void OnEnable()
+        protected override void OnEnable()
         {
-            UIHide();
+            base.OnEnable();
             Buff.OnMouseEnter += UIShow;
         }
 
@@ -39,33 +23,18 @@ namespace _02Script.Battle.Buff
         {
             if (so == null)
             {
+                if(_isEnter) return;
                 UIHide();
                 return;
             }
-
-            Time.timeScale = 0.2f;
             
-            buffImage.sprite = so.buffImage;
-            buffNameText.text = so.buffName;
-            timeText.text = $"({(int)(so.buffDelay-curSec)}초 남음)";
+            image.sprite = so.buffImage;
+            nameText.text = so.buffName;
             explanationText.text = so.buffExplanation;
+            etcText.text = $"({(int)(so.buffDelay-curSec)}초 남음)";
 
-            Vector3 targetPos = isUI ? cardPos : battleCamera.WorldToScreenPoint(cardPos);
-            targetPos.x = Mathf.Clamp(targetPos.x, _minX, _maxX);
-            targetPos.y = Mathf.Clamp(targetPos.y, _minY, _maxY) + battleCanvas.position.y;
-            
-            explanationUI.transform.position = targetPos;
-            explanationUI.SetActive(true);
-            
-            targetPos.y += _addY;
-            
-            explanationUI.transform.DOMove(targetPos, 0.2f).SetEase(Ease.OutCirc).SetUpdate(true);
-        }
-
-        private void UIHide()
-        {
-            Time.timeScale = 1f;
-            explanationUI.SetActive(false);
+            cardPos.y += _baseY;
+            UIShow(isUI ? cardPos : cam.WorldToScreenPoint(cardPos));
         }
     }
 }
