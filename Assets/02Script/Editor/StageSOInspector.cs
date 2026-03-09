@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _02Script.Editor
 {
-    [CustomEditor(typeof(StageSO))]
+    [CustomEditor(typeof(GoHouseStageSO))]
     public class StageSOInspector : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
@@ -18,7 +18,7 @@ namespace _02Script.Editor
             {
                 if (GUILayout.Button("스테이지 에디터 열기", GUILayout.Height(28)))
                 {
-                    StageSO stage = (StageSO)target;
+                    GoHouseStageSO stage = (GoHouseStageSO)target;
                     StageSOEditorWindow.OpenWith(stage);
                 }
             }
@@ -26,12 +26,12 @@ namespace _02Script.Editor
 
             if (GUILayout.Button("빈 부분을 none로 채우기"))
             {
-                StageSO stage = (StageSO)target;
+                GoHouseStageSO stage = (GoHouseStageSO)target;
                 ConvertNullToAir(stage);
             }
         }
 
-        private void ConvertNullToAir(StageSO stage)
+        private void ConvertNullToAir(GoHouseStageSO stage)
         {
             string[] guids = AssetDatabase.FindAssets("t:GridDataSO");
             BlockSO noneBlock = guids

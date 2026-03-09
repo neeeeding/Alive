@@ -14,7 +14,8 @@ namespace _02Script.Battle.Monster
         [SerializeField] private Monster monsterPrefab;
         [SerializeField] private BossMonster bossMonsterPrefab;
         
-        private List<(MonsterSO monsterType, Transform spawnPos, float spawnDelay)> _monsterSpawnList; //종류, 위치, 스폰될 타이밍
+        private List<(MonsterSO monsterType, Vector3 spawnPos, float spawnDelay)> _monsterSpawnList
+            = new List<(MonsterSO monsterType, Vector3 spawnPos, float spawnDelay)>(); //종류, 위치, 스폰될 타이밍
         private List<Monster> _monsters = new List<Monster>();
         private List<BossMonster> _bossMonsters = new List<BossMonster>();
         private List<BattleEntity> _canTargets = new List<BattleEntity>(); //타겟 후보
@@ -65,7 +66,7 @@ namespace _02Script.Battle.Monster
                 return;
             }
             
-            List<(MonsterSO monsterType, Transform spawnPos, float spawnDelay)> spawnList = new List<(MonsterSO monsterType, Transform spawnPos, float spawnDelay)>();
+            List<(MonsterSO monsterType, Vector3 spawnPos, float spawnDelay)> spawnList = new List<(MonsterSO monsterType, Vector3 spawnPos, float spawnDelay)>();
             for (int i = 0; i < _monsterSpawnList.Count; i++)
             {
                 if (_monsterSpawnList[i].spawnDelay <= _curTime)
@@ -74,7 +75,7 @@ namespace _02Script.Battle.Monster
                 }
             }
 
-            foreach ((MonsterSO monsterType, Transform spawnPos, float spawnDelay) spawn in spawnList)
+            foreach ((MonsterSO monsterType, Vector3 spawnPos, float spawnDelay) spawn in spawnList)
             {
                 _curAlive++;
                 _monsterSpawnList.Remove(spawn);
@@ -99,7 +100,7 @@ namespace _02Script.Battle.Monster
                     _monsters.RemoveAt(0);
                 }
                 
-                monster.transform.position = spawn.spawnPos.position;
+                monster.transform.position = spawn.spawnPos;
                 
                 monster.gameObject.SetActive(true);
             }
@@ -144,9 +145,10 @@ namespace _02Script.Battle.Monster
         {
             _canTargets = targetList;
         }
-        public void SetSpawnList(List<(MonsterSO, Transform, float)> monsterSpawnList)
+        public void SetSpawnList(List<(MonsterSO, Vector3, float)> monsterSpawnList)
         {
             _monsterSpawnList = monsterSpawnList;
+            print((monsterSpawnList.Count));
         }
         private void SetStart()
         {

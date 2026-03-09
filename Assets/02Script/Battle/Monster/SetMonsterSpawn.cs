@@ -6,11 +6,11 @@ namespace _02Script.Battle.Monster
 {
     public class SetMonsterSpawn : MonoBehaviour
     {
-        private List<(MonsterSO monsterType, Transform spawnPos, float spawnDelay)> _finishList 
-            = new List<(MonsterSO monsterType, Transform spawnPos, float spawnDelay)>();
+        protected List<(MonsterSO monsterType, Vector3 spawnPos, float spawnDelay)> _finishList 
+            = new List<(MonsterSO monsterType, Vector3 spawnPos, float spawnDelay)>();
         
-        [SerializeField] private SerializedDictionary<Monster, float> setSpawn;
-        [SerializeField] private MonsterManager manager;
+        [SerializeField] protected SerializedDictionary<Monster, float> setSpawn;
+        [SerializeField] protected MonsterManager manager;
 
         private void Awake()
         {
@@ -18,15 +18,15 @@ namespace _02Script.Battle.Monster
             GiveList();
         }
 
-        private void ToOrganizeList()
+        protected virtual void ToOrganizeList()
         {
             foreach (KeyValuePair<Monster, float> spawn in setSpawn)
             {
-                _finishList.Add((spawn.Key.GetMonsterType(), spawn.Key.transform, spawn.Value));
+                _finishList.Add((spawn.Key.GetMonsterType(), spawn.Key.transform.position, spawn.Value));
             }
         }
 
-        private void GiveList()
+        protected virtual void GiveList()
         {
             manager.SetSpawnList(_finishList);
             gameObject.SetActive(false);

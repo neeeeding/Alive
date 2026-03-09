@@ -31,5 +31,13 @@ namespace _02Script.Collect.Item
             _items.Add(item);
             item.gameObject.SetActive(false);
         }
+        
+        public void SetSpawnList(List<(ItemDataSO, Vector3, int)> spawnList)
+        {
+            foreach ((ItemDataSO item, Vector3 pos, int count) item in spawnList)
+            {
+                SettingItem(item.item, item.count, item.pos);
+            }
+        }
     }
 }

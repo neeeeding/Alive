@@ -27,6 +27,8 @@ namespace _02Script.Collect.Item
         [SerializeField] private Material baseMaterial;
         [SerializeField] private Material outlineMaterial;
         
+        public ItemDataSO ItemData {get => itemData;}
+        
         private SpriteRenderer _renderer;
         private float _curS;
         private float _collectTime;

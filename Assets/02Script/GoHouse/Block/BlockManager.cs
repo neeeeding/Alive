@@ -11,7 +11,7 @@ namespace _02Script.GoHouse.Block
     public class BlockManager : MonoBehaviour
     {
         [Header("Show")]
-        [SerializeField]private StageSO curStage;
+        [SerializeField]private GoHouseStageSO curStage;
         [Header("Need")]
         [SerializeField] private StageScreen stageScreen;
         [SerializeField] private BlockPlayer player;
@@ -84,7 +84,7 @@ namespace _02Script.GoHouse.Block
             }
         }
         
-        public async void SetStage(StageSO so)
+        public async void SetStage(GoHouseStageSO so)
         {
             curStage = so;
             SpawnBlock();

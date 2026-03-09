@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace _02Script.Collect
 {
-    public class CollectManager : MonoBehaviour
+    public class CollectSetManager : MonoBehaviour
     {
         [SerializeField] private List<CollectPlayer> characters = new List<CollectPlayer>();
         [SerializeField] private List<CollectInventory> collectInventory = new List<CollectInventory>();

@@ -7,7 +7,7 @@ namespace _02Script.GoHouse.Stage
 {
     [CreateAssetMenu(fileName = "StageSO", menuName = "SO/GoHouse/StageSO", order = 0)]
     [Serializable]
-    public class StageSO : ScriptableObject
+    public class GoHouseStageSO : ScriptableObject
     {
         public string stageName;
         public int stageNum;

@@ -11,7 +11,7 @@ namespace _02Script.Editor
     public class StageSOEditorWindow : EditorWindow
     {
         //스테이지 정보
-        private StageSO _stage;
+        private GoHouseStageSO _stage;
         private SerializedObject _serializedStage; //지금 수정 할 스테이지 so (를 감싸는 편집기)
         private SerializedProperty _gridRowsProp; //스테이지 맵의 칸 (스테이지 so의 특정 코드)
 
@@ -35,7 +35,7 @@ namespace _02Script.Editor
         }
 
         //더블 클릭으로 열기
-        public static void OpenWith(StageSO stage)
+        public static void OpenWith(GoHouseStageSO stage)
         {
             StageSOEditorWindow window = GetWindow<StageSOEditorWindow>("GoHouse Stage Editor");
             window.SetTarget(stage);
@@ -56,7 +56,7 @@ namespace _02Script.Editor
         #endregion
 
         #region Setting
-        private void SetTarget(StageSO stage) //수정할 스테이지 정하기
+        private void SetTarget(GoHouseStageSO stage) //수정할 스테이지 정하기
         {
             _stage = stage;
             if (_stage != null)
@@ -104,7 +104,7 @@ namespace _02Script.Editor
         {
             using (new EditorGUILayout.HorizontalScope(EditorStyles.helpBox)) //묶기 위한
             {
-                StageSO newStage = (StageSO)EditorGUILayout.ObjectField("수정 중인 스테이지 : ", _stage, typeof(StageSO), false);
+                GoHouseStageSO newStage = (GoHouseStageSO)EditorGUILayout.ObjectField("수정 중인 스테이지 : ", _stage, typeof(GoHouseStageSO), false);
                 if (newStage != _stage)
                 {
                     SetTarget(newStage);
@@ -388,7 +388,7 @@ namespace _02Script.Editor
                 return;
             }
 
-            StageSO newStage = ScriptableObject.CreateInstance<StageSO>();
+            GoHouseStageSO newStage = ScriptableObject.CreateInstance<GoHouseStageSO>();
 
             string path = AssetDatabase.GenerateUniqueAssetPath(
                 folderPath + "/NewStage.asset");

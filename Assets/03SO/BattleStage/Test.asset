@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 028495c7eedd4adfb0e5f5365d74b521, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Stage.BattleStageSO
+  stageName: "\uD14C\uC2A4\uD2B8"
+  stageNum: 0
+  canCollectTime: {x: 1, y: 12}
+  monsterSpawn:
+    ks:
+    - {fileID: 11400000, guid: 6596087816825ed45bdc07f1ab81b9aa, type: 2}
+    - {fileID: 11400000, guid: d76f5bb7c781f67438da3582cf56829f, type: 2}
+    - {fileID: 11400000, guid: 52bba1368e7bdfd4b97f4bc2da24b026, type: 2}
+  monsterPos:
+    ks:
+    - {fileID: 11400000, guid: 6596087816825ed45bdc07f1ab81b9aa, type: 2}
+    - {fileID: 11400000, guid: d76f5bb7c781f67438da3582cf56829f, type: 2}
+    - {fileID: 11400000, guid: 52bba1368e7bdfd4b97f4bc2da24b026, type: 2}
+  itemSpawn:
+    ks:
+    - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
+  itemPos:
+    ks:
+    - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
+  goHouse: {fileID: 11400000, guid: ab99ac321b0cde54fa6c5e6c81b4d1f7, type: 2}
