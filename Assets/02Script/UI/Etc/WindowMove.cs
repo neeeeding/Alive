@@ -1,11 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace _02Script.UI.Etc
 {
     public class WindowMove : MonoBehaviour
     {
-        [SerializeField] private GameObject moveObj;
+        [SerializeField] protected GameObject moveObj;
         
         private bool _isMove;
         private Vector3 _offset;
@@ -15,13 +14,13 @@ namespace _02Script.UI.Etc
             MouseCancel();
         }
 
-        public void MouseClick()
+        public virtual void MouseClick()
         {
             _isMove = true;
             _offset = moveObj.transform.position - Input.mousePosition;
         }
 
-        public void MouseCancel()
+        public virtual void MouseCancel()
         {
             _isMove = false;
         }

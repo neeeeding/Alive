@@ -51,7 +51,7 @@ namespace _02Script.Battle.UI.Etc
         
         protected virtual void OnEnable()
         {
-            UIHide();
+            explanationUI.gameObject.SetActive(false);
             SetMinMax();
         }
 
@@ -77,7 +77,7 @@ namespace _02Script.Battle.UI.Etc
 
         protected virtual void UIHide()
         {
-            Time.timeScale = 1f;
+            Time.timeScale = 1;
             explanationUI.gameObject.SetActive(false);
         }
 

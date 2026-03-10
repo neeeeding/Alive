@@ -51,6 +51,10 @@ namespace _02Script.Battle.UI
                                    $"수납 {StatCalculate.StatAlphabet(so.EntityName, StatsType.acceptance)} / 채굴 {StatCalculate.StatAlphabet(so.EntityName, StatsType.mining)}\n";
 
             cardPos.x += _baseX;
+            if (cardPos.x > maxX)
+            {
+                cardPos.x -= _baseX * 2;
+            }
             UIShow(isUI ? cardPos : cam.WorldToScreenPoint(cardPos));
             _isEnter = true;
         }

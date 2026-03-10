@@ -16,42 +16,66 @@ namespace _02Script.Battle.Stage
         public int stageNum;
 
         public Vector2 canCollectTime; //채집 가능 시간
+        [Header("PlayerPos")]
+        public Vector3 cPlayerOnePos;
+        public Vector3 cPlayerTwoPos;
+        public Vector3 bPlayerOnePos;
+        public Vector3 bPlayerTwoPos;
         
-        //몬스터 스폰에 대해
-        public SaveDictionary<MonsterSO, List<float>> monsterSpawn = new SaveDictionary<MonsterSO, List<float>>();
-        public SaveDictionary<MonsterSO, List<Vector3>> monsterPos = new SaveDictionary<MonsterSO, List<Vector3>>();
+        [Header("CamPos")]
+        public Vector3 cCamPos;
+        public Vector3 bCamPos;
+        public Vector3 miniCamPos;
         
-        //아이템
-        public SaveDictionary<ItemDataSO, List<int>> itemSpawn =new SaveDictionary<ItemDataSO, List<int>>();
-        public SaveDictionary<ItemDataSO, List<Vector3>> itemPos =new SaveDictionary<ItemDataSO, List<Vector3>>();
+        public Vector2 cCamLimitOffset;
+        public Vector2 cCamLimitSize;
+        public Vector2 bCamLimitOffset;
+        public Vector2 bCamLimitSize;
+        public Vector3 miniCamSize;
+        
+        [Header("Monster")]
+        public List<MonsterSO> monster = new List<MonsterSO>();
+        public List<float> mTime = new List<float>();
+        public List<Vector3> mPos = new List<Vector3>();
+        
+        [Header("Item")]
+        public List<ItemDataSO> itme = new List<ItemDataSO>();
+        public List<int> iCount = new List<int>();
+        public List<Vector3> iPos = new List<Vector3>();
 
         [Header("GoHouse")]
         public GoHouseStageSO goHouse; //집가기
 
-        public void SetMonster(Dictionary<MonsterSO, List<float>> m, Dictionary<MonsterSO,List<Vector3>> p)
+        public void SetMonster(List<MonsterSO> m, List<float> t, List<Vector3> p)
         {
-            monsterSpawn.Clear();
-            monsterSpawn.Dictionary(m);
-            
-            monsterPos.Clear();
-            monsterPos.Dictionary(p);
-#if UNITY_EDITOR
-            EditorUtility.SetDirty(this);
-            AssetDatabase.SaveAssets();
-#endif
+            monster = m;
+            mTime = t;
+            mPos = p;
         }
 
-        public void SetItem(Dictionary<ItemDataSO, List<int>>i, Dictionary<ItemDataSO, List<Vector3>> p)
+        public void SetItem(List<ItemDataSO> m, List<int> c, List<Vector3> p)
         {
-            itemSpawn.Clear();
-            itemSpawn.Dictionary(i);
+            itme = m;
+            iCount = c;
+            iPos = p;
+        }
+
+        public void SetPos(Vector3 cOne, Vector3 cTwo, Vector3 bOne, Vector3 bTwo, Vector3 cCam, Vector3 bCam, Vector3 miniCam,
+            Vector2 cCamOffset, Vector2 cCamSize, Vector2 bCamOffset, Vector2 bCamSize, Vector3 miniSize)
+        {
+            cPlayerOnePos = cOne;
+            cPlayerTwoPos = cTwo;
+            bPlayerOnePos = bOne;
+            bPlayerTwoPos = bTwo;
+            cCamPos = cCam;
+            bCamPos = bCam;
+            miniCamPos = miniCam;
             
-            itemPos.Clear();
-            itemPos.Dictionary(p);
-#if UNITY_EDITOR
-            EditorUtility.SetDirty(this);
-            AssetDatabase.SaveAssets();
-#endif
+            cCamLimitOffset = cCamOffset;
+            cCamLimitSize = cCamSize;
+            bCamLimitOffset = bCamOffset;
+            bCamLimitSize = bCamSize;
+            miniCamSize = miniSize;
         }
     }
 }

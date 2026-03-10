@@ -8,7 +8,7 @@ namespace _02Script.Collect
 {
     public class CollectSetManager : MonoBehaviour
     {
-        [SerializeField] private List<CollectPlayer> characters = new List<CollectPlayer>();
+        public List<CollectPlayer> characters = new List<CollectPlayer>();
         [SerializeField] private List<CollectInventory> collectInventory = new List<CollectInventory>();
         [SerializeField] private List<DeleteBtn> delete = new List<DeleteBtn>();
         [SerializeField] private List<ArrowMove> arrow = new List<ArrowMove>();

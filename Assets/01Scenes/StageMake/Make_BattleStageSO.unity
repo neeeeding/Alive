@@ -696,6 +696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 88975374}
+  - component: {fileID: 88975375}
   m_Layer: 0
   m_Name: Obj
   m_TagString: Untagged
@@ -716,12 +717,34 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 255607071}
-  - {fileID: 2090017885}
   - {fileID: 2112486910}
   - {fileID: 968452661}
+  - {fileID: 2090017885}
+  - {fileID: 255607071}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &88975375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88975373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 522d6733c29f4361a3e6fc91337c333e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Stage.StagePlayerPosSet
+  curStage: {fileID: 11400000, guid: f5bbe4a68c817cc4cbfb72cbe6e1ab69, type: 2}
+  cPlayerOnePos: {fileID: 2112486910}
+  cPlayerTwoPos: {fileID: 968452661}
+  bPlayerOnePos: {fileID: 2090017885}
+  bPlayerTwoPos: {fileID: 255607071}
+  cCamPos: {fileID: 1961500634}
+  bCamPos: {fileID: 507990732}
+  miniCamPos: {fileID: 1236381911}
+  cCamLimit: {fileID: 624513794}
+  bCamLimit: {fileID: 265593500}
 --- !u!1 &145504988
 GameObject:
   m_ObjectHideFlags: 0

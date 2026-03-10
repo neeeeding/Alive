@@ -10,8 +10,9 @@ namespace _02Script.Battle.Stage
     {
         [SerializeField] private BattleStageSO stage;
         
-        private Dictionary<ItemDataSO, List<int>> _itemSpawn =new Dictionary<ItemDataSO, List<int>>();
-        private Dictionary<ItemDataSO, List<Vector3>> _itemPos =new Dictionary<ItemDataSO, List<Vector3>>();
+        private List<ItemDataSO> _itme = new List<ItemDataSO>();
+        private List<int> _iCount = new List<int>();
+        private List<Vector3> _iPos = new List<Vector3>();
         
         
         protected override void ToOrganizeList()
@@ -22,21 +23,15 @@ namespace _02Script.Battle.Stage
             }
             foreach (KeyValuePair<CollectItem, int> spawn in setSpawn)
             {
-                ItemDataSO item = spawn.Key.ItemData;
-                if (!_itemPos.ContainsKey(item))
-                {
-                    _itemSpawn.Add(item, new List<int>());
-                    _itemPos.Add(item, new List<Vector3>());
-                }
-                
-                _itemSpawn[item].Add(spawn.Value);
-                _itemPos[item].Add(spawn.Key.transform.position);
+                _itme.Add(spawn.Key.ItemData);
+                _iCount.Add(spawn.Value);
+                _iPos.Add(spawn.Key.transform.position);
             }
         }
         
         protected override void GiveList()
         {
-            stage.SetItem(_itemSpawn,_itemPos);
+            stage.SetItem(_itme,_iCount,_iPos);
             print("ok Item");
             gameObject.SetActive(false);
         }

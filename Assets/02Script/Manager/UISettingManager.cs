@@ -50,7 +50,7 @@ namespace _02Script.Manager
             HouseManager.Instance.PlayerStat.isChat = false;
             AllHide();
             SettingAll();
-            Time.timeScale = 1f;
+            Time.timeScale = 1;
             PlayerInput.Instance.CanInput();
         }
 

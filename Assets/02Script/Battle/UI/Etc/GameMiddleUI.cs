@@ -27,7 +27,7 @@ namespace _02Script.Battle.UI.Etc
 
         private void OnEnable()
         {
-            PlayGame();
+            //PlayGame();
             _isCollect = true;
             collectEnd.SetActive(false);
         }

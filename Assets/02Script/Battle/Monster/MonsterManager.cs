@@ -148,7 +148,6 @@ namespace _02Script.Battle.Monster
         public void SetSpawnList(List<(MonsterSO, Vector3, float)> monsterSpawnList)
         {
             _monsterSpawnList = monsterSpawnList;
-            print((monsterSpawnList.Count));
         }
         private void SetStart()
         {

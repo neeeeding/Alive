@@ -18,6 +18,8 @@ namespace _02Script.Battle.Entity
         [SerializeField] protected EntitySO entity;
         [SerializeField] public SpriteRenderer outline;
         
+        public EntityName EntityName{get => entity.EntityName;}
+        
         protected List<BattleEntity> canTargets = new List<BattleEntity>(); //타겟 후보
         protected List<BattleEntity> targets = new List<BattleEntity>(); //현재 타겟
         protected int maxHp;
