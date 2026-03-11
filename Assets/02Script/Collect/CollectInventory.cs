@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using _02Script.Battle;
 using _02Script.Battle.Food;
+using _02Script.Battle.UI.Job;
 using _02Script.Collect.Item;
 using _02Script.DoTweenUI.Warring;
 using _02Script.Etc;
@@ -31,7 +32,7 @@ namespace _02Script.Collect
         {
             CollectItem.OnGetItem += GetItem;
             _curCount = 0;
-            BattleSaveManager.OnStart += SetStart;
+            SelectDistribution.OnStart += SetStart;
             FoodInventory.OnUseItem += UseItem;
             DeleteBtn.OnDelete += Delete;
         }
@@ -39,7 +40,7 @@ namespace _02Script.Collect
         protected override void OnDisable()
         {
             CollectItem.OnGetItem -= GetItem;
-            BattleSaveManager.OnStart -= SetStart;
+            SelectDistribution.OnStart -= SetStart;
             FoodInventory.OnUseItem -= UseItem;
             DeleteBtn.OnDelete += Delete;
         }

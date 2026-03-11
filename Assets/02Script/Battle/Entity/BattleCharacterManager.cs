@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _02Script.Battle.UI;
+using _02Script.Battle.UI.Job;
 using _02Script.Battle.UI.Weapon;
 using UnityEngine;
 
@@ -14,12 +15,12 @@ namespace _02Script.Battle.Entity
 
         private void OnEnable()
         {
-            BattleSaveManager.OnStart += SetStartCharacter;
+            SelectDistribution.OnStart += SetStartCharacter;
         }
 
         private void OnDisable()
         {
-            BattleSaveManager.OnStart -= SetStartCharacter;
+            SelectDistribution.OnStart -= SetStartCharacter;
         }
 
         private void SetStartCharacter()
@@ -30,6 +31,7 @@ namespace _02Script.Battle.Entity
                 (characters[i] as BattleCharacter).SetCharacter(forCharacterUI[i]);
                 forCharacterUI[i].SetEntity(characters[i].ReturnName());
                 skillBtn[i].SetEntity(characters[i]);
+                characters[i].gameObject.SetActive(true);
             }
         }
     }

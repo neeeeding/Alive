@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _02Script.Battle;
+using _02Script.Battle.UI.Job;
 using _02Script.Collect.Arrow;
 using _02Script.GamePlayer.GamePlayer;
 using UnityEngine;
@@ -16,12 +17,12 @@ namespace _02Script.Collect
 
         private void OnEnable()
         {
-            BattleSaveManager.OnStart += SetStartCharacter;
+            SelectDistribution.OnStart += SetStartCharacter;
         }
 
         private void OnDisable()
         {
-            BattleSaveManager.OnStart -= SetStartCharacter;
+            SelectDistribution.OnStart -= SetStartCharacter;
         }
 
         private void SetStartCharacter()
@@ -31,6 +32,7 @@ namespace _02Script.Collect
                 collectInventory[i].SetInventoryCharacter(characters[i].playerName);
                 arrow[i].SetCharacter(characters[i].gameObject, characters[i].MyColor,arrowManager);
                 delete[i].SetCharacter(characters[i].playerName);
+                characters[i].gameObject.SetActive(true);
             }
         }
     }

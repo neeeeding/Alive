@@ -1711,6 +1711,7 @@ MonoBehaviour:
   battleManager: {fileID: 446161206}
   collectManager: {fileID: 2107247937}
   monsterManager: {fileID: 1810232832}
+  stageSet: {fileID: 1570488763}
 --- !u!1 &149481193
 GameObject:
   m_ObjectHideFlags: 0
@@ -2900,7 +2901,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &238674890
 Transform:
   m_ObjectHideFlags: 0
@@ -4471,6 +4472,10 @@ PrefabInstance:
     - target: {fileID: 1174248355139363736, guid: 0ca4e42293dac4a4f99703c230316f7d, type: 3}
       propertyPath: m_Name
       value: Collect_Lie
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174248355139363736, guid: 0ca4e42293dac4a4f99703c230316f7d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5258889978525795579, guid: 0ca4e42293dac4a4f99703c230316f7d, type: 3}
       propertyPath: myColor.a
@@ -7015,6 +7020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Taehan
       objectReference: {fileID: 0}
+    - target: {fileID: 1174248355139363736, guid: 0ca4e42293dac4a4f99703c230316f7d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5258889978525795579, guid: 0ca4e42293dac4a4f99703c230316f7d, type: 3}
       propertyPath: myColor.a
       value: 1
@@ -9424,7 +9433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &839638963
 Transform:
   m_ObjectHideFlags: 0
@@ -9457,7 +9466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Entity.BattleCharacter
   buffManager: {fileID: 1209707360}
-  entity: {fileID: 11400000, guid: 2f0f3772912cc5d48bb195cd0f89787c, type: 2}
+  entity: {fileID: 11400000, guid: 50497dd7007c6424181256e51d64179f, type: 2}
   outline: {fileID: 547703501}
   hpUI: {fileID: 1209707361}
   outlineColor: {r: 0, g: 0.37247252, b: 1, a: 1}
@@ -10238,6 +10247,10 @@ PrefabInstance:
     - target: {fileID: 1174248355139363736, guid: 0ca4e42293dac4a4f99703c230316f7d, type: 3}
       propertyPath: m_Name
       value: Dohan
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174248355139363736, guid: 0ca4e42293dac4a4f99703c230316f7d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5258889978525795579, guid: 0ca4e42293dac4a4f99703c230316f7d, type: 3}
       propertyPath: myColor.a
@@ -13888,23 +13901,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2148692920311540786, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2148692920311540786, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2148692920311540786, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2523134453179570491, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2523134453179570491, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4526698843695442105, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_Name
@@ -14345,23 +14358,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2148692920311540786, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2148692920311540786, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2148692920311540786, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2523134453179570491, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2523134453179570491, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4526698843695442105, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_Name
@@ -15221,23 +15234,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2148692920311540786, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2148692920311540786, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2148692920311540786, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2523134453179570491, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2523134453179570491, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4526698843695442105, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_Name
@@ -15288,7 +15301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1300050918
 Transform:
   m_ObjectHideFlags: 0
@@ -15321,7 +15334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Entity.BattleCharacter
   buffManager: {fileID: 1231406872}
-  entity: {fileID: 11400000, guid: 2f0f3772912cc5d48bb195cd0f89787c, type: 2}
+  entity: {fileID: 11400000, guid: 5799b84e597f25442a9c93f962a0d25e, type: 2}
   outline: {fileID: 375356760}
   hpUI: {fileID: 1231406873}
   outlineColor: {r: 0, g: 0.37247252, b: 1, a: 1}
@@ -18425,6 +18438,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hajun
       objectReference: {fileID: 0}
+    - target: {fileID: 1174248355139363736, guid: 0ca4e42293dac4a4f99703c230316f7d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5258889978525795579, guid: 0ca4e42293dac4a4f99703c230316f7d, type: 3}
       propertyPath: myColor.a
       value: 1
@@ -19154,9 +19171,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30aab726d2b84d15806bfbe5f6a4fdcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Stage.CurStageSet
-  curStage: {fileID: 11400000, guid: f5bbe4a68c817cc4cbfb72cbe6e1ab69, type: 2}
+  curStage: {fileID: 11400000, guid: ea825a4fa25b28840ad6ed280a08336b, type: 2}
   monsterManager: {fileID: 1810232832}
   itemManager: {fileID: 664195332}
+  middleUI: {fileID: 2136639745}
   cPlayerOnePos: {fileID: 0}
   cPlayerTwoPos: {fileID: 0}
   bPlayerOnePos: {fileID: 0}
@@ -21678,7 +21696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1816444916
 Rigidbody2D:
   serializedVersion: 5
@@ -25488,23 +25506,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2148692920311540786, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2148692920311540786, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2148692920311540786, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2523134453179570491, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2523134453179570491, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4526698843695442105, guid: 3b37481e7ca70e14e8c2fdb4c5d1fcb3, type: 3}
       propertyPath: m_Name

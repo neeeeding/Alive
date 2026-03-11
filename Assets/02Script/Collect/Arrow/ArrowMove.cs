@@ -14,6 +14,7 @@ namespace _02Script.Collect.Arrow
 
         private void Update()
         {
+            if(!_character) return;
             if(!ShowCheck()) return;
             
             Move();

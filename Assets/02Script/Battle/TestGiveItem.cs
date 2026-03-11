@@ -1,4 +1,5 @@
-﻿using _02Script.Inventory.Etc;
+﻿using _02Script.Battle.UI.Job;
+using _02Script.Inventory.Etc;
 
 namespace _02Script.Battle
 {
@@ -6,12 +7,12 @@ namespace _02Script.Battle
     {
         private void OnEnable()
         {
-            BattleSaveManager.OnStart += Set;
+            SelectDistribution.OnStart += Set;
         }
 
         private void OnDisable()
         {
-            BattleSaveManager.OnStart -= Set;
+            SelectDistribution.OnStart -= Set;
         }
     }
 }

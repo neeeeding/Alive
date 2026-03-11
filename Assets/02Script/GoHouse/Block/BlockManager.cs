@@ -20,6 +20,8 @@ namespace _02Script.GoHouse.Block
         
         private Dictionary<Vector2, BlockObj> _blockPos = new Dictionary<Vector2, BlockObj>();
         private Dictionary<BlockType, List<BlockObj>> _typeBlock = new Dictionary<BlockType, List<BlockObj>>();
+        
+        private readonly string _goHouseSoSave = "battle_GoHouseStageSoSave";
 
         public Vector2? WantPos(Vector2 pos)
         {
@@ -43,6 +45,7 @@ namespace _02Script.GoHouse.Block
         #region EnDiAw
         private void OnEnable()
         {
+            LoadStage();
             PortalSO.OnPortalEnter += Portal;
             DieSO.OnDie += Die;
             BlockPlayer.OnReSet += Die;
@@ -53,11 +56,15 @@ namespace _02Script.GoHouse.Block
             DieSO.OnDie -= Die;
             BlockPlayer.OnReSet -= Die;
         }
-        private void Awake()
-        {
-            if(curStage) SetStage(curStage);
-        }
         #endregion
+
+        private void LoadStage()
+        {
+            string json = PlayerPrefs.GetString(_goHouseSoSave);
+
+            curStage = ScriptableObject.CreateInstance<GoHouseStageSO>();
+            JsonUtility.FromJsonOverwrite(json, curStage);
+        }
 
         #region Set
         private void SpawnBlock()

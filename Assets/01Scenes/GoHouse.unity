@@ -2617,7 +2617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc4c583261134703a4e889f4e2b488b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.GoHouse.BlockManager
-  curStage: {fileID: 11400000, guid: ab99ac321b0cde54fa6c5e6c81b4d1f7, type: 2}
+  curStage: {fileID: 11400000, guid: 4729d49a0c9376d44914900a95379b49, type: 2}
   stageScreen: {fileID: 1577080546}
   player: {fileID: 121718588}
   blockParent: {fileID: 1350668848}

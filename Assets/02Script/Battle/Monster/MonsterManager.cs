@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using _02Script.Battle.Entity;
+using _02Script.Battle.UI.Job;
 using UnityEngine;
 
 namespace _02Script.Battle.Monster
@@ -30,13 +31,13 @@ namespace _02Script.Battle.Monster
             _isSpawn = false;
             _curTime = 0;
             Monster.OnDie += AddMonsterList;
-            BattleSaveManager.OnStart += SetStart;
+            SelectDistribution.OnStart += SetStart;
         }
 
         private void OnDisable()
         {
             Monster.OnDie -= AddMonsterList;
-            BattleSaveManager.OnStart += SetStart;
+            SelectDistribution.OnStart += SetStart;
         }
 
         private void AddMonsterList(Monster monster) //풀링

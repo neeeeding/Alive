@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _02Script.Battle.Buff;
 using _02Script.Battle.Food;
 using _02Script.Battle.UI;
+using _02Script.Battle.UI.Job;
 using _02Script.Battle.UI.Weapon;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
@@ -41,7 +42,7 @@ namespace _02Script.Battle.Entity
             _isSetStat = false;
             base.OnEnable();
             Monster.Monster.OnSelect += Target;
-            BattleSaveManager.OnStart += SetStats;
+            SelectDistribution.OnStart += SetStats;
             Monster.Monster.OnDie += TargetDie;
             WeaponInventoryCard.OnMouseClick += ChangeWeapon;
             FoodInventory.OnGetStat += GetStat;
@@ -62,7 +63,7 @@ namespace _02Script.Battle.Entity
         {
             base.OnDisable();
             Monster.Monster.OnSelect -= Target;
-            BattleSaveManager.OnStart -= SetStats;
+            SelectDistribution.OnStart -= SetStats;
             Monster.Monster.OnDie -= TargetDie;
             WeaponInventoryCard.OnMouseClick -= ChangeWeapon;
             FoodInventory.OnGetStat -= GetStat;
@@ -319,15 +320,19 @@ namespace _02Script.Battle.Entity
             curHp += recovery;
             base.Recovery(); //버프 계산
             hpUI.UpdateHp(curHp, maxHp);
-            _forCharacter.SetHpUI(curHp, maxHp);
+            if(_forCharacter)
+                _forCharacter.SetHpUI(curHp, maxHp);
         }
         protected override void HpDeBuff(EntityName name, float value)
         {
             base.HpDeBuff(name, value);
             hpUI.UpdateHp(curHp, maxHp);
-            _forCharacter.SetHpUI(curHp, maxHp);
+            if(_forCharacter)
+                _forCharacter.SetHpUI(curHp, maxHp);
         }
 
         #endregion
     }
 }
+
+
