@@ -31,7 +31,7 @@ namespace _02Script.Battle.Stage
         {
             curStage.SetPos(cPlayerOnePos.position, cPlayerTwoPos.position, bPlayerOnePos.position, bPlayerTwoPos.position, cCamPos.position,bCamPos.position, miniCamPos.position,
                 cCamLimit.offset,cCamLimit.size, bCamLimit.offset,bCamLimit.size,miniCamPos.localScale);
-            print("SetPos");
+            print("ok SetPos");
             gameObject.SetActive(false);
         }
     }

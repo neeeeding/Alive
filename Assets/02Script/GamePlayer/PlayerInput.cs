@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace _02Script.GamePlayer
 {
-    public class PlayerInput : Singleton<PlayerInput>, Controls.IPCActions
+    public class PlayerInput : Singleton<PlayerInput>, Controls.IHomeActions
     {
         public static Action<bool> OnRunClick;
         public static event Action<Vector2> OnMousePos;
@@ -22,14 +22,14 @@ namespace _02Script.GamePlayer
             if (_controls == null)
             {
                 _controls = new Controls();
-                _controls.PC.SetCallbacks(this);
+                _controls.Home.SetCallbacks(this);
             }
-            _controls.PC.Enable();
+            _controls.Home.Enable();
         }
 
         private void OnDisable()
         {
-            _controls.PC.Disable();
+            _controls.Home.Disable();
         }
         
         

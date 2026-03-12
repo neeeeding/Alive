@@ -12,15 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028495c7eedd4adfb0e5f5365d74b521, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Stage.BattleStageSO
-  stageName: "\uD14C\uC2A4\uD2B8"
+  stageName: 
   stageNum: 0
-  canCollectTime: {x: 1, y: 12}
+  canCollectTime: {x: 1, y: 5}
+  cPlayerOnePos: {x: -4.318374, y: -34.887226, z: 0}
+  cPlayerTwoPos: {x: -1.036647, y: -37.128403, z: 0}
+  bPlayerOnePos: {x: 4.13, y: 20.84, z: 0}
+  bPlayerTwoPos: {x: 0, y: 21.2, z: 0}
+  cCamPos: {x: 0, y: -35.6, z: -10}
+  bCamPos: {x: 0, y: 21.98, z: -10}
+  miniCamPos: {x: -25.7, y: -47.5, z: -10}
+  cCamLimitOffset: {x: -25.434109, y: -12.666271}
+  cCamLimitSize: {x: 100, y: 50}
+  bCamLimitOffset: {x: -1.1263161, y: -0.512373}
+  bCamLimitSize: {x: 50, y: 20}
+  miniCamSize: {x: 1, y: 1, z: 1}
   monster:
   - {fileID: 11400000, guid: 6596087816825ed45bdc07f1ab81b9aa, type: 2}
   - {fileID: 11400000, guid: d76f5bb7c781f67438da3582cf56829f, type: 2}
   - {fileID: 11400000, guid: d76f5bb7c781f67438da3582cf56829f, type: 2}
   - {fileID: 11400000, guid: d76f5bb7c781f67438da3582cf56829f, type: 2}
-  - {fileID: 11400000, guid: 52bba1368e7bdfd4b97f4bc2da24b026, type: 2}
+  - {fileID: 11400000, guid: 813977bad84f7e94a8db4449b6b0c2da, type: 2}
   mTime:
   - 0
   - 0

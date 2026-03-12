@@ -21,6 +21,8 @@ namespace _02Script.Collect
         [SerializeField] private EntityName inventoryCharacter;
         [Header("Need")]
         [SerializeField] private TextMeshProUGUI inventoryText;
+        [SerializeField] private TextMeshProUGUI btnText;
+        [SerializeField] private bool isQ;
 
         private string _characterName;
         private int _inventoryMaxCount;
@@ -141,6 +143,7 @@ namespace _02Script.Collect
             
             _characterName = EnumToString.Name(inventoryCharacter);
             inventoryText.text = _characterName+"의 인벤토리";
+            btnText.text = _characterName + (isQ?"\n(Q)":"\n(E)");
         }
         #endregion
     }

@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
 using _02Script.Battle.Monster;
-using _02Script.Collect.Item;
-using _02Script.Etc;
 using _02Script.GoHouse.Stage;
 using _02Script.Inventory.Item;
-using UnityEditor;
 using UnityEngine;
 
 namespace _02Script.Battle.Stage

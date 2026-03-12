@@ -89,7 +89,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     ""name"": ""Controls"",
     ""maps"": [
         {
-            ""name"": ""PC"",
+            ""name"": ""Home"",
             ""id"": ""df70fa95-8a34-4494-b137-73ab6b9c7d37"",
             ""actions"": [
                 {
@@ -312,6 +312,255 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MouseWheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Battle"",
+            ""id"": ""823cbe5e-5c94-41cd-8864-f43872bafd27"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""cb299c94-729e-4507-bbf2-beaab7e0d65b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MouseWheel"",
+                    ""type"": ""Button"",
+                    ""id"": ""1bc29c24-c35b-48aa-8a73-cbca26d57cf4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""6230a873-6dd6-4d3b-9b79-7eb071e57fcd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skill"",
+                    ""type"": ""Button"",
+                    ""id"": ""17d260d5-3bb4-4727-9789-ac7f022f2e65"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Weapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""4ec34ce7-5daf-4227-89d2-e271352f15e7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Food"",
+                    ""type"": ""Button"",
+                    ""id"": ""a69f0fb1-9e99-486b-ace2-821ab448465c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""0c992890-5b8b-459e-b39a-653a1bdddfcf"",
+                    ""path"": ""Dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""09f11b3c-c62c-46d6-a57a-c4a15ab3bd74"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""cfb919d1-807c-4b69-a075-602c7aed798f"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""d114a49a-23c9-4ba1-bb73-25beea1f12d2"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""ef824344-a940-40f4-8c35-6a139c593c96"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""2d87c54d-09cf-4bae-9529-fd1998235bfe"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""f000c3db-e9d2-49e9-87aa-8b91a2dd5914"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""a8001fa0-46fa-40fb-b154-f34af88fee1c"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""5a4ccc39-4d9f-4c15-8c43-96a694af8a62"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb189845-c2c6-4b90-8a55-c62a8a138435"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseWheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6e07b492-0b14-472b-9997-d9ec995ca139"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""098e2218-630f-402c-9cd9-b3de43122fcb"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba4c4f56-f7ed-42c4-8545-fc94996db6ba"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91f40dfa-99c8-4b8a-85a4-5ece09d9b400"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba14928a-a532-457c-9e38-0fc1d24b7aa8"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Weapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e8b6447a-a162-4f43-8078-b01c8baf9d2d"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Weapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ada48599-672f-4c4d-b62a-83624bb31f16"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Food"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -925,13 +1174,21 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // PC
-        m_PC = asset.FindActionMap("PC", throwIfNotFound: true);
-        m_PC_Move = m_PC.FindAction("Move", throwIfNotFound: true);
-        m_PC_Interaction = m_PC.FindAction("Interaction", throwIfNotFound: true);
-        m_PC_Run = m_PC.FindAction("Run", throwIfNotFound: true);
-        m_PC_MouseMove = m_PC.FindAction("MouseMove", throwIfNotFound: true);
-        m_PC_MouseWheel = m_PC.FindAction("MouseWheel", throwIfNotFound: true);
+        // Home
+        m_Home = asset.FindActionMap("Home", throwIfNotFound: true);
+        m_Home_Move = m_Home.FindAction("Move", throwIfNotFound: true);
+        m_Home_Interaction = m_Home.FindAction("Interaction", throwIfNotFound: true);
+        m_Home_Run = m_Home.FindAction("Run", throwIfNotFound: true);
+        m_Home_MouseMove = m_Home.FindAction("MouseMove", throwIfNotFound: true);
+        m_Home_MouseWheel = m_Home.FindAction("MouseWheel", throwIfNotFound: true);
+        // Battle
+        m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
+        m_Battle_Move = m_Battle.FindAction("Move", throwIfNotFound: true);
+        m_Battle_MouseWheel = m_Battle.FindAction("MouseWheel", throwIfNotFound: true);
+        m_Battle_Inventory = m_Battle.FindAction("Inventory", throwIfNotFound: true);
+        m_Battle_Skill = m_Battle.FindAction("Skill", throwIfNotFound: true);
+        m_Battle_Weapon = m_Battle.FindAction("Weapon", throwIfNotFound: true);
+        m_Battle_Food = m_Battle.FindAction("Food", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -951,7 +1208,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
 
     ~@Controls()
     {
-        UnityEngine.Debug.Assert(!m_PC.enabled, "This will cause a leak and performance issues, Controls.PC.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Home.enabled, "This will cause a leak and performance issues, Controls.Home.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Battle.enabled, "This will cause a leak and performance issues, Controls.Battle.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, Controls.UI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Inventory.enabled, "This will cause a leak and performance issues, Controls.Inventory.Disable() has not been called.");
     }
@@ -1026,49 +1284,49 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // PC
-    private readonly InputActionMap m_PC;
-    private List<IPCActions> m_PCActionsCallbackInterfaces = new List<IPCActions>();
-    private readonly InputAction m_PC_Move;
-    private readonly InputAction m_PC_Interaction;
-    private readonly InputAction m_PC_Run;
-    private readonly InputAction m_PC_MouseMove;
-    private readonly InputAction m_PC_MouseWheel;
+    // Home
+    private readonly InputActionMap m_Home;
+    private List<IHomeActions> m_HomeActionsCallbackInterfaces = new List<IHomeActions>();
+    private readonly InputAction m_Home_Move;
+    private readonly InputAction m_Home_Interaction;
+    private readonly InputAction m_Home_Run;
+    private readonly InputAction m_Home_MouseMove;
+    private readonly InputAction m_Home_MouseWheel;
     /// <summary>
-    /// Provides access to input actions defined in input action map "PC".
+    /// Provides access to input actions defined in input action map "Home".
     /// </summary>
-    public struct PCActions
+    public struct HomeActions
     {
         private @Controls m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public PCActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public HomeActions(@Controls wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "PC/Move".
+        /// Provides access to the underlying input action "Home/Move".
         /// </summary>
-        public InputAction @Move => m_Wrapper.m_PC_Move;
+        public InputAction @Move => m_Wrapper.m_Home_Move;
         /// <summary>
-        /// Provides access to the underlying input action "PC/Interaction".
+        /// Provides access to the underlying input action "Home/Interaction".
         /// </summary>
-        public InputAction @Interaction => m_Wrapper.m_PC_Interaction;
+        public InputAction @Interaction => m_Wrapper.m_Home_Interaction;
         /// <summary>
-        /// Provides access to the underlying input action "PC/Run".
+        /// Provides access to the underlying input action "Home/Run".
         /// </summary>
-        public InputAction @Run => m_Wrapper.m_PC_Run;
+        public InputAction @Run => m_Wrapper.m_Home_Run;
         /// <summary>
-        /// Provides access to the underlying input action "PC/MouseMove".
+        /// Provides access to the underlying input action "Home/MouseMove".
         /// </summary>
-        public InputAction @MouseMove => m_Wrapper.m_PC_MouseMove;
+        public InputAction @MouseMove => m_Wrapper.m_Home_MouseMove;
         /// <summary>
-        /// Provides access to the underlying input action "PC/MouseWheel".
+        /// Provides access to the underlying input action "Home/MouseWheel".
         /// </summary>
-        public InputAction @MouseWheel => m_Wrapper.m_PC_MouseWheel;
+        public InputAction @MouseWheel => m_Wrapper.m_Home_MouseWheel;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_PC; }
+        public InputActionMap Get() { return m_Wrapper.m_Home; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -1076,9 +1334,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="PCActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="HomeActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(PCActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(HomeActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -1086,11 +1344,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="PCActions" />
-        public void AddCallbacks(IPCActions instance)
+        /// <seealso cref="HomeActions" />
+        public void AddCallbacks(IHomeActions instance)
         {
-            if (instance == null || m_Wrapper.m_PCActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PCActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_HomeActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_HomeActionsCallbackInterfaces.Add(instance);
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
@@ -1114,8 +1372,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="PCActions" />
-        private void UnregisterCallbacks(IPCActions instance)
+        /// <seealso cref="HomeActions" />
+        private void UnregisterCallbacks(IHomeActions instance)
         {
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
@@ -1135,12 +1393,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PCActions.UnregisterCallbacks(IPCActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="HomeActions.UnregisterCallbacks(IHomeActions)" />.
         /// </summary>
-        /// <seealso cref="PCActions.UnregisterCallbacks(IPCActions)" />
-        public void RemoveCallbacks(IPCActions instance)
+        /// <seealso cref="HomeActions.UnregisterCallbacks(IHomeActions)" />
+        public void RemoveCallbacks(IHomeActions instance)
         {
-            if (m_Wrapper.m_PCActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_HomeActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -1150,21 +1408,172 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="PCActions.AddCallbacks(IPCActions)" />
-        /// <seealso cref="PCActions.RemoveCallbacks(IPCActions)" />
-        /// <seealso cref="PCActions.UnregisterCallbacks(IPCActions)" />
-        public void SetCallbacks(IPCActions instance)
+        /// <seealso cref="HomeActions.AddCallbacks(IHomeActions)" />
+        /// <seealso cref="HomeActions.RemoveCallbacks(IHomeActions)" />
+        /// <seealso cref="HomeActions.UnregisterCallbacks(IHomeActions)" />
+        public void SetCallbacks(IHomeActions instance)
         {
-            foreach (var item in m_Wrapper.m_PCActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_HomeActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_PCActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_HomeActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="PCActions" /> instance referencing this action map.
+    /// Provides a new <see cref="HomeActions" /> instance referencing this action map.
     /// </summary>
-    public PCActions @PC => new PCActions(this);
+    public HomeActions @Home => new HomeActions(this);
+
+    // Battle
+    private readonly InputActionMap m_Battle;
+    private List<IBattleActions> m_BattleActionsCallbackInterfaces = new List<IBattleActions>();
+    private readonly InputAction m_Battle_Move;
+    private readonly InputAction m_Battle_MouseWheel;
+    private readonly InputAction m_Battle_Inventory;
+    private readonly InputAction m_Battle_Skill;
+    private readonly InputAction m_Battle_Weapon;
+    private readonly InputAction m_Battle_Food;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Battle".
+    /// </summary>
+    public struct BattleActions
+    {
+        private @Controls m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public BattleActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Battle/Move".
+        /// </summary>
+        public InputAction @Move => m_Wrapper.m_Battle_Move;
+        /// <summary>
+        /// Provides access to the underlying input action "Battle/MouseWheel".
+        /// </summary>
+        public InputAction @MouseWheel => m_Wrapper.m_Battle_MouseWheel;
+        /// <summary>
+        /// Provides access to the underlying input action "Battle/Inventory".
+        /// </summary>
+        public InputAction @Inventory => m_Wrapper.m_Battle_Inventory;
+        /// <summary>
+        /// Provides access to the underlying input action "Battle/Skill".
+        /// </summary>
+        public InputAction @Skill => m_Wrapper.m_Battle_Skill;
+        /// <summary>
+        /// Provides access to the underlying input action "Battle/Weapon".
+        /// </summary>
+        public InputAction @Weapon => m_Wrapper.m_Battle_Weapon;
+        /// <summary>
+        /// Provides access to the underlying input action "Battle/Food".
+        /// </summary>
+        public InputAction @Food => m_Wrapper.m_Battle_Food;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Battle; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="BattleActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(BattleActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="BattleActions" />
+        public void AddCallbacks(IBattleActions instance)
+        {
+            if (instance == null || m_Wrapper.m_BattleActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_BattleActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @MouseWheel.started += instance.OnMouseWheel;
+            @MouseWheel.performed += instance.OnMouseWheel;
+            @MouseWheel.canceled += instance.OnMouseWheel;
+            @Inventory.started += instance.OnInventory;
+            @Inventory.performed += instance.OnInventory;
+            @Inventory.canceled += instance.OnInventory;
+            @Skill.started += instance.OnSkill;
+            @Skill.performed += instance.OnSkill;
+            @Skill.canceled += instance.OnSkill;
+            @Weapon.started += instance.OnWeapon;
+            @Weapon.performed += instance.OnWeapon;
+            @Weapon.canceled += instance.OnWeapon;
+            @Food.started += instance.OnFood;
+            @Food.performed += instance.OnFood;
+            @Food.canceled += instance.OnFood;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="BattleActions" />
+        private void UnregisterCallbacks(IBattleActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @MouseWheel.started -= instance.OnMouseWheel;
+            @MouseWheel.performed -= instance.OnMouseWheel;
+            @MouseWheel.canceled -= instance.OnMouseWheel;
+            @Inventory.started -= instance.OnInventory;
+            @Inventory.performed -= instance.OnInventory;
+            @Inventory.canceled -= instance.OnInventory;
+            @Skill.started -= instance.OnSkill;
+            @Skill.performed -= instance.OnSkill;
+            @Skill.canceled -= instance.OnSkill;
+            @Weapon.started -= instance.OnWeapon;
+            @Weapon.performed -= instance.OnWeapon;
+            @Weapon.canceled -= instance.OnWeapon;
+            @Food.started -= instance.OnFood;
+            @Food.performed -= instance.OnFood;
+            @Food.canceled -= instance.OnFood;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="BattleActions.UnregisterCallbacks(IBattleActions)" />.
+        /// </summary>
+        /// <seealso cref="BattleActions.UnregisterCallbacks(IBattleActions)" />
+        public void RemoveCallbacks(IBattleActions instance)
+        {
+            if (m_Wrapper.m_BattleActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="BattleActions.AddCallbacks(IBattleActions)" />
+        /// <seealso cref="BattleActions.RemoveCallbacks(IBattleActions)" />
+        /// <seealso cref="BattleActions.UnregisterCallbacks(IBattleActions)" />
+        public void SetCallbacks(IBattleActions instance)
+        {
+            foreach (var item in m_Wrapper.m_BattleActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_BattleActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="BattleActions" /> instance referencing this action map.
+    /// </summary>
+    public BattleActions @Battle => new BattleActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -1522,11 +1931,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PC" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Home" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="PCActions.AddCallbacks(IPCActions)" />
-    /// <seealso cref="PCActions.RemoveCallbacks(IPCActions)" />
-    public interface IPCActions
+    /// <seealso cref="HomeActions.AddCallbacks(IHomeActions)" />
+    /// <seealso cref="HomeActions.RemoveCallbacks(IHomeActions)" />
+    public interface IHomeActions
     {
         /// <summary>
         /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
@@ -1563,6 +1972,56 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMouseWheel(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Battle" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="BattleActions.AddCallbacks(IBattleActions)" />
+    /// <seealso cref="BattleActions.RemoveCallbacks(IBattleActions)" />
+    public interface IBattleActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MouseWheel" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMouseWheel(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Inventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInventory(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Skill" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSkill(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Weapon" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnWeapon(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Food" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnFood(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

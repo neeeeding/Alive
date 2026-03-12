@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace _02Script.GameCamera
 {
-    public class WheelMoveCameraInput: MonoBehaviour, Controls.IPCActions
+    public class WheelMoveCameraInput: MonoBehaviour
     {
         [SerializeField] protected Camera myCamera;
         [SerializeField] protected float cameraMoveSpeed = 4;
         [SerializeField] protected float maxZoomSize = 10;
-        
-        private Controls _controls;
+        [SerializeField] protected BattleInput battleInput;
         
         protected Vector2 wheelValue;
         protected Vector3? baseWheelValue;
@@ -19,19 +17,17 @@ namespace _02Script.GameCamera
 
         protected virtual void OnEnable()
         {
-            if (_controls == null)
-            {
-                _controls = new Controls();
-                _controls.PC.SetCallbacks(this);
-            }
-            _controls.PC.Enable();
+            battleInput.OnMoveInput += OnMove;
+            battleInput.OnMouseWheelInput += OnMouseWheel;
+            
             baseWheelValue = null;
             isWheel = false;
         }
 
         protected virtual void OnDisable()
         {
-            _controls.PC.Disable();
+            battleInput.OnMoveInput -= OnMove;
+            battleInput.OnMouseWheelInput -= OnMouseWheel;
         }
         
         private void Update()
@@ -49,41 +45,18 @@ namespace _02Script.GameCamera
         }
 
         #region keyInput
-        public void OnMove(InputAction.CallbackContext context)
+        public void OnMove(Vector2 input)
         {
             if (!MousePos()) return;
-            moveValue = (Vector3)context.ReadValue<Vector2>().normalized / cameraMoveSpeed * 0.5f;
+            moveValue = (Vector3)input.normalized / cameraMoveSpeed * 0.5f;
             baseWheelValue = Vector3.one;
-            
-            if(context.canceled)
-                baseWheelValue = null;
         }
 
-        public void OnInteraction(InputAction.CallbackContext context)
+        public void OnMouseWheel(Vector2? input, bool wheel)
         {
-        }
-
-        public void OnRun(InputAction.CallbackContext context)
-        {
-        }
-
-        public void OnMouseMove(InputAction.CallbackContext context)
-        {
-        }
-
-        public void OnMouseWheel(InputAction.CallbackContext context)
-        {
-            if(context.started)
-            {
-                if (!MousePos()) return;
-                isWheel = true;
-                baseWheelValue = Input.mousePosition;
-            }
-            else if(context.canceled)
-            {
-                isWheel = false;
-                baseWheelValue = null;
-            }
+            if (!MousePos()) return;
+            isWheel = wheel;
+            baseWheelValue = input;
         }
         #endregion
 
