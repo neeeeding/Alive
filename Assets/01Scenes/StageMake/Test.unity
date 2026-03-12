@@ -7094,6 +7094,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4053868962020317090, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
+      propertyPath: entity
+      value: 
+      objectReference: {fileID: 11400000, guid: 813977bad84f7e94a8db4449b6b0c2da, type: 2}
     - target: {fileID: 6287566640977731604, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.34

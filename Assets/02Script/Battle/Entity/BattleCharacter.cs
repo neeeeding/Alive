@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using _02Script.Battle.Buff;
 using _02Script.Battle.Food;
-using _02Script.Battle.UI;
+using _02Script.Battle.UI.Etc;
 using _02Script.Battle.UI.Job;
 using _02Script.Battle.UI.Weapon;
 using _02Script.Etc;

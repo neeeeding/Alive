@@ -1,14 +1,15 @@
 ﻿using _02Script.Battle.Buff;
-using _02Script.Battle.UI.Etc;
+using _02Script.Battle.UI.Explanation;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _02Script.Battle.UI.Weapon
 {
     public class WeaponExplanationUI: ExplanationUI
     {
-        [SerializeField] private BuffUI _buff;
+        [SerializeField] private BuffUI buff;
         
         protected override void OnEnable()
         {
@@ -36,12 +37,12 @@ namespace _02Script.Battle.UI.Weapon
             explanationText.text = so.itemExplanation;
             if (so.skillBuff != null)
             {
-                _buff.gameObject.SetActive(true);
-                _buff.BuffSet(so.skillBuff,null,EntityName.None,true);
+                buff.gameObject.SetActive(true);
+                buff.BuffSet(so.skillBuff,null,EntityName.None,true);
             }
             else
             {
-                _buff.gameObject.SetActive(false);
+                buff.gameObject.SetActive(false);
             }
 
             UIShow(cardPos);

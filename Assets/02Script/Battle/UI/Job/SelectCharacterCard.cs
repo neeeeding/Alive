@@ -1,4 +1,5 @@
 ﻿using System;
+using _02Script.Battle.Entity;
 using _02Script.Obj.Entity;
 using _02Script.UI.Etc;
 using UnityEngine;
@@ -8,15 +9,16 @@ namespace _02Script.Battle.UI.Job
 {
     public class SelectCharacterCard : WindowMove
     {
+        public static Action<BattleEntitySO, Vector3, bool> OnExplanation; //설명용
         public static Action OnMouseUp;
         
         public static SelectCharacterCard curSelectCharacter;
         
-        [SerializeField] private EntityName character;
+        [SerializeField] private BattleEntitySO character;
         [SerializeField] private Transform dragTransform;
         [SerializeField] private Transform baseTransform;
         
-        public EntityName Character{get => character;}
+        public EntityName Character{get => character.EntityName;}
         public SelectCharacterType Select{get => _select;}
         
         private Image _image;
@@ -39,6 +41,7 @@ namespace _02Script.Battle.UI.Job
             }
         }
 
+        #region Mouse
         public override void MouseClick()
         {
             moveObj.transform.SetParent(dragTransform);
@@ -63,6 +66,17 @@ namespace _02Script.Battle.UI.Job
                 moveObj.transform.SetParent(baseTransform);
             }
         }
+
+        public void ShowExplanation()
+        {
+            OnExplanation?.Invoke(character,moveObj.transform.position,true);
+        }
+
+        public void HideExplanation()
+        {
+            OnExplanation?.Invoke(null,Vector3.zero, true);
+        }
+        #endregion
     }
 
     public enum SelectCharacterType

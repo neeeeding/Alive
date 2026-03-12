@@ -1,4 +1,4 @@
-﻿using _02Script.Battle.UI.Etc;
+﻿using _02Script.Battle.UI.Explanation;
 using UnityEngine;
 
 namespace _02Script.Battle.Buff

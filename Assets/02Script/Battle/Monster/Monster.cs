@@ -10,8 +10,22 @@ namespace _02Script.Battle.Monster
     {
         public static Action<Monster> OnSelect;
         public static Action<Monster> OnDie;
+        public static Action<EntitySO, Vector3, bool,int> OnExplanation; //설명용
+        
         [Header("Monster")]
         [SerializeField] protected MonsterHpUI hpUI;
+        
+        
+        #region Mouse
+        public virtual void MouseEnter()
+        {
+            OnExplanation?.Invoke(entity, gameObject.transform.position,false,(int)curHp);
+        }
+        public virtual void MouseExit()
+        {
+            OnExplanation?.Invoke(null,Vector3.zero,false,0);
+        }
+        #endregion
 
         #region Set (+ Select)
         public MonsterSO GetMonsterType()

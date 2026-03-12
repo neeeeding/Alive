@@ -64,6 +64,7 @@ namespace _02Script.GoHouse.Block
 
             curStage = ScriptableObject.CreateInstance<GoHouseStageSO>();
             JsonUtility.FromJsonOverwrite(json, curStage);
+            SetStage(curStage);
         }
 
         #region Set
