@@ -11,6 +11,7 @@ using _02Script.UI.Dialog.Etc;
 using AYellowpaper.SerializedCollections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TextAsset = UnityEngine.TextAsset;
 
 namespace _02Script.UI.Dialog.Dialog
@@ -39,15 +40,18 @@ namespace _02Script.UI.Dialog.Dialog
         [SerializeField] private int currentNum; //현재 번호
         [SerializeField] private int currentChat; //현재 CSV의 배열
 
-        private DialogEntity currentDialogEntity;
+        private DialogEntity _currentDialogEntity;
         private DialogEntitySO _currentSO; //정보
         [SerializeField] private DialogEntitySO chatPlayer; //말하고 있는애
 
+        private readonly string _am = "AM_House";
+        
         //글자 입력 관련
-        private string chatText; //입력해야하는 거
-        private bool isTime; //시간 재는지
-        private float curTime; //1초 시간
-        private int nCount; //현 출력한 글자 번째
+        private string _chatText; //입력해야하는 거
+        private bool _isTime; //시간 재는지
+        private float _curTime; //1초 시간
+        private int _nCount; //현 출력한 글자 번째
+        private bool _isAM; // 현재 씬
 
         private EntityName isError;
         #endregion
@@ -59,10 +63,14 @@ namespace _02Script.UI.Dialog.Dialog
         {
             dialogText.text = "";
             //items = so.items;
-            
-            HouseManager.Instance.PlayerStat.lastDialogEntity = dialogEntity;
-            HouseManager.Instance.PlayerStat.lastSO = so;
-            currentDialogEntity = dialogEntity;
+            _isAM = SceneManager.GetActiveScene().name == _am;
+
+            if (_isAM)
+            {
+                HouseManager.Instance.PlayerStat.lastDialogEntity = dialogEntity;
+                HouseManager.Instance.PlayerStat.lastSO = so;
+            }
+            _currentDialogEntity = dialogEntity;
             _currentSO = so;
             chatPlayer = so;
             
@@ -108,20 +116,28 @@ namespace _02Script.UI.Dialog.Dialog
         }
         private void ClickNext(bool b) //다음으로
         {
-            if (!currentDialogEntity && (int)isError / 10000 != 4)
+            if (!_currentDialogEntity && (int)isError / 10000 != 4)
             {
+                if(!_isAM) return;
                 UISettingManager.Instance.InGame();
                 return;
             }
 
             if (DoChat(false))
             {
-                UISettingManager.Instance.CloseChat();
-                UISettingManager.Instance.InGame();
+                if (_isAM)
+                {
+                    UISettingManager.Instance.CloseChat();
+                    UISettingManager.Instance.InGame();   
+                }
+                else
+                {
+                    gameObject.SetActive(false);
+                }
                 
-                currentDialogEntity.NextChapter();
-                currentDialogEntity.EndDialog();
-                currentDialogEntity = null;
+                _currentDialogEntity.NextChapter();
+                _currentDialogEntity.EndDialog();
+                _currentDialogEntity = null;
                 OnGame?.Invoke();
                 //items = null;
             }
@@ -141,6 +157,8 @@ namespace _02Script.UI.Dialog.Dialog
 
         private void RenewalText(string final) // 마지막 텍스트 갱신 (주석)
         {
+            if(!_isAM) return;
+            
             HouseManager.Instance.PlayerStat.lastText =
                 $"{EnumToString.Name(_currentSO.EntityName)} : {final}"; //마지막 텍스트
 
@@ -157,30 +175,30 @@ namespace _02Script.UI.Dialog.Dialog
 
         private void Update()
         {
-            if (isTime)
+            if (_isTime)
             {
-                if (curTime > 0.2f)
+                if (_curTime > 0.2f)
                 {
-                    nCount++;
-                    curTime = 0;
-                    dialogTextController.OneOne(chatText, nCount, dialogText, ref isTime);
+                    _nCount++;
+                    _curTime = 0;
+                    dialogTextController.OneOne(_chatText, _nCount, dialogText, ref _isTime);
                 }
-                curTime += Time.unscaledDeltaTime;
+                _curTime += Time.unscaledDeltaTime;
             }
             else
             {
-                nCount = 0;
-                curTime = 0;
+                _nCount = 0;
+                _curTime = 0;
             }
         }
 
         //true : 선택지를 클릭한 상태로 넘어옴, false : 일반적인 대화
         private bool DoChat(bool isSelect) //대화(실질적인 랜더러)
         {
-            if (nCount != 0)
+            if (_nCount != 0)
             {
-                dialogText.text = chatText;
-                isTime = false;
+                dialogText.text = _chatText;
+                _isTime = false;
                 return false;
             }
 
@@ -223,25 +241,25 @@ namespace _02Script.UI.Dialog.Dialog
             if (chatPlayer.EntityName == EntityName.lie)
             {
                 setting.CurrentCharacter(chatPlayer); //재 세팅
-                chatText = "";
-                dialogText.text = chatText;
+                _chatText = "";
+                dialogText.text = _chatText;
             }
             
             //텍스트 출력(+ 오류X)
             if ((int)chatPlayer.EntityName / 10000 != 4)
                 setting.CurrentCharacter(chatPlayer); //재 세팅
 
-            chatText = dialogTextController.IsExchangeText(
+            _chatText = dialogTextController.IsExchangeText(
                 dialog[currentChat][DialogType.Text.ToString()], "`", ","); //변환 해주고 원했던 대화
-            isTime = true;
+            _isTime = true;
             //------------------------
             
             //얻기 & 스탯 증가
             dialogItem.GetOrThrowItem(dialog[currentChat], itemDictionary);
             //------------------------
 
-            if (currentDialogEntity != null)
-                currentDialogEntity.NextDialog(currentNum);
+            if (_currentDialogEntity != null)
+                _currentDialogEntity.NextDialog(currentNum);
             dialogSelect.HaveSelect(currentChat, currentChapter, dialog);
 
             if (isSelect || (int)isError / 10000 == 4) return false;
@@ -279,6 +297,7 @@ namespace _02Script.UI.Dialog.Dialog
         
         private void LoveUp(int i) //호감도 오르거나 내리는 거 있으면 해주기.
         {
+            if(_isAM) return;
             if (dialog[i][DialogType.GetLove.ToString()] != "") //호감도 얻는게 있다면. (혹은 뺏는거)
             {
                 int value = int.Parse(dialog[i][DialogType.GetLove.ToString()]);
@@ -288,7 +307,7 @@ namespace _02Script.UI.Dialog.Dialog
         
         public void Load() //로드 될 때
         {
-            DialogSetting(_currentSO, currentDialogEntity);
+            DialogSetting(_currentSO, _currentDialogEntity);
         }
 
         private void SetItemDictionary()
@@ -303,7 +322,10 @@ namespace _02Script.UI.Dialog.Dialog
         private void OnEnable()
         {
             SetItemDictionary();
-            UISettingManager.Instance.InGame();
+            if (_isAM)
+            {
+                UISettingManager.Instance.InGame();   
+            }
             SelectBtn.OnSelect += SelectChat;
             DialogEntity.OnChat += DialogSetting;
             PlayerDialogInput.OnChat += ClickNext;

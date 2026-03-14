@@ -1,5 +1,4 @@
-﻿using System;
-using _02Script.GoHouse.SO;
+﻿using _02Script.GoHouse.SO;
 using _02Script.Obj.Entity;
 using _02Script.UI.person;
 using UnityEngine;

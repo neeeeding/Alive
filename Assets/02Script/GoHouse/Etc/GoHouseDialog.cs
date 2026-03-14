@@ -1,6 +1,5 @@
 ﻿using System;
 using _02Script.GoHouse.SO;
-using _02Script.Manager;
 using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Dialog.Entity;
 using UnityEngine;
@@ -35,8 +34,8 @@ namespace _02Script.GoHouse.Etc
                 
             OnChat?.Invoke(entity,this);
             
+            chat.gameObject.SetActive(true);
             chat.DialogSetting(entity, this);
-            GoHouseSaveManager.Instance.PlayerStat.isChat = true;
         }
     }
 }

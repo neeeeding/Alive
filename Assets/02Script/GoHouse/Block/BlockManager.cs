@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _02Script.Etc;
 using _02Script.GoHouse.SO;
 using _02Script.GoHouse.Stage;
@@ -45,7 +44,8 @@ namespace _02Script.GoHouse.Block
         #region EnDiAw
         private void OnEnable()
         {
-            LoadStage();
+            //LoadStage();
+            SetStage(curStage);
             PortalSO.OnPortalEnter += Portal;
             DieSO.OnDie += Die;
             BlockPlayer.OnReSet += Die;

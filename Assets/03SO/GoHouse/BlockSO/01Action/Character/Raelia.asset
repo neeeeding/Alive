@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9dc3a493ec4d42c0a82d725d68ab95ab, type: 3}
-  m_Name: Isis
+  m_Name: Raelia
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.GoHouse.SO.CharacterSO
-  dialogEntitySo: {fileID: 11400000, guid: 4aba3809a35a8cf4ebb752ad2847268a, type: 2}
-  chapter: 20001
+  dialogEntitySo: {fileID: 11400000, guid: 30528a86276e8d94e8562a2db203c703, type: 2}
+  chapter: 23001
   finalNum: 0

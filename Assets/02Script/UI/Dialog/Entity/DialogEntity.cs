@@ -125,7 +125,8 @@ namespace _02Script.UI.Dialog.Entity
         {
             if(chapter/100 != 0) return;
             
-            chapter += (int)dialogEntitySo.EntityName;
+            if(dialogEntitySo != null)
+                chapter += (int)dialogEntitySo.EntityName;
         }
 
         protected virtual void OnDestroy()

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9dc3a493ec4d42c0a82d725d68ab95ab, type: 3}
-  m_Name: Isis
+  m_Name: Hajun
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.GoHouse.SO.CharacterSO
-  dialogEntitySo: {fileID: 11400000, guid: 4aba3809a35a8cf4ebb752ad2847268a, type: 2}
-  chapter: 20001
+  dialogEntitySo: {fileID: 11400000, guid: 12556b6e56029214eb660720a8359dca, type: 2}
+  chapter: 13001
   finalNum: 0

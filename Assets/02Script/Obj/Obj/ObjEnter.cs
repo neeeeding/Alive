@@ -32,7 +32,6 @@ namespace _02Script.Obj.Obj
         {
             if(isObj)
             {
-                UISettingManager.Instance.Obj();
             }
         }
     }

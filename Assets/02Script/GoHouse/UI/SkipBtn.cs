@@ -1,5 +1,4 @@
-﻿using System;
-using _02Script.GoHouse.Block;
+﻿using _02Script.GoHouse.Block;
 using _02Script.GoHouse.SO;
 using UnityEngine;
 

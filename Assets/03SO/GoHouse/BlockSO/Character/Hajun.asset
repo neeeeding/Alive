@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a1c70879c1c43159357dff35cfde345, type: 3}
-  m_Name: Isis
+  m_Name: Hajun
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.GoHouse.SO.BlockSO
   blockType: 208
-  blockImage: {fileID: 21300000, guid: 2ab91e3682d18094a80e527be6842067, type: 3}
+  blockImage: {fileID: 21300000, guid: 6e47d7881581c424695c0975f7c24955, type: 3}
   baseImage: {fileID: 0}
   actions:
-  - {fileID: 11400000, guid: adea883db0846d649ad65e95699ee0e0, type: 2}
+  - {fileID: 11400000, guid: aef678d275644a04d9b0e8ad5a6c16d2, type: 2}

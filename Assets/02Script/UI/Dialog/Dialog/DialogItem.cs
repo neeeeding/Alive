@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using _02Script.GoHouse.Etc;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _02Script.UI.Dialog.Dialog
 {
@@ -37,7 +39,10 @@ namespace _02Script.UI.Dialog.Dialog
         public int? IsHoldItem(List<Dictionary<string, string>> dialog) //들고 있는 아이템 있다면 (챕터 번호)
         {
             int value = 0;
-            ItemDataSO dataSo = HouseManager.Instance.holdItemData;
+            ItemDataSO dataSo = null;
+            if(SceneManager.GetActiveScene().name == "AM_House")
+                dataSo = HouseManager.Instance.holdItemData;
+                
             if (dataSo != null)
             {
                 for (int i = 0; i < dialog.Count - 1; i++)

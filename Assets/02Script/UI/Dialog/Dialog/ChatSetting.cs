@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
+using _02Script.Battle;
 using _02Script.Etc;
+using _02Script.GoHouse.Etc;
 using _02Script.Manager;
 using _02Script.Obj.Entity;
 using _02Script.UI.Dialog.Entity;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace _02Script.UI.Dialog.Dialog
@@ -29,12 +30,17 @@ namespace _02Script.UI.Dialog.Dialog
                 characterLoveGauge.gameObject.SetActive(true);
                 characterLoveText.gameObject.SetActive(true);
 
-                int.TryParse(HouseManager.Instance.PlayerStat.characterLastText[current.EntityName][DialogType.Love],
-                    out int love);
+                int love = 0;
+                if(SceneManager.GetActiveScene().name  == "AM_House")
+                    int.TryParse(HouseManager.Instance.PlayerStat.characterLastText[current.EntityName][DialogType.Love], out love);
+                else if(SceneManager.GetActiveScene().name  == "PM_Battle")
+                    int.TryParse(BattleSaveManager.Instance.PlayerStat.characterLastText[current.EntityName][DialogType.Love], out love);
+                else if(SceneManager.GetActiveScene().name  == "GoHouse")
+                    int.TryParse(GoHouseSaveManager.Instance.PlayerStat.characterLastText[current.EntityName][DialogType.Love], out love);
+                
                 characterLoveGauge.value = love;
 
-                characterLoveText.text =
-                    HouseManager.Instance.PlayerStat.characterLastText[current.EntityName][DialogType.Love];
+                characterLoveText.text = love.ToString();
             }
             else
             {

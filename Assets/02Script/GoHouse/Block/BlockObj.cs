@@ -1,7 +1,6 @@
 ﻿using _02Script.Etc;
 using _02Script.GoHouse.SO;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _02Script.GoHouse.Block
@@ -31,7 +30,6 @@ namespace _02Script.GoHouse.Block
             blockSo.BlockAction();
             if(blockSo.blockType != BlockType.Die && blockSo.blockType != BlockType.Portal && blockSo.blockType != BlockType.AutoMove)
                 _isUseBlock = true;
-            print(EnumToString.Name(blockSo.blockType));
         }
         
         public BlockSO ReturnType()
