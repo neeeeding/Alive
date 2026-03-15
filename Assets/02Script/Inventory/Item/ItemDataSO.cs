@@ -272,7 +272,37 @@ namespace _02Script.Inventory.Item
         [Description("자유로운 화염 방사기")]flamethrower = 4801,
         [Description("고압 전기 건")]electricGun,
         
-        [Description("방패")]justShield = 5001,
+        // 방어구 (100씩 분류) 머리, 몸통, 팔, 다리, 신발, 기타
+        [Description("견고한 철제 투구")]ironHelmet = 5001,
+        [Description("가벼운 가죽 모자")]leatherCap,
+        [Description("기사의 투구")]knightHelmet,
+        [Description("충격 흡수 헬멧")]shockAbsorbHelmet,
+
+        [Description("강화 가죽 갑옷")]reinforcedLeatherArmor = 5101,
+        [Description("전사의 판금 갑옷")]warriorPlateArmor,
+        [Description("수호자의 중갑")]guardianHeavyArmor,
+        [Description("경량 전투복")]lightCombatSuit,
+        [Description("과부하 방어복")]overloadArmor,
+
+        [Description("전투용 장갑")]combatGloves = 5201,
+        [Description("강철 건틀릿")]steelGauntlet,
+        [Description("격투가의 장갑")]fighterGloves,
+        [Description("방어용 건틀릿")]defenseGauntlet,
+        [Description("충격 반응 장갑")]shockReactiveGloves,
+
+        [Description("전투용 하의")]combatPants = 5301,
+        [Description("기사의 하갑")]knightLegArmor,
+        [Description("경량 하의")]lightPants,
+        [Description("중장 하의")]heavyLegArmor,
+        [Description("불안정 하의")]unstablePants,
+
+        [Description("가벼운 부츠")]lightBoots = 5401,
+        [Description("강철 부츠")]steelBoots,
+        [Description("기사의 부츠")]knightBoots,
+        [Description("충격 흡수 부츠")]shockAbsorbBoots,
+        [Description("마모된 부츠")]wornBoots,
+        
+        [Description("방패")]justShield = 5501,
         
         //자연 (20씩 분류)
         [Description("자갈")]gravel = 6001,

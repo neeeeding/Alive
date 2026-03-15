@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
+  m_Name: wornBoots
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.ItemDataSO
+  category: 5
+  itemType: 5405
+  itemName: "\uB9C8\uBAA8\uB41C \uBD80\uCE20"
+  itemExplanation: "\uC0AC\uC6A9\uC2DC \uBC1B\uC740 \uB370\uBBF8\uC9C0\uB97C 1 \uAC10\uC18C
+    \uC2DC\uD0A4\uACE0, 5\uCD08 \uD6C4 \uBCF8\uC778\uC5D0\uAC8C [\uC0DD\uC874 \uBCF8\uB2A5]\uC744
+    \uC2DC\uC804\uD569\uB2C8\uB2E4. (\uCFE8\uD0C0\uC784 5)"
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 4
+  collectTime: 2
+  stats: 1
+  addStats: 0
