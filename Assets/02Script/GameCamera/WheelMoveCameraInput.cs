@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _02Script.Battle;
+using UnityEngine;
 
 namespace _02Script.GameCamera
 {

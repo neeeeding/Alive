@@ -35,9 +35,9 @@ namespace _02Script.Battle.UI.Job
         {
             _select = job;
             _parent = parent;
-            if (_parent == null)
+            if (parent == null)
             {
-                moveObj.transform.SetParent(baseTransform);
+                _parent = baseTransform;
             }
         }
 
@@ -64,6 +64,7 @@ namespace _02Script.Battle.UI.Job
             else
             {
                 moveObj.transform.SetParent(baseTransform);
+                print("uu");
             }
         }
 

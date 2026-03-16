@@ -13549,6 +13549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1136970715}
   - component: {fileID: 1136970716}
+  - component: {fileID: 1136970717}
   m_Layer: 0
   m_Name: Input
   m_TagString: Untagged
@@ -13583,6 +13584,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6c3353d1d7477b9a343faaf10b2b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.BattleInput
+--- !u!114 &1136970717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136970714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611ef5a477654da2b40bdd99837437ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.UI.Etc.InputOpenUI
+  window:
+    _serializedList:
+    - Key: Q
+      Value: {fileID: 1413272895}
+    - Key: E
+      Value: {fileID: 551699375}
+    - Key: Z
+      Value: {fileID: 1416719007}
+    - Key: X
+      Value: {fileID: 154783141}
+    - Key: C
+      Value: {fileID: 386507844}
+  rBtn: {fileID: 1283390567}
+  fBtn: {fileID: 973010252}
+  input: {fileID: 1136970716}
 --- !u!1 &1138572315
 GameObject:
   m_ObjectHideFlags: 0

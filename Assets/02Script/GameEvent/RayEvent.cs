@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _02Script.DoTweenUI.Warring;
 using _02Script.Manager;
 using _02Script.UI.DictionaryUI;
 using _02Script.UI.Save;
@@ -31,7 +32,10 @@ namespace _02Script.GameEvent
 
         private void OnDisable()
         {
+            if(gameObject.activeSelf)
+                WarringManager.Warring.ShowWarring("레이가 떠났습니다.");
             LoadCard.OnLoad -= Load;
+            gameObject.SetActive(false);
         }
 
         //편지 관련 -----------------------------------------------------------------------------------------------
