@@ -11,6 +11,7 @@ namespace _02Script.Battle
         public event Action<string> OnInventoryInput;
         public event Action<string> OnSkillInput;
         public event Action<string> OnWeaponInput;
+        public event Action<string> OnArmorInput;
         public event Action<string> OnFoodInput;
         
         private Controls _controls;
@@ -56,6 +57,13 @@ namespace _02Script.Battle
             if(context.started)
                 OnWeaponInput?.Invoke(context.control.displayName);
         }
+
+        public void OnArmor(InputAction.CallbackContext context)
+        {
+            if(context.started)
+                OnArmorInput?.Invoke(context.control.displayName);
+        }
+
         public void OnFood(InputAction.CallbackContext context)
         {
             if(context.started)

@@ -367,6 +367,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Armor"",
+                    ""type"": ""Button"",
+                    ""id"": ""b28b400c-5e12-4cc0-b7c9-b01e457a0a24"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Food"",
                     ""type"": ""Button"",
                     ""id"": ""a69f0fb1-9e99-486b-ace2-821ab448465c"",
@@ -550,6 +559,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Weapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca9a099a-8562-4a4e-a0bf-ce5850858482"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Armor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ccf6c097-b3dd-4bb0-b6f9-c4e14dfd530e"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Armor"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1188,6 +1219,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Battle_Inventory = m_Battle.FindAction("Inventory", throwIfNotFound: true);
         m_Battle_Skill = m_Battle.FindAction("Skill", throwIfNotFound: true);
         m_Battle_Weapon = m_Battle.FindAction("Weapon", throwIfNotFound: true);
+        m_Battle_Armor = m_Battle.FindAction("Armor", throwIfNotFound: true);
         m_Battle_Food = m_Battle.FindAction("Food", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1432,6 +1464,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Battle_Inventory;
     private readonly InputAction m_Battle_Skill;
     private readonly InputAction m_Battle_Weapon;
+    private readonly InputAction m_Battle_Armor;
     private readonly InputAction m_Battle_Food;
     /// <summary>
     /// Provides access to input actions defined in input action map "Battle".
@@ -1464,6 +1497,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Battle/Weapon".
         /// </summary>
         public InputAction @Weapon => m_Wrapper.m_Battle_Weapon;
+        /// <summary>
+        /// Provides access to the underlying input action "Battle/Armor".
+        /// </summary>
+        public InputAction @Armor => m_Wrapper.m_Battle_Armor;
         /// <summary>
         /// Provides access to the underlying input action "Battle/Food".
         /// </summary>
@@ -1509,6 +1546,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Weapon.started += instance.OnWeapon;
             @Weapon.performed += instance.OnWeapon;
             @Weapon.canceled += instance.OnWeapon;
+            @Armor.started += instance.OnArmor;
+            @Armor.performed += instance.OnArmor;
+            @Armor.canceled += instance.OnArmor;
             @Food.started += instance.OnFood;
             @Food.performed += instance.OnFood;
             @Food.canceled += instance.OnFood;
@@ -1538,6 +1578,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Weapon.started -= instance.OnWeapon;
             @Weapon.performed -= instance.OnWeapon;
             @Weapon.canceled -= instance.OnWeapon;
+            @Armor.started -= instance.OnArmor;
+            @Armor.performed -= instance.OnArmor;
+            @Armor.canceled -= instance.OnArmor;
             @Food.started -= instance.OnFood;
             @Food.performed -= instance.OnFood;
             @Food.canceled -= instance.OnFood;
@@ -2015,6 +2058,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnWeapon(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Armor" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnArmor(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Food" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

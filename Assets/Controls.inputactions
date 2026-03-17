@@ -281,6 +281,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Armor",
+                    "type": "Button",
+                    "id": "b28b400c-5e12-4cc0-b7c9-b01e457a0a24",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Food",
                     "type": "Button",
                     "id": "a69f0fb1-9e99-486b-ace2-821ab448465c",
@@ -464,6 +473,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Weapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca9a099a-8562-4a4e-a0bf-ce5850858482",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Armor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ccf6c097-b3dd-4bb0-b6f9-c4e14dfd530e",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Armor",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

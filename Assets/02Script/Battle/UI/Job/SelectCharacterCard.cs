@@ -64,7 +64,6 @@ namespace _02Script.Battle.UI.Job
             else
             {
                 moveObj.transform.SetParent(baseTransform);
-                print("uu");
             }
         }
 

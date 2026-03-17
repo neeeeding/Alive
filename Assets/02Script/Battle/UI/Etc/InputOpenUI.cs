@@ -17,6 +17,7 @@ namespace _02Script.Battle.UI.Etc
             input.OnInventoryInput += KeyboardInput;
             input.OnSkillInput += Skill;
             input.OnWeaponInput += KeyboardInput;
+            input.OnArmorInput += KeyboardInput;
             input.OnFoodInput += KeyboardInput;
 
             foreach (KeyValuePair<string, GameObject> value in window)
@@ -30,6 +31,7 @@ namespace _02Script.Battle.UI.Etc
             input.OnInventoryInput -= KeyboardInput;
             input.OnSkillInput -= Skill;
             input.OnWeaponInput -= KeyboardInput;
+            input.OnArmorInput -= KeyboardInput;
             input.OnFoodInput -= KeyboardInput;
         }
 

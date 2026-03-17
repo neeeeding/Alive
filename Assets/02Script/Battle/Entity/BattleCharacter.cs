@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _02Script.Battle.Buff;
 using _02Script.Battle.Food;
+using _02Script.Battle.UI.Armor;
 using _02Script.Battle.UI.Etc;
 using _02Script.Battle.UI.Job;
 using _02Script.Battle.UI.Weapon;
@@ -20,6 +21,8 @@ namespace _02Script.Battle.Entity
         public static Action<bool> OnBlood;
         public static Action<WeaponItemDataSO> OnChangeWeapon;
         public static Action<WeaponInventoryCard,float> OnSkillWeapon;
+        public static Action<ArmorItemDataSO> OnChangeArmor;
+        public static Action<ArmorInventoryCard> OnUseArmor;
         public static Action<BattleEntitySO, Vector3, bool> OnExplanation; //설명용
         
         [Header("Player")]
@@ -32,9 +35,14 @@ namespace _02Script.Battle.Entity
 
         private ForCharacterUI _forCharacter; //기타 ui
         private WeaponInventoryCard _useWeapon; //사용 중인 무기
+        private ArmorInventoryCard _useArmor; //사용 중인 갑옷
         private Dictionary<StatsType, float> _stats = new Dictionary<StatsType, float>(); //스탯들
 
         private bool _isSetStat;
+        
+        private float _curArmorSkillDelay;
+        private float _skillArmorDelay;
+        protected BuffSO _armorSkillBuff; //스킬때 버프
 
         #region EnDiSt
         protected override void OnEnable()
@@ -45,6 +53,7 @@ namespace _02Script.Battle.Entity
             SelectDistribution.OnStart += SetStats;
             Monster.Monster.OnDie += TargetDie;
             WeaponInventoryCard.OnMouseClick += ChangeWeapon;
+            ArmorInventoryCard.OnMouseClick += ChangeArmor;
             FoodInventory.OnGetStat += GetStat;
             hpUI.SetCharacter(entity.EntityName);
             hpUI.UpdateHp(curHp, maxHp);
@@ -66,6 +75,7 @@ namespace _02Script.Battle.Entity
             SelectDistribution.OnStart -= SetStats;
             Monster.Monster.OnDie -= TargetDie;
             WeaponInventoryCard.OnMouseClick -= ChangeWeapon;
+            ArmorInventoryCard.OnMouseClick -= ChangeArmor;
             FoodInventory.OnGetStat -= GetStat;
         }
 
@@ -99,6 +109,24 @@ namespace _02Script.Battle.Entity
             {
                 curHp += value;
                 curHp = Mathf.Min(curHp, maxHp);
+            }
+        }
+
+        private void ArmorSkill()
+        {
+            float curDelay = _skillArmorDelay - EtcStat(StatsType.skill); //쿨타임 감소
+            if(_curArmorSkillDelay < curDelay || _skillArmorDelay < 0) return;
+            
+            _curArmorSkillDelay = 0;
+            
+            if (_armorSkillBuff&&!_armorSkillBuff.isDeBuff)
+            {
+                GetBuffs(_armorSkillBuff);
+            }
+            foreach (BattleEntity target in targets.ToArray())
+            {
+                if(_armorSkillBuff&&_armorSkillBuff.isDeBuff)
+                    target.GetBuffs(_armorSkillBuff);
             }
         }
         
@@ -140,6 +168,27 @@ namespace _02Script.Battle.Entity
                 _forCharacter.ChangeWeapon(so,skillDamage);
             
             OnChangeWeapon?.Invoke(so);
+        }
+        public void ChangeArmor(ArmorInventoryCard armor,EntityName entityName)
+        {
+            if (!armor|| entityName != entity.EntityName)
+            {
+                return;
+            }
+
+            _curArmorSkillDelay = 0;
+            
+            if (_stats.Count <= 0) SetStats();
+            
+            _useArmor = armor;
+            ArmorItemDataSO so = armor.ReturnData().ReturnDataSO() as ArmorItemDataSO;
+            _armorSkillBuff = so.skillBuff;
+            
+            _skillArmorDelay = so.skillCoolTime 
+                               - (so.skillCoolTime / 100) * (_stats[StatsType.skill]);
+            _skillArmorDelay = Mathf.Max(0, _skillArmorDelay);
+            
+            OnChangeArmor?.Invoke(so);
         }
         public void SetCharacter(ForCharacterUI forUI,CharacterHpUI hp = null,EntitySO character = null)
         {
@@ -251,7 +300,9 @@ namespace _02Script.Battle.Entity
         #region Entity
         protected override void Update()
         {
+            _curArmorSkillDelay += Time.deltaTime;
             base.Update();
+            ArmorSkill();
             if (curSkillDelay > skillAttackDelay)
             {
                 curSkillDelay = skillAttackDelay;
@@ -273,6 +324,14 @@ namespace _02Script.Battle.Entity
 
         public override void Hit(float damage)
         {
+            if (_useArmor)
+            {
+                float armor = (_useArmor.ReturnData().ReturnDataSO() as ArmorItemDataSO).damage;
+                damage -= armor;
+                damage = Mathf.Max(0,damage);
+                
+                OnUseArmor?.Invoke(_useArmor);
+            }
             base.Hit(damage);
             if (curHp <= 20)
             {

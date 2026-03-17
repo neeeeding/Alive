@@ -19,7 +19,7 @@ namespace _02Script.GamePlayer.GamePlayer
 
         protected override void OnDisable()
         {
-            BattleCharacter.OnChangeWeapon += SetWeapon;
+            BattleCharacter.OnChangeWeapon -= SetWeapon;
             base.OnDisable();
         }
 
