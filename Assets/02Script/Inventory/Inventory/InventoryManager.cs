@@ -45,6 +45,10 @@ namespace _02Script.Inventory.Inventory
         }
         #endregion
 
+        public bool FindItem(ItemDataSO item)
+        {
+            return ItemDatas.ContainsKey(item);
+        }
 
         public void GetOrThrowItem(ItemDataSO item,int count)
         {

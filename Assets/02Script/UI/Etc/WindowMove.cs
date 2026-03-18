@@ -9,7 +9,7 @@ namespace _02Script.UI.Etc
         private bool _isMove;
         private Vector3 _offset;
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             MouseCancel();
         }
