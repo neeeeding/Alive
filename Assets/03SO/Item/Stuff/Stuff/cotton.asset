@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88dccb44b9743fb8e6332025db6de24, type: 3}
+  m_Name: cotton
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.StuffItemDataSO
+  category: 6
+  itemType: 6042
+  itemName: "\uBAA9\uD654"
+  itemExplanation: "\uC2E4\uC81C\uB85C \uBAA9\uD654\uB294 \uBA39\uC744 \uC218 \uC788\uB2E4.\n\uC6B0\uC8FC\uC5D0\uC11C\uB3C4
+    \uC2F9\uC744 \uD2D4\uC6B4\uC801\uC774 \uC788\uB2E4."
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 999
+  collectTime: 2
+  stats: 1
+  addStats: 0
+  baseData: {fileID: 11400000, guid: 2ab326fedf171b64e98eac2091c3ef40, type: 2}
+  buffs:
+  - {fileID: 11400000, guid: ed92c63a467c7f7469e825597506f9a9, type: 2}
+  - {fileID: 11400000, guid: eb1b556dfe7b60f44a7936f808dbe694, type: 2}
+  - {fileID: 11400000, guid: e5d8fbcd7e111a94ca87a1f47d0cd1ea, type: 2}
+  - {fileID: 11400000, guid: 54025422c2f5a664ebd3dfdd722da232, type: 2}
+  - {fileID: 11400000, guid: d0ea2855d102a8e4089ca1afe7aff4bd, type: 2}
+  weapon: {fileID: 0}
+  armor: {fileID: 0}

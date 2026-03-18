@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88dccb44b9743fb8e6332025db6de24, type: 3}
+  m_Name: goldStone
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.StuffItemDataSO
+  category: 6
+  itemType: 6023
+  itemName: "\uAE08 \uAD11\uC11D"
+  itemExplanation: "\uAC00\uACF5\uD558\uBA74 \uAE08\uC774 \uB41C\uB2E4.\n\uD654\uD559\uC801\uC73C\uB85C
+    \uB9E4\uC6B0 \uC548\uC815\uC801\uC774\uB2E4."
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 999
+  collectTime: 2
+  stats: 1
+  addStats: 0
+  baseData: {fileID: 11400000, guid: acc88b8948fbf4a46ac2c79ca5e03a07, type: 2}
+  buffs:
+  - {fileID: 11400000, guid: a6bfe54628d0d104a8093649ddad8dbf, type: 2}
+  - {fileID: 11400000, guid: efb129fcd9e8d7647a5c1b075c339416, type: 2}
+  - {fileID: 11400000, guid: d0cb989223ea4c145a88b9d3a13edde0, type: 2}
+  - {fileID: 11400000, guid: 079043988dddc7c45b7e8ebd0b1c015a, type: 2}
+  - {fileID: 11400000, guid: 38147a610c6dd19439fb60d2de904447, type: 2}
+  weapon: {fileID: 0}
+  armor: {fileID: 0}

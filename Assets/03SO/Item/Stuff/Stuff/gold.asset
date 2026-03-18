@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88dccb44b9743fb8e6332025db6de24, type: 3}
+  m_Name: gold
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.StuffItemDataSO
+  category: 6
+  itemType: 6103
+  itemName: "\uAE08"
+  itemExplanation: "\uAE08\uC740 \uC6B0\uC8FC \uC5B4\uB518\uAC00\uC5D0\uC11C \uC9C0\uAD6C\uB85C
+    \uC654\uB2E4.\n\uC21C\uAE08\uC740 \uBA39\uC5B4\uB3C4 \uB418\uBA70 \uC0B0\uC18C\uC640
+    \uB9CC\uB098\uB3C4 \uB179\uC2AC\uC9C0 \uC54A\uB294\uB2E4."
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 999
+  collectTime: 2
+  stats: 1
+  addStats: 0
+  baseData: {fileID: 11400000, guid: e2368ca54101ae144b0d59f42fc83efe, type: 2}
+  buffs:
+  - {fileID: 11400000, guid: 079043988dddc7c45b7e8ebd0b1c015a, type: 2}
+  - {fileID: 11400000, guid: 0ce9037868b563a49bd079b3228b2d77, type: 2}
+  - {fileID: 11400000, guid: 3843e1f45e5a4b04cb542a0ffd55541e, type: 2}
+  - {fileID: 11400000, guid: efb129fcd9e8d7647a5c1b075c339416, type: 2}
+  - {fileID: 11400000, guid: 38147a610c6dd19439fb60d2de904447, type: 2}
+  weapon: {fileID: 0}
+  armor: {fileID: 0}

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88dccb44b9743fb8e6332025db6de24, type: 3}
+  m_Name: quartz
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.StuffItemDataSO
+  category: 6
+  itemType: 6004
+  itemName: "\uC11D\uC601"
+  itemExplanation: "\uBC18\uB3C4\uCCB4\uC758 \uD575\uC2EC \uC7AC\uB8CC\uB2E4.\n\uACE0\uB300
+    \uADF8\uB9AC\uC2A4\uC778\uC740 \uC218\uC815(\uD22C\uBA85\uD55C \uC11D\uC601)\uC744
+    \uB108\uBB34 \uC624\uB7AB\uB3D9\uC548 \uC5BC\uC5B4\uC11C \uB179\uC9C0 \uC54A\uB294
+    \uC5BC\uC74C\uC774\uB77C \uBBFF\uC5C8\uB2E4."
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 999
+  collectTime: 2
+  stats: 1
+  addStats: 0
+  baseData: {fileID: 11400000, guid: a11118d4fe3d7d241917a828b1eb976e, type: 2}
+  buffs:
+  - {fileID: 11400000, guid: 0de2b84f58b1bb94cba5d4de6682f566, type: 2}
+  - {fileID: 11400000, guid: 8ab12f6e845dfcc4f94f8a0249a3440b, type: 2}
+  - {fileID: 11400000, guid: f7b880317e1ba8443a994725000d9694, type: 2}
+  - {fileID: 11400000, guid: 94504cf4a1910e240bb39c95d847964f, type: 2}
+  - {fileID: 11400000, guid: 08bd8db39323b2e4587e0e407b88b7b0, type: 2}
+  weapon: {fileID: 0}
+  armor: {fileID: 0}

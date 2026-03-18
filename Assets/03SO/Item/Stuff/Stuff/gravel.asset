@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88dccb44b9743fb8e6332025db6de24, type: 3}
+  m_Name: gravel
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.StuffItemDataSO
+  category: 6
+  itemType: 6001
+  itemName: "\uC790\uAC08"
+  itemExplanation: "\uD06C\uAE30\uB294 \uBAA8\uB798\uC640 \uB3CC\uC758 \uC911\uAC04\uC774\uB2E4.\n\uC8FC\uB85C
+    \uCF58\uD06C\uB9AC\uD2B8\uC758 \uACE8\uC7AC\uB85C \uC0AC\uC6A9\uB41C\uB2E4."
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 999
+  collectTime: 2
+  stats: 1
+  addStats: 0
+  baseData: {fileID: 11400000, guid: 5c88e6cca39d498449fb834d59f42cf9, type: 2}
+  buffs:
+  - {fileID: 11400000, guid: f7b880317e1ba8443a994725000d9694, type: 2}
+  - {fileID: 11400000, guid: 2739b4e0de830b44dae6a395ee6859b8, type: 2}
+  - {fileID: 11400000, guid: 34d09e864fdc69e4bbc08db66bf70b7d, type: 2}
+  - {fileID: 11400000, guid: afa104a09e991784fa3cbd8faceb1212, type: 2}
+  - {fileID: 11400000, guid: 26afe6dd243218f4496458aa5c78c4a7, type: 2}
+  weapon: {fileID: 0}
+  armor: {fileID: 0}

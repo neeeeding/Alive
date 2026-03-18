@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88dccb44b9743fb8e6332025db6de24, type: 3}
+  m_Name: ruby
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.StuffItemDataSO
+  category: 6
+  itemType: 6061
+  itemName: "\uB8E8\uBE44"
+  itemExplanation: "7\uC6D4\uC758 \uD0C4\uC0DD\uC11D\uC774\uB2E4.\n\uB2E8\uB2E8\uD558\uC9C0\uB9CC
+    \uC5F4\uC5D0 \uC57D\uD574\uC11C 300\uB3C4 \uC774\uC0C1\uC758 \uC5F4\uC5D0\uC11C
+    \uC0C9\uC774 \uBCC0\uD558\uAC70\uB098 \uADE0\uC5F4\uC774 \uBC1C\uC0DD\uD560 \uC218
+    \uC788\uB2E4."
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 999
+  collectTime: 2
+  stats: 1
+  addStats: 0
+  baseData: {fileID: 11400000, guid: 4da2a77fc79421a4d9f974c8d57ee93b, type: 2}
+  buffs:
+  - {fileID: 11400000, guid: 8ab12f6e845dfcc4f94f8a0249a3440b, type: 2}
+  - {fileID: 11400000, guid: b6f7bbf80c8acaf49a0fa4d188dadd66, type: 2}
+  - {fileID: 11400000, guid: c7c3f5eff07f78340b68c707bd23c129, type: 2}
+  - {fileID: 11400000, guid: ed92c63a467c7f7469e825597506f9a9, type: 2}
+  - {fileID: 11400000, guid: 3dbe1cf9f4823ce498ca24ad45e1c043, type: 2}
+  weapon: {fileID: 0}
+  armor: {fileID: 0}

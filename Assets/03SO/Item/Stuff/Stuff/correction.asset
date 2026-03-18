@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88dccb44b9743fb8e6332025db6de24, type: 3}
+  m_Name: correction
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.StuffItemDataSO
+  category: 6
+  itemType: 6070
+  itemName: "\uC218\uC815"
+  itemExplanation: "\uC885\uB958\uC5D0\uB294 \uBC31\uC218\uC815, \uC790\uC218\uC815(\uBCF4\uB77C),
+    \uD669\uC218\uC815(\uB178\uB791), \uC5F0\uC218\uC815(\uAC08\uC0C9), \uC7A5\uBBF8\uC218\uC815(\uD551\uD06C)\uAC00
+    \uC788\uB2E4.\n\uC2A4\uB9C8\uD2B8\uD3F0 \uC18D\uC5D0\uB3C4 \uBBF8\uC138\uD55C
+    \uC218\uC815 \uC870\uAC01\uC774 \uB4E4\uC5B4\uAC00 \uC788\uB2E4."
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 999
+  collectTime: 2
+  stats: 1
+  addStats: 0
+  baseData: {fileID: 11400000, guid: c56886348aa23de4b92c7840c7b0ef4d, type: 2}
+  buffs:
+  - {fileID: 11400000, guid: 07924c08f3a55654191053a8e6076de9, type: 2}
+  - {fileID: 11400000, guid: 0ce9037868b563a49bd079b3228b2d77, type: 2}
+  - {fileID: 11400000, guid: 079043988dddc7c45b7e8ebd0b1c015a, type: 2}
+  - {fileID: 11400000, guid: 3843e1f45e5a4b04cb542a0ffd55541e, type: 2}
+  - {fileID: 11400000, guid: f148bc4564db508488aee23bead86a1f, type: 2}
+  weapon: {fileID: 11400000, guid: 73bbe782ef122f24a95031dd338e34b7, type: 2}
+  armor: {fileID: 0}

@@ -53,6 +53,7 @@ namespace _02Script.Inventory.Item
             string enumName = itemType.ToString();
 
             if (name == enumName) return;
+            //if (itemName == EnumToString.Name(itemType)) return;
 
             itemName = EnumToString.Name(itemType);
 
@@ -312,6 +313,7 @@ namespace _02Script.Inventory.Item
         [Description("¼®À¯")]petroleum = 6005,
         [Description("Èæ¿¬")]blackSmoke = 6006,
         [Description("»ê")]poison = 6007,
+        [Description("±â¸§")]oil = 6008,
         
         [Description("Ã¶ ±¤¼®")]ironStone = 6021,
         [Description("±¸¸® ±¤¼®")]copperStone = 6022,

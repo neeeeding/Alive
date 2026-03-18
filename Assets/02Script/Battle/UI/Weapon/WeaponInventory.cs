@@ -31,10 +31,12 @@ namespace _02Script.Battle.UI.Weapon
         
         private SerializedDictionary<ItemType, WeaponItemDataSO> _allWeaponDataSO = new SerializedDictionary<ItemType, WeaponItemDataSO>();
         private EntityName _weaponEntity;
+        private bool _isBeforeAutoChage;
 
         #region EnDiAw
         protected override void OnEnable()
         {
+            _isBeforeAutoChage = true;
             DialogItem.OnGetItem += GetOrThrowItem;
             InGameItem.OnGetItem += AddItem;
             Field.OnGetViand += AddItem;
@@ -142,6 +144,10 @@ namespace _02Script.Battle.UI.Weapon
                 ItemData d = ItemDatas[_allWeaponDataSO[item.itemType]]; //그냥 item하면 인스턴스 값이 달라서 못함.
                 (ItemCards[d][ItemCards[d].Count -1] as WeaponInventoryCard).Set(_weaponEntity);
             }
+            if (_isBeforeAutoChage)
+            {
+                AutoWeaponSelect();
+            }
         }
         #endregion
 
@@ -172,9 +178,11 @@ namespace _02Script.Battle.UI.Weapon
         {
             if (ItemCards.Count <= 0)
             {
+                _isBeforeAutoChage = true;
                 inventoryCharacter.ChangeWeapon(null,_weaponEntity);
                 return;
             }
+            _isBeforeAutoChage = false;
             inventoryCharacter.ChangeWeapon(ItemCards.First().Value[0] as WeaponInventoryCard,_weaponEntity);
         }
         #endregion

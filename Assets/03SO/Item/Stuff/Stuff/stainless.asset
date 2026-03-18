@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88dccb44b9743fb8e6332025db6de24, type: 3}
+  m_Name: stainless
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.StuffItemDataSO
+  category: 6
+  itemType: 6105
+  itemName: "\uC2A4\uD14C\uC778\uB9AC\uC2A4\uAC15"
+  itemExplanation: "\uC2A4\uD150\uB808\uC2A4, \uC2A4\uD150, \uC2A4\uB385\uC73C\uB85C
+    \uC904\uC5EC\uC11C\uB3C4 \uBD80\uB978\uB2E4.\n\uCCA0\uACFC \uD06C\uB86C\uC758
+    \uBE44\uC728\uC5D0 \uB530\uB77C \uB179\uC774 \uC4F8\uAC70\uB098 \uC790\uC11D\uC5D0
+    \uBD99\uAE30\uB3C4 \uD55C\uB2E4."
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 999
+  collectTime: 2
+  stats: 1
+  addStats: 0
+  baseData: {fileID: 11400000, guid: cec52d1e21ce1e2429837c63d12cc5d8, type: 2}
+  buffs:
+  - {fileID: 11400000, guid: 74c8dad9d0271124f8c0a99eeb11758b, type: 2}
+  - {fileID: 11400000, guid: 9a68797b11a48e34e875a0a369ec98ab, type: 2}
+  - {fileID: 11400000, guid: 79dca90cc00feec44945c0b9c574897c, type: 2}
+  - {fileID: 11400000, guid: 747f92350c83fed40b8e0ed37ee27a9a, type: 2}
+  - {fileID: 11400000, guid: 94504cf4a1910e240bb39c95d847964f, type: 2}
+  weapon: {fileID: 0}
+  armor: {fileID: 0}

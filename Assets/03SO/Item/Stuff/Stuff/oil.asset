@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88dccb44b9743fb8e6332025db6de24, type: 3}
+  m_Name: oil
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.StuffItemDataSO
+  category: 6
+  itemType: 6008
+  itemName: "\uAE30\uB984"
+  itemExplanation: "\uCE74\uB180\uB77C\uC720\uAC00 \uC7A5\uAE30\uC801\uC73C\uB85C
+    \uB1CC \uAC74\uAC15\uC5D0 \uC545\uC601\uD5A5\uC744 \uBBF8\uCE58\uACE0 \uAE30\uC5B5\uB825\uACFC
+    \uD559\uC2B5 \uB2A5\uB825\uC744 \uC190\uC0C1\uC2DC\uD0A8\uB2E4\uB294 \uC5F0\uAD6C
+    \uACB0\uACFC\uAC00 \uC788\uB2E4.\n'\uC9C0\uBC29\uB9DB'\uC740 \uC81C 6\uC758\uB9DB\uC73C\uB85C
+    \uBD84\uB958\uB41C\uB2E4."
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 999
+  collectTime: 2
+  stats: 1
+  addStats: 0
+  baseData: {fileID: 11400000, guid: dcb8d9ede4fabc84bb9fa01179ff8e80, type: 2}
+  buffs:
+  - {fileID: 11400000, guid: 940614da5cf5a9e4c91c6481a768fead, type: 2}
+  - {fileID: 11400000, guid: c7c3f5eff07f78340b68c707bd23c129, type: 2}
+  - {fileID: 11400000, guid: c87895ebd2e5ac74bb1ca374164bc870, type: 2}
+  - {fileID: 11400000, guid: 805aa35088c59c04d8d473ba1d8343d5, type: 2}
+  - {fileID: 11400000, guid: e5d8fbcd7e111a94ca87a1f47d0cd1ea, type: 2}
+  weapon: {fileID: 0}
+  armor: {fileID: 0}

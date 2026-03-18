@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88dccb44b9743fb8e6332025db6de24, type: 3}
+  m_Name: petroleum
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.StuffItemDataSO
+  category: 6
+  itemType: 6005
+  itemName: "\uC11D\uC720"
+  itemExplanation: "\uC218\uBC31\uB9CC \uB144 \uC804 \uC0DD\uBB3C\uC758 \uC794\uD574\uB85C
+    \uB9CC\uB4E4\uC5B4\uC84C\uB2E4.\n\uD55C\uB54C \uD1B5\uD48D \uCE58\uB8CC\uC81C\uB85C
+    \uC0AC\uC6A9\uB418\uC5C8\uB2E4."
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 999
+  collectTime: 2
+  stats: 1
+  addStats: 0
+  baseData: {fileID: 11400000, guid: 695160dc9d64e9442bdc4e785f0f02db, type: 2}
+  buffs:
+  - {fileID: 11400000, guid: 940614da5cf5a9e4c91c6481a768fead, type: 2}
+  - {fileID: 11400000, guid: c7c3f5eff07f78340b68c707bd23c129, type: 2}
+  - {fileID: 11400000, guid: 28525cd411e61474bb5d97227122b858, type: 2}
+  - {fileID: 11400000, guid: c87895ebd2e5ac74bb1ca374164bc870, type: 2}
+  - {fileID: 11400000, guid: d16faa54f5013f54b8773fe1971f136c, type: 2}
+  weapon: {fileID: 0}
+  armor: {fileID: 0}

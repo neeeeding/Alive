@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88dccb44b9743fb8e6332025db6de24, type: 3}
+  m_Name: diamond
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.StuffItemDataSO
+  category: 6
+  itemType: 6064
+  itemName: "\uB2E4\uC774\uC544\uBAAC\uB4DC"
+  itemExplanation: "\uACFC\uD559\uC790\uB4E4\uC740 \uAC00\uC2A4 \uD589\uC131\uC5D0\uB294
+    \uB300\uAE30 \uC911\uC758 \uD0C4\uC18C\uAC00 \uC555\uB825\uC744 \uBC1B\uC544
+    \uB2E4\uC774\uC544\uBAAC\uB4DC \uBE44\uAC00 \uB0B4\uB9B4 \uAC83\uC73C\uB85C \uCD94\uC815\uD55C\uB2E4.\n\uC720\uACE8\uC774\uB098
+    \uBA38\uB9AC\uCE74\uB77D\uC758 \uD0C4\uC18C\uB97C \uCD94\uCD9C\uD574 \uB9CC\uB4DC\uB294
+    \uB2E4\uC774\uC544\uB294 '\uBA54\uBAA8\uB9AC\uC5BC \uB2E4\uC774\uC544\uBAAC\uB4DC'\uB85C
+    \uBD88\uB9B0\uB2E4."
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 999
+  collectTime: 2
+  stats: 1
+  addStats: 0
+  baseData: {fileID: 11400000, guid: 349fb677903e4c240aa908f92450c120, type: 2}
+  buffs:
+  - {fileID: 11400000, guid: 31144981b23b01747813eb7ecd8a00a4, type: 2}
+  - {fileID: 11400000, guid: 74c8dad9d0271124f8c0a99eeb11758b, type: 2}
+  - {fileID: 11400000, guid: 94504cf4a1910e240bb39c95d847964f, type: 2}
+  - {fileID: 11400000, guid: 05c71084ef3bcbf40abb8f78f40ec4de, type: 2}
+  - {fileID: 11400000, guid: 9a68797b11a48e34e875a0a369ec98ab, type: 2}
+  weapon: {fileID: 0}
+  armor: {fileID: 0}

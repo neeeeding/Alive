@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88dccb44b9743fb8e6332025db6de24, type: 3}
+  m_Name: copper
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.StuffItemDataSO
+  category: 6
+  itemType: 6102
+  itemName: "\uAD6C\uB9AC"
+  itemExplanation: "\uC138\uADE0\uACFC \uBC14\uC774\uB7EC\uC2A4\uC5D0 \uAC15\uB825\uD55C
+    \uD56D\uADE0\uC131\uC744 \uAC00\uC9C0\uACE0 \uC788\uB2E4.\n\uC8FC\uD669\uC0C9\uC5D0\uC11C
+    \uC0B0\uD654\uB418\uBA74 \uCD08\uB85D\uC0C9\uC774 \uB41C\uB2E4."
+  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  maxCount: 999
+  collectTime: 2
+  stats: 1
+  addStats: 0
+  baseData: {fileID: 11400000, guid: 3f7f6e42b546dac47b6d0f4c7c292da2, type: 2}
+  buffs:
+  - {fileID: 11400000, guid: 263d22ac63c857b4b96e6bd1156e3ed2, type: 2}
+  - {fileID: 11400000, guid: 28525cd411e61474bb5d97227122b858, type: 2}
+  - {fileID: 11400000, guid: 08bd8db39323b2e4587e0e407b88b7b0, type: 2}
+  - {fileID: 11400000, guid: d16faa54f5013f54b8773fe1971f136c, type: 2}
+  - {fileID: 11400000, guid: 0de2b84f58b1bb94cba5d4de6682f566, type: 2}
+  weapon: {fileID: 11400000, guid: ebec3758130c940429ce380f2c8ac488, type: 2}
+  armor: {fileID: 0}
