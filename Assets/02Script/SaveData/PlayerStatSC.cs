@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
+using _02Script.Produce.Weapon;
 using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Dialog.Entity;
 using _02Script.UI.person;
@@ -35,6 +36,7 @@ namespace _02Script.SaveData
         public int minute;
 
         public SaveDictionary<ItemType, List<float>> items; //아이템들 카테고리<종류,수>
+        public SaveDictionary<ItemType, List<WeaponArmorSaveData>> weaponArmor; //무기랑 갑옷<종류,수>
 
         //사전
         public List<int> getDictionaryPage;
@@ -103,6 +105,7 @@ namespace _02Script.SaveData
         {
             items = new SaveDictionary<ItemType, List<float>>();
             items.Clear();
+            weaponArmor.Clear();
 
             foreach (ItemType type in Enum.GetValues(typeof(ItemType)))
             {
@@ -110,6 +113,11 @@ namespace _02Script.SaveData
                     continue;
 
                 items.Add(type, new List<float>(){0}); //0으로 초기화
+                if ((int)type / 1000 == (int)ItemCategory.weapon ||
+                    (int)type / 1000 == (int)ItemCategory.armor) //무기와 갑옷
+                {
+                    weaponArmor.Add(type,new List<WeaponArmorSaveData>());
+                }
             }
         }
     }

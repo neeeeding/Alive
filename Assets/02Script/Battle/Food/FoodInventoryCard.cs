@@ -2,6 +2,7 @@
 using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
+using _02Script.Produce.Weapon;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -55,14 +56,14 @@ namespace _02Script.Battle.Food
         }
         #endregion
 
-        public override void NewCard(ItemData itemData, int setStar = 5, int setItemHp = 100)
+        public override void NewCard(ItemData itemData,int setStar = 5, int setItemHp = 100,WeaponArmorSaveData saveData = null)
         {
             nameText.text = itemData.ReturnDataSO().itemName;
             int add = itemData.ReturnDataSO().addStats;
             if (add >= 0)
                 addStatText.text = "+";
             addStatText.text += $"{add} {EnumToString.Name(itemData.ReturnDataSO().stats)}";
-            base.NewCard(itemData, setStar, setItemHp); //부산물
+            base.NewCard(itemData,setStar, setItemHp,saveData); //부산물
         }
 
         public override void UpdateCountUI()

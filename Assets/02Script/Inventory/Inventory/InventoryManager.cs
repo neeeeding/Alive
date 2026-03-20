@@ -2,6 +2,7 @@
 using System.Linq;
 using _02Script.Farming;
 using _02Script.Inventory.Item;
+using _02Script.Produce.Weapon;
 using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Store;
 using AYellowpaper.SerializedCollections;
@@ -29,6 +30,7 @@ namespace _02Script.Inventory.Inventory
             Field.OnGetViand += AddItem;
             GameEvent.GameEvent.OnGetItem += AddItem;
             StoreCard.OnSellItem += AddItem;
+            Result.OnGetItem += AddItem;
             StoreCard.OnPayItem += ThrowItem;
             Field.OnUseSeed += ThrowItem;
         }
@@ -40,6 +42,7 @@ namespace _02Script.Inventory.Inventory
             Field.OnGetViand -= AddItem;
             GameEvent.GameEvent.OnGetItem -= AddItem;
             StoreCard.OnSellItem -= AddItem;
+            Result.OnGetItem -= AddItem;
             StoreCard.OnPayItem -= ThrowItem;
             Field.OnUseSeed -= ThrowItem;
         }
@@ -78,7 +81,7 @@ namespace _02Script.Inventory.Inventory
             LessItem(item, true, count);
         }
 
-        protected virtual void LessItem(ItemDataSO item, bool isThrow,int count = 1) //어쨌든 아이템 감소
+        protected virtual void LessItem(ItemDataSO item, bool isThrow,int count = 1,WeaponArmorSaveData saveData = null) //어쨌든 아이템 감소
         {
             if (ItemDatas.ContainsKey(item))
             {
@@ -120,7 +123,7 @@ namespace _02Script.Inventory.Inventory
             }
         }
 
-        protected virtual void NewCard(ItemDataSO item, bool isEtc, int star = 3, int hp = 100 )
+        protected virtual void NewCard(ItemDataSO item, bool isEtc, int star = 3, int hp = 100,WeaponArmorSaveData saveData = null )
         {
             //data 새 생성
             ItemData itemData = new ItemData();
@@ -139,12 +142,40 @@ namespace _02Script.Inventory.Inventory
             //카드 새 생성
             ItemCard newCard = Instantiate(cardPrefab, parent);
             newCard.gameObject.SetActive(true);
-            newCard.NewCard(itemData, star, hp);
+            newCard.NewCard(itemData, star, hp,saveData);
             
             if(!isEtc)
                 ItemCards.Add(itemData, new List<ItemCard>());
 
             ItemCards[itemData].Add(newCard);
+        }
+
+        public virtual void AddItem(ItemDataSO item,WeaponArmorSaveData saveData, int count = 1)
+        {
+            switch(item.category)
+            {
+                case ItemCategory.seed:
+                case ItemCategory.viand:
+                case ItemCategory.stuff:
+                case ItemCategory.special:
+                    if (!ItemDatas.ContainsKey(item))
+                        NewCard(item, false, 0,0);
+                    break;
+
+                case ItemCategory.food:
+                case ItemCategory.armor:
+                case ItemCategory.weapon:
+                case ItemCategory.machine:
+                    NewCard(item, ItemDatas.ContainsKey(item), count, count,saveData);
+                    break;
+            }
+
+            ItemData data = ItemDatas[item];
+            data.GetItem(count);
+            
+            ItemCard card = ItemCards[data][ItemCards[data].Count -1]; //갓 생성
+            card.gameObject.SetActive(true);
+            card.UpdateCountUI();
         }
 
         public virtual void AddItem(ItemDataSO item, int count = 1)

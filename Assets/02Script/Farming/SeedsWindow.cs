@@ -3,6 +3,7 @@ using System.Linq;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
+using _02Script.Produce.Weapon;
 using UnityEngine;
 
 namespace _02Script.Farming
@@ -50,7 +51,7 @@ namespace _02Script.Farming
             }
         }
 
-        protected override void NewCard(ItemDataSO item, bool isEtc, int star = 3, int hp = 100 )
+        protected override void NewCard(ItemDataSO item, bool isEtc, int star = 3, int hp = 100,WeaponArmorSaveData saveData = null )
         {
             //data 새 생성
             ItemData itemData = new ItemData();

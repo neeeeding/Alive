@@ -9,6 +9,7 @@ using _02Script.Farming;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
+using _02Script.Produce.Weapon;
 using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Save;
 using _02Script.UI.Store;
@@ -131,9 +132,19 @@ namespace _02Script.Battle.UI.Weapon
         #region GetAddItem (inventory)
         private void GetItem(ItemDataSO data, int count, EntityName type) //아이템 얻은거, 카드도 생성
         {
-            AddItem(data,count);
+            WeaponArmorSaveData save = null;
+            foreach (WeaponArmorSaveData saveData in BattleSaveManager.Instance.PlayerStat.weaponArmor[data.itemType].ToArray())
+            {
+                if (saveData.hp == count)
+                {
+                    save = saveData;
+                    BattleSaveManager.Instance.PlayerStat.weaponArmor[data.itemType].Remove(saveData);//hp가 겹칠 때 계속 해당 데이터만 참고하게 될테니, 또한 전투하면서 hp 계속 변경 될거니까
+                }
+            }
+
+            AddItem(data,save,count);
         }
-        public override void AddItem(ItemDataSO item, int count = 1)
+        public override void AddItem(ItemDataSO item,WeaponArmorSaveData saveData, int count = 1)
         {
             if(_allWeaponDataSO.Count <= 0)
                 SettingAllDataSO();

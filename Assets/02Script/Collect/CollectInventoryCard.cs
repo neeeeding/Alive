@@ -1,6 +1,7 @@
 ﻿using System;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
+using _02Script.Produce.Weapon;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -51,10 +52,10 @@ namespace _02Script.Collect
 
         #endregion
 
-        public override void NewCard(ItemData itemData, int setStar = 5, int setItemHp = 100)
+        public override void NewCard(ItemData itemData, int setStar = 5, int setItemHp = 100,WeaponArmorSaveData saveData = null)
         {
             countUI.text = itemData.ReturnDataSO().itemName;
-            base.NewCard(itemData, setStar, setItemHp); //부산물
+            base.NewCard(itemData, setStar, setItemHp,saveData); //부산물
         }
 
         public void SetCharacter(EntityName inventoryCharacter)

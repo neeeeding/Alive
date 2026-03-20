@@ -1,4 +1,5 @@
 ﻿using System;
+using _02Script.Battle.Buff;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
 using DG.Tweening;
@@ -18,6 +19,7 @@ namespace _02Script.Battle.UI.Weapon
         [SerializeField] protected float delay = 0.2f;
 
         private EntityName _weaponEntity;
+        private BuffSO[] _buffs;
 
         #region Btn
         public void MouseEnter()
@@ -42,9 +44,10 @@ namespace _02Script.Battle.UI.Weapon
             MouseExit();
         }
 
-        public override void NewCard(ItemData itemData, int setStar = 5, int setItemHp = 100)
+        public void NewCard(ItemData itemData,BuffSO[] buffs,int setStar = 5, int setItemHp = 100)
         {
             nameText.text = itemData.ReturnDataSO().itemName;
+            _buffs = buffs;
             base.NewCard(itemData, setStar, setItemHp); //부산물
         }
 

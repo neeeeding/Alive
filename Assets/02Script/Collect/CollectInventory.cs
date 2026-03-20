@@ -8,6 +8,7 @@ using _02Script.Etc;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
+using _02Script.Produce.Weapon;
 using _02Script.UI.person;
 using AYellowpaper.SerializedCollections;
 using TMPro;
@@ -105,9 +106,9 @@ namespace _02Script.Collect
             ThrowItem(data,count);
         }
 
-        protected override void LessItem(ItemDataSO item, bool isThrow, int count = 1)
+        protected override void LessItem(ItemDataSO item, bool isThrow, int count = 1,WeaponArmorSaveData saveData = null)
         {
-            base.LessItem(item, isThrow, count);
+            base.LessItem(item, isThrow, count, saveData);
             _curCount--;
         }
 

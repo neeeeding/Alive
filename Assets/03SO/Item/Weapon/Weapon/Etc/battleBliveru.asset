@@ -28,6 +28,7 @@ MonoBehaviour:
   baseData: {fileID: 11400000, guid: 2324f29f0b7d12c42ac23d97af613c00, type: 2}
   isGlobal: 0
   skillBuff: {fileID: 11400000, guid: b6f7bbf80c8acaf49a0fa4d188dadd66, type: 2}
+  bu: []
   buffGiveEntity: 1
   skillDamage: 8
   skillCoolTime: 5

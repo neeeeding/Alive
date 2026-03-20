@@ -1,5 +1,6 @@
 using System;
 using _02Script.Inventory.Item;
+using _02Script.Produce.Weapon;
 using DG.Tweening;
 using UnityEngine;
 
@@ -40,11 +41,11 @@ namespace _02Script.Produce
             rect = GetComponent<RectTransform>();
         }
 
-        public override void NewCard(ItemData itemData, int setStar = 5, int setItemHp = 100)
+        public override void NewCard(ItemData itemData, int setStar = 5, int setItemHp = 100,WeaponArmorSaveData saveData = null)
         {
             _bookData = itemData.ReturnDataSO() as ProduceBookSO;
             countUI.text = _bookData.result.itemName;
-            base.NewCard(itemData, setStar, setItemHp); //부산물
+            base.NewCard(itemData, setStar, setItemHp,saveData); //부산물
         }
 
         public override void UpdateCountUI()

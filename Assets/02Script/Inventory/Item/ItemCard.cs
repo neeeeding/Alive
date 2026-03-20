@@ -1,4 +1,5 @@
 using _02Script.Produce;
+using _02Script.Produce.Weapon;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ namespace _02Script.Inventory.Item
         
         protected float star; //성 (1 ~ 5)
         protected float itemHp; //내구도 (0 ~ 100)
+        protected WeaponArmorSaveData weaponArmorBuff;
 
         public ItemData ReturnData()
         {
@@ -31,10 +33,11 @@ namespace _02Script.Inventory.Item
             itemHp -= damage;
         }
 
-        public virtual void NewCard(ItemData itemData, int setStar = 0, int setItemHp = 100)
+        public virtual void NewCard(ItemData itemData,int setStar = 0, int setItemHp = 100,WeaponArmorSaveData saveData = null)
         {
             this.itemData = itemData;
             cardImage.sprite = this.itemData.ReturnDataSO().itemImage;
+            weaponArmorBuff = saveData;
             star = setStar;
             itemHp = setItemHp;
         }
