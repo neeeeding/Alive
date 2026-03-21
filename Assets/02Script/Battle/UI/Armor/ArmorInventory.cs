@@ -7,6 +7,7 @@ using _02Script.Collect.Item;
 using _02Script.DoTweenUI.Warring;
 using _02Script.Etc;
 using _02Script.Farming;
+using _02Script.Inventory.Etc;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
@@ -38,6 +39,7 @@ namespace _02Script.Battle.UI.Armor
         protected override void OnEnable()
         {
             DialogItem.OnGetItem += GetOrThrowItem;
+            WeaponArmorStartGiveItem.OnGetBuff += AddItem;
             InGameItem.OnGetItem += AddItem;
             Field.OnGetViand += AddItem;
             GameEvent.GameEvent.OnGetItem += AddItem;
@@ -61,6 +63,7 @@ namespace _02Script.Battle.UI.Armor
         {
             base.OnDisable();
             ArmorInventoryCard.OnMouseClick -= CloseWeaponInventory;
+            WeaponArmorStartGiveItem.OnGetBuff -= AddItem;
             CollectItem.OnGetItem -= GetItem;
             BattleCharacter.OnUseArmor -= ArmorDamage;
             ArmorInventory.OnDeleteArmor -= DeleteArmor;
@@ -133,6 +136,7 @@ namespace _02Script.Battle.UI.Armor
         }
         public override void AddItem(ItemDataSO item, int count = 1)
         {
+            if(item.category != ItemCategory.armor) return;
             if(_allArmorDataSO.Count <= 0)
                 SettingAllDataSO();
             

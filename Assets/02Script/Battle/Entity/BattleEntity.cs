@@ -127,7 +127,7 @@ namespace _02Script.Battle.Entity
                             +EtcStat(StatsType.skill)/2); //((타격-3)/2 + 숙련/2)
             float damage = (skillDamage + attack) / divide;
             
-            if (skillBuff.Count >0)
+            if (skillBuff!= null&&skillBuff.Count >0)
             {
                 foreach (BuffSO buff in skillBuff)
                 {
@@ -138,7 +138,7 @@ namespace _02Script.Battle.Entity
             foreach (BattleEntity target in targets.ToArray())
             {
                 target.Hit(damage);
-                if(skillBuff.Count >0)
+                if(skillBuff!= null&&skillBuff.Count >0)
                     foreach (BuffSO buff in skillBuff)
                     {
                         if(buff.isDeBuff)

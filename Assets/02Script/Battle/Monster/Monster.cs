@@ -48,12 +48,12 @@ namespace _02Script.Battle.Monster
             entity = monster;
             skillAttackDelay = 0;
             
+            startBuff = monster.useBuff;
             isGlobal = monster.isGlobal;
             maxHp = monster.maxHp;
             curHp = maxHp;
             baseAttack = monster.baseAttack;
             baseAttackDelay = monster.baseAttackDelay;
-            startBuff = monster.eBuff;
             hpUI.UpdateHp(curHp, maxHp);
         }
         #endregion
@@ -62,6 +62,7 @@ namespace _02Script.Battle.Monster
         {
             base.OnEnable();
             hpUI.UpdateHp(curHp, maxHp);
+            if(startBuff == null)return;
             foreach (BuffSO buff in startBuff)
             {
                 GetBuffs(buff);

@@ -60,20 +60,20 @@ namespace _02Script.Battle.UI.Explanation
             
             SetHp(_hp,mSO.maxHp);
 
-            if (mSO.eBuff.Count > 0)
+            if (mSO.useBuff.Count > 0)
             {
                 explanationText.text = $"시작시 ";
-                foreach (BuffSO buff in mSO.eBuff)
+                foreach (BuffSO buff in mSO.useBuff)
                 {
                     explanationText.text += $"[{buff.buffName}]";
                 }
                 explanationText.text = $" 을/를 시전합니다.\n" +
                                        $"{mSO.baseAttackDelay} 초 마다 {mSO.baseAttack} 데미지를 줍니다.";
 
-                for (int i = 0; i < mSO.eBuff.Count; i++)
+                for (int i = 0; i < mSO.useBuff.Count; i++)
                 {
                     baseBuff[i].gameObject.SetActive(true);
-                    baseBuff[i].BuffSet(mSO.eBuff[i],null,EntityName.None,true);
+                    baseBuff[i].BuffSet(mSO.useBuff[i],null,EntityName.None,true);
                 }
             }
 
@@ -90,20 +90,20 @@ namespace _02Script.Battle.UI.Explanation
             }
             if(bmSO == null) return;
             
-            if (bmSO.eSkillBuff != null)
+            if (bmSO.useSkillBuff != null)
             {
                 explanationText.text += $"스킬 사용---\n";
-                foreach (BuffSO buff in bmSO.eSkillBuff)
+                foreach (BuffSO buff in bmSO.useSkillBuff)
                 {
                     explanationText.text += $"[{buff.buffName}]";
                 }
                 explanationText.text = $" 을/를 시전합니다.\n" +
                                        $"{bmSO.skillAttackDelay} 초 마다 {bmSO.skillAttack} 데미지를 줍니다.";
                 
-                for (int i = 0; i < bmSO.eSkillBuff.Count; i++)
+                for (int i = 0; i < bmSO.useSkillBuff.Count; i++)
                 {
                     baseBuff[i].gameObject.SetActive(true);
-                    skillBuff[i].BuffSet(bmSO.eSkillBuff[i],null,EntityName.None,true);
+                    skillBuff[i].BuffSet(bmSO.useSkillBuff[i],null,EntityName.None,true);
                 }
             }
         }

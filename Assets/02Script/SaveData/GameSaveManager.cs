@@ -49,6 +49,7 @@ namespace _02Script.SaveData
 
             PlayerStat = data.stat; //로드
             
+            saveData = new GameSaveData();
             saveData.stat = PlayerStat;
         }
         protected virtual void Load() //진짜 게임 용

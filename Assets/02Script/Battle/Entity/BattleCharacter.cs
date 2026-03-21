@@ -119,7 +119,7 @@ namespace _02Script.Battle.Entity
             
             _curArmorSkillDelay = 0;
             
-            if (_armorSkillBuff.Count >0)
+            if (_armorSkillBuff != null && _armorSkillBuff.Count >0)
             {
                 foreach (BuffSO buff in _armorSkillBuff)
                 {
@@ -129,7 +129,7 @@ namespace _02Script.Battle.Entity
             }
             foreach (BattleEntity target in targets.ToArray())
             {
-                if(_armorSkillBuff.Count >0)
+                if(_armorSkillBuff != null &&_armorSkillBuff.Count >0)
                     foreach (BuffSO buff in _armorSkillBuff)
                     {
                         if(buff.isDeBuff)

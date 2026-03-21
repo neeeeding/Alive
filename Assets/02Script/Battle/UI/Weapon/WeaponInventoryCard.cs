@@ -62,6 +62,8 @@ namespace _02Script.Battle.UI.Weapon
 
         public override void NewCard(ItemData itemData,int setStar = 5, int setItemHp = 100, WeaponArmorSaveData data = null)
         {
+            nameText.text = itemData.ReturnDataSO().itemName;
+            base.NewCard(itemData, setStar, setItemHp, data); //부산물
         }
         #endregion
 

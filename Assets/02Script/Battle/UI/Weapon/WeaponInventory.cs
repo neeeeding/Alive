@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using _02Script.Battle.Buff;
 using _02Script.Battle.Entity;
-using _02Script.Battle.UI.Armor;
 using _02Script.Collect.Item;
 using _02Script.DoTweenUI.Warring;
 using _02Script.Etc;
 using _02Script.Farming;
-using _02Script.GoHouse.Etc;
+using _02Script.Inventory.Etc;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
@@ -43,6 +42,7 @@ namespace _02Script.Battle.UI.Weapon
         {
             _isBeforeAutoChage = true;
             DialogItem.OnGetItem += GetOrThrowItem;
+            WeaponArmorStartGiveItem.OnGetBuff += AddItem;
             InGameItem.OnGetItem += AddItem;
             Field.OnGetViand += AddItem;
             GameEvent.GameEvent.OnGetItem += AddItem;
@@ -66,6 +66,7 @@ namespace _02Script.Battle.UI.Weapon
         {
             base.OnDisable();
             WeaponInventoryCard.OnMouseClick -= CloseWeaponInventory;
+            WeaponArmorStartGiveItem.OnGetBuff -= AddItem;
             CollectItem.OnGetItem -= GetItem;
             BattleCharacter.OnSkillWeapon -= WeaponDamage;
             WeaponInventory.OnDeleteWeapon -= DeleteWeapon;
@@ -150,6 +151,12 @@ namespace _02Script.Battle.UI.Weapon
         }
         public override void AddItem(ItemDataSO item,WeaponArmorSaveData saveData, int count = 1)
         {
+            AddItem(item, count);
+        }
+        public override void AddItem(ItemDataSO item, int count = 1)
+        {
+            if(item.category != ItemCategory.weapon) return;
+            
             if(_allWeaponDataSO.Count <= 0)
                 SettingAllDataSO();
             
@@ -208,7 +215,18 @@ namespace _02Script.Battle.UI.Weapon
             WeaponInventoryCard weapon = ItemCards.First().Value[0] as WeaponInventoryCard;
             
             List<BuffSO> buff = new List<BuffSO>();
-            foreach (BuffType b in GoHouseSaveManager.Instance.PlayerStat.weaponArmor[weapon.ReturnData().ReturnDataSO().itemType][0].buffTypes)
+            
+            Dictionary<ItemType, List<WeaponArmorSaveData>> dict = BattleSaveManager.Instance?.PlayerStat?.weaponArmor?.ToDictionary();
+
+            if (weapon == null ||dict == null ||
+                dict.Count <= 0 ||
+                !dict.ContainsKey(weapon.ReturnData().ReturnDataSO().itemType) ||
+                dict[weapon.ReturnData().ReturnDataSO().itemType] == null ||
+                dict[weapon.ReturnData().ReturnDataSO().itemType].Count <= 0 ||
+                dict[weapon.ReturnData().ReturnDataSO().itemType][0] == null ||
+                dict[weapon.ReturnData().ReturnDataSO().itemType][0].buffTypes == null)return;
+
+            foreach (BuffType b in dict[weapon.ReturnData().ReturnDataSO().itemType][0].buffTypes)
             {
                 buff.Add(buffFind.GetBuff(b));
             }

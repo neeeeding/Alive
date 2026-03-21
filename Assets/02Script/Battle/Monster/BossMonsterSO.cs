@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using _02Script.Battle.Buff;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _02Script.Battle.Monster
 {
@@ -11,6 +12,6 @@ namespace _02Script.Battle.Monster
         [Header("BossMonsterSO------------------------")]
         public float skillAttack; //평타
         public float skillAttackDelay; //평타 딜레이
-        public List<BuffSO> eSkillBuff; //사용하는 버프
+        [FormerlySerializedAs("eSkillBuff")] public List<BuffSO> useSkillBuff; //사용하는 버프
     }
 }

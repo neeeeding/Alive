@@ -21,7 +21,7 @@
         {
             base.SetMonster(monster);
             
-            skillBuff = monster.eSkillBuff;
+            skillBuff = monster.useSkillBuff;
             skillDamage = monster.skillAttack;
             skillAttackDelay = monster.skillAttackDelay;
             _bossHpUI.UpdateHp(curHp, maxHp);

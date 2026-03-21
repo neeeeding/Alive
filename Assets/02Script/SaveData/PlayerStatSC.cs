@@ -104,6 +104,7 @@ namespace _02Script.SaveData
         public void ResetItem() //스탯의 아이템 전부 초기화
         {
             items = new SaveDictionary<ItemType, List<float>>();
+            weaponArmor = new SaveDictionary<ItemType, List<WeaponArmorSaveData>>();
             items.Clear();
             weaponArmor.Clear();
 
