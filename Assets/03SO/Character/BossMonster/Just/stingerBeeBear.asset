@@ -17,8 +17,10 @@ MonoBehaviour:
   maxHp: 130
   baseAttack: 22
   baseAttackDelay: 7
-  useBuff: {fileID: 11400000, guid: ef8c12d075bc47d43b232df39e6e21c1, type: 2}
+  eBuff:
+  - {fileID: 11400000, guid: ef8c12d075bc47d43b232df39e6e21c1, type: 2}
   isGlobal: 0
   skillAttack: 30
   skillAttackDelay: 20
-  useSkillBuff: {fileID: 11400000, guid: 64ad2b1514664ae45babe05daffe0059, type: 2}
+  eSkillBuff:
+  - {fileID: 11400000, guid: 64ad2b1514664ae45babe05daffe0059, type: 2}

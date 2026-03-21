@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using _02Script.Battle.Buff;
 using _02Script.Battle.Entity;
+using _02Script.Battle.UI.Armor;
 using _02Script.Collect.Item;
 using _02Script.DoTweenUI.Warring;
 using _02Script.Etc;
 using _02Script.Farming;
+using _02Script.GoHouse.Etc;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
@@ -29,6 +32,7 @@ namespace _02Script.Battle.UI.Weapon
         [Header("Need")]
         [SerializeField] private GameObject inventoryWindow;
         [SerializeField] private TextMeshProUGUI inventoryText;
+        [SerializeField] private BuffFind buffFind;
         
         private SerializedDictionary<ItemType, WeaponItemDataSO> _allWeaponDataSO = new SerializedDictionary<ItemType, WeaponItemDataSO>();
         private EntityName _weaponEntity;
@@ -68,7 +72,7 @@ namespace _02Script.Battle.UI.Weapon
         }
         #endregion
 
-        private void CloseWeaponInventory(WeaponInventoryCard _w, EntityName _e)
+        private void CloseWeaponInventory(WeaponInventoryCard _w,List<BuffSO> _b, EntityName _e)
         {
             inventoryWindow.gameObject.SetActive(false);
         }
@@ -152,8 +156,15 @@ namespace _02Script.Battle.UI.Weapon
             if (_allWeaponDataSO.ContainsKey(item.itemType))
             {
                 base.AddItem(_allWeaponDataSO[item.itemType], count);
+                
                 ItemData d = ItemDatas[_allWeaponDataSO[item.itemType]]; //그냥 item하면 인스턴스 값이 달라서 못함.
                 (ItemCards[d][ItemCards[d].Count -1] as WeaponInventoryCard).Set(_weaponEntity);
+                
+                if (item is WeaponItemDataSO)
+                {
+                    WeaponInventoryCard card = ItemCards[d][ItemCards[d].Count -1] as WeaponInventoryCard;
+                    card.NewCard(buffFind,d,0,count);
+                }
             }
             if (_isBeforeAutoChage)
             {
@@ -190,11 +201,19 @@ namespace _02Script.Battle.UI.Weapon
             if (ItemCards.Count <= 0)
             {
                 _isBeforeAutoChage = true;
-                inventoryCharacter.ChangeWeapon(null,_weaponEntity);
+                inventoryCharacter.ChangeWeapon(null,null,_weaponEntity);
                 return;
             }
             _isBeforeAutoChage = false;
-            inventoryCharacter.ChangeWeapon(ItemCards.First().Value[0] as WeaponInventoryCard,_weaponEntity);
+            WeaponInventoryCard weapon = ItemCards.First().Value[0] as WeaponInventoryCard;
+            
+            List<BuffSO> buff = new List<BuffSO>();
+            foreach (BuffType b in GoHouseSaveManager.Instance.PlayerStat.weaponArmor[weapon.ReturnData().ReturnDataSO().itemType][0].buffTypes)
+            {
+                buff.Add(buffFind.GetBuff(b));
+            }
+            
+            inventoryCharacter.ChangeWeapon(weapon,buff,_weaponEntity);
         }
         #endregion
     }

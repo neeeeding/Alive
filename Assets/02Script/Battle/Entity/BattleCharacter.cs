@@ -42,7 +42,7 @@ namespace _02Script.Battle.Entity
         
         private float _curArmorSkillDelay;
         private float _skillArmorDelay;
-        protected BuffSO _armorSkillBuff; //스킬때 버프
+        protected List<BuffSO> _armorSkillBuff; //스킬때 버프
 
         #region EnDiSt
         protected override void OnEnable()
@@ -119,14 +119,22 @@ namespace _02Script.Battle.Entity
             
             _curArmorSkillDelay = 0;
             
-            if (_armorSkillBuff&&!_armorSkillBuff.isDeBuff)
+            if (_armorSkillBuff.Count >0)
             {
-                GetBuffs(_armorSkillBuff);
+                foreach (BuffSO buff in _armorSkillBuff)
+                {
+                    if(!buff.isDeBuff)
+                        GetBuffs(buff);
+                }
             }
             foreach (BattleEntity target in targets.ToArray())
             {
-                if(_armorSkillBuff&&_armorSkillBuff.isDeBuff)
-                    target.GetBuffs(_armorSkillBuff);
+                if(_armorSkillBuff.Count >0)
+                    foreach (BuffSO buff in _armorSkillBuff)
+                    {
+                        if(buff.isDeBuff)
+                            target.GetBuffs(buff);
+                    }
             }
         }
         
@@ -139,7 +147,7 @@ namespace _02Script.Battle.Entity
                 RandomTarget();
             }
         }
-        public void ChangeWeapon(WeaponInventoryCard weapon,EntityName entityName)
+        public void ChangeWeapon(WeaponInventoryCard weapon,List<BuffSO> buffs,EntityName entityName)
         {
             if (!weapon|| entityName != entity.EntityName)
             {
@@ -153,7 +161,7 @@ namespace _02Script.Battle.Entity
             _useWeapon = weapon;
             WeaponItemDataSO so = weapon.ReturnData().ReturnDataSO() as WeaponItemDataSO;
             isGlobal = so.isGlobal;
-            skillBuff = so.skillBuff;
+            skillBuff = buffs;
 
             float skillDamageAdd = (_stats[StatsType.skill] / 2) + ((_stats[StatsType.attack] -3)/ 2);
             //스킬 대미지는 타격/2 + 숙련/2 정도를 추가로 더 받는다.
@@ -169,7 +177,7 @@ namespace _02Script.Battle.Entity
             
             OnChangeWeapon?.Invoke(so);
         }
-        public void ChangeArmor(ArmorInventoryCard armor,EntityName entityName)
+        public void ChangeArmor(ArmorInventoryCard armor,List<BuffSO> buffs,EntityName entityName)
         {
             if (!armor|| entityName != entity.EntityName)
             {
@@ -182,7 +190,7 @@ namespace _02Script.Battle.Entity
             
             _useArmor = armor;
             ArmorItemDataSO so = armor.ReturnData().ReturnDataSO() as ArmorItemDataSO;
-            _armorSkillBuff = so.skillBuff;
+            _armorSkillBuff = buffs;
             
             _skillArmorDelay = so.skillCoolTime 
                                - (so.skillCoolTime / 100) * (_stats[StatsType.skill]);

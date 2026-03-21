@@ -7,8 +7,8 @@ namespace _02Script.Battle.UI.Explanation
 {
     public class MonsterExplanationUI : EntityExplanationUI
     {
-        [SerializeField] private BuffUI baseBuff;
-        [SerializeField] private BuffUI skillBuff;
+        [SerializeField] private BuffUI[] baseBuff;
+        [SerializeField] private BuffUI[] skillBuff;
         
         private int _hp;
         protected override void OnEnable()
@@ -47,18 +47,34 @@ namespace _02Script.Battle.UI.Explanation
         private void MonsterSet(EntitySO so)
         {
             MonsterSO mSO = so as MonsterSO;
-            baseBuff.gameObject.SetActive(false);
-            skillBuff.gameObject.SetActive(false);
+            for (int i = 0; i < baseBuff.Length; i++)
+            {
+                baseBuff[i].gameObject.SetActive(false);
+            }
+            for (int i = 0; i < skillBuff.Length; i++)
+            {
+                skillBuff[i].gameObject.SetActive(false);
+            }
+            
             if(mSO == null) return;
             
             SetHp(_hp,mSO.maxHp);
 
-            if (mSO.useBuff != null)
+            if (mSO.eBuff.Count > 0)
             {
-                explanationText.text = $"시작시 [{mSO.useBuff.buffName}] 을/를 시전합니다.\n" +
+                explanationText.text = $"시작시 ";
+                foreach (BuffSO buff in mSO.eBuff)
+                {
+                    explanationText.text += $"[{buff.buffName}]";
+                }
+                explanationText.text = $" 을/를 시전합니다.\n" +
                                        $"{mSO.baseAttackDelay} 초 마다 {mSO.baseAttack} 데미지를 줍니다.";
-                baseBuff.gameObject.SetActive(true);
-                baseBuff.BuffSet(mSO.useBuff,null,EntityName.None,true);
+
+                for (int i = 0; i < mSO.eBuff.Count; i++)
+                {
+                    baseBuff[i].gameObject.SetActive(true);
+                    baseBuff[i].BuffSet(mSO.eBuff[i],null,EntityName.None,true);
+                }
             }
 
             BossMonsterSet(mSO);
@@ -68,16 +84,27 @@ namespace _02Script.Battle.UI.Explanation
         {
             
             BossMonsterSO bmSO = mSO as BossMonsterSO;
-            skillBuff.gameObject.SetActive(false);
+            for (int i = 0; i < skillBuff.Length; i++)
+            {
+                skillBuff[i].gameObject.SetActive(false);
+            }
             if(bmSO == null) return;
             
-            if (bmSO.useSkillBuff != null)
+            if (bmSO.eSkillBuff != null)
             {
-                explanationText.text += $"스킬 사용---\n" +
-                                        $"스킬 사용시 [{bmSO.useSkillBuff.buffName}] 을/를 시전합니다.\n" +
-                                        $"{bmSO.skillAttackDelay} 초 마다 {bmSO.skillAttack} 데미지를 줍니다.";
-                skillBuff.gameObject.SetActive(true);
-                skillBuff.BuffSet(bmSO.useSkillBuff,null,EntityName.None,true);
+                explanationText.text += $"스킬 사용---\n";
+                foreach (BuffSO buff in bmSO.eSkillBuff)
+                {
+                    explanationText.text += $"[{buff.buffName}]";
+                }
+                explanationText.text = $" 을/를 시전합니다.\n" +
+                                       $"{bmSO.skillAttackDelay} 초 마다 {bmSO.skillAttack} 데미지를 줍니다.";
+                
+                for (int i = 0; i < bmSO.eSkillBuff.Count; i++)
+                {
+                    baseBuff[i].gameObject.SetActive(true);
+                    skillBuff[i].BuffSet(bmSO.eSkillBuff[i],null,EntityName.None,true);
+                }
             }
         }
     }

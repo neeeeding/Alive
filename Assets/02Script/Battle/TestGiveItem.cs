@@ -3,7 +3,7 @@ using _02Script.Inventory.Etc;
 
 namespace _02Script.Battle
 {
-    public class TestGiveItem : StartGiveItem
+    public class TestGiveItem : WeaponArmorStartGiveItem
     {
         private void OnEnable()
         {

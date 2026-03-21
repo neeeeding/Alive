@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using _02Script.Battle.Buff;
 using _02Script.Battle.Entity;
+using _02Script.Battle.UI.Weapon;
 using _02Script.Collect.Item;
 using _02Script.DoTweenUI.Warring;
 using _02Script.Etc;
@@ -27,6 +29,7 @@ namespace _02Script.Battle.UI.Armor
         [Header("Need")]
         [SerializeField] private GameObject inventoryWindow;
         [SerializeField] private TextMeshProUGUI inventoryText;
+        [SerializeField] private BuffFind buffFind;
         
         private SerializedDictionary<ItemType, ArmorItemDataSO> _allArmorDataSO = new SerializedDictionary<ItemType, ArmorItemDataSO>();
         private EntityName _armorEntity;
@@ -64,7 +67,7 @@ namespace _02Script.Battle.UI.Armor
         }
         #endregion
 
-        private void CloseWeaponInventory(ArmorInventoryCard _a, EntityName _e)
+        private void CloseWeaponInventory(ArmorInventoryCard _a,List<BuffSO> _b, EntityName _e)
         {
             inventoryWindow.gameObject.SetActive(false);
         }
@@ -138,6 +141,12 @@ namespace _02Script.Battle.UI.Armor
                 base.AddItem(_allArmorDataSO[item.itemType], count);
                 ItemData d = ItemDatas[_allArmorDataSO[item.itemType]]; //그냥 item하면 인스턴스 값이 달라서 못함.
                 (ItemCards[d][ItemCards[d].Count -1] as ArmorInventoryCard).Set(_armorEntity);
+                
+                if (item is ArmorItemDataSO)
+                {
+                    ArmorInventoryCard card = ItemCards[d][ItemCards[d].Count -1] as ArmorInventoryCard;
+                    card.NewCard(buffFind,d,0,count);
+                }
             }
         }
         #endregion

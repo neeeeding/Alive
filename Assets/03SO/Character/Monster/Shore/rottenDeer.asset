@@ -17,5 +17,6 @@ MonoBehaviour:
   maxHp: 32
   baseAttack: 7
   baseAttackDelay: 5
-  useBuff: {fileID: 11400000, guid: 1d95bdf5b6fe0ef4b8b9ef274384427e, type: 2}
+  eBuff:
+  - {fileID: 11400000, guid: 1d95bdf5b6fe0ef4b8b9ef274384427e, type: 2}
   isGlobal: 0

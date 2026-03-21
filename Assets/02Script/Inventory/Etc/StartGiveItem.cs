@@ -8,7 +8,7 @@ namespace _02Script.Inventory.Etc
 {
     public class StartGiveItem : GetItem
     {
-        [SerializeField] private SerializedDictionary<ItemDataSO, List<int>>  itemData;
+        [SerializeField] protected SerializedDictionary<ItemDataSO, List<int>>  itemData;
 
         private void OnEnable()
         {

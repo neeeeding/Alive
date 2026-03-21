@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _02Script.Battle.Buff;
 using _02Script.Battle.Entity;
 using _02Script.Obj.Entity;
 using UnityEngine;
@@ -52,7 +53,7 @@ namespace _02Script.Battle.Monster
             curHp = maxHp;
             baseAttack = monster.baseAttack;
             baseAttackDelay = monster.baseAttackDelay;
-            startBuff = monster.useBuff;
+            startBuff = monster.eBuff;
             hpUI.UpdateHp(curHp, maxHp);
         }
         #endregion
@@ -61,7 +62,10 @@ namespace _02Script.Battle.Monster
         {
             base.OnEnable();
             hpUI.UpdateHp(curHp, maxHp);
-            GetBuffs(startBuff);
+            foreach (BuffSO buff in startBuff)
+            {
+                GetBuffs(buff);
+            }
         }
 
         #region Entity

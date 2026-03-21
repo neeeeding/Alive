@@ -28,8 +28,8 @@ namespace _02Script.Battle.Entity
         protected float baseAttackDelay; //평타 딜레이
         protected float skillDamage;
         protected float skillAttackDelay;
-        protected BuffSO startBuff; //시작할 때 버프
-        protected BuffSO skillBuff; //스킬때 버프
+        protected List<BuffSO> startBuff; //시작할 때 버프
+        protected List<BuffSO> skillBuff; //스킬때 버프
         protected bool isGlobal;
 
         protected readonly int maxGlobal = 10;
@@ -127,15 +127,23 @@ namespace _02Script.Battle.Entity
                             +EtcStat(StatsType.skill)/2); //((타격-3)/2 + 숙련/2)
             float damage = (skillDamage + attack) / divide;
             
-            if (skillBuff&&!skillBuff.isDeBuff)
+            if (skillBuff.Count >0)
             {
-                GetBuffs(skillBuff);
+                foreach (BuffSO buff in skillBuff)
+                {
+                    if(!buff.isDeBuff)
+                        GetBuffs(buff);
+                }
             }
             foreach (BattleEntity target in targets.ToArray())
             {
                 target.Hit(damage);
-                if(skillBuff&&skillBuff.isDeBuff)
-                    target.GetBuffs(skillBuff);
+                if(skillBuff.Count >0)
+                    foreach (BuffSO buff in skillBuff)
+                    {
+                        if(buff.isDeBuff)
+                            target.GetBuffs(buff);
+                    }
             }
         }
         public virtual void Hit(float damage)
