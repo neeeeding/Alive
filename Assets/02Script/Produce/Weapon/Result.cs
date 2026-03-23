@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using _02Script.Battle.Buff;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _02Script.Produce.Weapon
 {
     public class Result : MonoBehaviour
     {
         public static Action<ItemDataSO, WeaponArmorSaveData,int> OnGetItem;
+
+        [SerializeField] private Image itemImage;
+        [SerializeField] private TextMeshProUGUI itemName;
+        [SerializeField] private TextMeshProUGUI score;
         
         private void OnEnable()
         {
@@ -21,6 +27,8 @@ namespace _02Script.Produce.Weapon
             if (SelectItemCard.curSelectItem == null) return;
             
             ItemDataSO item = SelectItemCard.curSelectItem.GetCurProduce(false);
+            Setting(item);
+            
             int hp = 100; //현재는 미니게임 안하니 내구도 100
             
             BuffSO buff = null;
@@ -46,6 +54,12 @@ namespace _02Script.Produce.Weapon
             
             OnGetItem?.Invoke(item,saveData, hp); //현재는 미니게임 안 하니 내구도 100
             SelectItemCard.curSelectItem = null;
+        }
+
+        private void Setting(ItemDataSO item)
+        {
+            itemImage.sprite = item.itemImage;
+            itemName.text = item.itemName;
         }
     }
 }

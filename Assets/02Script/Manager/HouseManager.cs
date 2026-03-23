@@ -45,6 +45,7 @@ namespace _02Script.Manager
             
             curScene = SceneManager.GetActiveScene().name; //현재 씬 알려주기
             StartCoroutine(NowDate());
+            Time.timeScale = 1;
         }
 
         public void SetLove(DialogEntitySO dialogEntity, int love) //정보 넣고 해당 호감도 스탯에서의 이름 찾아서 전해주기

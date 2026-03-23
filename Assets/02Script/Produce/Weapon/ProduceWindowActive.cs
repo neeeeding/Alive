@@ -30,6 +30,7 @@ namespace _02Script.Produce.Weapon
 
         public void AgainSelectMake()
         {
+            SelectItemCard.curSelectItem = null;
             selectWindow.SetActive(true);
             checkWindow.SetActive(false);
         }

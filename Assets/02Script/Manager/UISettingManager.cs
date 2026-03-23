@@ -35,6 +35,7 @@ namespace _02Script.Manager
         #region EnDi
         private void OnEnable()
         {
+            DicSetting();
             DialogEntity.OnChat += Chat;
             input.OnIBtn += Inventory;
         }
@@ -145,13 +146,9 @@ namespace _02Script.Manager
         {
             AllHide();
             uiActiveBool[type] = value;
-            if (value)
-            {
-                SettingAll();
-                return;
-            }
             
             SettingAll();
+            if (value) return;
             foreach (KeyValuePair<UIActiveType, bool> one in uiActiveBool)
             {
                 if(one.Value) return;

@@ -30,7 +30,6 @@ namespace _02Script.Inventory.Inventory
             Field.OnGetViand += AddItem;
             GameEvent.GameEvent.OnGetItem += AddItem;
             StoreCard.OnSellItem += AddItem;
-            Result.OnGetItem += AddItem;
             StoreCard.OnPayItem += ThrowItem;
             Field.OnUseSeed += ThrowItem;
         }
@@ -42,7 +41,6 @@ namespace _02Script.Inventory.Inventory
             Field.OnGetViand -= AddItem;
             GameEvent.GameEvent.OnGetItem -= AddItem;
             StoreCard.OnSellItem -= AddItem;
-            Result.OnGetItem -= AddItem;
             StoreCard.OnPayItem -= ThrowItem;
             Field.OnUseSeed -= ThrowItem;
         }

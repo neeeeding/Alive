@@ -14,6 +14,7 @@ namespace _02Script.Produce.Weapon
         
         public static SelectItemCard curSelectItem;
         
+        [SerializeField]private Image card;
         [SerializeField]private Image image;
         [SerializeField]private GameObject rockImage;
         
@@ -31,7 +32,8 @@ namespace _02Script.Produce.Weapon
         protected override void OnEnable()
         {
             base.OnEnable();
-            SettingCard();
+            if(_itemData != null)
+                SettingCard();
         }
 
         private void Awake()
@@ -74,21 +76,21 @@ namespace _02Script.Produce.Weapon
         #region Mouse
         public override void MouseClick()
         {
-            if(!rockImage.activeSelf) return;
+            if(rockImage.activeSelf) return;
             
             moveObj.transform.SetParent(_dragTransform);
             base.MouseClick();
-            image.raycastTarget = false;
+            card.raycastTarget = false;
             curSelectItem = this;
         }
 
         public override void MouseCancel()
         {
-            if(!rockImage.activeSelf) return;
+            if(rockImage.activeSelf) return;
             
             OnMouseUp?.Invoke(_select);
             base.MouseCancel();
-            image.raycastTarget = true;
+            card.raycastTarget = true;
             
             moveObj.transform.SetParent(_baseTransform);
             moveObj.transform.SetSiblingIndex(_myIndex);

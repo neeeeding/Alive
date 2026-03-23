@@ -25,6 +25,7 @@ namespace _02Script.GamePlayer
                 _controls.Home.SetCallbacks(this);
             }
             _controls.Home.Enable();
+            CanInput();
         }
 
         private void OnDisable()
