@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8bf712bf48848b290d364741a83a74c, type: 3}
-  m_Name: noodle
+  m_Name: cabbage
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.ProduceBookSO
   itemImage: {fileID: 0}
   maxCount: 10

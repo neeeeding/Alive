@@ -4,6 +4,7 @@ namespace _02Script.Produce.Weapon
 {
     public class ProduceWindowActive : MonoBehaviour
     {
+        [SerializeField] private RectTransform inventory;
         [SerializeField] private GameObject selectWindow;
         [SerializeField] private GameObject checkWindow;
         [SerializeField] private GameObject makeWindow;
@@ -16,6 +17,7 @@ namespace _02Script.Produce.Weapon
 
         public void Select()
         {
+            inventory.anchoredPosition = Vector2.zero;
             selectWindow.SetActive(true);
             checkWindow.SetActive(false);
             makeWindow.SetActive(false);
@@ -30,6 +32,7 @@ namespace _02Script.Produce.Weapon
 
         public void AgainSelectMake()
         {
+            inventory.anchoredPosition = Vector2.zero;
             SelectItemCard.curSelectItem = null;
             selectWindow.SetActive(true);
             checkWindow.SetActive(false);

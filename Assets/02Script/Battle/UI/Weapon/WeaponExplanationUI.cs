@@ -3,6 +3,7 @@ using _02Script.Battle.Buff;
 using _02Script.Battle.UI.Explanation;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
+using _02Script.Produce.Weapon;
 using UnityEngine;
 
 namespace _02Script.Battle.UI.Weapon
@@ -23,7 +24,7 @@ namespace _02Script.Battle.UI.Weapon
             WeaponInventoryCard.OnMouseEnter -= UIShow;
         }
 
-        private void UIShow(WeaponItemDataSO so,List<BuffSO> buffs, Vector3 cardPos)
+        private void UIShow(WeaponItemDataSO so,WeaponArmorSaveData data, List<BuffSO> buffs, Vector3 cardPos)
         {
             if (so == null)
             {
@@ -34,7 +35,7 @@ namespace _02Script.Battle.UI.Weapon
             
             image.sprite = so.itemImage;
             nameText.text = so.itemName;
-            explanationText.text = so.itemExplanation;
+            explanationText.text = data.explanation;
             
             if (buffs != null)
             {

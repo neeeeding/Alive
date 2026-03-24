@@ -1236,6 +1236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673a542c56e34d76b25cb1b037a435d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myProduceType: 0
   setTimer: 0.7
   errorMassage: {fileID: 4171518972435116374}
   produceInventory: {fileID: 6137456035100631584}
@@ -1991,8 +1992,8 @@ MonoBehaviour:
       Value: {fileID: 3074882792301519819}
     - Key: 3
       Value: {fileID: 2954302634563479715}
-  allSO: []
   realItem: {fileID: 0}
+  allSO: []
   bookPrefab: {fileID: 4650817311120553900, guid: 349f043b03f18ea4ba9dded8c8661bee, type: 3}
   allBookSOs: []
   stuffFilters: 02000000
@@ -2929,14 +2930,6 @@ PrefabInstance:
     - target: {fileID: 5469768952045208813, guid: 7f721d0cdf2b68a4ba9381f04ba7b60c, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5469768952045208813, guid: 7f721d0cdf2b68a4ba9381f04ba7b60c, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 201.6493
-      objectReference: {fileID: 0}
-    - target: {fileID: 5469768952045208813, guid: 7f721d0cdf2b68a4ba9381f04ba7b60c, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 59.8605
       objectReference: {fileID: 0}
     - target: {fileID: 5469768952045208813, guid: 7f721d0cdf2b68a4ba9381f04ba7b60c, type: 3}
       propertyPath: m_LocalPosition.x

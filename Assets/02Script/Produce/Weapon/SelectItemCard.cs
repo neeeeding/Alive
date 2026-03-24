@@ -36,6 +36,14 @@ namespace _02Script.Produce.Weapon
                 SettingCard();
         }
 
+        private void OnDisable()
+        {
+            if (curSelectItem == this)
+            {
+                HideExplanation();
+            }
+        }
+
         private void Awake()
         {
             _select = SelectProduceType.None;
@@ -82,18 +90,21 @@ namespace _02Script.Produce.Weapon
             base.MouseClick();
             card.raycastTarget = false;
             curSelectItem = this;
+            ShowExplanation();
         }
 
         public override void MouseCancel()
         {
             if(rockImage.activeSelf) return;
             
-            OnMouseUp?.Invoke(_select);
+            if(_select != SelectProduceType.None)
+                OnMouseUp?.Invoke(_select);
             base.MouseCancel();
             card.raycastTarget = true;
             
             moveObj.transform.SetParent(_baseTransform);
             moveObj.transform.SetSiblingIndex(_myIndex);
+            HideExplanation();
         }
 
         public void ShowExplanation()

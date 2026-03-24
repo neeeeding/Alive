@@ -1,13 +1,12 @@
 ﻿using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _02Script.Produce.Weapon
 {
     public class SelectItemCardManager : MonoBehaviour
     {
-        [FormerlySerializedAs("card")] [SerializeField] private SelectItemCard cardPrefabs;
+        [SerializeField] private SelectItemCard cardPrefabs;
         [SerializeField] private StuffItemDataSO[] data;
         [SerializeField] private Transform drag;
         [SerializeField] private Transform parent;

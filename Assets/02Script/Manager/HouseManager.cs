@@ -24,6 +24,7 @@ namespace _02Script.Manager
         public string curScene; // 현재 씬 이름
 
         [Header("Setting")]
+        [Tooltip("base : 10 / test : 1/60/5 == (0.003333333)")]
         [SerializeField] private float dayTimeDelay = 10f;
         
         [Header("Public")]

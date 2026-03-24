@@ -12,6 +12,7 @@ namespace _02Script.Produce.Weapon
     public class Result : MonoBehaviour
     {
         public static Action<ItemDataSO, WeaponArmorSaveData,int> OnGetItem;
+        public static Action<ItemDataSO,int> OnUseItem;
 
         [SerializeField] private Image itemImage;
         [SerializeField] private TextMeshProUGUI itemName;
@@ -46,12 +47,14 @@ namespace _02Script.Produce.Weapon
             saveData.buffTypes.Add(buff.buffType);
             saveData.type = item.itemType;
             saveData.hp = hp;
+            saveData.explanation = item.itemExplanation;
             if (!HouseManager.Instance.PlayerStat.weaponArmor.ToDictionary().ContainsKey(item.itemType))
             {
                 HouseManager.Instance.PlayerStat.weaponArmor.Add(item.itemType, new List<WeaponArmorSaveData>());   
             }
             HouseManager.Instance.PlayerStat.weaponArmor[item.itemType].Add(saveData);
             
+            OnUseItem?.Invoke(SelectItemCard.curSelectItem.GetCurProduce(true),1);
             OnGetItem?.Invoke(item,saveData, hp); //현재는 미니게임 안 하니 내구도 100
             SelectItemCard.curSelectItem = null;
         }

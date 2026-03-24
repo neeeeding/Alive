@@ -14,7 +14,7 @@ namespace _02Script.Battle.UI.Weapon
     public class WeaponInventoryCard : ItemCard
     {
         public static event Action<WeaponInventoryCard,List<BuffSO>,EntityName> OnMouseClick;
-        public static Action<WeaponItemDataSO,List<BuffSO>,Vector3> OnMouseEnter; //정보, 현재 남은 시간 
+        public static Action<WeaponItemDataSO,WeaponArmorSaveData,List<BuffSO>,Vector3> OnMouseEnter; //정보, 현재 남은 시간 
 
         [SerializeField] protected TextMeshProUGUI nameText;
         [SerializeField] protected Slider damageSlider;
@@ -27,12 +27,12 @@ namespace _02Script.Battle.UI.Weapon
         public void MouseEnter()
         {
             gameObject.transform.DOScale(Vector3.one * 1.15f, delay).SetEase(Ease.InOutBack).SetUpdate(true);
-            OnMouseEnter?.Invoke((itemData.ReturnDataSO() as WeaponItemDataSO),_buffs,gameObject.transform.position);
+            OnMouseEnter?.Invoke((itemData.ReturnDataSO() as WeaponItemDataSO),weaponArmorBuff,_buffs,gameObject.transform.position);
         }        
         public void MouseExit()
         {
             gameObject.transform.DOScale(Vector3.one , delay).SetEase(Ease.InOutBack).SetUpdate(true);
-            OnMouseEnter?.Invoke(null,null,Vector3.zero);
+            OnMouseEnter?.Invoke(null,null,null,Vector3.zero);
         }
 
         public void MouseClick()

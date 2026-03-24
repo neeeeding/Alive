@@ -1,4 +1,5 @@
 ﻿using _02Script.Inventory.Item;
+using _02Script.Produce.Weapon;
 using TMPro;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace _02Script.Produce
         {
             ProduceBookCard.OnMouseCursor += ShowName;
             InventoryItemCard.OnMouseClick += Show;
+            SelectItemCard.OnMouseCursor += ShowName;
             nameObject.SetActive(false);
             rect = nameObject.GetComponent<RectTransform>();
         }
@@ -22,6 +24,7 @@ namespace _02Script.Produce
         {
             ProduceBookCard.OnMouseCursor -= ShowName;
             InventoryItemCard.OnMouseClick -= Show;
+            SelectItemCard.OnMouseCursor -= ShowName;
         }
 
         private void Show(ItemCard card, RectTransform parent, float selfCheck)

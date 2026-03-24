@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _02Script.Battle.Buff;
 using _02Script.Inventory.Item;
+using UnityEngine.Serialization;
 
 namespace _02Script.Produce.Weapon
 {    
@@ -10,6 +11,7 @@ namespace _02Script.Produce.Weapon
     {
         public ItemType type;
         public float hp;
+        public string explanation;
         
         public List<BuffType> buffTypes = new List<BuffType>();
     }

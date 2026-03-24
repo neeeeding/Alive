@@ -7,12 +7,14 @@ namespace _02Script.Inventory.Inventory
         protected override void OnEnable()
         {
             Result.OnGetItem += AddItem;
+            Result.OnUseItem += ThrowItem;
             base.OnEnable();
         }
 
         protected override void OnDisable()
         {
             Result.OnGetItem -= AddItem;
+            Result.OnUseItem -= ThrowItem;
             base.OnDisable();
         }
     }
