@@ -1,4 +1,5 @@
 ﻿using System;
+using _02Script.DoTweenUI.Warring;
 using _02Script.Inventory.Item;
 using UnityEngine;
 
@@ -22,11 +23,12 @@ namespace _02Script.Produce.Weapon.Compound
         {
             CompoundSelectStuffCard.OnMouseClick -= SetStuff;
             CompoundSelectWeaponArmorCard.OnMouseClick -= SetWeaponArmor;
+            ResetSelect();
         }
 
         private void SetStuff(CompoundSelectStuffCard card)
         {
-            _stuff = card.ReturnData().ReturnDataSO() as StuffItemDataSO;
+            _stuff = card.ItemData;
         }
 
         private void SetWeaponArmor(CompoundSelectWeaponArmorCard card,WeaponArmorSaveData data)
@@ -36,7 +38,11 @@ namespace _02Script.Produce.Weapon.Compound
 
         public void Compound()
         {
-            if (_stuff == null || _weaponArmorData == null) return;
+            if (_stuff == null || _weaponArmorData == null)
+            {
+                WarringManager.Warring.ShowWarring("재료 혹은 무기나 갑옷을 선택해주세요.");
+                return;
+            }
             
             OnFood?.Invoke(_stuff,_weaponArmorData);
             ResetSelect();

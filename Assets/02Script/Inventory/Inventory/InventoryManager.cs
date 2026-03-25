@@ -123,6 +123,7 @@ namespace _02Script.Inventory.Inventory
 
         protected virtual void NewCard(ItemDataSO item, bool isEtc, int star = 3, int hp = 100,WeaponArmorSaveData saveData = null )
         {
+            if(!itemInventory.ContainsKey(item.category)) return;
             //data 새 생성
             ItemData itemData = new ItemData();
             if (!isEtc)
@@ -178,6 +179,7 @@ namespace _02Script.Inventory.Inventory
 
         public virtual void AddItem(ItemDataSO item, int count = 1)
         {
+            if(!itemInventory.ContainsKey(item.category)) return;
             switch(item.category)
             {
                 case ItemCategory.seed:
@@ -194,6 +196,11 @@ namespace _02Script.Inventory.Inventory
                 case ItemCategory.machine:
                     NewCard(item, ItemDatas.ContainsKey(item), count, count);
                     break;
+            }
+
+            if (!ItemDatas.ContainsKey(item))
+            {
+                return;
             }
 
             ItemData data = ItemDatas[item];

@@ -726,8 +726,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4864132246331950518}
+  m_Children: []
   m_Father: {fileID: 2097099184791180860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -1598,6 +1597,7 @@ GameObject:
   - component: {fileID: 4634568940107207266}
   - component: {fileID: 8479739829564686974}
   - component: {fileID: 4767973784052072896}
+  - component: {fileID: 8755591104682165352}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -1662,6 +1662,55 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 20}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &8755591104682165352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009044978836053599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a652bc940040779adfeae5f1387eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.Weapon.Compound.CompoundSelectStuffCardManager
+  cardPrefabs: {fileID: 5464291792604625442, guid: aebfb00933e514040a1b051ceb1561fa, type: 3}
+  data:
+  - {fileID: 11400000, guid: 7b7986bb85d188c4ab3c29cb0179e281, type: 2}
+  - {fileID: 11400000, guid: 74d500f44279bfa419322136c0d2ac0f, type: 2}
+  - {fileID: 11400000, guid: 8670c6ab5c0c9be4b9e35aa77b4d6820, type: 2}
+  - {fileID: 11400000, guid: bc73a90246cb5c849a3bdb41ad0fd36a, type: 2}
+  - {fileID: 11400000, guid: 0171471e293ed6c43a4f05afa227044b, type: 2}
+  - {fileID: 11400000, guid: 7c915ecbb94065940a12211cb85bc5d5, type: 2}
+  - {fileID: 11400000, guid: 8b08f719d2ae99645955594863c43ae2, type: 2}
+  - {fileID: 11400000, guid: 44fefc7f253f65f49bd76792471cf776, type: 2}
+  - {fileID: 11400000, guid: 036ec9dc733000543a13f2ec6c070550, type: 2}
+  - {fileID: 11400000, guid: 3ba1da758141b104eb7810fbd3fcd166, type: 2}
+  - {fileID: 11400000, guid: c90111f275c639449a407acbe5f9f47b, type: 2}
+  - {fileID: 11400000, guid: 2b895ec227a473647933cdac5879496f, type: 2}
+  - {fileID: 11400000, guid: 5027683bd762904409570ce809658ad5, type: 2}
+  - {fileID: 11400000, guid: 2fa53286e1da3774ebc03530fcddb0f7, type: 2}
+  - {fileID: 11400000, guid: 6746b686aae3ab047b03fea9b3d2c9b7, type: 2}
+  - {fileID: 11400000, guid: de945bb84d963f24fb82e02565ad2f8c, type: 2}
+  - {fileID: 11400000, guid: a6ac1642a3293b043bfa27fa254d3da2, type: 2}
+  - {fileID: 11400000, guid: 3c77b9fc4a6badc46beac78fca717c72, type: 2}
+  - {fileID: 11400000, guid: 8dad1de61482f1844a528ec562478fe4, type: 2}
+  - {fileID: 11400000, guid: 00d1c18eb0b1a6e47a9e61f9476ed3c1, type: 2}
+  - {fileID: 11400000, guid: 3efaaf5ea27ed084590a3ed04e7f76d0, type: 2}
+  - {fileID: 11400000, guid: 29e68147e29271e47aedf19615c852cf, type: 2}
+  - {fileID: 11400000, guid: b4394736b1ff8624ca0d2821b688d471, type: 2}
+  - {fileID: 11400000, guid: a534b9f000e879548a5a4ac544e41247, type: 2}
+  - {fileID: 11400000, guid: 7c890f3e45145d347965b1de4e3abdc8, type: 2}
+  - {fileID: 11400000, guid: ba8469bb0e4187e49b5dcc6af3a4ede0, type: 2}
+  - {fileID: 11400000, guid: e948115b69804554399c6ace7674557e, type: 2}
+  - {fileID: 11400000, guid: fe274bcdf896317439f65bcf3427d689, type: 2}
+  - {fileID: 11400000, guid: 0faa1ca75c7d1934a9cec73f735bbec7, type: 2}
+  - {fileID: 11400000, guid: d7edf2e5a3c9ba34198125264e997051, type: 2}
+  - {fileID: 11400000, guid: c37b60eb23ed980488bceb9cacbc083b, type: 2}
+  - {fileID: 11400000, guid: 3e015e8abe66d8e459943e1f505d8058, type: 2}
+  - {fileID: 11400000, guid: 24d40e7af5b59b44ca0d6351c708c6e4, type: 2}
+  parent: {fileID: 4634568940107207266}
+  inventory: {fileID: 0}
 --- !u!1 &2242279116255061443
 GameObject:
   m_ObjectHideFlags: 0
@@ -4991,7 +5040,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b61485df9c469e9a5b0404e79196b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.Weapon.ProduceWindowActive
-  inventory: {fileID: 2869618210191582002}
+  inventory:
+  - {fileID: 2869618210191582002}
   selectWindow: {fileID: 7100282406766009992}
   checkWindow: {fileID: 6926019765597415450}
   makeWindow: {fileID: 9028991374046371331}
@@ -5044,7 +5094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc77ad6640b947e0bbaecd2c9034fc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Inventory.HouseInventoryManager
-  cardPrefab: {fileID: 0}
+  cardPrefab: {fileID: 6972917996891330422, guid: 4dc0f0ba4556c4c4ea4953edc5c59bbc, type: 3}
   itemInventory:
     _serializedList:
     - Key: 4
@@ -5424,7 +5474,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4175337552862419798}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7579091587153777794}
+        m_TargetAssemblyTypeName: _02Script.Produce.Weapon.Compound.CompoundCheck,
+          Assembly-CSharp
+        m_MethodName: Compound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6926019765597415450
 GameObject:
   m_ObjectHideFlags: 0
@@ -6288,6 +6351,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5383307464777172332}
+  - component: {fileID: 1065667137753700756}
   m_Layer: 5
   m_Name: Compound
   m_TagString: Untagged
@@ -6316,6 +6380,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1152, y: 715.5055}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1065667137753700756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7575158929796069774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b61485df9c469e9a5b0404e79196b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.Weapon.ProduceWindowActive
+  inventory:
+  - {fileID: 1984915481057146141}
+  - {fileID: 4634568940107207266}
+  selectWindow: {fileID: 7601025913885758307}
+  checkWindow: {fileID: 6039624759983090696}
+  makeWindow: {fileID: 6039624759983090696}
+  resultWindow: {fileID: 6039624759983090696}
 --- !u!1 &7601025913885758307
 GameObject:
   m_ObjectHideFlags: 0
@@ -6325,6 +6408,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1525275386882544078}
+  - component: {fileID: 7579091587153777794}
   m_Layer: 5
   m_Name: SelectWindow
   m_TagString: Untagged
@@ -6352,6 +6436,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 715}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7579091587153777794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7601025913885758307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96e74deb1a2440e8aca8bfcafb2960bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.Weapon.Compound.CompoundCheck
 --- !u!1 &7746618307794518047
 GameObject:
   m_ObjectHideFlags: 0
@@ -7207,81 +7303,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &8517679158621679056
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4864132246331950518}
-  - component: {fileID: 7694055415702219783}
-  - component: {fileID: 8802384098598419829}
-  m_Layer: 5
-  m_Name: WA_Compound
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &4864132246331950518
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8517679158621679056}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1984915481057146141}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &7694055415702219783
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8517679158621679056}
-  m_CullTransparentMesh: 1
---- !u!114 &8802384098598419829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8517679158621679056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8560285838604403641
 GameObject:
   m_ObjectHideFlags: 0

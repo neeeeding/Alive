@@ -6,7 +6,7 @@ namespace _02Script.Produce.Weapon.Compound
 {
     public class CompoundSelectStuffCardManager : MonoBehaviour
     {
-        [SerializeField] private SelectItemCard cardPrefabs;
+        [SerializeField] private CompoundSelectStuffCard cardPrefabs;
         [SerializeField] private StuffItemDataSO[] data;
         [SerializeField] private Transform parent;
         [SerializeField] private InventoryManager inventory;
@@ -21,8 +21,9 @@ namespace _02Script.Produce.Weapon.Compound
             int index = 0;
             foreach (StuffItemDataSO item in data)
             {
-                SelectItemCard newCard = Instantiate(cardPrefabs, parent);
+                CompoundSelectStuffCard newCard = Instantiate(cardPrefabs, parent);
                 newCard.gameObject.transform.SetParent(parent);
+                newCard.SetCard(item, inventory);
                 newCard.gameObject.SetActive(true);
             }
         }
