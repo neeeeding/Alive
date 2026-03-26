@@ -1,4 +1,5 @@
 using _02Script.Produce.Weapon;
+using _02Script.Produce.Weapon.Compound;
 
 namespace _02Script.Inventory.Inventory
 {
@@ -6,15 +7,19 @@ namespace _02Script.Inventory.Inventory
     {
         protected override void OnEnable()
         {
-            Result.OnGetItem += AddItem;
-            Result.OnUseItem += ThrowItem;
+            ProduceResult.OnGetItem += AddItem;
+            ProduceResult.OnUseItem += ThrowItem;
+            CompoundResult.OnGetItem += AddItem;
+            CompoundResult.OnUseItem += ThrowItem;
             base.OnEnable();
         }
 
         protected override void OnDisable()
         {
-            Result.OnGetItem -= AddItem;
-            Result.OnUseItem -= ThrowItem;
+            ProduceResult.OnGetItem -= AddItem;
+            ProduceResult.OnUseItem -= ThrowItem;
+            CompoundResult.OnGetItem -= AddItem;
+            CompoundResult.OnUseItem -= ThrowItem;
             base.OnDisable();
         }
     }

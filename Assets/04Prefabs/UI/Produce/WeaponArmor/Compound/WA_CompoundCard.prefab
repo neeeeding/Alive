@@ -297,7 +297,6 @@ GameObject:
   - component: {fileID: 5986654727069126973}
   - component: {fileID: 2435093549273805631}
   - component: {fileID: 6606217423335822930}
-  - component: {fileID: 6972917996891330422}
   - component: {fileID: 7955161052887810490}
   - component: {fileID: 2832270269545171958}
   - component: {fileID: 4596709951139516430}
@@ -368,23 +367,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6972917996891330422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6528740212467898162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61a8fa28776643b6b66cdbf2d87365d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.UI.Armor.ArmorInventoryCard
-  countUI: {fileID: 8995496528851253960}
-  cardImage: {fileID: 2672781528251110703}
-  nameText: {fileID: 2340395268727941115}
-  damageSlider: {fileID: 4938282196792541599}
-  delay: 0.2
 --- !u!114 &7955161052887810490
 MonoBehaviour:
   m_ObjectHideFlags: 0

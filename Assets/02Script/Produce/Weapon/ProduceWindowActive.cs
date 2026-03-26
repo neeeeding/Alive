@@ -52,6 +52,7 @@ namespace _02Script.Produce.Weapon
 
         public void ResultBtn()
         {
+            selectWindow.SetActive(false);
             checkWindow.SetActive(false);
             makeWindow.SetActive(false);
             resultWindow.SetActive(true);

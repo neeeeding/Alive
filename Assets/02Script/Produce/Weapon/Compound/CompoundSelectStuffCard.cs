@@ -43,6 +43,7 @@ namespace _02Script.Produce.Weapon.Compound
         private void OnEnable()
         {
             CompoundSelectStuffCard.OnMouseClick += ChangeColor;
+            ChangeColor(null);
         }
 
         private void OnDisable()

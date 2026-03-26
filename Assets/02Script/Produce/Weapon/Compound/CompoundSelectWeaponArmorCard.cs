@@ -37,6 +37,8 @@ namespace _02Script.Produce.Weapon.Compound
         {
             base.OnEnable();
             CompoundSelectWeaponArmorCard.OnMouseClick += ChangeColor;
+            UpdateCountUI();
+            ChangeColor(null, null);
         }
 
         private void OnDisable()

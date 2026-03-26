@@ -35,7 +35,7 @@ namespace _02Script.Battle.UI.Weapon
             
             image.sprite = so.itemImage;
             nameText.text = so.itemName;
-            explanationText.text = data.explanation;
+            explanationText.text = data.buffExplanation+ data.explanation;
             
             if (buffs != null)
             {

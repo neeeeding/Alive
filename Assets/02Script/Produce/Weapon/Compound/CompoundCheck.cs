@@ -7,10 +7,10 @@ namespace _02Script.Produce.Weapon.Compound
 {
     public class CompoundCheck : MonoBehaviour
     {
-        public static Action<StuffItemDataSO,WeaponArmorSaveData> OnFood;
+        public static Action<StuffItemDataSO,WeaponArmorSaveData,CompoundSelectWeaponArmorCard> OnCompound;
         
         private StuffItemDataSO _stuff;
-        //private WeaponItemDataSO _weaponArmor;
+        private CompoundSelectWeaponArmorCard _weaponArmor;
         private WeaponArmorSaveData _weaponArmorData;
         
         private void OnEnable()
@@ -33,6 +33,7 @@ namespace _02Script.Produce.Weapon.Compound
 
         private void SetWeaponArmor(CompoundSelectWeaponArmorCard card,WeaponArmorSaveData data)
         {
+            _weaponArmor = card;
             _weaponArmorData = data;
         }
 
@@ -44,7 +45,7 @@ namespace _02Script.Produce.Weapon.Compound
                 return;
             }
             
-            OnFood?.Invoke(_stuff,_weaponArmorData);
+            OnCompound?.Invoke(_stuff,_weaponArmorData,_weaponArmor);
             ResetSelect();
         }
 

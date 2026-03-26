@@ -11,6 +11,7 @@ namespace _02Script.Produce.Weapon
     {
         public ItemType type;
         public float hp;
+        public string buffExplanation;
         public string explanation;
         
         public List<BuffType> buffTypes = new List<BuffType>();
