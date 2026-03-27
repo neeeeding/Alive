@@ -1,4 +1,5 @@
 using System.IO;
+using _02Script.GamePlayer.Manager;
 using _02Script.UI.Save;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,7 +24,7 @@ namespace _02Script.Manager
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("Player"))
+            if (collision.gameObject == HousePlayerManager.curPlayer.gameObject)
             {
                 isSceneChange = true;
             }
@@ -31,7 +32,7 @@ namespace _02Script.Manager
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.CompareTag("Player"))
+            if (collision.gameObject == HousePlayerManager.curPlayer.gameObject)
             {
                 isSceneChange = false;
             }
@@ -39,14 +40,14 @@ namespace _02Script.Manager
 
         private void LoadScene() //씬 로드
         {
-            string scene = HouseManager.Instance.PlayerStat.sceneName;
-            //print($"cur : {scene} / save {GameManager.Instance.PlayerStat.sceneName}");
-
-            if (scene != HouseManager.Instance.curScene) //현재 씬과 이동해야하는 씬이 안 맞다면
-            {
-                isSceneChange = true;
-                SceneBtn(scene);
-            }
+            // string scene = HouseManager.Instance.PlayerStat.sceneName;
+            // //print($"cur : {scene} / save {GameManager.Instance.PlayerStat.sceneName}");
+            //
+            // if (scene != HouseManager.Instance.curScene) //현재 씬과 이동해야하는 씬이 안 맞다면
+            // {
+            //     isSceneChange = true;
+            //     SceneBtn(scene);
+            // }
         }
 
         public void SceneBtn(int i) //해당 씬으로
@@ -55,7 +56,6 @@ namespace _02Script.Manager
             {
                 string scenePath = SceneUtility.GetScenePathByBuildIndex(i);
                 string sceneName = Path.GetFileNameWithoutExtension(scenePath);
-                HouseManager.Instance.curScene = sceneName;
                 HouseManager.Instance.PlayerStat.sceneName = sceneName;
                 SceneManager.LoadScene(i);
             }
@@ -65,7 +65,6 @@ namespace _02Script.Manager
         {
             if (isSceneChange)
             {
-                HouseManager.Instance.curScene = name;
                 HouseManager.Instance.PlayerStat.sceneName = name;
                 SceneManager.LoadScene(name);
             }

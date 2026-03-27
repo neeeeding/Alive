@@ -34,6 +34,7 @@ namespace _02Script.Battle.Stage
         [SerializeField] private BoxCollider2D bCamLimit;
 
         private readonly string _goHouseSoSave = "battle_GoHouseStageSoSave";
+        private readonly string _battleSOSave = "battle_BattleStageSoSave";
         
         //몬스터 스폰에 대해
         private List<(MonsterSO monsterType, Vector3 spawnPos, float spawnDelay)> _monsterSpawn = new List<(MonsterSO monsterType, Vector3 spawnPos, float spawnDelay)>();
@@ -43,6 +44,7 @@ namespace _02Script.Battle.Stage
 
         private void OnEnable()
         {
+            LoadStage();
             SelectDistribution.OnStart += StartSet; 
             SetList();
             SetEtcPos();
@@ -109,6 +111,13 @@ namespace _02Script.Battle.Stage
         private void SetTime() //채집 시간
         {
             middleUI.SetTime(curStage.canCollectTime.x, curStage.canCollectTime.y);
+        }
+        private void LoadStage()
+        {
+            string json = PlayerPrefs.GetString(_battleSOSave);
+
+            curStage = ScriptableObject.CreateInstance<BattleStageSO>();
+            JsonUtility.FromJsonOverwrite(json, curStage);
         }
 
         private void SaveGoHouseScene()

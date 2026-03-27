@@ -57,8 +57,10 @@ namespace _02Script.Inventory.Inventory
         {
             AllDataSO = new SerializedDictionary<ItemType, ItemDataSO>();
 
+            int i = 0;
             foreach (ItemDataSO data in allSO)
             {
+                i++;
                 AllDataSO.Add(data.itemType, data);
             }
         }

@@ -21,10 +21,8 @@ namespace _02Script.Manager
         public readonly int RunSpeed = 5 * 2;
         
         //변수들 --------------------------------------------------------------------------
-        public string curScene; // 현재 씬 이름
-
         [Header("Setting")]
-        [Tooltip("base : 10 / test : 1/60/5 == (0.003333333)")]
+        [Tooltip("base : 0.5 / test : 1/60/5 == (0.003333333)")]
         [SerializeField] private float dayTimeDelay = 10f;
         
         [Header("Public")]
@@ -44,7 +42,6 @@ namespace _02Script.Manager
             base.Awake();
             //DontDestroyOnLoad(gameObject); //삭제 되지 말라고
             
-            curScene = SceneManager.GetActiveScene().name; //현재 씬 알려주기
             StartCoroutine(NowDate());
             Time.timeScale = 1;
         }

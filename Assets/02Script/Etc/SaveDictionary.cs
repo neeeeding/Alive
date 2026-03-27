@@ -38,10 +38,13 @@ namespace _02Script.Etc
         {
             _dictionary = dictionary;
         }
-
-
-        public Dictionary<K, V> ToDictionary() //딕셔너리 얻기
+        
+        public Dictionary<K, V> ToDictionary()
         {
+            if (_dictionary.Count == 0 && ks.Count > 0)
+            {
+                OnAfterDeserialize();
+            }
             return new Dictionary<K, V>(_dictionary);
         }
 

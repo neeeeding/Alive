@@ -36,6 +36,7 @@ namespace _02Script.SaveData
                 Destroy(gameObject);
             }
             TestGame(); //나중에 Load로 변경 할 거임 (주석)
+            //Load();
         }
         
         protected virtual void TestGame()
@@ -59,26 +60,34 @@ namespace _02Script.SaveData
             if (PlayerPrefs.GetString(GamePath) != "")
             {
                 string json = PlayerPrefs.GetString(GamePath);
-                data = JsonUtility.FromJson<GameSaveData>(json);
-                saveData = data;
+                saveData = JsonUtility.FromJson<GameSaveData>(json);
+                print(json);
+                
+                PlayerStat = saveData.stat; //로드
+                print(JsonUtility.ToJson(saveData));
+                print("Load 직후: " + PlayerStat.items.ToDictionary().Count);
             }
             else //저장 된게 없으면 새 거
             {
                 data = new GameSaveData();
                 data.DataReset();
                 data.stat.ResetStat();
+                
+                PlayerStat = data.stat; //로드
+            
+                saveData = new GameSaveData();
+                saveData.stat = PlayerStat;
             }
 
             GameSaveFilePath = Application.persistentDataPath + "/Save";
             print(GameSaveFilePath);
-
-            PlayerStat = data.stat; //로드
         }
 
         protected virtual void Start()
         {
             OnStart?.Invoke();
             isStart = true;
+            print("Load 직후: " + PlayerStat.items.ToDictionary().Count);
         }
 
         protected virtual void OnApplicationQuit()
@@ -92,6 +101,7 @@ namespace _02Script.SaveData
             saveData.stat = PlayerStat;
             
             string json = JsonUtility.ToJson(saveData);
+            print(json);
             PlayerPrefs.SetString(GamePath, json);
             PlayerPrefs.Save();
         }

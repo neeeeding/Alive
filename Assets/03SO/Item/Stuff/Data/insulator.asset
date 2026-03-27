@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: insulator
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.ItemDataSO
   category: 6
-  itemType: 6126
-  itemName: "\uD2B8\uB79C\uC9C0\uC2A4\uD130"
+  itemType: 6128
+  itemName: "\uC808\uC5F0\uCCB4"
   itemExplanation: "\uACE0\uBB34\uC640 \uD50C\uB77C\uC2A4\uD2F1\uC774 \uB300\uD45C\uC801\uC73C\uB85C
     \uC804\uAE30, \uC5F4, \uC18C\uB9AC\uB97C \uB9C9\uB294\uB2E4.\n\uC644\uBCBD\uD55C
     \uC808\uC5F0\uCCB4\uB294 \uC5C6\uC73C\uBA70 \uB9E4\uC6B0 \uB192\uC740 \uC804\uC555\uC5D0
