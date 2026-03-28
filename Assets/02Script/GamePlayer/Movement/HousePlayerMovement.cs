@@ -64,7 +64,7 @@ namespace _02Script.GamePlayer.Movement
 
         private void Load()
         {
-            transform.position = HouseManager.Instance.PlayerStat.characterPositions[player.playerName];
+            transform.position = HouseManager.Instance.PlayerStat.characterPositions[player.playerName].ToVector2();
         }
         #endregion
 
@@ -108,7 +108,7 @@ namespace _02Script.GamePlayer.Movement
 
         protected override void Arrive()
         {
-            HouseManager.Instance.PlayerStat.characterPositions[player.playerName] = transform.position; //위치 저장
+            HouseManager.Instance.PlayerStat.characterPositions[player.playerName] = (Vector2)transform.position; //위치 저장
             base.Arrive();
         }
         #endregion

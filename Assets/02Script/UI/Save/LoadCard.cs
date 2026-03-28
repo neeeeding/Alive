@@ -4,6 +4,7 @@ using TMPro;
 using System;
 using _02Script.Manager;
 using _02Script.SaveData;
+using Newtonsoft.Json;
 
 namespace _02Script.UI.Save
 {
@@ -40,7 +41,7 @@ public class LoadCard : MonoBehaviour
 
         Setting(HouseManager.Instance.PlayerStat);
 
-        string data = JsonUtility.ToJson(HouseManager.Instance.PlayerStat);
+        string data = JsonConvert.SerializeObject(HouseManager.Instance.PlayerStat);
 
         File.WriteAllText($"{HouseManager.GameSaveFilePath}/{fileName}", data);
     }
@@ -48,7 +49,7 @@ public class LoadCard : MonoBehaviour
     public void ClickLoad() //불러오기 누를 때
     {
         string data = File.ReadAllText($"{HouseManager.GameSaveFilePath}/{fileName}");
-        PlayerStatSC stat = JsonUtility.FromJson<PlayerStatSC>(data);
+        PlayerStatSC stat = JsonConvert.DeserializeObject<PlayerStatSC>(data);
         HouseManager.Instance.PlayerStat = stat;
         OnLoad?.Invoke();
         HouseManager.CoinText?.Invoke();

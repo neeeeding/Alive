@@ -2,6 +2,7 @@
 using System.Linq;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
+using _02Script.SaveData;
 using _02Script.UI.Save;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
@@ -13,11 +14,13 @@ namespace _02Script.Inventory.Inventory
         [SerializeField] protected ItemDataSO[] allSO;
         
         protected SerializedDictionary<ItemType, ItemDataSO> AllDataSO;
+
         protected override void OnEnable()
         {
             base.OnEnable();
             LoadCard.OnLoad += LoadItem;
-            
+            HouseManager.OnStart += LoadItem;
+    
             if(HouseManager.Instance.isStart && ItemDatas.Count <= 0)
             {
                 LoadItem();
@@ -28,6 +31,7 @@ namespace _02Script.Inventory.Inventory
         {
             base.OnDisable();
             LoadCard.OnLoad -= LoadItem;
+            HouseManager.OnStart -= LoadItem;
         }
 
         protected virtual void LoadItem() //불러오기
@@ -39,16 +43,49 @@ namespace _02Script.Inventory.Inventory
 
         protected virtual void LoadItem(Dictionary<ItemType, List<float>> save)
         {
-            foreach (KeyValuePair<ItemType, ItemDataSO> item in AllDataSO.ToList())
-            {
-                ThrowItem(item.Value,9999999);
-            }
+            foreach (var cardList in ItemCards.Values)
+            foreach (var card in cardList)
+                if (card != null) Destroy(card.gameObject);
+            ItemCards.Clear();
+            ItemDatas.Clear();
 
             foreach (KeyValuePair<ItemType, List<float>> item in save.ToList())
             {
-                foreach (int num in item.Value.ToList())
+                if (item.Key == ItemType.notting) continue;
+                if (!AllDataSO.ContainsKey(item.Key)) continue;
+
+                ItemDataSO so = AllDataSO[item.Key];
+
+                switch (so.category)
                 {
-                    AddItem(AllDataSO[item.Key], num);
+                    case ItemCategory.food:
+                    case ItemCategory.weapon:
+                    case ItemCategory.armor:
+                    case ItemCategory.machine:
+                        int count = item.Value.Count;
+                        for (int i = 1; i < count; i++)
+                        {
+                            NewCard(so, ItemDatas.ContainsKey(so), (int)item.Value[i], (int)item.Value[i]);
+                            if (!ItemDatas.ContainsKey(so))
+                            {
+                                continue;
+                            }
+                            ItemData data = ItemDatas[so];
+                            data.AddCountOnly();
+                            ItemCards[data][ItemCards[data].Count - 1].UpdateCountUI();
+                        }
+                        break;
+
+                    default:
+                        float val = item.Value[0];
+                        NewCard(so, false, 0, 0);
+                        if (ItemDatas.ContainsKey(so))
+                        {
+                            ItemData data = ItemDatas[so];
+                            data.SetCountOnly((int)val);
+                            ItemCards[data][ItemCards[data].Count - 1].UpdateCountUI();
+                        }
+                        break;
                 }
             }
         }

@@ -158,5 +158,15 @@ namespace _02Script.Inventory.Item
                     break;
             }
         }
+        
+        public void AddCountOnly()
+        {
+            _itemCount++;
+        }
+
+        public void SetCountOnly(int count)
+        {
+            _itemCount = count;
+        }
     }
 }

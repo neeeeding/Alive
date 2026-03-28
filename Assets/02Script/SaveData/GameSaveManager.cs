@@ -2,6 +2,7 @@
 using _02Script.Etc;
 using _02Script.Manager;
 using UnityEngine;
+using Newtonsoft.Json;
 
 namespace _02Script.SaveData
 {
@@ -35,8 +36,8 @@ namespace _02Script.SaveData
             {
                 Destroy(gameObject);
             }
-            TestGame(); //나중에 Load로 변경 할 거임 (주석)
-            //Load();
+            //TestGame(); //나중에 Load로 변경 할 거임 (주석)
+            Load();
         }
         
         protected virtual void TestGame()
@@ -60,12 +61,22 @@ namespace _02Script.SaveData
             if (PlayerPrefs.GetString(GamePath) != "")
             {
                 string json = PlayerPrefs.GetString(GamePath);
-                saveData = JsonUtility.FromJson<GameSaveData>(json);
-                print(json);
-                
-                PlayerStat = saveData.stat; //로드
-                print(JsonUtility.ToJson(saveData));
-                print("Load 직후: " + PlayerStat.items.ToDictionary().Count);
+                if (string.IsNullOrEmpty(json)) return;
+
+                var settings = new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.Auto,
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                };
+
+                saveData = JsonConvert.DeserializeObject<GameSaveData>(json, settings);
+    
+                if (saveData?.stat != null)
+                {
+                    RestoreAllDictionaries(saveData.stat);
+    
+                    PlayerStat = saveData.stat;
+                }
             }
             else //저장 된게 없으면 새 거
             {
@@ -82,12 +93,37 @@ namespace _02Script.SaveData
             GameSaveFilePath = Application.persistentDataPath + "/Save";
             print(GameSaveFilePath);
         }
+        
+        private void RestoreAllDictionaries(PlayerStatSC s) //세이브 딕셔너리 때문에... (중첩)
+        {
+            s.items?.SyncDictFromList();
+            s.characterPositions?.SyncDictFromList();
+            s.items?.SyncDictFromList();
+            s.weaponArmor?.SyncDictFromList();
+
+            if (s.characterStats != null)
+            {
+                s.characterStats.SyncDictFromList();
+                foreach (var innerDict in s.characterStats.vs)
+                {
+                    innerDict?.SyncDictFromList();
+                }
+            }
+
+            if (s.characterLastText != null)
+            {
+                s.characterLastText.SyncDictFromList();
+                foreach (var innerDict in s.characterLastText.vs)
+                {
+                    innerDict?.SyncDictFromList();
+                }
+            }
+        }
 
         protected virtual void Start()
         {
-            OnStart?.Invoke();
             isStart = true;
-            print("Load 직후: " + PlayerStat.items.ToDictionary().Count);
+            OnStart?.Invoke();
         }
 
         protected virtual void OnApplicationQuit()
@@ -97,10 +133,13 @@ namespace _02Script.SaveData
 
         protected virtual void SaveData()
         {
-            //정보 저장
             saveData.stat = PlayerStat;
-            
-            string json = JsonUtility.ToJson(saveData);
+            var settings = new JsonSerializerSettings 
+            { 
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore 
+            };
+
+            string json = JsonConvert.SerializeObject(saveData, settings);
             print(json);
             PlayerPrefs.SetString(GamePath, json);
             PlayerPrefs.Save();

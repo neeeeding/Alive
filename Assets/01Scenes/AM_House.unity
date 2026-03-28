@@ -3300,53 +3300,27 @@ MonoBehaviour:
     stat:
       sceneName: 
       isChat: 0
-      characterPositions:
-        ks: 
-        vs: []
       lastDialogEntity: {fileID: 0}
       lastSO: {fileID: 0}
       lastText: 
-      characterStats:
-        ks: 
-        vs: []
-      characterLastText:
-        ks: 
-        vs: []
       year: 0
       month: 0
       day: 0
       hour: 0
       minute: 0
-      items:
-        ks: 
-      weaponArmor:
-        ks: 
       getDictionaryPage: 
       getDictionaryPageMemo: []
   PlayerStat:
     sceneName: 
     isChat: 0
-    characterPositions:
-      ks: 
-      vs: []
     lastDialogEntity: {fileID: 0}
     lastSO: {fileID: 0}
     lastText: 
-    characterStats:
-      ks: 
-      vs: []
-    characterLastText:
-      ks: 
-      vs: []
     year: 0
     month: 0
     day: 0
     hour: 0
     minute: 0
-    items:
-      ks: 
-    weaponArmor:
-      ks: 
     getDictionaryPage: 
     getDictionaryPageMemo: []
   isStart: 0
@@ -12033,6 +12007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9153701013648e0b374befd23917685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.BattleGoShow
+  stage: []
   monster: {fileID: 547329157}
 --- !u!1 &1731030455
 GameObject:
