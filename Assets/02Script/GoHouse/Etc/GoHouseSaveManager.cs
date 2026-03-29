@@ -37,7 +37,6 @@ namespace _02Script.GoHouse.Etc
             HouseSO.OnSuccess -= Success;
         }
         #endregion
-        
 
         #region BlockAction
         private void Less()

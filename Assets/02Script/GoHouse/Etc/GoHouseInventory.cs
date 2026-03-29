@@ -3,6 +3,7 @@ using _02Script.Etc;
 using _02Script.GoHouse.SO;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
+using _02Script.Produce.Weapon;
 using _02Script.UI.Save;
 
 namespace _02Script.GoHouse.Etc
@@ -37,7 +38,8 @@ namespace _02Script.GoHouse.Etc
         {
             SettingAllDataSO();
             Dictionary<ItemType, List<float>> save = GoHouseSaveManager.Instance.PlayerStat.items.ToDictionary();
-            LoadItem(save);
+            Dictionary<ItemType, List<WeaponArmorSaveData>> etcData = GoHouseSaveManager.Instance.PlayerStat.weaponArmor.ToDictionary();
+            LoadItem(save, etcData);
         }
 
         private void AllItemGet(SaveDictionary<ItemType, List<float>> allItems)

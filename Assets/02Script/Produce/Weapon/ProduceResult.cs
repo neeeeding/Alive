@@ -58,7 +58,7 @@ namespace _02Script.Produce.Weapon
             saveData.buffTypes.Add(buff.buffType);
             saveData.type = item.itemType;
             saveData.hp = hp;
-            saveData.explanation = $"타겟에게 데미지 {saveData}";
+            
             if (!HouseManager.Instance.PlayerStat.weaponArmor.ToDictionary().ContainsKey(item.itemType))
             {
                 HouseManager.Instance.PlayerStat.weaponArmor.Add(item.itemType, new List<WeaponArmorSaveData>());   

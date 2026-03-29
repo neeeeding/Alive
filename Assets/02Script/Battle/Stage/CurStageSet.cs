@@ -116,7 +116,7 @@ namespace _02Script.Battle.Stage
         {
             string json = PlayerPrefs.GetString(_battleSOSave);
 
-            curStage = ScriptableObject.CreateInstance<BattleStageSO>();
+            //curStage = ScriptableObject.CreateInstance<BattleStageSO>();
             JsonUtility.FromJsonOverwrite(json, curStage);
         }
 

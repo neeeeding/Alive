@@ -11,6 +11,7 @@ using _02Script.Inventory.Etc;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
+using _02Script.Produce.Weapon;
 using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Save;
 using _02Script.UI.Store;
@@ -78,7 +79,8 @@ namespace _02Script.Battle.UI.Armor
         {
             SettingAllDataSO();
             Dictionary<ItemType, List<float>> save = BattleSaveManager.Instance.PlayerStat.items.ToDictionary();
-            LoadItem(save);
+            Dictionary<ItemType, List<WeaponArmorSaveData>> etcData = BattleSaveManager.Instance.PlayerStat.weaponArmor.ToDictionary();
+            LoadItem(save, etcData);
         }
 
         #region WeaponDamage

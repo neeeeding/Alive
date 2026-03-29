@@ -81,7 +81,8 @@ namespace _02Script.Battle.UI.Weapon
         {
             SettingAllDataSO();
             Dictionary<ItemType, List<float>> save = BattleSaveManager.Instance.PlayerStat.items.ToDictionary();
-            LoadItem(save);
+            Dictionary<ItemType, List<WeaponArmorSaveData>> etcData = BattleSaveManager.Instance.PlayerStat.weaponArmor.ToDictionary();
+            LoadItem(save, etcData);
         }
 
         #region WeaponDamage

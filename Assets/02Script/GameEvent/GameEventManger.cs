@@ -24,9 +24,11 @@ namespace _02Script.GameEvent
 
         private TemperatureType _temperature;
         private bool isEnter;
+        private bool _isNight;
 
         private void OnEnable()
         {
+            _isNight = false;
             LoadCard.OnLoad += LoadEvent;
         }
 
@@ -42,8 +44,9 @@ namespace _02Script.GameEvent
 
         private void Update()
         {
-            if (HouseManager.Instance.PlayerStat.hour >= 20)
+            if (HouseManager.Instance.PlayerStat.hour >= 20 && !_isNight)
             {
+                _isNight = true;
                 OnLockUI?.Invoke(DoUIType.all);
             }
             if (_curDay != HouseManager.Instance.PlayerStat.day)

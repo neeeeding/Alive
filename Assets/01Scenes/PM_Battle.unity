@@ -12946,6 +12946,8 @@ MonoBehaviour:
       Value:
       - type: 0
         hp: 50
+        buffExplanation: 
+        explanation: 
         buffTypes: e22e0000
 --- !u!1 &839638962
 GameObject:
@@ -29918,6 +29920,7 @@ MonoBehaviour:
   - {fileID: 1377249989}
   - {fileID: 1128993962}
   - {fileID: 316126074}
+  buffFind: {fileID: 89448843}
 --- !u!1 &1862228639
 GameObject:
   m_ObjectHideFlags: 0

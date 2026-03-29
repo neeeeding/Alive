@@ -46,6 +46,7 @@ namespace _02Script.Produce
         private void OnEnable()
         {
             _isTimer = false;
+            _isCanUse = true; 
             ProduceBookCard.OnMouseClick += Setting;
             GameEventManger.OnLockUI += CantUse;
             GameEventManger.OnFarmTemperature += EndEvent;
@@ -67,6 +68,7 @@ namespace _02Script.Produce
         }
         public void MouseExit()
         {
+            _isTimer = false;
             if (!_isCanUse)
             {
                 WarringManager.Warring.ShowWarring(_warringText);
@@ -111,7 +113,6 @@ namespace _02Script.Produce
         #region Event or Night
         private void CantUse(DoUIType type)
         {
-            return;
             _isCanUse = myProduceType != type;
             
             _warringText = "지금은 ";

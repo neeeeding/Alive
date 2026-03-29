@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 028495c7eedd4adfb0e5f5365d74b521, type: 3}
+  m_Name: BattleStageSO
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Stage.BattleStageSO
+  stageName: 
+  stageNum: 0
+  canCollectTime: {x: 0, y: 0}
+  cPlayerOnePos: {x: 0, y: 0, z: 0}
+  cPlayerTwoPos: {x: 0, y: 0, z: 0}
+  bPlayerOnePos: {x: 0, y: 0, z: 0}
+  bPlayerTwoPos: {x: 0, y: 0, z: 0}
+  cCamPos: {x: 0, y: 0, z: 0}
+  bCamPos: {x: 0, y: 0, z: 0}
+  miniCamPos: {x: 0, y: 0, z: 0}
+  cCamLimitOffset: {x: 0, y: 0}
+  cCamLimitSize: {x: 0, y: 0}
+  bCamLimitOffset: {x: 0, y: 0}
+  bCamLimitSize: {x: 0, y: 0}
+  miniCamSize: {x: 0, y: 0, z: 0}
+  monster: []
+  mTime: []
+  mPos: []
+  itme: []
+  iCount: 
+  iPos: []
+  goHouse: {fileID: 0}

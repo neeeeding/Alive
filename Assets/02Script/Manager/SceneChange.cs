@@ -32,7 +32,7 @@ namespace _02Script.Manager
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.gameObject == HousePlayerManager.curPlayer.gameObject)
+            if (HousePlayerManager.curPlayer.gameObject != null &&collision.gameObject == HousePlayerManager.curPlayer.gameObject)
             {
                 isSceneChange = false;
             }

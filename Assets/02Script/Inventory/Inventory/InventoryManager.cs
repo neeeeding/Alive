@@ -48,7 +48,7 @@ namespace _02Script.Inventory.Inventory
 
         public bool FindItem(ItemDataSO item)
         {
-            return ItemDatas.ContainsKey(item);
+            return ItemDatas.ContainsKey(item) && ItemDatas[item].ItemCount() > 0;
         }
 
         public void GetOrThrowItem(ItemDataSO item,int count)

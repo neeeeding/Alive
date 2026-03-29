@@ -2450,7 +2450,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 507990729}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e48c2e87f734187be0421480054f5b5, type: 3}
   m_Name: 
@@ -2458,6 +2458,7 @@ MonoBehaviour:
   myCamera: {fileID: 507990731}
   cameraMoveSpeed: 4
   maxZoomSize: 10
+  battleInput: {fileID: 0}
   cameraLimit: {fileID: 265593500}
 --- !u!1001 &536010534
 PrefabInstance:
@@ -6278,7 +6279,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961500630}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e48c2e87f734187be0421480054f5b5, type: 3}
   m_Name: 
@@ -6286,6 +6287,7 @@ MonoBehaviour:
   myCamera: {fileID: 1961500633}
   cameraMoveSpeed: 4
   maxZoomSize: 10
+  battleInput: {fileID: 0}
   cameraLimit: {fileID: 624513794}
 --- !u!1 &1990982853
 GameObject:

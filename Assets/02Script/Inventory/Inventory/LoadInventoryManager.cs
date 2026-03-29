@@ -2,6 +2,7 @@
 using System.Linq;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
+using _02Script.Produce.Weapon;
 using _02Script.SaveData;
 using _02Script.UI.Save;
 using AYellowpaper.SerializedCollections;
@@ -38,10 +39,11 @@ namespace _02Script.Inventory.Inventory
         {
             SettingAllDataSO();
             Dictionary<ItemType, List<float>> save = HouseManager.Instance.PlayerStat.items.ToDictionary();
-            LoadItem(save);
+            Dictionary<ItemType, List<WeaponArmorSaveData>> etcData = HouseManager.Instance.PlayerStat.weaponArmor.ToDictionary();
+            LoadItem(save, etcData);
         }
 
-        protected virtual void LoadItem(Dictionary<ItemType, List<float>> save)
+        protected virtual void LoadItem(Dictionary<ItemType, List<float>> save, Dictionary<ItemType, List<WeaponArmorSaveData>> etcData)
         {
             foreach (var cardList in ItemCards.Values)
             foreach (var card in cardList)
@@ -65,7 +67,11 @@ namespace _02Script.Inventory.Inventory
                         int count = item.Value.Count;
                         for (int i = 1; i < count; i++)
                         {
-                            NewCard(so, ItemDatas.ContainsKey(so), (int)item.Value[i], (int)item.Value[i]);
+                            WeaponArmorSaveData saveData = null;
+                            if(etcData.ContainsKey(item.Key))
+                                saveData = etcData[item.Key][i-1];
+                            
+                            NewCard(so, ItemDatas.ContainsKey(so), (int)item.Value[i], (int)item.Value[i],saveData);
                             if (!ItemDatas.ContainsKey(so))
                             {
                                 continue;
@@ -77,7 +83,9 @@ namespace _02Script.Inventory.Inventory
                         break;
 
                     default:
+                    {
                         float val = item.Value[0];
+                        
                         NewCard(so, false, 0, 0);
                         if (ItemDatas.ContainsKey(so))
                         {
@@ -85,6 +93,7 @@ namespace _02Script.Inventory.Inventory
                             data.SetCountOnly((int)val);
                             ItemCards[data][ItemCards[data].Count - 1].UpdateCountUI();
                         }
+                    }
                         break;
                 }
             }

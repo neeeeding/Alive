@@ -11,6 +11,7 @@ namespace _02Script.Battle.UI.Weapon
     public class WeaponExplanationUI: ExplanationUI
     {
         [SerializeField] private BuffUI[] buff;
+        [SerializeField] private BuffFind buffFind;
         
         protected override void OnEnable()
         {
@@ -37,19 +38,18 @@ namespace _02Script.Battle.UI.Weapon
             nameText.text = so.itemName;
             explanationText.text = data.buffExplanation+ data.explanation;
             
+            
+            for (int i = 0; i < buff.Length; i++)
+            {
+                buff[i].gameObject.SetActive(false);
+            }
+            
             if (buffs != null)
             {
                 for (int i = 0; i < buffs.Count; i++)
                 {
                     buff[i].gameObject.SetActive(true);
-                    buff[i].BuffSet(so.skillBuff,null,EntityName.None,true);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < buff.Length; i++)
-                {
-                    buff[i].gameObject.SetActive(false);
+                    buff[i].BuffSet(buffFind.GetBuff(data.buffTypes[i]),null,EntityName.None,true);
                 }
             }
 
