@@ -383,6 +383,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Proudce"",
+                    ""type"": ""Button"",
+                    ""id"": ""3219e615-0f19-48bc-a7ea-e94cdc06ea0a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -592,6 +601,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Food"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e8277496-f490-41f6-9923-3612fd5ebde3"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Proudce"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1221,6 +1241,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Battle_Weapon = m_Battle.FindAction("Weapon", throwIfNotFound: true);
         m_Battle_Armor = m_Battle.FindAction("Armor", throwIfNotFound: true);
         m_Battle_Food = m_Battle.FindAction("Food", throwIfNotFound: true);
+        m_Battle_Proudce = m_Battle.FindAction("Proudce", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1466,6 +1487,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Battle_Weapon;
     private readonly InputAction m_Battle_Armor;
     private readonly InputAction m_Battle_Food;
+    private readonly InputAction m_Battle_Proudce;
     /// <summary>
     /// Provides access to input actions defined in input action map "Battle".
     /// </summary>
@@ -1505,6 +1527,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Battle/Food".
         /// </summary>
         public InputAction @Food => m_Wrapper.m_Battle_Food;
+        /// <summary>
+        /// Provides access to the underlying input action "Battle/Proudce".
+        /// </summary>
+        public InputAction @Proudce => m_Wrapper.m_Battle_Proudce;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1552,6 +1578,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Food.started += instance.OnFood;
             @Food.performed += instance.OnFood;
             @Food.canceled += instance.OnFood;
+            @Proudce.started += instance.OnProudce;
+            @Proudce.performed += instance.OnProudce;
+            @Proudce.canceled += instance.OnProudce;
         }
 
         /// <summary>
@@ -1584,6 +1613,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Food.started -= instance.OnFood;
             @Food.performed -= instance.OnFood;
             @Food.canceled -= instance.OnFood;
+            @Proudce.started -= instance.OnProudce;
+            @Proudce.performed -= instance.OnProudce;
+            @Proudce.canceled -= instance.OnProudce;
         }
 
         /// <summary>
@@ -2072,6 +2104,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnFood(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Proudce" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnProudce(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

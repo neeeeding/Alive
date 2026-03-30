@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using _02Script.Battle;
 using _02Script.Battle.Buff;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace _02Script.Produce.Weapon
@@ -58,12 +60,23 @@ namespace _02Script.Produce.Weapon
             saveData.buffTypes.Add(buff.buffType);
             saveData.type = item.itemType;
             saveData.hp = hp;
-            
-            if (!HouseManager.Instance.PlayerStat.weaponArmor.ToDictionary().ContainsKey(item.itemType))
+
+            if (SceneManager.GetActiveScene().name == "AM_House")
             {
-                HouseManager.Instance.PlayerStat.weaponArmor.Add(item.itemType, new List<WeaponArmorSaveData>());   
+                if (!HouseManager.Instance.PlayerStat.weaponArmor.ToDictionary().ContainsKey(item.itemType))
+                {
+                    HouseManager.Instance.PlayerStat.weaponArmor.Add(item.itemType, new List<WeaponArmorSaveData>());   
+                }
+                HouseManager.Instance.PlayerStat.weaponArmor[item.itemType].Add(saveData);
             }
-            HouseManager.Instance.PlayerStat.weaponArmor[item.itemType].Add(saveData);
+            else
+            {
+                if (!BattleSaveManager.Instance.PlayerStat.weaponArmor.ToDictionary().ContainsKey(item.itemType))
+                {
+                    BattleSaveManager.Instance.PlayerStat.weaponArmor.Add(item.itemType, new List<WeaponArmorSaveData>());   
+                }
+                BattleSaveManager.Instance.PlayerStat.weaponArmor[item.itemType].Add(saveData);
+            }
             
             OnUseItem?.Invoke(SelectItemCard.curSelectItem.GetCurProduce(true),1);
             OnGetItem?.Invoke(item,saveData, hp); //현재는 미니게임 안 하니 내구도 100

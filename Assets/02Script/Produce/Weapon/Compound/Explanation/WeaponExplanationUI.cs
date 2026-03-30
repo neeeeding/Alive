@@ -42,16 +42,19 @@ namespace _02Script.Produce.Weapon.Compound.Explanation
                 image.sprite = Armorr.itemImage;
                 nameText.text = Armorr.itemName;
             }
-            
-            explanationText.text = data.buffExplanation+ data.explanation;
-            
+
+            if (data != null)
+                explanationText.text = data.buffExplanation + data.explanation;
+            else
+                explanationText.text = card.ReturnData().ReturnDataSO().itemExplanation;
+                    
             
             for (int i = 0; i < buff.Length; i++)
             {
                 buff[i].gameObject.SetActive(false);
             }
             
-            if (data.buffTypes != null)
+            if (data != null && data.buffTypes != null)
             {
                 for (int i = 0; i < data.buffTypes.Count; i++)
                 {

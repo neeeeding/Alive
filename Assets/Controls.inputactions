@@ -297,6 +297,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Proudce",
+                    "type": "Button",
+                    "id": "3219e615-0f19-48bc-a7ea-e94cdc06ea0a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -506,6 +515,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Food",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e8277496-f490-41f6-9923-3612fd5ebde3",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Proudce",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

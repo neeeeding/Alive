@@ -12,7 +12,7 @@ namespace _02Script.Battle
         public event Action<string> OnSkillInput;
         public event Action<string> OnWeaponInput;
         public event Action<string> OnArmorInput;
-        public event Action<string> OnFoodInput;
+        public event Action<string> OnKeyInput;
         
         private Controls _controls;
         private void OnEnable()
@@ -67,8 +67,15 @@ namespace _02Script.Battle
         public void OnFood(InputAction.CallbackContext context)
         {
             if(context.started)
-                OnFoodInput?.Invoke(context.control.displayName);
+                OnKeyInput?.Invoke(context.control.displayName);
         }
+
+        public void OnProudce(InputAction.CallbackContext context)
+        {
+            if(context.started)
+                OnKeyInput?.Invoke(context.control.displayName);
+        }
+
         #endregion
     }
 }

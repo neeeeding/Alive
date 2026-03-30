@@ -39,7 +39,7 @@ namespace _02Script.Produce.Weapon.Compound
 
         public void Compound()
         {
-            if (_stuff == null || _weaponArmorData == null)
+            if (_stuff == null || _weaponArmor == null)
             {
                 WarringManager.Warring.ShowWarring("재료 혹은 무기나 갑옷을 선택해주세요.");
                 return;
@@ -52,7 +52,7 @@ namespace _02Script.Produce.Weapon.Compound
         private void ResetSelect()
         {
             _stuff = null;
-            _weaponArmorData = null;
+            _weaponArmor = null;
         }
         
     }

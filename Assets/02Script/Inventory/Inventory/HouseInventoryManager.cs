@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using _02Script.Inventory.Item;
 using _02Script.Produce.Weapon;
 using _02Script.Produce.Weapon.Compound;

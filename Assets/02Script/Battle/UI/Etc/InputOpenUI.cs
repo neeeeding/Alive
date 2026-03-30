@@ -18,7 +18,7 @@ namespace _02Script.Battle.UI.Etc
             input.OnSkillInput += Skill;
             input.OnWeaponInput += KeyboardInput;
             input.OnArmorInput += KeyboardInput;
-            input.OnFoodInput += KeyboardInput;
+            input.OnKeyInput += KeyboardInput;
 
             foreach (KeyValuePair<string, GameObject> value in window)
             {
@@ -32,7 +32,7 @@ namespace _02Script.Battle.UI.Etc
             input.OnSkillInput -= Skill;
             input.OnWeaponInput -= KeyboardInput;
             input.OnArmorInput -= KeyboardInput;
-            input.OnFoodInput -= KeyboardInput;
+            input.OnKeyInput -= KeyboardInput;
         }
 
         private void KeyboardInput(string value)
