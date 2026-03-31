@@ -9,6 +9,7 @@ using _02Script.Battle.UI.Weapon;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
+using _02Script.Produce.Weapon;
 using _02Script.UI.person;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -147,7 +148,7 @@ namespace _02Script.Battle.Entity
                 RandomTarget();
             }
         }
-        public void ChangeWeapon(WeaponInventoryCard weapon,List<BuffSO> buffs,EntityName entityName)
+        public void ChangeWeapon(WeaponInventoryCard weapon,List<BuffSO> buffs,EntityName entityName,WeaponArmorSaveData data)
         {
             if (!weapon|| entityName != entity.EntityName)
             {
@@ -177,7 +178,7 @@ namespace _02Script.Battle.Entity
             
             OnChangeWeapon?.Invoke(so);
         }
-        public void ChangeArmor(ArmorInventoryCard armor,List<BuffSO> buffs,EntityName entityName)
+        public void ChangeArmor(ArmorInventoryCard armor,List<BuffSO> buffs,EntityName entityName, WeaponArmorSaveData data)
         {
             if (!armor|| entityName != entity.EntityName)
             {

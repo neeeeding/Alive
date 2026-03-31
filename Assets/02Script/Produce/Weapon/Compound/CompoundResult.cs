@@ -38,7 +38,7 @@ namespace _02Script.Produce.Weapon.Compound
             CompoundCheck.OnCompound -= Compound;
         }
 
-        private void Compound(StuffItemDataSO stuff, WeaponArmorSaveData weapon, CompoundSelectWeaponArmorCard itemCard)
+        private void Compound(StuffItemDataSO stuff, WeaponArmorSaveData weapon, CompoundSelectWeaponArmorCard itemCard) // 버프 추가 및 외
         {
             bool isHouse = SceneManager.GetActiveScene().name == "AM_House";
             
@@ -118,7 +118,7 @@ namespace _02Script.Produce.Weapon.Compound
             UpdateCountUI(weapon);
         }
 
-        private void ShowWindow(WeaponArmorSaveData weapon,ItemDataSO itemSo)
+        private void ShowWindow(WeaponArmorSaveData weapon,ItemDataSO itemSo) //결과창
         {
             itemName.text = itemSo.itemName;
             itemImage.sprite = itemSo.itemImage;
@@ -129,13 +129,13 @@ namespace _02Script.Produce.Weapon.Compound
                 buffT.text += EnumToString.Name(buff) + "\n";
             }
         }
-        private void UpdateCountUI(WeaponArmorSaveData data)
+        private void UpdateCountUI(WeaponArmorSaveData data) // 무기 & 갑옷 hp
         {
             damageSlider.value = data.hp / 100;
             countUI.text = $"{data.hp} / 100";
         }
 
-        private WeaponArmorSaveData NewSaveData(WeaponArmorSaveData data, CompoundSelectWeaponArmorCard itemCard)
+        private WeaponArmorSaveData NewSaveData(WeaponArmorSaveData data, CompoundSelectWeaponArmorCard itemCard) // data 없는 애들
         {                
             data = new WeaponArmorSaveData();
             ItemDataSO item = itemCard.ReturnData().ReturnDataSO();

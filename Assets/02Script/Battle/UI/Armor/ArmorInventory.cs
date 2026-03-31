@@ -71,7 +71,7 @@ namespace _02Script.Battle.UI.Armor
         }
         #endregion
 
-        private void CloseWeaponInventory(ArmorInventoryCard _a,List<BuffSO> _b, EntityName _e)
+        private void CloseWeaponInventory(ArmorInventoryCard _a,List<BuffSO> _b, EntityName _e,WeaponArmorSaveData _d)
         {
             inventoryWindow.gameObject.SetActive(false);
         }

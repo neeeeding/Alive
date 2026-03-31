@@ -11,6 +11,8 @@ namespace _02Script.Produce.Weapon
     {
         public ItemType type;
         public float hp;
+        public float skillCoolTime;
+        public float skillDamage;
         public string buffExplanation;
         public string explanation;
         

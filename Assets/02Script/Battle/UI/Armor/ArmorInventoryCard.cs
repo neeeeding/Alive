@@ -14,7 +14,7 @@ namespace _02Script.Battle.UI.Armor
 {
     public class ArmorInventoryCard: ItemCard
     {
-        public static event Action<ArmorInventoryCard,List<BuffSO>,EntityName> OnMouseClick;
+        public static event Action<ArmorInventoryCard,List<BuffSO>,EntityName,WeaponArmorSaveData> OnMouseClick;
         public static Action<ArmorItemDataSO,List<BuffSO>,Vector3> OnMouseEnter; //정보, 현재 남은 시간 
 
         [SerializeField] protected TextMeshProUGUI nameText;
@@ -38,7 +38,7 @@ namespace _02Script.Battle.UI.Armor
 
         public void MouseClick()
         {
-            OnMouseClick?.Invoke(this,_buffs,_armorEntity);
+            OnMouseClick?.Invoke(this,_buffs,_armorEntity,weaponArmorBuff);
         }
         #endregion
 

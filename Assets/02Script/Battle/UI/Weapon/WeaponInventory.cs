@@ -46,7 +46,7 @@ namespace _02Script.Battle.UI.Weapon
         }
         #endregion
 
-        private void CloseWeaponInventory(WeaponInventoryCard _w,List<BuffSO> _b, EntityName _e)
+        private void CloseWeaponInventory(WeaponInventoryCard _w,List<BuffSO> _b, EntityName _e,WeaponArmorSaveData _d)
         {
             inventoryWindow.gameObject.SetActive(false);
         }
@@ -140,7 +140,7 @@ namespace _02Script.Battle.UI.Weapon
             if (ItemCards.Count <= 0)
             {
                 _isBeforeAutoChange = true;
-                inventoryCharacter.ChangeWeapon(null,null,_weaponEntity);
+                inventoryCharacter.ChangeWeapon(null,null,_weaponEntity,null);
                 return;
             }
             _isBeforeAutoChange = false;
@@ -148,7 +148,7 @@ namespace _02Script.Battle.UI.Weapon
             
             List<BuffSO> buff = new List<BuffSO>();
             
-            Dictionary<ItemType, List<WeaponArmorSaveData>> dict = BattleSaveManager.Instance?.PlayerStat?.weaponArmor?.ToDictionary();
+            Dictionary<ItemType, List<WeaponArmorSaveData>> dict = BattleSaveManager.Instance.PlayerStat.weaponArmor.ToDictionary();
 
             if (weapon == null ||dict == null ||
                 dict.Count <= 0 ||
@@ -163,7 +163,7 @@ namespace _02Script.Battle.UI.Weapon
                 buff.Add(buffFind.GetBuff(b));
             }
             
-            inventoryCharacter.ChangeWeapon(weapon,buff,_weaponEntity);
+            inventoryCharacter.ChangeWeapon(weapon,buff,_weaponEntity,dict[weapon.ReturnData().ReturnDataSO().itemType][0]);
         }
         #endregion
     }
