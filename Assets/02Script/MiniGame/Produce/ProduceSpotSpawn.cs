@@ -18,11 +18,11 @@ namespace _02Script.MiniGame.Produce
         private float _curTime;
         private float _setTime;
         
-        private List<ProduceSpot> _spots = new List<ProduceSpot>();
+        private List<ProduceSpot> _spotList = new List<ProduceSpot>();
 
         public void SpotListAdd(ProduceSpot obj)
         {
-            _spots.Add(obj);
+            _spotList.Add(obj);
             obj.gameObject.SetActive(false);
             SetTime();
         }
@@ -40,15 +40,15 @@ namespace _02Script.MiniGame.Produce
         private void NewSpot()
         {
             ProduceSpot spot;
-            if (_spots.Count <= 0)
+            if (_spotList.Count <= 0)
             {
                 spot = Instantiate(spotPrefab, parent);
                 spot.SetSpot(this, score);
                 spot.gameObject.SetActive(false);
-                _spots.Add(spot);
+                _spotList.Add(spot);
             }
-            spot = _spots[0];
-            _spots.RemoveAt(0);
+            spot = _spotList[0];
+            _spotList.RemoveAt(0);
             spot.transform.position = RandomPos();
             spot.gameObject.SetActive(true);
         }
