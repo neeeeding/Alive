@@ -6,8 +6,9 @@ namespace _02Script.MiniGame.Food.RiceCooker
 {
     public class RiceCookerScore : MonoBehaviour
     {
-        public static Action OnEndMiniGame;
-        
+        public static Action<int> OnEndMiniGame;
+
+        [SerializeField] private GameObject miniGame;
         [SerializeField] private TextMeshProUGUI scoreText;
 
         private readonly int _maxObjCount = 10;
@@ -37,8 +38,8 @@ namespace _02Script.MiniGame.Food.RiceCooker
             _endWorm++;
             if (_endWorm >= _maxObjCount)
             {
-                OnEndMiniGame?.Invoke();
-                gameObject.SetActive(false);
+                miniGame.SetActive(false);
+                OnEndMiniGame?.Invoke(Math.Max(1,5 - (_rice/(_maxObjCount / 5))));
             }
             Text();
         }

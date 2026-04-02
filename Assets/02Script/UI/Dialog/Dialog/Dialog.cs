@@ -307,7 +307,8 @@ namespace _02Script.UI.Dialog.Dialog
         
         public void Load() //로드 될 때
         {
-            DialogSetting(_currentSO, _currentDialogEntity);
+            if(SceneManager.GetActiveScene().name != "AM_House" && HouseManager.Instance.PlayerStat.isChat)
+                DialogSetting(_currentSO, _currentDialogEntity);
         }
 
         private void SetItemDictionary()

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using _02Script.DoTweenUI.Warring;
 using _02Script.Farming;
@@ -12,38 +12,38 @@ using UnityEngine.UI;
 
 namespace _02Script.Produce
 {
-    public class Mixture : MonoBehaviour
+    public class Mixture: MonoBehaviour
     {
         [Header("Setting")]
-        [SerializeField] private DoUIType myProduceType;
-        [SerializeField] private float setTimer = 0.7f;
+        [SerializeField] protected float setTimer = 0.7f;
         [Header("Need")]
-        [SerializeField] private GameObject errorMassage;
-        [SerializeField] private ProduceLoadInventory produceInventory;
-        [SerializeField] private LoadInventoryManager inventory;
-        [SerializeField] private List<MixtureImageRow> imageRows;
+        [SerializeField] EventLimitWarring eventLimitWarring;
+        [SerializeField] protected GameObject errorMassage;
+        [SerializeField] protected ProduceLoadInventory produceInventory;
+        [SerializeField] protected LoadInventoryManager inventory;
+        [SerializeField] protected List<MixtureImageRow> imageRows;
         
-        [SerializeField] private Image means; //도구창
-        [SerializeField] private Image backGround;
+        [SerializeField] protected Image means; //도구창
+        [SerializeField] protected Image backGround;
         
-        [SerializeField] private Image result;
-        [SerializeField] private TextMeshProUGUI resultCount;
-        [SerializeField] private TextMeshProUGUI resultName;
-        [SerializeField] private TextMeshProUGUI resultExplanation;
+        [SerializeField] protected Image result;
+        [SerializeField] protected TextMeshProUGUI resultCount;
+        [SerializeField] protected TextMeshProUGUI resultName;
+        [SerializeField] protected TextMeshProUGUI resultExplanation;
         
-        private List<ItemCard> _cards = new List<ItemCard>();
-        private (int maxCount,ItemDataSO data) _itemMax; //비교 & 저장용
-        private ItemDataSO resultData;
+        protected List<ItemCard> _cards = new List<ItemCard>();
+        protected (int maxCount,ItemDataSO data) _itemMax; //비교 & 저장용
+        protected ItemDataSO resultData;
 
-        private float _timer;
-        private bool _isTimer;
+        protected float _timer;
+        protected bool _isTimer;
         
         //밤 & 이벤트 제한
-        private string _warringText;
-        private bool _isCanUse;
+        protected string _warringText;
+        protected bool _isCanUse;
         
         #region EnDi
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             _isTimer = false;
             _isCanUse = true; 
@@ -52,7 +52,7 @@ namespace _02Script.Produce
             GameEventManger.OnFarmTemperature += EndEvent;
             Setting(null);
         }
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             ProduceBookCard.OnMouseClick -= Setting;
             GameEventManger.OnLockUI -= CantUse;
@@ -61,12 +61,12 @@ namespace _02Script.Produce
         #endregion
 
         #region Btn
-        public void MouseEnter()
+        public virtual void MouseEnter() // 누르는 시간 재기 시작
         {
             _timer = setTimer;
             _isTimer = true;
         }
-        public void MouseExit()
+        public virtual void MouseExit() //누른 시간에 따라 전부 or 하나만 얻을지
         {
             _isTimer = false;
             if (!_isCanUse)
@@ -76,22 +76,22 @@ namespace _02Script.Produce
             }
             GetResult(_timer <= 0? _itemMax.maxCount : 1);
         }
-        private void GetResult(int count) //제작 아이템 얻기 & 재료 버리기
+        protected virtual void GetResult(int count) //제작 아이템 얻기 & 재료 버리기
         {
-            count = resultData.category switch
-            {
-                ItemCategory.food => 5,
-                ItemCategory.weapon => 100,
-                ItemCategory.armor => 100,
-                ItemCategory.machine => 100,
-                _=> count,
-            };
             int use = resultData.category switch
             {
                 ItemCategory.food => 1,
                 ItemCategory.weapon => 1,
                 ItemCategory.armor => 1,
                 ItemCategory.machine => 1,
+                _=> count,
+            };
+            count = resultData.category switch
+            {
+                ItemCategory.food => 5,
+                ItemCategory.weapon => 100,
+                ItemCategory.armor => 100,
+                ItemCategory.machine => 100,
                 _=> count,
             };
             foreach (var card in _cards)
@@ -111,34 +111,21 @@ namespace _02Script.Produce
         #endregion
 
         #region Event or Night
-        private void CantUse(DoUIType type)
+        
+        protected virtual void CantUse(DoUIType type)
         {
-            _isCanUse = myProduceType != type;
-            
-            _warringText = "지금은 ";
-            if (type == DoUIType.all &&
-                myProduceType != DoUIType.none)
-            {
-                _warringText = "밤에는 ";
-                _isCanUse = false;
-            }
-            
-            _warringText += myProduceType switch
-            {
-                DoUIType.farm => "밭을 사용하실 수 없습니다.",
-                DoUIType.cook => "요리하실 수 없습니다.",
-                DoUIType.produce => "제작하실 수 없습니다.",
-                _=> "사용하실 수 없습니다.",
-            };
+            (bool,string) i = eventLimitWarring.CantUse(type);
+            _warringText = i.Item2;
+            _isCanUse = i.Item1;
         }
 
-        private void EndEvent(TemperatureType _)
+        protected virtual void EndEvent(TemperatureType _)
         {
             _isCanUse = true;
         }
         #endregion
 
-        private void Update()
+        protected virtual void Update()
         {
             if (_isTimer)
             {
@@ -146,12 +133,12 @@ namespace _02Script.Produce
             }
         }
         
-        private void ReturnItem()//다시 돌려주기
+        protected virtual void ReturnItem()//다시 돌려주기
         {
             produceInventory.CountDistribution(_cards, _itemMax.maxCount,false);
         }
 
-        private void Setting(ProduceBookSO  bookData) //제작대? 조합대? 세팅 하기
+        protected virtual void Setting(ProduceBookSO  bookData) //제작대? 조합대? 세팅 하기
         {
             errorMassage.SetActive(false);
             ReturnItem();
