@@ -54,48 +54,57 @@ namespace _02Script.Inventory.Inventory
             foreach (KeyValuePair<ItemType, List<float>> item in save.ToList())
             {
                 if (item.Key == ItemType.notting) continue;
+                if (AllDataSO == null)
+                {
+                    SettingAllDataSO();
+                }
+                
                 if (!AllDataSO.ContainsKey(item.Key)) continue;
 
                 ItemDataSO so = AllDataSO[item.Key];
 
-                switch (so.category)
-                {
-                    case ItemCategory.food:
-                    case ItemCategory.weapon:
-                    case ItemCategory.armor:
-                    case ItemCategory.machine:
-                        int count = item.Value.Count;
-                        for (int i = 1; i < count; i++)
-                        {
-                            WeaponArmorSaveData saveData = null;
-                            if(etcData.ContainsKey(item.Key))
-                                saveData = etcData[item.Key][i-1];
-                            
-                            NewCard(so, ItemDatas.ContainsKey(so), (int)item.Value[i], (int)item.Value[i],saveData);
-                            if (!ItemDatas.ContainsKey(so))
-                            {
-                                continue;
-                            }
-                            ItemData data = ItemDatas[so];
-                            data.AddCountOnly();
-                            ItemCards[data][ItemCards[data].Count - 1].UpdateCountUI();
-                        }
-                        break;
-
-                    default:
+                LoadItem(item, etcData, so);
+            }
+        }
+        protected virtual void LoadItem(KeyValuePair<ItemType, List<float>> item, Dictionary<ItemType, List<WeaponArmorSaveData>> etcData,ItemDataSO so)
+        {
+            switch (so.category)
+            {
+                case ItemCategory.food:
+                case ItemCategory.weapon:
+                case ItemCategory.armor:
+                case ItemCategory.machine:
+                    int count = item.Value.Count;
+                    for (int i = 1; i < count; i++)
                     {
-                        float val = item.Value[0];
-                        
-                        NewCard(so, false, 0, 0);
-                        if (ItemDatas.ContainsKey(so))
+                        WeaponArmorSaveData saveData = null;
+                        if(etcData.ContainsKey(item.Key))
+                            saveData = etcData[item.Key][i-1];
+                            
+                        NewCard(so, ItemDatas.ContainsKey(so), (int)item.Value[i], (int)item.Value[i],saveData);
+                        if (!ItemDatas.ContainsKey(so))
                         {
-                            ItemData data = ItemDatas[so];
-                            data.SetCountOnly((int)val);
-                            ItemCards[data][ItemCards[data].Count - 1].UpdateCountUI();
+                            continue;
                         }
+                        ItemData data = ItemDatas[so];
+                        data.AddCountOnly();
+                        ItemCards[data][ItemCards[data].Count - 1].UpdateCountUI();
                     }
-                        break;
+                    break;
+
+                default:
+                {
+                    float val = item.Value[0];
+                        
+                    NewCard(so, false, 0, 0);
+                    if (ItemDatas.ContainsKey(so))
+                    {
+                        ItemData data = ItemDatas[so];
+                        data.SetCountOnly((int)val);
+                        ItemCards[data][ItemCards[data].Count - 1].UpdateCountUI();
+                    }
                 }
+                    break;
             }
         }
 
@@ -103,10 +112,8 @@ namespace _02Script.Inventory.Inventory
         {
             AllDataSO = new SerializedDictionary<ItemType, ItemDataSO>();
 
-            int i = 0;
             foreach (ItemDataSO data in allSO)
             {
-                i++;
                 AllDataSO.Add(data.itemType, data);
             }
         }

@@ -36,7 +36,7 @@ namespace _02Script.Battle
 
         private void SetStage()
         {
-            string json = JsonUtility.ToJson(stage[HouseManager.Instance.PlayerStat.day -1].goHouse);
+            string json = JsonUtility.ToJson(stage[HouseManager.Instance.PlayerStat.day -1]);
             PlayerPrefs.SetString(saveStage, json);
             PlayerPrefs.Save();
         }

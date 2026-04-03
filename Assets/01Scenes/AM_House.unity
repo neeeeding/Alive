@@ -12163,6 +12163,18 @@ MonoBehaviour:
             m_StringArgument: PM_Battle
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1725189290}
+          m_TargetAssemblyTypeName: _02Script.Battle.BattleGoShow, Assembly-CSharp
+          m_MethodName: SceneBtn
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!212 &1631547770
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12284,7 +12296,7 @@ Transform:
   m_GameObject: {fileID: 1725189288}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.7, y: -2.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12303,7 +12315,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9153701013648e0b374befd23917685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.BattleGoShow
-  stage: []
+  stage:
+  - {fileID: 11400000, guid: bcbb219a82dbc7849bd9e48b76e6fa0a, type: 2}
+  - {fileID: 11400000, guid: bcbb219a82dbc7849bd9e48b76e6fa0a, type: 2}
+  - {fileID: 11400000, guid: bcbb219a82dbc7849bd9e48b76e6fa0a, type: 2}
+  - {fileID: 11400000, guid: bcbb219a82dbc7849bd9e48b76e6fa0a, type: 2}
+  - {fileID: 11400000, guid: bcbb219a82dbc7849bd9e48b76e6fa0a, type: 2}
   monster: {fileID: 547329157}
 --- !u!1 &1731030455
 GameObject:
@@ -15775,10 +15792,6 @@ PrefabInstance:
     - target: {fileID: 4623810538380578384, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4638177683810666708, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      propertyPath: allSO.Array.size
-      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 4642045552890137132, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: m_AnchorMax.x

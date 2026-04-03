@@ -791,7 +791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ScrollRect
   m_Content: {fileID: 4634568940107207266}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
@@ -8609,7 +8609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ScrollRect
   m_Content: {fileID: 1984915481057146141}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
@@ -8803,7 +8803,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.Weapon.Result
   itemImage: {fileID: 9169382063173985008}
   itemName: {fileID: 6899363290599829127}
-  score: {fileID: 5064491526533696261}
 --- !u!1 &8995528935907551043
 GameObject:
   m_ObjectHideFlags: 0

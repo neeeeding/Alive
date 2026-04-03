@@ -127,7 +127,7 @@ namespace _02Script.SaveData
             OnStart?.Invoke();
         }
 
-        protected virtual void OnApplicationQuit()
+        protected virtual void OnDestroy()
         {
             SaveData();
         }
@@ -141,9 +141,9 @@ namespace _02Script.SaveData
             };
 
             string json = JsonConvert.SerializeObject(saveData, settings);
-            print(json);
             PlayerPrefs.SetString(GamePath, json);
             PlayerPrefs.Save();
+            print(json);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using _02Script.Battle.UI.Weapon;
 using _02Script.Collect.Item;
 using _02Script.Farming;
@@ -33,6 +34,7 @@ namespace _02Script.Battle
             Field.OnUseSeed += ThrowItem;
             CompoundResult.OnGetItem += AddItem;
             CompoundResult.OnUseItem += ThrowItem;
+            BattleSaveManager.OnStart += LoadItem;
             
             LoadCard.OnLoad += LoadItem;
             
@@ -52,6 +54,7 @@ namespace _02Script.Battle
             WeaponInventory.OnDeleteWeapon -= DeleteWeapon;
             CompoundResult.OnGetItem -= AddItem;
             CompoundResult.OnUseItem -= ThrowItem;
+            BattleSaveManager.OnStart -= LoadItem;
         }
         #endregion
         protected override void LoadItem() //불러오기
@@ -59,7 +62,28 @@ namespace _02Script.Battle
             SettingAllDataSO();
             Dictionary<ItemType, List<float>> save = BattleSaveManager.Instance.PlayerStat.items.ToDictionary();
             Dictionary<ItemType, List<WeaponArmorSaveData>> etcData = BattleSaveManager.Instance.PlayerStat.weaponArmor.ToDictionary();
-            LoadItem(save, etcData);
+            
+            
+            foreach (var cardList in ItemCards.Values)
+            foreach (var card in cardList)
+                if (card != null) Destroy(card.gameObject);
+            ItemCards.Clear();
+            ItemDatas.Clear();
+
+            foreach (KeyValuePair<ItemType, List<float>> item in save.ToList())
+            {
+                if (item.Key == ItemType.notting) continue;
+                if (_allWeaponDataSO == null)
+                {
+                    SettingAllDataSO();
+                }
+                
+                if (!_allWeaponDataSO.ContainsKey(item.Key)) continue;
+
+                ItemDataSO so = _allWeaponDataSO[item.Key];
+
+                LoadItem(item, etcData, so);
+            }
         }
 
         protected virtual void DeleteWeapon(WeaponInventoryCard weapon) //무기 정보 소멸 및 삭제

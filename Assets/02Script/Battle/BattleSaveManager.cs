@@ -37,6 +37,7 @@ namespace _02Script.Battle
         private void OnEnable()
         {
             BattleCharacter.OnDie += FailGame;
+            print(JsonUtility.ToJson(PlayerStat));
         }
 
         private void OnDisable()
@@ -65,7 +66,7 @@ namespace _02Script.Battle
             PlayerPrefs.SetString(GamePath,"");
             PlayerPrefs.Save();
         }
-        protected override void OnApplicationQuit()
+        protected override void OnDestroy()
         {
         }
     }

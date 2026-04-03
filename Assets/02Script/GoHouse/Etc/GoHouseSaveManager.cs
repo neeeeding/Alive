@@ -100,7 +100,7 @@ namespace _02Script.GoHouse.Etc
                 _items = JsonUtility.FromJson<SaveDictionary<ItemType, List<float>>>(json);
             }
         }
-        protected override void OnApplicationQuit()
+        protected override void OnDestroy()
         {
             //한 번 실패하고 스킵한 처리
             if (PlayerPrefs.GetString(_battleItemSave) != "")

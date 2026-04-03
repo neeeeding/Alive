@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using _02Script.Battle.Buff;
 using _02Script.Battle.Entity;
 using _02Script.Battle.UI.Weapon;
@@ -47,6 +48,7 @@ namespace _02Script.Battle.UI.Armor
             StoreCard.OnSellItem += AddItem;
             StoreCard.OnPayItem += ThrowItem;
             Field.OnUseSeed += ThrowItem;
+            BattleSaveManager.OnStart += LoadItem;
             
             LoadCard.OnLoad += LoadItem;
             
@@ -63,6 +65,8 @@ namespace _02Script.Battle.UI.Armor
         protected override void OnDisable()
         {
             base.OnDisable();
+            BattleSaveManager.OnStart -= LoadItem;
+            
             ArmorInventoryCard.OnMouseClick -= CloseWeaponInventory;
             WeaponArmorStartGiveItem.OnGetBuff -= AddItem;
             CollectItem.OnGetItem -= GetItem;
@@ -77,13 +81,35 @@ namespace _02Script.Battle.UI.Armor
         }
         protected override void LoadItem() //불러오기
         {
+            print("why?");
             SettingAllDataSO();
             Dictionary<ItemType, List<float>> save = BattleSaveManager.Instance.PlayerStat.items.ToDictionary();
             Dictionary<ItemType, List<WeaponArmorSaveData>> etcData = BattleSaveManager.Instance.PlayerStat.weaponArmor.ToDictionary();
-            LoadItem(save, etcData);
+            
+            foreach (var cardList in ItemCards.Values)
+            foreach (var card in cardList)
+                if (card != null) Destroy(card.gameObject);
+            ItemCards.Clear();
+            ItemDatas.Clear();
+
+            print($"ok, {save.Count} / {_allArmorDataSO.Count}");
+            foreach (KeyValuePair<ItemType, List<float>> item in save.ToList())
+            {
+                if (item.Key == ItemType.notting) continue;
+                if (_allArmorDataSO == null)
+                {
+                    SettingAllDataSO();
+                }
+                
+                if (!_allArmorDataSO.ContainsKey(item.Key)) continue;
+
+                ItemDataSO so = _allArmorDataSO[item.Key];
+
+                LoadItem(item, etcData, so);
+            }
         }
 
-        #region WeaponDamage
+        #region ArmorDamage
         //데미지 감소
         private void ArmorDamage(ArmorInventoryCard armor)
         {
