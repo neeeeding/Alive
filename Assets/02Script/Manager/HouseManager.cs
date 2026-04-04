@@ -6,7 +6,6 @@ using _02Script.UI.Dialog.Entity;
 using _02Script.SaveData;
 using _02Script.UI.Dialog.Dialog;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace _02Script.Manager
 {

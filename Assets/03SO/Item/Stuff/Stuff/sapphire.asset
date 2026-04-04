@@ -32,5 +32,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0ce9037868b563a49bd079b3228b2d77, type: 2}
   - {fileID: 11400000, guid: 07924c08f3a55654191053a8e6076de9, type: 2}
   - {fileID: 11400000, guid: 8c7f947ca223b2649baf0fe74bb67975, type: 2}
-  weapon: {fileID: 0}
-  armor: {fileID: 0}
+  weapon: {fileID: 11400000, guid: 6a81e0764181f004e811dfee7367b0df, type: 2}
+  armor: {fileID: 11400000, guid: 4b5f587eca6353948a46dba60a5615c8, type: 2}

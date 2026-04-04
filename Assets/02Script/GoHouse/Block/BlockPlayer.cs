@@ -30,13 +30,15 @@ namespace _02Script.GoHouse.Block
             AutoMoveSO.OnMove += AutoMove;
             HouseSO.OnSuccess += House;
             MoveCountSO.OnMove += MoveCount;
+            GoHouseInput.OnMovePos += BaseMove;
         }
         private void OnDisable()
         {
             InputBtn.OnMoveBtn -= BaseMove;
             AutoMoveSO.OnMove -= AutoMove;
             HouseSO.OnSuccess -= House;
-            MoveCountSO.OnMove += MoveCount;
+            MoveCountSO.OnMove -= MoveCount;
+            GoHouseInput.OnMovePos -= BaseMove;
         }
         private void Awake()
         {

@@ -1216,7 +1216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &546324010
 Transform:
   m_ObjectHideFlags: 0
@@ -1350,6 +1350,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Etc.StartGiveItem
   itemData:
     _serializedList:
+    - Key: {fileID: 11400000, guid: 5c88e6cca39d498449fb834d59f42cf9, type: 2}
+      Value: 14000000
     - Key: {fileID: 11400000, guid: cdfc3e4262514d6419de1e7984bca1bf, type: 2}
       Value: 14000000
     - Key: {fileID: 11400000, guid: f8bae618ad2283648a13e816db0d6fc6, type: 2}
@@ -3485,6 +3487,7 @@ MonoBehaviour:
       effectSound: 0
     stat:
       sceneName: 
+      isGetItem: 0
       isChat: 0
       characterPositions:
         ks: 
@@ -3511,6 +3514,7 @@ MonoBehaviour:
       getDictionaryPageMemo: []
   PlayerStat:
     sceneName: 
+    isGetItem: 0
     isChat: 0
     characterPositions:
       ks: 

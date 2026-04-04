@@ -19,6 +19,7 @@ namespace _02Script.GoHouse.Block
         
         private Dictionary<Vector2, BlockObj> _blockPos = new Dictionary<Vector2, BlockObj>();
         private Dictionary<BlockType, List<BlockObj>> _typeBlock = new Dictionary<BlockType, List<BlockObj>>();
+        private bool _canSkip;
         
         private readonly string _goHouseSoSave = "battle_GoHouseStageSoSave";
 
@@ -38,23 +39,27 @@ namespace _02Script.GoHouse.Block
 
         public void Skip()
         {
-            _typeBlock[BlockType.House][0].EnterBlock();
+            if(_canSkip)
+                _typeBlock[BlockType.House][0].EnterBlock();
         }
 
         #region EnDiAw
         private void OnEnable()
         {
+            _canSkip = false;
             //LoadStage();
             SetStage(curStage);
             PortalSO.OnPortalEnter += Portal;
             DieSO.OnDie += Die;
             BlockPlayer.OnReSet += Die;
+            GoHouseInput.OnSkipClick += Skip;
         }
         private void OnDisable()
         {
             PortalSO.OnPortalEnter -= Portal;
             DieSO.OnDie -= Die;
             BlockPlayer.OnReSet -= Die;
+            GoHouseInput.OnSkipClick -= Skip;
         }
         #endregion
 
@@ -106,6 +111,7 @@ namespace _02Script.GoHouse.Block
         private void Die()
         {
             player.SetPlayerPos(curStage.playerPos, curStage.moveCount,this);
+            _canSkip = true;
         }
         private void Portal(BlockActionSO so)
         {

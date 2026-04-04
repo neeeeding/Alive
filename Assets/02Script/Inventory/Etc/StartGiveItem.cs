@@ -22,6 +22,7 @@ namespace _02Script.Inventory.Etc
 
         protected virtual void Set()
         {
+            if(IsCantGet()) return;
             foreach (KeyValuePair<ItemDataSO, List<int>> item in itemData)
             {
                 for (int i = 0; i < item.Value.Count; i++)
@@ -30,6 +31,13 @@ namespace _02Script.Inventory.Etc
                 }
             }
             gameObject.SetActive(false);
+        }
+
+        protected virtual bool IsCantGet()
+        {
+            bool isBase = HouseManager.Instance.PlayerStat.isGetItem;
+            HouseManager.Instance.PlayerStat.isGetItem = true;
+            return isBase;
         }
     }
 }

@@ -1,7 +1,5 @@
 ﻿using System;
 using _02Script.Etc;
-using _02Script.Inventory.Item;
-using _02Script.Manager;
 using UnityEngine;
 using Newtonsoft.Json;
 

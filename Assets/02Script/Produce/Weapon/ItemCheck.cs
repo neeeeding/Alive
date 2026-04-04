@@ -1,4 +1,5 @@
 ﻿using _02Script.Battle.Buff;
+using _02Script.DoTweenUI.Warring;
 using _02Script.Inventory.Item;
 using TMPro;
 using UnityEngine;
@@ -30,6 +31,13 @@ namespace _02Script.Produce.Weapon
         private void CheckProduce(SelectProduceType produceType)
         {
             if (SelectItemCard.curSelectItem == null) return;
+            
+
+            if (SelectItemCard.curSelectItem.GetCurProduce(false) == null)
+            {
+                WarringManager.Warring.ShowWarring("해당 재료로 무기 혹은 갑옷을 만들 수 없습니다.");
+                return;
+            }
             
             window.Check();
             Setting();

@@ -81,7 +81,6 @@ namespace _02Script.Battle.UI.Armor
         }
         protected override void LoadItem() //불러오기
         {
-            print("why?");
             SettingAllDataSO();
             Dictionary<ItemType, List<float>> save = BattleSaveManager.Instance.PlayerStat.items.ToDictionary();
             Dictionary<ItemType, List<WeaponArmorSaveData>> etcData = BattleSaveManager.Instance.PlayerStat.weaponArmor.ToDictionary();
@@ -92,7 +91,6 @@ namespace _02Script.Battle.UI.Armor
             ItemCards.Clear();
             ItemDatas.Clear();
 
-            print($"ok, {save.Count} / {_allArmorDataSO.Count}");
             foreach (KeyValuePair<ItemType, List<float>> item in save.ToList())
             {
                 if (item.Key == ItemType.notting) continue;

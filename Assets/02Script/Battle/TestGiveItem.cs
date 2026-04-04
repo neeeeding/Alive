@@ -14,5 +14,12 @@ namespace _02Script.Battle
         {
             SelectDistribution.OnStart -= Set;
         }
+        
+        protected override bool IsCantGet()
+        {
+            bool isBase = BattleSaveManager.Instance.PlayerStat.isGetItem;
+            BattleSaveManager.Instance.PlayerStat.isGetItem = true;
+            return isBase;
+        }
     }
 }

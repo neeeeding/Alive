@@ -15,6 +15,7 @@ namespace _02Script.SaveData
     public class PlayerStatSC
     {
         public string sceneName; //활동 하던 씬이름
+        public bool isGetItem; //기본으로 주는 아이템 받은 상태인지
 
         public bool isChat; //ture : 채팅 중, false : 인 게임
 
@@ -49,6 +50,7 @@ namespace _02Script.SaveData
         public void ResetStat()
         {
             sceneName = "JustTest";
+            isGetItem = false; 
             isChat = false;
 
             lastText = "마지막 대화가 없습니다.";
