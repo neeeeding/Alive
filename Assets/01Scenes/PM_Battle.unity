@@ -11526,6 +11526,7 @@ Transform:
   - {fileID: 1746494799}
   - {fileID: 1136970715}
   - {fileID: 89448842}
+  - {fileID: 1786218582}
   m_Father: {fileID: 1707107142}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &664195330
@@ -31008,6 +31009,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782141566}
   m_CullTransparentMesh: 1
+--- !u!1 &1786218581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1786218582}
+  - component: {fileID: 1786218583}
+  m_Layer: 0
+  m_Name: Damage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1786218582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786218581}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 662173022}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1786218583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786218581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09728119bb26421e9477af33b687d77a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Effect.DamageManager
+  parent: {fileID: 1786218582}
+  damageEffect: {fileID: 8709983659188829806, guid: dbfde87c81242b549b52ab2a7107a9a3, type: 3}
 --- !u!1 &1788348163
 GameObject:
   m_ObjectHideFlags: 0
@@ -31059,6 +31106,7 @@ MonoBehaviour:
       effectSound: 0
     stat:
       sceneName: 
+      isGetItem: 0
       isChat: 0
       characterPositions:
         ks: 
@@ -31085,6 +31133,7 @@ MonoBehaviour:
       getDictionaryPageMemo: []
   PlayerStat:
     sceneName: 
+    isGetItem: 0
     isChat: 0
     characterPositions:
       ks: 

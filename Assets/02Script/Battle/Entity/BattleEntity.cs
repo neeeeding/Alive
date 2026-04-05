@@ -13,6 +13,7 @@ namespace _02Script.Battle.Entity
     {
         public static Action<List<BattleEntity>,BattleEntity> OnTarget;
         public static Action<PlayerStateType> OnAction;
+        public static Action<Transform, int, bool> OnHit;
         
         [SerializeField] protected BuffManager buffManager;
         [SerializeField] protected EntitySO entity;
@@ -149,9 +150,13 @@ namespace _02Script.Battle.Entity
         public virtual void Hit(float damage)
         {
             if(!Agility()) return;
+            OnHit?.Invoke(transform,(int)damage, true);
 
-            if(EtcStat(StatsType.defense) != 0)
+            if (EtcStat(StatsType.defense) != 0)
+            {
                 damage /= EtcStat(StatsType.defense);
+                OnHit?.Invoke(transform,(int)EtcStat(StatsType.defense), false);
+            }
             curHp -= damage;
             OnAction?.Invoke(PlayerStateType.Hit);
             if (DieCheck())
