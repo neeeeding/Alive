@@ -14,6 +14,7 @@ namespace _02Script.Farming
         [Header("Seeds")]
         [SerializeField] protected SeedsSO[] _allSO;
         [SerializeField] private GameObject window;
+        [SerializeField] private Field field;
 
         protected Dictionary<ItemType, SeedsSO> _allDataSO;
         
@@ -27,7 +28,7 @@ namespace _02Script.Farming
             SeedsCard.OnClickCard += (so => CloseBtn());
             base.OnEnable();
         }
-        
+
         protected override void LoadItem() //불러오기
         {
             SettingAllDataSO();
@@ -44,11 +45,13 @@ namespace _02Script.Farming
                 {
                     if (!_allDataSO.ContainsKey(item.Key))
                     {
-                        return;
+                        continue;
                     }
                     AddItem(_allDataSO[item.Key].seeds, num);
                 }
             }
+            
+            field.LoadFarm(_allDataSO);
         }
 
         protected override void NewCard(ItemDataSO item, bool isEtc, int star = 3, int hp = 100,WeaponArmorSaveData saveData = null )

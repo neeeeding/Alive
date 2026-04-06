@@ -7574,6 +7574,7 @@ RectTransform:
   - {fileID: 2799456458932604351}
   - {fileID: 4300372605112118923}
   - {fileID: 6858279840724307381}
+  - {fileID: 5429777497586030724}
   m_Father: {fileID: 6150285340417347548}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -26881,6 +26882,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.UI.Etc.UIActive
   ui: {fileID: 2129393922425204688}
+--- !u!1 &6511334153688156170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5429777497586030724}
+  - component: {fileID: 1502119772676649136}
+  m_Layer: 5
+  m_Name: FarmLoad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5429777497586030724
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6511334153688156170}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1412919697923878307}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1502119772676649136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6511334153688156170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b13d59e11b404450971a2a0022cd2ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.FarmLoad
+  farm: {fileID: 8930024171863549250}
 --- !u!1 &6520931966702205417
 GameObject:
   m_ObjectHideFlags: 0
@@ -40885,6 +40935,11 @@ PrefabInstance:
 --- !u!224 &304024436651891528 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5275193170297017593, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
+  m_PrefabInstance: {fileID: 5552195759907164081}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8930024171863549250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3954315554422418163, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
   m_PrefabInstance: {fileID: 5552195759907164081}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6214759063369238655

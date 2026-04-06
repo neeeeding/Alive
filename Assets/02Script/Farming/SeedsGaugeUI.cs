@@ -13,12 +13,12 @@ namespace _02Script.Farming
         private float curTime;
         private float growTime;
         
-        public void SetSO(SeedsSO seedsSO)
+        public void SetSO(SeedsSO seedsSO, float time)
         {
             growTime = seedsSO.growDelay;
             
             viandImage.sprite = seedsSO.viand.itemImage;
-            curTime = 0;
+            curTime = time;
             _ = WaitGrow();
         }
 

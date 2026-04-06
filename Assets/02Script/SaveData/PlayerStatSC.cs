@@ -44,7 +44,9 @@ namespace _02Script.SaveData
         public List<string> getDictionaryPageMemo;
         
         //농사
-        //public SaveDictionary<>
+        private readonly Vector2 farmSize = new Vector2(6,7);
+        public SaveDictionary<SaveVector2, ItemType> farm;
+        public SaveDictionary<SaveVector2, float> farmTime;
         
         [ContextMenu("ResetStat")]
         public void ResetStat()
@@ -64,6 +66,7 @@ namespace _02Script.SaveData
             minute = 0;
              
             ResetItem();
+            ResetFarm();
 
             getDictionaryPage = new List<int>();
             getDictionaryPageMemo = new List<string>();
@@ -100,6 +103,21 @@ namespace _02Script.SaveData
                 }
                 st.Add(StatsType.curHp, 50);
                 characterStats.Add(name, st);
+            }
+        }
+
+        public void ResetFarm()
+        {
+            farm = new SaveDictionary<SaveVector2, ItemType>();
+            farmTime = new SaveDictionary<SaveVector2, float>();
+
+            for (int i = 0; i < farmSize.x; i++)
+            {
+                for (int j = 0; j < farmSize.y; j++)
+                {
+                    farm.Add(new Vector2(i,j), ItemType.none);
+                    farmTime.Add(new Vector2(i,j), 0);
+                }
             }
         }
         

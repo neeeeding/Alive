@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using _02Script.DoTweenUI.Warring;
 using _02Script.Etc;
 using _02Script.GameEvent;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Obj;
 using _02Script.GamePlayer;
+using _02Script.Manager;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -103,23 +105,37 @@ namespace _02Script.Farming
             {
                 NewSeeds(1);
             }
+            
+            SeedPlant(so,farmTilemap.WorldToCell(_clickPos));
+        }
 
+        public void LoadFarm(Dictionary<ItemType, SeedsSO> seeds)
+        {
+            Dictionary<SaveVector2, ItemType> farm = HouseManager.Instance.PlayerStat.farm.ToDictionary(); 
+
+            foreach (KeyValuePair<SaveVector2, ItemType> item in farm.ToArray())
+            {
+                if(item.Value == ItemType.none) continue;
+                SeedPlant(seeds[item.Value], new Vector3Int((int)item.Key.x, (int)item.Key.y, 0));
+            }
+        }
+
+        private void SeedPlant(SeedsSO so, Vector3Int pos)
+        {
             OneFarming newSeeds = _seeds[0];
-            
-            //위치
-            Vector3Int farmPos = farmTilemap.WorldToCell(_clickPos);
-            TileBase farmTile = farmTilemap.GetTile(farmPos);
-            _clickPos = farmTilemap.GetCellCenterWorld(farmPos);
-
+    
+            TileBase farmTile = farmTilemap.GetTile(pos);
+            Vector3 plantPos = farmTilemap.GetCellCenterWorld(pos);
+    
             if (farmTile == null) return;
-            
-            newSeeds.transform.position = _clickPos;
-            newSeeds.SetSO(so,this);
+
+            newSeeds.transform.position = plantPos;
+            newSeeds.SetSO(so, pos, this);
             newSeeds.gameObject.SetActive(true);
-            
+    
             _curFarmCount++;
             OnUseSeed?.Invoke(so.seeds, 1);
-            
+    
             _seeds.Remove(_seeds[0]);
         }
 

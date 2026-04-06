@@ -1,6 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using _02Script.Etc;
+using _02Script.Inventory.Item;
+using _02Script.Manager;
 using UnityEngine;
 
 namespace _02Script.Farming
@@ -17,17 +19,32 @@ namespace _02Script.Farming
         private CancellationTokenSource cts = new(); //시간을 위해
 
         private bool _isSpawned;
+        private float _curTime;
+        private SaveVector2 _curFarmPos;
 
         public SeedsSO GetSO()
         {
             return mySO;
         }
 
-        public void SetSO(SeedsSO so, Field field)
+        public void SetSO(SeedsSO so,Vector3 farmPos, Field field)
         {
+            _curFarmPos = (Vector2)farmPos;
+            
+            if (!HouseManager.Instance.PlayerStat.farm.ContainsKey(_curFarmPos))
+            {
+                HouseManager.Instance.PlayerStat.farm.Add(_curFarmPos, so.seeds.itemType);
+            }
+            HouseManager.Instance.PlayerStat.farm[_curFarmPos] = so.seeds.itemType;
+            
+            _curTime = 0;
+            if (HouseManager.Instance.PlayerStat.farmTime.ContainsKey(_curFarmPos))
+            {
+                _curTime = HouseManager.Instance.PlayerStat.farmTime[_curFarmPos];
+            }            
             seeds.SetSO(so);
             viand.SetSO(so, this);
-            seedsUI.SetSO(so);
+            seedsUI.SetSO(so,_curTime);
             _isSpawned = true;
             mySO = so;
             myP = field;
@@ -50,22 +67,34 @@ namespace _02Script.Farming
 
         private async Task WaitGrow()
         {
-            await AsyncTime.WaitSeconds(mySO.growDelay, cts.Token, false);
+            while (_curTime < mySO.growDelay)
+            {
+                await AsyncTime.WaitSeconds(1f, cts.Token, false);
+                _curTime += 1f;
+                if (!HouseManager.Instance.PlayerStat.farmTime.ContainsKey(_curFarmPos))
+                {
+                    HouseManager.Instance.PlayerStat.farmTime.Add(_curFarmPos,_curTime);
+                }
+                HouseManager.Instance.PlayerStat.farmTime[_curFarmPos] = _curTime;
+                
+            }
             viand.gameObject.SetActive(true);
             seeds.gameObject.SetActive(false);
             seedsUI.gameObject.SetActive(false);
+            if (!HouseManager.Instance.PlayerStat.farmTime.ContainsKey(_curFarmPos))
+            {
+                HouseManager.Instance.PlayerStat.farmTime.Add(_curFarmPos,0);
+            }
+            HouseManager.Instance.PlayerStat.farmTime[_curFarmPos] = 0;
 
             _isSpawned = false;
         }
-
-        private void OnDisable()
-        {
-            mySO = null;
-        }
-
         public void ListSeeds()
         {
+            HouseManager.Instance.PlayerStat.farmTime[_curFarmPos] = 0;
+            HouseManager.Instance.PlayerStat.farm[_curFarmPos] = ItemType.none;
             myP.ListSeeds(this);
+            mySO = null;
         }
 
         private void OnDestroy()

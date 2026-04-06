@@ -62,7 +62,7 @@ namespace _02Script.SaveData
                 string json = PlayerPrefs.GetString(GamePath);
                 if (string.IsNullOrEmpty(json)) return;
 
-                var settings = new JsonSerializerSettings
+                JsonSerializerSettings settings = new JsonSerializerSettings
                 {
                     TypeNameHandling = TypeNameHandling.Auto,
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
@@ -99,6 +99,8 @@ namespace _02Script.SaveData
             s.characterPositions?.SyncDictFromList();
             s.items?.SyncDictFromList();
             s.weaponArmor?.SyncDictFromList();
+            s.farm?.SyncDictFromList();
+            s.farmTime?.SyncDictFromList();
 
             if (s.characterStats != null)
             {

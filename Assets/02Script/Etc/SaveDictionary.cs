@@ -94,7 +94,6 @@ namespace _02Script.Etc
             set => _dictionary[key] = value;
         }
     }
-    
     [Serializable]
     public struct SaveVector2
     {
@@ -103,8 +102,21 @@ namespace _02Script.Etc
 
         public SaveVector2(Vector2 v) { x = v.x; y = v.y; }
         public Vector2 ToVector2() => new Vector2(x, y);
-    
+
         public static implicit operator Vector2(SaveVector2 v) => new Vector2(v.x, v.y);
         public static implicit operator SaveVector2(Vector2 v) => new SaveVector2(v);
+
+        // 이 두 개 추가
+        public override bool Equals(object obj)
+        {
+            if (obj is SaveVector2 other)
+                return Mathf.Approximately(x, other.x) && Mathf.Approximately(y, other.y);
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return Mathf.RoundToInt(x * 1000).GetHashCode() ^ (Mathf.RoundToInt(y * 1000).GetHashCode() << 2);
+        }
     }
 }
