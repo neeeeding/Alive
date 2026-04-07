@@ -61,6 +61,8 @@ namespace _02Script.Battle.Monster
         protected override void OnEnable()
         {
             base.OnEnable();
+            
+            curHp = maxHp;
             hpUI.UpdateHp(curHp, maxHp);
             if(startBuff == null)return;
             foreach (BuffSO buff in startBuff)

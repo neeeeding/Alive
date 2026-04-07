@@ -102,6 +102,10 @@ namespace _02Script.Battle.Monster
                 }
                 
                 monster.transform.position = spawn.spawnPos;
+                foreach (BattleEntity target in _canTargets)
+                {
+                    (target as BattleCharacter).GetCanTargets(monster);
+                }
                 
                 monster.gameObject.SetActive(true);
             }
@@ -115,10 +119,6 @@ namespace _02Script.Battle.Monster
                 _bossMonsters.Add(monster);
                 monster.GetCanTargets(_canTargets.ToList());
                 monster.gameObject.SetActive(false);
-                foreach (BattleEntity target in _canTargets)
-                {
-                    (target as BattleCharacter).GetCanTargets(monster);
-                }
             }
             else
             {
@@ -127,10 +127,6 @@ namespace _02Script.Battle.Monster
                 monster.GetCanTargets(_canTargets.ToList());
                 _monsters.Add(monster);
                 monster.gameObject.SetActive(false);
-                foreach (BattleEntity target in _canTargets)
-                {
-                    (target as BattleCharacter).GetCanTargets(monster);
-                }
             }
         }
         private void Update()

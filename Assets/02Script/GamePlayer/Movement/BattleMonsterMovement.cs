@@ -9,9 +9,12 @@ namespace _02Script.GamePlayer.Movement
     {
         [Header("Battle--")]
         [SerializeField] private Vector2 targetOffset= new Vector2(1,0);
-        
-        private void OnEnable()
+
+        private GameObject center;
+
+        protected override void OnEnable()
         {
+            center = Camera.main.gameObject;
             BattleEntity.OnTarget += Target;
             BattleEntity.OnAction += ChangeAnimation;
         }
@@ -26,8 +29,14 @@ namespace _02Script.GamePlayer.Movement
         private void Target(List<BattleEntity> target, BattleEntity moveEntity)
         {
             if(moveEntity.gameObject != gameObject) return;
+            Rd.constraints = RigidbodyConstraints2D.FreezeRotation;
 
-            if(target.Count <= 0) return;
+            if (target.Count <= 0)
+            {
+                TargetPos = center.transform.position;
+                Rd.constraints = RigidbodyConstraints2D.FreezeAll;
+                return;
+            }
             
             if (target.Count == 1)
             {

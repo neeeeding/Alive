@@ -3948,7 +3948,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f0193004ec24cbc4bb8916c5d988f225, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3957,7 +3957,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &238674895
 CapsuleCollider2D:
@@ -13762,7 +13762,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f0193004ec24cbc4bb8916c5d988f225, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -13771,7 +13771,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!1 &840051778
 GameObject:
@@ -21751,7 +21751,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f0193004ec24cbc4bb8916c5d988f225, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -21760,7 +21760,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!1 &1302269676
 GameObject:
@@ -31131,6 +31131,12 @@ MonoBehaviour:
         ks: 
       getDictionaryPage: 
       getDictionaryPageMemo: []
+      farm:
+        ks: []
+        vs: 
+      farmTime:
+        ks: []
+        vs: []
   PlayerStat:
     sceneName: 
     isGetItem: 0
@@ -31158,6 +31164,12 @@ MonoBehaviour:
       ks: 
     getDictionaryPage: 
     getDictionaryPageMemo: []
+    farm:
+      ks: []
+      vs: 
+    farmTime:
+      ks: []
+      vs: []
   isStart: 0
 --- !u!1 &1800677937
 GameObject:
@@ -31609,7 +31621,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f0193004ec24cbc4bb8916c5d988f225, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -31618,7 +31630,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!4 &1816444918
 Transform:

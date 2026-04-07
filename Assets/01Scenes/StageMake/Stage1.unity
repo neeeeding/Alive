@@ -735,7 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522d6733c29f4361a3e6fc91337c333e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Stage.StagePlayerPosSet
-  curStage: {fileID: 11400000, guid: ea825a4fa25b28840ad6ed280a08336b, type: 2}
+  curStage: {fileID: 11400000, guid: bcbb219a82dbc7849bd9e48b76e6fa0a, type: 2}
   cPlayerOnePos: {fileID: 2112486910}
   cPlayerTwoPos: {fileID: 968452661}
   bPlayerOnePos: {fileID: 2090017885}
@@ -805,7 +805,7 @@ MonoBehaviour:
   setSpawn:
     _serializedList: []
   manager: {fileID: 0}
-  stage: {fileID: 11400000, guid: ea825a4fa25b28840ad6ed280a08336b, type: 2}
+  stage: {fileID: 11400000, guid: bcbb219a82dbc7849bd9e48b76e6fa0a, type: 2}
 --- !u!1 &217346290
 GameObject:
   m_ObjectHideFlags: 0
@@ -2499,7 +2499,7 @@ PrefabInstance:
     - target: {fileID: 2561617101887821167, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
       propertyPath: entity
       value: 
-      objectReference: {fileID: 11400000, guid: d76f5bb7c781f67438da3582cf56829f, type: 2}
+      objectReference: {fileID: 11400000, guid: 80a170074bf69bc4a9c86997285cd049, type: 2}
     - target: {fileID: 3877810776574788199, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.07
@@ -2547,6 +2547,10 @@ PrefabInstance:
     - target: {fileID: 4244232255678498818, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871357289923850697, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
+      propertyPath: playerName
+      value: 31000
       objectReference: {fileID: 0}
     - target: {fileID: 8611182268185203258, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3259,7 +3263,7 @@ PrefabInstance:
     - target: {fileID: 2561617101887821167, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
       propertyPath: entity
       value: 
-      objectReference: {fileID: 11400000, guid: d76f5bb7c781f67438da3582cf56829f, type: 2}
+      objectReference: {fileID: 11400000, guid: 80a170074bf69bc4a9c86997285cd049, type: 2}
     - target: {fileID: 3877810776574788199, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.33
@@ -3307,6 +3311,10 @@ PrefabInstance:
     - target: {fileID: 4244232255678498818, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871357289923850697, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
+      propertyPath: playerName
+      value: 31000
       objectReference: {fileID: 0}
     - target: {fileID: 8611182268185203258, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3757,7 +3765,7 @@ PrefabInstance:
     - target: {fileID: 2561617101887821167, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
       propertyPath: entity
       value: 
-      objectReference: {fileID: 11400000, guid: d76f5bb7c781f67438da3582cf56829f, type: 2}
+      objectReference: {fileID: 11400000, guid: 80a170074bf69bc4a9c86997285cd049, type: 2}
     - target: {fileID: 3877810776574788199, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.16
@@ -3805,6 +3813,10 @@ PrefabInstance:
     - target: {fileID: 4244232255678498818, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871357289923850697, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
+      propertyPath: playerName
+      value: 31000
       objectReference: {fileID: 0}
     - target: {fileID: 8611182268185203258, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6107,16 +6119,16 @@ MonoBehaviour:
     _serializedList:
     - Key: {fileID: 1350900688}
       Value: 0
-    - Key: {fileID: 1055993300}
-      Value: 0
     - Key: {fileID: 849716363}
-      Value: 0
+      Value: 22
     - Key: {fileID: 536010536}
-      Value: 1
+      Value: 38
+    - Key: {fileID: 1055993300}
+      Value: 45
     - Key: {fileID: 314066739}
-      Value: 12
+      Value: 55
   manager: {fileID: 0}
-  stage: {fileID: 11400000, guid: ea825a4fa25b28840ad6ed280a08336b, type: 2}
+  stage: {fileID: 11400000, guid: bcbb219a82dbc7849bd9e48b76e6fa0a, type: 2}
 --- !u!1 &1961500630
 GameObject:
   m_ObjectHideFlags: 0
@@ -7084,6 +7096,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2001704904815377023, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
+      propertyPath: playerName
+      value: 35001
+      objectReference: {fileID: 0}
     - target: {fileID: 3467861994220582336, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -7099,7 +7115,7 @@ PrefabInstance:
     - target: {fileID: 4053868962020317090, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
       propertyPath: entity
       value: 
-      objectReference: {fileID: 11400000, guid: 813977bad84f7e94a8db4449b6b0c2da, type: 2}
+      objectReference: {fileID: 11400000, guid: 9f83c3fb18976994fa54c9ab72845bda, type: 2}
     - target: {fileID: 6287566640977731604, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.34
@@ -7193,6 +7209,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2561617101887821167, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
+      propertyPath: entity
+      value: 
+      objectReference: {fileID: 11400000, guid: 80a170074bf69bc4a9c86997285cd049, type: 2}
     - target: {fileID: 3877810776574788199, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.6
@@ -7245,6 +7265,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2943427656069541934, guid: 553b441f1587db04b913347cd46e096d, type: 3}
+    - target: {fileID: 7871357289923850697, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
+      propertyPath: playerName
+      value: 31000
+      objectReference: {fileID: 0}
     - target: {fileID: 8611182268185203258, guid: b4fba9cd8b6b25141a5ee9665afa4fc8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
