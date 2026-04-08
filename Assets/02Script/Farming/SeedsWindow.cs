@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
@@ -18,6 +19,10 @@ namespace _02Script.Farming
 
         protected Dictionary<ItemType, SeedsSO> _allDataSO;
         
+        public void CloseBtn(SeedsSO _)
+        {
+            CloseBtn();
+        }
         public void CloseBtn()
         {
             window.SetActive(false);
@@ -25,10 +30,21 @@ namespace _02Script.Farming
 
         protected override void OnEnable()
         {
-            SeedsCard.OnClickCard += (so => CloseBtn());
+            SeedsCard.OnClickCard += CloseBtnDelay;
             base.OnEnable();
         }
 
+        protected override void OnDisable()
+        {
+            SeedsCard.OnClickCard -= CloseBtnDelay;
+            base.OnDisable();
+        }
+
+        private async void CloseBtnDelay(SeedsSO so)
+        {
+            await Task.Yield();
+            CloseBtn();
+        }
         protected override void LoadItem() //불러오기
         {
             SettingAllDataSO();
@@ -89,6 +105,17 @@ namespace _02Script.Farming
             {
                 _allDataSO.Add(data.seeds.itemType, data);
             }
+        }
+
+
+        protected override void LessItem(ItemDataSO item, bool isThrow, int count = 1, WeaponArmorSaveData saveData = null) //어쨌든 아이템 감소
+        {
+            if (_allDataSO == null || !_allDataSO.ContainsKey(item.itemType) || !ItemDatas.ContainsKey(_allDataSO[item.itemType].seeds)) return;
+            
+            ItemData data = ItemDatas[_allDataSO[item.itemType].seeds];
+                
+            data.UseItem(count, isThrow);
+            ItemCards[data][ItemCards[data].Count -1].UpdateCountUI();
         }
     }
 }

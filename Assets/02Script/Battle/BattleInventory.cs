@@ -110,6 +110,8 @@ namespace _02Script.Battle
         #region GetAddItem (inventory)
         protected virtual void GetItem(ItemDataSO data, int count, EntityName type) //아이템 얻은거, 카드도 생성
         {
+            if (data.category != ItemCategory.weapon && 
+                data.category != ItemCategory.armor ) return;
             WeaponArmorSaveData save = null;
             foreach (WeaponArmorSaveData saveData in BattleSaveManager.Instance.PlayerStat.weaponArmor[data.itemType].ToArray())
             {

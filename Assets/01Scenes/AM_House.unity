@@ -689,39 +689,104 @@ MonoBehaviour:
   m_GameObject: {fileID: 194002483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dad653f0ccef49718f9a45d88e7c2207, type: 3}
+  m_Script: {fileID: 11500000, guid: c76e46bcb94e4a31bb4cd3605eb43e80, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Etc.StartGiveItem
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Etc.WeaponArmorStartGiveItem
   itemData:
     _serializedList:
-    - Key: {fileID: 11400000, guid: 0f90c848eb3892c458e7f7e9e4740b2c, type: 2}
-      Value: 0200000004000000010000000100000005000000
-    - Key: {fileID: 11400000, guid: 4140b63b9b767b64987c15c82ee9e87b, type: 2}
-      Value: 25000000
-    - Key: {fileID: 11400000, guid: a0e20cbe11964954ba8cfc46b7f300e1, type: 2}
-      Value: 64000000
     - Key: {fileID: 11400000, guid: 6ebcc3a549646ac4c9b8d5bc4e59bd74, type: 2}
+      Value: 64000000
+    - Key: {fileID: 11400000, guid: 2324f29f0b7d12c42ac23d97af613c00, type: 2}
+      Value: 64000000
+    - Key: {fileID: 11400000, guid: 04f82857dddd3fb439ebcd3fb028e1a4, type: 2}
+      Value: 64000000
+    - Key: {fileID: 11400000, guid: e9bf82993338e3f4288d15a56605cd38, type: 2}
+      Value: 64000000
+    - Key: {fileID: 11400000, guid: 5ffa7a9f3956484469c8d1403fed9794, type: 2}
+      Value: 64000000640000006400000064000000
+    - Key: {fileID: 11400000, guid: 5c88e6cca39d498449fb834d59f42cf9, type: 2}
+      Value: 14000000
+    - Key: {fileID: 11400000, guid: cdfc3e4262514d6419de1e7984bca1bf, type: 2}
       Value: 14000000
     - Key: {fileID: 11400000, guid: f8bae618ad2283648a13e816db0d6fc6, type: 2}
       Value: 14000000
-    - Key: {fileID: 11400000, guid: 40130562fb99d02439e0033707a63f65, type: 2}
-      Value: 0a000000
-    - Key: {fileID: 11400000, guid: 0bc6f1e3212891e4983de9cb3dbfe8f5, type: 2}
-      Value: 01000000
-    - Key: {fileID: 11400000, guid: bc26e209dec03d644806688ba61ea828, type: 2}
-      Value: 01000000
-    - Key: {fileID: 11400000, guid: 337e4e29769413846a5242524a419a77, type: 2}
-      Value: 01000000
-    - Key: {fileID: 11400000, guid: 322614426172b5c4b9ba54c764e49e2e, type: 2}
-      Value: 01000000
+    - Key: {fileID: 11400000, guid: 7d2260e5ad0729d4c951b07e25880f9f, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: f107625c9ddf76c4e8469b6666ac3db4, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: 42876d21a2507aa4aaefe6390ecc7d99, type: 2}
+      Value: 05000000
     - Key: {fileID: 11400000, guid: 5503f07372d0a7a4287d5ef8f9a60ee2, type: 2}
-      Value: 0f000000
-    - Key: {fileID: 11400000, guid: dcdb978804125614aa87d203d457e211, type: 2}
-      Value: 1f000000
-    - Key: {fileID: 11400000, guid: 11a1dd9a97209104ca6b01426589dc19, type: 2}
-      Value: 1e000000
-    - Key: {fileID: 11400000, guid: 321cb8aa4378b9447abd76bb4ca77549, type: 2}
-      Value: 0a000000
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: a0e20cbe11964954ba8cfc46b7f300e1, type: 2}
+      Value: 64000000
+    - Key: {fileID: 11400000, guid: 322614426172b5c4b9ba54c764e49e2e, type: 2}
+      Value: 64000000
+    - Key: {fileID: 11400000, guid: 337e4e29769413846a5242524a419a77, type: 2}
+      Value: 64000000
+    - Key: {fileID: 11400000, guid: bc26e209dec03d644806688ba61ea828, type: 2}
+      Value: 64000000
+    - Key: {fileID: 11400000, guid: 0bc6f1e3212891e4983de9cb3dbfe8f5, type: 2}
+      Value: 64000000
+  buffType:
+    _serializedList:
+    - Key: {fileID: 11400000, guid: 2324f29f0b7d12c42ac23d97af613c00, type: 2}
+      Value:
+      - type: 0
+        hp: 100
+        skillCoolTime: 5
+        skillDamage: 8
+        buffExplanation: 
+        explanation: 
+        buffTypes: fc2a0000
+    - Key: {fileID: 11400000, guid: 04f82857dddd3fb439ebcd3fb028e1a4, type: 2}
+      Value:
+      - type: 0
+        hp: 100
+        skillCoolTime: 15
+        skillDamage: 10
+        buffExplanation: 
+        explanation: 
+        buffTypes: f82a0000
+    - Key: {fileID: 11400000, guid: e9bf82993338e3f4288d15a56605cd38, type: 2}
+      Value:
+      - type: 0
+        hp: 100
+        skillCoolTime: 2
+        skillDamage: 5
+        buffExplanation: 
+        explanation: 
+        buffTypes: e12e0000
+    - Key: {fileID: 11400000, guid: 5ffa7a9f3956484469c8d1403fed9794, type: 2}
+      Value:
+      - type: 0
+        hp: 100
+        skillCoolTime: 1
+        skillDamage: 2
+        buffExplanation: 
+        explanation: 
+        buffTypes: 
+      - type: 0
+        hp: 100
+        skillCoolTime: 1
+        skillDamage: 2
+        buffExplanation: 
+        explanation: 
+        buffTypes: 
+      - type: 0
+        hp: 100
+        skillCoolTime: 1
+        skillDamage: 2
+        buffExplanation: 
+        explanation: 
+        buffTypes: 
+      - type: 0
+        hp: 100
+        skillCoolTime: 1
+        skillDamage: 2
+        buffExplanation: 
+        explanation: 
+        buffTypes: 
 --- !u!1 &219247126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,7 +1281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &546324010
 Transform:
   m_ObjectHideFlags: 0
@@ -4402,6 +4467,11 @@ MonoBehaviour:
   dialogEntitySo: {fileID: 11400000, guid: 4aba3809a35a8cf4ebb752ad2847268a, type: 2}
   chapter: 20001
   finalNum: 0
+--- !u!1 &1496698102 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 513280359255536188, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
+  m_PrefabInstance: {fileID: 8736283038233231832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1516397799
 GameObject:
   m_ObjectHideFlags: 0
@@ -5197,7 +5267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Farming.Field
   doUiType: 1
-  doUi: {fileID: 8736283038233231833}
+  doUi: {fileID: 1496698102}
   canFarmCount: 20
   curTemperatureText: {fileID: 471781229}
   parent: {fileID: 1558205117}
@@ -14308,6 +14378,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1502119772676649136, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1514593745703125960, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -18230,11 +18304,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
---- !u!1 &8736283038233231833 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8930024171863549250, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-  m_PrefabInstance: {fileID: 8736283038233231832}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

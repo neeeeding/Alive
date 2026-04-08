@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using _02Script.Farming;
+using _02Script.Inventory.Inventory.Use;
 using _02Script.Inventory.Item;
 using _02Script.Produce.Weapon;
 using _02Script.UI.Dialog.Dialog;
@@ -32,6 +33,10 @@ namespace _02Script.Inventory.Inventory
             StoreCard.OnSellItem += AddItem;
             StoreCard.OnPayItem += ThrowItem;
             Field.OnUseSeed += ThrowItem;
+            
+            UseWindow.OnHold += HoldItem;
+            UseWindow.OnUse += UseItem;
+            UseWindow.OnThrow += ThrowItem;
         }
 
         protected virtual  void OnDisable()
@@ -43,6 +48,10 @@ namespace _02Script.Inventory.Inventory
             StoreCard.OnSellItem -= AddItem;
             StoreCard.OnPayItem -= ThrowItem;
             Field.OnUseSeed -= ThrowItem;
+            
+            UseWindow.OnHold -= HoldItem;
+            UseWindow.OnUse -= UseItem;
+            UseWindow.OnThrow -= ThrowItem;
         }
         #endregion
 
@@ -108,6 +117,7 @@ namespace _02Script.Inventory.Inventory
                     case ItemCategory.machine:
                         foreach (ItemCard card in ItemCards[data].ToList())
                         {
+                            print($"{gameObject.name} / {transform.parent.name} => {item.name}");
                             if(count != card.ReturnNum(false)) continue;
                             
                             ItemCards[data].Remove(card);

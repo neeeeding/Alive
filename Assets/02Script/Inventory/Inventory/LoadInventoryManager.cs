@@ -107,6 +107,14 @@ namespace _02Script.Inventory.Inventory
                     break;
             }
         }
+        
+        protected override void LessItem(ItemDataSO item, bool isThrow, int count = 1, WeaponArmorSaveData saveData = null) //어쨌든 아이템 감소
+        {
+            if (AllDataSO == null || !AllDataSO.ContainsKey(item.itemType)) return;
+            
+            item = AllDataSO[item.itemType];
+            base.LessItem(item, isThrow, count, saveData);
+        }
 
         protected virtual void SettingAllDataSO()
         {

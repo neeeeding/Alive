@@ -4601,7 +4601,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC628\uB09C, \uC628\uB09C, \uC628\uB09C, \uC628\uB09C, \uC628\uB09C"
+  m_text: "\uC628\uB09C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d57835b8373e3644fa6d709471792233, type: 2}
   m_sharedMaterial: {fileID: 5034966237914011262, guid: d57835b8373e3644fa6d709471792233, type: 2}
@@ -20371,7 +20371,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 392ee720e0684e698bdcd9c65ee24a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Inventory.Use.UseWindow
-  inventoryManager: {fileID: 6904985021096605004}
   countInputField: {fileID: 825425419599897352}
   countSlider: {fileID: 3431316779314370308}
 --- !u!1 &4827805138114023033
@@ -26925,7 +26924,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6511334153688156170}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b13d59e11b404450971a2a0022cd2ca8, type: 3}
   m_Name: 
@@ -40711,6 +40710,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1263366930590621359, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263366930590621359, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263366930590621359, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5311388
+      objectReference: {fileID: 0}
     - target: {fileID: 1367638568645231091, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
       propertyPath: allSeedsSOs.Array.size
       value: 1
@@ -40774,6 +40785,10 @@ PrefabInstance:
     - target: {fileID: 3954315554422418163, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
       propertyPath: m_Name
       value: FarmingWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954315554422418163, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5275193170297017593, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
       propertyPath: m_Pivot.x
@@ -40879,6 +40894,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5337563134182702477, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6721293431222442451, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -40903,6 +40922,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6928902280059711615, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
+      propertyPath: window
+      value: 
+      objectReference: {fileID: 513280359255536188}
     - target: {fileID: 6968753466922938694, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -40935,6 +40958,11 @@ PrefabInstance:
 --- !u!224 &304024436651891528 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5275193170297017593, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
+  m_PrefabInstance: {fileID: 5552195759907164081}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &513280359255536188 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5337563134182702477, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
   m_PrefabInstance: {fileID: 5552195759907164081}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &8930024171863549250 stripped

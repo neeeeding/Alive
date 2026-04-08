@@ -1,14 +1,19 @@
+using System;
 using _02Script.DoTweenUI.Warring;
 using _02Script.Inventory.Item;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace _02Script.Inventory.Inventory.Use
 {
     public class UseWindow  : MonoBehaviour
     {
-        [SerializeField] private LoadInventoryManager inventoryManager;
+        public static Action<ItemData, int> OnHold;
+        public static Action<ItemDataSO, int> OnUse;
+        public static Action<ItemDataSO, int> OnThrow;
+        
         [SerializeField] private TMP_InputField countInputField;
         [SerializeField] private Slider countSlider;
 
@@ -53,7 +58,7 @@ namespace _02Script.Inventory.Inventory.Use
 
         public void HoldData()
         {
-            inventoryManager.HoldItem(card.ReturnData(), (int)(useNum >= 0 ? useNum : 
+            OnHold?.Invoke(card.ReturnData(), (int)(useNum >= 0 ? useNum : 
                 int.Parse(countInputField.text)));
             
             gameObject.SetActive(false);
@@ -71,13 +76,13 @@ namespace _02Script.Inventory.Inventory.Use
             if (rand == 1)
             {
                 WarringManager.Warring.ShowWarring("섭취에 성공하셨습니다!");
-                inventoryManager.UseItem(card.ReturnData().ReturnDataSO(), (int)(useNum >= 0 ? useNum : 
+                OnUse?.Invoke(card.ReturnData().ReturnDataSO(), (int)(useNum >= 0 ? useNum : 
                     int.Parse(countInputField.text)));
             }
             else
             {
                 WarringManager.Warring.ShowWarring("섭취에 실패하셨습니다...");
-                inventoryManager.ThrowItem(card.ReturnData().ReturnDataSO(), (int)(useNum >= 0 ? useNum : 
+                OnThrow?.Invoke(card.ReturnData().ReturnDataSO(), (int)(useNum >= 0 ? useNum : 
                     int.Parse(countInputField.text)));
             }
             
@@ -86,7 +91,7 @@ namespace _02Script.Inventory.Inventory.Use
         
         public void ThrowData()
         {
-            inventoryManager.ThrowItem(card.ReturnData().ReturnDataSO(), (int)(useNum >= 0 ? useNum : 
+            OnThrow?.Invoke(card.ReturnData().ReturnDataSO(), (int)(useNum >= 0 ? useNum : 
                 int.Parse(countInputField.text)));
             
             gameObject.SetActive(false);

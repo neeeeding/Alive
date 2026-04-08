@@ -1,7 +1,6 @@
 ﻿using System;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
-using _02Script.UI.Dialog.Dialog;
 using TMPro;
 using UnityEngine;
 
