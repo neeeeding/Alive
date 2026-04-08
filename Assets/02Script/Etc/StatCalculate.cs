@@ -9,7 +9,7 @@ namespace _02Script.Etc
     public class StatCalculate : MonoBehaviour
     {
         private static Dictionary<StatsType,(float baseValue,float[] addValue,float lastAdd)> _allValues = new Dictionary<StatsType, (float, float[],float)>();
-
+        
         private void Awake()
         {
             SetValue();
@@ -17,7 +17,7 @@ namespace _02Script.Etc
 
         public static string StatAlphabet(EntityName character,StatsType statType)
         {
-            int stat = BattleSaveManager.Instance.PlayerStat.characterStats[character][statType];
+            int stat = SaveManagerCheck.GetCurScenePlayerStat().characterStats[character][statType];
 
             string value = ((stat-1)/5) switch
             {
@@ -52,10 +52,10 @@ namespace _02Script.Etc
             if (character == EntityName.None || statType == StatsType.none) return 0;
             if (statType == StatsType.curHp) //체력은 계산할 필요가 없음.
             {
-                return BattleSaveManager.Instance.PlayerStat.characterStats[character][StatsType.curHp];
+                return SaveManagerCheck.GetCurScenePlayerStat().characterStats[character][StatsType.curHp];
             }
             
-            int stat = BattleSaveManager.Instance.PlayerStat.characterStats[character][statType];
+            int stat = SaveManagerCheck.GetCurScenePlayerStat().characterStats[character][statType];
             
             float statValue = _allValues[statType].baseValue;
 

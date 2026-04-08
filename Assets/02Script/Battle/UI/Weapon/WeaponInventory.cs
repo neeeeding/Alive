@@ -83,7 +83,28 @@ namespace _02Script.Battle.UI.Weapon
         #region GetAddItem (inventory)
         public override void AddItem(ItemDataSO item,WeaponArmorSaveData saveData, int count = 1)
         {
-            AddItem(item, count);
+            if(item.category != ItemCategory.weapon) return;
+            
+            if(_allWeaponDataSO.Count <= 0)
+                SettingAllDataSO();
+            
+            if (_allWeaponDataSO.ContainsKey(item.itemType))
+            {
+                base.AddItem(_allWeaponDataSO[item.itemType], count);
+                
+                ItemData d = ItemDatas[_allWeaponDataSO[item.itemType]]; //그냥 item하면 인스턴스 값이 달라서 못함.
+                (ItemCards[d][ItemCards[d].Count -1] as WeaponInventoryCard).Set(_weaponEntity);
+                
+                if (item is WeaponItemDataSO)
+                {
+                    WeaponInventoryCard card = ItemCards[d][ItemCards[d].Count -1] as WeaponInventoryCard;
+                    card.NewCard(buffFind,d,0,count,saveData);
+                }
+            }
+            if (_isBeforeAutoChange)
+            {
+                AutoWeaponSelect();
+            }
         }
         public override void AddItem(ItemDataSO item, int count = 1)
         {
@@ -102,9 +123,44 @@ namespace _02Script.Battle.UI.Weapon
                 if (item is WeaponItemDataSO)
                 {
                     WeaponInventoryCard card = ItemCards[d][ItemCards[d].Count -1] as WeaponInventoryCard;
-                    card.NewCard(buffFind,d,0,count);
+                    WeaponArmorSaveData data = null;
+                    card.NewCard(buffFind,d,0,count,data);
                 }
             }
+            if (_isBeforeAutoChange)
+            {
+                AutoWeaponSelect();
+            }
+        }
+
+        protected override void LoadItem(KeyValuePair<ItemType, List<float>> item, Dictionary<ItemType, List<WeaponArmorSaveData>> etcData, ItemDataSO so)
+        {
+            int count = item.Value.Count;
+            for (int i = 1; i < count; i++)
+            {
+                WeaponArmorSaveData saveData = null;
+                if (etcData.ContainsKey(item.Key) && etcData[item.Key].Count >= i)
+                    saveData = etcData[item.Key][i - 1];
+                else
+                    saveData = NewSaveData(so, (int)item.Value[i]);
+                            
+                AddItem(so,saveData, (int)item.Value[i]);
+                //NewCard(so, ItemDatas.ContainsKey(so), (int)item.Value[i], (int)item.Value[i],saveData);
+                if (!ItemDatas.ContainsKey(so))
+                {
+                    continue;
+                }
+                ItemData data = ItemDatas[so];
+                data.AddCountOnly();
+                ItemCards[data][ItemCards[data].Count - 1].UpdateCountUI();
+            }
+        }
+
+        protected override void NewCard(ItemDataSO item, bool isEtc, int star = 3, int hp = 100, WeaponArmorSaveData saveData = null)
+        {
+            base.NewCard(item, isEtc, star, hp, saveData);
+            ItemData itemData =ItemDatas[item];
+            (ItemCards[itemData][ItemCards[itemData].Count - 1]as WeaponInventoryCard).Set(_weaponEntity);
             if (_isBeforeAutoChange)
             {
                 AutoWeaponSelect();

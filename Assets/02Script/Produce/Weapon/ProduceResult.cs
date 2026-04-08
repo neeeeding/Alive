@@ -79,7 +79,7 @@ namespace _02Script.Produce.Weapon
             HouseManager.Instance.PlayerStat.weaponArmor[item.itemType].Add(saveData);
             
             OnUseItem?.Invoke(SelectItemCard.curSelectItem.GetCurProduce(true),1);
-            OnGetItem?.Invoke(item,saveData, _hp); //현재는 미니게임 안 하니 내구도 100
+            OnGetItem?.Invoke(item, saveData, _hp);
             SelectItemCard.curSelectItem = null;
         }
 

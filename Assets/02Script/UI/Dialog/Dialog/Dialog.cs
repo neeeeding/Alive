@@ -295,10 +295,10 @@ namespace _02Script.UI.Dialog.Dialog
             DoChat(true);
         }
         
-        private void LoveUp(int i) //호감도 오르거나 내리는 거 있으면 해주기.
+        private void LoveUp(int i) //신뢰도 오르거나 내리는 거 있으면 해주기.
         {
             if(_isAM) return;
-            if (dialog[i][DialogType.GetLove.ToString()] != "") //호감도 얻는게 있다면. (혹은 뺏는거)
+            if (dialog[i][DialogType.GetLove.ToString()] != "") //신뢰도 얻는게 있다면. (혹은 뺏는거)
             {
                 int value = int.Parse(dialog[i][DialogType.GetLove.ToString()]);
                 HouseManager.Instance.SetLove(_currentSO, value); //여러명 일 때 만약 주체가 아닌 다른 이라면. (주석)
@@ -349,7 +349,7 @@ namespace _02Script.UI.Dialog.Dialog
     {
         Bubble, //말풍선
         Item, //아이템 종류
-        GetLove, //얻는 호감도
+        GetLove, //얻는 신뢰도
         Chapter, //해당 챕터 (한 대화)
         Num, //챕터의 세부 번호
         Text, //대화
@@ -366,7 +366,7 @@ namespace _02Script.UI.Dialog.Dialog
 
         //저장을 위한 (캐릭터 카드)
         Memo, //메모
-        Love, //호감도
+        Love, //신뢰도
     }
 
     public enum DialogPosition

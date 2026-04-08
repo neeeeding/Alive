@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _02Script.Battle.UI.Job;
 using _02Script.Battle.UI.Weapon;
 using _02Script.Collect.Item;
 using _02Script.Farming;
@@ -34,7 +35,7 @@ namespace _02Script.Battle
             Field.OnUseSeed += ThrowItem;
             CompoundResult.OnGetItem += AddItem;
             CompoundResult.OnUseItem += ThrowItem;
-            BattleSaveManager.OnStart += LoadItem;
+            SelectDistribution.OnStart += LoadItem;
             
             LoadCard.OnLoad += LoadItem;
             
@@ -54,7 +55,7 @@ namespace _02Script.Battle
             WeaponInventory.OnDeleteWeapon -= DeleteWeapon;
             CompoundResult.OnGetItem -= AddItem;
             CompoundResult.OnUseItem -= ThrowItem;
-            BattleSaveManager.OnStart -= LoadItem;
+            SelectDistribution.OnStart -= LoadItem;
         }
         #endregion
         protected override void LoadItem() //불러오기

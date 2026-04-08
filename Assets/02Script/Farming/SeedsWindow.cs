@@ -72,6 +72,7 @@ namespace _02Script.Farming
 
         protected override void NewCard(ItemDataSO item, bool isEtc, int star = 3, int hp = 100,WeaponArmorSaveData saveData = null )
         {
+            if(_allDataSO == null || !_allDataSO.ContainsKey(item.itemType)) return;
             //data 새 생성
             ItemData itemData = new ItemData();
             if (!isEtc)

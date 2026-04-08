@@ -30,13 +30,7 @@ namespace _02Script.UI.Dialog.Dialog
                 characterLoveGauge.gameObject.SetActive(true);
                 characterLoveText.gameObject.SetActive(true);
 
-                int love = 0;
-                if(SceneManager.GetActiveScene().name  == "AM_House")
-                    int.TryParse(HouseManager.Instance.PlayerStat.characterLastText[current.EntityName][DialogType.Love], out love);
-                else if(SceneManager.GetActiveScene().name  == "PM_Battle")
-                    int.TryParse(BattleSaveManager.Instance.PlayerStat.characterLastText[current.EntityName][DialogType.Love], out love);
-                else if(SceneManager.GetActiveScene().name  == "GoHouse")
-                    int.TryParse(GoHouseSaveManager.Instance.PlayerStat.characterLastText[current.EntityName][DialogType.Love], out love);
+                int.TryParse(SaveManagerCheck.GetCurScenePlayerStat().characterLastText[current.EntityName][DialogType.Love], out int love);
                 
                 characterLoveGauge.value = love;
 

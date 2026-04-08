@@ -45,7 +45,7 @@ namespace _02Script.Manager
             Time.timeScale = 1;
         }
 
-        public void SetLove(DialogEntitySO dialogEntity, int love) //정보 넣고 해당 호감도 스탯에서의 이름 찾아서 전해주기
+        public void SetLove(DialogEntitySO dialogEntity, int love) //정보 넣고 해당 신뢰도 스탯에서의 이름 찾아서 전해주기
         {
             int.TryParse(PlayerStat.characterLastText[dialogEntity.EntityName][DialogType.Love],
                 out int basic); //원래 값 가져오기

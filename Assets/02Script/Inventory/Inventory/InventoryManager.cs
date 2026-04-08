@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using _02Script.Farming;
+using _02Script.Inventory.Etc;
 using _02Script.Inventory.Inventory.Use;
 using _02Script.Inventory.Item;
 using _02Script.Produce.Weapon;
@@ -27,6 +28,7 @@ namespace _02Script.Inventory.Inventory
         protected virtual void OnEnable()
         {
             DialogItem.OnGetItem += GetOrThrowItem;
+            WeaponArmorStartGiveItem.OnGetBuff += AddItem;
             InGameItem.OnGetItem += AddItem;
             Field.OnGetViand += AddItem;
             GameEvent.GameEvent.OnGetItem += AddItem;
@@ -42,6 +44,7 @@ namespace _02Script.Inventory.Inventory
         protected virtual  void OnDisable()
         {
             DialogItem.OnGetItem -= GetOrThrowItem;
+            WeaponArmorStartGiveItem.OnGetBuff -= AddItem;
             InGameItem.OnGetItem -= AddItem;
             Field.OnGetViand -= AddItem;
             GameEvent.GameEvent.OnGetItem -= AddItem;
@@ -136,7 +139,7 @@ namespace _02Script.Inventory.Inventory
             if(!itemInventory.ContainsKey(item.category)) return;
             //data 새 생성
             ItemData itemData = new ItemData();
-            if (!isEtc)
+            if (!isEtc && !ItemDatas.ContainsKey(item))
             {
                 itemData.NewItem(item);
                 ItemDatas.Add(item, itemData);
@@ -153,7 +156,7 @@ namespace _02Script.Inventory.Inventory
             newCard.gameObject.SetActive(true);
             newCard.NewCard(itemData, star, hp,saveData);
             
-            if(!isEtc)
+            if(!isEtc && !ItemCards.ContainsKey(itemData))
                 ItemCards.Add(itemData, new List<ItemCard>());
 
             ItemCards[itemData].Add(newCard);
@@ -161,6 +164,7 @@ namespace _02Script.Inventory.Inventory
 
         public virtual void AddItem(ItemDataSO item,WeaponArmorSaveData saveData, int count = 1)
         {
+            if(!ItemDatas.ContainsKey(item)) return;
             switch(item.category)
             {
                 case ItemCategory.seed:

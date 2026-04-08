@@ -17,10 +17,10 @@ namespace _02Script.UI.person
 
         [SerializeField] private TextMeshProUGUI characterName; //대상 이름
         [SerializeField] private Image characterImage;
-        [SerializeField] private TextMeshProUGUI valueText; //호감도 표시 텍스트
-        [SerializeField] private Slider valueSlider; //호감도 슬라이더
+        [SerializeField] private TextMeshProUGUI valueText; //신뢰도 표시 텍스트
+        [SerializeField] private Slider valueSlider; //신뢰도 슬라이더
         [SerializeField] private TMP_InputField memo; //메모
-        private int loveValue; //호감도 (수)
+        private int faithValue; //신뢰도 (수)
 
         private PlayerStatSC path; //스탯 (저장 공간)
 
@@ -53,13 +53,13 @@ namespace _02Script.UI.person
             path.characterLastText[dialogEntity.EntityName][DialogType.Memo] = value; //메모 저장
         }
 
-        private void LoveUp(int value)
+        private void FaithUp(int value)
         {
-            loveValue += value;
-            valueText.text = $"{loveValue} / 100 ";
-            valueSlider.value = loveValue;
+            faithValue += value;
+            valueText.text = $"{faithValue} / 100 ";
+            valueSlider.value = faithValue;
 
-            path.characterLastText[dialogEntity.EntityName][DialogType.Love] = loveValue.ToString(); //호감도 저장
+            path.characterLastText[dialogEntity.EntityName][DialogType.Love] = faithValue.ToString(); //신뢰도 저장
 
             SaveMyLoveValue(true);
         }
@@ -75,13 +75,13 @@ namespace _02Script.UI.person
             {
                 if (set)
                 {
-                    path.characterLastText[dialogEntity.EntityName][DialogType.Love] = loveValue.ToString(); //호감도 저장
+                    path.characterLastText[dialogEntity.EntityName][DialogType.Love] = faithValue.ToString(); //신뢰도 저장
                 }
                 else
                 {
                     int.TryParse(path.characterLastText[dialogEntity.EntityName][DialogType.Love],
-                        out loveValue); //호감도 저장
-                    LoveUp(0);
+                        out faithValue); //신뢰도 저장
+                    FaithUp(0);
                 }
             }
         }

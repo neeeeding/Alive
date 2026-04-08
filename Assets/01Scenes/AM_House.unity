@@ -732,7 +732,7 @@ MonoBehaviour:
     _serializedList:
     - Key: {fileID: 11400000, guid: 2324f29f0b7d12c42ac23d97af613c00, type: 2}
       Value:
-      - type: 0
+      - type: 4201
         hp: 100
         skillCoolTime: 5
         skillDamage: 8
@@ -741,7 +741,7 @@ MonoBehaviour:
         buffTypes: fc2a0000
     - Key: {fileID: 11400000, guid: 04f82857dddd3fb439ebcd3fb028e1a4, type: 2}
       Value:
-      - type: 0
+      - type: 4001
         hp: 100
         skillCoolTime: 15
         skillDamage: 10
@@ -750,7 +750,7 @@ MonoBehaviour:
         buffTypes: f82a0000
     - Key: {fileID: 11400000, guid: e9bf82993338e3f4288d15a56605cd38, type: 2}
       Value:
-      - type: 0
+      - type: 4101
         hp: 100
         skillCoolTime: 2
         skillDamage: 5
@@ -759,28 +759,28 @@ MonoBehaviour:
         buffTypes: e12e0000
     - Key: {fileID: 11400000, guid: 5ffa7a9f3956484469c8d1403fed9794, type: 2}
       Value:
-      - type: 0
+      - type: 4401
         hp: 100
         skillCoolTime: 1
         skillDamage: 2
         buffExplanation: 
         explanation: 
         buffTypes: 
-      - type: 0
+      - type: 4401
         hp: 100
         skillCoolTime: 1
         skillDamage: 2
         buffExplanation: 
         explanation: 
         buffTypes: 
-      - type: 0
+      - type: 4401
         hp: 100
         skillCoolTime: 1
         skillDamage: 2
         buffExplanation: 
         explanation: 
         buffTypes: 
-      - type: 0
+      - type: 4401
         hp: 100
         skillCoolTime: 1
         skillDamage: 2
@@ -1454,6 +1454,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 546324010}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &624865491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 624865492}
+  - component: {fileID: 624865493}
+  m_Layer: 0
+  m_Name: SaveManagerCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &624865492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624865491}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1703099612}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &624865493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624865491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc4b6c30ed944fd84ca606460bcdf94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Etc.SaveManagerCheck
 --- !u!1 &679777344
 GameObject:
   m_ObjectHideFlags: 0
@@ -3619,9 +3663,15 @@ MonoBehaviour:
         y: 6
       - x: 1
         y: 6
+      - x: 4
+        y: 2
+      - x: 0
+        y: 5
       vs:
       - 15
       - 7
+      - 26
+      - 4
   isStart: 0
   dayTimeDelay: 0.5
   housePlayer: {fileID: 465956464}
@@ -12325,6 +12375,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1656024392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1656024393}
+  - component: {fileID: 1656024394}
+  m_Layer: 0
+  m_Name: StatCalculate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1656024393
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656024392}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1703099612}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1656024394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656024392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c16ac2c53d4adabd49932ed4d6cd99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Etc.StatCalculate
 --- !u!1 &1703099611
 GameObject:
   m_ObjectHideFlags: 0
@@ -12360,6 +12454,8 @@ Transform:
   - {fileID: 1356634884}
   - {fileID: 424706454}
   - {fileID: 1516397800}
+  - {fileID: 624865492}
+  - {fileID: 1656024393}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1725189288
@@ -14376,10 +14472,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1455200566149433160, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1502119772676649136, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1514593745703125960, guid: 642101eadd4287b419f9b75ad211059f, type: 3}

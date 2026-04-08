@@ -22,7 +22,7 @@ namespace _02Script.UI.person
         {
             float hp = StatCalculate.Calculate(EntityName.lie, StatsType.HpStat);
             float maxHp = StatCalculate.Calculate(EntityName.lie, StatsType.HpStat);
-            hpSlider.value = (int)hp/maxHp;
+            hpSlider.value = 100/maxHp *(int)hp;
             hptext.text = $"{(int)hp} / {maxHp}";
         }
     }

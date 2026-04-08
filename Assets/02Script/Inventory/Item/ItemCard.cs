@@ -31,6 +31,7 @@ namespace _02Script.Inventory.Item
         public void ItemDamage(float damage)
         {
             itemHp -= damage;
+            weaponArmorBuff.hp -= damage;
         }
 
         public virtual void NewCard(ItemData itemData,int setStar = 0, int setItemHp = 100,WeaponArmorSaveData saveData = null)

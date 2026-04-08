@@ -60,7 +60,7 @@ namespace _02Script.UI.Dialog
             }
         }
 
-        public void Inventory() //호감도 도감
+        public void Inventory() //신뢰도 도감
         {
             UISettingManager.Instance.Inventory();
         }

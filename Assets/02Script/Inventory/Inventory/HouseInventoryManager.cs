@@ -31,6 +31,8 @@ namespace _02Script.Inventory.Inventory
         {
             if(!isJustShow) {base.AddItem(item,saveData, count); return;}
             
+            item = AllDataSO[item.itemType];
+            
             switch(item.category)
             {
                 case ItemCategory.seed:
