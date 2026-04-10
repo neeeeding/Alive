@@ -3,6 +3,7 @@ using _02Script.Battle.UI.Explanation;
 using _02Script.Battle.UI.Weapon;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
+using _02Script.UI.Person;
 using UnityEngine;
 
 namespace _02Script.Produce.Weapon.Compound.Explanation
@@ -16,12 +17,37 @@ namespace _02Script.Produce.Weapon.Compound.Explanation
         {
             base.OnEnable();
             CompoundSelectWeaponArmorCard.OnMouseEnter += UIShow;
+            PersonWeaponCard.OnMouseEnter += UIShow;
             MouseExit();
         }
 
         private void OnDisable()
         {
             CompoundSelectWeaponArmorCard.OnMouseEnter -= UIShow;
+            PersonWeaponCard.OnMouseEnter -= UIShow;
+        }
+
+        private void UIShow(PersonWeaponCard card, Vector3 cardPos)
+        {
+            if (card == null)
+            {
+                if(_isEnter) return;
+                UIHide();
+                return;
+            }
+
+            ItemDataSO so = card.ReturnData().ReturnDataSO();
+            image.sprite = so.itemImage;
+            nameText.text = so.itemName;
+            explanationText.text = so.itemExplanation;
+            
+            for (int i = 0; i < buff.Length; i++)
+            {
+                buff[i].gameObject.SetActive(false);
+            }
+
+            UIShow(cardPos);
+            _isEnter = true;
         }
 
         private void UIShow(CompoundSelectWeaponArmorCard card, WeaponArmorSaveData data, Vector3 cardPos)

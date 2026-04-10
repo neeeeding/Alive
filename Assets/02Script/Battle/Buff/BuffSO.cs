@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using _02Script.Etc;
-using _02Script.UI.person;
+using _02Script.UI.Person;
 using AYellowpaper.SerializedCollections;
 using UnityEditor;
 using UnityEngine;

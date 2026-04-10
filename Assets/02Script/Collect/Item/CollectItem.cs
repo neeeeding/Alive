@@ -8,7 +8,7 @@ using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
 using _02Script.GamePlayer.Manager;
-using _02Script.UI.person;
+using _02Script.UI.Person;
 using UnityEngine;
 
 namespace _02Script.Collect.Item

@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using _02Script.Etc;
 using _02Script.Obj.Entity;
-using _02Script.UI.person;
+using _02Script.UI.Person;
 using UnityEditor;
 using UnityEngine;
 

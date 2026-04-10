@@ -1,6 +1,6 @@
 ﻿using System;
 using _02Script.Obj.Entity;
-using _02Script.UI.person;
+using _02Script.UI.Person;
 using UnityEngine;
 using UnityEngine.UI;
 

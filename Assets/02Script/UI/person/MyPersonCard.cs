@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _02Script.UI.person
+namespace _02Script.UI.Person
 {
     public class MyPersonCard : MonoBehaviour
     {

@@ -2,7 +2,7 @@
 using _02Script.Battle.Entity;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
-using _02Script.UI.person;
+using _02Script.UI.Person;
 using UnityEngine;
 
 namespace _02Script.GamePlayer.GamePlayer

@@ -1,5 +1,7 @@
+using System;
 using _02Script.Etc;
 using _02Script.Manager;
+using _02Script.Obj.Entity;
 using _02Script.SaveData;
 using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Dialog.Entity;
@@ -9,10 +11,12 @@ using TMPro;
 using UnityEngine.UI;
 
 
-namespace _02Script.UI.person
+namespace _02Script.UI.Person
 {
     public class PersonCard : MonoBehaviour
     {
+        public static Action<EntityName,Transform> OnOpenWeapon; // 무기 인벤 열기
+        
         [SerializeField] private DialogEntitySO dialogEntity; //대상 정보
 
         [SerializeField] private TextMeshProUGUI characterName; //대상 이름
@@ -20,6 +24,7 @@ namespace _02Script.UI.person
         [SerializeField] private TextMeshProUGUI valueText; //신뢰도 표시 텍스트
         [SerializeField] private Slider valueSlider; //신뢰도 슬라이더
         [SerializeField] private TMP_InputField memo; //메모
+        [SerializeField] private Transform btnPos;
         private int faithValue; //신뢰도 (수)
 
         private PlayerStatSC path; //스탯 (저장 공간)
@@ -45,6 +50,7 @@ namespace _02Script.UI.person
 
         public void Click()
         {
+            OnOpenWeapon?.Invoke(dialogEntity.EntityName,btnPos);
         }
 
         public void InputText()

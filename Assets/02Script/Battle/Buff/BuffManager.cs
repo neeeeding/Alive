@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using _02Script.Obj.Entity;
-using _02Script.UI.person;
+using _02Script.UI.Person;
 using UnityEngine;
 
 namespace _02Script.Battle.Buff

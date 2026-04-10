@@ -1,6 +1,6 @@
 ﻿using _02Script.GoHouse.SO;
 using _02Script.Obj.Entity;
-using _02Script.UI.person;
+using _02Script.UI.Person;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

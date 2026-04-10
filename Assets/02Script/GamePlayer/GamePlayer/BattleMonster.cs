@@ -1,7 +1,7 @@
 ﻿using _02Script.Battle;
 using _02Script.GamePlayer.State;
 using _02Script.Obj.Entity;
-using _02Script.UI.person;
+using _02Script.UI.Person;
 
 namespace _02Script.GamePlayer.GamePlayer
 {

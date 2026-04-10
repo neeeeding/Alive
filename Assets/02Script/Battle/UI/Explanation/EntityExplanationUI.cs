@@ -2,7 +2,7 @@
 using _02Script.Battle.UI.Job;
 using _02Script.Etc;
 using _02Script.Obj.Entity;
-using _02Script.UI.person;
+using _02Script.UI.Person;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

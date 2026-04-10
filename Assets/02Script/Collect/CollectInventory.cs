@@ -9,7 +9,7 @@ using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
 using _02Script.Produce.Weapon;
-using _02Script.UI.person;
+using _02Script.UI.Person;
 using AYellowpaper.SerializedCollections;
 using TMPro;
 using UnityEngine;

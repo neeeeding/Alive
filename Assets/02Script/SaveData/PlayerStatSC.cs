@@ -6,7 +6,7 @@ using _02Script.Obj.Entity;
 using _02Script.Produce.Weapon;
 using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Dialog.Entity;
-using _02Script.UI.person;
+using _02Script.UI.Person;
 using UnityEngine;
 
 namespace _02Script.SaveData
