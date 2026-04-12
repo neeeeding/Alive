@@ -4,10 +4,8 @@ using UnityEngine;
 
 namespace _02Script.MiniGame.Food.RiceCooker
 {
-    public class RiceCookerScore : MonoBehaviour
+    public class RiceCookerScore : FoodScore
     {
-        public static Action<int> OnEndMiniGame;
-
         [SerializeField] private GameObject miniGame;
         [SerializeField] private TextMeshProUGUI scoreText;
 

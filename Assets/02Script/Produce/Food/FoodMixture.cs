@@ -1,5 +1,6 @@
 using System;
 using _02Script.DoTweenUI.Warring;
+using _02Script.MiniGame.Food;
 using _02Script.MiniGame.Food.RiceCooker;
 using UnityEngine;
 
@@ -15,13 +16,13 @@ namespace _02Script.Produce.Food
         protected override void OnEnable()
         {
             base.OnEnable();
-            RiceCookerScore.OnEndMiniGame += GetResult;
+            FoodScore.OnEndMiniGame += GetResult;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            RiceCookerScore.OnEndMiniGame -= GetResult;
+            FoodScore.OnEndMiniGame -= GetResult;
         }
 
         #region Btn
