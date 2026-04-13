@@ -1,7 +1,5 @@
-using System;
 using _02Script.DoTweenUI.Warring;
 using _02Script.MiniGame.Food;
-using _02Script.MiniGame.Food.RiceCooker;
 using UnityEngine;
 
 namespace _02Script.Produce.Food
