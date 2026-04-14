@@ -4,11 +4,10 @@ using Random = UnityEngine.Random;
 
 namespace _02Script.MiniGame.Produce
 {
-    public class ProduceSpot : MonoBehaviour
+    public class ProduceSpot : MiniGameObj
     {
         [SerializeField] private Image spotImage;
 
-        private ProduceSpotSpawn _spawn;
         private ProduceScore _score;
         private ProduceScoreType type;
         private readonly Color _coolColor = new Color(0.2498f, 0.7302f, 0.2065f);
@@ -23,7 +22,7 @@ namespace _02Script.MiniGame.Produce
 
         public void ClickSpot()
         {
-            _spawn.SpotListAdd(this);
+            spawn.ObjListAdd(this);
         }
 
         #endregion
@@ -40,9 +39,8 @@ namespace _02Script.MiniGame.Produce
             _score.GetScore(type,1);
         }
 
-        public void SetSpot(ProduceSpotSpawn spawn, ProduceScore score)
+        public void SetSpot(ProduceScore score)
         {
-            _spawn = spawn;
             _score = score;
         }
 

@@ -29201,9 +29201,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.MiniGame.Produce.ProduceSpotSpawn
   map: {fileID: 4556789517944558689}
-  score: {fileID: 1116802618809347724}
   parent: {fileID: 4556789517944558689}
-  spotPrefab: {fileID: 5916272683524028244, guid: e8e843555576bdc498d5030795656d8b, type: 3}
+  objPrefab: {fileID: 5916272683524028244, guid: e8e843555576bdc498d5030795656d8b, type: 3}
+  score: {fileID: 1116802618809347724}
 --- !u!114 &1116802618809347724
 MonoBehaviour:
   m_ObjectHideFlags: 0

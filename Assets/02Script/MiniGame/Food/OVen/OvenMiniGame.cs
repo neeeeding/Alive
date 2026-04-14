@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace _02Script.MiniGame.Food.OVen
 {
-    public class OvenMiniGame : FoodScore
+    public class OvenMiniGame :MonoBehaviour
     {
         [SerializeField] private GameObject baseBread;
         [SerializeField] private GameObject moveBread;
@@ -87,7 +87,7 @@ namespace _02Script.MiniGame.Food.OVen
             _isGame = false;
             _breadDifference = Math.Abs(_breadDifference);
             _breadDifference = Mathf.Clamp(_breadDifference, 1, 6) -1;
-            OnEndMiniGame?.Invoke(5 - (int)_breadDifference);
+            FoodScore.OnEndMiniGame?.Invoke(5 - (int)_breadDifference);
         }
     }
 }

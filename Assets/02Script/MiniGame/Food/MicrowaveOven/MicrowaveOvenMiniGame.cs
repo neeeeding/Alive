@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace _02Script.MiniGame.Food.MicrowaveOven
 {
-    public class MicrowaveOvenMiniGame : FoodScore
+    public class MicrowaveOvenMiniGame : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI setTimeText;
         
@@ -50,7 +50,7 @@ namespace _02Script.MiniGame.Food.MicrowaveOven
             
             _score = (int)(Math.Abs(_curTime) / 0.1f);
             _score = Math.Clamp(5-(_score / 2), 1, 5);
-            OnEndMiniGame?.Invoke(_score);
+            FoodScore.OnEndMiniGame?.Invoke(_score);
         }
     }
 }

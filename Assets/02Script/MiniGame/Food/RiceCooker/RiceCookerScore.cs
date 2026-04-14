@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _02Script.MiniGame.Food.RiceCooker
 {
-    public class RiceCookerScore : FoodScore
+    public class RiceCookerScore :MonoBehaviour
     {
         [SerializeField] private GameObject miniGame;
         [SerializeField] private TextMeshProUGUI scoreText;
@@ -37,7 +37,7 @@ namespace _02Script.MiniGame.Food.RiceCooker
             if (_endWorm >= _maxObjCount)
             {
                 miniGame.SetActive(false);
-                OnEndMiniGame?.Invoke(Math.Max(1,5 - (_rice/(_maxObjCount / 5))));
+                FoodScore.OnEndMiniGame?.Invoke(Math.Max(1,5 - (_rice/(_maxObjCount / 5))));
             }
             Text();
         }
