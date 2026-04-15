@@ -6,27 +6,25 @@ namespace _02Script.MiniGame.Produce
 {
     public class ProduceSpot : MiniGameObj
     {
-        [SerializeField] private Image spotImage;
+        [SerializeField] protected Image spotImage;
 
         private ProduceScore _score;
-        private ProduceScoreType type;
-        private readonly Color _coolColor = new Color(0.2498f, 0.7302f, 0.2065f);
-        private readonly Color _rightColor = new Color(0.9935f, 0.7072f, 0.1723f);
-        private readonly Color _hotColor = new Color(0.8391f, 0, 0.2513f);
-        private readonly float _changeMin = 1.0f;
-        private readonly float _changeMax = 1.6f;
-        private float _curTime;
-        private float _changeTime;
+        protected ProduceScoreType type;
+        protected Color _coolColor = new Color(0.2498f, 0.7302f, 0.2065f);
+        protected Color _rightColor = new Color(0.9935f, 0.7072f, 0.1723f);
+        protected Color _hotColor = new Color(0.8391f, 0, 0.2513f);
+        protected float _changeMin = 1.0f;
+        protected float _changeMax = 1.6f;
+        protected float _curTime;
+        protected float _changeTime;
 
         #region Mouse
-
-        public void ClickSpot()
+        public virtual void ClickSpot()
         {
             spawn.ObjListAdd(this);
         }
-
         #endregion
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             _curTime = 0;
             _changeTime = Random.Range(_changeMin,_changeMax);
@@ -34,24 +32,24 @@ namespace _02Script.MiniGame.Produce
             SetType();
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             _score.GetScore(type,1);
         }
 
-        public void SetSpot(ProduceScore score)
+        public virtual void SetSpot(ProduceScore score)
         {
             _score = score;
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             _curTime += Time.deltaTime;
             if(_changeTime <= _curTime)
                 Change();
         }
 
-        private void Change()
+        protected virtual void Change()
         {
             _curTime = 0;
             if (type == ProduceScoreType.Hot)
@@ -75,15 +73,13 @@ namespace _02Script.MiniGame.Produce
             }
         }
 
-        private void SetType()
+        protected virtual void SetType()
         {
-
             if (type == ProduceScoreType.Hot)
             {
                 spotImage.color = _hotColor;
                 return;
             }
-
             if (type == ProduceScoreType.Cool)
             {
                 spotImage.color = _coolColor;
