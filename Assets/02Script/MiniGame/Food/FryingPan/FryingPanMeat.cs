@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _02Script.MiniGame.FryingPan
+namespace _02Script.MiniGame.Food.FryingPan
 {
     public class FryingPanMeat : ProduceSpot
     {

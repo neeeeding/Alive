@@ -1,5 +1,4 @@
-﻿using System;
-using _02Script.MiniGame.Produce;
+﻿using _02Script.MiniGame.Produce;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;

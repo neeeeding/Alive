@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace _02Script.MiniGame.Food.OVen
+namespace _02Script.MiniGame.Food.Oven
 {
     public class OvenMiniGame :MonoBehaviour
     {

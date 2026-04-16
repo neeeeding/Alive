@@ -1,5 +1,4 @@
 ﻿using _02Script.Etc;
-using AYellowpaper.SerializedCollections;
 using TMPro;
 using UnityEngine;
 

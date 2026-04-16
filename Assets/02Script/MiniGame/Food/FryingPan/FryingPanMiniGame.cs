@@ -1,9 +1,7 @@
 ﻿using System;
-using _02Script.MiniGame.Food;
 using _02Script.MiniGame.Produce;
-using UnityEngine;
 
-namespace _02Script.MiniGame.FryingPan
+namespace _02Script.MiniGame.Food.FryingPan
 {
     public class FryingPanMiniGame : MiniGameObjSpawn
     {
