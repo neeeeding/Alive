@@ -1,5 +1,6 @@
 ﻿using System;
 using _02Script.GamePlayer;
+using _02Script.MiniGame.Food.FryingPan;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace _02Script.MiniGame.Food.None
 {
-    public class NoneMiniGameMoveObj : MonoBehaviour
+    public class NoneMiniGameMoveObj : CheckRect
     {
         public static Action<bool> OnFall;
         
@@ -22,6 +23,7 @@ namespace _02Script.MiniGame.Food.None
         private bool _isMove;
         private bool _isDown;
         private Vector3 _moveDir;
+        private CheckRect _center;
 
         private void OnEnable()
         {
@@ -84,11 +86,17 @@ namespace _02Script.MiniGame.Food.None
 
         private void DownCheck() //밑에 확인 하기
         {
-            
+            if (_center.Check(ReturnRect()))
+            {
+                _isMove = false;
+                _isDown = false;
+            }
         }
 
-        public void Setting(Sprite sprite)
+        public void Setting(Sprite sprite, CheckRect center)
         {
+            _center = center;
+            
             _isMove = true;
             _isDown = false;
             

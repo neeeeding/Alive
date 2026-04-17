@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using _02Script.MiniGame.Food.FryingPan;
 using UnityEngine;
 
 namespace _02Script.MiniGame.Food.None
@@ -8,9 +8,11 @@ namespace _02Script.MiniGame.Food.None
     {
         [SerializeField] private List<Sprite> images;
         [SerializeField] private Transform spawnPos;
+        [SerializeField] private CheckRect center;
         [SerializeField] private NoneMiniGameMoveObj objPrefab;
 
-        private List<NoneMiniGameMoveObj> _objs = new List<NoneMiniGameMoveObj>();
+        private List<NoneMiniGameMoveObj> _poolObj = new List<NoneMiniGameMoveObj>();
+        private List<NoneMiniGameMoveObj> _obj = new List<NoneMiniGameMoveObj>();
         private int _curIndex;
         private int _score;
 
@@ -25,6 +27,11 @@ namespace _02Script.MiniGame.Food.None
         private void OnDisable()
         {
             NoneMiniGameMoveObj.OnFall -= GetScore;
+            foreach (var obj in _obj.ToArray())
+            {
+                _poolObj.Add(obj);
+                _obj.Remove(obj);
+            }
         }
 
         private void GetScore(bool isGet)
@@ -47,13 +54,20 @@ namespace _02Script.MiniGame.Food.None
         private void NewMoveObj()
         {
             NoneMiniGameMoveObj obj;
-            if (_objs.Count <= 0)
+            if (_poolObj.Count <= 0)
             {
                 obj = Instantiate(objPrefab, spawnPos);
-                _objs.Add(obj);
+                _poolObj.Add(obj);
             }
-            obj = _objs[0];
-            obj.Setting(images[_curIndex]);
+            obj = _poolObj[0];
+            _poolObj.RemoveAt(0);
+            CheckRect rect = center;
+            if (_obj.Count > 1)
+            {
+                rect = _obj[_obj.Count - 1];
+            }
+            _obj.Add(obj);
+            obj.Setting(images[_curIndex],rect);
             _curIndex++;
             obj.transform.position = spawnPos.position;
             obj.gameObject.SetActive(true);
