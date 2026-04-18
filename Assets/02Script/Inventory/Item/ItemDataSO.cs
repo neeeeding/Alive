@@ -50,18 +50,18 @@ namespace _02Script.Inventory.Item
 #if UNITY_EDITOR
         protected virtual void OnValidate()
         {
-            string enumName = itemType.ToString();
-
-            if (name == enumName) return;
-            //if (itemName == EnumToString.Name(itemType)) return;
-
-            itemName = EnumToString.Name(itemType);
-
-            string path = AssetDatabase.GetAssetPath(this);
-            if (string.IsNullOrEmpty(path)) return;
-
-            AssetDatabase.RenameAsset(path, enumName);
-            AssetDatabase.SaveAssets();
+            // string enumName = itemType.ToString();
+            //
+            // if (name == enumName) return;
+            // //if (itemName == EnumToString.Name(itemType)) return;
+            //
+            // itemName = EnumToString.Name(itemType);
+            //
+            // string path = AssetDatabase.GetAssetPath(this);
+            // if (string.IsNullOrEmpty(path)) return;
+            //
+            // AssetDatabase.RenameAsset(path, enumName);
+            // AssetDatabase.SaveAssets();
         }
 #endif
     }

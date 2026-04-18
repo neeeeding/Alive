@@ -1,5 +1,7 @@
 using _02Script.DoTweenUI.Warring;
 using _02Script.MiniGame.Food;
+using AYellowpaper.SerializedCollections;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace _02Script.Produce.Food
@@ -7,9 +9,11 @@ namespace _02Script.Produce.Food
     public class FoodMixture : Mixture
     {
         [Header("Food")]
-        [SerializeField] private GameObject miniGame;
+        [SerializeField] private SerializedDictionary<MeansDataSO,GameObject> miniGame;
 
         private int _getItemCount;
+
+        private MeansDataSO _curMeans;
 
         protected override void OnEnable()
         {
@@ -37,7 +41,8 @@ namespace _02Script.Produce.Food
                 WarringManager.Warring.ShowWarring(_warringText);
                 return;
             }
-            miniGame.SetActive(true);
+            if(_curMeans != null)
+                miniGame[_curMeans].SetActive(true);
 
             _getItemCount = _timer <= 0 ? _itemMax.maxCount : 1;
         }
@@ -60,5 +65,10 @@ namespace _02Script.Produce.Food
         }
         #endregion
 
+        protected override void Setting(ProduceBookSO bookData)
+        {
+            _curMeans = bookData.means;
+            base.Setting(bookData);
+        }
     }
 }
