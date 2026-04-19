@@ -22,6 +22,18 @@ namespace _02Script.MiniGame.Food.MicrowaveOven
             SetRandomTime();
         }
 
+        public void Btn()
+        {
+            if (_isTimer)
+            {
+                StopTimer();
+            }
+            else
+            {
+                StartTimer();
+            }
+        }
+
         public void StartTimer()
         {
             _isTimer = true;
