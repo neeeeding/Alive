@@ -7,9 +7,9 @@ namespace _02Script.MiniGame.Food.FryingPan
     public class FryingPanMeat : ProduceSpot
     {
         [Header("FryingPan")]
-        private GameObject meat;
-        private Image frontMeat;
-        private Image backMeat;
+        [SerializeField]private GameObject meat;
+        [SerializeField]private Image frontMeat;
+        [SerializeField]private Image backMeat;
         
         private FryingPanMiniGame _score;
         private ProduceScoreType _front;
