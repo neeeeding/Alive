@@ -403,12 +403,12 @@ GameObject:
   - component: {fileID: 3582539102810229806}
   - component: {fileID: 8404856204060822543}
   m_Layer: 5
-  m_Name: Back
+  m_Name: Back(fryingPan)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6818576308014025718
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1750,7 +1750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4795038940686194210
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38744,7 +38744,7 @@ MonoBehaviour:
     - Key: {fileID: 11400000, guid: 0e73b02dc2ea2694788564c55bc78bb1, type: 2}
       Value: {fileID: 834130163607242334}
     - Key: {fileID: 11400000, guid: a0e20cbe11964954ba8cfc46b7f300e1, type: 2}
-      Value: {fileID: 548389847340720105}
+      Value: {fileID: 148819443332850178}
     - Key: {fileID: 11400000, guid: bc26e209dec03d644806688ba61ea828, type: 2}
       Value: {fileID: 3581970496464101280}
     - Key: {fileID: 11400000, guid: 337e4e29769413846a5242524a419a77, type: 2}

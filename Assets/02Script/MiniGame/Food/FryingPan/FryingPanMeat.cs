@@ -11,7 +11,7 @@ namespace _02Script.MiniGame.Food.FryingPan
         [SerializeField]private Image frontMeat;
         [SerializeField]private Image backMeat;
         
-        private FryingPanMiniGame _score;
+        private FryingPanMiniGame _miniGameScore;
         private ProduceScoreType _front;
         private ProduceScoreType _back;
         private bool _isFront; //앞뒤 구별
@@ -21,15 +21,16 @@ namespace _02Script.MiniGame.Food.FryingPan
             if (!_isFront)
             {
                 _back = type;
-                _score.GetScore(_back);
+                _miniGameScore.GetScore(_back);
                 spawn.ObjListAdd(this);
                 return;
             }
             _isFront = false;
             _front = type;
+            type = ProduceScoreType.Cool;
             //뒤집는 애니메이션??
             (frontMeat.color, backMeat.color) = (backMeat.color, frontMeat.color);
-            _score.GetScore(_front);
+            _miniGameScore.GetScore(_front);
         }
 
         protected override void OnDisable()
@@ -38,18 +39,18 @@ namespace _02Script.MiniGame.Food.FryingPan
 
         public void SetSpot(FryingPanMiniGame score)
         {
-            _score = score;
+            this._miniGameScore = score;
         }
 
         protected override void OnEnable()
         {
             _front = ProduceScoreType.None;
             _back = ProduceScoreType.None;
-            type = ProduceScoreType.None;
+            type = ProduceScoreType.Cool;
             _isFront = true;
             
-            _changeMin = 2f;
-            _changeMax = 3f;
+            _changeMin = 1.0f;
+            _changeMax = 7.0f;
             _curTime = 0;
             _changeTime = Random.Range(_changeMin,_changeMax);
             spotImage = backMeat;
@@ -76,6 +77,13 @@ namespace _02Script.MiniGame.Food.FryingPan
             {
                 _changeTime = Random.Range(_changeMin,_changeMax);
                 type = ProduceScoreType.Right;
+                SetType();
+            }
+
+            if (type == ProduceScoreType.None)
+            {
+                _changeTime = Random.Range(_changeMin,_changeMax);
+                type = ProduceScoreType.Cool;
                 SetType();
             }
         }
