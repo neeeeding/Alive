@@ -7,13 +7,13 @@ namespace _02Script.MiniGame.Food.Oven
 {
     public class OvenMiniGame :MonoBehaviour
     {
-        [SerializeField] private GameObject baseBread;
-        [SerializeField] private GameObject moveBread;
+        [SerializeField] private RectTransform baseBread;
+        [SerializeField] private RectTransform moveBread;
         
-        private readonly float _minYpos = 120;
-        private readonly float _maxYpos = 1080 - 120;
-        private readonly float _lessY = 0.1f;
-        private readonly float _addY = 1f;
+        private readonly float _minYpos = -100;
+        private readonly float _maxYpos = 320;
+        private readonly float _lessY = 50f;
+        private readonly float _addY = 25f;
 
         private float _curBaseYpos; // 기준의Y 위치
         private float _curMoveYpos; // 조종의 위치 (플레이)
@@ -27,6 +27,12 @@ namespace _02Script.MiniGame.Food.Oven
         private void OnEnable()
         {
             SetBaseBread();
+            MiniGameTimer.OnEndMiniGame += CheckScore;
+        }
+
+        private void OnDisable()
+        {
+            MiniGameTimer.OnEndMiniGame -= CheckScore;
         }
 
         private void SetBaseBread() //위치등 설정
@@ -34,13 +40,13 @@ namespace _02Script.MiniGame.Food.Oven
             _curBaseYpos = Random.Range(_minYpos, _maxYpos);
             _curMoveYpos = _curBaseYpos;
             
-            Vector3 setPos = baseBread.transform.position;
+            Vector3 setPos = baseBread.position;
             setPos.y = _curBaseYpos;
-            baseBread.transform.position = setPos;
+            baseBread.position = setPos;
             
-            setPos = moveBread.transform.position;
+            setPos = moveBread.position;
             setPos.y = _curBaseYpos;
-            moveBread.transform.position = setPos;
+            moveBread.position = setPos;
 
             _curTime = 0;
             _breadDifference = 0;
@@ -55,7 +61,7 @@ namespace _02Script.MiniGame.Food.Oven
         
         private void CheckBread() //빵 간의 차이 비교 (가장 큰)
         {
-            _breadDifference = Math.Max(_curBaseYpos - _curMoveYpos, _breadDifference);
+            _breadDifference = Math.Max(Math.Abs(_curBaseYpos - _curMoveYpos), _breadDifference);
         }
 
         private void CheckTime() //한 텀 (시간)
@@ -70,24 +76,27 @@ namespace _02Script.MiniGame.Food.Oven
 
         private void LessBread() //자동으로 빵 내려가기
         {
-            _curMoveYpos -= _lessY;
-            baseBread.transform.DOMoveY(_curMoveYpos, 0.3f);
+            _curMoveYpos -= _lessY; 
+            _curMoveYpos = Mathf.Max(_curMoveYpos, _minYpos - (_lessY*5));
+            moveBread.transform.DOMoveY(_curMoveYpos, 0.3f);
             CheckBread();
         }
 
         public void AddBread() //클릭하여 빵 올리기
         {
             _curMoveYpos += _addY;
-            baseBread.transform.DOMoveY(_curMoveYpos, 0.3f);
+            _curMoveYpos = Mathf.Min(_curMoveYpos, _maxYpos + (_lessY*5));
+            moveBread.transform.DOMoveY(_curMoveYpos, 0.3f);
             CheckBread();
         }
 
         private void CheckScore()
         {
             _isGame = false;
-            _breadDifference = Math.Abs(_breadDifference);
+            _breadDifference = Math.Abs(_breadDifference/_lessY);
             _breadDifference = Mathf.Clamp(_breadDifference, 1, 6) -1;
-            FoodScore.OnEndMiniGame?.Invoke(5 - (int)_breadDifference);
+            gameObject.SetActive(false);
+            FoodScore.OnEndMiniGame?.Invoke(Math.Max((5 - (int)_breadDifference), 1));
         }
     }
 }
