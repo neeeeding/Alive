@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: mushroom
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2013
   itemName: "\uBC84\uC12F"
@@ -21,3 +19,8 @@ MonoBehaviour:
     \uAC13\uC774 \uC788\uB294 \uADE0\uC0AC\uCCB4\uB2E4.\n\uC911\uAD6D\uC5D0 \uC11C\uC2DD\uD558\uB294
     '\uB780\uB9C8\uC624\uC544 \uC544\uC2DC\uC544\uD2F0\uCE74'\uB77C\uB294 \uBC84\uC12F\uC740
     \uC694\uC815\uC744 \uBCF4\uC5EC\uC900\uB2E4.\n(\uC18C\uC778\uB3C4 \uD658\uAC01)"
+  itemImage: {fileID: 21300000, guid: ac3201aeb9ed29d4ca3ac36879a845bf, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: broccoli
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2036
   itemName: "\uBE0C\uB85C\uCF5C\uB9AC"
@@ -21,3 +19,8 @@ MonoBehaviour:
     \uC78E\uC774 \uC544\uB2C8\uB77C \uC0AC\uC2E4 \uAF43 \uBD09\uC624\uB9AC\uB2E4.\n\uC6B0\uB9AC\uB294
     \uAF43 \uBD09\uC624\uB9AC\uB97C \uBA39\uC5B4\uC628 \uAC83\uC774\uB2E4.\n\uC591\uBC30\uCD94\uAC00
     \uBE0C\uB85C\uCF5C\uB9AC\uC758 \uCE5C\uCC99\uC774\uB2E4."
+  itemImage: {fileID: 21300000, guid: 3ab69956522c35249b5c7c79811f205b, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: squash
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2011
   itemName: "\uC560\uD638\uBC15"
@@ -21,3 +19,8 @@ MonoBehaviour:
     \uB418\uB294\uAC8C \uC544\uB2C8\uB2E4. (\uC885 \uC790\uCCB4\uAC00 \uB2E4\uB984)\n\uC560\uD638\uBC15\uC740
     \uC5B4\uB9B4 \uB54C\uB3C4 \uB3C5\uC131\uC774 \uC5C6\uC5B4\uACE0 \uC601\uC591\uBD84\uC774
     \uB9CE\uC544\uC11C \uC5B4\uB9B4 \uC218\uB85D \uC88B\uB2E4."
+  itemImage: {fileID: 21300000, guid: f442b3544407b0f4d8beb406c10e4fe7, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

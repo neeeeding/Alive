@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8bf712bf48848b290d364741a83a74c, type: 3}
   m_Name: warmRice
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.ProduceBookSO
-  itemImage: {fileID: 0}
-  maxCount: 10
   category: 3
   itemType: 3601
   itemName: "\uD770 \uBC25"
   itemExplanation: "\uBC25\uC774 \uBE75\uBCF4\uB2E4 \uCE7C\uB85C\uB9AC\uAC00 \uB0AE\uB2E4.\n\uBC31\uBBF8\uB294
     \uD604\uBBF8\uBCF4\uB2E4 \uAE38\uAC8C \uBCF4\uAD00\uC774 \uAC00\uB2A5\uD558\uB2E4."
+  itemImage: {fileID: 0}
+  maxCount: 10
+  collectTime: 2
+  stats: 1
+  addStats: 0
   itemRows:
   - items:
     - {fileID: 0}

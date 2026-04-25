@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: lettuce
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2016
   itemName: "\uC0C1\uCD94"
@@ -21,3 +19,8 @@ MonoBehaviour:
     \uC774\uB97C \uB290\uB07C\uB824\uBA74 \uAF64 \uBB34\uCC99 \uBA39\uC5B4\uC57C
     \uD55C\uB2E4.\n\uC870\uC120 \uC2DC\uB300\uC5D0\uB294 \uC740\uADFC\uD788 \uD0A4\uC6CC\uC11C
     \uC740\uADFC\uCD08\uB77C\uACE0\uB3C4 \uBD88\uB838\uB2E4."
+  itemImage: {fileID: 21300000, guid: 609c4ae703dbc0446a486a39bc5a85ce, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

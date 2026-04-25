@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: radish
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2010
   itemName: "\uBB34"
   itemExplanation: "\uC717 \uBD80\uBD84(\uCD08\uB85D\uC0C9)\uC740 \uB2EC\uACE0, \uBFCC\uB9AC
     \uCABD\uC77C \uC218\uB85D \uB9F5\uB2E4."
+  itemImage: {fileID: 21300000, guid: 57c35866a27d9bd4b933438393d72a0b, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

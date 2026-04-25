@@ -3,6 +3,7 @@ using _02Script.Inventory.Item;
 using _02Script.Produce.Weapon;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _02Script.Produce
 {
@@ -11,7 +12,10 @@ namespace _02Script.Produce
         /**이름 뜨기 더 나아가 관련 책 띄어주기??*/
         public static event Action<ItemDataSO, RectTransform> OnMouseCursor; //설명
         public static event Action<ProduceBookSO> OnMouseClick;
-        
+
+        [SerializeField] private Image itemCardBack;
+        [SerializeField] private Color baseColor;
+        [SerializeField] private Color canColor;
         [SerializeField] protected float delay = 0.2f;
         
         private ProduceBookSO _bookData;

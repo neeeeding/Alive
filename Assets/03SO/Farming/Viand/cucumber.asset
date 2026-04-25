@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: cucumber
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2005
   itemName: "\uC624\uC774"
@@ -23,3 +21,8 @@ MonoBehaviour:
     \uC124\uBA85\uC774 \uBD88\uAC00\uD558\uB2E4.\n\uAC00\uC7A5 \uC720\uB825\uD55C
     \uC774\uC720\uB85C\uB294 '\uC624\uC774\uB97C \uB0AF\uC120 \uBB3C\uCCB4\uB85C
     \uC778\uC2DD\uD574\uC11C'\uAC00 \uC788\uB2E4."
+  itemImage: {fileID: 21300000, guid: 315d7df3f65d4d7448825d95102fa29f, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0
