@@ -70,5 +70,10 @@ namespace _02Script.Inventory.Item
                 gameObject.SetActive(false);
             }
         }
+
+        private void CheckInventoryCard()
+        {
+            
+        }
     }
 }

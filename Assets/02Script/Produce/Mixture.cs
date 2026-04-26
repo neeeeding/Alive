@@ -160,7 +160,7 @@ namespace _02Script.Produce
             }
             _cards.Clear();
             
-            //제작대에서 중복으로 사용하는 아이템 있는지 체크
+                      
             Dictionary<ItemDataSO, int> duplication =  new Dictionary<ItemDataSO, int>();
             
             for (int i = 0; i < imageRows.Count; i++)

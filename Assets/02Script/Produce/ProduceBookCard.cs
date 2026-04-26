@@ -14,8 +14,6 @@ namespace _02Script.Produce
         public static event Action<ProduceBookSO> OnMouseClick;
 
         [SerializeField] private Image itemCardBack;
-        [SerializeField] private Color baseColor;
-        [SerializeField] private Color canColor;
         [SerializeField] protected float delay = 0.2f;
         
         private ProduceBookSO _bookData;
@@ -54,6 +52,16 @@ namespace _02Script.Produce
 
         public override void UpdateCountUI()
         {
+        }
+
+        public void ChangeColor(Color color)
+        {
+            itemCardBack.color = color;
+        }
+
+        public ProduceBookSO GetBookData()
+        {
+            return _bookData;
         }
     }
 }

@@ -305,6 +305,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.ProduceBookCard
   countUI: {fileID: 4726997583136394264}
   cardImage: {fileID: 2164313204045043384}
+  itemCardBack: {fileID: 7535060141561422421}
+  baseColor: {r: 0.6830188, g: 0.6830188, b: 0.6830188, a: 1}
+  canColor: {r: 0.082352936, g: 0.77254903, b: 0.12942323, a: 1}
   delay: 0.2
 --- !u!114 &3516944825909555848
 MonoBehaviour:

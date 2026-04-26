@@ -39137,6 +39137,7 @@ GameObject:
   - component: {fileID: 6186901178873731520}
   - component: {fileID: 3231212795060820205}
   - component: {fileID: 3817316008053868490}
+  - component: {fileID: 2146924650847113981}
   m_Layer: 5
   m_Name: Mixture
   m_TagString: Untagged
@@ -39297,6 +39298,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.GameEvent.EventLimitWarring
   myProduceType: 2
+--- !u!114 &2146924650847113981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8892396168253693520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed1325fe69b490482cb4ec41a8552bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.Food.CardColorChange
+  baseColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
+  canColor: {r: 0, g: 0.7584905, b: 0.098906934, a: 1}
+  cardParent: {fileID: 1929355747419237401}
+  produceInventory: {fileID: 7427887125760059034}
 --- !u!1 &8916561127894703587
 GameObject:
   m_ObjectHideFlags: 0
