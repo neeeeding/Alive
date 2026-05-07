@@ -5,6 +5,7 @@ using System;
 using _02Script.Manager;
 using _02Script.SaveData;
 using Newtonsoft.Json;
+using UnityEngine.SceneManagement;
 
 namespace _02Script.UI.Save
 {
@@ -53,6 +54,7 @@ public class LoadCard : MonoBehaviour
         HouseManager.Instance.PlayerStat = stat;
         OnLoad?.Invoke();
         HouseManager.CoinText?.Invoke();
+        SceneManager.LoadScene("AM_House");
     }
 
     private void CardSetting() //카드 세팅

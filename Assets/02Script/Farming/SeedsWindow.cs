@@ -45,28 +45,40 @@ namespace _02Script.Farming
             await Task.Yield();
             CloseBtn();
         }
-        protected override void LoadItem() //불러오기
+        
+        protected override void LoadItem()
         {
             SettingAllDataSO();
-            Dictionary<ItemType, List<float>> save = HouseManager.Instance.PlayerStat.items.ToDictionary();
+    
+            foreach (var cardList in ItemCards.Values)
+            foreach (var card in cardList)
+                if (card != null) Destroy(card.gameObject);
+            
+            ItemCards.Clear();
+            ItemDatas.Clear();
 
-            foreach (KeyValuePair<ItemType, SeedsSO> item in _allDataSO.ToList())
-            {
-                ThrowItem(item.Value.seeds,9999999);
-            }
+            Dictionary<ItemType, List<float>> save = HouseManager.Instance.PlayerStat.items.ToDictionary();
 
             foreach (KeyValuePair<ItemType, List<float>> item in save.ToList())
             {
-                foreach (int num in item.Value.ToList())
+                if (!_allDataSO.ContainsKey(item.Key)) continue;
+
+                float val = item.Value[0]; 
+                int count = (int)val;
+
+                if (count <= 0) continue;
+
+                SeedsSO seedsSO = _allDataSO[item.Key];
+                NewCard(seedsSO.seeds, false, 0, 0);
+
+                if (ItemDatas.ContainsKey(seedsSO.seeds))
                 {
-                    if (!_allDataSO.ContainsKey(item.Key))
-                    {
-                        continue;
-                    }
-                    AddItem(_allDataSO[item.Key].seeds, num);
+                    ItemData data = ItemDatas[seedsSO.seeds];
+                    data.SetCountOnly(count);
+                    ItemCards[data][ItemCards[data].Count - 1].UpdateCountUI();
                 }
             }
-            
+    
             field.LoadFarm(_allDataSO);
         }
 
