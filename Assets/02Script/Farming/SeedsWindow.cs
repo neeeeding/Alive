@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using _02Script.InGameDebug;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using _02Script.Manager;
@@ -78,7 +79,6 @@ namespace _02Script.Farming
                     ItemCards[data][ItemCards[data].Count - 1].UpdateCountUI();
                 }
             }
-    
             field.LoadFarm(_allDataSO);
         }
 

@@ -7,6 +7,7 @@ using _02Script.GameEvent;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Obj;
 using _02Script.GamePlayer;
+using _02Script.InGameDebug;
 using _02Script.Manager;
 using TMPro;
 using UnityEngine;
@@ -41,11 +42,14 @@ namespace _02Script.Farming
         protected override void Awake()
         {
             base.Awake();
+            DebugPrint.Instance.PrintInGameDebug("여기는 왔다지요...", this);
             NewSeeds(canFarmCount);
+            DebugPrint.Instance.PrintInGameDebug("뭐가 문제임", this);
         }
 
         protected override void OnEnable()
         {
+            DebugPrint.Instance.PrintInGameDebug("일단 이벤트 활성화", this);
             base.OnEnable();
             GameEventManger.OnFarmTemperature += SetTemperature;
             PlayerInput.OnMousePos += SavePos;
@@ -58,6 +62,7 @@ namespace _02Script.Farming
             GameEventManger.OnFarmTemperature -= SetTemperature;
             PlayerInput.OnMousePos -= SavePos;
             SeedsCard.OnClickCard -= Plant;
+            DebugPrint.Instance.PrintInGameDebug("대체 왜 그래???", this);
         }
         #endregion
 
@@ -90,6 +95,7 @@ namespace _02Script.Farming
         //심기
         private void Plant(SeedsSO so)
         {
+            DebugPrint.Instance.PrintInGameDebug("신호 받음", this);
             if (isEvent)
             {
                 WarringManager.Warring.ShowWarring(addWarring);

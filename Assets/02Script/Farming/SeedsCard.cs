@@ -1,5 +1,6 @@
 ﻿using System;
 using _02Script.Etc;
+using _02Script.InGameDebug;
 using _02Script.Inventory.Item;
 using TMPro;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace _02Script.Farming
         public void ClickCard()
         {
             OnClickCard?.Invoke(mySO);
+            DebugPrint.Instance.PrintInGameDebug("클릭 함요", this);
         }
 
         public void NewCard(SeedsSO seedsSO, ItemData seedsData)

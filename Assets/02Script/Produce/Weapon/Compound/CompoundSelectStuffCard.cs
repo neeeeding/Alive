@@ -36,6 +36,7 @@ namespace _02Script.Produce.Weapon.Compound
 
         public void MouseClick()
         {
+            if(!_inventory.FindItem(_itemData.baseData)) return;
             OnMouseClick?.Invoke(this);
         }
         #endregion
