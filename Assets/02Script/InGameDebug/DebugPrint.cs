@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _02Script.Etc;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _02Script.InGameDebug
 {
@@ -16,6 +18,14 @@ namespace _02Script.InGameDebug
             debugText.text = $"{script} : [{text}]";
             _allDebugText += $"{script.name} : [{text}]///";
             allDebugText.text = _allDebugText;
+        }
+
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 using _02Script.Collect.Item;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
+using UnityEditor;
 using UnityEngine;
 
 namespace _02Script.Battle.Stage
@@ -33,6 +34,10 @@ namespace _02Script.Battle.Stage
         {
             stage.SetItem(_itme,_iCount,_iPos);
             print("ok Item");
+#if UNITY_EDITOR
+            EditorUtility.SetDirty(stage);
+            AssetDatabase.SaveAssets();
+#endif
             gameObject.SetActive(false);
         }
     }

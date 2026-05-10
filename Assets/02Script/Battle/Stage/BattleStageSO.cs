@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using _02Script.Battle.Monster;
 using _02Script.GoHouse.Stage;
+using _02Script.InGameDebug;
 using _02Script.Inventory.Item;
 using UnityEngine;
 
@@ -48,6 +49,7 @@ namespace _02Script.Battle.Stage
             monster = m;
             mTime = t;
             mPos = p;
+            Debug.Log("BattleStageSO Change");
         }
 
         public void SetItem(List<ItemDataSO> m, List<int> c, List<Vector3> p)
@@ -55,6 +57,7 @@ namespace _02Script.Battle.Stage
             itme = m;
             iCount = c;
             iPos = p;
+            Debug.Log("BattleStageSO Change");
         }
 
         public void SetPos(Vector3 cOne, Vector3 cTwo, Vector3 bOne, Vector3 bTwo, Vector3 cCam, Vector3 bCam, Vector3 miniCam,
@@ -73,6 +76,7 @@ namespace _02Script.Battle.Stage
             bCamLimitOffset = bCamOffset;
             bCamLimitSize = bCamSize;
             miniCamSize = miniSize;
+            Debug.Log("BattleStageSO Change");
         }
     }
 }

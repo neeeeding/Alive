@@ -1,7 +1,9 @@
-﻿using _02Script.DoTweenUI.Warring;
+﻿using System;
+using _02Script.DoTweenUI.Warring;
 using _02Script.Farming;
 using _02Script.GameEvent;
 using _02Script.GamePlayer.Manager;
+using _02Script.InGameDebug;
 using UnityEngine;
 
 namespace _02Script.Obj.Obj
@@ -97,7 +99,7 @@ namespace _02Script.Obj.Obj
         private void Show()
         {
             doUi.SetActive(!isEvent && isPlayer);
-
+            
             if (!isPlayer)
             {
                 WarringManager.Warring.ShowWarring("너무 멀리 있습니다.");

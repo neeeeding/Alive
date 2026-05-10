@@ -20,11 +20,13 @@ namespace _02Script.Title
             
             PlayerPrefs.SetString(HouseManager.GameSaveFilePath,"");
             PlayerPrefs.Save();
-            SceneManager.LoadScene(startScene);   
+            SceneManager.LoadScene(startScene);
+            SceneManager.LoadScene(startScene);
         }
         
         public void StartGame()
         {
+            SceneManager.LoadScene(startScene);
             SceneManager.LoadScene(startScene);
         }
 

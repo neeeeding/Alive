@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using _02Script.Battle.Monster;
 using _02Script.Etc;
+using UnityEditor;
 using UnityEngine;
 
 namespace _02Script.Battle.Stage
@@ -27,6 +28,10 @@ namespace _02Script.Battle.Stage
         {
             stage.SetMonster(_monster,_mTime,_mPos);
             print("ok Monster");
+#if UNITY_EDITOR
+            EditorUtility.SetDirty(stage);
+            AssetDatabase.SaveAssets();
+#endif
             gameObject.SetActive(false);
         }
     }

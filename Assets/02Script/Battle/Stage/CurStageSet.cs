@@ -4,6 +4,7 @@ using _02Script.Battle.Monster;
 using _02Script.Battle.UI.Etc;
 using _02Script.Battle.UI.Job;
 using _02Script.Collect.Item;
+using _02Script.InGameDebug;
 using _02Script.Inventory.Item;
 using UnityEngine;
 

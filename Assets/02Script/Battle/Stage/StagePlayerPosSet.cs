@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace _02Script.Battle.Stage
@@ -32,6 +33,10 @@ namespace _02Script.Battle.Stage
             curStage.SetPos(cPlayerOnePos.position, cPlayerTwoPos.position, bPlayerOnePos.position, bPlayerTwoPos.position, cCamPos.position,bCamPos.position, miniCamPos.position,
                 cCamLimit.offset,cCamLimit.size, bCamLimit.offset,bCamLimit.size,miniCamPos.localScale);
             print("ok SetPos");
+#if UNITY_EDITOR
+            EditorUtility.SetDirty(curStage);
+            AssetDatabase.SaveAssets();
+#endif
             gameObject.SetActive(false);
         }
     }
