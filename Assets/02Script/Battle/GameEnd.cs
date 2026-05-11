@@ -45,7 +45,7 @@ namespace _02Script.Battle
         private async void Fail()
         {
             failWindow.SetActive(true);
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             await AsyncTime.WaitSeconds(1, true);
             SceneManager.LoadScene(_failScene);
         }

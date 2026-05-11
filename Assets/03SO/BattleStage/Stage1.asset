@@ -32,19 +32,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 80a170074bf69bc4a9c86997285cd049, type: 2}
   - {fileID: 11400000, guid: 80a170074bf69bc4a9c86997285cd049, type: 2}
   - {fileID: 11400000, guid: 80a170074bf69bc4a9c86997285cd049, type: 2}
-  - {fileID: 11400000, guid: 9f83c3fb18976994fa54c9ab72845bda, type: 2}
   mTime:
   - 0
   - 22
   - 38
   - 45
-  - 55
   mPos:
   - {x: -7.6, y: 21.2, z: 0}
   - {x: 7.33, y: 22.2, z: 0}
   - {x: 10.07, y: 19.69, z: 0}
   - {x: -4.16, y: 20.27, z: 0}
-  - {x: -3.34, y: 22.82, z: 0}
   itme:
   - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
   - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}

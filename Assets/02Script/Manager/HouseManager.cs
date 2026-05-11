@@ -43,6 +43,16 @@ namespace _02Script.Manager
             
             StartCoroutine(NowDate());
             Time.timeScale = 1;
+            if (CompareMonth(PlayerStat.day, PlayerStat.month))
+            {
+                PlayerStat.day = 1;
+                PlayerStat.month++;
+
+                if (PlayerStat.month > 12)
+                {
+                    PlayerStat.year++;
+                }
+            }
         }
 
         public void SetLove(DialogEntitySO dialogEntity, int love) //정보 넣고 해당 신뢰도 스탯에서의 이름 찾아서 전해주기

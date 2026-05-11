@@ -6,7 +6,6 @@ namespace _02Script.Battle
 {
     public class BattleGoShow : MonoBehaviour
     {
-        [SerializeField] private BattleStageSO[] stage;
         [SerializeField] private SceneChange monster;
         
         private readonly string SceneName = "PM_Battle";
@@ -36,8 +35,7 @@ namespace _02Script.Battle
 
         private void SetStage()
         {
-            string json = JsonUtility.ToJson(stage[HouseManager.Instance.PlayerStat.day -1]);
-            PlayerPrefs.SetString(saveStage, json);
+            PlayerPrefs.SetInt(saveStage,HouseManager.Instance.PlayerStat.day -1 );
             PlayerPrefs.Save();
         }
     }

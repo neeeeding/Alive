@@ -13,6 +13,7 @@ namespace _02Script.Battle.Stage
     public class CurStageSet : MonoBehaviour
     {
         [Header("Show")]
+        [SerializeField] private BattleStageSO[] stage;
         [SerializeField] private BattleStageSO curStage;
         
         [Header("Need(script setting)")]
@@ -115,11 +116,12 @@ namespace _02Script.Battle.Stage
         }
         private void LoadStage()
         {
-            string json = PlayerPrefs.GetString(_battleSOSave);
-            print(json);
+            int index = PlayerPrefs.GetInt(_battleSOSave);
+            //print(json);
 
-            curStage = ScriptableObject.CreateInstance<BattleStageSO>();
-            JsonUtility.FromJsonOverwrite(json, curStage);
+            // curStage = ScriptableObject.CreateInstance<BattleStageSO>();
+            // JsonUtility.FromJsonOverwrite(json, curStage);
+            curStage = stage[index];
         }
 
         private void SaveGoHouseScene()

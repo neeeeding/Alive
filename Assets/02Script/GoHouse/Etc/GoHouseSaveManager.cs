@@ -58,6 +58,9 @@ namespace _02Script.GoHouse.Etc
             
             OnSaveItem?.Invoke(_items);
             await AsyncTime.WaitSeconds(1);
+            PlayerStat.day++;
+            PlayerStat.hour = 1;
+            PlayerStat.minute = 0;
             base.SaveData();
         }
 

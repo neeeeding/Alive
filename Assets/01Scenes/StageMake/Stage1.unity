@@ -1514,17 +1514,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6287566640977731604, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
   m_PrefabInstance: {fileID: 5073427014356222955}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &314066739 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4053868962020317090, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
-  m_PrefabInstance: {fileID: 5073427014356222955}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95786b332f67403ab9394e48105b7b15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Monster.BossMonster
 --- !u!1 &347289065
 GameObject:
   m_ObjectHideFlags: 0
@@ -6125,8 +6114,6 @@ MonoBehaviour:
       Value: 38
     - Key: {fileID: 1055993300}
       Value: 45
-    - Key: {fileID: 314066739}
-      Value: 55
   manager: {fileID: 0}
   stage: {fileID: 11400000, guid: bcbb219a82dbc7849bd9e48b76e6fa0a, type: 2}
 --- !u!1 &1961500630
@@ -7090,11 +7077,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1076953657776914633, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1076953657776914633, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2001704904815377023, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
       propertyPath: playerName
@@ -7102,15 +7089,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3467861994220582336, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3467861994220582336, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3467861994220582336, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4053868962020317090, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
       propertyPath: entity
@@ -7159,6 +7146,10 @@ PrefabInstance:
     - target: {fileID: 6769439574572367788, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
       propertyPath: m_Name
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 6769439574572367788, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8366440126742804878, guid: 9cae39b288047ff43922ecf539bcb25a, type: 3}
       propertyPath: m_AnchorMax.x
