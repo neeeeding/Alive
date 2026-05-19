@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ea6aa019bd4ef0a924acf8f15f9788, type: 3}
   m_Name: facetMachine
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.MeansDataSO
-  itemImage: {fileID: 0}
-  maxCount: 10
   category: 7
   itemType: 7116
   itemName: "\uD328\uD0B7 \uBA38\uC2E0"
   itemExplanation: "\uBCF4\uC11D\uC758 \uBA74\uC744 \uB9CC\uB4E4 \uB54C \uC0AC\uC6A9\uD558\uB294
     \uB3C4\uAD6C\uB2E4."
+  itemImage: {fileID: 21300000, guid: 8639fd2f548ffc34ba208e4203448b6c, type: 3}
+  maxCount: 10
+  collectTime: 2
+  stats: 1
+  addStats: 0
   background: {fileID: 0}

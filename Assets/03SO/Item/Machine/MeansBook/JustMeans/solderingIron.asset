@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ea6aa019bd4ef0a924acf8f15f9788, type: 3}
   m_Name: solderingIron
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.MeansDataSO
-  itemImage: {fileID: 0}
-  maxCount: 10
   category: 7
   itemType: 7118
   itemName: "\uB0A9\uB55C \uC778\uB450"
   itemExplanation: "\uC804\uC120\uC774\uB098 \uBD80\uD488\uC744 \uACB0\uD569\uD560
     \uB54C \uC0AC\uC6A9\uD558\uB294 \uB3C4\uAD6C\uB2E4."
+  itemImage: {fileID: 21300000, guid: 2882a313d6693d8408119dad851c44bd, type: 3}
+  maxCount: 10
+  collectTime: 2
+  stats: 1
+  addStats: 0
   background: {fileID: 0}

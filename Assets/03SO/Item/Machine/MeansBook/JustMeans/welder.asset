@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ea6aa019bd4ef0a924acf8f15f9788, type: 3}
   m_Name: welder
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.MeansDataSO
-  itemImage: {fileID: 0}
-  maxCount: 10
   category: 7
   itemType: 7112
   itemName: "\uC6A9\uC811\uAE30"
   itemExplanation: "\uAE08\uC18D \uB4F1\uC744 \uB179\uC5EC\uC11C \uBD99\uC774\uB294
     \uB3C4\uAD6C\uB2E4."
+  itemImage: {fileID: 21300000, guid: fafbc9fa8d091f5418a79c48ac077a1c, type: 3}
+  maxCount: 10
+  collectTime: 2
+  stats: 1
+  addStats: 0
   background: {fileID: 0}

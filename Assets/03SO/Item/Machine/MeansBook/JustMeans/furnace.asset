@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ea6aa019bd4ef0a924acf8f15f9788, type: 3}
   m_Name: furnace
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.MeansDataSO
-  itemImage: {fileID: 0}
-  maxCount: 10
   category: 7
   itemType: 7113
   itemName: "\uC6A9\uD574\uB85C"
   itemExplanation: "\uAE08\uC18D\uC774\uB098 \uC720\uB9AC \uC6D0\uC7AC\uB8CC\uB97C
     \uB179\uC778\uB2E4."
+  itemImage: {fileID: 21300000, guid: b8bb4464462b122409f1a3d5d48cd91e, type: 3}
+  maxCount: 10
+  collectTime: 2
+  stats: 1
+  addStats: 0
   background: {fileID: 0}

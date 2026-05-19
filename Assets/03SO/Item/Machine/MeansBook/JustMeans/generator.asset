@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ea6aa019bd4ef0a924acf8f15f9788, type: 3}
   m_Name: generator
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.MeansDataSO
-  itemImage: {fileID: 0}
-  maxCount: 10
   category: 7
   itemType: 7117
   itemName: "\uBC1C\uC804\uAE30"
   itemExplanation: "\uC804\uAE30\uB97C \uC0DD\uC131\uD55C\uB2E4."
+  itemImage: {fileID: 21300000, guid: c8e85e459745fec4f920291f4bab96a2, type: 3}
+  maxCount: 10
+  collectTime: 2
+  stats: 1
+  addStats: 0
   background: {fileID: 0}

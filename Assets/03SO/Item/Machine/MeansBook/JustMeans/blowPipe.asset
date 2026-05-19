@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ea6aa019bd4ef0a924acf8f15f9788, type: 3}
   m_Name: blowPipe
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.MeansDataSO
-  itemImage: {fileID: 0}
-  maxCount: 10
   category: 7
   itemType: 7114
   itemName: "\uC720\uB9AC \uBE14\uB85C\uC6B0 \uD30C\uC774\uD504"
   itemExplanation: "\uB179\uC778 \uC720\uB9AC\uB97C \uBD99\uC774\uACE0, \uAC00\uACF5\uD558\uAC8C
     \uB3D5\uB294 \uB3C4\uAD6C\uB2E4."
+  itemImage: {fileID: 21300000, guid: e8961e4a3b0b87342a187e612152c158, type: 3}
+  maxCount: 10
+  collectTime: 2
+  stats: 1
+  addStats: 0
   background: {fileID: 0}
