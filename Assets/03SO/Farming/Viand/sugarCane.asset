@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: sugarCane
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2033
   itemName: "\uC0AC\uD0D5\uC218\uC218"
@@ -21,3 +19,8 @@ MonoBehaviour:
     \uBD88\uC21C\uBB3C\uC744 \uC81C\uAC70 \uD558\uC9C0 \uC54A\uC73C\uBA74 \uCE90\uB7EC\uBA5C\uD654\uAC00
     \uB41C\uB2E4.\n\uC124\uD0D5 \uB300\uC2E0 \uC774\uC5D0 \uC88B\uAC8C \uC790\uC77C\uB9AC\uD1A8\uC744
     \uC0AC\uC6A9\uD558\uB294\uAC8C \uC88B\uB2E4."
+  itemImage: {fileID: 21300000, guid: 296c85d7972332e4c8f6dbf5895b3d7a, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

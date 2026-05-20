@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: grape
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2028
   itemName: "\uD3EC\uB3C4"
@@ -23,3 +21,8 @@ MonoBehaviour:
     \uAC8C \uC88B\uC73C\uB098 \uC528\uB294 \uC798 \uBABB \uC0BC\uD0A4\uBA74 \uB9F9\uC7A5\uC5FC\uC744
     \uC720\uBC1C\uD558\uB2C8 \uBA39\uC9C0 \uC54A\uAC70\uB098 \uAF2D\uAF2D \uC539\uC5B4\uBA39\uC5B4\uC57C
     \uD55C\uB2E4."
+  itemImage: {fileID: 21300000, guid: f7d865353648d1f46a6cfd427bf24622, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

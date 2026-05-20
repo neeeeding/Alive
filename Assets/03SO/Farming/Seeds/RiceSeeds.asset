@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: riceSeeds
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: a299ee8a929ccdd44b7866c7887649c6, type: 3}
-  maxCount: 30
   category: 1
   itemType: 1001
   itemName: "\uBCBC\uC758 \uC528\uC557"
   itemExplanation: "\uC2EC\uC73C\uBA74 \uBCBC\uAC00 \uC790\uB77C\uB09C\uB2E4."
+  itemImage: {fileID: 21300000, guid: 6f086673932b65b419812fc2b1403b3d, type: 3}
+  maxCount: 30
+  collectTime: 2
+  stats: 1
+  addStats: 0

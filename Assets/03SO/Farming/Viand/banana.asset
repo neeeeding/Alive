@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: banana
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2030
   itemName: "\uBC14\uB098\uB098"
@@ -21,3 +19,8 @@ MonoBehaviour:
     \uD30C\uCD08(\uD480)\uB2E4.\n\uC57C\uC0DD \uBC14\uB098\uB098\uB294 \uC528\uC557\uC774
     \uB9CE\uC9C0\uB9CC, \uC6B0\uB9AC\uAC00 \uBA39\uB294 \uBC14\uB098\uB098\uB294
     \uC528\uC557\uC774 \uC5C6\uC5B4 \uD761\uC544\uB85C \uC7AC\uBC30\uD55C\uB2E4."
+  itemImage: {fileID: 21300000, guid: 394716692cf4bc84db742d5ff74785c2, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

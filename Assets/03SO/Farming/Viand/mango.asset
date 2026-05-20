@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: mango
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2031
   itemName: "\uB9DD\uACE0"
@@ -23,3 +21,8 @@ MonoBehaviour:
     \uAE40\uCE58\uB85C \uB2F4\uAD6C\uB294 \uBC29\uBC95\uC774 \uC788\uB2E4.\n\uC63B
     \uC54C\uB974\uB808\uAE30\uAC00 \uC788\uB2E4\uBA74 \uAECD\uC9C8\uACFC \uC528\uC557\uC5D0
     \uC8FC\uC758 \uD574\uC57C\uD55C\uB2E4."
+  itemImage: {fileID: 21300000, guid: 2d72a5a30c2ad4140a1b4fe8cb3fb255, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

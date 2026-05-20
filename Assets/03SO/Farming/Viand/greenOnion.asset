@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: greenOnion
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2003
   itemName: "\uD30C"
   itemExplanation: "\uD30C \uC911\uC5D0\uB3C4 \uB300\uD30C\uC774\uB2E4.\n\uC5C6\uC73C\uBA74
     \uC12D\uC12D\uD558\uB2E4."
+  itemImage: {fileID: 21300000, guid: f2b21afc5dade3e45bb962174e09687f, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: coconut
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2032
   itemName: "\uCF54\uCF54\uB11B"
@@ -23,3 +21,8 @@ MonoBehaviour:
     \uC904\uC774\uAE30 \uC704\uD574 \uAC89\uAECD\uC9C8\uC744 \uC81C\uAC70 \uD558\uAE30
     \uB54C\uBB38\uC774\uB2E4.\n\uB610\uD55C \uBA39\uB294 \uBD80\uBD84\uC740 \uBC30\uC816\uC73C\uB85C
     \uC528\uC557\uC758 \uC601\uC591\uBD84\uC774\uB2E4."
+  itemImage: {fileID: 21300000, guid: badc7360cd0f69f4abf75aafdd2d991a, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

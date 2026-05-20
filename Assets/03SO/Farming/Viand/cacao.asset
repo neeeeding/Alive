@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: cacao
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2034
   itemName: "\uCE74\uCE74\uC624"
@@ -22,3 +20,8 @@ MonoBehaviour:
     \uC790\uCCB4\uB294 \uCDA9\uCE58\uB97C \uC608\uBC29 \uD558\uB294 \uD6A8\uACFC\uAC00
     \uC788\uB2E4. \uADF8\uB807\uC9C0\uB9CC \uCD08\uCF5C\uB9BF\uC740 \uC124\uD0D5
     \uB54C\uBB38\uC5D0 \uC88B\uC9C0 \uBABB\uD558\uB2E4."
+  itemImage: {fileID: 21300000, guid: 295cefce96ad68c46b1032f6e0337442, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0
