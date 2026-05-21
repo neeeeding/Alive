@@ -8,6 +8,7 @@ namespace _02Script.Collect.Arrow
         [SerializeField] private RectTransform down;
         [SerializeField] private RectTransform left;
         [SerializeField] private RectTransform right;
+        [SerializeField] private RectTransform none;
 
         public Rect SetDirection(ArrowDirection direction, Transform arrow)
         {
@@ -17,6 +18,7 @@ namespace _02Script.Collect.Arrow
                 ArrowDirection.Down  => down,
                 ArrowDirection.Left => left,
                 ArrowDirection.Right  => right,
+                ArrowDirection.None => none,
             };
 
             Rect rect = pos.rect;

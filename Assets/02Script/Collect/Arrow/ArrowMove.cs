@@ -5,12 +5,12 @@ namespace _02Script.Collect.Arrow
 {
     public class ArrowMove : MonoBehaviour
     {
-        [SerializeField] private Image arrow;
-        [SerializeField] private Camera cam;
+        [SerializeField]protected ArrowManager _arrowManager;
+        [SerializeField] protected Image arrow;
+        [SerializeField] protected Camera cam;
 
-        private GameObject _character;
-        private ArrowManager _arrowManager;
-        private ArrowDirection _direction;
+        public GameObject _character;
+        protected ArrowDirection _direction;
 
         private void Update()
         {
@@ -21,7 +21,7 @@ namespace _02Script.Collect.Arrow
             Rotate();
         }
 
-        private bool ShowCheck() //화살표가 보여야 하는지
+        protected virtual bool ShowCheck() //화살표가 보여야 하는지
         {
             Vector2 camPos = cam.WorldToViewportPoint(_character.transform.position);
 
@@ -41,7 +41,7 @@ namespace _02Script.Collect.Arrow
             return _direction != ArrowDirection.None;
         }
 
-        private void Move()
+        protected virtual void Move()
         {
             Rect rect = _arrowManager.SetDirection(_direction, transform);
             

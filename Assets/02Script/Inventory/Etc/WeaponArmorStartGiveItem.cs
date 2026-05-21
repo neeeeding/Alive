@@ -19,7 +19,7 @@ namespace _02Script.Inventory.Etc
 
         protected override void Set()
         {
-            if (SceneManager.GetActiveScene().name == "AM_House")
+            if (SceneManager.GetActiveScene().name.Contains("House"))
             {
                 if(IsCantGet()) return;
                 HouseManager.Instance.PlayerStat.isGetItem = false;

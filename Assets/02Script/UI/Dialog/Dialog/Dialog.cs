@@ -177,7 +177,7 @@ namespace _02Script.UI.Dialog.Dialog
         {
             if (_isTime)
             {
-                if (_curTime > 0.2f)
+                if (_curTime > 0.1f)
                 {
                     _nCount++;
                     _curTime = 0;

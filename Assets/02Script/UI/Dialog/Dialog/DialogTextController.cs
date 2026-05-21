@@ -8,7 +8,7 @@ namespace _02Script.UI.Dialog.Dialog
         public void OneOne(string chatText, int nCount, TextMeshProUGUI dialogText,
             ref bool isTime) //한 글자 씩 출력
         {
-            string[] chat = chatText.Split(' ');
+            //string[] chat = chatText.Split(' ');
             int j = 0;
     
             if (dialogText.text == chatText) {
@@ -18,11 +18,12 @@ namespace _02Script.UI.Dialog.Dialog
                 dialogText.text = " ";
             }
 
-            foreach (string s in chat)
+            //foreach (string s in chat)
+            foreach (char s in chatText)
             {
                 j++;
                 if(j != nCount) continue;
-                dialogText.text += s + " ";
+                dialogText.text += s;
             }
 
             if (nCount >= j)
