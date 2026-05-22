@@ -7,49 +7,49 @@ namespace _02Script.Tutorial
 {
     public class Tutorial : MonoBehaviour
     {
-        [SerializeField] private List<string> tutorialTexts = new List<string>();
         [Header("need")]
-        [SerializeField] private TextMeshProUGUI tutorialTextUI;
-        [SerializeField] private GameObject blackWindow; //검은 환경 
-        [SerializeField] private GameObject skipBtn; 
+        [SerializeField] protected TextMeshProUGUI tutorialTextUI;
+        [SerializeField] protected GameObject blackWindow; //검은 환경 
+        [SerializeField] protected GameObject skipBtn; 
 
-        private int _curCount;
+        protected List<(string text,bool isStop/*시간 멈출 건지*/)> tutorialDetail = new List<(string,bool)>();
+        protected int _curCount;
 
-        private void Black()
+        protected virtual void Black()
         {
             blackWindow.SetActive(true);
             _curCount = 0;
         }
 
-        private void Hide()
+        protected virtual void Hide()
         {
             blackWindow.SetActive(false);
             tutorialTextUI.gameObject.SetActive(false);
         }
 
-        public void Before()
+        public virtual void Before()
         {
             _curCount = Mathf.Max(0, _curCount - 1);
             
-            tutorialTextUI.text = tutorialTexts[_curCount];
+            tutorialTextUI.text = tutorialDetail[_curCount].text;
         }
 
-        public void Next()
+        public virtual void Next()
         {
-            if (tutorialTexts.Count <= ++_curCount)
+            if (tutorialDetail.Count <= ++_curCount)
             {
                 EndTutorial();
             }
-            tutorialTextUI.text = tutorialTexts[_curCount];
+            tutorialTextUI.text = tutorialDetail[_curCount].text;
         }
 
-        private void EndTutorial()
+        protected virtual void EndTutorial()
         {
             Hide();
             gameObject.SetActive(false);
         }
 
-        public void TextShow(string text)
+        public virtual void TextShow(string text)
         {
             tutorialTextUI.gameObject.SetActive(true);
             tutorialTextUI.text = text;

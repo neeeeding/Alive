@@ -43,6 +43,7 @@ namespace _02Script.Collect.Item
         {
             CollectItem.OnClickItem += SelfCheck;
             GameMiddleUI.OnEndCollect += EndCollectGame;
+            _renderer.sprite = itemData.itemImage;
             _renderer.material = baseMaterial;
             gaugeUI.gameObject.SetActive(false);
             _curS = 0f;
