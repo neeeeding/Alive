@@ -11,6 +11,10 @@ namespace _02Script.Inventory.Inventory.Use
         [SerializeField] private TextMeshProUGUI itemName;
         [SerializeField] private TextMeshProUGUI maxCount;
 
+        private RectTransform _useWindowT;
+        protected float minX = 230;
+        protected float maxX = 1920 - 230;
+
         public void Hide()
         {
             useWindow.gameObject.SetActive(false);
@@ -19,6 +23,7 @@ namespace _02Script.Inventory.Inventory.Use
         #region EnDi
         private void OnEnable()
         {
+            _useWindowT = useWindow.gameObject.GetComponent<RectTransform>();
             InventoryItemCard.OnMouseClick += Show;
             Hide();
         }
@@ -37,7 +42,15 @@ namespace _02Script.Inventory.Inventory.Use
             ItemDataSO data = card.ReturnData().ReturnDataSO();
             itemName.text = data.itemName;
             
-            maxCount.text =  card.ReturnData().ItemCount().ToString();
+            if (data.category != ItemCategory.food && data.category != ItemCategory.weapon &&
+                data.category != ItemCategory.armor && data.category != ItemCategory.machine)
+            {
+                maxCount.text =  card.ReturnData().ItemCount().ToString();
+            }
+            else
+            {
+                maxCount.text =  "1";
+            }
             
             WindowPos(cardPos);
         }
@@ -46,8 +59,9 @@ namespace _02Script.Inventory.Inventory.Use
         {
             float addY = cardPos.position.y + cardPos.sizeDelta.y;
             //음 양
-            useWindow.gameObject.GetComponent<RectTransform>().position = cardPos.position +
-                                                                          (Vector3.up * cardPos.sizeDelta.y * (addY >= 1000 ? -1 : 1));
+            _useWindowT.position = cardPos.position + (Vector3.up * cardPos.sizeDelta.y * (addY >= 1000 ? -1 : 1));
+            _useWindowT.position= new Vector3(Mathf.Clamp(_useWindowT.position.x, minX, maxX),_useWindowT.position.y,0);
+            
         }
     }
 }

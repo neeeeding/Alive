@@ -33,12 +33,12 @@ namespace _02Script.Inventory.Item
         }
 
         //내구도가 아닌 하나의 아이템으로 봤을 경우
-        public void UseItem(int use = 1, bool isThrow = false,EntityName name = EntityName.None)
+        public bool UseItem(int use = 1, bool isThrow = false,EntityName name = EntityName.None)
         {
             if (!isThrow && !_itemBaseData.DoSomething(name))
             {
                 WarringManager.Warring.ShowWarring("인벤토리에서 사용할 수 있는 아이템이 아닙니다.");
-                return;
+                return false;
             }
             
             switch(_itemBaseData.category)
@@ -65,7 +65,7 @@ namespace _02Script.Inventory.Item
                     SaveManagerCheck.GetCurScenePlayerStat().items[_itemBaseData.itemType].Remove(use);
                     break;
             }
-            
+            return true;
         }
 
         //내구도 닳는용

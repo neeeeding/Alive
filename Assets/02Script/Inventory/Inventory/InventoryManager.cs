@@ -96,8 +96,11 @@ namespace _02Script.Inventory.Inventory
             if (ItemDatas.ContainsKey(item))
             {
                 ItemData data = ItemDatas[item];
-                
-                data.UseItem(count, isThrow);
+
+                if (!data.UseItem(count, isThrow))
+                {
+                    return;
+                }
                 ItemCards[data][ItemCards[data].Count -1].UpdateCountUI();
                 
                 if(realItem != null)

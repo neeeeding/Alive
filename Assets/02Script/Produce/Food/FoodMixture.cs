@@ -67,8 +67,12 @@ namespace _02Script.Produce.Food
 
         protected override void Setting(ProduceBookSO bookData)
         {
-            if(bookData == null || bookData.means == null) return;
-            _curMeans = bookData.means;
+            if (bookData == null || bookData.means == null)
+            {
+                _curMeans = null;
+            }
+            else
+                _curMeans = bookData.means;
             base.Setting(bookData);
         }
     }
