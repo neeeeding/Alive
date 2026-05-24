@@ -1,13 +1,71 @@
 ﻿using System;
 using System.Collections.Generic;
+using _02Script.Farming;
+using _02Script.Inventory.Item;
+using _02Script.Produce;
 using UnityEngine;
 
 namespace _02Script.Tutorial.House
 {
     public class HouseTutorial : Tutorial
     {
+        [SerializeField] private Guide guideSc;
+        
+        [SerializeField] private List<GameObject> next = new List<GameObject>();
+        [SerializeField] private List<GameObject> guide = new List<GameObject>();
+
+        private bool _isGetNextCheck;
+        
+        private void OnEnable()
+        {
+            _isGetNextCheck = false;
+            SeedsCard.OnClickCard += Next;
+            ProduceBookCard.OnMouseClick += Next;
+            InventoryItemCard.OnMouseCursor += Next;
+        }
+
+        private void OnDisable()
+        {
+            SeedsCard.OnClickCard -= Next;
+            ProduceBookCard.OnMouseClick -= Next;
+            InventoryItemCard.OnMouseCursor += Next;
+        }
+
+        #region ActionNext
+        private void Next(SeedsSO obj) //1
+        {
+            if(_isGetNextCheck) return;
+            if (obj.seeds.itemType == ItemType.riceSeeds)
+            {
+                Next();
+                _isGetNextCheck = true;
+            }
+        }
+        private void Next(ProduceBookSO obj) //2
+        {
+            if(!_isGetNextCheck) return;
+            if (obj.itemType == ItemType.warmRice)
+            {
+                Next();
+                _isGetNextCheck = false;
+            }
+        }
+        private void Next(ItemDataSO obj,int i,int ii,float f) //3
+        {
+            if(_isGetNextCheck) return;
+            if(obj == null) return;
+            if (obj.category == ItemCategory.food)
+            {
+                Next();
+                _isGetNextCheck = true;
+            }
+        }
+
+        #endregion
+
         private void Awake()
         {
+            _curCount = 19;
             tutorialDetail = new List<(string text,bool isStop)>()//true가 멈춤
             {
                 ("현재 있는 곳은 집이에요!\n집에선 농사, 요리, 제작 등을 할 수 있어요.",true),
@@ -31,7 +89,6 @@ namespace _02Script.Tutorial.House
                 ("설명서를 보고 미니게임을 해봐요!",false),
                 ("요리는 창고에서 볼 수 있어요.\n화살표를 따라 눌러봐요.",false),
                 ("여기는 기타 정보들이 있는 곳으로 사전에선 괴물, 아이템등의 정보를 볼 수 있어요.",true),
-                ("여기는 기타 정보들이 있는 곳으로 사전에선 괴물, 아이템등의 정보를 볼 수 있어요.",true),
                 ("창고는 현재 가지고 있는 아이템들을 볼 수 있어요.",true),
                 ("인물은 현재 캐릭터의 상태등을 볼 수 있고,\n지도에서는 집의 위치를 볼 수 있어요.",true),
                 ("설정을 통해 게임을 나가거나 사운드를 조정할 수 있어요.",true),
@@ -41,8 +98,18 @@ namespace _02Script.Tutorial.House
                 ("우측에서 정보를 볼 수 있어요.\n미니게임 점수가 음식의 등급을 결정해요.",false),
                 ("등급이 높을 수록 음식 섭취 확률이 올라가요.",true),
                 ("다시 게임으로 돌아가세요.",false),
+                ("다시 게임으로 돌아가세요.",false),
                 ("오후 8시가 되면 전투에 나갈 수 있어요.\n괴물을 클릭해보세요!",false),
             };
+            ChangeText();
+        }
+
+        public override void Next()
+        {
+            base.Next();
+            if(next[_curCount] != null)
+                next[_curCount].SetActive(true);
+            guideSc.SetTarget(guide[_curCount]);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace _02Script.Collect.Arrow
         public GameObject _character;
         protected ArrowDirection _direction;
 
-        private void Update()
+        protected virtual void Update()
         {
             if(!_character) return;
             if(!ShowCheck()) return;
@@ -62,7 +62,7 @@ namespace _02Script.Collect.Arrow
             transform.position = target;
         }
 
-        private void Rotate()
+        protected void Rotate()
         {
             float angle = Mathf.Atan2(_character.transform.position.y - cam.transform.position.y, 
                                _character.transform.position.x - cam.transform.position.x) * Mathf.Rad2Deg;

@@ -9,13 +9,13 @@ namespace _02Script.Etc
 {
     public class SaveManagerCheck : MonoBehaviour
     {
-        private static readonly string _am = "AM_House";
+        private static readonly string _am = "House";
         private static readonly string _pm = "PM_Battle";
         private static readonly string _mini = "GoHouse";
         
         public static PlayerStatSC GetCurScenePlayerStat()
         {
-            if (SceneManager.GetActiveScene().name == _am)
+            if (SceneManager.GetActiveScene().name.Contains(_am))
                 return HouseManager.Instance.PlayerStat;
             if (SceneManager.GetActiveScene().name == _mini)
                 return GoHouseSaveManager.Instance.PlayerStat;

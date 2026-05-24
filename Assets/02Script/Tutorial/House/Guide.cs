@@ -10,6 +10,13 @@ namespace _02Script.Tutorial.House
         {
             _character = target;
         }
+        protected override void Update()
+        {
+            if(!ShowCheck()) return;
+            
+            Move();
+            Rotate();
+        }
 
         protected override bool ShowCheck()
         {

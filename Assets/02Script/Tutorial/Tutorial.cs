@@ -30,8 +30,7 @@ namespace _02Script.Tutorial
         public virtual void Before()
         {
             _curCount = Mathf.Max(0, _curCount - 1);
-            
-            tutorialTextUI.text = tutorialDetail[_curCount].text;
+            ChangeText();
         }
 
         public virtual void Next()
@@ -39,8 +38,16 @@ namespace _02Script.Tutorial
             if (tutorialDetail.Count <= ++_curCount)
             {
                 EndTutorial();
+                return;
             }
+            ChangeText();
+        }
+
+        protected virtual void ChangeText()
+        {
             tutorialTextUI.text = tutorialDetail[_curCount].text;
+            Time.timeScale = tutorialDetail[_curCount].isStop ? 0 : 1;
+            blackWindow.SetActive(tutorialDetail[_curCount].isStop);
         }
 
         protected virtual void EndTutorial()
