@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: ramen
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.ItemDataSO
-  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
-  maxCount: 30
   category: 3
   itemType: 3372
   itemName: "\uB77C\uBA74"
@@ -21,3 +19,8 @@ MonoBehaviour:
     \uD30C\uC190\uBC29\uC9C0, \uB9CE\uC740 \uC591 \uB4F1\uC774 \uC788\uB2E4.\n\uACFC\uD559\uC801\uC73C\uB85C
     \uB530\uC838\uBCF4\uBA74 \uC2A4\uD504\uB97C \uBA3C\uC800 \uB123\uB294\uAC8C \uB354
     \uB9DB\uC788\uB2E4\uACE0 \uD55C\uB2E4."
+  itemImage: {fileID: 21300000, guid: b67b53a2a7130c54083d347876a8b58f, type: 3}
+  maxCount: 30
+  collectTime: 2
+  stats: 1
+  addStats: 0

@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: porkCutlet
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.ItemDataSO
-  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
-  maxCount: 30
   category: 3
   itemType: 3241
   itemName: "\uB3C8\uAE4C\uC2A4"
@@ -21,3 +19,8 @@ MonoBehaviour:
     \uC544\uB2C8\uB77C \uB2ED\uACE0\uAE30\uAC00 \uB4E4\uC5B4\uAC04\uB2E4.\n\uB3C8\uAE4C\uC2A4\uB294
     \uC11C\uC591\uC758 '\uD3EC\uD06C \uCEE4\uD2C0\uB9BF'\uC5D0\uC11C \uC720\uB798\uAC00
     \uB418\uC5C8\uB2E4."
+  itemImage: {fileID: 21300000, guid: f4924368351a776489b2fade3b660c50, type: 3}
+  maxCount: 30
+  collectTime: 2
+  stats: 1
+  addStats: 0

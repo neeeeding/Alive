@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: stewedMackerel
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.ItemDataSO
-  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
-  maxCount: 30
   category: 3
   itemType: 3301
   itemName: "\uACE0\uB4F1\uC5B4 \uC870\uB9BC"
@@ -22,3 +20,8 @@ MonoBehaviour:
     \uC0AC\uBC14\uC778\uB370, \uAD00\uCCAD\uC5D0 \uBD80\uD0C1\uD560 \uC77C\uC774
     \uC788\uC73C\uBA74 \uACE0\uB4F1\uC5B4 \uB450\uB9C8\uB9AC\uB97C \uB4E4\uACE0 \uAC14\uAE30
     \uB54C\uBB38\uC774\uB2E4."
+  itemImage: {fileID: 21300000, guid: 8c98a0ed975f863469d6ddfa36448ead, type: 3}
+  maxCount: 30
+  collectTime: 2
+  stats: 1
+  addStats: 0

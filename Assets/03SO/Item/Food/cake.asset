@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: cake
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.ItemDataSO
-  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
-  maxCount: 30
   category: 3
   itemType: 3451
-  stats: 2
-  addStats: 20
   itemName: "\uCF00\uC774\uD06C"
   itemExplanation: "\uB2EC\uC758 \uC5EC\uC2E0\uC5D0\uAC8C \uC81C\uBB3C\uC744 \uBC14\uCE58\uAE30
     \uC704\uD574 \uB2EC \uBAA8\uC591 \uBE75\uC5D0 \uCD08\uB97C \uAF42\uC544 \uBD88\uC744
     \uBD99\uC778\uAC8C \uCF00\uC774\uD06C\uC758 \uAE30\uC6D0\uC774\uB77C\uACE0 \uD55C\uB2E4.\n\uCD08\uB294
     \uB2EC \uBE5B, \uC5F0\uAE30\uB294 \uD558\uB298\uB85C \uC18C\uC6D0\uC744 \uC804\uB2EC\uD558\uB294
     \uB9E4\uAC1C\uCCB4\uB77C\uACE0 \uD55C\uB2E4."
+  itemImage: {fileID: 21300000, guid: f917471ded562244cba291b0ebe59d3a, type: 3}
+  maxCount: 30
+  collectTime: 2
+  stats: 2
+  addStats: 20

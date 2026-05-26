@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: jjajangmyeon
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.ItemDataSO
-  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
-  maxCount: 30
   category: 3
   itemType: 3201
   itemName: "\uC9DC\uC7A5\uBA74"
   itemExplanation: "\uC194\uB85C\uB4E4\uC774 \uBE14\uB799\uB370\uC774\uC5D0 \uBA39\uB294
     \uC74C\uC2DD\uC774\uB2E4.\n\uC9DC\uC7A5\uBA74\uC740 '\uC7A5\uC744 \uD280\uAE34
     \uBA74'\uC774\uB77C\uB294 \uB73B\uC744 \uAC00\uC9C0\uACE0 \uC788\uB2E4."
+  itemImage: {fileID: 21300000, guid: 1fd5199eb47fadb448c3c358893b03af, type: 3}
+  maxCount: 30
+  collectTime: 2
+  stats: 1
+  addStats: 0

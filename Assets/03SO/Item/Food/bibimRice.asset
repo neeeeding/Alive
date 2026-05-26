@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: bibimRice
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.ItemDataSO
-  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
-  maxCount: 30
   category: 3
   itemType: 3102
   itemName: "\uBE44\uBE54\uBC25"
@@ -22,3 +20,8 @@ MonoBehaviour:
     \uBB38\uD654\uAC00 \uBC1C\uC804\uD558\uAC8C \uB418\uC5C8\uB2E4.\n\uBC18\uB300\uB85C
     \uC77C\uBCF8\uC740 \uBC25\uC744 \uB354 \uC911\uC2DC \uD558\uAE30\uC5D0 \uC77C\uBCF8
     \uB36E\uBC25\uC740 \uBE44\uBE44\uC9C0 \uC54A\uACE0 \uB5A0\uBA39\uB294\uAC8C \uC815\uC11D\uC774\uB2E4."
+  itemImage: {fileID: 21300000, guid: 04b164e698e44a1499128392890dde34, type: 3}
+  maxCount: 30
+  collectTime: 2
+  stats: 1
+  addStats: 0

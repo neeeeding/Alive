@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: pizza
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.ItemDataSO
-  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
-  maxCount: 30
   category: 3
   itemType: 3402
   itemName: "\uD53C\uC790"
@@ -21,3 +19,8 @@ MonoBehaviour:
     \uBB3C\uAC74\uC740 \uB77C\uC9C0 \uC0AC\uC774\uC988\uC758 \uD53C\uC790 \uB450
     \uD310\uC774\uB2E4.\n\uCE84\uBCF4\uB514\uC544\uC5D0\uB294 \uB300\uB9C8\uCD08\uB97C
     \uD1A0\uD551\uC73C\uB85C \uD55C \uD53C\uC790\uAC00 \uC788\uB2E4."
+  itemImage: {fileID: 21300000, guid: 29924c618c6ced74ca540301e8de548f, type: 3}
+  maxCount: 30
+  collectTime: 2
+  stats: 1
+  addStats: 0

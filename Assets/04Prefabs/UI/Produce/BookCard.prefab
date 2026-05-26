@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dad26358c476d97419d0dc5105914571, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -140,17 +140,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uACC4\uB780 \uB9D0\uC774"
+  m_text: "\uB538\uAE30 \uC2A4\uBB34\uB514"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d57835b8373e3644fa6d709471792233, type: 2}
-  m_sharedMaterial: {fileID: 5034966237914011262, guid: d57835b8373e3644fa6d709471792233, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3104c98f55b2c844b97942c91237da43, type: 2}
+  m_sharedMaterial: {fileID: 5034966237914011262, guid: 3104c98f55b2c844b97942c91237da43, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -167,8 +167,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.9
-  m_fontSizeBase: 28.9
+  m_fontSize: 24.9
+  m_fontSizeBase: 24.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.690566, g: 0.690566, b: 0.690566, a: 1}
+  m_Color: {r: 0.2603773, g: 0.2603773, b: 0.2603773, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -306,8 +306,6 @@ MonoBehaviour:
   countUI: {fileID: 4726997583136394264}
   cardImage: {fileID: 2164313204045043384}
   itemCardBack: {fileID: 7535060141561422421}
-  baseColor: {r: 0.6830188, g: 0.6830188, b: 0.6830188, a: 1}
-  canColor: {r: 0.082352936, g: 0.77254903, b: 0.12942323, a: 1}
   delay: 0.2
 --- !u!114 &3516944825909555848
 MonoBehaviour:

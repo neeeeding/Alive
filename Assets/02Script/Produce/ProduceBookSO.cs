@@ -18,7 +18,7 @@ namespace _02Script.Produce
         protected override void OnValidate()
         {
             base.OnValidate();
-            if(itemName == result.itemName) return;
+            if(itemImage == result.itemImage) return;
             itemImage = result.itemImage;
             maxCount = result.maxCount;
             category = result.category;

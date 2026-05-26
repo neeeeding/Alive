@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: strawberrySmoothie
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Item.ItemDataSO
-  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
-  maxCount: 30
   category: 3
   itemType: 3121
   itemName: "\uB538\uAE30 \uC2A4\uBB34\uB514"
@@ -21,3 +19,8 @@ MonoBehaviour:
     \uB123\uACE0 \uAC08\uAE30\uB9CC \uD558\uBA74 \uB41C\uB2E4.\n\uB9C8\uCC2C\uAC00\uC9C0\uB85C
     \uACFC\uC77C\uB9CC \uBC14\uAFB8\uBA74 \uB2E4\uB978 \uACFC\uC77C \uC2A4\uBB34\uB514\uB97C
     \uB9CC\uB4E4\uAE30 \uC27D\uB2E4."
+  itemImage: {fileID: 21300000, guid: 81bf9b0aefe5ccf4c9102295d19ec9d4, type: 3}
+  maxCount: 30
+  collectTime: 2
+  stats: 1
+  addStats: 0
