@@ -57,7 +57,7 @@ namespace _02Script.Produce.Food
                 inventory.ThrowItem(card.ReturnData().ReturnDataSO(),use);
             }
             inventory.AddItem(resultData,count);
-            produceInventory.AddItem(resultData,count);
+            //produceInventory.AddItem(resultData,count);
             _itemMax.maxCount -= use;
             
             resultCount.text = _itemMax.maxCount > 0? _itemMax.maxCount.ToString() : "";

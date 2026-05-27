@@ -1,4 +1,5 @@
-﻿using _02Script.Etc;
+﻿using System;
+using _02Script.Etc;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +8,11 @@ namespace _02Script.MiniGame
     public class MiniGameCount : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI countText;
+
+        private void OnEnable()
+        {
+            Count();
+        }
 
         private async void Count()
         {

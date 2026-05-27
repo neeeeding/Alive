@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ea6aa019bd4ef0a924acf8f15f9788, type: 3}
   m_Name: riceCooker
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.MeansDataSO
-  itemImage: {fileID: 0}
-  maxCount: 10
   category: 7
   itemType: 7104
   itemName: "\uBC25\uC1A5"
   itemExplanation: "\uBC25\uC744 \uC9C0\uC744 \uB54C \uC0AC\uC6A9\uD558\uB294 \uB3C4\uAD6C\uB2E4."
+  itemImage: {fileID: 21300000, guid: b4dd247bbbb6fc844aae9a6ec7764806, type: 3}
+  maxCount: 10
+  collectTime: 2
+  stats: 1
+  addStats: 0
   background: {fileID: 0}
