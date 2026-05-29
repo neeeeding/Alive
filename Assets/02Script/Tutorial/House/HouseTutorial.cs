@@ -7,6 +7,7 @@ using _02Script.Produce;
 using _02Script.Produce.Weapon;
 using _02Script.Produce.Weapon.Compound;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _02Script.Tutorial.House
 {
@@ -34,6 +35,11 @@ namespace _02Script.Tutorial.House
             ProduceBookCard.OnMouseClick -= Next;
             InventoryItemCard.OnMouseCursor += Next;
             CompoundCheck.OnCompound -= Next;
+        }
+
+        public void TutorialBattle()
+        {
+            SceneManager.LoadScene("Tutorial_Battle");
         }
 
         #region ActionNext

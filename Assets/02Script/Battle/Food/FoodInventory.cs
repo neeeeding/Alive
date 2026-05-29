@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _02Script.Collect;
 using _02Script.Collect.Item;
 using _02Script.DoTweenUI.Warring;
 using _02Script.Etc;
@@ -26,12 +27,14 @@ namespace _02Script.Battle.Food
         protected override void OnEnable()
         {
             CollectItem.OnGetItem += GetItem;
+            DeleteBtn.OnDelete += UseItem;
             FoodCheck.OnFood += Eat;
             FoodInventory.OnUseItem += UseItem;
         }
         protected override void OnDisable()
         {
             CollectItem.OnGetItem -= GetItem;
+            DeleteBtn.OnDelete += UseItem;
             FoodCheck.OnFood -= Eat;
             FoodInventory.OnUseItem -= UseItem;
         }
@@ -69,6 +72,11 @@ namespace _02Script.Battle.Food
             }
             OnUseItem?.Invoke(_inventory[data.ReturnDataSO()][0], data.ReturnDataSO(),(int)card.ReturnNum(true));
             //data.UseItem((int)card.ReturnNum(true),true); //버리기
+        }
+
+        private void UseItem(EntityName name, ItemDataSO data, float count)
+        {
+            UseItem(name,data,(int)count);
         }
 
         private void UseItem(EntityName name, ItemDataSO data, int count)

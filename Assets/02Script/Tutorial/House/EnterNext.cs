@@ -8,7 +8,7 @@ namespace _02Script.Tutorial.House
         public bool isShow;
         public bool isHide;
         public bool isClick;
-        [SerializeField] private HouseTutorial tutorial;
+        [SerializeField] private Tutorial tutorial;
 
         private bool _isGet;
 
@@ -27,6 +27,14 @@ namespace _02Script.Tutorial.House
             {
                 tutorial.Next();
                 Destroy(this);
+            }
+        }
+
+        public void OnClick()
+        {
+            if (isClick && gameObject.activeSelf)
+            {
+                Next();
             }
         }
 

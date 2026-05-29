@@ -10,7 +10,7 @@ namespace _02Script.Etc
     public class SaveManagerCheck : MonoBehaviour
     {
         private static readonly string _am = "House";
-        private static readonly string _pm = "PM_Battle";
+        private static readonly string _pm = "Battle";
         private static readonly string _mini = "GoHouse";
         
         public static PlayerStatSC GetCurScenePlayerStat()
@@ -19,7 +19,7 @@ namespace _02Script.Etc
                 return HouseManager.Instance.PlayerStat;
             if (SceneManager.GetActiveScene().name == _mini)
                 return GoHouseSaveManager.Instance.PlayerStat;
-            if (SceneManager.GetActiveScene().name == _pm)
+            if (SceneManager.GetActiveScene().name.Contains(_pm))
                 return BattleSaveManager.Instance.PlayerStat;
             
             return null;

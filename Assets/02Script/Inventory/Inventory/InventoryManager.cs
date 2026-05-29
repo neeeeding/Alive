@@ -101,7 +101,11 @@ namespace _02Script.Inventory.Inventory
                 {
                     return;
                 }
-                ItemCards[data][ItemCards[data].Count -1].UpdateCountUI();
+                
+                if (ItemCards[data].Count - 1 > 0)
+                {
+                    ItemCards[data][ItemCards[data].Count -1].UpdateCountUI();
+                }
                 
                 if(realItem != null)
                     realItem.CheckLessItem();
