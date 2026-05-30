@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _02Script.Battle.Entity;
 using _02Script.Battle.Food;
 using _02Script.Collect.Item;
@@ -92,10 +91,10 @@ namespace _02Script.Tutorial.Battle
             if (next[_curCount] != null)
             {
                 next[_curCount].SetActive(true);
-                if (_curCount > 2 && next[_curCount-1] != null)
-                {
-                    next[_curCount - 1].SetActive(false);
-                }
+            }
+            if (_curCount > 1 && next[_curCount-1] != null)
+            {
+                next[_curCount - 1].SetActive(false);
             }
         }
 

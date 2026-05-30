@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using _02Script.Manager;
+using _02Script.SaveData;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace _02Script.Tutorial
@@ -14,6 +17,7 @@ namespace _02Script.Tutorial
 
         protected List<(string text,bool isStop/*시간 멈출 건지*/)> tutorialDetail = new List<(string,bool)>();
         protected int _curCount;
+        [SerializeField] private string startScene = "AM_House";
 
         protected virtual void Black()
         {
@@ -53,6 +57,7 @@ namespace _02Script.Tutorial
         protected virtual void EndTutorial()
         {
             Hide();
+            Time.timeScale = 1;
             gameObject.SetActive(false);
         }
 
@@ -60,6 +65,20 @@ namespace _02Script.Tutorial
         {
             tutorialTextUI.gameObject.SetActive(true);
             tutorialTextUI.text = text;
+        }
+
+        public virtual void ResetGame()
+        {
+            GameSaveData data = new GameSaveData();
+            data.DataReset();
+            data.stat.ResetStat();
+                
+            HouseManager.Instance.PlayerStat = data.stat; //로드
+            
+            PlayerPrefs.SetString(HouseManager.GameSaveFilePath,"");
+            PlayerPrefs.Save();
+            SceneManager.LoadScene(startScene);
+            SceneManager.LoadScene(startScene);
         }
         
     }

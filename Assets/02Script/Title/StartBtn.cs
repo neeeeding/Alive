@@ -9,6 +9,7 @@ namespace _02Script.Title
     {
         [SerializeField] private GameObject goStartList;
         [SerializeField] private string startScene = "AM_House";
+        [SerializeField] private string tutorialScene = "Tutorial_House";
 
         public void NewGame()
         {
@@ -20,8 +21,8 @@ namespace _02Script.Title
             
             PlayerPrefs.SetString(HouseManager.GameSaveFilePath,"");
             PlayerPrefs.Save();
-            SceneManager.LoadScene(startScene);
-            SceneManager.LoadScene(startScene);
+            SceneManager.LoadScene(tutorialScene);
+            SceneManager.LoadScene(tutorialScene);
         }
         
         public void StartGame()

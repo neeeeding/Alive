@@ -17,7 +17,7 @@ namespace _02Script.Etc
         {
             if (SceneManager.GetActiveScene().name.Contains(_am))
                 return HouseManager.Instance.PlayerStat;
-            if (SceneManager.GetActiveScene().name == _mini)
+            if (SceneManager.GetActiveScene().name.Contains(_mini))
                 return GoHouseSaveManager.Instance.PlayerStat;
             if (SceneManager.GetActiveScene().name.Contains(_pm))
                 return BattleSaveManager.Instance.PlayerStat;
