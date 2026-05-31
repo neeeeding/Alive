@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: parasiticFish
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Monster.MonsterSO
   EntityName: 30002
-  DialogEntityImage: {fileID: 21300000, guid: 332a440a2445dc14883b454c78008490, type: 3}
+  DialogEntityImage: {fileID: 1046590286817088354, guid: 2b3f0a2bd5a76c24b9c8dfe956c8c7bd, type: 3}
   maxHp: 14
   baseAttack: 4
   baseAttackDelay: 3
-  eBuff:
+  useBuff:
   - {fileID: 11400000, guid: 555bb02a3499840419ae3737d226e440, type: 2}
   isGlobal: 0

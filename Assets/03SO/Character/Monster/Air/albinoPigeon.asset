@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: albinoPigeon
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Monster.MonsterSO
   EntityName: 32002
-  DialogEntityImage: {fileID: 21300000, guid: 332a440a2445dc14883b454c78008490, type: 3}
+  DialogEntityImage: {fileID: 3674926669880057448, guid: 3c027f9da3f5229499b0a33f1b5c3a65, type: 3}
   maxHp: 15
   baseAttack: 2
   baseAttackDelay: 2
-  eBuff:
+  useBuff:
   - {fileID: 11400000, guid: d16faa54f5013f54b8773fe1971f136c, type: 2}
   isGlobal: 0

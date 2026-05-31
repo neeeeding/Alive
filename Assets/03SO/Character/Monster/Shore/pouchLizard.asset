@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: pouchLizard
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Monster.MonsterSO
   EntityName: 31002
-  DialogEntityImage: {fileID: 21300000, guid: 332a440a2445dc14883b454c78008490, type: 3}
+  DialogEntityImage: {fileID: 2662198960453871066, guid: 90a7a5008ed30294884bb2a9e8d0877d, type: 3}
   maxHp: 18
   baseAttack: 5
   baseAttackDelay: 3
-  eBuff:
+  useBuff:
   - {fileID: 11400000, guid: ec375d39bf12f514eac803d8b9362654, type: 2}
   isGlobal: 1

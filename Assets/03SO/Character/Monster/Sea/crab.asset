@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: crab
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Monster.MonsterSO
   EntityName: 30000
-  DialogEntityImage: {fileID: 21300000, guid: 332a440a2445dc14883b454c78008490, type: 3}
+  DialogEntityImage: {fileID: 5217605729319859746, guid: 64f204bea16b23248951ba92589e6be6, type: 3}
   maxHp: 20
   baseAttack: 5
   baseAttackDelay: 3
-  eBuff:
+  useBuff:
   - {fileID: 11400000, guid: 74c8dad9d0271124f8c0a99eeb11758b, type: 2}
   isGlobal: 0

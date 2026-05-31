@@ -20,7 +20,7 @@ MonoBehaviour:
     \uBCF8\uC778\uC5D0\uAC8C [\uAD11\uC804]\uC744 \uC2DC\uC804\uD558\uACE0, \uD0C0\uAC9F\uC5D0\uAC8C
     \uB370\uBBF8\uC9C0 8\uC744 \uC90D\uB2C8\uB2E4. (\uCFE8\uD0C0\uC784 5, \uB2E4\uC218
     \uD0C0\uAC9F\uD305 \uBD88\uAC00)"
-  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  itemImage: {fileID: 21300000, guid: 40c8a88a23ce09c48b1895da393dd1fc, type: 3}
   maxCount: 4
   collectTime: 2
   stats: 1
@@ -28,7 +28,6 @@ MonoBehaviour:
   baseData: {fileID: 11400000, guid: 2324f29f0b7d12c42ac23d97af613c00, type: 2}
   isGlobal: 0
   skillBuff: {fileID: 11400000, guid: b6f7bbf80c8acaf49a0fa4d188dadd66, type: 2}
-  bu: []
   buffGiveEntity: 1
   skillDamage: 8
   skillCoolTime: 5

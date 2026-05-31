@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: muscleRabbit
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Monster.MonsterSO
   EntityName: 31000
-  DialogEntityImage: {fileID: 21300000, guid: 332a440a2445dc14883b454c78008490, type: 3}
+  DialogEntityImage: {fileID: 4395802773080679113, guid: 44d45a74cdbd2ec408a65d98b3495797, type: 3}
   maxHp: 35
   baseAttack: 6
   baseAttackDelay: 4
-  eBuff:
+  useBuff:
   - {fileID: 11400000, guid: 977532bbffd4e1a4a9726dfb4c314fab, type: 2}
   isGlobal: 1

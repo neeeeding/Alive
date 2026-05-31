@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: stoneBoar
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Monster.MonsterSO
   EntityName: 31001
-  DialogEntityImage: {fileID: 21300000, guid: 332a440a2445dc14883b454c78008490, type: 3}
+  DialogEntityImage: {fileID: -4321783690899661802, guid: e068deef7e7c2e24699b0212e5bcd4f8, type: 3}
   maxHp: 23
   baseAttack: 11
   baseAttackDelay: 6
-  eBuff:
+  useBuff:
   - {fileID: 11400000, guid: 974d9eaadf2b77544bb4b3a19678e8da, type: 2}
   isGlobal: 0
