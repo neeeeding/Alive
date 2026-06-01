@@ -7,6 +7,7 @@ using _02Script.GameEvent;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Obj;
 using _02Script.GamePlayer;
+using _02Script.GamePlayer.Manager;
 using _02Script.InGameDebug;
 using _02Script.Manager;
 using TMPro;
@@ -30,10 +31,10 @@ namespace _02Script.Farming
         
         [SerializeField] private OneFarming seedsPrefab;
         
-        private List<OneFarming>  _seeds = new List<OneFarming>();
+        private List<OneFarming> _seeds = new List<OneFarming>();
+        private Dictionary<Vector3Int, OneFarming> _plantedSeeds = new Dictionary<Vector3Int, OneFarming>(); // 추가
 
         private bool _isField;
-        private Vector2 _clickPos;
         private int _curFarmCount;
 
         private TemperatureType _curTemperatureType;
@@ -49,7 +50,6 @@ namespace _02Script.Farming
         {
             base.OnEnable();
             GameEventManger.OnFarmTemperature += SetTemperature;
-            PlayerInput.OnMousePos += SavePos;
             SeedsCard.OnClickCard += Plant;
         }
 
@@ -57,12 +57,28 @@ namespace _02Script.Farming
         {
             base.OnDisable();
             GameEventManger.OnFarmTemperature -= SetTemperature;
-            PlayerInput.OnMousePos -= SavePos;
             SeedsCard.OnClickCard -= Plant;
         }
         #endregion
 
-        public void SetTemperature(TemperatureType t)
+        protected override void OnTriggerEnter2D(Collider2D collision) //창 보이기
+        {
+            if (collision.gameObject == HousePlayerManager.curPlayer.gameObject)
+            {
+                isPlayer = true;
+                ClickObj();
+            }
+        }
+        protected override void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject == HousePlayerManager.curPlayer.gameObject)
+            {
+                isPlayer = false;
+                doUi.SetActive(false);
+            }
+        }
+
+        public void SetTemperature(TemperatureType t) //온도 설정
         {
             _curTemperatureType = t;
             
@@ -86,6 +102,20 @@ namespace _02Script.Farming
             _curFarmCount--;
             OnGetViand?.Invoke(seeds.GetSO().viand, 1);
             seeds.gameObject.SetActive(false);
+
+            //목록에서 서 제거
+            Vector3Int key = default;
+            bool found = false;
+            foreach (var kvp in _plantedSeeds)
+            {
+                if (kvp.Value == seeds)
+                {
+                    key = kvp.Key;
+                    found = true;
+                    break;
+                }
+            }
+            if (found) _plantedSeeds.Remove(key);
         }
         
         //심기
@@ -96,18 +126,33 @@ namespace _02Script.Farming
                 WarringManager.Warring.ShowWarring(addWarring);
                 return;
             }
+            
+            if (_curFarmCount >= canFarmCount)
+            {
+                WarringManager.Warring.ShowWarring("밭에 너무 많은 농작물을 심었습니다.\n수확 후 다시 시도해주세요.",2);
+                return;
+            }
             if ((so.temperatureType & _curTemperatureType) == 0)
             {
                 WarringManager.Warring.ShowWarring("해당 씨앗을 심기에는 적당한 온도가 아닙니다.",2);
                 return;
             }
-            
+
+            Vector3Int pos = farmTilemap.WorldToCell(HousePlayerManager.curPlayer.gameObject.transform.position);
+
+            // 추가: 이미 심어져 있는지 확인
+            if (_plantedSeeds.ContainsKey(pos))
+            {
+                WarringManager.Warring.ShowWarring("이미 작물이 심겨져 있습니다. 다른 위치에서 시도해주세요", 2);
+                return;
+            }
+
             if (_seeds.Count <= 0)
             {
                 NewSeeds(1);
             }
-            
-            SeedPlant(so,farmTilemap.WorldToCell(_clickPos));
+
+            SeedPlant(so, pos);
         }
 
         public void LoadFarm(Dictionary<ItemType, SeedsSO> seeds)
@@ -124,20 +169,22 @@ namespace _02Script.Farming
         private void SeedPlant(SeedsSO so, Vector3Int pos)
         {
             OneFarming newSeeds = _seeds[0];
-    
+
             TileBase farmTile = farmTilemap.GetTile(pos);
             Vector3 plantPos = farmTilemap.GetCellCenterWorld(pos);
-    
+
             if (farmTile == null) return;
 
             newSeeds.transform.position = plantPos;
             newSeeds.SetSO(so, pos, this);
             newSeeds.gameObject.SetActive(true);
-    
+
             _curFarmCount++;
             OnUseSeed?.Invoke(so.seeds, 1);
-    
+
             _seeds.Remove(_seeds[0]);
+
+            _plantedSeeds[pos] = newSeeds; // 추가
         }
 
         //새 씨앗
@@ -152,24 +199,6 @@ namespace _02Script.Farming
                 _seeds.Add(newSeeds);
                 
             }
-        }
-
-        //심을 위치 저장
-        private void SavePos(Vector2 pos)
-        {
-            _clickPos = pos;
-        }
-        
-        //씨앗들 보여주기 (윈도우)
-        public void ClickField()
-        {
-            if (_curFarmCount >= canFarmCount)
-            {
-                WarringManager.Warring.ShowWarring("밭에 너무 많은 농작물을 심었습니다.\n수확 후 다시 시도해주세요.",2);
-                return;
-            }
-
-            ClickObj();
         }
     }
 

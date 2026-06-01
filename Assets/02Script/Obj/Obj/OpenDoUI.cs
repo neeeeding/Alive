@@ -42,7 +42,7 @@ namespace _02Script.Obj.Obj
 
         #endregion
 
-        protected void OnTriggerEnter2D(Collider2D collision)
+        protected virtual void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject == HousePlayerManager.curPlayer.gameObject)
             {
@@ -50,7 +50,7 @@ namespace _02Script.Obj.Obj
             }
         }
 
-        protected void OnTriggerExit2D(Collider2D collision)
+        protected virtual void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.gameObject == HousePlayerManager.curPlayer.gameObject)
             {

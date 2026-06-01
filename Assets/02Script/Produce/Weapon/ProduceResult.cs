@@ -47,8 +47,15 @@ namespace _02Script.Produce.Weapon
             {
                 buff = weapon.skillBuff;
                 string front = weapon.itemExplanation.Split("스킬 ")[0];
-                saveData.buffExplanation = front + "스킬 사용시 " + (buff.isDeBuff? "타겟에게" : "본인에게") 
-                                                     + $" [{buff.buffName}]을/를 시전하고, ";
+                if (buff == null)
+                {
+                    saveData.buffExplanation = "스킬은 없습니다.";
+                }
+                else
+                {
+                    saveData.buffExplanation = front + "스킬 사용시 " + (buff.isDeBuff? "타겟에게" : "본인에게") 
+                                               + $" [{buff.buffName}]을/를 시전하고, ";
+                }
                 saveData.explanation = $"타겟에게 데미지 {weapon.skillDamage}를 줍니다. (쿨타임 {weapon.collectTime}, 다수 타겟팅 "
                                        + (weapon.isGlobal? "가능" : "불가") + ")";
 
@@ -59,8 +66,16 @@ namespace _02Script.Produce.Weapon
             {
                 buff = armor.skillBuff;
                 string front = armor.itemExplanation.Split("사용시 ")[0];
-                saveData.buffExplanation = front + $"사용시 받은 데미지를 {armor.damage} 감소 시키고, {armor.skillCoolTime}초 후에 " + (buff.isDeBuff? "타겟에게" : "본인에게") 
-                                                     + $" [{buff.buffName}]을/를 시전합니다. (쿨타임 {armor.skillCoolTime})";
+                
+                if (buff == null)
+                {
+                    saveData.buffExplanation = "사용시 특이점은 없습니다.";
+                }
+                else
+                {
+                    saveData.buffExplanation = front + $"사용시 받은 데미지를 {armor.damage} 감소 시키고, {armor.skillCoolTime}초 후에 " + (buff.isDeBuff? "타겟에게" : "본인에게") 
+                                               + $" [{buff.buffName}]을/를 시전합니다. (쿨타임 {armor.skillCoolTime})";
+                }
                 saveData.explanation = "";
                 
                 saveData.skillCoolTime = Mathf.Min(0,armor.skillCoolTime -= _coolTime);
@@ -68,7 +83,10 @@ namespace _02Script.Produce.Weapon
             }
             
             saveData.buffTypes.Clear();
-            saveData.buffTypes.Add(buff.buffType);
+            if (buff != null)
+            {
+                saveData.buffTypes.Add(buff.buffType);
+            }
             saveData.type = item.itemType;
             saveData.hp = _hp;
 

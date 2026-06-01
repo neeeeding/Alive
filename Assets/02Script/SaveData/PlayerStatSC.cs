@@ -62,7 +62,7 @@ namespace _02Script.SaveData
             year = 2000;
             month = 1;
             day = 1;
-            hour = 1;
+            hour = 12+3;
             minute = 0;
              
             ResetItem();

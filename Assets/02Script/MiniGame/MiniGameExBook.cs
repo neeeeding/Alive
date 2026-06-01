@@ -36,6 +36,10 @@ namespace _02Script.MiniGame
                 image.gameObject.SetActive(true);
                 image.sprite = images[_curCount];
             }
+            else
+            {
+                image.gameObject.SetActive(false);
+            }
         }
 
         public void Next()

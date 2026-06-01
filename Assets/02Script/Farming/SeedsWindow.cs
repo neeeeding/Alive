@@ -28,25 +28,6 @@ namespace _02Script.Farming
         {
             window.SetActive(false);
         }
-
-        protected override void OnEnable()
-        {
-            SeedsCard.OnClickCard += CloseBtnDelay;
-            base.OnEnable();
-        }
-
-        protected override void OnDisable()
-        {
-            SeedsCard.OnClickCard -= CloseBtnDelay;
-            base.OnDisable();
-        }
-
-        private async void CloseBtnDelay(SeedsSO so)
-        {
-            await Task.Yield();
-            CloseBtn();
-        }
-        
         protected override void LoadItem()
         {
             SettingAllDataSO();

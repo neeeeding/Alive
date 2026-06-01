@@ -4229,8 +4229,8 @@ Transform:
   m_GameObject: {fileID: 841054380}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8231, y: -3.3858, z: 0}
-  m_LocalScale: {x: 6.580823, y: 7.7713447, z: 1}
+  m_LocalPosition: {x: -1.8231, y: -4.5236, z: 0}
+  m_LocalScale: {x: 6.580823, y: 5.495895, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1867890839}
@@ -11579,19 +11579,23 @@ MonoBehaviour:
         y: 5
       - x: 2
         y: 5
+      - x: 0
+        y: 3
+      - x: 0
+        y: 4
       vs:
       - 15
       - 7
       - 16
-      - 7
-      - 27
-      - 24
+      - 15
+      - 21
+      - 19
       - 15
       - 20
-      - 2
+      - 15
       - 12
       - 13
-      - 20
+      - 15
       - 16
       - 16
       - 16
@@ -11606,6 +11610,8 @@ MonoBehaviour:
       - 8
       - 21
       - 21
+      - 15
+      - 15
   isStart: 0
   dayTimeDelay: 0.5
   housePlayer: {fileID: 0}
@@ -13565,7 +13571,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558205116}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
@@ -76235,7 +76241,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 841054380}
   - {fileID: 0}
-  - {fileID: 1836464865}
   - {fileID: 0}
   - {fileID: 454094528}
   - {fileID: 0}
@@ -76283,7 +76288,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 634432706}
   - {fileID: 1558205116}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
