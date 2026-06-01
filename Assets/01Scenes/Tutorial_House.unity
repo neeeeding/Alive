@@ -1682,6 +1682,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 272193729}
+  - component: {fileID: 272193731}
+  - component: {fileID: 272193730}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1708,6 +1710,36 @@ Transform:
   - {fileID: 313195750}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &272193730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272193728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c552cbc79a4881b005a504223730bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.GameCamera.CameraCanvas
+  targetAspect: 1.7777778
+  targetCamera: {fileID: 1874833477}
+  targetCanvas: {fileID: 652870012}
+--- !u!114 &272193731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272193728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c552cbc79a4881b005a504223730bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.GameCamera.CameraCanvas
+  targetAspect: 1.7777778
+  targetCamera: {fileID: 1874833477}
+  targetCanvas: {fileID: 1141736902}
 --- !u!1 &273641265 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5667821218628028482, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
@@ -8784,6 +8816,11 @@ MonoBehaviour:
   isHide: 0
   isClick: 0
   tutorial: {fileID: 1885863482}
+--- !u!223 &1141736902 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 7217893575332106797, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
+  m_PrefabInstance: {fileID: 8736283038233231832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1150007797
 GameObject:
   m_ObjectHideFlags: 0
@@ -9445,9 +9482,9 @@ RectTransform:
   - {fileID: 1936904824}
   m_Father: {fileID: 652870013}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -300, y: 150}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 660, y: -390}
   m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1245205946

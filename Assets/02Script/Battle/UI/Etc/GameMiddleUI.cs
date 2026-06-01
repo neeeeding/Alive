@@ -1,4 +1,5 @@
 ﻿using System;
+using _02Script.GameCamera;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ namespace _02Script.Battle.UI.Etc
         [SerializeField] private GameObject stopWindow;
         [SerializeField] private GameObject collectEnd;
         [SerializeField] private TextMeshProUGUI timeText;
+        [SerializeField] private BattleCameraCanvas cameraCanvas; // 인스펙터에서 연결
 
         private readonly float _camTopPosY = 0.5f;
         private readonly float _camBottomPosY = 0f;
@@ -34,22 +36,17 @@ namespace _02Script.Battle.UI.Etc
 
         public void ChangeCamera()
         {
-            Rect collectCR = collectCam.rect;
-            collectCR.y = _isCollect? _camBottomPosY : _camTopPosY;
-            collectCam.rect = collectCR;
-            
+            cameraCanvas.SwapCameras(); // 카메라 viewport는 여기서 전부 알맞게 재계산됨
+
+            // UI(RectTransform)는 카메라 viewport와는 별개니 그대로 둬도 OK
             Vector2 collectRP = collectRect.anchoredPosition;
-            collectRP.y = _isCollect? -_rectTopPosY : _rectBottomPosY;
+            collectRP.y = _isCollect ? -_rectTopPosY : _rectBottomPosY;
             collectRect.anchoredPosition = collectRP;
-                
-            Rect battleCR = battleCam.rect;
-            battleCR.y = _isCollect? _camTopPosY : _camBottomPosY;
-            battleCam.rect = battleCR;
-            
+
             Vector2 battleRP = battleRect.anchoredPosition;
-            battleRP.y = _isCollect? _rectTopPosY : _rectBottomPosY;
+            battleRP.y = _isCollect ? _rectTopPosY : _rectBottomPosY;
             battleRect.anchoredPosition = battleRP;
-            
+
             _isCollect = !_isCollect;
         }
 
