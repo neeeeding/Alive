@@ -39,7 +39,12 @@ namespace _02Script.Battle
         {
             successWindow.SetActive(true);
             await AsyncTime.WaitSeconds(2);
-            SceneManager.LoadScene(_goHouse);
+            if (SceneManager.GetActiveScene().name.Contains("Tutorial"))
+            {
+                SceneManager.LoadScene("Tutorial_GoHouse");
+            }
+            else
+                SceneManager.LoadScene(_goHouse);
         }
 
         private async void Fail()

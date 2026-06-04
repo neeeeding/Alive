@@ -25,6 +25,7 @@ namespace _02Script.MiniGame
             }
             Time.timeScale = 1;
             countText.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 }

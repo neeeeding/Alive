@@ -8,6 +8,7 @@ using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Dialog.Entity;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _02Script.Manager
 {
@@ -45,6 +46,11 @@ namespace _02Script.Manager
             input.OnIBtn += Inventory;
         }
         #endregion
+
+        public void Title()
+        {
+            SceneManager.LoadScene("Title");
+        }
 
         public void InGame() //게임으로
         {

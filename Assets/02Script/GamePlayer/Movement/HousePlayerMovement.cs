@@ -79,6 +79,7 @@ namespace _02Script.GamePlayer.Movement
         private void KeyboardMove(Vector2 mousePos)
         {
             if(!player.isCurPlayer) return;
+            if(mousePos == Vector2.zero) return;
             IsMoving = true;
             TargetPos = (Vector2)transform.position + mousePos.normalized;
             MoveStart();

@@ -143,6 +143,10 @@ namespace _02Script.Tutorial.House
                 next[_curCount].SetActive(true);
             guideSc.SetTarget(guide[_curCount]);
 
+            if (_curCount < 44 && HouseManager.Instance.PlayerStat.hour > 12 + 8)
+            {
+                HouseManager.Instance.PlayerStat.hour = 12;
+            }
             if (_curCount == 44)
             {
                 HouseManager.Instance.PlayerStat.hour = 12 + 8;
