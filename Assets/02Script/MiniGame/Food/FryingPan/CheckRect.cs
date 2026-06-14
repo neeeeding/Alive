@@ -13,22 +13,33 @@ namespace _02Script.MiniGame.Food.FryingPan
             _checkRect = _transform.rect;
         }
 
-        public (Vector3, Rect) ReturnRect()
+        public RectTransform  ReturnRect()
         {
-            return (_transform.position, _checkRect);
+            return _transform;
         }
 
-        public bool Check((Vector3, Rect) check)
+        public bool Check(RectTransform target) //겹치는가?
         {
-            return Check(check.Item1, check.Item2);
-        }
+            Vector3[] corners1 = new Vector3[4];
+            Vector3[] corners2 = new Vector3[4];
 
-        public bool Check(Vector3 pos, Rect rect) //겹치는가?
-        {
-            Rect r1 = new Rect(pos.x, pos.y, rect.width / 2, rect.height / 2);
-            pos = _transform.position;
-            Rect r2 = new Rect(pos.x, pos.y, rect.width / 2, rect.height / 2);
-            
+            _transform.GetWorldCorners(corners1);
+            target.GetWorldCorners(corners2);
+
+            Rect r1 = new Rect(
+                corners1[0].x,
+                corners1[0].y,
+                corners1[2].x - corners1[0].x,
+                corners1[2].y - corners1[0].y
+            );
+
+            Rect r2 = new Rect(
+                corners2[0].x,
+                corners2[0].y,
+                corners2[2].x - corners2[0].x,
+                corners2[2].y - corners2[0].y
+            );
+
             return r1.Overlaps(r2);
         }
     }

@@ -61,13 +61,9 @@ namespace _02Script.MiniGame.Food.None
             }
             obj = _poolObj[0];
             _poolObj.RemoveAt(0);
-            CheckRect rect = center;
-            if (_obj.Count > 1)
-            {
-                rect = _obj[_obj.Count - 1];
-            }
+
             _obj.Add(obj);
-            obj.Setting(images[_curIndex],rect);
+            obj.Setting(images[_curIndex],center, (_curIndex - _score));
             _curIndex++;
             obj.transform.position = spawnPos.position;
             obj.gameObject.SetActive(true);

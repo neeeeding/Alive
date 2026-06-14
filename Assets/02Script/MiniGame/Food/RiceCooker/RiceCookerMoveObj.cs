@@ -57,7 +57,7 @@ namespace _02Script.MiniGame.Food.RiceCooker
                 return;
             }
             
-            obj.transform.DOMoveX(obj.transform.position.x+_moveDir.x,moveSpeed).SetEase((Ease)Random.Range(0,36)).SetUpdate(true);
+            obj.transform.DOMoveX(obj.transform.position.x+_moveDir.x,moveSpeed).SetEase((Ease)Random.Range(0,36)).SetUpdate(false);
              if (obj.transform.position.x < _minXpos)
              {
                  _moveDir = Vector3.right;

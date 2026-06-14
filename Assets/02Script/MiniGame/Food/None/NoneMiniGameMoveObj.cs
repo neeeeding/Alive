@@ -16,94 +16,96 @@ namespace _02Script.MiniGame.Food.None
         
         private readonly float _minXpos = 0;
         private readonly float _maxXpos = 1920;
+        private readonly float _oneFloor = 300;
+        private readonly float _oneYSize = 80;
         
-        private readonly float _minSpeed = 3;
-        private readonly float _maxSpeed = 8;
-        private float _curTime;
+        private readonly float _Speed = 150;
+        private int _index;
         private bool _isMove;
         private bool _isDown;
+        private bool _isSuccess;
         private Vector3 _moveDir;
         private CheckRect _center;
 
-        private void OnEnable()
-        {
-            PlayerInput.OnMousePos += ClickCheck;
-        }
-
-        private void OnDisable()
-        {
-            PlayerInput.OnMousePos -= ClickCheck;
-        }
-
         private void Update()
         {
+            if (_isDown)
+            {
+                DownCheck();
+                Down();
+            }
+            if (Input.GetMouseButtonDown(0) && Time.timeScale >= 1 && _isMove)
+            {
+                ClickCheck();
+                return;
+            }
             if (_isMove)
             {
                 SideMove();
             }
-            else if (_isDown)
-            {
-                Down();
-                DownCheck();
-            }
         }
-
-        private void ClickCheck( Vector2 v)
-        {
-            ClickCheck();
-        }
+        
         private void ClickCheck() // 클릭
         {
             _isMove = false;
             _isDown = true;
+            _isSuccess = false;
+            _moveDir = Vector3.down * _Speed;
         }
 
         private void SideMove()
         {
-            obj.transform.DOMoveX(obj.transform.position.x+_moveDir.x,1).SetEase((Ease)Random.Range(0,36)).SetUpdate(true);
-            if (obj.transform.position.x < _minXpos)
+            transform.DOMoveX(transform.position.x+_moveDir.x,1).SetUpdate(false);
+            if (transform.position.x < _minXpos)
             {
-                _curTime = Random.Range(_minSpeed, _maxSpeed);
                 _moveDir = Vector3.right;
-                _moveDir *= _curTime;
+                _moveDir *= _Speed;
             }
-            if (obj.transform.position.x > _maxXpos)
+            if (transform.position.x > _maxXpos)
             {
-                _curTime = Random.Range(_minSpeed, _maxSpeed);
                 _moveDir = Vector3.left;
-                _moveDir *= _curTime;
+                _moveDir *= _Speed;
             }
         }
 
         private void Down()
         {
-            if (_moveDir.y <= 0)
+            if ( _isSuccess && transform.position.y <= _oneFloor + (_index * _oneYSize))
             {
-                _moveDir = Vector3.down * _maxSpeed;
+                print($"why?? {transform.position.y}");
+                _isDown = false;
+                _isSuccess =  false;
+                return;
             }
-            obj.transform.DOMoveY(obj.transform.position.y+_moveDir.y,1).SetEase((Ease)Random.Range(0,36)).SetUpdate(true);
+            if (!_isSuccess && transform.position.y <= -1000 )
+            {
+                _isDown = false;
+                OnFall?.Invoke(true);
+                return;
+            }
+            transform.DOMoveY(transform.position.y+_moveDir.y,1).SetUpdate(false);
         }
 
         private void DownCheck() //밑에 확인 하기
         {
-            if (_center.Check(ReturnRect()))
+            if (!_isSuccess&&_center.Check(ReturnRect()))
             {
-                _isMove = false;
-                _isDown = false;
+                _isSuccess =  true;
+                OnFall?.Invoke(false);
             }
         }
 
-        public void Setting(Sprite sprite, CheckRect center)
+        public void Setting(Sprite sprite, CheckRect center, int  index)
         {
             _center = center;
+            _index = index;
             
             _isMove = true;
             _isDown = false;
             
-            _curTime = Random.Range(_minSpeed, _maxSpeed);
             int r = Random.Range(0, 2);
             _moveDir = r == 0 ? Vector3.right : Vector3.left;
-            _moveDir *= _curTime;
+            _moveDir *= _Speed;
             
             obj.sprite = sprite;
         }
