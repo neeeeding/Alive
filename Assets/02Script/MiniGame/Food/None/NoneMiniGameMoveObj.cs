@@ -72,7 +72,6 @@ namespace _02Script.MiniGame.Food.None
         {
             if ( _isSuccess && transform.position.y <= _oneFloor + (_index * _oneYSize))
             {
-                print($"why?? {transform.position.y}");
                 _isDown = false;
                 _isSuccess =  false;
                 return;

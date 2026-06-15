@@ -31399,7 +31399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7459140472463172351
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32031,6 +32031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c4aa56952e4bf5a71f5e1a2cfde3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.MiniGame.Food.None.NoneMiniGameObjSpawn
+  miniGame: {fileID: 834130163607242334}
   images:
   - {fileID: -3275363035060216932, guid: 409c90383d0f9e44d8066c404dc3c803, type: 3}
   - {fileID: -3275363035060216932, guid: 409c90383d0f9e44d8066c404dc3c803, type: 3}

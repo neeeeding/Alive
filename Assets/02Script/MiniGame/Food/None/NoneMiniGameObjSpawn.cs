@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using _02Script.MiniGame.Food.FryingPan;
+using TMPro;
 using UnityEngine;
 
 namespace _02Script.MiniGame.Food.None
 {
     public class NoneMiniGameObjSpawn : MonoBehaviour
     {
+        [SerializeField] private GameObject miniGame;
         [SerializeField] private List<Sprite> images;
         [SerializeField] private Transform spawnPos;
         [SerializeField] private CheckRect center;
@@ -34,6 +36,7 @@ namespace _02Script.MiniGame.Food.None
             }
         }
 
+        //실패 했는지 여부 받고 점수 얻기
         private void GetScore(bool isGet)
         {
             if(isGet) _score++;
@@ -48,10 +51,11 @@ namespace _02Script.MiniGame.Food.None
 
         private void CheckScore()
         {
+            miniGame.SetActive(false);
             FoodScore.OnEndMiniGame?.Invoke(_score/2);
         }
 
-        private void NewMoveObj()
+        private void NewMoveObj() //새 오브젝트 생성
         {
             NoneMiniGameMoveObj obj;
             if (_poolObj.Count <= 0)
