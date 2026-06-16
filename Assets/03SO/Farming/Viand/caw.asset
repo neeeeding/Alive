@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: caw
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2502
   itemName: "\uC18C \uACE0\uAE30"
@@ -22,3 +20,8 @@ MonoBehaviour:
     \uC18C\uACE0\uAE30\uC758 \uBD80\uC704\uB294 \uBB34\uB824 120\uAC00\uC9C0\uAC00
     \uB118\uB294\uB2E4.\n\uB2E4\uB978 \uB098\uB77C\uB294 \uBCF4\uD1B5 20 ~ 30 \uBD80\uC704\uB85C
     \uBD84\uB958 \uD55C\uB2E4."
+  itemImage: {fileID: 21300000, guid: 3c632714e3a649c46ac2bd136e9579fb, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

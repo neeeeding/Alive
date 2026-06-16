@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: whippedCream
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2223
   itemName: "\uD718\uD551 \uD06C\uB9BC"
@@ -23,3 +21,8 @@ MonoBehaviour:
     \uC6B0\uB9AC\uAC00 \uC0DD\uD06C\uB9BC(\uD770\uC0C9)\uC73C\uB85C \uC54C\uACE0
     \uC788\uB358 \uAC83\uC740 \uC0AC\uC2E4 \uD718\uD551 \uD06C\uB9BC\uC774\uACE0
     \uC0DD\uD06C\uB9BC\uC740 \uB178\uB780\uC0C9\uC774\uB2E4."
+  itemImage: {fileID: 21300000, guid: b582d6d6f195b824a8e1d6d117bcc3af, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

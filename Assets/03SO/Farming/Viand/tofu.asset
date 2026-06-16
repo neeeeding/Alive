@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: tofu
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2213
   itemName: "\uB450\uBD80"
@@ -22,3 +20,8 @@ MonoBehaviour:
     \uBC11\uBC18\uCC2C\uC73C\uB85C \uC0BC\uC744 \uC815\uB3C4\uB85C \uC88B\uC544 \uD588\uC73C\uBA70
     \uC774\uB984\uC774 \uC6B0\uC544\uD558\uC9C0 \uBABB\uD558\uB2E4\uBA70 '\uCCAD\uBC29'\uC774\uB77C\uB294
     \uC774\uB984\uC744 \uC9C0\uC5C8\uB2E4\uACE0 \uD55C\uB2E4."
+  itemImage: {fileID: 21300000, guid: 1eac2106b071aa94f9abc0980b464bcf, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

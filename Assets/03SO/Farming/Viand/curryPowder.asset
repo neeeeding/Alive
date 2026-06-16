@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: curryPowder
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2232
   itemName: "\uCE74\uB808 \uAC00\uB8E8"
@@ -22,3 +20,8 @@ MonoBehaviour:
     \uC885\uB958\uAC00 \uB9CE\uB2E4.\n\uB9CC\uC57D \uCEE4\uB9AC\uB97C \uBA39\uC73C\uB7EC
     \uAC04\uB2E4\uBA74 \uC774\uB984, \uD558\uB2E4 \uBABB\uD574 \uC7AC\uB8CC\uB77C\uB3C4
     \uC54C\uACE0 \uAC00\uB294\uAC8C \uB0AB\uB2E4."
+  itemImage: {fileID: 21300000, guid: d5f93a2ab43ecca4096c0289f272682b, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

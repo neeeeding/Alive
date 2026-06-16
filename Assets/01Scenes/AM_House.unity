@@ -807,7 +807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &194002484
 Transform:
   m_ObjectHideFlags: 0
@@ -4488,6 +4488,181 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &347445199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 347445201}
+  - component: {fileID: 347445200}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &347445200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347445199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c76e46bcb94e4a31bb4cd3605eb43e80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Inventory.Etc.WeaponArmorStartGiveItem
+  itemData:
+    _serializedList:
+    - Key: {fileID: 11400000, guid: 585b89291d18bcc4c9cc683dc9556a9a, type: 2}
+      Value: 14000000
+    - Key: {fileID: 11400000, guid: 809aec8b9c7488243a2184052a3708df, type: 2}
+      Value: 14000000
+    - Key: {fileID: 11400000, guid: 49b3586e7fd2036439fee0491db8e348, type: 2}
+      Value: 14000000
+    - Key: {fileID: 11400000, guid: 43015af31b383ab4c9ea10cc2df78e9d, type: 2}
+      Value: 14000000
+    - Key: {fileID: 11400000, guid: b33cacfb81396064baaa8dcbfc63417c, type: 2}
+      Value: 14000000
+    - Key: {fileID: 11400000, guid: 3faabc3f42c1dad48851bf1b7423fde3, type: 2}
+      Value: 14000000
+    - Key: {fileID: 11400000, guid: 914d46452fd4e2e4e84183501d895efc, type: 2}
+      Value: 14000000
+    - Key: {fileID: 11400000, guid: 6ebcc3a549646ac4c9b8d5bc4e59bd74, type: 2}
+      Value: 14000000
+    - Key: {fileID: 11400000, guid: 2324f29f0b7d12c42ac23d97af613c00, type: 2}
+      Value: 64000000
+    - Key: {fileID: 11400000, guid: 04f82857dddd3fb439ebcd3fb028e1a4, type: 2}
+      Value: 64000000
+    - Key: {fileID: 11400000, guid: e9bf82993338e3f4288d15a56605cd38, type: 2}
+      Value: 64000000
+    - Key: {fileID: 11400000, guid: 5ffa7a9f3956484469c8d1403fed9794, type: 2}
+      Value: 64000000640000006400000064000000
+    - Key: {fileID: 11400000, guid: 5c88e6cca39d498449fb834d59f42cf9, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: f8bae618ad2283648a13e816db0d6fc6, type: 2}
+      Value: 14000000
+    - Key: {fileID: 11400000, guid: 7d2260e5ad0729d4c951b07e25880f9f, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: f107625c9ddf76c4e8469b6666ac3db4, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: 42876d21a2507aa4aaefe6390ecc7d99, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: 330f1ea9bf3f07a468c801ff26856182, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: 70109f01db869824bbdb9b242f35634a, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: 9d60e48ee6611bb47a9a6028389f0d51, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: e54e7b7e1f5787047adac072886a763a, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: 903dbb38e0af0f14ca421b0d2580d94f, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: 321cb8aa4378b9447abd76bb4ca77549, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: aa288a8bb1a2d9646a9f669b4c521241, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: 77209ada80d7f89408d0209752e10f55, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: a3d5c42468cdb4843aab4e648e44c6c8, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: 9c47d13e319bc404c860001ae54f35e0, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: 36fd5dfc483d2c943af89c033c5d54ad, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: 5503f07372d0a7a4287d5ef8f9a60ee2, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: ae2ecf606da4f9a45a219c77fc5f5453, type: 2}
+      Value: 05000000
+    - Key: {fileID: 11400000, guid: a0e20cbe11964954ba8cfc46b7f300e1, type: 2}
+      Value: 64000000
+    - Key: {fileID: 11400000, guid: 322614426172b5c4b9ba54c764e49e2e, type: 2}
+      Value: 64000000
+    - Key: {fileID: 11400000, guid: 337e4e29769413846a5242524a419a77, type: 2}
+      Value: 64000000
+    - Key: {fileID: 11400000, guid: bc26e209dec03d644806688ba61ea828, type: 2}
+      Value: 64000000
+    - Key: {fileID: 11400000, guid: 0bc6f1e3212891e4983de9cb3dbfe8f5, type: 2}
+      Value: 64000000
+  buffType:
+    _serializedList:
+    - Key: {fileID: 11400000, guid: 2324f29f0b7d12c42ac23d97af613c00, type: 2}
+      Value:
+      - type: 4201
+        hp: 100
+        skillCoolTime: 5
+        skillDamage: 8
+        buffExplanation: 
+        explanation: 
+        buffTypes: fc2a0000
+    - Key: {fileID: 11400000, guid: 04f82857dddd3fb439ebcd3fb028e1a4, type: 2}
+      Value:
+      - type: 4001
+        hp: 100
+        skillCoolTime: 15
+        skillDamage: 10
+        buffExplanation: 
+        explanation: 
+        buffTypes: f82a0000
+    - Key: {fileID: 11400000, guid: e9bf82993338e3f4288d15a56605cd38, type: 2}
+      Value:
+      - type: 4101
+        hp: 100
+        skillCoolTime: 2
+        skillDamage: 5
+        buffExplanation: 
+        explanation: 
+        buffTypes: e12e0000
+    - Key: {fileID: 11400000, guid: 5ffa7a9f3956484469c8d1403fed9794, type: 2}
+      Value:
+      - type: 4401
+        hp: 100
+        skillCoolTime: 1
+        skillDamage: 2
+        buffExplanation: 
+        explanation: 
+        buffTypes: 
+      - type: 4401
+        hp: 100
+        skillCoolTime: 1
+        skillDamage: 2
+        buffExplanation: 
+        explanation: 
+        buffTypes: 
+      - type: 4401
+        hp: 100
+        skillCoolTime: 1
+        skillDamage: 2
+        buffExplanation: 
+        explanation: 
+        buffTypes: 
+      - type: 4401
+        hp: 100
+        skillCoolTime: 1
+        skillDamage: 2
+        buffExplanation: 
+        explanation: 
+        buffTypes: 
+--- !u!4 &347445201
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347445199}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 372.21976, y: 541.8827, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &424706450 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4703485090920314988, guid: dd96c432dc43cfd4887445a905b1b27d, type: 3}
@@ -83528,3 +83703,4 @@ SceneRoots:
   - {fileID: 546324010}
   - {fileID: 1002264068}
   - {fileID: 1017294811}
+  - {fileID: 347445201}

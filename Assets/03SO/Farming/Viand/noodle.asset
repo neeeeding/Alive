@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: noodle
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2203
   itemName: "\uBA74"
@@ -22,3 +20,8 @@ MonoBehaviour:
     \uC18D\uD588\uC9C0\uB9CC \uD604\uC7AC \uBD84\uC2DD\uC758 \uC758\uBBF8\uAC00 \uBCC0\uD654\uD588\uB2E4.\n\uD30C\uC2A4\uD0C0
     \uBA74\uC758 \uC885\uB958\uB294 \uAE38\uC774, \uC18C\uC2A4, \uC7AC\uB8CC \uB4F1\uC73C\uB85C
     \uAD6C\uBCC4\uD55C\uB2E4."
+  itemImage: {fileID: 21300000, guid: f4301cd5fa7e3f64293be8e610e68579, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

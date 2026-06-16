@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8bf712bf48848b290d364741a83a74c, type: 3}
   m_Name: madeleine
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.ProduceBookSO
-  itemImage: {fileID: 0}
-  maxCount: 10
   category: 3
   itemType: 3403
   itemName: "\uB9C8\uB4E4\uB80C"
@@ -21,6 +19,11 @@ MonoBehaviour:
     \uD558\uB140\uC600\uB358 \uB9C8\uB4E4\uB80C\uC774 \uC791\uC740 \uC870\uAC1C \uCF00\uC774\uD06C\uB97C
     \uB9CC\uB4E4\uC5C8\uB294\uB370 \uC774\uB97C \uB9C8\uC74C\uC5D0 \uB4E0 \uADC0\uC871\uC774
     \uD558\uB140\uC758 \uC774\uB984\uC744 \uB530 \uCF00\uC774\uD06C\uC5D0 \uBD99\uC600\uB2E4."
+  itemImage: {fileID: 21300000, guid: 1cadb44af3f6dde4196389ad58ce6924, type: 3}
+  maxCount: 30
+  collectTime: 2
+  stats: 1
+  addStats: 0
   itemRows:
   - items:
     - {fileID: 0}
@@ -34,5 +37,5 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 43015af31b383ab4c9ea10cc2df78e9d, type: 2}
     - {fileID: 11400000, guid: 585b89291d18bcc4c9cc683dc9556a9a, type: 2}
     - {fileID: 11400000, guid: 3faabc3f42c1dad48851bf1b7423fde3, type: 2}
-  means: {fileID: 11400000, guid: 0bc6f1e3212891e4983de9cb3dbfe8f5, type: 2}
+  means: {fileID: 11400000, guid: 337e4e29769413846a5242524a419a77, type: 2}
   result: {fileID: 11400000, guid: c04634d7b56fcd340a52a85c496751f5, type: 2}

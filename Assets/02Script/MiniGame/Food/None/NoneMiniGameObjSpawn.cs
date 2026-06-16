@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _02Script.MiniGame.Food.FryingPan;
 using TMPro;
 using UnityEngine;
@@ -52,7 +53,7 @@ namespace _02Script.MiniGame.Food.None
         private void CheckScore()
         {
             miniGame.SetActive(false);
-            FoodScore.OnEndMiniGame?.Invoke(_score/2);
+            FoodScore.OnEndMiniGame?.Invoke(Math.Max(1,5 - _score));
         }
 
         private void NewMoveObj() //새 오브젝트 생성

@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: flour
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2202
   itemName: "\uBC00\uAC00\uB8E8"
@@ -23,3 +21,8 @@ MonoBehaviour:
     \uBCA0\uC774\uD0B9 \uD30C\uC6B0\uB354\uB97C, \uBD80\uCE68\uAC00\uB8E8\uB294 \uC911\uB825\uBD84\uC5D0
     \uC591\uB150\uAC04\uC744 \uD55C \uAC83\uC774\uB2E4. ...\uC774\uC9C0\uB9CC \uAC8C\uC784\uC774\uB2C8
     \uD1B5\uD2C0\uC5C8\uB2E4."
+  itemImage: {fileID: 21300000, guid: e12ed66b427e94c428ff765ab2b679fe, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0

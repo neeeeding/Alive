@@ -44,7 +44,12 @@ namespace _02Script.MiniGame.Food.None
                 SideMove();
             }
         }
-        
+
+        private void OnDisable()
+        {
+            gameObject.SetActive(false);
+        }
+
         private void ClickCheck() // 클릭
         {
             _isMove = false;

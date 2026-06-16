@@ -12,14 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8bf712bf48848b290d364741a83a74c, type: 3}
   m_Name: bread
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.ProduceBookSO
-  itemImage: {fileID: 0}
-  maxCount: 10
   category: 3
-  itemType: 3401
+  itemType: 3403
   itemName: "\uBE75"
   itemExplanation: "\uC624\uB798\uB41C \uB9CC\uD07C \uB2E4\uC591\uD55C \uC885\uB958\uB97C
     \uAC00\uC9C0\uACE0 \uC788\uB2E4.\n\uC138\uACC4\uC5D0\uC11C \uAC00\uC7A5 \uAE34
     \uBE75\uC740 4.5km\uC774\uB2E4."
+  itemImage: {fileID: 21300000, guid: 8c5d328beeb710546935dc32bdf35133, type: 3}
+  maxCount: 30
+  collectTime: 2
+  stats: 1
+  addStats: 0
   itemRows:
   - items:
     - {fileID: 0}
@@ -33,5 +36,5 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 809aec8b9c7488243a2184052a3708df, type: 2}
     - {fileID: 11400000, guid: 585b89291d18bcc4c9cc683dc9556a9a, type: 2}
     - {fileID: 11400000, guid: 3faabc3f42c1dad48851bf1b7423fde3, type: 2}
-  means: {fileID: 11400000, guid: 0bc6f1e3212891e4983de9cb3dbfe8f5, type: 2}
+  means: {fileID: 11400000, guid: 337e4e29769413846a5242524a419a77, type: 2}
   result: {fileID: 11400000, guid: c71090bb77805724abe67fc3093354e4, type: 2}

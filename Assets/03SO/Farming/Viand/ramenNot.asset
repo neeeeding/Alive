@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2b966b3f67054aafe02d8f5568df1, type: 3}
   m_Name: ramenNot
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Item.ItemSO
-  itemImage: {fileID: 21300000, guid: 198037646a0395e4a94886dc77c36883, type: 3}
-  maxCount: 60
   category: 2
   itemType: 2231
   itemName: "\uB77C\uBA74"
   itemExplanation: "\uC694\uB9AC\uD558\uC9C0 \uC54A\uC740 \uB77C\uBA74\uC774\uB2E4.\n\uB77C\uBA74\uC758
     \uC720\uD1B5\uAE30\uD55C\uC740 5 ~ 6\uAC1C\uC6D4\uC774\uB2E4.\n\uC774\uBCF4\uB2E4
     \uC9C0\uB098\uBA74 \uB3C5\uD55C \uBC00\uAC00\uB8E8 \uB9DB\uC774 \uB09C\uB2E4."
+  itemImage: {fileID: 21300000, guid: 8a5304db075d3f840990cb8f79c54249, type: 3}
+  maxCount: 60
+  collectTime: 2
+  stats: 1
+  addStats: 0
