@@ -95,7 +95,13 @@ namespace _02Script.GamePlayer.Movement
                 }
                 try
                 {
-                    await AsyncTime.WaitSeconds(Random.Range(0,1.1f), cts.Token, false);
+                    int rI = Random.Range(0, 4);
+                    if (rI == 0) //멈춰 있기
+                    {
+                        await AsyncTime.WaitSeconds(Random.Range(1,3.5f), cts.Token, false);
+                        continue;
+                    }
+                    await AsyncTime.WaitSeconds(Random.Range(0,0.5f), cts.Token, false);
                     
                     int auto = Random.Range(0, autoX.Length);
             

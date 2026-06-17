@@ -1,5 +1,4 @@
-﻿using _02Script.Battle.Stage;
-using _02Script.Manager;
+﻿using _02Script.Manager;
 using UnityEngine;
 
 namespace _02Script.Battle
@@ -17,7 +16,7 @@ namespace _02Script.Battle
             {
                 monster.gameObject.SetActive(true);
             }
-            else if (HouseManager.Instance.PlayerStat.hour == 23 && HouseManager.Instance.PlayerStat.minute > 58)
+            else if (HouseManager.Instance.PlayerStat.hour == 23 && HouseManager.Instance.PlayerStat.minute > 40)
             {
                 SceneBtn();
             }

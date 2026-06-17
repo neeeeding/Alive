@@ -48,7 +48,6 @@ namespace _02Script.Produce.Food
         }
         protected override void GetResult(int count) //최대 5
         {
-            print(count);
             int use = _getItemCount;
             foreach (var card in _cards)
             {
