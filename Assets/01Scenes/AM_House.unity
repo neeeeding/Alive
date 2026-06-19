@@ -78744,6 +78744,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeechBubble
       objectReference: {fileID: 0}
+    - target: {fileID: 4703485090920314988, guid: dd96c432dc43cfd4887445a905b1b27d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5221420125851108201, guid: dd96c432dc43cfd4887445a905b1b27d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

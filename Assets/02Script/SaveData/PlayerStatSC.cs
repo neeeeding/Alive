@@ -19,6 +19,7 @@ namespace _02Script.SaveData
 
         public bool isChat; //ture : 채팅 중, false : 인 게임
 
+        public EntityName playCharacter; // 선택 된 상태인 캐릭터
         public SaveDictionary<EntityName,SaveVector2> characterPositions; //플레이어 위치
 
         [Space(50f)]
@@ -74,6 +75,7 @@ namespace _02Script.SaveData
         
         public void ResetCharacter() //캐릭터들  전부 초기화
         {
+            playCharacter = EntityName.lie;
             characterPositions = new SaveDictionary<EntityName, SaveVector2>();
             characterStats = new SaveDictionary<EntityName, SaveDictionary<StatsType, int>>();
             characterLastText = new SaveDictionary<EntityName, SaveDictionary<DialogType, string>>();

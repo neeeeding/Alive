@@ -30875,7 +30875,7 @@ MonoBehaviour:
       Value: {fileID: 1771486786732156785}
     - Key: 99
       Value: {fileID: 1929355747419237401}
-  realItem: {fileID: 0}
+  realItem: {fileID: 4957330659842736574}
   allSO:
   - {fileID: 11400000, guid: ebdccf9ad5a66da48b82e0d67d618759, type: 2}
   - {fileID: 11400000, guid: e452cc96d514ba946966533d8d61705a, type: 2}
@@ -44101,6 +44101,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4973106542822117766, guid: 2e08fe783db67a64989471e03114873b, type: 3}
+      propertyPath: realItem
+      value: 
+      objectReference: {fileID: 4957330659842736574}
+    - target: {fileID: 4973106542822117766, guid: 2e08fe783db67a64989471e03114873b, type: 3}
       propertyPath: allSO.Array.size
       value: 60
       objectReference: {fileID: 0}
@@ -44605,6 +44609,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6137456035100631584, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
+      propertyPath: realItem
+      value: 
+      objectReference: {fileID: 4957330659842736574}
     - target: {fileID: 6137456035100631584, guid: 92d85b5ce5bc27a47ae89ed19d382b5c, type: 3}
       propertyPath: produceFilter
       value: 99
@@ -47849,6 +47857,10 @@ PrefabInstance:
       propertyPath: window
       value: 
       objectReference: {fileID: 513280359255536188}
+    - target: {fileID: 6928902280059711615, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
+      propertyPath: realItem
+      value: 
+      objectReference: {fileID: 4957330659842736574}
     - target: {fileID: 6968753466922938694, guid: be2ee494d8bb1054fa3e02fd2e310eda, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

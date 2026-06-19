@@ -17,6 +17,7 @@ namespace _02Script.Battle
         private CancellationTokenSource cts = new(); //시간을 위해
         private Animator _animator;
         private Rigidbody2D _rd;
+        private SpriteRenderer _sr;
         private bool _isMoving;
         private Vector3 beforePos; //위치 확인용
 
@@ -24,6 +25,7 @@ namespace _02Script.Battle
         {
             _animator = GetComponent<Animator>();
             _rd = GetComponent<Rigidbody2D>();
+            _sr = GetComponent<SpriteRenderer>();
         }
         private void Start()
         {
@@ -44,11 +46,8 @@ namespace _02Script.Battle
             else if (beforePos == _rd.transform.position)
             {
                 beforePos = new  Vector2(99999,99999);
-                int auto = Random.Range(0, autoX.Length);
-            
-                _isMoving = true;
-                 TargetPos = (Vector2)transform.position + new Vector2(autoX[auto], autoY[auto]);
-                MoveStart();
+
+                SetTargetPos();
                 _rd.linearVelocity = direction.normalized * speed;
             }
             else
@@ -75,16 +74,21 @@ namespace _02Script.Battle
                         await AsyncTime.WaitSeconds(Random.Range(1,1.5f), cts.Token, false);
                         continue;
                     }
-                    await AsyncTime.WaitSeconds(5, cts.Token, false); 
-                    
-                    int auto = Random.Range(0, autoX.Length);
-            
-                    _isMoving = true;
-                    TargetPos = (Vector2)transform.position + new Vector2(autoX[auto], autoY[auto]);
-                    MoveStart();
+                    await AsyncTime.WaitSeconds(5, cts.Token, false);
+                    SetTargetPos();
                 }
                 catch (TaskCanceledException){break;}
             }
+        }
+
+        private void SetTargetPos()
+        {
+            int auto = Random.Range(0, autoX.Length);
+            _sr.flipX = auto == 0;
+            
+            _isMoving = true;
+            TargetPos = (Vector2)transform.position + new Vector2(autoX[auto], autoY[auto]);
+            MoveStart();
         }
 
         private void MoveStart()
