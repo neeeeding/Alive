@@ -48,15 +48,15 @@ namespace _02Script.Produce
             _isTimer = false;
             _isCanUse = true; 
             ProduceBookCard.OnMouseClick += Setting;
-            GameEventManger.OnLockUI += CantUse;
-            GameEventManger.OnFarmTemperature += EndEvent;
+            GameEventManager.OnLockUI += CantUse;
+            GameEventManager.OnFarmTemperature += EndEvent;
             Setting(null);
         }
         protected virtual void OnDisable()
         {
             ProduceBookCard.OnMouseClick -= Setting;
-            GameEventManger.OnLockUI -= CantUse;
-            GameEventManger.OnFarmTemperature -= EndEvent;
+            GameEventManager.OnLockUI -= CantUse;
+            GameEventManager.OnFarmTemperature -= EndEvent;
         }
         #endregion
 

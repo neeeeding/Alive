@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 
 namespace _02Script.GameEvent
 {
-    public class GameEventManger : MonoBehaviour
+    public class GameEventManager : MonoBehaviour
     {
         public static Action<DoUIType> OnLockUI; //봉인
         public static Action<TemperatureType> OnFarmTemperature; //온도
@@ -44,7 +44,7 @@ namespace _02Script.GameEvent
 
         private void Update()
         {
-            if (HouseManager.Instance.PlayerStat.hour >= 20 && !_isNight)
+            if (HouseManager.Instance.PlayerStat.hour >= 20 && !_isNight && isEnter)
             {
                 _isNight = true;
                 OnLockUI?.Invoke(DoUIType.all);

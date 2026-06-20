@@ -85,7 +85,6 @@ namespace _02Script.Farming
             {
                 HouseManager.Instance.PlayerStat.farmTime.Add(_curFarmPos,0);
             }
-            HouseManager.Instance.PlayerStat.farmTime[_curFarmPos] = 0;
 
             _isSpawned = false;
         }

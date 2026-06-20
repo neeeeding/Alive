@@ -1,9 +1,7 @@
-﻿using System;
-using _02Script.DoTweenUI.Warring;
+﻿using _02Script.DoTweenUI.Warring;
 using _02Script.Farming;
 using _02Script.GameEvent;
 using _02Script.GamePlayer.Manager;
-using _02Script.InGameDebug;
 using UnityEngine;
 
 namespace _02Script.Obj.Obj
@@ -23,14 +21,14 @@ namespace _02Script.Obj.Obj
         protected virtual void OnEnable()
         {
             addWarring = "지금은 ";
-            GameEventManger.OnLockUI += DontUi;
-            GameEventManger.OnFarmTemperature += EndEvent;
+            GameEventManager.OnLockUI += DontUi;
+            GameEventManager.OnFarmTemperature += EndEvent;
         }
 
         protected virtual void OnDisable()
         {
-            GameEventManger.OnLockUI -= DontUi;
-            GameEventManger.OnFarmTemperature -= EndEvent;
+            GameEventManager.OnLockUI -= DontUi;
+            GameEventManager.OnFarmTemperature -= EndEvent;
         }
         protected virtual void Awake()
         {

@@ -45,7 +45,7 @@ namespace _02Script.SaveData
         public List<string> getDictionaryPageMemo;
         
         //농사
-        private readonly Vector2 farmSize = new Vector2(6,7);
+        private readonly Vector2 farmSize = new Vector2(14,7); //73이 최대
         public SaveDictionary<SaveVector2, ItemType> farm;
         public SaveDictionary<SaveVector2, float> farmTime;
         

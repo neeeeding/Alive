@@ -6,9 +6,7 @@ using _02Script.Etc;
 using _02Script.GameEvent;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Obj;
-using _02Script.GamePlayer;
 using _02Script.GamePlayer.Manager;
-using _02Script.InGameDebug;
 using _02Script.Manager;
 using TMPro;
 using UnityEngine;
@@ -26,6 +24,7 @@ namespace _02Script.Farming
         [SerializeField] private int canFarmCount;
         [Header("Need")]
         [SerializeField] private TextMeshProUGUI curTemperatureText;
+        [SerializeField] private TextMeshProUGUI curCountText;
         [SerializeField] private Transform parent;
         [SerializeField] private Tilemap farmTilemap;
         
@@ -42,6 +41,7 @@ namespace _02Script.Farming
         #region EnDiAw
         protected override void Awake()
         {
+            CountText();
             base.Awake();
             NewSeeds(canFarmCount);
         }
@@ -49,14 +49,14 @@ namespace _02Script.Farming
         protected override void OnEnable()
         {
             base.OnEnable();
-            GameEventManger.OnFarmTemperature += SetTemperature;
+            GameEventManager.OnFarmTemperature += SetTemperature;
             SeedsCard.OnClickCard += Plant;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            GameEventManger.OnFarmTemperature -= SetTemperature;
+            GameEventManager.OnFarmTemperature -= SetTemperature;
             SeedsCard.OnClickCard -= Plant;
         }
         #endregion
@@ -100,6 +100,7 @@ namespace _02Script.Farming
         {
             _seeds.Add(seeds);
             _curFarmCount--;
+            CountText();
             OnGetViand?.Invoke(seeds.GetSO().viand, 1);
             seeds.gameObject.SetActive(false);
 
@@ -180,6 +181,7 @@ namespace _02Script.Farming
             newSeeds.gameObject.SetActive(true);
 
             _curFarmCount++;
+            CountText();
             OnUseSeed?.Invoke(so.seeds, 1);
 
             _seeds.Remove(_seeds[0]);
@@ -199,6 +201,12 @@ namespace _02Script.Farming
                 _seeds.Add(newSeeds);
                 
             }
+        }
+        
+        //카운트 텍스트
+        private void CountText()
+        {
+            curCountText.text = $"{_curFarmCount}/{canFarmCount}";
         }
     }
 
