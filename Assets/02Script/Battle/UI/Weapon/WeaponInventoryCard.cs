@@ -53,6 +53,7 @@ namespace _02Script.Battle.UI.Weapon
             base.NewCard(itemData, setStar, setItemHp, data); //부산물
             
             if(data == null) return;
+            
             if (_buffs == null)
             {
                 _buffs = new List<BuffSO>();

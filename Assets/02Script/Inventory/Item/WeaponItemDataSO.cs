@@ -20,7 +20,7 @@ namespace _02Script.Inventory.Item
 #if UNITY_EDITOR
         protected override void OnValidate()
         {
-            if(itemName == baseData.itemName) return;
+            if(itemImage == baseData.itemImage) return;
             itemImage = baseData.itemImage;
             maxCount = baseData.maxCount;
             category = baseData.category;

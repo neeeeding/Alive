@@ -9616,6 +9616,88 @@ MonoBehaviour:
         y: 20
       - x: 17
         y: 22
+      - x: 26
+        y: 22
+      - x: 20
+        y: 20
+      - x: 21
+        y: 22
+      - x: 19
+        y: 21
+      - x: 22
+        y: 22
+      - x: 27
+        y: 21
+      - x: 19
+        y: 22
+      - x: 24
+        y: 22
+      - x: 22
+        y: 20
+      - x: 25
+        y: 22
+      - x: 21
+        y: 20
+      - x: 20
+        y: 23
+      - x: 29
+        y: 21
+      - x: 25
+        y: 17
+      - x: 28
+        y: 18
+      - x: 23
+        y: 18
+      - x: 25
+        y: 19
+      - x: 24
+        y: 17
+      - x: 27
+        y: 18
+      - x: 26
+        y: 19
+      - x: 26
+        y: 18
+      - x: 28
+        y: 17
+      - x: 27
+        y: 19
+      - x: 29
+        y: 19
+      - x: 27
+        y: 17
+      - x: 25
+        y: 18
+      - x: 29
+        y: 20
+      - x: 21
+        y: 23
+      - x: 27
+        y: 22
+      - x: 18
+        y: 22
+      - x: 22
+        y: 23
+      - x: 28
+        y: 22
+      - x: 28
+        y: 20
+      - x: 23
+        y: 23
+      - x: 24
+        y: 23
+      - x: 27
+        y: 23
+      - x: 28
+        y: 19
+      - x: 20
+        y: 22
+      - x: 25
+        y: 23
+      - x: 28
+        y: 23
+      - x: 20
+        y: 21
       vs:
       - 15
       - 7
@@ -9644,16 +9726,57 @@ MonoBehaviour:
       - 8
       - 15
       - 35
-      - 41
+      - 5
       - 35
-      - 39
+      - 5
+      - 28
+      - 5
       - 36
-      - 39
+      - 5
       - 36
-      - 39
-      - 36
-      - 42
+      - 5
       - 1
+      - 28
+      - 30
+      - 5
+      - 5
+      - 5
+      - 5
+      - 24
+      - 28
+      - 5
+      - 28
+      - 30
+      - 20
+      - 29
+      - 37
+      - 15
+      - 33
+      - 31
+      - 37
+      - 34
+      - 31
+      - 34
+      - 38
+      - 31
+      - 30
+      - 38
+      - 38
+      - 30
+      - 19
+      - 27
+      - 23
+      - 19
+      - 27
+      - 15
+      - 19
+      - 19
+      - 18
+      - 15
+      - 24
+      - 19
+      - 18
+      - 12
   isStart: 0
   dayTimeDelay: 0.5
   housePlayer: {fileID: 7450098331102011183}
@@ -74437,7 +74560,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1faea7157e6f79e499f1d6fcd55d0a27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -79580,6 +79703,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 193710063738925942, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 193710063738925942, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 251515866261579567, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -81110,6 +81241,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2891759282355159998, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960035673315243205, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2960035673315243205, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
@@ -83156,6 +83291,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6779126966408328360, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6794495042111760143, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -84392,6 +84531,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9169395834883183893, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169395834883183893, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9180216864209909215, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.000007405877
@@ -84436,7 +84583,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7651722990874918938, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7994812924407102957, guid: 642101eadd4287b419f9b75ad211059f, type: 3}
     m_AddedGameObjects: []

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using _02Script.Battle.Buff;
 using _02Script.Battle.Entity;
+using _02Script.Battle.UI.Weapon;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
+using _02Script.Produce.Weapon;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -16,11 +19,13 @@ namespace _02Script.UI.Person
         [SerializeField] private ScrollRect scrollRect;
         [SerializeField] private GameObject inventoryParent;
         [SerializeField] private Transform allParent;
-        [SerializeField] private ItemCard cardPrefabs;
+        [SerializeField] private WeaponInventoryCard cardPrefabs;
         
         private Dictionary<EntityName, List<WeaponItemDataSO>> _weapons = new Dictionary<EntityName, List<WeaponItemDataSO>>();
         private Dictionary<EntityName, RectTransform> _parent = new Dictionary<EntityName, RectTransform>();
 
+        [SerializeField] private BuffFind buffFind;
+        
         #region EnDiAw
         private void OnEnable()
         {
@@ -75,10 +80,21 @@ namespace _02Script.UI.Person
                 _parent.Add(weapon.Key, parent.GetComponent<RectTransform>());
                 foreach (WeaponItemDataSO w in weapon.Value)
                 {
-                    ItemCard cardObj = Instantiate(cardPrefabs,_parent[weapon.Key].transform);
+                    WeaponInventoryCard cardObj = Instantiate(cardPrefabs,_parent[weapon.Key].transform);
                     ItemData data = new ItemData();
                     data.NewItem(w);
-                    cardObj.NewCard(data,0,0,null);
+                    
+                    //버프 & 디버프 정보
+                    WeaponArmorSaveData saveData = new WeaponArmorSaveData();
+                    BuffSO buff = w.skillBuff;
+                    saveData.buffTypes.Clear();
+                    if (buff != null)
+                    {
+                        saveData.buffTypes.Add(buff.buffType);
+                        saveData.explanation = w.itemExplanation;
+                    }
+                    
+                    cardObj.NewCard(buffFind,data,0,0,saveData);
                 }
                 
                 _parent[weapon.Key].gameObject.SetActive(false);

@@ -21,7 +21,7 @@ namespace _02Script.GameEvent
 
         private int _curDay;
         private Dictionary<EntityName,ObjTeleportationPos> _nextDayDoEvent = new Dictionary<EntityName, ObjTeleportationPos>();
-
+ 
         private TemperatureType _temperature;
         private bool isEnter;
         private bool _isNight;

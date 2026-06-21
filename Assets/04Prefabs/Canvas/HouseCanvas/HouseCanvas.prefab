@@ -10100,7 +10100,8 @@ MonoBehaviour:
   scrollRect: {fileID: 4747081158077744922}
   inventoryParent: {fileID: 2922438604589882260}
   allParent: {fileID: 731777474627934645}
-  cardPrefabs: {fileID: 4704837398465468654, guid: 5614fcedb7fdd8a41b8a685e8eda4fb1, type: 3}
+  cardPrefabs: {fileID: 9039905582896491726, guid: 5614fcedb7fdd8a41b8a685e8eda4fb1, type: 3}
+  buffFind: {fileID: 6221093299028691499}
 --- !u!1 &2362850337118395673
 GameObject:
   m_ObjectHideFlags: 0
@@ -14050,7 +14051,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.000041436077}
-  m_SizeDelta: {x: 0, y: 300}
+  m_SizeDelta: {x: 0, y: 15}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3703973150953913701
 MonoBehaviour:
@@ -22596,7 +22597,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7651722990874918938}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: _02Script.Produce.Weapon.Compound.Explanation.WeaponExplanationUI,
             Assembly-CSharp
           m_MethodName: MouseEnter
@@ -22613,7 +22614,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7651722990874918938}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: _02Script.Produce.Weapon.Compound.Explanation.WeaponExplanationUI,
             Assembly-CSharp
           m_MethodName: MouseExit
@@ -35979,7 +35980,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3793644197347286277}
-  - component: {fileID: 7651722990874918938}
+  - component: {fileID: 8952350228946763337}
   - component: {fileID: 6221093299028691499}
   - component: {fileID: 1239039288309312738}
   m_Layer: 5
@@ -36009,7 +36010,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7651722990874918938
+--- !u!114 &8952350228946763337
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -36018,9 +36019,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7621881446082914434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ef25ee5e904b978b7f47d07e262397, type: 3}
+  m_Script: {fileID: 11500000, guid: da27a273aecb460295a356526ed196f8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.Weapon.Compound.Explanation.WeaponExplanationUI
+  m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.UI.Weapon.WeaponExplanationUI
   explanationUI: {fileID: 4596941615027276731}
   image: {fileID: 239687846439818912}
   nameText: {fileID: 1619172544088721727}
@@ -42489,8 +42490,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 430}
+  m_AnchoredPosition: {x: 0, y: -51.989197}
+  m_SizeDelta: {x: 400, y: 326.0216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1299203731762243027
 CanvasRenderer:
