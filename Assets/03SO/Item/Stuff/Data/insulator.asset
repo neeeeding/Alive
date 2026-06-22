@@ -20,7 +20,7 @@ MonoBehaviour:
     \uC808\uC5F0\uCCB4\uB294 \uC5C6\uC73C\uBA70 \uB9E4\uC6B0 \uB192\uC740 \uC804\uC555\uC5D0
     \uC758\uD574 \uC808\uC5F0\uCCB4\uAC00 \uC804\uAE30\uB97C \uD750\uB974\uB294 \uAC83\uC744
     '\uC808\uC5F0 \uD30C\uAD34'\uB77C\uACE0 \uD55C\uB2E4."
-  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  itemImage: {fileID: 21300000, guid: 9ec7a6ac9394b5343996c4d241918d67, type: 3}
   maxCount: 999
   collectTime: 2
   stats: 1

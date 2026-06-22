@@ -17,7 +17,7 @@ MonoBehaviour:
   itemName: "\uC2DC\uBA58\uD2B8"
   itemExplanation: "\uBB3C\uACFC \uB2FF\uC73C\uBA74 \uAD73\uB294\uB2E4.\n\uC2DC\uBA58\uD2B8\uB9CC
     \uC0AC\uC6A9\uD558\uBA74 \uC57D\uD558\uB2E4."
-  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  itemImage: {fileID: 21300000, guid: b771d5579b90e9d4f928fec5cc464624, type: 3}
   maxCount: 999
   collectTime: 2
   stats: 1

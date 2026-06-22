@@ -18,7 +18,7 @@ MonoBehaviour:
   itemExplanation: "\uBC18\uB3C4\uCCB4 \uACF5\uC815\uC740 \uBAA8\uB798 \uC54C\uAC31\uC774\uBD80\uD130
     \uC2DC\uC791\uB41C\uB2E4.\n\uB3C4\uCCB4(\uAE08\uC18D)\uC640 \uBD80\uB3C4\uCCB4(\uC808\uC5F0\uCCB4)\uC758
     \uC0AC\uC774\uB2E4."
-  itemImage: {fileID: -5119443979997813429, guid: 2e0afa461764149449b7a2b99f39bdfc, type: 3}
+  itemImage: {fileID: 21300000, guid: 60c92ca618635f7449f19507ab048471, type: 3}
   maxCount: 999
   collectTime: 2
   stats: 1
