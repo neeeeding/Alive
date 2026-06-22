@@ -45,8 +45,6 @@ namespace _02Script.Produce.Weapon.Compound
             window.Check();
             
             List<BuffType> getBuffList = new List<BuffType>();
-            if (weapon == null)
-                weapon = NewSaveData(weapon, itemCard);
 
             foreach (BuffSO item in stuff.buffs)
             {
@@ -133,37 +131,6 @@ namespace _02Script.Produce.Weapon.Compound
         {
             damageSlider.value = data.hp / 100;
             countUI.text = $"{data.hp} / 100";
-        }
-
-        private WeaponArmorSaveData NewSaveData(WeaponArmorSaveData data, CompoundSelectWeaponArmorCard itemCard) // data 없는 애들
-        {                
-            data = new WeaponArmorSaveData();
-            ItemDataSO item = itemCard.ReturnData().ReturnDataSO();
-            BuffSO buff = null;
-            if (item is WeaponItemDataSO weapon)
-            {
-                buff = weapon.skillBuff;
-                string front = weapon.itemExplanation.Split("스킬 ")[0];
-                data.buffExplanation = front + "스킬 사용시 " + (buff.isDeBuff? "타겟에게" : "본인에게") 
-                                         + $" [{buff.buffName}]을/를 시전하고, ";
-                data.explanation = $"타겟에게 데미지 {weapon.skillDamage}를 줍니다. (쿨타임 {weapon.collectTime}, 다수 타겟팅 "
-                                     + (weapon.isGlobal? "가능" : "불가") + ")";
-            }
-            else if (item is ArmorItemDataSO armor)
-            {
-                buff = armor.skillBuff;
-                string front = armor.itemExplanation.Split("사용시 ")[0];
-                data.buffExplanation = front + $"사용시 받은 데미지를 {armor.damage} 감소 시키고, {armor.skillCoolTime}초 후에 " + (buff.isDeBuff? "타겟에게" : "본인에게") 
-                                         + $" [{buff.buffName}]을/를 시전합니다. (쿨타임 {armor.skillCoolTime})";
-                data.explanation = "";
-            }
-            
-            data.buffTypes.Clear();
-            data.buffTypes.Add(buff.buffType);
-            data.type = item.itemType;
-            data.hp = itemCard.ReturnNum(false);
-
-            return data;
         }
     }
 }

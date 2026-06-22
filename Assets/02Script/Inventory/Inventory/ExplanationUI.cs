@@ -1,4 +1,9 @@
+using System.Collections.Generic;
+using _02Script.Battle.Buff;
+using _02Script.Battle.UI.Weapon;
 using _02Script.Inventory.Item;
+using _02Script.Obj.Entity;
+using _02Script.Produce.Weapon;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -10,6 +15,8 @@ namespace _02Script.Inventory.Inventory
     {
         [Header("Need")]
         [SerializeField] private GameObject side;
+        [SerializeField] private BuffUI[] buff;
+        [SerializeField] private BuffFind buffFind;
         
         [SerializeField] private Image itemImage;
         [SerializeField] private TextMeshProUGUI itemName;
@@ -29,7 +36,7 @@ namespace _02Script.Inventory.Inventory
         }
         #endregion
 
-        private void Check([CanBeNull] ItemDataSO item, int count,int star, float hp)
+        private void Check([CanBeNull] ItemDataSO item, int count,int star, float hp, WeaponArmorSaveData data = null)
         {
             if (item == null) {HideSide(); return; }
             
@@ -54,6 +61,34 @@ namespace _02Script.Inventory.Inventory
                     itemCount.text = $"내구도\n{hp} / 100";
                     break;
             }
+            WeaponSideBuff(data);
+        }
+
+        //버프 & 디버프 관련 내용
+        private void WeaponSideBuff(WeaponArmorSaveData data)
+        {
+            for (int i = 0; i < buff.Length; i++)
+            {
+                buff[i].gameObject.SetActive(false);
+            }
+            
+            if(data == null) return;
+            
+            List<BuffSO> buffs = new List<BuffSO>();
+            
+            foreach (BuffType buff in data.buffTypes)
+            {
+                buffs.Add(buffFind.GetBuff(buff));
+            }
+            if (buffs != null)
+            {
+                for (int i = 0; i < buffs.Count; i++)
+                {
+                    buff[i].gameObject.SetActive(true);
+                    buff[i].BuffSet(buffFind.GetBuff(data.buffTypes[i]),null,EntityName.None,true);
+                }
+            }
+            
         }
 
         private void SetExplanation(ItemDataSO item)

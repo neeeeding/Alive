@@ -61,7 +61,7 @@ namespace _02Script.Tutorial.House
                 _isGetNextCheck = false;
             }
         }
-        private void Next(ItemDataSO obj,int i,int ii,float f) //3
+        private void Next(ItemDataSO obj,int i,int ii,float f,WeaponArmorSaveData data = null) //3
         {
             if(_isGetNextCheck || _curCount != 27) return;
             if(obj == null) return;

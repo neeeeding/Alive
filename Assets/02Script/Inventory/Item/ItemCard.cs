@@ -1,3 +1,4 @@
+using _02Script.Battle.Buff;
 using _02Script.Produce;
 using _02Script.Produce.Weapon;
 using TMPro;
@@ -38,6 +39,10 @@ namespace _02Script.Inventory.Item
         {
             this.itemData = itemData;
             cardImage.sprite = this.itemData.ReturnDataSO().itemImage;
+            
+            if ((saveData == null || saveData.explanation == null) && 
+                (itemData.ReturnDataSO(). category == ItemCategory.weapon || itemData.ReturnDataSO(). category == ItemCategory.armor))
+                saveData = NewSaveData(saveData);
             weaponArmorBuff = saveData;
             star = setStar;
             itemHp = setItemHp;
@@ -71,9 +76,40 @@ namespace _02Script.Inventory.Item
             }
         }
 
-        private void CheckInventoryCard()
-        {
+        private WeaponArmorSaveData NewSaveData(WeaponArmorSaveData data) // data 없는 애들
+        {                
+            data = new WeaponArmorSaveData();
+            ItemDataSO item = ReturnData().ReturnDataSO();
+            BuffSO buff = null;
+            if (item is WeaponItemDataSO weapon)
+            {
+                buff = weapon.skillBuff;
+                string front = weapon.itemExplanation.Split("스킬 ")[0];
+                data.buffExplanation = front + "스킬 사용시 " + (buff.isDeBuff? "타겟에게" : "본인에게") 
+                                       + $" [{buff.buffName}]을/를 시전하고, ";
+                data.explanation = $"타겟에게 데미지 {weapon.skillDamage}를 줍니다. (쿨타임 {weapon.collectTime}, 다수 타겟팅 "
+                                   + (weapon.isGlobal? "가능" : "불가") + ")";
+            }
+            else if (item is ArmorItemDataSO armor)
+            {
+                buff = armor.skillBuff;
+                string front = armor.itemExplanation.Split("사용시 ")[0];
+                data.buffExplanation = front + $"사용시 받은 데미지를 {armor.damage} 감소 시키고, {armor.skillCoolTime}초 후에 " + (buff.isDeBuff? "타겟에게" : "본인에게") 
+                                       + $" [{buff.buffName}]을/를 시전합니다. (쿨타임 {armor.skillCoolTime})";
+                data.explanation = "";
+            }
+            else
+            {
+                print(item);
+                
+                return data;
+            }
             
+            data.buffTypes.Add(buff.buffType);
+            data.type = item.itemType;
+            data.hp = ReturnNum(false);
+
+            return data;
         }
     }
 }

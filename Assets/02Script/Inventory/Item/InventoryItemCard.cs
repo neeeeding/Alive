@@ -1,4 +1,5 @@
 using System;
+using _02Script.Produce.Weapon;
 using UnityEngine;
 using DG.Tweening;
 
@@ -6,7 +7,7 @@ namespace _02Script.Inventory.Item
 {
     public class InventoryItemCard : ItemCard
     {
-        public static event Action<ItemDataSO,int,int,float> OnMouseCursor;
+        public static event Action<ItemDataSO,int,int,float,WeaponArmorSaveData> OnMouseCursor;
         public static event Action<ItemCard,RectTransform,float> OnMouseClick;
 
         [SerializeField] protected float delay = 1f;
@@ -27,12 +28,12 @@ namespace _02Script.Inventory.Item
         public void MouseEnter()
         {
             gameObject.transform.DOScale(Vector3.one * 1.15f, delay).SetEase(Ease.InOutBack).SetUpdate(true);
-            OnMouseCursor?.Invoke(itemData.ReturnDataSO(), itemData.ItemCount(),(int)star,itemHp);
+            OnMouseCursor?.Invoke(itemData.ReturnDataSO(), itemData.ItemCount(),(int)star,itemHp,weaponArmorBuff);
         }        
         public void MouseExit()
         {
             gameObject.transform.DOScale(Vector3.one , delay).SetEase(Ease.InOutBack).SetUpdate(true);
-            OnMouseCursor?.Invoke(null,0,0,0);
+            //OnMouseCursor?.Invoke(null,0,0,0,null);
         }
 
         //카드 클릭 (사용할지 묻기)
