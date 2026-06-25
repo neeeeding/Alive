@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.BuffSO
   isDeBuff: 1
   buffType: 60000
-  buffImage: {fileID: 0}
+  buffImage: {fileID: 989123813363763071, guid: 5f26051add7badd4c9e903399c218896, type: 3}
   buffName: "\uC0DD\uAE30 \uACE0\uAC08"
   buffExplanation: "1\uBD84 \uB3D9\uC548 \uAE30\uBCF8 \uCCB4\uB825\uC774 10 \uAC10\uC18C\uD569\uB2C8\uB2E4.
     (60\uCD08, \uC911\uBCF5 \uBD88\uAC00)"

@@ -2,6 +2,7 @@ using _02Script.Battle.Buff;
 using _02Script.Produce;
 using _02Script.Produce.Weapon;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -84,18 +85,32 @@ namespace _02Script.Inventory.Item
             if (item is WeaponItemDataSO weapon)
             {
                 buff = weapon.skillBuff;
+                
                 string front = weapon.itemExplanation.Split("스킬 ")[0];
-                data.buffExplanation = front + "스킬 사용시 " + (buff.isDeBuff? "타겟에게" : "본인에게") 
-                                       + $" [{buff.buffName}]을/를 시전하고, ";
-                data.explanation = $"타겟에게 데미지 {weapon.skillDamage}를 줍니다. (쿨타임 {weapon.collectTime}, 다수 타겟팅 "
-                                   + (weapon.isGlobal? "가능" : "불가") + ")";
+                data.buffExplanation = front;
+
+                if (buff != null)
+                {
+                    data.buffExplanation += "스킬 사용시 " + (buff.isDeBuff? "타겟에게" : "본인에게") 
+                                                      + $" [{buff.buffName}]을/를 시전하고, ";
+                    data.explanation = $"타겟에게 데미지 {weapon.skillDamage}를 줍니다. (쿨타임 {weapon.collectTime}, 다수 타겟팅 "
+                                       + (weapon.isGlobal? "가능" : "불가") + ")";
+                }
             }
             else if (item is ArmorItemDataSO armor)
             {
                 buff = armor.skillBuff;
                 string front = armor.itemExplanation.Split("사용시 ")[0];
-                data.buffExplanation = front + $"사용시 받은 데미지를 {armor.damage} 감소 시키고, {armor.skillCoolTime}초 후에 " + (buff.isDeBuff? "타겟에게" : "본인에게") 
-                                       + $" [{buff.buffName}]을/를 시전합니다. (쿨타임 {armor.skillCoolTime})";
+                
+                
+                data.buffExplanation = front;
+
+                if (buff != null)
+                {
+                    data.buffExplanation += $"사용시 받은 데미지를 {armor.damage} 감소 시키고, {armor.skillCoolTime}초 후에 " +
+                                           (buff.isDeBuff ? "타겟에게" : "본인에게")
+                                           + $" [{buff.buffName}]을/를 시전합니다. (쿨타임 {armor.skillCoolTime})";
+                }
                 data.explanation = "";
             }
             else
@@ -104,8 +119,11 @@ namespace _02Script.Inventory.Item
                 
                 return data;
             }
-            
-            data.buffTypes.Add(buff.buffType);
+
+            if (buff != null)
+            {
+                data.buffTypes.Add(buff.buffType);
+            }
             data.type = item.itemType;
             data.hp = ReturnNum(false);
 
