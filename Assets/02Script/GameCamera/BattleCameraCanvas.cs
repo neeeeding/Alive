@@ -4,7 +4,7 @@ namespace _02Script.GameCamera
 {
     public class BattleCameraCanvas : CameraCanvas
     {
-        [SerializeField] private Camera cam2;
+        [SerializeField] private Camera cam2; //처음에 아래
 
         private bool _swapped; // true면 targetCamera가 아래, cam2가 위
 

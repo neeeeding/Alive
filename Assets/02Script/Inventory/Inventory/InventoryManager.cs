@@ -170,7 +170,8 @@ namespace _02Script.Inventory.Inventory
 
         public virtual void AddItem(ItemDataSO item,WeaponArmorSaveData saveData, int count = 1)
         {
-            if(!ItemDatas.ContainsKey(item)) return;
+            //if(!ItemDatas.ContainsKey(item)) return;
+            
             switch(item.category)
             {
                 case ItemCategory.seed:

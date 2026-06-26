@@ -29,7 +29,7 @@ namespace _02Script.Inventory.Inventory
 
         public override void AddItem(ItemDataSO item,WeaponArmorSaveData saveData, int count = 1)
         {
-            if(!isJustShow) {base.AddItem(item,saveData, count); return;}
+            if(!isJustShow) {base.AddItem(item,saveData, count);return;}
             
             item = AllDataSO[item.itemType];
             

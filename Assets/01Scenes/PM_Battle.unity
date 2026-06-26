@@ -311,9 +311,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 369303290}
+  - {fileID: 849259910}
   - {fileID: 575682114}
   - {fileID: 1158672253}
-  - {fileID: 849259910}
+  - {fileID: 551699378}
+  - {fileID: 1413272896}
   - {fileID: 591952050}
   - {fileID: 1840088079}
   m_Father: {fileID: 603277510}
@@ -3680,7 +3682,7 @@ GameObject:
   - component: {fileID: 154783146}
   - component: {fileID: 154783145}
   m_Layer: 5
-  m_Name: WeaponInventory
+  m_Name: D_WeaponInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3701,11 +3703,11 @@ RectTransform:
   - {fileID: 523669958}
   - {fileID: 2096822099}
   - {fileID: 2068981700}
-  m_Father: {fileID: 959863665}
+  m_Father: {fileID: 369550789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 85}
+  m_AnchoredPosition: {x: -50, y: -47.5}
   m_SizeDelta: {x: 320, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &154783143
@@ -7022,6 +7024,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369303289}
   m_CullTransparentMesh: 1
+--- !u!1 &369550788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 369550789}
+  m_Layer: 5
+  m_Name: AllInventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &369550789
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369550788}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 154783142}
+  - {fileID: 403209814}
+  - {fileID: 1416719008}
+  - {fileID: 885527901}
+  - {fileID: 386507845}
+  m_Father: {fileID: 1914423003}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -691, y: 47.5}
+  m_SizeDelta: {x: 420, y: 395}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &375356757
 GameObject:
   m_ObjectHideFlags: 0
@@ -7364,11 +7406,11 @@ RectTransform:
   - {fileID: 704431143}
   - {fileID: 166170212}
   - {fileID: 307950528}
-  m_Father: {fileID: 1889577543}
+  m_Father: {fileID: 369550789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 154.36145}
+  m_AnchoredPosition: {x: 194, y: 21.86145}
   m_SizeDelta: {x: 320, y: 238.7229}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &386507846
@@ -7658,7 +7700,7 @@ GameObject:
   - component: {fileID: 403209816}
   - component: {fileID: 403209815}
   m_Layer: 5
-  m_Name: WeaponInventory
+  m_Name: D_ArmorInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7679,11 +7721,11 @@ RectTransform:
   - {fileID: 297973774}
   - {fileID: 1445732529}
   - {fileID: 1038139172}
-  m_Father: {fileID: 597535357}
+  m_Father: {fileID: 369550789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 85}
+  m_AnchoredPosition: {x: 50, y: -47.5}
   m_SizeDelta: {x: 320, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &403209815
@@ -9159,7 +9201,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 217346295}
-  - {fileID: 1416719008}
   m_Father: {fileID: 914451058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -11146,7 +11187,7 @@ GameObject:
   - component: {fileID: 551699380}
   - component: {fileID: 551699379}
   m_Layer: 5
-  m_Name: Back
+  m_Name: Back_InventoryE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11206,7 +11247,7 @@ RectTransform:
   - {fileID: 883452325}
   - {fileID: 1696004806}
   - {fileID: 1592696394}
-  m_Father: {fileID: 1158672253}
+  m_Father: {fileID: 17101261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11504,7 +11545,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1413272896}
   - {fileID: 1422883368}
   m_Father: {fileID: 17101261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11886,7 +11926,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1695516489}
-  - {fileID: 403209814}
   m_Father: {fileID: 1682234561}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -247537,7 +247576,7 @@ GameObject:
   - component: {fileID: 885527903}
   - component: {fileID: 885527902}
   m_Layer: 5
-  m_Name: ArmorInventory
+  m_Name: U_ArmorInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247558,11 +247597,11 @@ RectTransform:
   - {fileID: 201803329}
   - {fileID: 506015728}
   - {fileID: 1691058395}
-  m_Father: {fileID: 1673847083}
+  m_Father: {fileID: 369550789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 85}
+  m_AnchoredPosition: {x: 50, y: 47.5}
   m_SizeDelta: {x: 320, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &885527902
@@ -250052,7 +250091,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1302269681}
-  - {fileID: 154783142}
   m_Father: {fileID: 1682234561}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -252292,9 +252330,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Etc.BattleCameraCanvas
   targetAspect: 3.555556
-  targetCamera: {fileID: 507990731}
+  targetCamera: {fileID: 1961500633}
   targetCanvas: {fileID: 603277509}
-  cam2: {fileID: 1961500633}
+  cam2: {fileID: 507990731}
 --- !u!1 &1124564734
 GameObject:
   m_ObjectHideFlags: 0
@@ -253113,7 +253151,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 551699378}
   - {fileID: 30009262}
   m_Father: {fileID: 17101261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -258185,7 +258222,7 @@ GameObject:
   - component: {fileID: 1413272900}
   - component: {fileID: 1413272899}
   m_Layer: 5
-  m_Name: Back
+  m_Name: Back_InventoryQ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258207,7 +258244,7 @@ RectTransform:
   - {fileID: 1993342370}
   - {fileID: 1712186486}
   - {fileID: 1703083428}
-  m_Father: {fileID: 575682114}
+  m_Father: {fileID: 17101261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -258359,7 +258396,7 @@ GameObject:
   - component: {fileID: 1416719012}
   - component: {fileID: 1416719011}
   m_Layer: 5
-  m_Name: WeaponInventory
+  m_Name: U_WeaponInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258380,11 +258417,11 @@ RectTransform:
   - {fileID: 810411617}
   - {fileID: 1071620541}
   - {fileID: 65573271}
-  m_Father: {fileID: 477935379}
+  m_Father: {fileID: 369550789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 85}
+  m_AnchoredPosition: {x: -50, y: 47.5}
   m_SizeDelta: {x: 320, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1416719009
@@ -263943,22 +263980,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69ef25ee5e904b978b7f47d07e262397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Produce.Weapon.Compound.Explanation.WeaponExplanationUI
-  explanationUI: {fileID: 1490461843}
-  image: {fileID: 130541225}
-  nameText: {fileID: 939372130}
-  explanationText: {fileID: 2118773856}
-  etcText: {fileID: 0}
-  canvas: {fileID: 1657073184}
-  addY: -220
-  maxX: 1920
-  maxY: 1080
-  buff:
-  - {fileID: 1690403498}
-  - {fileID: 412673173}
-  - {fileID: 2050252409}
-  - {fileID: 589525881}
-  - {fileID: 129306635}
-  buffFind: {fileID: 1657073186}
 --- !u!114 &1657073186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264465,7 +264486,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 489683858}
-  - {fileID: 885527901}
   m_Father: {fileID: 914451058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -265096,7 +265116,7 @@ GameObject:
   - component: {fileID: 1695516486}
   - component: {fileID: 1695516485}
   m_Layer: 5
-  m_Name: WeaponBtn
+  m_Name: ArmorBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266961,6 +266981,7 @@ MonoBehaviour:
       sceneName: 
       isGetItem: 0
       isChat: 0
+      playCharacter: 0
       characterPositions:
         ks: 
         vs: []
@@ -266994,6 +267015,7 @@ MonoBehaviour:
     sceneName: 
     isGetItem: 0
     isChat: 0
+    playCharacter: 0
     characterPositions:
       ks: 
       vs: []
@@ -268233,7 +268255,7 @@ MonoBehaviour:
   explanationText: {fileID: 1116583456}
   etcText: {fileID: 0}
   canvas: {fileID: 1914423003}
-  addY: 110
+  addY: 230
   maxX: 1920
   maxY: 540
   buff:
@@ -268767,7 +268789,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 415182765}
-  - {fileID: 386507845}
   m_Father: {fileID: 1993163661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -268987,6 +269008,7 @@ RectTransform:
   - {fileID: 1682234561}
   - {fileID: 2053954042}
   - {fileID: 1993163661}
+  - {fileID: 369550789}
   m_Father: {fileID: 603277510}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

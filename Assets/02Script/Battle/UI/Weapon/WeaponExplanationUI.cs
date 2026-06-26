@@ -16,7 +16,9 @@ namespace _02Script.Battle.UI.Weapon
         
         protected override void OnEnable()
         {
-            base.OnEnable();
+            //base.OnEnable();
+            explanationUI.gameObject.SetActive(false);
+            
             CompoundSelectWeaponArmorCard.OnMouseEnter += UIShow;
             WeaponInventoryCard.OnMouseEnter += UIShow;
             MouseExit();

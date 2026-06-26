@@ -40,11 +40,11 @@ namespace _02Script.Battle.UI.Etc
 
             // UI(RectTransform)는 카메라 viewport와는 별개니 그대로 둬도 OK
             Vector2 collectRP = collectRect.anchoredPosition;
-            collectRP.y = _isCollect ? -_rectTopPosY : _rectBottomPosY;
+            collectRP.y = _isCollect ? _rectBottomPosY: _rectTopPosY;
             collectRect.anchoredPosition = collectRP;
 
             Vector2 battleRP = battleRect.anchoredPosition;
-            battleRP.y = _isCollect ? _rectTopPosY : _rectBottomPosY;
+            battleRP.y = _isCollect ? _rectBottomPosY : -_rectTopPosY;
             battleRect.anchoredPosition = battleRP;
 
             _isCollect = !_isCollect;

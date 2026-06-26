@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using _02Script.Battle.Entity;
+using _02Script.Battle.Monster;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
 using _02Script.SaveData;
@@ -36,12 +37,14 @@ namespace _02Script.Battle
 
         private void OnEnable()
         {
+            MonsterManager.OnSuccess += SaveData;
             BattleCharacter.OnDie += FailGame;
             print(JsonUtility.ToJson(PlayerStat));
         }
 
         private void OnDisable()
         {
+            MonsterManager.OnSuccess -= SaveData;
             BattleCharacter.OnDie -= FailGame;
         }
 
