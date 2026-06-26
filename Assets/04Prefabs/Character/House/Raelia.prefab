@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 9046757932408947539}
   - component: {fileID: 4637094830575749524}
   - component: {fileID: 1117630471763849222}
+  - component: {fileID: 7308387651604773532}
   m_Layer: 6
   m_Name: Raelia
   m_TagString: Player
@@ -163,6 +164,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   TargetPos: {x: 0, y: 0}
+--- !u!210 &7308387651604773532
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4581098350409200906}
+  m_Enabled: 1
+  m_SortingLayerID: -661178391
+  m_SortingLayer: 3
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1001 &3293817741634160816
 PrefabInstance:
   m_ObjectHideFlags: 0

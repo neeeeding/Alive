@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 545117879836879629}
   - component: {fileID: 4880754263675115969}
   - component: {fileID: 4100674160917867839}
+  - component: {fileID: 4919542772143807547}
   m_Layer: 6
   m_Name: Hajun
   m_TagString: Player
@@ -131,6 +132,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   TargetPos: {x: 0, y: 0}
+--- !u!210 &4919542772143807547
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3685324788316790515}
+  m_Enabled: 1
+  m_SortingLayerID: -661178391
+  m_SortingLayer: 3
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &5901952413692556191
 GameObject:
   m_ObjectHideFlags: 0

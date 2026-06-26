@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 2309656632194887385}
   - component: {fileID: 7961516388223786802}
   - component: {fileID: 7864895967626980717}
+  - component: {fileID: -1064997813757031874}
   m_Layer: 6
   m_Name: Magenta
   m_TagString: Player
@@ -163,6 +164,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   TargetPos: {x: 0, y: 0}
+--- !u!210 &-1064997813757031874
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7767270151048757405}
+  m_Enabled: 1
+  m_SortingLayerID: -661178391
+  m_SortingLayer: 3
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1001 &6899348293881602360
 PrefabInstance:
   m_ObjectHideFlags: 0

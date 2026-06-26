@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 2225182256976074390}
   - component: {fileID: 13083839997676768}
   - component: {fileID: 8526208363329437231}
+  - component: {fileID: -3746416823464165949}
   m_Layer: 6
   m_Name: Collect_Lie
   m_TagString: Player
@@ -166,6 +167,18 @@ MonoBehaviour:
   speed: 2
   TargetPos: {x: 0, y: 0}
   targetOffset: {x: 1, y: -0.6}
+--- !u!210 &-3746416823464165949
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7762579148309469806}
+  m_Enabled: 1
+  m_SortingLayerID: -661178391
+  m_SortingLayer: 3
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &7878142396855812550
 GameObject:
   m_ObjectHideFlags: 0

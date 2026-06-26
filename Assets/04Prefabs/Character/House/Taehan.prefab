@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1818061683037371388}
   - component: {fileID: 5246243280642440736}
   - component: {fileID: 750133687623677751}
+  - component: {fileID: 874802647007288480}
   m_Layer: 6
   m_Name: Taehan
   m_TagString: Player
@@ -163,6 +164,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   TargetPos: {x: 0, y: 0}
+--- !u!210 &874802647007288480
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7970544772813619069}
+  m_Enabled: 1
+  m_SortingLayerID: -661178391
+  m_SortingLayer: 3
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1001 &7497303727611933048
 PrefabInstance:
   m_ObjectHideFlags: 0

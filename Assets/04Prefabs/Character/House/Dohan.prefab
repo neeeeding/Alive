@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5930487228995921194}
   - component: {fileID: 6935782172514148802}
   - component: {fileID: 4634578469577071109}
+  - component: {fileID: -2079468939877617888}
   m_Layer: 6
   m_Name: Dohan
   m_TagString: Player
@@ -131,6 +132,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   TargetPos: {x: 0, y: 0}
+--- !u!210 &-2079468939877617888
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633075610200979065}
+  m_Enabled: 1
+  m_SortingLayerID: -661178391
+  m_SortingLayer: 3
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &4917885428435226761
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2397307199009668116}
   - component: {fileID: 4877651113087651024}
   - component: {fileID: 3112970566494155474}
+  - component: {fileID: -7702222523136801347}
   m_Layer: 6
   m_Name: Isis
   m_TagString: Player
@@ -131,6 +132,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   TargetPos: {x: 0, y: 0}
+--- !u!210 &-7702222523136801347
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4438613886401113800}
+  m_Enabled: 1
+  m_SortingLayerID: -661178391
+  m_SortingLayer: 3
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &7528853830215539512
 GameObject:
   m_ObjectHideFlags: 0

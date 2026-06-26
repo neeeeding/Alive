@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 5409645653554467225}
   - component: {fileID: 6672132454561720480}
   - component: {fileID: 3183851609683810670}
+  - component: {fileID: 2611378241010860085}
   m_Layer: 9
   m_Name: Battle_Hajun
   m_TagString: Player
@@ -258,6 +259,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 1.375}
   m_Size: {x: 1, y: 2.75}
   m_Direction: 0
+--- !u!210 &2611378241010860085
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2888141062363830377}
+  m_Enabled: 1
+  m_SortingLayerID: -661178391
+  m_SortingLayer: 3
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &2928725249999071497
 GameObject:
   m_ObjectHideFlags: 0

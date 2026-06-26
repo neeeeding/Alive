@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 4239573449232324902}
   - component: {fileID: 2624315921884997122}
   - component: {fileID: 3168032868836951018}
+  - component: {fileID: 7779407182133598741}
   m_Layer: 6
   m_Name: Collect_Taehan
   m_TagString: Player
@@ -256,6 +257,18 @@ MonoBehaviour:
   speed: 2
   TargetPos: {x: 0, y: 0}
   targetOffset: {x: 1, y: -0.6}
+--- !u!210 &7779407182133598741
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5148593984926955641}
+  m_Enabled: 1
+  m_SortingLayerID: -661178391
+  m_SortingLayer: 3
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1001 &8738081313596839452
 PrefabInstance:
   m_ObjectHideFlags: 0

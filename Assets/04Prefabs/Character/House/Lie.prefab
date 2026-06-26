@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4917601101422692763}
   - component: {fileID: 3164167438283823828}
   - component: {fileID: 8858211124070706306}
+  - component: {fileID: 5345427792451164418}
   m_Layer: 6
   m_Name: Lie
   m_TagString: Player
@@ -131,6 +132,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   TargetPos: {x: 0, y: 0}
+--- !u!210 &5345427792451164418
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4660529823962939424}
+  m_Enabled: 1
+  m_SortingLayerID: -661178391
+  m_SortingLayer: 3
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &4872987405266924512
 GameObject:
   m_ObjectHideFlags: 0
