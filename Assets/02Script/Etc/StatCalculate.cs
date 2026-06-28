@@ -8,18 +8,32 @@ namespace _02Script.Etc
 {
     public class StatCalculate : MonoBehaviour
     {
-        private static Dictionary<StatsType,(float baseValue,float[] addValue,float lastAdd)> _allValues = new Dictionary<StatsType, (float, float[],float)>();
+        private static Dictionary<StatsType, (float baseValue, float[] addValue, float lastAdd)> _allValues = 
+            new Dictionary<StatsType, (float, float[], float)>();
         
         private void Awake()
         {
-            SetValue();
+            EnsureInitialized();
         }
 
-        public static string StatAlphabet(EntityName character,StatsType statType)
+        // [수정] 정적 안전 초기화 (언제 어디서 호출되든 null/empty 크래시 방지)
+        private static void EnsureInitialized()
         {
-            int stat = SaveManagerCheck.GetCurScenePlayerStat().characterStats[character][statType];
+            if (_allValues == null || _allValues.Count == 0)
+            {
+                SetValue();
+            }
+        }
 
-            string value = ((stat-1)/5) switch
+        public static string StatAlphabet(EntityName character, StatsType statType)
+        {
+            EnsureInitialized();
+            var statSC = SaveManagerCheck.GetCurScenePlayerStat();
+            if (statSC == null || statSC.characterStats == null || !statSC.characterStats.ContainsKey(character)) return "";
+
+            int stat = statSC.characterStats[character][statType];
+
+            string value = ((stat - 1) / 5) switch
             {
                 8 => "SSS",
                 7 => "SS",
@@ -40,58 +54,63 @@ namespace _02Script.Etc
                 3 => "",
                 4 => "+",
                 0 => "++",
-                _=> ""
+                _ => ""
             };
             
             return value;
         }
-            
 
-        public static float Calculate(EntityName character,StatsType statType)
+        public static float Calculate(EntityName character, StatsType statType)
         {
             if (character == EntityName.None || statType == StatsType.none) return 0;
-            if (statType == StatsType.curHp) //체력은 계산할 필요가 없음.
+            EnsureInitialized();
+
+            var statSC = SaveManagerCheck.GetCurScenePlayerStat();
+            if (statSC == null || statSC.characterStats == null || !statSC.characterStats.ContainsKey(character)) return 0;
+
+            if (statType == StatsType.curHp) // 체력은 계산할 필요가 없음
             {
-                return SaveManagerCheck.GetCurScenePlayerStat().characterStats[character][StatsType.curHp];
+                return statSC.characterStats[character][StatsType.curHp];
             }
             
-            int stat = SaveManagerCheck.GetCurScenePlayerStat().characterStats[character][statType];
+            int stat = statSC.characterStats[character][statType];
             
+            if (!_allValues.ContainsKey(statType)) return 0;
             float statValue = _allValues[statType].baseValue;
 
             if (stat >= 45 && _allValues[statType].lastAdd > 0)
             {
-                //마지막 값 미리 더하기
+                // 마지막 값 미리 더하기
                 statValue += _allValues[statType].lastAdd
                              - _allValues[statType].addValue[_allValues[statType].addValue.Length - 1];
             }
 
-            int addValue = (45/_allValues[statType].addValue.Length) +1;
+            int addValue = (45 / _allValues[statType].addValue.Length) + 1;
             
             foreach (float value in _allValues[statType].addValue)
             {
-                if(stat <= 1) break;
-                statValue += (Mathf.Min(stat, addValue)-1) * value;
-                stat -= (Mathf.Min(stat, addValue)-1);
+                if (stat <= 1) break;
+                statValue += (Mathf.Min(stat, addValue) - 1) * value;
+                stat -= (Mathf.Min(stat, addValue) - 1);
             }
             
             return statValue;
         }
 
-        private void SetValue()
+        private static void SetValue()
         {
             _allValues.Clear();
             
-            _allValues.Add(StatsType.HpStat,(50,new float[] {3,4,5,6,7,8,9,9,9},18));
-            _allValues.Add(StatsType.attack,(3,new float[] {1,2,3,4,5},-1));
-            _allValues.Add(StatsType.agility,(1,new float[] {1},6));
-            _allValues.Add(StatsType.defense,(0,new float[] {1,2,2},4));
-            _allValues.Add(StatsType.skill,(0,new float[] {1,2,3},6));
-            _allValues.Add(StatsType.recovery,(0,new float[] {0.1f,0.5f,1},-1));
-            _allValues.Add(StatsType.tolerance,(0,new float[] {1,2,3},6));
-            _allValues.Add(StatsType.duration,(0,new float[] {1,2,3},6));
-            _allValues.Add(StatsType.acceptance,(6,new float[] {1},-1));
-            _allValues.Add(StatsType.mining,(0,new float[] {0.01f,0.05f,0.1f,0.25f,0.5f},-1));
+            _allValues.Add(StatsType.HpStat, (50, new float[] { 3, 4, 5, 6, 7, 8, 9, 9, 9 }, 18));
+            _allValues.Add(StatsType.attack, (3, new float[] { 1, 2, 3, 4, 5 }, -1));
+            _allValues.Add(StatsType.agility, (1, new float[] { 1 }, 6));
+            _allValues.Add(StatsType.defense, (0, new float[] { 1, 2, 2 }, 4));
+            _allValues.Add(StatsType.skill, (0, new float[] { 1, 2, 3 }, 6));
+            _allValues.Add(StatsType.recovery, (0, new float[] { 0.1f, 0.5f, 1 }, -1));
+            _allValues.Add(StatsType.tolerance, (0, new float[] { 1, 2, 3 }, 6));
+            _allValues.Add(StatsType.duration, (0, new float[] { 1, 2, 3 }, 6));
+            _allValues.Add(StatsType.acceptance, (6, new float[] { 1 }, -1));
+            _allValues.Add(StatsType.mining, (0, new float[] { 0.01f, 0.05f, 0.1f, 0.25f, 0.5f }, -1));
         }
     }
 }

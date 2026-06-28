@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using _02Script.Etc;
 using _02Script.Inventory.Item;
@@ -18,51 +18,50 @@ namespace _02Script.UI.Dialog.Dialog
 {
     public class Dialog : MonoBehaviour
     {
-        public static Action OnGame; //Ã¤ÆÃ ³¡³ª¸é
+        public static Action OnGame; //ì±„íŒ… ëë‚˜ë©´
 
-        #region º¯¼ö
-        [SerializeField] private TextMeshProUGUI dialogText; //´ëÈ­
+        #region ë³€ìˆ˜
+        [SerializeField] private TextMeshProUGUI dialogText; //ëŒ€í™”
 
-        [Space(20f)] [SerializeField] private DialogEntitySO[] allCharacter; //¸ğµç Ä³¸¯ÅÍÀÇ Á¤º¸. (¿©·µÀÌ¼­ ¸» ÇÒ ¶§)
+        [Space(20f)] [SerializeField] private DialogEntitySO[] allCharacter; //ëª¨ë“  ìºë¦­í„°ì˜ ì •ë³´. (ì—¬ëŸ¿ì´ì„œ ë§ í•  ë•Œ)
 
-        //½ºÅ©¸³Æ®
+        //ìŠ¤í¬ë¦½íŠ¸
         [SerializeField] private DoScript doScript;
-        [SerializeField] private DialogTextController dialogTextController; //ÅØ½ºÆ® Ãâ·Â °ü·Ã
-        [SerializeField] private DialogSelect dialogSelect; //¼±ÅÃÁö °ü·Ã
-        [SerializeField] private ChatSetting setting; //¼¼ÆÃ ÇØÁÖ´Â °Å
+        [SerializeField] private DialogTextController dialogTextController; //í…ìŠ¤íŠ¸ ì¶œë ¥ ê´€ë ¨
+        [SerializeField] private DialogSelect dialogSelect; //ì„ íƒì§€ ê´€ë ¨
+        [SerializeField] private ChatSetting setting; //ì„¸íŒ… í•´ì£¼ëŠ” ê±°
 
-        [SerializeField] private DialogItem dialogItem; //¾ÆÀÌÅÛ °ü·Ã
-        [SerializeField] private ItemDataSO[] allItems; //°¡Áö°í ÀÖÀ» ¾ÆÀÌÅÛµé
+        [SerializeField] private DialogItem dialogItem; //ì•„ì´í…œ ê´€ë ¨
+        [SerializeField] private ItemDataSO[] allItems; //ê°€ì§€ê³  ìˆì„ ì•„ì´í…œë“¤
         private SerializedDictionary<ItemType, ItemDataSO> itemDictionary = new SerializedDictionary<ItemType, ItemDataSO>();
 
-        private List<Dictionary<string, string>> dialog; //csv ´ëÈ­
-        [Header("Show")] [SerializeField] private int currentChapter; //ÇöÀç Ã©ÅÍ
-        [SerializeField] private int currentNum; //ÇöÀç ¹øÈ£
-        [SerializeField] private int currentChat; //ÇöÀç CSVÀÇ ¹è¿­
+        private List<Dictionary<string, string>> dialog; //csv ëŒ€í™”
+        [Header("Show")] [SerializeField] private int currentChapter; //í˜„ì¬ ì±•í„°
+        [SerializeField] private int currentNum; //í˜„ì¬ ë²ˆí˜¸
+        [SerializeField] private int currentChat; //í˜„ì¬ CSVì˜ ë°°ì—´
 
         private DialogEntity _currentDialogEntity;
-        private DialogEntitySO _currentSO; //Á¤º¸
-        [SerializeField] private DialogEntitySO chatPlayer; //¸»ÇÏ°í ÀÖ´Â¾Ö
+        private DialogEntitySO _currentSO; //ì •ë³´
+        [SerializeField] private DialogEntitySO chatPlayer; //ë§í•˜ê³  ìˆëŠ”ì• 
 
         private readonly string _am = "AM_House";
         
-        //±ÛÀÚ ÀÔ·Â °ü·Ã
-        private string _chatText; //ÀÔ·ÂÇØ¾ßÇÏ´Â °Å
-        private bool _isTime; //½Ã°£ Àç´ÂÁö
-        private float _curTime; //1ÃÊ ½Ã°£
-        private int _nCount; //Çö Ãâ·ÂÇÑ ±ÛÀÚ ¹øÂ°
-        private bool _isAM; // ÇöÀç ¾À
+        //ê¸€ì ì…ë ¥ ê´€ë ¨
+        private string _chatText; //ì…ë ¥í•´ì•¼í•˜ëŠ” ê±°
+        private bool _isTime; //ì‹œê°„ ì¬ëŠ”ì§€
+        private float _curTime; //1ì´ˆ ì‹œê°„
+        private int _nCount; //í˜„ ì¶œë ¥í•œ ê¸€ì ë²ˆì§¸
+        private bool _isAM; // í˜„ì¬ ì”¬
 
         private EntityName isError;
         #endregion
 
-        [SerializeField] private SelectBtn[] selectTexts; //¼±ÅÃÁö ´ëÈ­
-        [Space(50f)] [SerializeField] private SerializedDictionary<DialogPosition, Vector2> characterPosition; //À§Ä¡ ÁöÁ¤
+        [SerializeField] private SelectBtn[] selectTexts; //ì„ íƒì§€ ëŒ€í™”
+        [Space(50f)] [SerializeField] private SerializedDictionary<DialogPosition, Vector2> characterPosition; //ìœ„ì¹˜ ì§€ì •
 
-        public void DialogSetting(DialogEntitySO so, DialogEntity dialogEntity) //¼¼ÆÃ ÇØÁÖ±â
+        public void DialogSetting(DialogEntitySO so, DialogEntity dialogEntity) //ì„¸íŒ… í•´ì£¼ê¸°
         {
             dialogText.text = "";
-            //items = so.items;
             _isAM = SceneManager.GetActiveScene().name == _am;
 
             if (_isAM)
@@ -79,18 +78,17 @@ namespace _02Script.UI.Dialog.Dialog
             currentNum = nums.finalNum;
             
             dialogEntity.DoChat(true);
-            dialogSelect.OffSelectText(); //¼±ÅÃÁö ÅØ½ºÆ® ÀÏ´Ü ´Ù ²ô±â
+            dialogSelect.OffSelectText(); //ì„ íƒì§€ í…ìŠ¤íŠ¸ ì¼ë‹¨ ë‹¤ ë„ê¸°
             GetDialog();
             
-            //if (currentDialogEntity as Island) //´Ù¸¥ ¾ÖµéÀº FÃ³¸®·Î ¾Ë¾Æ¼­ ½ÇÇà µÇ´Ï. (ÇÊ¿äÇÑ °æ¿ì)
             DoChat(false);
         }
 
-        private void GetDialog() //´ëÈ­ (Ã©ÅÍ ¹øÈ£) ¾ò±â. (List)
+        private void GetDialog() //ëŒ€í™” (ì±•í„° ë²ˆí˜¸) ì–»ê¸°. (List)
         {
             TextAsset currentDialog = _currentSO.DialogTextFile[0];
             dialog = CSVReader.Read(currentDialog);
-            //¾ÆÀÌÅÛ --
+            //ì•„ì´í…œ --
             int? isItem = dialogItem.IsHoldItem(dialog);
             if (isItem != null)
             {
@@ -98,23 +96,24 @@ namespace _02Script.UI.Dialog.Dialog
                 currentNum = 1;
             }
 
-            //CSV ¹è¿­ Ã£±â
+            //CSV ë°°ì—´ ì°¾ê¸°
             for (int i = 0; i < dialog.Count - 1; i++)
             {
                 if (DialogCheck(DialogType.Chapter, currentChapter.ToString(), i)
-                    && DialogCheck(DialogType.Num, currentNum.ToString(), i)) //ÇØ´ç ¹è¿­ÀÇ ¼ö°¡ Ã©ÅÍ¶û ¹øÈ£°¡ °°À¸¸é
+                    && DialogCheck(DialogType.Num, currentNum.ToString(), i)) //í•´ë‹¹ ë°°ì—´ì˜ ìˆ˜ê°€ ì±•í„°ë‘ ë²ˆí˜¸ê°€ ê°™ìœ¼ë©´
                 {
-                    currentChat = i; //ÇØ´ç ¹è¿­ÀÇ ¼ö
+                    currentChat = i; //í•´ë‹¹ ë°°ì—´ì˜ ìˆ˜
                     break;
                 }
             }
         }
 
-        public void ClickNext() //´ÙÀ½À¸·Î
+        public void ClickNext() //ë‹¤ìŒìœ¼ë¡œ
         {
             ClickNext(false);
         }
-        private void ClickNext(bool b) //´ÙÀ½À¸·Î
+
+        private void ClickNext(bool b) //ë‹¤ìŒìœ¼ë¡œ
         {
             if (!_currentDialogEntity && (int)isError / 10000 != 4)
             {
@@ -139,37 +138,36 @@ namespace _02Script.UI.Dialog.Dialog
                 _currentDialogEntity.EndDialog();
                 _currentDialogEntity = null;
                 OnGame?.Invoke();
-                //items = null;
             }
         }
 
-        private void ClickSkip() //½ºÅµ ¹öÆ° ´­·¶À» ¶§
+        private void ClickSkip() //ìŠ¤í‚µ ë²„íŠ¼ ëˆŒë €ì„ ë•Œ
         {
             if(!DialogCheck(DialogType.SelectText, "")) return;
             int nextNum = int.Parse(dialog[currentChat][DialogType.SkipNum.ToString()]) - 1;
             currentChat +=
                 nextNum - currentNum == 0
                     ? +1
-                    : nextNum - currentNum; //´ÙÀ½ ¹øÈ£ Á¤ÇØÁÖ±â. (¸¶Áö¸·ÀÌ º»ÀÎÀÌ¸é 1Ãß°¡·Î ³ª°¡°Ô ÇØ¹ö¸®±â.(´ëÈ­ ÀÚÃ¼´Â ÁÙ¾î¹ö¸².(???)))
+                    : nextNum - currentNum; //ë‹¤ìŒ ë²ˆí˜¸ ì •í•´ì£¼ê¸°.
             currentNum = nextNum + 1;
             DoChat(false);
         }
 
-        private void RenewalText(string final) // ¸¶Áö¸· ÅØ½ºÆ® °»½Å (ÁÖ¼®)
+        private void RenewalText(string final) // ë§ˆì§€ë§‰ í…ìŠ¤íŠ¸ ê°±ì‹  (ì£¼ì„)
         {
             if(!_isAM) return;
             
             HouseManager.Instance.PlayerStat.lastText =
-                $"{EnumToString.Name(_currentSO.EntityName)} : {final}"; //¸¶Áö¸· ÅØ½ºÆ®
+                $"{EnumToString.Name(_currentSO.EntityName)} : {final}"; //ë§ˆì§€ë§‰ í…ìŠ¤íŠ¸
 
-            //ÇØ´ç Ä³¸¯ÅÍ °»½Å (ÀúÀå stat)
+            //í•´ë‹¹ ìºë¦­í„° ê°±ì‹  (ì €ì¥ stat)
             PlayerStatSC path = HouseManager.Instance.PlayerStat;
 
             if (path != null)
             {
-                //ÀúÀå
-                path.characterLastText[chatPlayer.EntityName][DialogType.Chapter] = currentNum.ToString();
-                path.characterLastText[chatPlayer.EntityName][DialogType.Num] = currentChapter.ToString();
+                // [ìˆ˜ì •] ì±•í„°ì™€ ë²ˆí˜¸ê°€ ë°˜ëŒ€ë¡œ ì €ì¥ë˜ë˜ ë²„ê·¸ ìˆ˜ì •
+                path.characterLastText[chatPlayer.EntityName][DialogType.Chapter] = currentChapter.ToString();
+                path.characterLastText[chatPlayer.EntityName][DialogType.Num] = currentNum.ToString();
             }
         }
 
@@ -192,8 +190,8 @@ namespace _02Script.UI.Dialog.Dialog
             }
         }
 
-        //true : ¼±ÅÃÁö¸¦ Å¬¸¯ÇÑ »óÅÂ·Î ³Ñ¾î¿È, false : ÀÏ¹İÀûÀÎ ´ëÈ­
-        private bool DoChat(bool isSelect) //´ëÈ­(½ÇÁúÀûÀÎ ·£´õ·¯)
+        //true : ì„ íƒì§€ë¥¼ í´ë¦­í•œ ìƒíƒœë¡œ ë„˜ì–´ì˜´, false : ì¼ë°˜ì ì¸ ëŒ€í™”
+        private bool DoChat(bool isSelect) //ëŒ€í™”(ì‹¤ì§ˆì ì¸ ëœë”ëŸ¬)
         {
             if (_nCount != 0)
             {
@@ -205,9 +203,9 @@ namespace _02Script.UI.Dialog.Dialog
             if (currentChat > dialog.Count - 1) return true;
 
             if (!DialogCheck(DialogType.Do, ""))
-                doScript.DoCheck(dialog[currentChat][DialogType.Do.ToString()], _currentSO); //½ºÅ©¸³Æ® ½ÇÇà
+                doScript.DoCheck(dialog[currentChat][DialogType.Do.ToString()], _currentSO); //ìŠ¤í¬ë¦½íŠ¸ ì‹¤í–‰
 
-            if ((int)isError / 10000 == 4) //¿À·ùµé ÇØ°á -------------------------------------------------------------
+            if ((int)isError / 10000 == 4) //ì˜¤ë¥˜ë“¤ í•´ê²° -------------------------------------------------------------
             {
                 currentChapter = (int)isError;
                 currentNum = 1;
@@ -216,7 +214,7 @@ namespace _02Script.UI.Dialog.Dialog
                     if (DialogCheck(DialogType.Chapter, currentChapter.ToString(), i)
                         && DialogCheck(DialogType.Num, currentNum.ToString(), i))
                     {
-                        currentChat = i; //ÇØ´ç ¹è¿­ÀÇ ¼ö
+                        currentChat = i; //í•´ë‹¹ ë°°ì—´ì˜ ìˆ˜
                         break;
                     }
                 }
@@ -225,36 +223,36 @@ namespace _02Script.UI.Dialog.Dialog
             }
             else
             {
-                //´ëÈ­°¡ Á¸ÀçÇÏ´ÂÁö (¹è¿­ È®ÀÎ)
+                //ëŒ€í™”ê°€ ì¡´ì¬í•˜ëŠ”ì§€ (ë°°ì—´ í™•ì¸)
                 if (!(dialog.Count > currentChat
                       && DialogCheck(DialogType.Chapter, currentChapter.ToString())
-                      && DialogCheck(DialogType.Num, currentNum.ToString()))) //ÇØ´ç ¹è¿­ÀÇ ¼ö°¡ Ã©ÅÍ¶û ¹øÈ£°¡ °°À¸¸é
+                      && DialogCheck(DialogType.Num, currentNum.ToString()))) //í•´ë‹¹ ë°°ì—´ì˜ ìˆ˜ê°€ ì±•í„°ë‘ ë²ˆí˜¸ê°€ ê°™ìœ¼ë©´
                 {
-                    //È¤½Ã ¸ğ¸£´Ï ÇöÀç ´ë»ç Ãâ·Â
+                    //í˜¹ì‹œ ëª¨ë¥´ë‹ˆ í˜„ì¬ ëŒ€ì‚¬ ì¶œë ¥
                     dialogText.text = dialogTextController.IsExchangeText(dialog[currentChat][DialogType.Text.ToString()], "`", ",");
                     return true;
                 }
             }
 
-            chatPlayer = setting.PlayerSelect(allCharacter, dialog[currentChat]); //¼¼ÆÃÇÏ±â (ÀÚ½Å so Ã£±â)
+            chatPlayer = setting.PlayerSelect(allCharacter, dialog[currentChat]); //ì„¸íŒ…í•˜ê¸° (ìì‹  so ì°¾ê¸°)
 
             if (chatPlayer.EntityName == EntityName.lie)
             {
-                setting.CurrentCharacter(chatPlayer); //Àç ¼¼ÆÃ
+                setting.CurrentCharacter(chatPlayer); //ì¬ ì„¸íŒ…
                 _chatText = "";
                 dialogText.text = _chatText;
             }
             
-            //ÅØ½ºÆ® Ãâ·Â(+ ¿À·ùX)
+            //í…ìŠ¤íŠ¸ ì¶œë ¥(+ ì˜¤ë¥˜X)
             if ((int)chatPlayer.EntityName / 10000 != 4)
-                setting.CurrentCharacter(chatPlayer); //Àç ¼¼ÆÃ
+                setting.CurrentCharacter(chatPlayer); //ì¬ ì„¸íŒ…
 
             _chatText = dialogTextController.IsExchangeText(
-                dialog[currentChat][DialogType.Text.ToString()], "`", ","); //º¯È¯ ÇØÁÖ°í ¿øÇß´ø ´ëÈ­
+                dialog[currentChat][DialogType.Text.ToString()], "`", ","); //ë³€í™˜ í•´ì£¼ê³  ì›í–ˆë˜ ëŒ€í™”
             _isTime = true;
             //------------------------
             
-            //¾ò±â & ½ºÅÈ Áõ°¡
+            //ì–»ê¸° & ìŠ¤íƒ¯ ì¦ê°€
             dialogItem.GetOrThrowItem(dialog[currentChat], itemDictionary);
             //------------------------
 
@@ -263,19 +261,19 @@ namespace _02Script.UI.Dialog.Dialog
             dialogSelect.HaveSelect(currentChat, currentChapter, dialog);
 
             if (isSelect || (int)isError / 10000 == 4) return false;
-            if (!DialogCheck(DialogType.NextNum, "")) // ´ÙÀ½ ¹øÈ£°¡ ¾È ºñ¾î ÀÖ´Ù¸é.
+            if (!DialogCheck(DialogType.NextNum, "")) // ë‹¤ìŒ ë²ˆí˜¸ê°€ ì•ˆ ë¹„ì–´ ìˆë‹¤ë©´.
             {
                 int nextNum = int.Parse(dialog[currentChat][DialogType.NextNum.ToString()]);
                 currentChat +=
                     nextNum - currentNum == 0
                         ? isSelect ? 0 : +1
-                        : nextNum - currentNum; //´ÙÀ½ ¹øÈ£ Á¤ÇØÁÖ±â. (¸¶Áö¸·ÀÌ º»ÀÎÀÌ¸é 1Ãß°¡·Î ³ª°¡°Ô ÇØ¹ö¸®±â.(´ëÈ­ ÀÚÃ¼´Â ÁÙ¾î¹ö¸².(???)))
+                        : nextNum - currentNum; //ë‹¤ìŒ ë²ˆí˜¸ ì •í•´ì£¼ê¸°.
                 currentNum = nextNum;
             }
             return false;
         }
 
-        private bool DialogCheck(DialogType key, string check, int? i = null) // Ã£±â
+        private bool DialogCheck(DialogType key, string check, int? i = null) // ì°¾ê¸°
         {
             i = i ?? currentChat;
             if (i > dialog.Count - 1) return false;
@@ -284,28 +282,28 @@ namespace _02Script.UI.Dialog.Dialog
             return (dialog[i ?? currentChat][key.ToString()] == check);
         }
 
-        private void SelectChat(int selectNum) //¼±ÅÃ
+        private void SelectChat(int selectNum) //ì„ íƒ
         {
             dialogText.text = "";
             currentChat += selectNum;
-            //¾ò±â & ½ºÅÈ Áõ°¡
+            //ì–»ê¸° & ìŠ¤íƒ¯ ì¦ê°€
             dialogItem.GetOrThrowItem(dialog[currentChat], itemDictionary);
             //------------------------
             dialogSelect.SelectChat(selectNum, ref currentNum, ref currentChat, dialog);
             DoChat(true);
         }
         
-        private void LoveUp(int i) //½Å·Úµµ ¿À¸£°Å³ª ³»¸®´Â °Å ÀÖÀ¸¸é ÇØÁÖ±â.
+        private void LoveUp(int i) //ì‹ ë¢°ë„ ì˜¤ë¥´ê±°ë‚˜ ë‚´ë¦¬ëŠ” ê±° ìˆìœ¼ë©´ í•´ì£¼ê¸°.
         {
             if(_isAM) return;
-            if (dialog[i][DialogType.GetLove.ToString()] != "") //½Å·Úµµ ¾ò´Â°Ô ÀÖ´Ù¸é. (È¤Àº »¯´Â°Å)
+            if (dialog[i][DialogType.GetLove.ToString()] != "") //ì‹ ë¢°ë„ ì–»ëŠ”ê²Œ ìˆë‹¤ë©´. (í˜¹ì€ ëºëŠ”ê±°)
             {
                 int value = int.Parse(dialog[i][DialogType.GetLove.ToString()]);
-                HouseManager.Instance.SetLove(_currentSO, value); //¿©·¯¸í ÀÏ ¶§ ¸¸¾à ÁÖÃ¼°¡ ¾Æ´Ñ ´Ù¸¥ ÀÌ¶ó¸é. (ÁÖ¼®)
+                HouseManager.Instance.SetLove(_currentSO, value);
             }
         }
         
-        public void Load() //·Îµå µÉ ¶§
+        public void Load() //ë¡œë“œ ë  ë•Œ
         {
             if(SceneManager.GetActiveScene().name != "AM_House" && HouseManager.Instance.PlayerStat.isChat)
                 DialogSetting(_currentSO, _currentDialogEntity);
@@ -347,26 +345,26 @@ namespace _02Script.UI.Dialog.Dialog
 
     public enum DialogType
     {
-        Bubble, //¸»Ç³¼±
-        Item, //¾ÆÀÌÅÛ Á¾·ù
-        GetLove, //¾ò´Â ½Å·Úµµ
-        Chapter, //ÇØ´ç Ã©ÅÍ (ÇÑ ´ëÈ­)
-        Num, //Ã©ÅÍÀÇ ¼¼ºÎ ¹øÈ£
-        Text, //´ëÈ­
-        Player, //´ëÈ­ ÇÏ´Â Ä³¸¯ÅÍ
-        Position, //´ëÈ­ ÇÏ´Â Ä³¸¯ÅÍÀÇ À§Ä¡
-        OtherPosition, //ÀÌÀü ´ëÈ­ÀÇ Ä³¸¯ÅÍÀÇ À§Ä¡
-        SkipNum, //½ºÅµ ÇßÀ» ¶§ ³Ñ¾î°¡´Â ¹øÈ£
-        NextNum, //´ÙÀ½À¸·Î ³Ñ¾î°¥ ¹øÈ£
-        SelectText, //¼±ÅÃÁö (°³¼ö µû¶ó)
+        Bubble, //ë§í’ì„ 
+        Item, //ì•„ì´í…œ ì¢…ë¥˜
+        GetLove, //ì–»ëŠ” ì‹ ë¢°ë„
+        Chapter, //í•´ë‹¹ ì±•í„° (í•œ ëŒ€í™”)
+        Num, //ì±•í„°ì˜ ì„¸ë¶€ ë²ˆí˜¸
+        Text, //ëŒ€í™”
+        Player, //ëŒ€í™” í•˜ëŠ” ìºë¦­í„°
+        Position, //ëŒ€í™” í•˜ëŠ” ìºë¦­í„°ì˜ ìœ„ì¹˜
+        OtherPosition, //ì´ì „ ëŒ€í™”ì˜ ìºë¦­í„°ì˜ ìœ„ì¹˜
+        SkipNum, //ìŠ¤í‚µ í–ˆì„ ë•Œ ë„˜ì–´ê°€ëŠ” ë²ˆí˜¸
+        NextNum, //ë‹¤ìŒìœ¼ë¡œ ë„˜ì–´ê°ˆ ë²ˆí˜¸
+        SelectText, //ì„ íƒì§€ (ê°œìˆ˜ ë”°ë¼)
         
-        GetItem, //»óÈ£ÀÛ¿ë ÇÏ´Â ¾ÆÀÌÅÛ
-        ItemCount, // °³¼ö
-        Do, //½ºÅ©¸³Æ® ½ÇÇà
+        GetItem, //ìƒí˜¸ì‘ìš© í•˜ëŠ” ì•„ì´í…œ
+        ItemCount, // ê°œìˆ˜
+        Do, //ìŠ¤í¬ë¦½íŠ¸ ì‹¤í–‰
 
-        //ÀúÀåÀ» À§ÇÑ (Ä³¸¯ÅÍ Ä«µå)
-        Memo, //¸Ş¸ğ
-        Love, //½Å·Úµµ
+        //ì €ì¥ì„ ìœ„í•œ (ìºë¦­í„° ì¹´ë“œ)
+        Memo, //ë©”ëª¨
+        Love, //ì‹ ë¢°ë„
     }
 
     public enum DialogPosition

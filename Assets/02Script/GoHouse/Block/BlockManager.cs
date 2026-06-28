@@ -10,7 +10,7 @@ namespace _02Script.GoHouse.Block
     public class BlockManager : MonoBehaviour
     {
         [Header("Show")]
-        [SerializeField]private GoHouseStageSO curStage;
+        [SerializeField] private GoHouseStageSO curStage;
         [Header("Need")]
         [SerializeField] private StageScreen stageScreen;
         [SerializeField] private BlockPlayer player;
@@ -25,8 +25,7 @@ namespace _02Script.GoHouse.Block
 
         public Vector2? WantPos(Vector2 pos)
         {
-            if(!_blockPos.ContainsKey(pos) || _blockPos[pos].isWall) return null;
-            //갈 수 있다면 엔터까지
+            if (!_blockPos.ContainsKey(pos) || _blockPos[pos].isWall) return null;
             EnterBlock(pos);
             return _blockPos[pos].Pos();
         }
@@ -34,12 +33,13 @@ namespace _02Script.GoHouse.Block
         private async void EnterBlock(Vector2 pos)
         {
             await AsyncTime.WaitSeconds(1f);
-            _blockPos[pos].EnterBlock();
+            if (_blockPos.ContainsKey(pos))
+                _blockPos[pos].EnterBlock();
         }
 
         public void Skip()
         {
-            if(_canSkip)
+            if (_canSkip && _typeBlock.ContainsKey(BlockType.House) && _typeBlock[BlockType.House].Count > 0)
                 _typeBlock[BlockType.House][0].EnterBlock();
         }
 
@@ -47,7 +47,6 @@ namespace _02Script.GoHouse.Block
         private void OnEnable()
         {
             _canSkip = false;
-            //LoadStage();
             SetStage(curStage);
             PortalSO.OnPortalEnter += Portal;
             DieSO.OnDie += Die;
@@ -78,14 +77,14 @@ namespace _02Script.GoHouse.Block
             _blockPos.Clear();
             _typeBlock.Clear();
             
-            for (int y = 0; y< curStage.stageBlocks.Count; y++) //왼 아래가 0,0 되도록
+            for (int y = 0; y < curStage.stageBlocks.Count; y++)
             {
                 for (int x = 0; x < curStage.stageBlocks[y].columns.Count; x++)
                 {
-                    BlockObj obj = Instantiate(blockPrefab,blockParent);
+                    BlockObj obj = Instantiate(blockPrefab, blockParent);
                     BlockSO so = curStage.stageBlocks[y].columns[x];
-                    obj.SetBlockData(new Vector2(x,curStage.stageBlocks.Count - y - 1),so);
-                    _blockPos.Add(new Vector2(x,curStage.stageBlocks.Count - y - 1), obj);
+                    obj.SetBlockData(new Vector2(x, curStage.stageBlocks.Count - y - 1), so);
+                    _blockPos.Add(new Vector2(x, curStage.stageBlocks.Count - y - 1), obj);
                     obj.gameObject.SetActive(true);
 
                     if (!_typeBlock.ContainsKey(so.blockType))
@@ -101,29 +100,33 @@ namespace _02Script.GoHouse.Block
         {
             curStage = so;
             SpawnBlock();
-            stageScreen.SetScreenSize(curStage.stageBlocks[0].columns.Count,curStage.stageBlocks.Count);
-            await AsyncTime.WaitSeconds(1f,false); //로딩 되라고...
-            player.SetPlayerPos(curStage.playerPos, so.moveCount,this);
+            stageScreen.SetScreenSize(curStage.stageBlocks[0].columns.Count, curStage.stageBlocks.Count);
+            await AsyncTime.WaitSeconds(1f, false);
+            player.SetPlayerPos(curStage.playerPos, so.moveCount, this);
         }
         #endregion
 
         #region BlockAction
         private void Die()
         {
-            player.SetPlayerPos(curStage.playerPos, curStage.moveCount,this);
+            player.SetPlayerPos(curStage.playerPos, curStage.moveCount, this);
             _canSkip = true;
         }
+
+        // [수정] 무한루프 위험 제거 및 안전한 포탈 대상 선택
         private void Portal(BlockActionSO so)
         {
+            if (!_typeBlock.ContainsKey(BlockType.Portal) || _typeBlock[BlockType.Portal].Count <= 0) return;
             List<BlockObj> portals = _typeBlock[BlockType.Portal];
-            int r = 0;
             
-            do
+            List<BlockObj> candidatePortals = portals.FindAll(p => !p.ReturnType().actions.Contains(so));
+            if (candidatePortals.Count == 0)
             {
-                r = Random.Range(0, portals.Count);
-                
-            } while (!portals[r].ReturnType().actions.Contains(so) &&
-                     player.Portal(portals[r].MyPos));
+                candidatePortals = portals;
+            }
+
+            int r = Random.Range(0, candidatePortals.Count);
+            player.Portal(candidatePortals[r].MyPos);
         }
         #endregion
     }

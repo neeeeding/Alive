@@ -8,7 +8,7 @@ namespace _02Script.GamePlayer.Movement
     public class BattleMonsterMovement : PlayerMovement
     {
         [Header("Battle--")]
-        [SerializeField] private Vector2 targetOffset= new Vector2(1,0);
+        [SerializeField] private Vector2 targetOffset = new Vector2(1, 0);
 
         private GameObject center;
 
@@ -28,7 +28,11 @@ namespace _02Script.GamePlayer.Movement
 
         private void Target(List<BattleEntity> target, BattleEntity moveEntity)
         {
-            if(moveEntity.gameObject != gameObject) return;
+            if (moveEntity.gameObject != gameObject) return;
+            
+            // [수정] 공격/스킬 동작 중에는 타겟 변경에 따른 강제 이동 무시
+            if (IsAttacking) return;
+
             Rd.constraints = RigidbodyConstraints2D.FreezeRotation;
 
             if (target.Count <= 0)
@@ -42,7 +46,7 @@ namespace _02Script.GamePlayer.Movement
             {
                 TargetPos = target[0].transform.position;
                 TargetPos.y += targetOffset.y;
-                TargetPos.x += TargetPos.x <transform.position.x? targetOffset.x : -targetOffset.x;
+                TargetPos.x += TargetPos.x < transform.position.x ? targetOffset.x : -targetOffset.x;
             }
             else
             {
@@ -59,7 +63,7 @@ namespace _02Script.GamePlayer.Movement
 
         private void ChangeAnimation(PlayerStateType animationType)
         {
-            player.ChangeState(animationType,(int)player.Animator.GetFloat(X),(int)player.Animator.GetFloat(Y));
+            player.ChangeState(animationType, (int)player.Animator.GetFloat(X), (int)player.Animator.GetFloat(Y));
         }
     }
 }

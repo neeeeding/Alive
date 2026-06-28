@@ -13,8 +13,8 @@ namespace _02Script.Battle.UI.Weapon
 {
     public class WeaponInventoryCard : ItemCard
     {
-        public static event Action<WeaponInventoryCard,List<BuffSO>,EntityName,WeaponArmorSaveData> OnMouseClick;
-        public static Action<WeaponItemDataSO,WeaponArmorSaveData,List<BuffSO>,Vector3> OnMouseEnter; //정보, 현재 남은 시간 
+        public static event Action<WeaponInventoryCard, List<BuffSO>, EntityName, WeaponArmorSaveData> OnMouseClick;
+        public static Action<WeaponItemDataSO, WeaponArmorSaveData, List<BuffSO>, Vector3> OnMouseEnter;
 
         [SerializeField] protected TextMeshProUGUI nameText;
         [SerializeField] protected Slider damageSlider;
@@ -23,21 +23,23 @@ namespace _02Script.Battle.UI.Weapon
         private EntityName _weaponEntity;
         private List<BuffSO> _buffs;
 
+        public EntityName GetEntity() => _weaponEntity;
+
         #region Btn
         public void MouseEnter()
         {
             gameObject.transform.DOScale(Vector3.one * 1.15f, delay).SetEase(Ease.InOutBack).SetUpdate(true);
-            OnMouseEnter?.Invoke((itemData.ReturnDataSO() as WeaponItemDataSO),weaponArmorBuff,_buffs,gameObject.transform.position);
+            OnMouseEnter?.Invoke((itemData.ReturnDataSO() as WeaponItemDataSO), weaponArmorBuff, _buffs, gameObject.transform.position);
         }        
         public void MouseExit()
         {
-            gameObject.transform.DOScale(Vector3.one , delay).SetEase(Ease.InOutBack).SetUpdate(true);
-            OnMouseEnter?.Invoke(null,null,null,Vector3.zero);
+            gameObject.transform.DOScale(Vector3.one, delay).SetEase(Ease.InOutBack).SetUpdate(true);
+            OnMouseEnter?.Invoke(null, null, null, Vector3.zero);
         }
 
         public void MouseClick()
         {
-            OnMouseClick?.Invoke(this,_buffs,_weaponEntity,weaponArmorBuff);
+            OnMouseClick?.Invoke(this, _buffs, _weaponEntity, weaponArmorBuff);
         }
         #endregion
 
@@ -47,12 +49,12 @@ namespace _02Script.Battle.UI.Weapon
         }
 
         #region NewCard
-        public void NewCard(BuffFind buffFind,ItemData itemData,int setStar = 5, int setItemHp = 100, WeaponArmorSaveData data = null)
+        public void NewCard(BuffFind buffFind, ItemData itemData, int setStar = 5, int setItemHp = 100, WeaponArmorSaveData data = null)
         {
             nameText.text = itemData.ReturnDataSO().itemName;
-            base.NewCard(itemData, setStar, setItemHp, data); //부산물
+            base.NewCard(itemData, setStar, setItemHp, data);
             
-            if(data == null) return;
+            if (data == null) return;
             
             if (_buffs == null)
             {
@@ -63,12 +65,14 @@ namespace _02Script.Battle.UI.Weapon
             {
                 _buffs.Add(buffFind.GetBuff(buff));
             }
+            UpdateCountUI();
         }
 
-        public override void NewCard(ItemData itemData,int setStar = 5, int setItemHp = 100, WeaponArmorSaveData data = null)
+        public override void NewCard(ItemData itemData, int setStar = 5, int setItemHp = 100, WeaponArmorSaveData data = null)
         {
             nameText.text = itemData.ReturnDataSO().itemName;
-            base.NewCard(itemData, setStar, setItemHp, data); //부산물
+            base.NewCard(itemData, setStar, setItemHp, data);
+            UpdateCountUI();
         }
         #endregion
 
@@ -77,10 +81,24 @@ namespace _02Script.Battle.UI.Weapon
             _weaponEntity = entityName;
         }
 
+        // [수정] 슬라이더 및 내구도 텍스트 실시간 100% 반영
         public override void UpdateCountUI()
         {
-            damageSlider.value = itemHp / 100;
-            countUI.text = $"{itemHp} / 100";
+            if (damageSlider != null)
+            {
+                if (damageSlider.maxValue > 1.5f)
+                {
+                    damageSlider.value = itemHp;
+                }
+                else
+                {
+                    damageSlider.value = itemHp / 100f;
+                }
+            }
+            if (countUI != null)
+            {
+                countUI.text = $"{Mathf.CeilToInt(itemHp)} / 100";
+            }
         }
     }
 }

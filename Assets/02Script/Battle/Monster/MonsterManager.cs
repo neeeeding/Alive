@@ -16,13 +16,13 @@ namespace _02Script.Battle.Monster
         [SerializeField] private BossMonster bossMonsterPrefab;
         
         private List<(MonsterSO monsterType, Vector3 spawnPos, float spawnDelay)> _monsterSpawnList
-            = new List<(MonsterSO monsterType, Vector3 spawnPos, float spawnDelay)>(); //종류, 위치, 스폰될 타이밍
+            = new List<(MonsterSO monsterType, Vector3 spawnPos, float spawnDelay)>();
         private List<Monster> _monsters = new List<Monster>();
         private List<BossMonster> _bossMonsters = new List<BossMonster>();
-        private List<BattleEntity> _canTargets = new List<BattleEntity>(); //타겟 후보
+        private List<BattleEntity> _canTargets = new List<BattleEntity>();
 
-        private int _curAlive; //살아있는 수
-        private bool _isSpawn; // 생성 종료인지
+        private int _curAlive;
+        private bool _isSpawn;
         private float _curTime;
 
         private void OnEnable()
@@ -37,10 +37,10 @@ namespace _02Script.Battle.Monster
         private void OnDisable()
         {
             Monster.OnDie -= AddMonsterList;
-            SelectDistribution.OnStart += SetStart;
+            SelectDistribution.OnStart -= SetStart;
         }
 
-        private void AddMonsterList(Monster monster) //풀링
+        private void AddMonsterList(Monster monster)
         {
             if (monster is BossMonster boss)
             {
@@ -54,20 +54,29 @@ namespace _02Script.Battle.Monster
             monster.gameObject.SetActive(false);
             _curAlive--;
             
-            if(_curAlive <= 0 && !_isSpawn)
+            // [수정] 스폰 종료 여부 및 살아있는 몬스터 수 체크
+            if (_curAlive <= 0 && (!_isSpawn || _monsterSpawnList.Count <= 0))
                 Victory();
         }
 
-        #region Spanw
+        #region Spawn
         private void SpawnMonster()
         {
-            if (!_isSpawn || _monsterSpawnList.Count <= 0)
+            if (!_isSpawn) return;
+
+            // [수정] 모든 몬스터가 스폰되었을 때
+            if (_monsterSpawnList.Count <= 0)
             {
                 _isSpawn = false;
+                if (_curAlive <= 0)
+                {
+                    Victory();
+                }
                 return;
             }
             
-            List<(MonsterSO monsterType, Vector3 spawnPos, float spawnDelay)> spawnList = new List<(MonsterSO monsterType, Vector3 spawnPos, float spawnDelay)>();
+            List<(MonsterSO monsterType, Vector3 spawnPos, float spawnDelay)> spawnList = 
+                new List<(MonsterSO monsterType, Vector3 spawnPos, float spawnDelay)>();
             for (int i = 0; i < _monsterSpawnList.Count; i++)
             {
                 if (_monsterSpawnList[i].spawnDelay <= _curTime)
@@ -83,7 +92,6 @@ namespace _02Script.Battle.Monster
                 
                 Monster monster = null;
             
-                //리스트 때문
                 if (spawn.monsterType as BossMonsterSO)
                 {
                     if (_bossMonsters.Count <= 0)
@@ -110,6 +118,7 @@ namespace _02Script.Battle.Monster
                 monster.gameObject.SetActive(true);
             }
         }
+
         private void NewMonster(MonsterSO monsterType)
         {
             if (monsterType is BossMonsterSO bossSo)
@@ -129,9 +138,10 @@ namespace _02Script.Battle.Monster
                 monster.gameObject.SetActive(false);
             }
         }
+
         private void Update()
         {
-            if(!_isSpawn) return;
+            if (!_isSpawn) return;
             _curTime += Time.deltaTime;
             SpawnMonster();
         }

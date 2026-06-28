@@ -17,17 +17,16 @@ namespace _02Script.Title
             data.DataReset();
             data.stat.ResetStat();
                 
-            HouseManager.Instance.PlayerStat = data.stat; //로드
-            
-            PlayerPrefs.SetString(HouseManager.GameSaveFilePath,"");
+            // [수정] 세이브 초기화 및 중복 로드 제거
+            PlayerPrefs.SetString("gameSaveData", "");
             PlayerPrefs.Save();
-            SceneManager.LoadScene(tutorialScene);
+            
             SceneManager.LoadScene(tutorialScene);
         }
         
         public void StartGame()
         {
-            SceneManager.LoadScene(startScene);
+            // [수정] 중복 LoadScene 호출 제거
             SceneManager.LoadScene(startScene);
         }
 

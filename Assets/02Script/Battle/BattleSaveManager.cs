@@ -15,7 +15,7 @@ namespace _02Script.Battle
         private readonly string _miniGameScene = "GoHouse";
 
         private SaveDictionary<ItemType, List<float>> _items
-            = new SaveDictionary<ItemType, List<float>>(); //채집의 얻은 것들
+            = new SaveDictionary<ItemType, List<float>>(); // 채집으로 얻은 것들
 
         private void GetItem(SaveDictionary<ItemType, List<float>> inventory)
         {
@@ -48,7 +48,7 @@ namespace _02Script.Battle
             BattleCharacter.OnDie -= FailGame;
         }
 
-        protected override void SaveData() //성공 할 때만
+        protected override void SaveData() // 성공할 때만
         {
             base.SaveData();
             
@@ -64,11 +64,13 @@ namespace _02Script.Battle
             SceneManager.LoadScene(_miniGameScene);
         }
 
-        private void FailGame() //실패시 비워버림
+        private void FailGame()
         {
-            PlayerPrefs.SetString(GamePath,"");
+            // [수정] 메인 세이브(GamePath)를 통째로 삭제하지 않고 배틀 임시 아이템만 정리
+            PlayerPrefs.SetString(_battleItemSave, "");
             PlayerPrefs.Save();
         }
+
         protected override void OnDestroy()
         {
         }

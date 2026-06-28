@@ -11,7 +11,7 @@ namespace _02Script.Battle.Entity
 {
     public class BattleEntity : MonoBehaviour
     {
-        public static Action<List<BattleEntity>,BattleEntity> OnTarget;
+        public static Action<List<BattleEntity>, BattleEntity> OnTarget;
         public static Action<PlayerStateType> OnAction;
         public static Action<Transform, int, bool> OnHit;
         
@@ -19,18 +19,18 @@ namespace _02Script.Battle.Entity
         [SerializeField] protected EntitySO entity;
         [SerializeField] public SpriteRenderer outline;
         
-        public EntityName EntityName{get => entity.EntityName;}
+        public EntityName EntityName { get => entity.EntityName; }
         
-        protected List<BattleEntity> canTargets = new List<BattleEntity>(); //타겟 후보
-        protected List<BattleEntity> targets = new List<BattleEntity>(); //현재 타겟
+        protected List<BattleEntity> canTargets = new List<BattleEntity>(); // 타겟 후보
+        protected List<BattleEntity> targets = new List<BattleEntity>(); // 현재 타겟
         protected int maxHp;
         protected float curHp;
-        protected float baseAttack; //평타
-        protected float baseAttackDelay; //평타 딜레이
+        protected float baseAttack; // 평타
+        protected float baseAttackDelay; // 평타 딜레이
         protected float skillDamage;
         protected float skillAttackDelay;
-        protected List<BuffSO> startBuff; //시작할 때 버프
-        protected List<BuffSO> skillBuff; //스킬때 버프
+        protected List<BuffSO> startBuff; // 시작할 때 버프
+        protected List<BuffSO> skillBuff; // 스킬 때 버프
         protected bool isGlobal;
 
         protected readonly int maxGlobal = 10;
@@ -65,24 +65,23 @@ namespace _02Script.Battle.Entity
             
             Recovery();
             Attack();
-            OnTarget?.Invoke(targets,this);
+            OnTarget?.Invoke(targets, this);
         }
 
         #region Target
         protected virtual void RandomTarget()
         {
-            int count = !isGlobal? 1 : Random.Range(0, maxGlobal + 1);
+            int count = !isGlobal ? 1 : Random.Range(0, maxGlobal + 1);
             for (int i = 0; i < count; i++)
             {
-                int index =Random.Range(0, canTargets.Count);
-                if(canTargets.Count <= 0) return;
+                int index = Random.Range(0, canTargets.Count);
+                if (canTargets.Count <= 0) return;
                 Target(index);
             }
         }
 
-        protected virtual void Target(int index) // 이 엔티티의 타겟을 정함
+        protected virtual void Target(int index)
         {
-            //제한이면 가장 오래된 타겟을 변경
             if ((!isGlobal && targets.Count > 0) || targets.Count >= maxGlobal)
             {
                 canTargets.Add(targets[0]);
@@ -100,12 +99,13 @@ namespace _02Script.Battle.Entity
         #region Attack, Hit
         public virtual void Attack()
         {
-            if(curAttackDelay < baseAttackDelay) return;
+            if (curAttackDelay < baseAttackDelay) return;
             curAttackDelay = 0;
             
             OnAction?.Invoke(PlayerStateType.Attack);
 
-            int divide = targets.Count; //타겟 만큼 나누기
+            int divide = targets.Count;
+            if (divide <= 0) return;
             float attack = EtcStat(StatsType.attack);
             float damage = (baseAttack + attack) / divide;
             
@@ -114,48 +114,53 @@ namespace _02Script.Battle.Entity
                 target.Hit(damage);
             }
         }
+
         public virtual void UseSkill()
         {
-            float curDelay = skillAttackDelay - EtcStat(StatsType.skill); //쿨타임 감소
-            if(curSkillDelay < curDelay || skillAttackDelay < 0) return;
+            float curDelay = skillAttackDelay - EtcStat(StatsType.skill);
+            if (curSkillDelay < curDelay || skillAttackDelay < 0) return;
             
             curSkillDelay = 0;
             curAttackDelay = 0;
             OnAction?.Invoke(PlayerStateType.Skill);
             
-            int divide = targets.Count; //타겟 만큼 나누기
-            float attack = ((EtcStat(StatsType.attack) -3)/2 
-                            +EtcStat(StatsType.skill)/2); //((타격-3)/2 + 숙련/2)
+            int divide = targets.Count;
+            if (divide <= 0) return;
+            float attack = ((EtcStat(StatsType.attack) - 3) / 2 
+                            + EtcStat(StatsType.skill) / 2);
             float damage = (skillDamage + attack) / divide;
             
-            if (skillBuff!= null&&skillBuff.Count >0)
+            if (skillBuff != null && skillBuff.Count > 0)
             {
                 foreach (BuffSO buff in skillBuff)
                 {
-                    if(!buff.isDeBuff)
+                    if (!buff.isDeBuff)
                         GetBuffs(buff);
                 }
             }
             foreach (BattleEntity target in targets.ToArray())
             {
                 target.Hit(damage);
-                if(skillBuff!= null&&skillBuff.Count >0)
+                if (skillBuff != null && skillBuff.Count > 0)
                     foreach (BuffSO buff in skillBuff)
                     {
-                        if(buff.isDeBuff)
+                        if (buff.isDeBuff)
                             target.GetBuffs(buff);
                     }
             }
         }
+
         public virtual void Hit(float damage)
         {
-            if(!Agility()) return;
-            OnHit?.Invoke(transform,(int)damage, true);
+            if (!Agility()) return;
+            OnHit?.Invoke(transform, (int)damage, true);
 
-            if (EtcStat(StatsType.defense) != 0)
+            // [수정] 방어력 공식 정상화 (나눗셈 오류 방지 및 감산 처리)
+            float defense = EtcStat(StatsType.defense);
+            if (defense > 0)
             {
-                damage /= EtcStat(StatsType.defense);
-                OnHit?.Invoke(transform,(int)EtcStat(StatsType.defense), false);
+                damage = Mathf.Max(1, damage - defense);
+                OnHit?.Invoke(transform, (int)defense, false);
             }
             curHp -= damage;
             OnAction?.Invoke(PlayerStateType.Hit);
@@ -168,19 +173,19 @@ namespace _02Script.Battle.Entity
         #endregion
 
         #region Stat
-        protected virtual bool Agility() //민첩
+        protected virtual bool Agility()
         {
-            float agilityBuff = BuffCalculate(StatsType.agility); //민첩 버프
+            float agilityBuff = BuffCalculate(StatsType.agility);
             float randAgility = Random.Range(0, 100.1f);
-            return(randAgility > agilityBuff);
+            return (randAgility > agilityBuff);
         }
-        protected virtual float EtcStat(StatsType type) //외 스탯들
+        protected virtual float EtcStat(StatsType type)
         {
-            return BuffCalculate(type); //버프
+            return BuffCalculate(type);
         }
-        protected virtual void Recovery() //회복
+        protected virtual void Recovery()
         {
-            if(curRecoveryDelay < recoveryDelay) return;
+            if (curRecoveryDelay < recoveryDelay) return;
 
             curRecoveryDelay = 0;
             float recoveryBuff = BuffCalculate(StatsType.recovery);
@@ -189,19 +194,19 @@ namespace _02Script.Battle.Entity
 
         protected virtual void HpDeBuff(EntityName name, float value)
         {
-            if(entity.EntityName != name) return;
+            if (entity.EntityName != name) return;
             
             curHp -= value;
         }
         #endregion
         
         #region Buff
-        protected virtual float BuffCalculate(StatsType stat) //버프 효과 계산
+        protected virtual float BuffCalculate(StatsType stat)
         {
             return buffManager.BuffCalculate(stat);
         }
         
-        public virtual void GetBuffs(BuffSO buff) //버프를 얻음
+        public virtual void GetBuffs(BuffSO buff)
         {
             buffManager.GetBuffs(buff);
         }

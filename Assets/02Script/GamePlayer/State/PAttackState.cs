@@ -10,12 +10,17 @@ namespace _02Script.GamePlayer.State
 
         public override void Enter(int x, int y)
         {
-            base.Enter(x,y);
+            base.Enter(x, y);
             foreach (string b in AnimBool)
             {
-                Player.Animator.SetBool(b,false);
+                Player.Animator.SetBool(b, false);
             }
-            Player.Animator.SetBool(AnimBool[2],true);
+            Player.Animator.SetBool(AnimBool[2], true); // Attack = true
+
+            if (Player.PlayerMovement != null)
+            {
+                Player.PlayerMovement.SetAttacking(true);
+            }
         }
 
         public override void Exit()
@@ -23,7 +28,12 @@ namespace _02Script.GamePlayer.State
             base.Exit();
             foreach (string b in AnimBool)
             {
-                Player.Animator.SetBool(b,false);
+                Player.Animator.SetBool(b, false);
+            }
+
+            if (Player.PlayerMovement != null)
+            {
+                Player.PlayerMovement.SetAttacking(false);
             }
         }
     }

@@ -6,18 +6,21 @@ using UnityEngine;
 
 namespace _02Script.GamePlayer.Movement
 {
-    public class PlayerMovement: MonoBehaviour
+    public class PlayerMovement : MonoBehaviour
     {
-        public float speed; //속도
-        [HideInInspector] public Vector2 TargetPos; //갈 위치
+        public float speed; // 속도
+        [HideInInspector] public Vector2 TargetPos; // 갈 위치
         protected Rigidbody2D Rd;
         protected bool IsMoving;
+        protected bool isAttacking; // 공격/스킬 동작 중인지
         
         protected Player player;
 
         protected readonly string X = "X";
         protected readonly string Y = "Y";
-        protected Vector3 beforePos; //위치 확인용
+        protected Vector3 beforePos; // 위치 확인용
+
+        public bool IsAttacking => isAttacking;
 
         #region endiaw
 
@@ -30,6 +33,7 @@ namespace _02Script.GamePlayer.Movement
         protected virtual void OnEnable()
         {
             IsMoving = false;
+            isAttacking = false;
             RunBtn.OnMoveSpeed += SetSpeed;
         }
 
@@ -39,21 +43,49 @@ namespace _02Script.GamePlayer.Movement
         }
         #endregion
 
+        public void SetAttacking(bool attacking)
+        {
+            isAttacking = attacking;
+            if (attacking)
+            {
+                StopMove();
+            }
+        }
+
+        public virtual void StopMove()
+        {
+            IsMoving = false;
+            if (Rd != null)
+            {
+                Rd.linearVelocity = Vector2.zero;
+            }
+        }
+
         protected virtual void FixedUpdate()
         {
-            if(!IsMoving) return;
+            // 공격 중이면 회전 및 이동 전면 중단
+            if (isAttacking)
+            {
+                if (Rd != null)
+                {
+                    Rd.linearVelocity = Vector2.zero;
+                }
+                return;
+            }
+
+            if (!IsMoving) return;
             
             Vector2 direction = (TargetPos - (Vector2)transform.position);
             
             Vector2 animatorVector = direction;
-            animatorVector = Math.Abs(animatorVector.x) > Math.Abs(animatorVector.y)?
-                new Vector2(animatorVector.x, 0):
+            animatorVector = Math.Abs(animatorVector.x) > Math.Abs(animatorVector.y) ?
+                new Vector2(animatorVector.x, 0) :
                 new Vector2(0, animatorVector.y);
             
             player.Animator.SetFloat(X, animatorVector.normalized.x);
             player.Animator.SetFloat(Y, animatorVector.normalized.y);
 
-            if (direction.magnitude < 0.1f || beforePos == transform.position) // 너무 가깝거나 이동을 못하는 상태라면 멈추기
+            if (direction.magnitude < 0.1f || beforePos == transform.position)
             {
                 Arrive();
             }
@@ -66,15 +98,15 @@ namespace _02Script.GamePlayer.Movement
 
         protected virtual void MoveStart()
         {
-            player.ChangeState(PlayerStateType.Move,(int)player.Animator.GetFloat(X),(int)player.Animator.GetFloat(Y));
+            player.ChangeState(PlayerStateType.Move, (int)player.Animator.GetFloat(X), (int)player.Animator.GetFloat(Y));
         }
 
         protected virtual void Arrive()
         {
-            beforePos = new  Vector2(99999,99999);
+            beforePos = new Vector2(99999, 99999);
             Rd.linearVelocity = Vector2.zero;
             IsMoving = false;
-            player.ChangeState(PlayerStateType.Idle,(int)player.Animator.GetFloat(X),(int)player.Animator.GetFloat(Y));
+            player.ChangeState(PlayerStateType.Idle, (int)player.Animator.GetFloat(X), (int)player.Animator.GetFloat(Y));
         }
 
         protected void SetSpeed(float set)

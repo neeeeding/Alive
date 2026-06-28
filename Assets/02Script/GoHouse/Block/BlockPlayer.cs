@@ -24,7 +24,6 @@ namespace _02Script.GoHouse.Block
 
         #region EnDiAw
         private void OnEnable()
-        
         {
             InputBtn.OnMoveBtn += BaseMove;
             AutoMoveSO.OnMove += AutoMove;
@@ -47,7 +46,7 @@ namespace _02Script.GoHouse.Block
 
         #endregion
 
-        public void SetPlayerPos(Vector2 pos,int moveCount,BlockManager manager)
+        public void SetPlayerPos(Vector2 pos, int moveCount, BlockManager manager)
         {
             _isSuccess = false;
             _playerPos = Vector2.zero;
@@ -66,7 +65,7 @@ namespace _02Script.GoHouse.Block
         #region Move
         private void BaseMove(Vector2 moveWant)
         {
-            if(_isSuccess)return;
+            if (_isSuccess) return;
             Vector2? value = MoveCheck(moveWant);
             if (value != null)
             {
@@ -76,10 +75,9 @@ namespace _02Script.GoHouse.Block
             }
         }
 
-        //움직임 가능한지
         private Vector2? MoveCheck(Vector2 moveWant)
         {
-            if(_blockManager == null || _isSuccess) return null;
+            if (_blockManager == null || _isSuccess) return null;
             if (_curMove >= _canMove)
             {
                 WarringManager.Warring.ShowWarring("이동 횟수를 초과했습니다.");
@@ -89,7 +87,7 @@ namespace _02Script.GoHouse.Block
             
             Vector2? movePos = _blockManager.WantPos(_playerPos + moveWant);
             
-            if(movePos == null)
+            if (movePos == null)
             {
                 WarringManager.Warring.ShowWarring("이동 할 수 없습니다.");
                 return null;
@@ -97,20 +95,18 @@ namespace _02Script.GoHouse.Block
             return movePos;
         }
         
-        //이동 방법
         private void DoTweenMove(Vector2 movePos)
         {
-            _myRect.DOMove(movePos,_moveSpeed);
+            _myRect.DOMove(movePos, _moveSpeed);
         }
         private void TeleportMove(Vector2 movePos)
         {
             _myRect.position = movePos;
         }
-        //이동 후 처리
         private void MoveCount(int add = 1)
         {
-            _curMove+= add;
-            countUI.CountText(_curMove,_canMove);
+            _curMove += add;
+            countUI.CountText(_curMove, _canMove);
         }
         private void SetPlayerPos(Vector2 pos)
         {
@@ -119,7 +115,7 @@ namespace _02Script.GoHouse.Block
         #endregion
 
         #region BlockAction
-        private void AutoMove(Vector2 moveWant) //카운트 측정 안함
+        private void AutoMove(Vector2 moveWant)
         {
             Vector2? value = MoveCheck(moveWant);
             
@@ -129,14 +125,21 @@ namespace _02Script.GoHouse.Block
                 SetPlayerPos(moveWant);
             }
         }
+
+        // [수정] 절대 좌표 직접 설정 및 정상 타일 위치로 텔레포트
         public bool Portal(Vector2 pos)
         {
-            if(_playerPos == pos) return false;
-            SetPlayerPos(pos);
-            TeleportMove(MoveCheck(pos).Value);
-            return true;
+            if (_playerPos == pos) return false;
+            _playerPos = pos;
+            Vector2? targetPos = _blockManager.WantPos(pos);
+            if (targetPos != null)
+            {
+                TeleportMove(targetPos.Value);
+                return true;
+            }
+            return false;
         }
-        private void House(string sceneName, BlockActionSO _) // + Battle
+        private void House(string sceneName, BlockActionSO _)
         {
             _isSuccess = true;
         }

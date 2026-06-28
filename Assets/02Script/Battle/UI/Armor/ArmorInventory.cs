@@ -3,30 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using _02Script.Battle.Buff;
 using _02Script.Battle.Entity;
+using _02Script.Battle.UI.Job;
 using _02Script.Battle.UI.Weapon;
-using _02Script.Collect.Item;
 using _02Script.DoTweenUI.Warring;
 using _02Script.Etc;
-using _02Script.Farming;
-using _02Script.Inventory.Etc;
 using _02Script.Inventory.Inventory;
 using _02Script.Inventory.Item;
 using _02Script.Obj.Entity;
 using _02Script.Produce.Weapon;
-using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Save;
-using _02Script.UI.Store;
 using AYellowpaper.SerializedCollections;
 using TMPro;
 using UnityEngine;
 
 namespace _02Script.Battle.UI.Armor
 {
+    // [순수 뷰용 인벤토리]
     public class ArmorInventory : LoadInventoryManager
     {
         public static Action<ArmorInventoryCard> OnDeleteArmor;
         
-        [Header("ArmorInventory")]
+        [Header("ArmorInventory (View Only)")]
         [SerializeField] private BattleCharacter inventoryCharacter;
 
         [Header("Need")]
@@ -40,50 +37,51 @@ namespace _02Script.Battle.UI.Armor
         #region EnDiAw
         protected override void OnEnable()
         {
-            DialogItem.OnGetItem += GetOrThrowItem;
-            WeaponArmorStartGiveItem.OnGetBuff += AddItem;
-            InGameItem.OnGetItem += AddItem;
-            Field.OnGetViand += AddItem;
-            GameEvent.GameEvent.OnGetItem += AddItem;
-            StoreCard.OnSellItem += AddItem;
-            StoreCard.OnPayItem += ThrowItem;
-            Field.OnUseSeed += ThrowItem;
             BattleSaveManager.OnStart += LoadItem;
-            
             LoadCard.OnLoad += LoadItem;
+            SelectDistribution.OnStart += LoadItem;
+            BattleInventory.OnDurabilityChanged += HandleDurabilityChanged;
+            BattleInventory.OnEquipmentDestroyed += HandleEquipmentDestroyed;
             
-            if(BattleSaveManager.Instance.isStart && ItemDatas.Count <= 0)
+            if (BattleSaveManager.Instance != null && BattleSaveManager.Instance.isStart && ItemCards.Count <= 0)
             {
                 LoadItem();
             }
             ArmorInventoryCard.OnMouseClick += CloseWeaponInventory;
-            CollectItem.OnGetItem += GetItem;
             BattleCharacter.OnUseArmor += ArmorDamage;
             ArmorInventory.OnDeleteArmor += DeleteArmor;
         }
 
         protected override void OnDisable()
         {
-            base.OnDisable();
             BattleSaveManager.OnStart -= LoadItem;
+            LoadCard.OnLoad -= LoadItem;
+            SelectDistribution.OnStart -= LoadItem;
+            BattleInventory.OnDurabilityChanged -= HandleDurabilityChanged;
+            BattleInventory.OnEquipmentDestroyed -= HandleEquipmentDestroyed;
             
             ArmorInventoryCard.OnMouseClick -= CloseWeaponInventory;
-            WeaponArmorStartGiveItem.OnGetBuff -= AddItem;
-            CollectItem.OnGetItem -= GetItem;
             BattleCharacter.OnUseArmor -= ArmorDamage;
             ArmorInventory.OnDeleteArmor -= DeleteArmor;
         }
         #endregion
 
-        private void CloseWeaponInventory(ArmorInventoryCard _a,List<BuffSO> _b, EntityName _e,WeaponArmorSaveData _d)
+        private void CloseWeaponInventory(ArmorInventoryCard _a, List<BuffSO> _b, EntityName _e, WeaponArmorSaveData _d)
         {
             inventoryWindow.gameObject.SetActive(false);
         }
-        protected override void LoadItem() //불러오기
+
+        #region View Load (뷰 전용 표시)
+        protected override void LoadItem()
         {
             SettingAllDataSO();
-            Dictionary<ItemType, List<float>> save = BattleSaveManager.Instance.PlayerStat.items.ToDictionary();
-            Dictionary<ItemType, List<WeaponArmorSaveData>> etcData = BattleSaveManager.Instance.PlayerStat.weaponArmor.ToDictionary();
+            if (inventoryCharacter == null) return;
+
+            var stat = BattleSaveManager.Instance.PlayerStat;
+            if (stat == null) return;
+
+            Dictionary<ItemType, List<float>> save = stat.items.ToDictionary();
+            Dictionary<ItemType, List<WeaponArmorSaveData>> etcData = stat.weaponArmor.ToDictionary();
             
             foreach (var cardList in ItemCards.Values)
             foreach (var card in cardList)
@@ -94,99 +92,224 @@ namespace _02Script.Battle.UI.Armor
             foreach (KeyValuePair<ItemType, List<float>> item in save.ToList())
             {
                 if (item.Key == ItemType.notting) continue;
-                if (_allArmorDataSO == null)
-                {
-                    SettingAllDataSO();
-                }
-                
                 if (!_allArmorDataSO.ContainsKey(item.Key)) continue;
 
-                ItemDataSO so = _allArmorDataSO[item.Key];
+                ArmorItemDataSO armorSO = _allArmorDataSO[item.Key];
 
-                LoadItem(item, etcData, so);
+                int count = item.Value.Count;
+                for (int i = 1; i < count; i++)
+                {
+                    WeaponArmorSaveData saveData = null;
+                    if (etcData.ContainsKey(item.Key) && etcData[item.Key].Count >= i)
+                        saveData = etcData[item.Key][i - 1];
+                    else
+                        saveData = NewSaveData(armorSO, (int)item.Value[i]);
+
+                    CreateViewCard(armorSO, saveData, item.Value[i]);
+                }
             }
+
+            AutoArmorSelect();
         }
 
-        #region ArmorDamage
-        //데미지 감소
-        private void ArmorDamage(ArmorInventoryCard armor)
+        private void CreateViewCard(ArmorItemDataSO so, WeaponArmorSaveData saveData, float hp)
         {
-            if(!armor) return;
-            if (!ItemDatas.ContainsKey(armor.ReturnData().ReturnDataSO())) return;
-            ItemData data = ItemDatas[armor.ReturnData().ReturnDataSO()];
-            
-            ArmorInventoryCard useCard = armor;
-            foreach (ItemCard d in ItemCards[data]) //다른 인벤토리에서는 '카드'자체의 인스턴스 값이 달라 적용이 안되므로
-            {
-                if(d.ReturnNum(false) != armor.ReturnNum(false)) continue;
-                useCard = d as ArmorInventoryCard;
-                break;
-            }
-            
-            useCard.ItemDamage((armor.ReturnData().ReturnDataSO() as ArmorItemDataSO).damage);
-            useCard.UpdateCountUI();
-                
-            if(useCard.ReturnNum(false) > 0) return; //내구도 0 이하시 삭제 시작
-            WarringManager.Warring.ShowWarring(
-                $"{EnumToString.Name(useCard.ReturnData().ReturnDataSO().itemType)}의 내구력이 다하여 부셔졌습니다.");
-            
-            OnDeleteArmor?.Invoke(useCard);
-        }
+            if (!itemInventory.ContainsKey(so.category)) return;
 
-        private void DeleteArmor(ArmorInventoryCard armor) //갑옷 정보 소멸 및 삭제
-        {
-            ItemData data = armor.ReturnData();
-            GameObject soonDelete = null;
-            
-            if(!ItemDatas.ContainsKey(data.ReturnDataSO())) return;
-            
-            foreach (ItemCard w in ItemCards[ItemDatas[data.ReturnDataSO()]])
+            ItemData itemData;
+            if (!ItemDatas.ContainsKey(so))
             {
-                if(w != armor) continue;
-                soonDelete = w.gameObject;
-                break;
+                itemData = new ItemData();
+                itemData.NewItem(so);
+                ItemDatas.Add(so, itemData);
             }
-            
-            ItemCards[ItemDatas[data.ReturnDataSO()]].Remove(armor);
-            if (ItemCards[ItemDatas[data.ReturnDataSO()]].Count <= 0) //갑옷 다 사라지면 없애버리기
-                ItemDatas.Remove(data.ReturnDataSO());
-            
-            Destroy(soonDelete);
+            else
+            {
+                itemData = ItemDatas[so];
+            }
+
+            Transform parent = itemInventory[so.category];
+            ItemCard newCard = Instantiate(cardPrefab, parent);
+            newCard.gameObject.SetActive(true);
+
+            ArmorInventoryCard armorCard = newCard as ArmorInventoryCard;
+            if (armorCard != null)
+            {
+                armorCard.Set(_armorEntity);
+                armorCard.NewCard(buffFind, itemData, 0, (int)hp, saveData);
+            }
+
+            if (!ItemCards.ContainsKey(itemData))
+            {
+                ItemCards.Add(itemData, new List<ItemCard>());
+            }
+            ItemCards[itemData].Add(newCard);
+            itemData.AddCountOnly();
+            newCard.UpdateCountUI();
         }
         #endregion
 
-        #region GetAddItem (inventory)
-        private void GetItem(ItemDataSO data, int count, EntityName type) //아이템 얻은거, 카드도 생성
+        #region [핵심] 아이템 추가 기능 박살 (뷰용으로 변경하여 복제 원천 차단)
+        public override void AddItem(ItemDataSO item, WeaponArmorSaveData saveData, int count = 1)
         {
-            AddItem(data,count);
         }
+
         public override void AddItem(ItemDataSO item, int count = 1)
         {
-            if(item.category != ItemCategory.armor) return;
-            if(_allArmorDataSO.Count <= 0)
-                SettingAllDataSO();
-            
-            if (_allArmorDataSO.ContainsKey(item.itemType))
+        }
+        #endregion
+
+        #region ArmorDamage & Event Sync (이벤트 기반 실시간 전체 동기화)
+        private void ArmorDamage(ArmorInventoryCard armor)
+        {
+            if (!armor) return;
+            if (armor.GetEntity() != _armorEntity && armor.GetEntity() != EntityName.None) return;
+
+            ItemDataSO so = armor.ReturnData()?.ReturnDataSO();
+            if (so == null) return;
+
+            float minus = (so as ArmorItemDataSO).damage;
+            float oldHp = armor.ReturnNum(false);
+
+            if (BattleInventory.Instance != null)
             {
-                base.AddItem(_allArmorDataSO[item.itemType], count);
-                ItemData d = ItemDatas[_allArmorDataSO[item.itemType]]; //그냥 item하면 인스턴스 값이 달라서 못함.
-                (ItemCards[d][ItemCards[d].Count -1] as ArmorInventoryCard).Set(_armorEntity);
-                
-                if (item is ArmorItemDataSO)
+                BattleInventory.Instance.ConsumeItemDamage(
+                    so.itemType,
+                    oldHp,
+                    minus,
+                    armor.ReturnSaveData()
+                );
+            }
+
+            if (armor.ReturnNum(false) - minus <= 0)
+            {
+                WarringManager.Warring.ShowWarring(
+                    $"{EnumToString.Name(so.itemType)}의 내구력이 다하여 부셔졌습니다.");
+
+                OnDeleteArmor?.Invoke(armor);
+                DeleteArmor(armor);
+            }
+        }
+
+        private void HandleDurabilityChanged(ItemType type, WeaponArmorSaveData data, float newHp)
+        {
+            if (!_allArmorDataSO.ContainsKey(type)) return;
+            ArmorItemDataSO so = _allArmorDataSO[type];
+
+            if (!ItemDatas.ContainsKey(so)) return;
+            ItemData itemData = ItemDatas[so];
+            if (!ItemCards.ContainsKey(itemData)) return;
+
+            foreach (ItemCard card in ItemCards[itemData])
+            {
+                ArmorInventoryCard armorCard = card as ArmorInventoryCard;
+                if (armorCard == null) continue;
+
+                if (data != null && armorCard.ReturnSaveData() == data)
                 {
-                    ArmorInventoryCard card = ItemCards[d][ItemCards[d].Count -1] as ArmorInventoryCard;
-                    card.NewCard(buffFind,d,0,count);
+                    armorCard.ItemDamage(armorCard.ReturnNum(false) - newHp);
+                    armorCard.UpdateCountUI();
+                    break;
+                }
+                else if (Mathf.Abs(armorCard.ReturnNum(false) - newHp) > 0.01f)
+                {
+                    armorCard.ItemDamage(armorCard.ReturnNum(false) - newHp);
+                    armorCard.UpdateCountUI();
+                    break;
                 }
             }
+        }
+
+        private void HandleEquipmentDestroyed(ItemType type, WeaponArmorSaveData data)
+        {
+            if (!_allArmorDataSO.ContainsKey(type)) return;
+            ArmorItemDataSO so = _allArmorDataSO[type];
+
+            if (!ItemDatas.ContainsKey(so)) return;
+            ItemData itemData = ItemDatas[so];
+            if (!ItemCards.ContainsKey(itemData)) return;
+
+            ArmorInventoryCard target = null;
+            foreach (ItemCard card in ItemCards[itemData])
+            {
+                ArmorInventoryCard armorCard = card as ArmorInventoryCard;
+                if (armorCard == null) continue;
+
+                if (data != null && armorCard.ReturnSaveData() == data)
+                {
+                    target = armorCard;
+                    break;
+                }
+                else if (armorCard.ReturnNum(false) <= 0)
+                {
+                    target = armorCard;
+                    break;
+                }
+            }
+
+            if (target != null)
+            {
+                DeleteArmor(target);
+                AutoArmorSelect();
+            }
+        }
+
+        private void DeleteArmor(ArmorInventoryCard armor)
+        {
+            if (armor == null) return;
+            ItemData data = armor.ReturnData();
+            if (data == null || data.ReturnDataSO() == null) return;
+
+            ItemType itemType = data.ReturnDataSO().itemType;
+            float hp = armor.ReturnNum(false);
+            WeaponArmorSaveData saveData = armor.ReturnSaveData();
+
+            var stat = SaveManagerCheck.GetCurScenePlayerStat();
+            if (stat != null)
+            {
+                if (stat.items != null && stat.items.ContainsKey(itemType))
+                {
+                    for (int i = 1; i < stat.items[itemType].Count; i++)
+                    {
+                        if (Mathf.Abs(stat.items[itemType][i] - hp) < 1f || stat.items[itemType][i] <= 0)
+                        {
+                            stat.items[itemType].RemoveAt(i);
+                            break;
+                        }
+                    }
+                    stat.items.SyncListFromDict();
+                }
+                if (stat.weaponArmor != null && stat.weaponArmor.ContainsKey(itemType))
+                {
+                    if (saveData != null)
+                    {
+                        stat.weaponArmor[itemType].Remove(saveData);
+                    }
+                    else
+                    {
+                        stat.weaponArmor[itemType].RemoveAll(w => w == null || Mathf.Abs(w.hp - hp) < 1f || w.hp <= 0);
+                    }
+                    stat.weaponArmor.SyncListFromDict();
+                }
+            }
+
+            if (ItemDatas.ContainsKey(data.ReturnDataSO()))
+            {
+                ItemCards[data].Remove(armor);
+                if (ItemCards[data].Count <= 0)
+                    ItemDatas.Remove(data.ReturnDataSO());
+            }
+            
+            Destroy(armor.gameObject);
         }
         #endregion
 
         #region Set
         protected override void SettingAllDataSO()
         {
-            if(inventoryCharacter == null) return;
+            if (inventoryCharacter == null) return;
             
-            inventoryText.text = EnumToString.Name(inventoryCharacter.ReturnSO().EntityName)+"의 갑옷 변경";
+            inventoryText.text = EnumToString.Name(inventoryCharacter.ReturnSO().EntityName) + "의 갑옷 변경";
             
             _allArmorDataSO.Clear();
 
@@ -195,11 +318,45 @@ namespace _02Script.Battle.UI.Armor
                 _allArmorDataSO.Add(data.itemType, data as ArmorItemDataSO);
             }
         }
-        public void SetInventoryCharacter(BattleCharacter character) //누구의 인벤토리인지 지정해주기
+
+        public void SetInventoryCharacter(BattleCharacter character)
         {
             inventoryCharacter = character;
             _armorEntity = character.ReturnName();
             SettingAllDataSO();
+            LoadItem();
+            AutoArmorSelect();
+        }
+
+        private void AutoArmorSelect()
+        {
+            if (ItemCards.Count <= 0 || ItemCards.First().Value.Count <= 0)
+            {
+                if (inventoryCharacter != null)
+                {
+                    inventoryCharacter.ChangeArmor(null, null, _armorEntity, null);
+                }
+                return;
+            }
+            ArmorInventoryCard armor = ItemCards.First().Value[0] as ArmorInventoryCard;
+            if (armor == null) return;
+
+            List<BuffSO> buff = new List<BuffSO>();
+            WeaponArmorSaveData saveData = armor.ReturnSaveData();
+
+            if (saveData != null && saveData.buffTypes != null)
+            {
+                foreach (BuffType b in saveData.buffTypes)
+                {
+                    var buffSO = buffFind.GetBuff(b);
+                    if (buffSO != null) buff.Add(buffSO);
+                }
+            }
+            
+            if (inventoryCharacter != null)
+            {
+                inventoryCharacter.ChangeArmor(armor, buff, _armorEntity, saveData);
+            }
         }
         #endregion
     }

@@ -15,12 +15,15 @@ namespace _02Script.Etc
         
         public static PlayerStatSC GetCurScenePlayerStat()
         {
-            if (SceneManager.GetActiveScene().name.Contains(_am))
-                return HouseManager.Instance.PlayerStat;
-            if (SceneManager.GetActiveScene().name.Contains(_mini))
+            string sceneName = SceneManager.GetActiveScene().name;
+
+            // [수정] "GoHouse"가 "House"보다 먼저 검사되도록 순서 변경 ("GoHouse"가 "House"에 걸리는 버그 해결)
+            if (sceneName.Contains(_mini))
                 return GoHouseSaveManager.Instance.PlayerStat;
-            if (SceneManager.GetActiveScene().name.Contains(_pm))
+            if (sceneName.Contains(_pm))
                 return BattleSaveManager.Instance.PlayerStat;
+            if (sceneName.Contains(_am))
+                return HouseManager.Instance.PlayerStat;
             
             return null;
         }
