@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using _02Script.Obj.Entity;
 using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Dialog.Etc;
 using UnityEngine;
@@ -56,6 +57,11 @@ namespace _02Script.UI.Dialog.Entity
         protected virtual void Update()
         {
             
+        }
+
+        public EntityName ReturnName()
+        {
+            return dialogEntitySo.EntityName;
         }
    
         public virtual string BubbleWord()

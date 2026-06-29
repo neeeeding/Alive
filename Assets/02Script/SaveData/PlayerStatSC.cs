@@ -29,6 +29,8 @@ namespace _02Script.SaveData
 
         public SaveDictionary<EntityName, SaveDictionary<StatsType, int>> characterStats; //캐릭터들 스탯 캐릭터<스탯 종류, 수>
         public SaveDictionary<EntityName, SaveDictionary<DialogType, string>> characterLastText; //캐릭터 마지막 대화 이름<다이얼로그(종류), 번째(혹은 텍스트)>
+        public SaveDictionary<EntityName, int> characterAppearCount; //캐릭터 등장 횟수 누적
+        public SaveDictionary<EntityName, int> characterLastAppearDate; //마지막으로 카운트된 날짜(연월일 조합값)
 
         [Space(50f)] //날짜
         public int year;
@@ -80,13 +82,19 @@ namespace _02Script.SaveData
             characterStats = new SaveDictionary<EntityName, SaveDictionary<StatsType, int>>();
             characterLastText = new SaveDictionary<EntityName, SaveDictionary<DialogType, string>>();
             characterLastText.Clear();
+            characterAppearCount = new SaveDictionary<EntityName, int>();
+            characterAppearCount.Clear();
+            characterLastAppearDate = new SaveDictionary<EntityName, int>();
+            characterLastAppearDate.Clear();
 
             foreach (EntityName name in Enum.GetValues(typeof(EntityName))) //이름들 저장
             {
                 if((int)name >= 30000 || name == EntityName.None) continue;
-                
+        
                 characterPositions.Add(name,Vector2.zero); //다 같은 자리라니... (주석)
-                
+                characterAppearCount.Add(name, 0); //등장 횟수 초기화
+                characterLastAppearDate.Add(name, 0); //마지막 카운트 날짜 초기화 (0 = 아직 없음)
+        
                 SaveDictionary<DialogType, string> di = new SaveDictionary<DialogType, string>();
                 SaveDictionary<StatsType, int> st = new SaveDictionary<StatsType, int>();
 

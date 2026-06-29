@@ -571,7 +571,7 @@ MonoBehaviour:
   DialogRadius: 2.75
   SpeechBubbleRadius: 5
   dialogEntitySo: {fileID: 11400000, guid: 59838696553ed8a4ea4dc71f0293ab71, type: 2}
-  chapter: 21001
+  chapter: 21010
   finalNum: 0
 --- !u!114 &128149745
 MonoBehaviour:
@@ -10577,7 +10577,7 @@ MonoBehaviour:
   DialogRadius: 2.75
   SpeechBubbleRadius: 5
   dialogEntitySo: {fileID: 11400000, guid: 30528a86276e8d94e8562a2db203c703, type: 2}
-  chapter: 23001
+  chapter: 23010
   finalNum: 0
 --- !u!210 &1460584837
 SortingGroup:
@@ -10774,7 +10774,7 @@ MonoBehaviour:
   DialogRadius: 2.75
   SpeechBubbleRadius: 5
   dialogEntitySo: {fileID: 11400000, guid: 4aba3809a35a8cf4ebb752ad2847268a, type: 2}
-  chapter: 20001
+  chapter: 20010
   finalNum: 0
 --- !u!210 &1482287314
 SortingGroup:
@@ -76710,7 +76710,7 @@ MonoBehaviour:
   DialogRadius: 2.75
   SpeechBubbleRadius: 5
   dialogEntitySo: {fileID: 11400000, guid: cc2fb34f423e9e24fbde5d008befac1e, type: 2}
-  chapter: 22001
+  chapter: 22010
   finalNum: 0
 --- !u!210 &1888342001
 SortingGroup:
@@ -77247,7 +77247,7 @@ Transform:
   m_GameObject: {fileID: 2038516703}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -959.43, y: -539.44, z: -0.040260043}
+  m_LocalPosition: {x: -960.4, y: -507.9, z: -0.040260043}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

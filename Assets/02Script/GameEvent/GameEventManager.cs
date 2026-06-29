@@ -4,6 +4,7 @@ using _02Script.Farming;
 using _02Script.Manager;
 using _02Script.Obj.Entity;
 using _02Script.Obj.Obj;
+using _02Script.UI.Dialog.Entity;
 using _02Script.UI.Save;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
@@ -21,6 +22,7 @@ namespace _02Script.GameEvent
 
         private int _curDay;
         private Dictionary<EntityName,ObjTeleportationPos> _nextDayDoEvent = new Dictionary<EntityName, ObjTeleportationPos>();
+        private HashSet<EntityName> _countedToday = new HashSet<EntityName>();
  
         private TemperatureType _temperature;
         private bool isEnter;
@@ -107,6 +109,31 @@ namespace _02Script.GameEvent
         {
             character.gameObject.SetActive(true);
             character.transform.position = characterEvent[character].pos.position;
+
+            Character characterScript = character.GetComponent<Character>();
+            if (characterScript != null)
+            {
+                EntityName entityName = characterScript.GetEntityName();
+
+                int dateCode = HouseManager.Instance.PlayerStat.year * 10000
+                               + HouseManager.Instance.PlayerStat.month * 100
+                               + HouseManager.Instance.PlayerStat.day; //연월일 조합으로 고유 날짜 값 생성
+
+                if (!HouseManager.Instance.PlayerStat.characterLastAppearDate.ContainsKey(entityName))
+                    HouseManager.Instance.PlayerStat.characterLastAppearDate.Add(entityName, 0);
+
+                if (HouseManager.Instance.PlayerStat.characterLastAppearDate[entityName] != dateCode) //오늘 아직 카운트 안 했을 때만
+                {
+                    HouseManager.Instance.PlayerStat.characterLastAppearDate[entityName] = dateCode;
+
+                    if (!HouseManager.Instance.PlayerStat.characterAppearCount.ContainsKey(entityName))
+                        HouseManager.Instance.PlayerStat.characterAppearCount.Add(entityName, 0);
+
+                    HouseManager.Instance.PlayerStat.characterAppearCount[entityName]++;
+                    characterScript.ChapterSet(HouseManager.Instance.PlayerStat.characterAppearCount[entityName]);
+                }
+            }
+
             if(!_nextDayDoEvent.ContainsKey(characterEvent[character].doEvent))
                 _nextDayDoEvent.Add(characterEvent[character].doEvent, character);
         }
@@ -135,7 +162,6 @@ namespace _02Script.GameEvent
             if(!isToday)
                 _nextDayDoEvent = new Dictionary<EntityName, ObjTeleportationPos>();
         }
-
         private void LoadEvent()
         {
             _curDay = HouseManager.Instance.PlayerStat.day;
@@ -157,7 +183,7 @@ namespace _02Script.GameEvent
                 }
                 if(isEvent) _nextDayDoEvent.Add(characterEvent[character.Key].doEvent, character.Key);
             }
-            
+    
             _temperature = TemperatureType.warmth;
             OnFarmTemperature?.Invoke(_temperature);
             EventCheck();

@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using _02Script.Etc;
 using _02Script.Manager;
+using _02Script.Obj.Entity;
 using _02Script.UI.Dialog.Dialog;
 using _02Script.UI.Save;
 using UnityEngine;
@@ -9,9 +10,14 @@ namespace _02Script.UI.Dialog.Entity
 {
     public class Character : DialogEntity
     {
+        public EntityName GetEntityName() => dialogEntitySo.EntityName;
         private void Start()
         {
             _ = SpeechBubble();
+        }
+        public void ChapterSet(int appearCount)
+        {
+            chapter = (chapter / 1000)*1000 + appearCount * 10;
         }
 
         private void Load() //로드 될 때

@@ -101,6 +101,8 @@ namespace _02Script.SaveData
             s.weaponArmor?.SyncDictFromList();
             s.farm?.SyncDictFromList();
             s.farmTime?.SyncDictFromList();
+            s.characterAppearCount?.SyncDictFromList();
+            s.characterLastAppearDate?.SyncDictFromList();
 
             if (s.characterStats != null)
             {

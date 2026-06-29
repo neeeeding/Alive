@@ -1,13 +1,9 @@
 ﻿using System.Collections.Generic;
-using _02Script.Battle;
 using _02Script.Etc;
-using _02Script.GoHouse.Etc;
-using _02Script.Manager;
 using _02Script.Obj.Entity;
 using _02Script.UI.Dialog.Entity;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace _02Script.UI.Dialog.Dialog

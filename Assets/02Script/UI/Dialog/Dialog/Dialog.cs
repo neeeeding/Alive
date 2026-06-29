@@ -76,6 +76,23 @@ namespace _02Script.UI.Dialog.Dialog
             (int chapter, int finalNum) nums = dialogEntity.CurrentDialog();
             currentChapter = nums.chapter;
             currentNum = nums.finalNum;
+
+            currentChapter = (currentChapter / 10) * 10;
+            switch (HouseManager.Instance.PlayerStat.playCharacter)
+            {
+                case EntityName.taehan :
+                    currentChapter += 1;
+                    break;
+                case EntityName.dohan :
+                    currentChapter += 2;
+                    break;
+                case EntityName.hajun :
+                    currentChapter += 3;
+                    break;
+                case EntityName.lie :
+                    currentChapter += 4;
+                    break;
+            }
             
             dialogEntity.DoChat(true);
             dialogSelect.OffSelectText(); //선택지 텍스트 일단 다 끄기
