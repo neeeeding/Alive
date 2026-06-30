@@ -42,7 +42,7 @@ namespace _02Script.MiniGame.Food.None
         {
             if(isGet) _score++;
 
-            if (images.Count - 1 <= _curIndex)
+            if (images.Count <= _curIndex)
             {
                 CheckScore();
                 return;

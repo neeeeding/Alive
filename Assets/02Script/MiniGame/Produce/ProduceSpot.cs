@@ -10,9 +10,9 @@ namespace _02Script.MiniGame.Produce
 
         private ProduceScore _score;
         protected ProduceScoreType type;
-        protected Color _coolColor = new Color(0.2498f, 0.7302f, 0.2065f);
-        protected Color _rightColor = new Color(0.9935f, 0.7072f, 0.1723f);
-        protected Color _hotColor = new Color(0.8391f, 0, 0.2513f);
+        public Color _coolColor = new Color(0.2498f, 0.7302f, 0.2065f);
+        public Color _rightColor = new Color(0.9935f, 0.7072f, 0.1723f);
+        public Color _hotColor = new Color(0.8391f, 0, 0.2513f);
         protected float _changeMin = 1.0f;
         protected float _changeMax = 1.6f;
         protected float _curTime;
