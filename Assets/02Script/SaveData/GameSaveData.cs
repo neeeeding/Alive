@@ -23,7 +23,7 @@ namespace _02Script.SaveData
         
         public void DataReset()
         {
-            mainSound = 1;
+            mainSound = 0.1f;
             bgmSound = 1;
             effectSound = 1;
         }

@@ -1,11 +1,13 @@
 using _02Script.Manager;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 namespace _02Script.UI.Setting
 {
     public class AudioSave : MonoBehaviour
     {
+        [SerializeField] private AudioMixer audioMixer;
         [SerializeField] private Slider main;
         [SerializeField] private Slider bgm;
         [SerializeField] private Slider effect;
@@ -22,6 +24,7 @@ namespace _02Script.UI.Setting
             if (HouseManager.Instance.isStart)
             {
                 HouseManager.Instance.saveData.sound.mainSound = main.value;
+                audioMixer.SetFloat("Master", Mathf.Log10(main.value)*20);
             }
         }
 
