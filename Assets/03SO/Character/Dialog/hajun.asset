@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: hajun
   m_EditorClassIdentifier: 
   EntityName: 13000
-  DialogEntityImage: {fileID: 0}
+  DialogEntityImage: {fileID: 21300000, guid: 36d0c002f8c669a4eb5d39cee5401afe, type: 3}
   DialogTextFile:
   - {fileID: 4900000, guid: db8537c6757f672488ed5e4c14fcf157, type: 3}
+  characterImage: {fileID: 21300000, guid: 36d0c002f8c669a4eb5d39cee5401afe, type: 3}

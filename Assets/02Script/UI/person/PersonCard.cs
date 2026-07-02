@@ -32,7 +32,7 @@ namespace _02Script.UI.Person
         private void Awake()
         {
             characterName.text = EnumToString.Name(dialogEntity.EntityName);
-            //characterImage.sprite = character.characterImage;
+            characterImage.sprite = dialogEntity.characterImage;
             HouseManager.OnStart += LoadData;
         }
 

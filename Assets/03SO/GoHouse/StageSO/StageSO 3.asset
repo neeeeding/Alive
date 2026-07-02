@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e17893d3e3fd4572bdb49e3a5700954d, type: 3}
-  m_Name: StageSO
+  m_Name: StageSO 3
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.GoHouse.Stage.StageSO
   stageName: test
   stageNum: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
   - columns:
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
-    - {fileID: 11400000, guid: 82466eaf14439bd4888e414f59fc24a5, type: 2}
     - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
     - {fileID: 11400000, guid: 900163fd68ea691448489d128a3eae19, type: 2}
-    - {fileID: 11400000, guid: 3a3dd46606e6c6e4fa50737aa841d8ee, type: 2}
+    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}
+    - {fileID: 11400000, guid: 1b059d12d43fc9744ab42a62c7a94ae2, type: 2}

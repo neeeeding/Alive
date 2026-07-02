@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: hajun
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Entity.BattleEntitySO
   EntityName: 13000
-  DialogEntityImage: {fileID: 0}
+  DialogEntityImage: {fileID: 21300000, guid: 36d0c002f8c669a4eb5d39cee5401afe, type: 3}
   useWeapons:
   - {fileID: 11400000, guid: c5670907db089e047a46d111d9a99256, type: 2}
   - {fileID: 11400000, guid: dd29f7c01b47ac346a881aa80b31c3f6, type: 2}

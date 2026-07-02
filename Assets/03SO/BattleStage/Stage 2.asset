@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 028495c7eedd4adfb0e5f5365d74b521, type: 3}
-  m_Name: Stage1
+  m_Name: Stage 2
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Stage.BattleStageSO
   stageName: "\uD1A0\uB07C 4, \uBCF4\uC2A4 : \uAC70\uBBF8 \uD1A0\uB07C (\uC300/\uCF69)"
   stageNum: 1
@@ -28,27 +28,30 @@ MonoBehaviour:
   bCamLimitSize: {x: 50, y: 20}
   miniCamSize: {x: 1, y: 1, z: 1}
   monster:
-  - {fileID: 11400000, guid: 80a170074bf69bc4a9c86997285cd049, type: 2}
-  - {fileID: 11400000, guid: 80a170074bf69bc4a9c86997285cd049, type: 2}
-  - {fileID: 11400000, guid: 80a170074bf69bc4a9c86997285cd049, type: 2}
-  - {fileID: 11400000, guid: 80a170074bf69bc4a9c86997285cd049, type: 2}
+  - {fileID: 11400000, guid: 6596087816825ed45bdc07f1ab81b9aa, type: 2}
+  - {fileID: 11400000, guid: 6596087816825ed45bdc07f1ab81b9aa, type: 2}
+  - {fileID: 11400000, guid: 6596087816825ed45bdc07f1ab81b9aa, type: 2}
+  - {fileID: 11400000, guid: 6596087816825ed45bdc07f1ab81b9aa, type: 2}
+  - {fileID: 11400000, guid: 9f83c3fb18976994fa54c9ab72845bda, type: 2}
   mTime:
   - 0
   - 22
   - 38
   - 45
+  - 55
   mPos:
   - {x: -7.6, y: 21.2, z: 0}
   - {x: 7.33, y: 22.2, z: 0}
   - {x: 10.07, y: 19.69, z: 0}
   - {x: -4.16, y: 20.27, z: 0}
+  - {x: -3.34, y: 22.82, z: 0}
   itme:
-  - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
-  - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
-  - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
-  - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
-  - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
-  - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
+  - {fileID: 11400000, guid: d059d3cde3aa1ac4e94edb0da5f08ba8, type: 2}
+  - {fileID: 11400000, guid: 0812ee0a9e9f3b646ab7dd935b637519, type: 2}
+  - {fileID: 11400000, guid: 4fbfb53e2b967ff4295db2d56fb1221f, type: 2}
+  - {fileID: 11400000, guid: 9c47d13e319bc404c860001ae54f35e0, type: 2}
+  - {fileID: 11400000, guid: 6fceb4ccf8e91b748a5df286671f1a7f, type: 2}
+  - {fileID: 11400000, guid: 0812ee0a9e9f3b646ab7dd935b637519, type: 2}
   iCount: 000000000000000000000000000000000000000000000000
   iPos:
   - {x: 0, y: -35.2, z: 0}
@@ -57,4 +60,4 @@ MonoBehaviour:
   - {x: -2.12, y: -39.78, z: 0}
   - {x: 2, y: -37.5, z: 0}
   - {x: -5.71, y: -32.35, z: 0}
-  goHouse: {fileID: 11400000, guid: ab99ac321b0cde54fa6c5e6c81b4d1f7, type: 2}
+  goHouse: {fileID: 11400000, guid: 303f2687485060c4481045f1eed83dab, type: 2}

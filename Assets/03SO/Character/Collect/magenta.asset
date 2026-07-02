@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: magenta
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Obj.Entity.EntitySO
   EntityName: 22000
-  DialogEntityImage: {fileID: 0}
+  DialogEntityImage: {fileID: 21300000, guid: e3ca6fe5e3c168b4aac6f897e2cf159a, type: 3}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: lie
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Entity.BattleEntitySO
   EntityName: 10000
-  DialogEntityImage: {fileID: 0}
+  DialogEntityImage: {fileID: 21300000, guid: 6e5d8ef892fcd6b49b2fc82dc54f4418, type: 3}
   useWeapons:
   - {fileID: 11400000, guid: 4577b5b646612a342b4b08689e92ea60, type: 2}
   - {fileID: 11400000, guid: 46eff9a27103a9c49b9d776a722f9203, type: 2}

@@ -9,5 +9,6 @@ namespace _02Script.UI.Dialog.Entity
         [Space(20f)]
         [Header("Dialog")]
         public TextAsset[] DialogTextFile;
+        public Sprite characterImage;
     }
 }

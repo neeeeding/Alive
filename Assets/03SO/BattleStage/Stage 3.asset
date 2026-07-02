@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 028495c7eedd4adfb0e5f5365d74b521, type: 3}
-  m_Name: Stage1 1
+  m_Name: Stage 3
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Battle.Stage.BattleStageSO
   stageName: "\uD1A0\uB07C 4, \uBCF4\uC2A4 : \uAC70\uBBF8 \uD1A0\uB07C (\uC300/\uCF69)"
   stageNum: 1
@@ -46,12 +46,12 @@ MonoBehaviour:
   - {x: -4.16, y: 20.27, z: 0}
   - {x: -3.34, y: 22.82, z: 0}
   itme:
-  - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
-  - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
-  - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
-  - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
-  - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
-  - {fileID: 11400000, guid: 9ecc4936cfcfd0e43adfbc4c19df6a8a, type: 2}
+  - {fileID: 11400000, guid: d059d3cde3aa1ac4e94edb0da5f08ba8, type: 2}
+  - {fileID: 11400000, guid: 0812ee0a9e9f3b646ab7dd935b637519, type: 2}
+  - {fileID: 11400000, guid: 4fbfb53e2b967ff4295db2d56fb1221f, type: 2}
+  - {fileID: 11400000, guid: 9c47d13e319bc404c860001ae54f35e0, type: 2}
+  - {fileID: 11400000, guid: 6fceb4ccf8e91b748a5df286671f1a7f, type: 2}
+  - {fileID: 11400000, guid: 0812ee0a9e9f3b646ab7dd935b637519, type: 2}
   iCount: 000000000000000000000000000000000000000000000000
   iPos:
   - {x: 0, y: -35.2, z: 0}

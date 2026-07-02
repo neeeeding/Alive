@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: raelia
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Obj.Entity.EntitySO
   EntityName: 23000
-  DialogEntityImage: {fileID: 0}
+  DialogEntityImage: {fileID: 21300000, guid: 133bfcdd67e4fd14ba45d645d4f46a54, type: 3}

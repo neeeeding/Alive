@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ray
   m_EditorClassIdentifier: Assembly-CSharp::_02Script.Obj.Entity.EntitySO
   EntityName: 21000
-  DialogEntityImage: {fileID: 0}
+  DialogEntityImage: {fileID: 21300000, guid: 94478301c20741f43853014bd0447adc, type: 3}
